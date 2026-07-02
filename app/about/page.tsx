@@ -76,7 +76,7 @@ export default function AboutPage() {
       <section className="border-t bg-muted/20">
         <div className="mx-auto max-w-5xl px-6 py-16">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-display font-medium sm:text-3xl">
+            <h2 className="text-2xl font-display font-semibold sm:text-3xl">
               What we build toward
             </h2>
           </div>

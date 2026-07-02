@@ -91,7 +91,7 @@ export function PricingTable() {
               </ul>
 
               <Button
-                className="mt-6"
+                className="mt-6 rounded-full"
                 variant={tier.highlighted ? "default" : "outline"}
                 nativeButton={false}
                 render={<Link href={tier.ctaHref}>{tier.ctaLabel}</Link>}

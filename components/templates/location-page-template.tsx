@@ -107,7 +107,7 @@ export function LocationPageTemplate({ location }: { location: LocationPage }) {
 
       <section className="border-t">
         <div className="mx-auto max-w-2xl px-6 py-20">
-          <h2 className="text-center text-3xl font-display font-medium">
+          <h2 className="text-center text-3xl font-display font-semibold">
             Questions from {location.city} restaurant operators
           </h2>
           <div className="mt-10">

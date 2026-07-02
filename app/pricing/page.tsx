@@ -61,7 +61,7 @@ export default function PricingPage() {
       <section className="border-t bg-muted/20">
         <div className="mx-auto max-w-5xl px-6 py-16">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-display font-medium sm:text-3xl">
+            <h2 className="text-2xl font-display font-semibold sm:text-3xl">
               Compare plans feature by feature
             </h2>
             <p className="mt-3 text-muted-foreground">
@@ -94,7 +94,7 @@ export default function PricingPage() {
       <section className="border-t">
         <div className="mx-auto max-w-2xl px-6 py-20">
           <JsonLd data={buildFaqJsonLd(PRICING_FAQS)} />
-          <h2 className="text-center text-3xl font-display font-medium">
+          <h2 className="text-center text-3xl font-display font-semibold">
             Pricing questions
           </h2>
           <div className="mt-10">

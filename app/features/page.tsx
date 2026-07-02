@@ -75,7 +75,7 @@ export default function FeaturesPage() {
       <section className="border-t bg-muted/20">
         <div className="mx-auto max-w-4xl px-6 py-16">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-display font-medium sm:text-3xl">
+            <h2 className="text-2xl font-display font-semibold sm:text-3xl">
               A closer look at how it actually works
             </h2>
           </div>
@@ -99,7 +99,7 @@ export default function FeaturesPage() {
       <section className="border-t bg-muted/20">
         <div className="mx-auto max-w-2xl px-6 py-20">
           <JsonLd data={buildFaqJsonLd(FEATURES_FAQS)} />
-          <h2 className="text-center text-3xl font-display font-medium">
+          <h2 className="text-center text-3xl font-display font-semibold">
             Feature questions
           </h2>
           <div className="mt-10">

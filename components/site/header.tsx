@@ -45,7 +45,7 @@ export function SiteHeader() {
             nativeButton={false}
             render={<Link href="/login">Log in</Link>}
           />
-          <DemoDialog className="hidden sm:inline-flex">
+          <DemoDialog className="hidden rounded-full px-5 sm:inline-flex">
             Book a demo
           </DemoDialog>
 

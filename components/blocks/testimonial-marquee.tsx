@@ -11,7 +11,7 @@ export function TestimonialMarquee() {
   return (
     <section className="mx-auto max-w-5xl px-6 py-20">
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-display font-medium sm:text-4xl">
+        <h2 className="text-3xl font-display font-semibold sm:text-4xl">
           Customer stories
         </h2>
         <p className="mt-4 text-muted-foreground">

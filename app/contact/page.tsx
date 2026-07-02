@@ -73,7 +73,7 @@ export default function ContactPage() {
       <section className="border-t bg-muted/20">
         <div className="mx-auto max-w-2xl px-6 py-16">
           <div className="text-center">
-            <h2 className="text-2xl font-display font-medium">
+            <h2 className="text-2xl font-display font-semibold">
               Send us a message
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">

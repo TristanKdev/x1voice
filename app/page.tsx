@@ -30,7 +30,7 @@ export default function Home() {
 
       <section className="border-t bg-muted/20">
         <div className="mx-auto max-w-4xl px-6 py-16 text-center">
-          <h2 className="text-2xl font-display font-medium">
+          <h2 className="text-2xl font-display font-semibold">
             Built for how your restaurant actually runs
           </h2>
           <p className="mt-3 text-muted-foreground">
@@ -39,7 +39,7 @@ export default function Home() {
           </p>
           <Button
             variant="outline"
-            className="mt-6 gap-2"
+            className="mt-6 gap-2 rounded-full px-5"
             nativeButton={false}
             render={
               <Link href="/solutions">
@@ -56,7 +56,7 @@ export default function Home() {
       <section className="border-t">
         <div className="mx-auto max-w-3xl px-6 py-20">
           <JsonLd data={buildFaqJsonLd(HOME_FAQS)} />
-          <h2 className="text-center text-3xl font-display font-medium">
+          <h2 className="text-center text-3xl font-display font-semibold">
             Frequently asked questions
           </h2>
           <div className="mt-10">
