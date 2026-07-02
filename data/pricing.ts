@@ -15,7 +15,7 @@ export const PRICING_TIERS: PricingTier[] = [
     name: "Starter",
     monthlyPrice: 250,
     annualDiscountPct: 15,
-    description: "Single location, getting started with AI call answering.",
+    description: "One location, trying AI call answering for the first time.",
     minutesIncluded: "500 minutes/mo included",
     features: [
       "24/7 call answering",
@@ -30,7 +30,7 @@ export const PRICING_TIERS: PricingTier[] = [
     name: "Professional",
     monthlyPrice: 750,
     annualDiscountPct: 15,
-    description: "Most restaurants land here — full feature set, one location.",
+    description: "Where most restaurants land. Full feature set, one location.",
     minutesIncluded: "2,000 minutes/mo included",
     features: [
       "Everything in Starter",
@@ -46,7 +46,7 @@ export const PRICING_TIERS: PricingTier[] = [
     name: "Business",
     monthlyPrice: 1500,
     annualDiscountPct: 15,
-    description: "Multi-location groups that need centralized reporting.",
+    description: "Groups running several locations that want reporting in one place.",
     minutesIncluded: "6,000 minutes/mo included",
     features: [
       "Everything in Professional",

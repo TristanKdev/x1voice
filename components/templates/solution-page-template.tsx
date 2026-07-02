@@ -39,9 +39,9 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionPage }) {
       />
 
       {solution.statHighlight ? (
-        <section className="border-b bg-muted/20">
-          <div className="mx-auto max-w-3xl px-6 py-10 text-center">
-            <p className="text-3xl font-semibold text-gradient-brand">
+        <section className="border-b bg-muted/30">
+          <div className="mx-auto max-w-6xl px-6 py-10">
+            <p className="font-display text-4xl font-medium text-brand">
               {solution.statHighlight.value}
             </p>
             <p className="mt-1 text-sm text-muted-foreground">
@@ -51,8 +51,8 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionPage }) {
         </section>
       ) : null}
 
-      <section className="mx-auto max-w-5xl px-6 py-16">
-        <h2 className="text-center text-2xl font-semibold tracking-tight sm:text-3xl">
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <h2 className="font-display text-2xl font-medium sm:text-3xl">
           Where {solution.restaurantType.toLowerCase()} calls go wrong today
         </h2>
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -67,9 +67,9 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionPage }) {
         </div>
       </section>
 
-      <section className="border-t bg-muted/20">
+      <section className="border-t bg-muted/30">
         <div className="mx-auto max-w-3xl px-6 py-16">
-          <h2 className="text-center text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h2 className="font-display text-2xl font-medium sm:text-3xl">
             What changes with X1 Voice
           </h2>
           <ul className="mt-8 space-y-4">
@@ -90,7 +90,7 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionPage }) {
 
       <section className="border-t">
         <div className="mx-auto max-w-2xl px-6 py-20">
-          <h2 className="text-center text-3xl font-semibold tracking-tight">
+          <h2 className="font-display text-3xl font-medium">
             Questions from {solution.restaurantType.toLowerCase()} operators
           </h2>
           <div className="mt-10">

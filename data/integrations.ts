@@ -20,27 +20,27 @@ export const integrations: IntegrationPage[] = [
     partnerUrl: "https://squareup.com/",
     heroHeadline: "Phone orders land in your Square POS automatically.",
     summary:
-      "X1 Voice connects to your Square account and pulls your live menu — items, modifiers, and prices — so every phone order it takes is priced the way your register already prices it, and every completed order shows up as a normal ticket in Square.",
+      "X1 Voice connects to your Square account and reads your live menu, including items, modifiers, and prices. Every phone order it takes is priced the way your register already prices it, and every finished call shows up in Square as a normal ticket.",
     capabilities: [
       {
-        title: "Menu pulled directly from Square",
+        title: "Reads your Square catalog",
         description:
-          "Item names, prices, modifiers, and 86'd items sync from your Square catalog, so the AI is always quoting what you're actually selling.",
+          "Item names, prices, modifiers, and 86'd items all come from Square, so the AI only quotes what you're actually selling today.",
       },
       {
-        title: "Orders sync in real time",
+        title: "Calls become Square tickets",
         description:
-          "A completed phone call becomes a ticket in Square within moments, routed the same way an in-person or online order would be.",
+          "When a caller finishes ordering, the ticket appears in Square within moments and routes the same way an in-person or online order would.",
       },
       {
-        title: "No manual re-entry",
+        title: "Nothing to key in afterward",
         description:
-          "Nobody has to write down a phone order and key it into the register — it arrives in Square already itemized and priced.",
+          "Nobody writes down a phone order and punches it into the register. It lands in Square already itemized and priced.",
       },
       {
         title: "Payment collected on the call, reconciled in Square",
         description:
-          "When a caller pays by phone, that payment is reflected in your Square reporting alongside your other tender types.",
+          "When a caller pays by phone, that payment shows up in your Square reporting next to your other tender types.",
       },
     ],
     setupSteps: [
@@ -48,27 +48,27 @@ export const integrations: IntegrationPage[] = [
       "Confirm your menu items, modifiers, and pricing pulled in correctly.",
       "Set hours, 86'd items, and any phone-only rules (e.g. minimum order for delivery).",
       "Test with a live call to confirm the order lands correctly in Square.",
-      "Go live — new phone orders now flow into Square automatically.",
+      "Go live. New phone orders start flowing into Square on their own.",
     ],
     faqs: [
       {
         question: "Do I need a specific Square plan for this to work?",
         answer:
-          "X1 Voice connects through Square's standard restaurant/POS catalog and order APIs. If you're unsure whether your current Square plan supports the integration, our onboarding team can confirm before you sign up.",
+          "X1 Voice connects through Square's standard restaurant/POS catalog and order APIs. If you're not sure whether your current Square plan supports the integration, our onboarding team can check before you sign up.",
       },
       {
         question: "What happens if I update my menu in Square?",
         answer:
-          "Menu and pricing changes made in Square sync back to X1 Voice, so you don't have to update your menu in two places.",
+          "Changes you make in Square carry over to X1 Voice, so you're not maintaining the menu in two places.",
       },
       {
         question: "Does this work with Square for Restaurants specifically?",
         answer:
-          "Yes — the integration is built around Square's restaurant-focused catalog and order tools, including modifiers and item-level customization.",
+          "Yes. It's built on Square's restaurant-focused catalog and order tools, modifiers and item-level customization included.",
       },
     ],
     metaDescription:
-      "How X1 Voice integrates with Square: real-time menu sync, automatic order injection, and phone payment reconciliation — setup steps included.",
+      "How X1 Voice connects to Square: live menu sync, phone orders that land as normal tickets, and call payments reconciled in your reporting.",
   },
   {
     slug: "clover",
@@ -76,27 +76,27 @@ export const integrations: IntegrationPage[] = [
     partnerUrl: "https://www.clover.com/",
     heroHeadline: "Every phone order shows up in Clover, no re-typing required.",
     summary:
-      "X1 Voice reads your live Clover menu and inventory so it prices phone orders correctly, then sends each completed order into Clover as a normal ticket — the same flow your kitchen already uses for in-person and online orders.",
+      "X1 Voice reads your live Clover menu and inventory, prices phone orders against it, and drops each completed order into Clover as a normal ticket. Your kitchen handles it the same way it handles an in-person or online order.",
     capabilities: [
       {
-        title: "Menu pulled directly from your Clover catalog",
+        title: "Your Clover menu is the source of truth",
         description:
-          "Items, modifiers, and current pricing come straight from Clover, so phone orders match what's actually on the menu today.",
+          "Items, modifiers, and current pricing come straight out of Clover, so a phone order never quotes yesterday's menu.",
       },
       {
-        title: "Orders sync in real time",
+        title: "Tickets, not a side queue",
         description:
-          "Completed calls appear as tickets in Clover within moments — no separate order queue for staff to check.",
+          "A finished call turns into a Clover ticket within moments. There's no separate order screen for staff to remember to check.",
       },
       {
-        title: "No manual re-entry",
+        title: "Zero re-typing",
         description:
-          "Phone orders don't need to be handwritten or keyed in afterward; they arrive itemized and priced in Clover directly.",
+          "Phone orders arrive in Clover itemized and priced. Nobody transcribes them from a notepad after the call.",
       },
       {
         title: "86'd items respected automatically",
         description:
-          "If an item is marked unavailable in Clover, the AI won't offer or sell it on a call until it's turned back on.",
+          "Mark an item unavailable in Clover and the AI stops offering it on calls until you turn it back on.",
       },
     ],
     setupSteps: [
@@ -104,27 +104,27 @@ export const integrations: IntegrationPage[] = [
       "Confirm menu items, modifiers, and pricing pulled in correctly.",
       "Set hours, 86'd items, and any phone-order-specific rules.",
       "Test with a live call to confirm the order lands correctly in Clover.",
-      "Go live — new phone orders now flow into Clover automatically.",
+      "Go live. From there, phone orders flow into Clover without any extra steps.",
     ],
     faqs: [
       {
         question: "Which Clover devices does this work with?",
         answer:
-          "The integration works at the account/catalog level, so orders show up regardless of which Clover hardware (Station, Mini, Flex) your team uses to view and fulfill tickets.",
+          "It connects at the account and catalog level, so tickets show up whether your team views and fulfills them on a Station, Mini, or Flex.",
       },
       {
         question: "Can I keep using Clover's own online ordering alongside X1 Voice?",
         answer:
-          "Yes — phone orders from X1 Voice and orders from other channels both land in Clover as regular tickets, so your kitchen workflow doesn't change.",
+          "Yes. Both land in Clover as regular tickets, so you can keep Clover's online ordering running and your kitchen workflow stays put.",
       },
       {
         question: "What if my Clover menu changes frequently?",
         answer:
-          "Menu and price updates in Clover sync back to X1 Voice, so you only maintain your menu in one place.",
+          "That's fine. Menu and price updates made in Clover carry over to X1 Voice, so the menu only lives in one place.",
       },
     ],
     metaDescription:
-      "How X1 Voice integrates with Clover POS: live menu sync, automatic order injection, and 86'd-item handling — with a step-by-step setup guide.",
+      "How X1 Voice connects to Clover POS: live menu and price sync, phone orders arriving as regular tickets, 86'd items respected, and setup steps.",
   },
   {
     slug: "ordercounter",
@@ -132,22 +132,22 @@ export const integrations: IntegrationPage[] = [
     partnerUrl: "https://www.ordercounter.com/",
     heroHeadline: "X1 Voice orders flow straight into your OrderCounter POS.",
     summary:
-      "For restaurants running OrderCounter's hybrid POS, X1 Voice syncs your menu and sends completed phone orders in as regular tickets, fitting into the same order-management flow OrderCounter already uses for in-person, delivery, and online orders.",
+      "For restaurants on OrderCounter's hybrid POS, X1 Voice pulls the menu from your catalog and sends each completed phone call back in as a regular ticket. Phone orders ride the same order-management flow OrderCounter already runs for your in-person, delivery, and online business.",
     capabilities: [
       {
-        title: "Menu pulled directly from your POS catalog",
+        title: "Menu comes from OrderCounter",
         description:
-          "Items, modifiers, and pricing sync from OrderCounter, so phone orders are quoted using your actual, current menu.",
+          "X1 Voice quotes items, modifiers, and prices from your OrderCounter catalog, so callers hear the menu you're actually running.",
       },
       {
-        title: "Orders sync in real time",
+        title: "Calls end as POS tickets",
         description:
-          "Completed phone calls are sent into OrderCounter as tickets, alongside your delivery and online order channels.",
+          "A completed phone call goes into OrderCounter next to your delivery and online orders. Same screen, same flow.",
       },
       {
-        title: "No manual re-entry",
+        title: "Nobody re-keys anything",
         description:
-          "Staff don't have to hand-key phone orders into the POS afterward — the ticket is already itemized and priced.",
+          "The ticket arrives already itemized and priced. Staff never have to copy a phone order into the POS by hand.",
       },
     ],
     setupSteps: [
@@ -155,27 +155,27 @@ export const integrations: IntegrationPage[] = [
       "Connect your OrderCounter account and pull in your menu, modifiers, and pricing.",
       "Confirm hours, 86'd items, and any phone-order-specific rules.",
       "Test with a live call to confirm the order lands correctly in OrderCounter.",
-      "Go live — new phone orders now flow into OrderCounter automatically.",
+      "Go live. Phone orders start showing up in OrderCounter automatically.",
     ],
     faqs: [
       {
         question: "Does this work with OrderCounter's hybrid (server + cloud) setup?",
         answer:
-          "Yes — the integration is built to work with OrderCounter's standard order and catalog data, whether your location runs primarily on the local server or the cloud-connected side of the platform.",
+          "Yes. It works off OrderCounter's standard order and catalog data, whether your location leans on the local server or the cloud-connected side of the platform.",
       },
       {
         question: "Do I need to change how my kitchen receives tickets?",
         answer:
-          "No — orders from X1 Voice arrive in OrderCounter the same way any other order channel does, so your kitchen display and ticket workflow stay the same.",
+          "No. X1 Voice orders come in like any other channel, so your kitchen display and ticket routine don't change.",
       },
       {
         question: "What if OrderCounter isn't fully set up yet at my location?",
         answer:
-          "Talk to our onboarding team first — since OrderCounter setups vary by location, we'll confirm your specific configuration supports the integration before you go live.",
+          "Start with our onboarding team. OrderCounter setups vary by location, and we'll check that your specific configuration supports the integration before anything goes live.",
       },
     ],
     metaDescription:
-      "How X1 Voice integrates with OrderCounter POS: live menu sync, automatic order injection into your existing ticket flow, and setup steps to go live.",
+      "How X1 Voice connects to OrderCounter POS: menu sync, phone orders dropped into your existing ticket flow, and the setup steps to get live.",
   },
   {
     slug: "orderout",
@@ -183,22 +183,22 @@ export const integrations: IntegrationPage[] = [
     partnerUrl: "https://www.orderout.co/",
     heroHeadline: "Phone orders join the same queue as your delivery-app orders.",
     summary:
-      "OrderOut routes orders from delivery marketplaces like Uber Eats, DoorDash, and Grubhub into your POS so they don't have to be re-typed by staff. For restaurants already using OrderOut with Square or Clover, X1 Voice's phone orders can flow into that same consolidated queue instead of arriving through a separate channel.",
+      "OrderOut routes orders from delivery marketplaces like Uber Eats, DoorDash, and Grubhub into your POS so staff never re-type them. If you already run OrderOut with Square or Clover, X1 Voice phone orders can join that same consolidated queue instead of coming in through a separate channel.",
     capabilities: [
       {
         title: "One order queue, not two",
         description:
-          "Phone orders taken by X1 Voice land alongside your delivery-marketplace orders that OrderOut already routes into your POS, instead of showing up in a separate system.",
+          "Phone orders taken by X1 Voice line up next to the marketplace orders OrderOut already routes into your POS. Nothing shows up in a separate system.",
       },
       {
-        title: "No manual re-entry",
+        title: "Retyping goes away on both sides",
         description:
-          "Staff don't need to retype a phone order or a delivery-app order — both arrive as normal POS tickets.",
+          "Phone orders and delivery-app orders both arrive as normal POS tickets, so staff aren't transcribing either one.",
       },
       {
         title: "Works with your existing Square or Clover setup",
         description:
-          "Since OrderOut already integrates natively with Square and Clover, this fits on top of a POS you're likely already running.",
+          "OrderOut integrates natively with Square and Clover, so this sits on top of a POS you're probably already running.",
       },
     ],
     setupSteps: [
@@ -211,7 +211,7 @@ export const integrations: IntegrationPage[] = [
       {
         question: "Do I need OrderOut to use X1 Voice?",
         answer:
-          "No — X1 Voice connects directly to Square, Clover, and OrderCounter on its own. This integration is specifically for restaurants who already use OrderOut to consolidate delivery-marketplace orders and want phone orders in that same queue.",
+          "No. X1 Voice connects directly to Square, Clover, and OrderCounter on its own. This setup is for restaurants that already use OrderOut to consolidate delivery-marketplace orders and want phone orders in that same queue.",
       },
       {
         question: "Which POS systems does this work with?",
@@ -221,10 +221,10 @@ export const integrations: IntegrationPage[] = [
       {
         question: "Does this change how DoorDash, Uber Eats, or Grubhub orders are handled?",
         answer:
-          "No — OrderOut continues to route those marketplace orders the way it already does. This integration just adds X1 Voice's phone orders into that same consolidated flow.",
+          "No. OrderOut keeps routing those marketplace orders exactly as it does now. The only change is that X1 Voice phone orders join the same consolidated flow.",
       },
     ],
     metaDescription:
-      "How X1 Voice works alongside OrderOut: phone orders join the same consolidated queue as your delivery-marketplace orders on Square or Clover.",
+      "How X1 Voice works with OrderOut: phone orders join the same consolidated queue as your Uber Eats, DoorDash, and Grubhub orders on Square or Clover.",
   },
 ]

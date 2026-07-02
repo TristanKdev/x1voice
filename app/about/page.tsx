@@ -40,18 +40,18 @@ export default function AboutPage() {
       <section className="mx-auto max-w-3xl px-6 py-16">
         <div className="space-y-5 text-muted-foreground">
           <p>
-            Restaurant phones ring the most exactly when there&rsquo;s the
-            least slack to answer them — during the dinner rush, when the
-            line is out the door, when everyone in the building is already
-            doing something else. Every one of those unanswered calls is,
-            most of the time, a customer who wanted to order and instead
-            called somewhere else.
+            Restaurant phones ring the most at exactly the moment
+            there&rsquo;s the least slack to answer them. Anyone who has
+            worked a Friday dinner rush knows it: the line is out the door
+            and everyone in the building is already doing something else.
+            Most of those unanswered calls are customers who wanted to place
+            an order. They just called somewhere else instead.
           </p>
           <p>
             That&rsquo;s the problem X1 Voice is built around: an AI phone
             agent that answers every call to your existing restaurant number,
-            takes the order the way a good front-of-house person would —
-            modifiers, substitutions, and all — and puts it straight into
+            takes the order the way a good front-of-house person would,
+            modifiers and substitutions included, and puts it straight into
             your POS with no re-keying. It covers the hours nobody wants to
             staff a phone for, and it never puts a caller on hold because the
             kitchen just got slammed.
@@ -63,8 +63,8 @@ export default function AboutPage() {
             clear, specific problem we watched happen at real restaurants,
             and a product built to fix it. As real customers come on board,
             their stories will replace the placeholders you see elsewhere on
-            this site — that&rsquo;s a promise about how we&rsquo;ll grow
-            this page, not a claim we&rsquo;re making today.
+            this site. That&rsquo;s a promise about where this page is
+            headed, not a claim we&rsquo;re making today.
           </p>
         </div>
 
@@ -76,7 +76,7 @@ export default function AboutPage() {
       <section className="border-t bg-muted/20">
         <div className="mx-auto max-w-5xl px-6 py-16">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            <h2 className="text-2xl font-display font-medium sm:text-3xl">
               What we build toward
             </h2>
           </div>
@@ -93,7 +93,7 @@ export default function AboutPage() {
 
       <CtaSection
         title="Hear it answer a call yourself."
-        description="The fastest way to understand X1 Voice is to hear it work — book a live demo and we'll call your own restaurant number."
+        description="The fastest way to understand X1 Voice is to hear it work. Book a live demo and we'll call your own restaurant number."
       />
     </>
   )

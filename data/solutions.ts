@@ -33,68 +33,68 @@ export const solutions: SolutionPage[] = [
   {
     slug: "pizza-restaurants",
     restaurantType: "Pizza Restaurants",
-    heroHeadline: "Never miss another pizza order — even at 7:45 on a Friday.",
+    heroHeadline: "Never miss another pizza order. Not even at 7:45 on a Friday.",
     heroSubhead:
-      "X1 Voice answers every call during your dinner rush, prices half-and-half and extra-topping orders correctly, and remembers what your regulars usually get.",
+      "X1 Voice picks up all through your dinner rush. It prices half-and-half and extra-topping orders correctly, and it remembers what your regulars usually get.",
     painPoints: [
       {
         title: "Half-and-half math slows down the whole line",
         description:
-          "Split pizzas and extra-topping pricing require someone to stop and do the math mid-order, and during a rush that's time the line doesn't have.",
+          "Somebody has to stop and price a split pizza with extra toppings mid-order. During a rush, that's time the line doesn't have.",
       },
       {
         title: "Friday and Saturday call volume outruns your staff",
         description:
-          "Dinner-rush calls stack up while your crew is heads-down building pies — every ring competing with a hot oven for attention.",
+          "Dinner-rush calls stack up while your crew is heads-down building pies. A ringing phone loses to a hot oven just about every time.",
       },
       {
         title: "\"The usual\" isn't usual for whoever answers",
         description:
-          "Regulars calling in their standard order get put on hold while someone hunts for order history or asks them to repeat it from scratch.",
+          "A regular calls in their standard order and lands on hold while someone hunts through order history, or they end up repeating the whole thing from scratch.",
       },
     ],
     features: [
       {
         title: "Menu-aware topping and pricing logic",
         description:
-          "Handles half-and-half splits, per-topping charges, and specialty pies the same way your counter staff would — no manual math required.",
+          "Half-and-half splits, per-topping charges, and specialty pies get priced the way your counter staff would price them. Nobody does math on a notepad.",
       },
       {
-        title: "Every call answered during the rush",
+        title: "A busy Friday doesn't mean busy signals",
         description:
-          "Calls are handled concurrently, so a full dinner rush doesn't mean hold music or a busy signal for the next customer.",
+          "It handles simultaneous calls, so a stacked dinner rush never sends the next customer to hold music or a busy signal.",
       },
       {
         title: "Repeat-caller recognition",
         description:
-          "Pulls up a regular's recent order by caller ID, so \"the usual\" actually works without a staff member digging for it.",
+          "Caller ID pulls up a regular's recent orders, so \"the usual\" means something again and nobody has to go digging for it.",
       },
     ],
     statHighlight: {
       value: "3-to-1",
       label:
-        "A rough sense of how many calls can ring in against available counter staff during a typical Friday dinner rush",
+        "Roughly how many calls can ring in for each available counter person during a typical Friday dinner rush",
     },
     faqs: [
       {
         question: "Can it handle half-and-half and extra-topping pricing correctly?",
         answer:
-          "Yes — it's set up with your actual topping and pricing rules, including split pizzas, extra-topping charges, and specialty pies, so it prices orders the way your counter would.",
+          "Yes. It runs on your actual topping and pricing rules, including split pizzas, extra-topping charges, and specialty pies, so orders come out priced the way your counter would price them.",
       },
       {
         question: "What about coupon codes or deals mentioned over the phone?",
         answer:
-          "It can recognize and apply deals you've configured for phone orders. Anything that's genuinely online-only gets explained as such instead of applied incorrectly.",
+          "It recognizes and applies the deals you've configured for phone orders. If a coupon is genuinely online-only, it tells the caller that instead of misapplying it.",
       },
       {
         question: "Does it recognize regular customers?",
         answer:
-          "Using caller ID, it can reference a repeat caller's recent orders so \"the usual\" works — you control exactly what order history it's allowed to use.",
+          "It can use caller ID to reference a repeat caller's recent orders, which is what makes \"the usual\" work. You decide exactly what order history it's allowed to touch.",
       },
       {
         question: "Does it work with our POS for topping pricing?",
         answer:
-          "Yes — menu and pricing sync from your POS. Square and Clover today, with OrderCounter and OrderOut also available. See /integrations for setup details.",
+          "Menu and pricing sync straight from your POS. Square and Clover are supported today, with OrderCounter and OrderOut also available. Setup details live at /integrations.",
       },
     ],
     metaDescription:
@@ -103,63 +103,63 @@ export const solutions: SolutionPage[] = [
   {
     slug: "chinese-restaurants",
     restaurantType: "Chinese Restaurants",
-    heroHeadline: "Handle every combination-plate call without slowing down the wok.",
+    heroHeadline: "Combination-plate calls handled without slowing down the wok.",
     heroSubhead:
-      "X1 Voice takes detailed Chinese-menu orders — protein swaps, spice level, lunch-special timing — and gets them right the first time, no matter how many calls come in at once.",
+      "X1 Voice takes detailed Chinese-menu orders and gets them right the first time: protein swaps, spice level, lunch-special timing. It doesn't matter how many calls land at once.",
     painPoints: [
       {
         title: "Modifier-heavy orders slow down the line",
         description:
-          "Protein swaps, spice level, \"no peanuts,\" sauce on the side — a single family-style order can carry a dozen small customizations, and one missed detail sends the wrong dish out.",
+          "A single family-style order can carry a dozen small customizations: protein swaps, spice level, \"no peanuts,\" sauce on the side. Miss one detail and the wrong dish goes out.",
       },
       {
         title: "Lunch-special rules get misquoted",
         description:
-          "Lunch pricing, cutoff times, and what's included (soup, egg roll, rice) differ from the dinner menu, and whoever answers the phone doesn't always know today's rules near the cutoff.",
+          "Lunch pricing, cutoff times, and what comes with each special (soup, egg roll, rice) all differ from the dinner menu. Whoever grabs the phone near the cutoff doesn't always know today's rules.",
       },
       {
         title: "Fast, mixed-language calls get mis-heard",
         description:
-          "Orders taken quickly, sometimes across English and Chinese, get compressed into notepad shorthand — details that don't survive the walk from the phone to the kitchen.",
+          "Orders come in fast, sometimes switching between English and Chinese, and get compressed into notepad shorthand. Those details don't always survive the walk from the phone to the kitchen.",
       },
     ],
     features: [
       {
         title: "Full modifier capture, per item",
         description:
-          "Protein swaps, spice level, allergy notes, and sauce placement are recorded against each dish individually, not summarized into a guess.",
+          "Protein swaps, spice level, allergy notes, and sauce placement get recorded on each dish individually. The kitchen sees exactly what the caller asked for.",
       },
       {
         title: "Time-aware lunch-menu logic",
         description:
-          "Applies lunch pricing and inclusions automatically before your cutoff and switches to dinner rules after — no one has to check the clock.",
+          "Lunch pricing and inclusions apply automatically before your cutoff, and dinner rules take over after it. Nobody has to watch the clock.",
       },
       {
         title: "Order read-back before it reaches the kitchen",
         description:
-          "Repeats the full order back to the caller before ending the call, catching a mis-heard item or swapped protein before it's fired.",
+          "It repeats the full order back to the caller before hanging up. A mis-heard item or a swapped protein gets caught before anything hits the wok.",
       },
     ],
     faqs: [
       {
         question: "Can it take orders in multiple languages?",
         answer:
-          "Yes — it can be configured for the languages your customers actually call in, so a mixed-language order doesn't get lost at the register.",
+          "Yes. It can be set up for the languages your customers actually call in, so a mixed-language order doesn't fall apart at the register.",
       },
       {
         question: "Does it know our lunch-special cutoff and inclusions?",
         answer:
-          "Yes — lunch pricing, cutoff time, and what each special includes are set up from your actual menu, and it switches to dinner rules automatically after the cutoff.",
+          "It does. Lunch pricing, the cutoff time, and what each special includes come straight from your menu, and dinner rules kick in automatically after the cutoff.",
       },
       {
         question: "Can it handle large family-style or catering orders?",
         answer:
-          "It takes multi-item family-style orders over the phone. For larger catering requests, it captures the details and routes them to whoever manages catering rather than guessing at pricing.",
+          "It handles multi-item family-style orders over the phone. Bigger catering requests get written down in full and passed to whoever manages catering, since pricing those is a human call.",
       },
       {
         question: "What happens if a customer asks for something off-menu?",
         answer:
-          "If a request falls outside your menu or current specials, it says so and offers the closest real option or transfers to staff — it won't invent a dish.",
+          "If a request falls outside your menu or current specials, it says so, then offers the closest real option or transfers to staff. It won't invent a dish.",
       },
     ],
     metaDescription:
@@ -168,63 +168,63 @@ export const solutions: SolutionPage[] = [
   {
     slug: "mexican-restaurants",
     restaurantType: "Mexican Restaurants",
-    heroHeadline: "Every taco, burrito, and catering call answered — no shortcuts.",
+    heroHeadline: "No shortcuts on build-your-own orders, even when the line is out the door.",
     heroSubhead:
-      "X1 Voice walks callers through build-your-own orders correctly and routes catering and group inquiries to the right person, even during your busiest lunch rush.",
+      "X1 Voice walks callers through each branch of a build-your-own order and sends catering and group inquiries to the person who actually handles them, straight through the lunch rush.",
     painPoints: [
       {
         title: "Build-your-own orders have too many branches to rush",
         description:
-          "Protein, tortilla type, salsa heat, and extras each require a real decision, and a busy counter staffer answering the phone mid-line skips steps just to keep moving.",
+          "Protein, tortilla type, salsa heat, extras: each one is a real decision. A counter staffer answering the phone mid-line skips steps just to keep moving.",
       },
       {
         title: "Catering and taco-bar calls get treated like a to-go order",
         description:
-          "Per-person pricing, headcount, and event pickup time need real answers, but if whoever picks up doesn't handle catering, the caller gets a guess instead of a quote.",
+          "Per-person pricing, headcount, and event pickup time need real answers. If whoever picks up doesn't handle catering, the caller gets a guess instead of a quote.",
       },
       {
         title: "Weekday lunch brings a burst of simple calls all at once",
         description:
-          "Nearby offices calling in orders right at noon create a wave of short, fast calls that compete directly with the walk-in line for the same one or two people.",
+          "Nearby offices calling in orders right at noon create a wave of short, fast calls, and those calls compete with the walk-in line for the same two sets of hands.",
       },
     ],
     features: [
       {
-        title: "Branching build logic, every time",
+        title: "All the build questions, asked in order",
         description:
-          "Walks every taco, burrito, or bowl order through protein, tortilla, and heat-level choices consistently — the same way, call after call.",
+          "Each taco, burrito, or bowl gets walked through protein, tortilla, and heat level, one choice at a time. The questions don't get skipped when it's busy.",
       },
       {
-        title: "Catering inquiries routed, not guessed",
+        title: "Catering calls go to the right person",
         description:
-          "Recognizes group and catering requests, gives the per-person pricing you've set, and captures headcount, date, and pickup time for staff follow-up.",
+          "It recognizes a group or catering request, quotes the per-person pricing you've set, and writes down headcount, date, and pickup time so your team can follow up.",
       },
       {
         title: "Handles lunch-rush call bursts without a queue",
         description:
-          "Every call during the noon rush gets answered immediately — office orders don't wait behind each other, and they don't wait behind the counter line either.",
+          "When the offices nearby all dial in at noon, the calls get answered in parallel rather than one at a time. The walk-in line doesn't slow them down either.",
       },
     ],
     faqs: [
       {
         question: "Can it handle catering and taco-bar quotes?",
         answer:
-          "It recognizes catering requests, provides per-person pricing you've configured, and captures event details for your team. For large or custom events, it hands off to staff rather than finalizing a quote itself.",
+          "It recognizes catering requests, quotes the per-person pricing you've configured, and captures event details for your team. Large or custom events get handed to staff for the final quote.",
       },
       {
         question: "Can it walk customers through salsa heat and protein choices?",
         answer:
-          "Yes — build-your-own items are handled with the same branching questions your counter staff would ask, so nothing gets defaulted incorrectly.",
+          "Yes. It asks the same branching questions your counter staff would ask, so heat level and protein come from the caller, not from a default.",
       },
       {
         question: "What about group orders from nearby offices?",
         answer:
-          "It can take multi-item group orders in one call, itemized the same way a single order would be, and sent to your POS as one ticket.",
+          "It takes multi-item group orders in one call, itemized the same way a single order would be, and sends everything to your POS as one ticket.",
       },
       {
         question: "Does it work with our POS?",
         answer:
-          "Yes — it syncs with Square and Clover today, with OrderCounter and OrderOut also available, so build-your-own pricing stays accurate as you update it.",
+          "It syncs with Square and Clover today. OrderCounter and OrderOut are also available. When you update build-your-own pricing, the phone keeps up.",
       },
     ],
     metaDescription:
@@ -235,56 +235,56 @@ export const solutions: SolutionPage[] = [
     restaurantType: "Indian Restaurants",
     heroHeadline: "Get spice level, dietary swaps, and thali orders right on the first call.",
     heroSubhead:
-      "X1 Voice tracks vegan, Jain, and gluten-free substitutions across multi-item orders, and answers buffet-hours questions without pulling staff off the floor.",
+      "X1 Voice keeps vegan, Jain, and gluten-free substitutions straight across a multi-item order, and it fields buffet-hours questions so your floor staff don't have to.",
     painPoints: [
       {
         title: "Spice level and dietary swaps vary dish by dish",
         description:
-          "Vegan, Jain (no onion or garlic), and gluten-free requests apply differently to each dish, and a rushed phone order can easily attach the wrong substitution to the wrong item.",
+          "Vegan, Jain (no onion or garlic), and gluten-free requests apply differently to each dish. One rushed phone order can pin the wrong substitution on the wrong item.",
       },
       {
         title: "Thali and combination orders need confirming, item by item",
         description:
-          "Multi-course combination plates require checking what's included versus optional — bread, rice, sides — and that back-and-forth adds real hold time during dinner rush.",
+          "A multi-course combination plate means checking what's included and what's optional: bread, rice, sides. That back-and-forth turns into real hold time during the dinner rush.",
       },
       {
         title: "Buffet-hours calls pull staff off the floor",
         description:
-          "\"Are you doing lunch buffet today\" and per-person pricing questions come in constantly and interrupt whoever's working the floor just to answer basic scheduling information.",
+          "\"Are you doing lunch buffet today?\" Callers ask constantly, along with per-person pricing, and someone working the floor has to stop and answer every single time.",
       },
     ],
     features: [
       {
         title: "Per-dish spice and dietary logic",
         description:
-          "Tracks vegan, Jain, and gluten-free substitutions correctly across a multi-item order, instead of applying one blanket note to the whole ticket.",
+          "Vegan, Jain, and gluten-free substitutions stay attached to the dishes they belong to, even on a big multi-item order. The whole ticket never gets one blanket note.",
       },
       {
         title: "Thali and combo composition, built in",
         description:
-          "Knows what's included versus add-on for each combination plate, so orders arrive complete without a follow-up call to confirm.",
+          "It knows what comes with each combination plate and what counts as an add-on, so orders arrive complete the first time.",
       },
       {
         title: "Buffet hours and pricing, answered instantly",
         description:
-          "Handles routine buffet-timing and per-person pricing questions around the clock, without pulling anyone off the floor during service.",
+          "Buffet timing and per-person pricing get answered around the clock. Your floor staff never even hear the question.",
       },
     ],
     faqs: [
       {
         question: "Can it handle Jain and other strict dietary requests?",
         answer:
-          "Yes — dietary rules like Jain (no onion or garlic), vegan, or gluten-free are configured per dish, so substitutions attach to the right item every time.",
+          "Yes. Dietary rules like Jain (no onion or garlic), vegan, and gluten-free are configured per dish, so each substitution lands on the right item every time.",
       },
       {
         question: "Does it know our buffet hours and pricing?",
         answer:
-          "Yes — it answers lunch-buffet timing and per-person pricing questions directly from your current schedule, without needing a staff member.",
+          "Yes. It answers buffet-timing and per-person pricing questions from your current schedule, and nobody on your staff has to stop what they're doing.",
       },
       {
         question: "Can it handle catering for events?",
         answer:
-          "It captures catering inquiries — event date, headcount, menu preferences — and routes them to your team for a final quote, since most catering is custom by event.",
+          "It takes down the event date, headcount, and menu preferences, then routes the inquiry to your team for a final quote. Most catering is custom by event, so a person closes it out.",
       },
       {
         question: "What about spice-level requests across a large order?",
@@ -298,41 +298,41 @@ export const solutions: SolutionPage[] = [
   {
     slug: "fast-casual",
     restaurantType: "Fast Casual",
-    heroHeadline: "Keep the counter line moving and the phone answered — at the same time.",
+    heroHeadline: "The counter line keeps moving. The phone gets answered anyway.",
     heroSubhead:
-      "X1 Voice takes rush-hour phone orders and answers \"is it ready\" calls without pulling anyone off the assembly line.",
+      "X1 Voice takes rush-hour phone orders and fields \"is it ready\" calls on its own, so your assembly line stays fully staffed.",
     painPoints: [
       {
         title: "Phone calls compete with the counter line for the same staff",
         description:
-          "During rush, someone has to step away from the assembly line to answer the phone — or it just doesn't get answered, and that's a lost order every time.",
+          "During a rush, answering the phone means stepping away from the assembly line. Usually nobody steps away, and that unanswered call was an order.",
       },
       {
         title: "\"Is my order ready\" calls spike right at peak",
         description:
-          "Mobile and online pickup orders generate a wave of status-check calls exactly when staff are busiest actually making food.",
+          "Mobile and online pickups set off a wave of status-check calls at the exact moment your staff are busiest making food.",
       },
       {
         title: "Office and group orders need accuracy without slowing the line",
         description:
-          "Multi-item, multi-modifier group orders called in ahead of lunch take real time to get right — time that's hard to find during a rush.",
+          "Multi-item, multi-modifier group orders called in ahead of lunch take real care to get right, and care is the first thing a rush strips away.",
       },
     ],
     features: [
       {
         title: "Order-status lookups, no staff needed",
         description:
-          "Answers \"is my order ready\" by checking ticket status directly, so a status check never pulls someone off the line.",
+          "Answers \"is my order ready\" by checking ticket status directly. A status check never pulls someone off the line.",
       },
       {
         title: "Full rush-hour coverage",
         description:
-          "Every call during peak gets answered immediately and completely off the counter staff's plate — build-line speed doesn't drop when the phone rings.",
+          "During peak, the phone stops being the crew's problem. It rings, it gets picked up, and build-line speed doesn't dip.",
       },
       {
         title: "Group orders captured accurately",
         description:
-          "Takes multi-item office orders with every modifier, sent to your POS as one ticket ready for a pickup window.",
+          "Multi-item office orders come through with every modifier intact and land in your POS as one ticket, ready for a pickup window.",
       },
     ],
     statHighlight: {
@@ -344,12 +344,12 @@ export const solutions: SolutionPage[] = [
       {
         question: "Does it check order status for mobile or app orders?",
         answer:
-          "Yes — it can look up ticket status and answer \"is my order ready\" calls directly, without interrupting staff.",
+          "Yes. It looks up ticket status and answers \"is my order ready\" calls directly, with no interruption to your staff.",
       },
       {
         question: "Can it handle rush-hour call volume?",
         answer:
-          "Every call is answered simultaneously — there's no queue, so a busy lunch rush doesn't mean unanswered calls.",
+          "Calls don't queue. A packed lunch rush just means more lines open at once, and all of them get answered.",
       },
       {
         question: "What about large group or office orders?",
@@ -359,7 +359,7 @@ export const solutions: SolutionPage[] = [
       {
         question: "How does it integrate with our POS?",
         answer:
-          "It syncs with Square and Clover today, with OrderCounter and OrderOut also available. See /integrations for setup details.",
+          "Square and Clover work today, and OrderCounter and OrderOut are also available. The full setup rundown is at /integrations.",
       },
     ],
     metaDescription:
@@ -368,68 +368,68 @@ export const solutions: SolutionPage[] = [
   {
     slug: "fine-dining",
     restaurantType: "Fine Dining",
-    heroHeadline: "Answer every reservation call the way your dining room deserves.",
+    heroHeadline: "Reservation calls handled with the same care as your dining room.",
     heroSubhead:
-      "X1 Voice handles large-party bookings, recognizes returning guests, and captures special-occasion and dietary notes — in a tone that matches your restaurant, not a drive-thru.",
+      "X1 Voice books large parties, recognizes returning guests, and records special-occasion and dietary notes, in a tone that fits your restaurant rather than a drive-thru.",
     painPoints: [
       {
         title: "Large-party and private-dining calls need real back-and-forth",
         description:
-          "Headcount, date, room preference, and menu questions require actual conversation, and a host stand mid-service handles that inconsistently or asks the caller to try again later.",
+          "Headcount, date, room preference, menu questions: a private-dining call is a real conversation. A host stand mid-service handles it inconsistently or asks the caller to try again later.",
       },
       {
         title: "Regulars and VIPs expect to be recognized, not re-introduced",
         description:
-          "A guest who's booked a dozen times expects the host to remember their usual table or dietary note, but that context lives in someone's memory, not anywhere a new host can see it.",
+          "A guest who's booked a dozen times expects the host to remember their usual table or dietary note. That context lives in one person's memory, and a new host starts from zero.",
       },
       {
         title: "Special-occasion and dietary notes get lost before the table",
         description:
-          "Anniversaries, severe allergies, and kosher or halal requests are taken verbally at the host stand and don't reliably make it to the kitchen or the table setup.",
+          "Anniversaries, severe allergies, and kosher or halal requests get taken verbally at the host stand, and they don't reliably reach the kitchen or the table setup.",
       },
     ],
     features: [
       {
         title: "Reservation handling with real capacity awareness",
         description:
-          "Headcount, seating preference, and private-room requests are captured accurately against your actual availability — not guessed at during a busy dinner service.",
+          "Headcount, seating preference, and private-room requests get recorded against your real availability, even in the middle of a packed dinner service.",
       },
       {
         title: "Recognition for regulars and VIPs",
         description:
-          "Returning guests are greeted appropriately, and prior visit notes — preferred table, dietary restrictions, past occasions — surface for your host stand.",
+          "Returning guests get greeted like returning guests. Notes from prior visits, from preferred table to dietary restrictions to past occasions, surface for your host stand.",
       },
       {
         title: "Occasion and dietary notes that actually travel",
         description:
-          "Anniversary, allergy, and dietary details are captured in structured form and attached to the reservation, not lost in a note at the host stand.",
+          "Anniversary, allergy, and dietary details go into the reservation itself, in structured form, and they ride with it all the way to service.",
       },
     ],
     statHighlight: {
       value: "One missed call",
       label:
-        "can mean a lost eight-top reservation on a Saturday night — not just a missed order",
+        "can mean an eight-top on a Saturday night quietly booking somewhere else",
     },
     faqs: [
       {
         question: "Will it sound appropriate for a fine-dining brand?",
         answer:
-          "Voice and script tone are configured to match your restaurant — formal, warm, understated — not the default chirpy tone people associate with fast-food ordering lines.",
+          "The voice and script tone get tuned to your restaurant: formal, warm, understated, whatever matches the room. Nobody will mistake it for a fast-food ordering line.",
       },
       {
         question: "Can it handle large parties and private events?",
         answer:
-          "It captures headcount, date, room preference, and initial menu questions for private and large-party bookings, then hands off the details your team needs for final confirmation.",
+          "It captures headcount, date, room preference, and initial menu questions for private and large-party bookings, then hands your team the details for final confirmation.",
       },
       {
         question: "Does it recognize returning guests?",
         answer:
-          "Using caller ID and your reservation history, it can recognize regulars and surface prior notes — you control exactly what it's allowed to reference and say.",
+          "It uses caller ID and your reservation history to recognize regulars and surface prior notes. What it's allowed to reference and say out loud is entirely up to you.",
       },
       {
         question: "What about a waitlist on a walk-in-heavy night?",
         answer:
-          "It can take waitlist call-ins and give realistic wait estimates based on your current pace, freeing your host to manage the floor instead of the phone.",
+          "It takes waitlist call-ins and quotes realistic waits based on your current pace. Your host stays on the floor.",
       },
     ],
     metaDescription:
@@ -438,68 +438,68 @@ export const solutions: SolutionPage[] = [
   {
     slug: "food-trucks",
     restaurantType: "Food Trucks",
-    heroHeadline: "Never let a call go unanswered just because you're not parked at the counter.",
+    heroHeadline: "The truck moves every day. Callers get today's spot, not last week's.",
     heroSubhead:
-      "X1 Voice stays synced to your daily location and hours, so every \"where are you today\" call gets the right answer — without pulling anyone off the grill.",
+      "X1 Voice stays synced to your daily location and hours, so \"where are you today\" gets the right answer while both your hands stay on the grill.",
     painPoints: [
       {
         title: "\"Where are you today?\" is the call, over and over",
         description:
-          "Location changes daily, sometimes hour to hour, and answering it live means stopping the grill every time someone calls to ask.",
+          "Your location changes daily, sometimes hour to hour. Answering live means stopping the grill, and the question comes in all day long.",
       },
       {
-        title: "A one- or two-person crew has no capacity to answer the phone",
+        title: "A one- or two-person crew can't spare anyone for the phone",
         description:
-          "Whoever's running the window is also cooking — every ring during a lunch rush is either ignored or means stepping away from a hot line.",
+          "Whoever's running the window is also cooking. During a lunch rush, a ringing phone either gets ignored or somebody steps off a hot line to grab it.",
       },
       {
         title: "Weather and last-minute changes don't reach callers fast enough",
         description:
-          "A canceled stop or a moved location needs to be reflected immediately, or customers show up to an empty parking spot and don't come back.",
+          "A canceled stop or a moved location needs to reach callers immediately, or customers show up to an empty parking spot and don't come back.",
       },
     ],
     features: [
       {
         title: "Location and schedule-aware answers",
         description:
-          "Synced to your posted schedule, so \"where are you today\" gets the right answer even when you change plans same-day.",
+          "It reads from your posted schedule, so callers hear today's actual spot even when you changed plans this morning.",
       },
       {
         title: "Zero-crew phone coverage",
         description:
-          "Every call gets answered without pulling anyone off the truck — the person on the grill stays on the grill.",
+          "The phone gets covered without a single extra body on the truck. The person on the grill stays on the grill.",
       },
       {
         title: "Catering and private-event leads captured",
         description:
-          "Takes down event date, headcount, and location for booking inquiries so they don't get lost between lunch and dinner service.",
+          "Event date, headcount, and location get written down for booking inquiries so they don't get lost somewhere between lunch and dinner service.",
       },
     ],
     statHighlight: {
       value: "Daily",
       label:
-        "How often a food truck's location and hours can change — every call needs today's answer, not yesterday's",
+        "How often a food truck's location and hours can change. Callers always need today's answer.",
     },
     faqs: [
       {
         question: "How do we update our location day to day?",
         answer:
-          "You update your schedule the same way you do now, and X1 Voice reflects it on the next call — no separate system to maintain.",
+          "Update your schedule the same way you do now. X1 Voice reflects the change on the very next call, and there's no second system to maintain.",
       },
       {
         question: "Can it take pre-orders for a specific stop?",
         answer:
-          "Yes — it can take orders tied to your next scheduled stop and pickup window, so customers know exactly when and where to show up.",
+          "Yes. It can take orders tied to your next scheduled stop and pickup window, so customers know exactly when and where to show up.",
       },
       {
         question: "What happens on a rain-out or canceled stop?",
         answer:
-          "It answers with your current status, so callers hear \"closed today\" or the updated location instead of showing up to nothing.",
+          "It answers with your current status, so callers hear \"closed today\" or the updated location before they head your way.",
       },
       {
         question: "Does it handle catering or private-event bookings?",
         answer:
-          "It captures event date, headcount, and location details and routes them to you — most food-truck catering needs a human quote, so it hands off rather than booking blind.",
+          "It writes down the event date, headcount, and location, then routes everything to you. Most food-truck catering needs a human quote, so it hands off the lead instead of booking blind.",
       },
     ],
     metaDescription:
@@ -508,208 +508,208 @@ export const solutions: SolutionPage[] = [
   {
     slug: "ghost-kitchens",
     restaurantType: "Ghost Kitchens",
-    heroHeadline: "Answer every call with zero front-of-house staff.",
+    heroHeadline: "Everyone you employ is in the kitchen, and the phone still gets picked up.",
     heroSubhead:
-      "X1 Voice covers phone orders for kitchen-only operations, routing each call to the right virtual brand — even when three brands share one kitchen and one number.",
+      "X1 Voice covers phone orders for kitchen-only operations and sends each call to the right virtual brand, even when three brands share one kitchen and one number.",
     painPoints: [
       {
-        title: "Zero front-of-house staff means zero phone coverage",
+        title: "There's no one whose job is the phone",
         description:
-          "There's no one stationed to answer a ringing phone — the whole team is kitchen crew, heads-down on tickets, with no job description that includes \"answer the phone.\"",
+          "The whole team is kitchen crew, buried in tickets. When the phone rings, there isn't a single person whose station is anywhere near it.",
       },
       {
         title: "Multiple virtual brands share one kitchen and one number",
         description:
-          "A single line might need to answer as three different brands with three different menus, and a generic \"kitchen\" greeting confuses callers who ordered a specific one.",
+          "One line might need to answer as three different brands with three different menus. A generic \"kitchen\" greeting confuses callers who ordered from a specific one.",
       },
       {
         title: "No dining room to fall back on when something goes wrong",
         description:
-          "With no walk-in traffic, every call is either a lost order or a delivery-platform question — there's no floor staff to smooth things over in person.",
+          "With no walk-in traffic, an unanswered call is a lost order or an unresolved delivery-platform issue, and there's no floor staff to smooth things over in person.",
       },
     ],
     features: [
       {
         title: "Fully unstaffed call coverage",
         description:
-          "Answers every call with zero front-of-house headcount required — built for kitchens where nobody is stationed at a counter.",
+          "Built for kitchens where nobody stands at a counter. Front-of-house headcount required: zero.",
       },
       {
         title: "Multi-brand routing and greeting",
         description:
-          "Answers each incoming number as the correct virtual brand — right menu, right name, right voice — even when several brands run out of one kitchen.",
+          "Each incoming number gets answered as the correct virtual brand, with that brand's name, menu, and voice, even when several brands run out of one kitchen.",
       },
       {
         title: "Delivery-platform-aware call handling",
         description:
-          "Recognizes when a call is actually about a DoorDash or Uber Eats order and routes it appropriately, instead of taking a duplicate phone order.",
+          "It can tell when a call is really about a DoorDash or Uber Eats order and routes it accordingly, so nobody ends up with a duplicate phone order.",
       },
     ],
     statHighlight: {
       value: "0 FOH staff",
       label:
-        "Typical front-of-house headcount at a ghost kitchen — yet the phone still rings and still needs answering",
+        "Typical front-of-house headcount at a ghost kitchen, which has never once stopped a phone from ringing",
     },
     faqs: [
       {
         question: "Can it handle more than one brand on the same phone number?",
         answer:
-          "If your brands share a number, it can ask which brand the caller means and route accordingly. Separate numbers per brand work even more cleanly.",
+          "If your brands share a number, it asks which brand the caller wants and routes from there. Separate numbers per brand work even more cleanly.",
       },
       {
         question: "What happens with calls that are actually about a delivery-platform order?",
         answer:
-          "It recognizes platform-related questions — where's my order, wrong item — and routes them to the right place instead of trying to take a new phone order.",
+          "It recognizes platform questions, the \"where's my order\" and wrong-item calls, and sends them to the right place instead of starting a brand-new phone order.",
       },
       {
         question: "Do we need any front-of-house staff at all?",
         answer:
-          "No — that's the point. It's built to cover call answering completely for kitchen-only operations with no one stationed at a counter.",
+          "No, and that's the point. It covers the phones entirely for kitchen-only operations that have never staffed a counter and don't plan to.",
       },
       {
         question: "How does it work with our delivery-platform integrations?",
         answer:
-          "It handles direct phone orders and platform-related questions side by side; menu and pricing sync from your POS so phone orders match what's listed on each platform.",
+          "Direct phone orders and platform questions run side by side. Menu and pricing sync from your POS, so a phone order matches what's listed on each platform.",
       },
     ],
     metaDescription:
-      "AI phone answering built for kitchen-only operations — covers every call with zero front-of-house staff and routes multiple virtual brands correctly.",
+      "AI phone answering built for kitchen-only operations. It covers the phones with zero front-of-house staff and routes multiple virtual brands correctly.",
   },
   {
     slug: "multi-location",
     restaurantType: "Multi-Location",
-    heroHeadline: "One consistent phone experience across every location you run.",
+    heroHeadline: "The phone sounds the same at every store you run.",
     heroSubhead:
-      "X1 Voice answers calls the same way at every store and gives you one dashboard to see call volume, missed calls, and order value across your whole group.",
+      "X1 Voice gives each location the same script and the same menu accuracy, plus one dashboard for call volume, missed calls, and order value across the whole group.",
     painPoints: [
       {
         title: "Call quality depends on who's on shift, store to store",
         description:
-          "There's no way to guarantee every location answers the phone the same way — it depends entirely on whoever happens to pick up that day.",
+          "You can't guarantee how any given location answers the phone. It comes down to whoever happens to pick up that day.",
       },
       {
         title: "No shared view of call performance across locations",
         description:
-          "Owners and regional managers can't see call volume, missed-call rate, or order value across the group — each store is its own black box unless someone calls to ask.",
+          "Owners and regional managers can't see call volume, missed-call rate, or order value across the group. Each store stays a black box until someone calls the manager and asks.",
       },
       {
         title: "Menu and pricing updates roll out unevenly",
         description:
-          "A new item or price change has to be re-taught to every location's staff individually, and it never lands at the same time or with the same accuracy everywhere.",
+          "A new item or price change gets re-taught at each location, one crew at a time. Some stores nail it that week. Some don't.",
       },
     ],
     features: [
       {
         title: "One dashboard across every location",
         description:
-          "Call volume, missed-call rate, and order value are visible across your whole group in one place, not fragmented store by store.",
+          "Call volume, missed-call rate, and order value for the whole group, all in one place. You stop asking each store how the phones went.",
       },
       {
         title: "One consistent script and voice, everywhere",
         description:
-          "Every location answers with the same brand voice and menu accuracy — a caller to store #12 gets the same experience as store #1.",
+          "Whoever calls store #12 hears what they'd hear at store #1: the same brand voice working from the same accurate menu.",
       },
       {
         title: "Push updates to every location at once",
         description:
-          "A menu or pricing change goes out to every location's AI agent simultaneously — no re-training staff site by site.",
+          "A menu or pricing change reaches every location's agent at the same moment. Nobody re-trains staff site by site.",
       },
     ],
     statHighlight: {
       value: "Store by store",
       label:
-        "How most multi-location groups track call performance today — one spreadsheet per site, no shared view",
+        "How most multi-location groups track call performance today: one spreadsheet per site and no shared view",
     },
     faqs: [
       {
         question: "Can each location keep some local customization?",
         answer:
-          "Yes — hours, specials, and location-specific menu items can differ per store while pricing rules, script tone, and brand voice stay consistent.",
+          "Yes. Hours, specials, and location-specific menu items can differ per store, while pricing rules, script tone, and brand voice stay consistent across the group.",
       },
       {
         question: "How granular is the reporting?",
         answer:
-          "You can see performance rolled up across the whole group or drilled down to a single location — call volume, missed calls, and order value at either level.",
+          "Roll it up across the whole group or drill down to a single location. Call volume, missed calls, and order value show up at either level.",
       },
       {
         question: "How do we add a new location?",
         answer:
-          "New locations are set up from your existing menu and configuration template, so onboarding a store doesn't mean starting from scratch.",
+          "New locations get set up from your existing menu and configuration template, so onboarding a store doesn't mean starting over from scratch.",
       },
       {
         question: "Does this work for franchised locations, not just corporate-owned?",
         answer:
-          "Yes — franchise groups can standardize call handling across locations while still giving individual owners visibility into their own store's numbers.",
+          "Yes. Franchise groups can standardize call handling across locations, and each individual owner still sees their own store's numbers.",
       },
     ],
     metaDescription:
-      "AI phone answering for multi-location restaurant groups — one consistent voice per call and one dashboard for performance across every store.",
+      "AI phone answering for multi-location restaurant groups: one consistent voice on the phones and one dashboard for performance across every store.",
   },
   {
     slug: "delis-cafes",
     restaurantType: "Delis & Cafes",
-    heroHeadline: "Get every sandwich build right, even in the middle of the lunch rush.",
+    heroHeadline: "The whole sandwich build, captured right, even at the peak of lunch.",
     heroSubhead:
-      "X1 Voice captures every bread, meat, cheese, and topping choice correctly, and handles office catering orders without disrupting the counter line.",
+      "X1 Voice gets each bread, meat, cheese, and topping choice down exactly as ordered, and it takes office catering calls without slowing your counter line.",
     painPoints: [
       {
         title: "Sandwich customization has more branches than most order types",
         description:
-          "Bread, protein, cheese, toppings, condiments, size — every choice is a decision point, and phone orders taken fast during lunch rush are where combinations get mixed up.",
+          "Bread, protein, cheese, toppings, condiments, size. Each one is a fork in the road, and a phone order rushed through at lunch is where combinations get crossed.",
       },
       {
         title: "The lunch window is short and the phone rings when hands are full",
         description:
-          "Call volume spikes right when the person who'd normally answer is also building sandwiches on the line.",
+          "Call volume spikes right when the person who'd normally answer is elbow-deep in sandwich assembly on the line.",
       },
       {
         title: "Office platter orders get rushed like a single sandwich",
         description:
-          "Headcount, delivery time, and lead time need real handling, but a call taken mid-rush often gets the same rushed treatment as a two-item order.",
+          "Headcount, delivery time, and lead time all need real attention. A call picked up mid-rush tends to get the same hurried treatment as a two-item order.",
       },
     ],
     features: [
       {
         title: "Full sandwich-build capture",
         description:
-          "Bread, protein, cheese, every topping and condiment recorded the way your board is actually set up, not summarized into a guess.",
+          "Bread, protein, cheese, each topping and condiment, recorded to match how your board is set up. What the caller asked for is what the ticket says.",
       },
       {
-        title: "Absorbs the entire lunch-rush call spike",
+        title: "Built for the noon call spike",
         description:
-          "Every call during your busiest window gets answered without pulling anyone off sandwich assembly.",
+          "The noon spike hits and nobody on the line looks up from the cutting board. All of it gets handled.",
       },
       {
         title: "Separate handling for catering and platter orders",
         description:
-          "Captures headcount, delivery time, and required lead time distinctly from single-sandwich orders, so a 20-person platter isn't treated like lunch for one.",
+          "Headcount, delivery time, and required lead time get their own intake, separate from single-sandwich orders. A 20-person platter isn't treated like lunch for one.",
       },
     ],
     statHighlight: {
       value: "12-1pm",
       label:
-        "The hour when lunch call-ins tend to spike hardest — right when counter staff are busiest building sandwiches",
+        "The hour when lunch call-ins spike hardest, which is exactly when counter staff are busiest building sandwiches",
     },
     faqs: [
       {
         question: "Can it handle a fully custom sandwich order?",
         answer:
-          "Yes — every choice on your board, from bread to condiments, is captured individually, matching how your kitchen actually builds it.",
+          "Yes. Each choice on your board, bread through condiments, gets captured on its own, and the ticket reads the way your kitchen builds.",
       },
       {
         question: "Does it know our breakfast-to-lunch menu switch?",
         answer:
-          "Yes — it applies the correct menu and pricing based on time of day, the same cutoff rules your staff would use.",
+          "It does. Menu and pricing follow the time of day, with the same cutoff rules your staff use.",
       },
       {
         question: "Can it take office catering and platter orders?",
         answer:
-          "It captures headcount, delivery window, and lead-time requirements for platter and catering orders, and flags them separately from regular phone orders.",
+          "It captures headcount, delivery window, and lead-time requirements for platter and catering orders, then flags them separately from regular phone orders.",
       },
       {
         question: "Does it record allergy or topping-exclusion notes?",
         answer:
-          "Yes — \"no onions,\" \"nut-free,\" and similar notes are attached to the specific line item, not lost in a general comment.",
+          "Yes. \"No onions,\" \"nut-free,\" and notes like them get pinned to the exact line item they apply to.",
       },
     ],
     metaDescription:
@@ -718,68 +718,68 @@ export const solutions: SolutionPage[] = [
   {
     slug: "bakeries-coffee-shops",
     restaurantType: "Bakeries & Coffee Shops",
-    heroHeadline: "Never lose a custom cake order to a scribbled note.",
+    heroHeadline: "Custom cake orders deserve better than a scribbled note.",
     heroSubhead:
-      "X1 Voice captures flavor, size, design notes, and pickup date on every custom order call, and absorbs your holiday order surge without adding staff.",
+      "X1 Voice captures flavor, size, design notes, and pickup date on each custom-order call, and soaks up the holiday order surge without you adding staff.",
     painPoints: [
       {
         title: "Custom cake details have to survive weeks, not minutes",
         description:
-          "Flavor, size, design notes, and pickup date are usually captured weeks before pickup — one dropped detail on that first call can mean the wrong cake shows up on someone's wedding day.",
+          "Flavor, size, design notes, and pickup date get set weeks before anyone bakes. Drop one detail on that first call and the wrong cake can show up on someone's wedding day.",
       },
       {
         title: "Holiday weeks bring an order surge with zero slack",
         description:
-          "Thanksgiving pie orders and Christmas cookie trays flood in on top of a full counter line, handled by the same small crew with no extra hands.",
+          "Thanksgiving pie orders and Christmas cookie trays flood in on top of a full counter line. The same small crew handles all of it without any extra hands.",
       },
       {
-        title: "\"Do you have X left today\" calls pull staff off the register",
+        title: "Stock-check calls send someone away from the register",
         description:
-          "Constant stock-check calls — croissants, a specific muffin flavor — mean stepping away from the counter just to go look, over and over.",
+          "Callers want to know if there are croissants left, or a specific muffin flavor. Someone steps away from the counter to go look, then does it again for the next caller.",
       },
     ],
     features: [
       {
         title: "Structured custom-order intake",
         description:
-          "Flavor, size, design notes, and a firm pickup date and time are captured the same way every call, so no detail depends on who happened to answer.",
+          "Flavor, size, design notes, and a firm pickup date and time get collected on a fixed checklist. The details stop depending on who happened to grab the phone.",
       },
       {
-        title: "Absorbs holiday order surges",
+        title: "Holiday order season, covered",
         description:
-          "Handles the seasonal spike in special orders without adding phone-answering headcount during your busiest baking weeks.",
+          "The seasonal flood of special-order calls gets fielded while your crew bakes. You don't add phone-answering headcount in your busiest weeks.",
       },
       {
         title: "Real-time, stock-aware answers",
         description:
-          "Answers \"do you have X today\" questions based on what's actually available, without pulling anyone off the register to check.",
+          "\"Do you have X today?\" gets answered from what's actually in the case. Nobody leaves the register to go count croissants.",
       },
     ],
     statHighlight: {
       value: "Weeks ahead",
       label:
-        "How far out custom cake orders are typically placed — and how much detail has to survive from that first call to pickup day",
+        "How far out custom cake orders usually get placed, and how long each detail has to survive between that first call and pickup day",
     },
     faqs: [
       {
         question: "Can it take a full custom cake order, including design details?",
         answer:
-          "It captures flavor, size, tier count, and written design notes, then confirms a firm pickup date and time — complex design requests get flagged for a callback from your decorator if needed.",
+          "It takes flavor, size, tier count, and written design notes, then confirms a firm pickup date and time. A complicated design request gets flagged so your decorator can call back.",
       },
       {
         question: "Can it collect a deposit over the phone?",
         answer:
-          "Deposit and payment collection can be configured if you take them for custom orders; where you require a card in person, it explains that instead of guessing.",
+          "Deposit and payment collection can be turned on if you take them for custom orders. Where you require a card in person, it explains your policy to the caller.",
       },
       {
         question: "How does it handle holiday order deadlines?",
         answer:
-          "It applies your seasonal cutoff dates automatically — once a holiday order window closes, it tells callers rather than taking an order you can't fulfill.",
+          "Your seasonal cutoff dates apply automatically. Once a holiday window closes, it tells callers so, rather than taking an order you can't fulfill.",
       },
       {
         question: "Does it know about allergies, like a nut-free facility?",
         answer:
-          "Yes — allergy and facility notes you provide are included in every relevant answer, so customers get accurate information on the first call.",
+          "Yes. The allergy and facility notes you provide get worked into every relevant answer, so customers hear accurate information on the first call.",
       },
     ],
     metaDescription:

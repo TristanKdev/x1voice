@@ -4,10 +4,10 @@ export const SITE_URL =
 export const SITE_NAME = "X1 Voice"
 
 export const SITE_TAGLINE =
-  "The AI phone agent that answers every call, takes every order."
+  "The phone agent that picks up when your staff can't."
 
 export const SITE_DESCRIPTION =
-  "X1 Voice answers your restaurant's phone 24/7, takes orders, handles questions, and syncs straight to your POS — so no call, and no order, ever gets missed."
+  "X1 Voice answers your restaurant's phone, takes the order, and sends it to your POS. It picks up around the clock, including when the line is slammed."
 
 export const ORG = {
   name: SITE_NAME,
@@ -34,7 +34,7 @@ export const MISSED_CALLS_STAT = {
   value: "1 in 4",
   label: "restaurant phone calls goes unanswered during peak hours",
   detail:
-    "Each missed call is a lost order — typically $25–$50 in ticket value that walks to a competitor instead.",
+    "Each missed call is usually a lost order. That's $25–$50 in ticket value going to whoever does pick up.",
   source: {
     label: "X1 Voice analysis of anonymized customer call logs",
     url: undefined as string | undefined,
@@ -56,21 +56,21 @@ export type PlaceholderTestimonial = {
 export const PLACEHOLDER_TESTIMONIALS: PlaceholderTestimonial[] = [
   {
     initials: "QSR",
-    roleLabel: "Customer story — coming soon",
+    roleLabel: "Customer story: coming soon",
     segment: "Multi-location quick-service group",
     quote:
       "This slot is reserved for a real customer testimonial once we have one to share.",
   },
   {
     initials: "PZA",
-    roleLabel: "Customer story — coming soon",
+    roleLabel: "Customer story: coming soon",
     segment: "Independent pizzeria, single location",
     quote:
       "This slot is reserved for a real customer testimonial once we have one to share.",
   },
   {
     initials: "GHK",
-    roleLabel: "Customer story — coming soon",
+    roleLabel: "Customer story: coming soon",
     segment: "Ghost kitchen operator",
     quote:
       "This slot is reserved for a real customer testimonial once we have one to share.",
@@ -83,12 +83,12 @@ export const HOME_FAQS: { question: string; answer: string }[] = [
   {
     question: "Does X1 Voice replace my phone number?",
     answer:
-      "No — X1 Voice answers calls to your existing restaurant phone number. Setup means forwarding or routing that number to X1 Voice, not getting a new one.",
+      "No. It answers calls to your existing number. Setup means forwarding that number to X1 Voice, not getting a new one.",
   },
   {
     question: "What happens if the AI can't handle a call?",
     answer:
-      "Calls it can't confidently resolve — a complex complaint, a request outside the menu — get transferred to your staff or routed to voicemail with a transcript, based on rules you set.",
+      "Calls it can't confidently resolve, like a complaint or a request outside the menu, get transferred to your staff or sent to voicemail with a transcript. You set the rules for that.",
   },
   {
     question: "Which POS systems does it work with?",

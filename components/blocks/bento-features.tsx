@@ -1,88 +1,64 @@
-import {
-  PhoneCallIcon,
-  UtensilsCrossedIcon,
-  CreditCardIcon,
-  PlugIcon,
-  MoonStarIcon,
-  BarChart3Icon,
-  type LucideIcon,
-} from "lucide-react"
-
-import { Card } from "@/components/ui/card"
-
 type Feature = {
-  icon: LucideIcon
   title: string
   description: string
-  className?: string
 }
 
 const FEATURES: Feature[] = [
   {
-    icon: PhoneCallIcon,
     title: "Answers every call",
     description:
-      "Unlimited simultaneous calls, 24/7 — no more busy signals during your Friday-night rush.",
-    className: "sm:col-span-2",
+      "Ten calls at once on a Friday night is not a problem. There is no busy signal and no hold music, because there is no queue.",
   },
   {
-    icon: UtensilsCrossedIcon,
     title: "Takes the full order",
     description:
-      "Handles modifiers, substitutions, and upsells the way your best order-taker would.",
+      "Modifiers, substitutions, half-and-half toppings. It asks the follow-up questions a good order-taker would ask.",
   },
   {
-    icon: CreditCardIcon,
-    title: "Collects payment securely",
+    title: "Collects payment on the phone",
     description:
-      "Phone-order payment collection without a human ever handling a card number.",
+      "Callers can pay during the call. No staff member reads a card number out loud or writes one down.",
   },
   {
-    icon: PlugIcon,
-    title: "Syncs to your POS",
+    title: "Sends orders to your POS",
     description:
-      "Orders land directly in your existing POS — no re-keying, no missed tickets.",
+      "The ticket shows up in Square, Clover, OrderCounter, or OrderOut like any other order. Nobody re-types anything.",
   },
   {
-    icon: MoonStarIcon,
-    title: "Covers after-hours",
+    title: "Works after close",
     description:
-      "Late-night and early-morning calls get answered exactly like peak hours.",
+      "A caller at 11pm gets the same answer quality as a caller at noon. Tomorrow's pickup orders get taken tonight.",
   },
   {
-    icon: BarChart3Icon,
-    title: "Reports on every call",
+    title: "Shows you the numbers",
     description:
-      "See answer rate, order volume, and recovered revenue in one dashboard.",
-    className: "sm:col-span-2",
+      "Answer rate, order count, and recovered revenue in one dashboard, so you can see what the phone is actually worth.",
   },
 ]
 
 export function BentoFeatures() {
   return (
-    <section className="mx-auto max-w-5xl px-6 py-20">
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          Everything a great phone shift does. Every shift.
+    <section className="mx-auto max-w-6xl px-6 py-20">
+      <div className="max-w-2xl">
+        <h2 className="font-display text-3xl font-medium sm:text-4xl">
+          What it does all day
         </h2>
         <p className="mt-4 text-muted-foreground">
-          One AI phone agent, wired straight into how your restaurant already
-          runs.
+          One phone agent, wired into how your restaurant already runs.
         </p>
       </div>
 
-      <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {FEATURES.map((f) => (
-          <Card
-            key={f.title}
-            className={`group relative overflow-hidden p-6 transition-colors hover:border-brand/40 ${f.className ?? ""}`}
-          >
-            <f.icon className="size-5 text-brand" />
-            <h3 className="mt-4 font-medium">{f.title}</h3>
+      <div className="mt-12 grid grid-cols-1 gap-x-12 sm:grid-cols-2 lg:grid-cols-3">
+        {FEATURES.map((f, i) => (
+          <div key={f.title} className="border-t py-6">
+            <p className="font-mono text-xs text-brand">
+              {String(i + 1).padStart(2, "0")}
+            </p>
+            <h3 className="mt-2 font-medium">{f.title}</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">
               {f.description}
             </p>
-          </Card>
+          </div>
         ))}
       </div>
     </section>

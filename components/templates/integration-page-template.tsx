@@ -46,7 +46,7 @@ export function IntegrationPageTemplate({
 
       <section className="border-t bg-muted/20">
         <div className="mx-auto max-w-2xl px-6 py-16">
-          <h2 className="text-center text-2xl font-semibold tracking-tight">
+          <h2 className="text-center text-2xl font-display font-medium">
             Setup
           </h2>
           <ol className="mt-8 space-y-4">
@@ -64,7 +64,7 @@ export function IntegrationPageTemplate({
 
       <section className="border-t">
         <div className="mx-auto max-w-2xl px-6 py-20">
-          <h2 className="text-center text-3xl font-semibold tracking-tight">
+          <h2 className="text-center text-3xl font-display font-medium">
             Frequently asked questions
           </h2>
           <div className="mt-10">

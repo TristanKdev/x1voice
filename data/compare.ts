@@ -46,7 +46,7 @@ export const comparePages: ComparePage[] = [
     competitorName: "Kea AI",
     competitorUrl: "https://kea.ai/",
     summary:
-      "Kea AI is a flat-rate voice AI product built for single-location restaurants, priced lower than X1 Voice's comparable tier but typically sold on an annual contract. X1 Voice publishes month-to-month pricing and adds multi-location bundling that Kea's per-location flat rate doesn't offer.",
+      "Kea AI sells a flat-rate voice AI built for single-location restaurants. Its price runs lower than X1 Voice's comparable tier, but the rate is typically sold on an annual contract and charged per location, with no multi-location bundle. X1 Voice bills month to month at published prices and bundles multiple locations under one plan.",
     pricingComparison: {
       x1voice: {
         planName: "Professional",
@@ -57,7 +57,7 @@ export const comparePages: ComparePage[] = [
         planName: "Flat-rate plan (per location)",
         priceLabel: "~$450/mo",
         billingNote:
-          "Kea advertises this as an all-in flat rate (calls, orders, payment collection) but typically requires an annual commitment — confirm current contract terms before signing.",
+          "Kea advertises this as an all-in flat rate (calls, orders, payment collection) but typically requires an annual commitment. Confirm current contract terms before signing.",
       },
       asOf: "2026-01",
       sourceUrl: "https://kea.ai/",
@@ -75,40 +75,40 @@ export const comparePages: ComparePage[] = [
       },
       { feature: "Multi-language call handling", x1voice: true, competitor: "Not documented publicly" },
       { feature: "Centralized multi-location reporting", x1voice: "Business plan and up", competitor: "Not documented publicly" },
-      { feature: "Published, self-serve pricing", x1voice: true, competitor: true, note: "Rare among AI phone-agent vendors — most require a sales call." },
+      { feature: "Published, self-serve pricing", x1voice: true, competitor: true, note: "Rare among AI phone-agent vendors; most require a sales call." },
     ],
     faqs: [
       {
         question: "Is Kea AI cheaper than X1 Voice?",
         answer:
-          "At face value, yes — Kea's published flat rate (about $450/mo) is lower than X1 Voice's Professional plan ($750/mo), which is the closest match on features like phone payment collection. Kea's rate is typically tied to an annual contract, though, so compare total first-year cost, not just the monthly number, and confirm current terms directly with Kea before signing.",
+          "On the monthly number, yes. Kea's published flat rate (about $450/mo) is lower than X1 Voice's Professional plan ($750/mo), which is the closest match on features like phone payment collection. Kea's rate is typically tied to an annual contract, though, so compare total first-year cost rather than the monthly figure alone, and confirm current terms directly with Kea before signing.",
       },
       {
         question: "Does Kea AI work for multi-location restaurant groups?",
         answer:
-          "Kea prices per location with no publicly documented multi-location bundle or centralized reporting. X1 Voice's Business plan covers up to 5 locations under one plan with a shared analytics dashboard, which is typically simpler to manage for a growing group.",
+          "It's sold per location, and Kea doesn't publicly document a multi-location bundle or centralized reporting. X1 Voice's Business plan covers up to 5 locations under one plan with a shared analytics dashboard, which is typically simpler for a growing group to manage.",
       },
       {
         question: "Do both handle phone payments?",
         answer:
-          "Yes — Kea's flat-rate plan and X1 Voice's Professional plan both support collecting payment during the call. On X1 Voice, payment collection is a Professional-tier feature; the Starter plan ($250/mo) doesn't include it.",
+          "Yes. Kea's flat-rate plan and X1 Voice's Professional plan both support collecting payment during the call. On X1 Voice, payment collection is a Professional-tier feature; the Starter plan ($250/mo) doesn't include it.",
       },
       {
         question: "Is switching from Kea AI to X1 Voice difficult?",
         answer:
-          "If you're on an annual Kea contract, check your cancellation terms first. Menu and POS setup on X1 Voice typically takes a few business days once your account is created — see /integrations for POS-specific setup steps.",
+          "If you're on an annual Kea contract, check your cancellation terms first. Once your account is created, menu and POS setup on X1 Voice typically takes a few business days. See /integrations for POS-specific setup steps.",
       },
     ],
     lastReviewedAt: "2026-01-15",
     metaDescription:
-      "X1 Voice vs Kea AI: sourced pricing, contract terms, and a feature-by-feature comparison for restaurants choosing an AI phone-answering service.",
+      "X1 Voice vs Kea AI: pricing with sources, what the contract terms mean for total cost, and where the two AI phone services differ on features.",
   },
   {
     slug: "hungerrush",
     competitorName: "HungerRush OrderAI",
     competitorUrl: "https://www.hungerrush.com/products/orderai-ai-ordering-system/",
     summary:
-      "HungerRush OrderAI is a voice-ordering add-on built for restaurant groups already running HungerRush's own POS, and it doesn't publish pricing — you have to talk to sales. X1 Voice publishes its pricing and works with several POS systems, including Square, Clover, OrderCounter, and OrderOut, rather than requiring you to run a specific POS.",
+      "OrderAI is HungerRush's voice-ordering add-on, built for restaurant groups already running the company's own POS, and its pricing isn't published; you have to talk to sales. X1 Voice publishes its pricing and works with several POS systems, including Square, Clover, OrderCounter, and OrderOut, rather than requiring you to run a specific POS.",
     pricingComparison: {
       x1voice: {
         planName: "Business",
@@ -117,7 +117,7 @@ export const comparePages: ComparePage[] = [
       },
       competitor: {
         planName: "OrderAI Talk (quote-based)",
-        priceLabel: "Custom — contact sales",
+        priceLabel: "Custom (contact sales)",
         billingNote:
           "HungerRush doesn't publish OrderAI pricing; it's marketed primarily to multi-unit groups and generally requires running HungerRush's own POS. Get a quote directly from HungerRush before comparing costs.",
       },
@@ -139,43 +139,43 @@ export const comparePages: ComparePage[] = [
         feature: "Track record at very large multi-unit scale",
         x1voice: "Growing",
         competitor: "10M+ AI orders processed, per HungerRush",
-        note: "HungerRush has publicly cited tens of millions of AI phone orders processed across its customer base — a real scale advantage if you're already a HungerRush customer.",
+        note: "HungerRush has publicly cited tens of millions of AI phone orders processed across its customer base. If you're already a HungerRush customer, that scale is a real advantage.",
       },
-      { feature: "Minimum location count for onboarding", x1voice: "None — works for 1 location", competitor: "Typically marketed to 10+ locations" },
+      { feature: "Minimum location count for onboarding", x1voice: "None; works for 1 location", competitor: "Typically marketed to 10+ locations" },
       { feature: "Multi-language call handling", x1voice: true, competitor: "Not documented publicly" },
     ],
     faqs: [
       {
         question: "Do I need HungerRush's POS to use OrderAI?",
         answer:
-          "Based on HungerRush's own product pages, OrderAI Talk is built around HungerRush's POS ecosystem. If you're not already on HungerRush, switching POS systems is a much bigger project than adding a phone AI on top of what you have — worth confirming directly with HungerRush if you're considering it.",
+          "HungerRush's own product pages present OrderAI Talk as built around its POS ecosystem. If you're not already on HungerRush, switching POS systems is a much bigger project than adding a phone AI on top of what you have. Confirm directly with HungerRush if you're considering it.",
       },
       {
         question: "How much does HungerRush OrderAI cost?",
         answer:
-          "HungerRush doesn't publish pricing for OrderAI — you get a quote after a sales conversation. X1 Voice's plans are public and start at $250/mo, so if transparent, comparable pricing matters to you, that's a real difference worth weighing.",
+          "There's no published price for OrderAI; HungerRush gives you a quote after a sales conversation. X1 Voice's plans are public and start at $250/mo. If you want to compare costs before getting on a sales call, that's a real difference.",
       },
       {
         question: "Is HungerRush OrderAI a good fit for a single-location restaurant?",
         answer:
-          "It's mostly marketed toward multi-unit groups with 10 or more locations already on HungerRush's platform. A single independent restaurant is more likely to find a faster, cheaper setup elsewhere — including with X1 Voice, which has no minimum location requirement.",
+          "It's mostly marketed toward multi-unit groups with 10 or more locations already on HungerRush's platform. A single independent restaurant is more likely to find a faster, cheaper setup elsewhere. X1 Voice is one such option; it has no minimum location requirement.",
       },
       {
         question: "Can I keep my current POS if I switch to X1 Voice?",
         answer:
-          "Yes, as long as it's one of X1 Voice's supported integrations — Square, Clover, OrderCounter, or OrderOut today. See /integrations for setup details on each.",
+          "Yes, as long as it's one of X1 Voice's supported integrations: Square, Clover, OrderCounter, or OrderOut today. See /integrations for setup details on each.",
       },
     ],
     lastReviewedAt: "2026-01-15",
     metaDescription:
-      "X1 Voice vs HungerRush OrderAI: how a POS-agnostic AI phone agent with published pricing compares to HungerRush's POS-locked, quote-only option.",
+      "X1 Voice vs HungerRush OrderAI: one publishes pricing and works across POS systems, the other is quote-based and built for HungerRush's own POS.",
   },
   {
     slug: "slang-ai",
     competitorName: "Slang AI",
     competitorUrl: "https://www.slang.ai/",
     summary:
-      "Slang AI is a voice AI focused on reservations, hospitality-style call handling, and guest messaging — but based on its own published materials, it doesn't take phone orders directly; instead it texts the caller a link to your online ordering page. X1 Voice is built to complete the order, including payment, on the call itself.",
+      "Slang AI centers on reservations, hospitality-style call handling, and guest messaging. What it doesn't do, per its own published materials, is take a phone order directly: callers who want to order get a text with a link to your online ordering page. X1 Voice is built to complete the order, including payment, on the call itself.",
     pricingComparison: {
       x1voice: {
         planName: "Professional",
@@ -204,7 +204,7 @@ export const comparePages: ComparePage[] = [
         feature: "Reservation platform integrations (OpenTable, SevenRooms, Yelp)",
         x1voice: "Not a core focus",
         competitor: true,
-        note: "Slang's plans are built around reservation and hospitality workflows, and this is a genuine strength if reservations are your main phone volume.",
+        note: "Slang's plans are built around reservation and hospitality workflows. If reservations are your main phone volume, that focus is a genuine strength.",
       },
       { feature: "Order-taking synced to POS", x1voice: true, competitor: false },
       { feature: "Multi-language call handling", x1voice: true, competitor: "Bilingual Spanish support (Premium add-on)" },
@@ -215,17 +215,17 @@ export const comparePages: ComparePage[] = [
       {
         question: "Does Slang AI take food orders over the phone?",
         answer:
-          "Based on Slang's own published materials, no — when a caller wants to place an order, Slang sends them a text with a link to your online ordering page rather than completing the order on the call. X1 Voice takes and confirms the order, including payment, during the call itself.",
+          "Not directly, going by Slang's own published materials. When a caller wants to place an order, Slang sends them a text with a link to your online ordering page rather than completing the order on the call. X1 Voice takes and confirms the order, including payment, during the call itself.",
       },
       {
         question: "Is Slang AI a better fit for reservation-heavy restaurants?",
         answer:
-          "It can be — Slang's plans are built around reservations and integrate with platforms like OpenTable, SevenRooms, and Yelp. If reservations are most of your phone volume and phone ordering isn't a priority, that's worth weighing against X1 Voice's order-first focus.",
+          "It can be. Slang's plans are built around reservations and integrate with platforms like OpenTable, SevenRooms, and Yelp. If reservations are most of your phone volume and phone ordering isn't a priority, weigh that against X1 Voice's order-first focus.",
       },
       {
         question: "How does pricing compare?",
         answer:
-          "Slang's published Core plan starts around $399/mo per location, less than X1 Voice's Professional plan at $750/mo — but Slang's plans don't take orders on the call, so the two aren't matched on functionality at those price points. Confirm current Slang pricing directly before comparing.",
+          "Slang's published Core plan starts around $399/mo per location, less than X1 Voice's Professional plan at $750/mo. But Slang's plans don't take orders on the call, so the two aren't doing the same job at those price points. Confirm current Slang pricing directly before comparing.",
       },
       {
         question: "Can X1 Voice also handle reservations?",
@@ -235,14 +235,14 @@ export const comparePages: ComparePage[] = [
     ],
     lastReviewedAt: "2026-01-15",
     metaDescription:
-      "X1 Voice vs Slang AI: a sourced look at pricing and the key functional gap — Slang texts an ordering link instead of taking orders on the call.",
+      "X1 Voice vs Slang AI: sourced pricing and one big functional difference. Slang texts callers an ordering link; X1 Voice takes the order on the call.",
   },
   {
     slug: "loman-ai",
     competitorName: "Loman AI",
     competitorUrl: "https://loman.ai/",
     summary:
-      "Loman AI is a restaurant phone-answering product with a lower estimated starting price than X1 Voice, though Loman's own pricing page currently asks you to contact sales rather than listing current numbers. Both offer full order-taking with POS integration on their higher tiers.",
+      "Loman AI answers restaurant phones at what appears to be a lower starting price than X1 Voice, though Loman's own pricing page currently asks you to contact sales rather than listing current numbers, so that price is an estimate. Both products offer full order-taking with POS integration on their higher tiers.",
     pricingComparison: {
       x1voice: {
         planName: "Professional",
@@ -277,34 +277,34 @@ export const comparePages: ComparePage[] = [
       {
         question: "Is Loman AI cheaper than X1 Voice?",
         answer:
-          "Possibly, on paper — third-party pricing trackers put Loman's order-capable Premium plan around $299/mo, well under X1 Voice's Professional plan at $750/mo. But Loman's own site no longer lists prices and asks you to contact sales, so treat that estimate as a starting point, not a quote, and confirm current numbers before deciding.",
+          "Possibly, on paper. Third-party pricing trackers put Loman's order-capable Premium plan around $299/mo, well under X1 Voice's Professional plan at $750/mo. But Loman's own site no longer lists prices and asks you to contact sales, so treat that estimate as a starting point rather than a quote, and confirm current numbers before deciding.",
       },
       {
         question: "Does Loman AI's cheaper plan also take orders?",
         answer:
-          "Based on Loman's published feature lists, full order-taking and POS integration is on their Premium tier, not their entry Starter tier. Make sure you're comparing the plan that actually includes ordering, not just call answering.",
+          "Loman's published feature lists put full order-taking and POS integration on their Premium tier, not their entry Starter tier. Make sure you're comparing the plan that actually includes ordering rather than call answering alone.",
       },
       {
         question: "How many calls can each handle at once?",
         answer:
-          "Loman publishes a specific figure — up to 50 simultaneous calls. X1 Voice also answers calls concurrently so a rush doesn't produce busy signals, though we don't publish a fixed numeric cap; ask our team for details relevant to your call volume.",
+          "Loman publishes a specific figure: up to 50 simultaneous calls. X1 Voice also answers calls concurrently, so a rush doesn't produce busy signals, but we don't publish a fixed numeric cap. Ask our team for details relevant to your call volume.",
       },
       {
         question: "Why doesn't Loman list its current prices?",
         answer:
-          "We don't know — pricing pages change. That's exactly why any competitor price you see here (including ours for Loman) is labeled as an estimate with a source and a date, rather than stated as fact.",
+          "We don't know; pricing pages change. That's exactly why any competitor price you see here (including ours for Loman) is labeled as an estimate with a source and a date, rather than stated as fact.",
       },
     ],
     lastReviewedAt: "2026-01-15",
     metaDescription:
-      "X1 Voice vs Loman AI: a sourced, honestly-labeled pricing comparison and a full feature breakdown of order-taking, POS sync, and call capacity.",
+      "X1 Voice vs Loman AI: pricing estimates labeled with sources and dates, plus a feature breakdown of order-taking, POS sync, and call capacity.",
   },
   {
     slug: "answering-service",
     competitorName: "a traditional answering service",
     competitorUrl: "https://smith.ai/pricing/receptionists",
     summary:
-      "A traditional live answering service routes calls to a human agent who takes a message or transfers the call — it's a real, proven option, but it generally isn't built to take restaurant orders, apply your menu pricing, or sync anything to your POS. X1 Voice is purpose-built for order-taking; a live answering service is purpose-built for message-taking and call routing.",
+      "A traditional live answering service puts a human on the line to take a message or transfer the call. It's a real, proven option. It generally isn't built to take restaurant orders, apply your menu pricing, or sync anything to your POS, though. That's the basic split: X1 Voice was built to take orders, and a live answering service was built to take messages and route calls.",
     pricingComparison: {
       x1voice: {
         planName: "Starter",
@@ -333,27 +333,27 @@ export const comparePages: ComparePage[] = [
       {
         question: "Is a live answering service cheaper than X1 Voice?",
         answer:
-          "At low call volumes, published rate cards for general live answering services often start a bit above X1 Voice's $250/mo Starter plan, and costs rise with per-call overage fees as volume grows. The bigger difference usually isn't price — it's that most answering services take a message rather than pricing and confirming an order against your menu.",
+          "At low call volumes, published rate cards for general live answering services often start a bit above X1 Voice's $250/mo Starter plan, and per-call overage fees push costs up as volume grows. The bigger difference usually isn't price at all. Most answering services take a message; they don't price and confirm an order against your menu.",
       },
       {
         question: "Can a traditional answering service take food orders?",
         answer:
-          "Some can, but it's not the default for general-purpose answering services — many are built for message-taking and call transfer rather than menu pricing and POS sync. If order-taking is what you need, confirm that capability specifically before signing up with any answering service.",
+          "Some can, but it's not the default. Many general-purpose answering services are built for message-taking and call transfer rather than menu pricing and POS sync. If order-taking is what you need, confirm that capability specifically before signing up with any answering service.",
       },
       {
         question: "Do answering services integrate with restaurant POS systems?",
         answer:
-          "Generally no — that's not a standard feature for traditional live answering services, which are built for a wide range of businesses, not restaurants specifically. X1 Voice syncs directly with Square, Clover, OrderCounter, and OrderOut.",
+          "Generally no. POS integration isn't a standard feature for traditional live answering services, which are built for a wide range of businesses, not restaurants specifically. X1 Voice syncs directly with Square, Clover, OrderCounter, and OrderOut.",
       },
       {
         question: "What's the real advantage of a human answering service?",
         answer:
-          "Judgment on unusual, sensitive, or ambiguous calls — a live agent can improvise in ways a voice AI is still improving on. For routine order-taking and reservation-style calls, that flexibility usually isn't needed, but it's a fair reason some businesses choose a human-staffed option.",
+          "Judgment. A live agent can improvise on unusual, sensitive, or ambiguous calls in ways a voice AI is still improving on. For routine order-taking and reservation-style calls, that flexibility usually isn't needed, but it's a fair reason some businesses choose a human-staffed option.",
       },
     ],
     lastReviewedAt: "2026-01-15",
     metaDescription:
-      "X1 Voice vs a traditional answering service: honest pricing ranges and the core functional gap — message-taking versus real order-taking with POS sync.",
+      "X1 Voice vs a traditional answering service: real pricing ranges, and the difference between taking a message and taking an order synced to your POS.",
   },
   {
     slug: "hiring-staff",
@@ -361,7 +361,7 @@ export const comparePages: ComparePage[] = [
     competitorUrl:
       "https://www.bls.gov/ooh/food-preparation-and-serving/food-and-beverage-serving-and-related-workers.htm",
     summary:
-      "Hiring a person to answer phones covers only the hours they're on shift and can also run food, host, and handle whatever comes up in person — a real advantage an AI voice agent doesn't have. But on a pure monthly-cost basis for phone coverage specifically, one employee's loaded labor cost for a single shift runs well above X1 Voice's monthly price, and the math below shows exactly how we get that number.",
+      "An employee who answers your phones can also host, run food, and handle whatever comes up in person. No AI voice agent can do that. But a person covers only the hours they're on shift, and on a pure monthly-cost basis for phone coverage specifically, one employee's loaded labor cost for a single shift runs well above X1 Voice's monthly price. The math below shows exactly how we get that number.",
     pricingComparison: {
       x1voice: {
         planName: "Starter",
@@ -379,10 +379,10 @@ export const comparePages: ComparePage[] = [
         "https://www.bls.gov/ooh/food-preparation-and-serving/food-and-beverage-serving-and-related-workers.htm",
     },
     featureMatrix: [
-      { feature: "Covers a full 40-hour week for the price shown", x1voice: "N/A — flat monthly rate regardless of hours", competitor: true },
+      { feature: "Covers a full 40-hour week for the price shown", x1voice: "N/A; flat monthly rate regardless of hours", competitor: true },
       { feature: "Covers hours outside that one shift (nights, early morning)", x1voice: true, competitor: false, note: "Extending human coverage to more hours means adding more shifts and more cost." },
       { feature: "Handles multiple calls at the exact same time", x1voice: true, competitor: false, note: "A single staffer can only be on one call at a time; simultaneous callers get a busy signal or hold." },
-      { feature: "Can perform in-person tasks (hosting, running food, bussing)", x1voice: false, competitor: true, note: "A real, fair advantage of a human hire — an AI voice agent only handles the phone." },
+      { feature: "Can perform in-person tasks (hosting, running food, bussing)", x1voice: false, competitor: true, note: "A real, fair advantage of a human hire: an AI voice agent only handles the phone." },
       { feature: "Order synced to POS automatically", x1voice: true, competitor: "Manual entry" },
       { feature: "Consistent order accuracy under pressure", x1voice: true, competitor: "Varies by individual and shift" },
       { feature: "Cost scales with locations", x1voice: "Bundled up to 5 locations on Business plan", competitor: "Separate hire per location" },
@@ -392,17 +392,17 @@ export const comparePages: ComparePage[] = [
       {
         question: "Is X1 Voice really cheaper than hiring someone to answer the phone?",
         answer:
-          "For phone coverage specifically, usually yes. One employee covering phones for a standard 40-hour week costs an estimated $3,100-$3,800/mo in loaded labor (wages plus payroll taxes and typical turnover overhead), versus $250/mo for X1 Voice's Starter plan — roughly 12-15x, using the numbers above. That comparison covers the same ~40 hours a week, though; it doesn't include the added cost of also covering nights, early mornings, or full 24/7 phone coverage with additional shifts, which would raise the human-staffing cost further.",
+          "For phone coverage specifically, usually yes. One employee covering phones for a standard 40-hour week costs an estimated $3,100-$3,800/mo in loaded labor (wages plus payroll taxes and typical turnover overhead), versus $250/mo for X1 Voice's Starter plan. Using the numbers above, that's roughly 12-15x. That comparison covers the same ~40 hours a week, though; it doesn't include the added cost of also covering nights, early mornings, or full 24/7 phone coverage with additional shifts, which would raise the human-staffing cost further.",
       },
       {
         question: "What does 'loaded cost' mean here?",
         answer:
-          "It's the base hourly wage plus the employer-side costs that come with any hire — payroll taxes, and typically some allowance for turnover and retraining, since restaurant staff turnover is high. We anchor the base wage to BLS's published median for food and beverage serving roles and add a commonly cited 25-40% for those employer costs; it's an estimate, not a quote for your specific market.",
+          "It's the base hourly wage plus the employer-side costs that come with any hire: payroll taxes, and typically some allowance for turnover and retraining, since restaurant staff turnover is high. We anchor the base wage to BLS's published median for food and beverage serving roles and add a commonly cited 25-40% for those employer costs. It's an estimate, not a quote for your specific market.",
       },
       {
         question: "Doesn't a human do more than just answer the phone?",
         answer:
-          "Yes, and that's a genuine advantage of a human hire — they can host, run food, bus tables, and handle whatever comes up on the floor. X1 Voice only handles phone calls. If you're weighing a hire against X1 Voice, the fairest comparison is the value of phone coverage specifically, not the full value of an employee's shift.",
+          "Yes, and it's a genuine advantage of a human hire. A person can host, run food, bus tables, and handle whatever comes up on the floor, while X1 Voice only handles phone calls. If you're weighing a hire against X1 Voice, the fairest comparison is the value of phone coverage specifically, not the full value of an employee's shift.",
       },
       {
         question: "Can X1 Voice replace all my phone staff?",
@@ -412,14 +412,14 @@ export const comparePages: ComparePage[] = [
     ],
     lastReviewedAt: "2026-01-15",
     metaDescription:
-      "X1 Voice vs hiring phone staff: a transparent, sourced cost breakdown — loaded labor cost per shift versus flat monthly AI phone-answering pricing.",
+      "X1 Voice vs hiring phone staff: what one phone-covering shift costs in loaded labor, with sources, next to a flat monthly rate for AI answering.",
   },
   {
     slug: "ivr-systems",
     competitorName: "an IVR/phone-tree system",
     competitorUrl: "https://www.twilio.com/en-us/voice/pricing/us",
     summary:
-      "A traditional IVR (\"press 1 for hours, press 2 for the menu\") is often the cheapest option at very low call volume and works with almost any phone hardware, but it can't take a real order or hold a natural conversation — callers who don't fit its menu tree usually give up or call back. X1 Voice understands natural speech and completes the order instead of routing the caller through a menu.",
+      "At very low call volume, a traditional IVR (\"press 1 for hours, press 2 for the menu\") is often the cheapest option, and it works with almost any phone hardware. But it can't take a real order or hold a natural conversation, and callers who don't fit its menu tree usually give up or call back. X1 Voice understands natural speech and completes the order instead of routing the caller through a menu.",
     pricingComparison: {
       x1voice: {
         planName: "Starter",
@@ -430,7 +430,7 @@ export const comparePages: ComparePage[] = [
         planName: "Usage-based platform (e.g. Twilio Voice) + build/maintenance",
         priceLabel: "~$0.013-$0.02/min + build cost",
         billingNote:
-          "Raw platform usage on a service like Twilio is inexpensive at low volume (roughly $0.013/min inbound plus $1-2/mo per phone number), but that excludes the developer or vendor time to build and maintain the call-tree logic itself — commonly several hundred dollars a month in ongoing platform/vendor costs for a working restaurant IVR, on top of usage fees. Costs vary widely by how the IVR is built and hosted.",
+          "Raw platform usage on a service like Twilio is inexpensive at low volume (roughly $0.013/min inbound plus $1-2/mo per phone number), but that excludes the developer or vendor time to build and maintain the call-tree logic itself. A working restaurant IVR commonly runs several hundred dollars a month in ongoing platform/vendor costs on top of usage fees. Costs vary widely by how the IVR is built and hosted.",
       },
       asOf: "2026-01",
       sourceUrl: "https://www.twilio.com/en-us/voice/pricing/us",
@@ -439,8 +439,8 @@ export const comparePages: ComparePage[] = [
       { feature: "Understands natural speech (no menu-tree required)", x1voice: true, competitor: false },
       { feature: "Takes and prices a full menu order", x1voice: true, competitor: false, note: "A phone tree can route a call or take a simple touch-tone input, but it can't hold a real ordering conversation." },
       { feature: "Order synced to POS", x1voice: true, competitor: "Only with custom integration work" },
-      { feature: "Works with basic/legacy phone hardware", x1voice: "Requires a cloud/VoIP-capable number", competitor: true, note: "A real advantage of IVR platforms — they're simple, mature technology that runs on almost any phone system." },
-      { feature: "Low cost at very low call volume", x1voice: "Flat rate regardless of volume", competitor: "Can be cheaper at very low volume before build/maintenance cost", note: "Below a certain call volume, bare usage fees on an IVR platform can undercut a flat monthly rate — before accounting for what it costs to build and maintain the call flow." },
+      { feature: "Works with basic/legacy phone hardware", x1voice: "Requires a cloud/VoIP-capable number", competitor: true, note: "A real advantage of IVR platforms: simple, mature technology that runs on almost any phone system." },
+      { feature: "Low cost at very low call volume", x1voice: "Flat rate regardless of volume", competitor: "Can be cheaper at very low volume before build/maintenance cost", note: "Below a certain call volume, bare usage fees on an IVR platform can undercut a flat monthly rate, at least before accounting for what it costs to build and maintain the call flow." },
       { feature: "Caller can reach a resolution without pressing through menu options", x1voice: true, competitor: false },
       { feature: "Setup time", x1voice: "Typically a few business days", competitor: "Days to weeks, depending on how custom the call flow is" },
       { feature: "Ongoing maintenance as menu/hours change", x1voice: "Update through your account", competitor: "Often requires a developer or vendor to edit the call flow" },
@@ -449,7 +449,7 @@ export const comparePages: ComparePage[] = [
       {
         question: "Isn't a basic phone tree cheaper than an AI phone agent?",
         answer:
-          "At very low call volume, the raw usage fees on a platform like Twilio (a fraction of a cent per minute) can be cheaper than a flat monthly rate. But that number doesn't include what it costs to actually build and maintain the call-tree logic, which is usually the bigger expense — commonly several hundred dollars a month in developer or vendor time for a working setup.",
+          "The raw usage fees on a platform like Twilio (a fraction of a cent per minute) can indeed be cheaper than a flat monthly rate at very low call volume. But that number doesn't include what it costs to actually build and maintain the call-tree logic, which is usually the bigger expense: commonly several hundred dollars a month in developer or vendor time for a working setup.",
       },
       {
         question: "Can an IVR take a real food order?",

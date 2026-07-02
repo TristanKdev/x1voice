@@ -21,11 +21,11 @@ export const metadata = buildMetadata({
 const FEATURE_DETAILS = [
   {
     title: "Modifiers and substitutions, handled correctly",
-    body: "Callers order the way they talk — 'half cheese half pepperoni,' 'no onions,' 'swap the fries for a side salad.' X1 Voice parses those requests against your actual menu structure, confirms anything ambiguous back to the caller before it's finalized, and reads the full order back at the end so nothing gets submitted wrong.",
+    body: "Callers order the way they talk: 'half cheese half pepperoni,' 'no onions,' 'swap the fries for a side salad.' X1 Voice parses those requests against your actual menu structure, confirms anything ambiguous back to the caller before it's finalized, and reads the full order back at the end so nothing gets submitted wrong.",
   },
   {
     title: "What 'syncs to your POS' means concretely",
-    body: "There's no manual re-entry step. Once a call ends, the order appears in your POS — Square, Clover, OrderCounter, or OrderOut — within seconds, itemized the same way a ticket entered by staff would be. Your kitchen sees it exactly where it expects to.",
+    body: "There's no manual re-entry step. Once a call ends, the order appears in your POS (Square, Clover, OrderCounter, or OrderOut) within seconds, itemized the same way a ticket entered by staff would be. Your kitchen sees it exactly where it expects to.",
   },
   {
     title: "Payment collection without a human touching a card",
@@ -33,7 +33,7 @@ const FEATURE_DETAILS = [
   },
   {
     title: "After-hours is treated like peak hours",
-    body: "Calls that come in after close, before open, or during a rush that would otherwise hit voicemail get the same order-taking flow as a call at 7pm on a Friday — governed by the hours and routing rules you set, not by whether anyone's near the phone.",
+    body: "Calls that come in after close, before open, or during a rush that would otherwise hit voicemail get the same order-taking flow as a call at 7pm on a Friday. The hours and routing rules you set govern what happens, not whether anyone's near the phone.",
   },
 ]
 
@@ -46,7 +46,7 @@ const FEATURES_FAQS = [
   {
     question: "Can it handle complicated orders with substitutions?",
     answer:
-      "Yes — modifiers, substitutions, and combo/upsell prompts are handled against your actual menu structure, with anything ambiguous confirmed back to the caller before the order is finalized.",
+      "Yes. Modifiers, substitutions, and combo/upsell prompts are handled against your actual menu structure, and anything ambiguous gets confirmed back to the caller before the order is finalized.",
   },
   {
     question: "Does it collect payment over the phone?",
@@ -56,7 +56,7 @@ const FEATURES_FAQS = [
   {
     question: "What happens if the AI can't complete a call?",
     answer:
-      "Calls it can't confidently resolve — a complex complaint, a request outside the menu — get transferred to your staff or routed to voicemail with a transcript, based on rules you set.",
+      "Calls it can't confidently resolve, like a complex complaint or a request outside the menu, get transferred to your staff or routed to voicemail with a transcript, based on rules you set.",
   },
 ]
 
@@ -67,7 +67,7 @@ export default function FeaturesPage() {
       <PageHeader
         eyebrow="Features"
         title="What X1 Voice does, in detail"
-        description="Every capability below is live in the product today — not a roadmap item."
+        description="Every capability below is live in the product today, not a roadmap item."
       />
 
       <BentoFeatures />
@@ -75,7 +75,7 @@ export default function FeaturesPage() {
       <section className="border-t bg-muted/20">
         <div className="mx-auto max-w-4xl px-6 py-16">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            <h2 className="text-2xl font-display font-medium sm:text-3xl">
               A closer look at how it actually works
             </h2>
           </div>
@@ -99,7 +99,7 @@ export default function FeaturesPage() {
       <section className="border-t bg-muted/20">
         <div className="mx-auto max-w-2xl px-6 py-20">
           <JsonLd data={buildFaqJsonLd(FEATURES_FAQS)} />
-          <h2 className="text-center text-3xl font-semibold tracking-tight">
+          <h2 className="text-center text-3xl font-display font-medium">
             Feature questions
           </h2>
           <div className="mt-10">

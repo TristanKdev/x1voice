@@ -20,7 +20,7 @@ export default function NotFound() {
   return (
     <div className="mx-auto flex max-w-lg flex-col items-center px-6 py-32 text-center">
       <SearchXIcon className="size-10 text-muted-foreground" />
-      <h1 className="mt-6 text-3xl font-semibold tracking-tight">
+      <h1 className="mt-6 text-3xl font-display font-medium">
         Page not found
       </h1>
       <p className="mt-3 text-muted-foreground">

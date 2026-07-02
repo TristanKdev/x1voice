@@ -78,7 +78,7 @@ export function ComparePageTemplate({ compare }: { compare: ComparePage }) {
 
       <section className="border-t bg-muted/20">
         <div className="mx-auto max-w-4xl px-6 py-16">
-          <h2 className="text-center text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h2 className="text-center text-2xl font-display font-medium sm:text-3xl">
             Feature by feature
           </h2>
           <div className="mt-8">
@@ -104,7 +104,7 @@ export function ComparePageTemplate({ compare }: { compare: ComparePage }) {
 
       <section className="border-t">
         <div className="mx-auto max-w-2xl px-6 py-20">
-          <h2 className="text-center text-3xl font-semibold tracking-tight">
+          <h2 className="text-center text-3xl font-display font-medium">
             Frequently asked questions
           </h2>
           <div className="mt-10">
