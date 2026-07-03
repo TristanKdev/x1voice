@@ -1,7 +1,8 @@
 import Link from "next/link"
-import { CheckIcon, PhoneIcon } from "lucide-react"
+import { CheckIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import { LogoMark } from "@/components/site/logo"
 import { DemoDialog } from "@/components/blocks/demo-dialog"
 
 const TRANSCRIPT: { speaker: "agent" | "caller"; text: string }[] = [
@@ -17,17 +18,11 @@ const TRANSCRIPT: { speaker: "agent" | "caller"; text: string }[] = [
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden border-b">
-      {/* Stripe-style soft aurora wash on white: light, cool, low saturation. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-[32rem] bg-[linear-gradient(115deg,oklch(0.97_0.02_240)_0%,oklch(0.96_0.03_277)_35%,oklch(0.98_0.012_200)_65%,transparent_100%)] opacity-70 dark:opacity-15"
-      />
-
-      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 px-6 py-24 sm:py-32 lg:grid-cols-[1.05fr_0.95fr]">
+    <section className="border-b">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 px-6 py-24 sm:py-32 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
-          <p className="text-sm font-semibold text-brand">
-            AI phone agent for restaurants
+          <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
+            Phone agent for restaurants
           </p>
           <h1 className="font-display mt-5 text-balance text-5xl font-semibold leading-[1.05] sm:text-7xl">
             Your phone is ringing. Nobody can get to it.
@@ -51,16 +46,10 @@ export function Hero() {
             />
           </div>
 
-          <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-            {["No setup fees", "No contract", "Works with your POS"].map(
-              (item) => (
-                <li key={item} className="flex items-center gap-1.5">
-                  <CheckIcon className="size-3.5 text-brand" />
-                  {item}
-                </li>
-              )
-            )}
-          </ul>
+          <p className="mt-10 text-sm text-muted-foreground">
+            No setup fees&ensp;·&ensp;No contract&ensp;·&ensp;Works with your
+            POS
+          </p>
         </div>
 
         <figure
@@ -68,9 +57,7 @@ export function Hero() {
           className="rounded-2xl border bg-card shadow-[0_24px_60px_-12px_rgb(10_37_64/0.18),0_8px_24px_-8px_rgb(10_37_64/0.12)]"
         >
           <figcaption className="flex items-center gap-2.5 border-b px-5 py-3.5 text-sm">
-            <span className="flex size-7 items-center justify-center rounded-full bg-brand text-brand-foreground">
-              <PhoneIcon className="size-3.5" />
-            </span>
+            <LogoMark className="h-3.5 text-brand" />
             <span className="font-semibold">Incoming call</span>
             <span className="ml-auto text-xs text-muted-foreground">
               Fri 6:42 PM

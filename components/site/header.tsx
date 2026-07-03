@@ -1,9 +1,10 @@
 import Link from "next/link"
-import { MenuIcon, PhoneIcon } from "lucide-react"
+import { MenuIcon } from "lucide-react"
 
 import { SITE_NAME } from "@/data/site"
 import { MAIN_NAV } from "@/data/nav"
 import { Button } from "@/components/ui/button"
+import { Logo } from "@/components/site/logo"
 import { ModeToggle } from "@/components/site/mode-toggle"
 import { DemoDialog } from "@/components/blocks/demo-dialog"
 import {
@@ -18,11 +19,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Link href="/" className="flex items-center gap-2 font-semibold">
-          <span className="flex size-7 items-center justify-center rounded-md bg-brand text-brand-foreground">
-            <PhoneIcon className="size-4" />
-          </span>
-          {SITE_NAME}
+        <Link href="/" aria-label={SITE_NAME}>
+          <Logo />
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm md:flex">

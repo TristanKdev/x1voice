@@ -1,6 +1,6 @@
 import Link from "next/link"
-import { PhoneIcon } from "lucide-react"
 
+import { Logo } from "@/components/site/logo"
 import { SITE_NAME, SITE_DESCRIPTION } from "@/data/site"
 import { FOOTER_COMPANY, FOOTER_PRODUCT } from "@/data/nav"
 import { getAllSolutions } from "@/lib/content/solutions"
@@ -21,11 +21,8 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
-            <Link href="/" className="flex items-center gap-2 font-semibold">
-              <span className="flex size-7 items-center justify-center rounded-md bg-brand text-brand-foreground">
-                <PhoneIcon className="size-4" />
-              </span>
-              {SITE_NAME}
+            <Link href="/" aria-label={SITE_NAME}>
+              <Logo />
             </Link>
             <p className="mt-3 max-w-xs text-sm text-muted-foreground">
               {SITE_DESCRIPTION}

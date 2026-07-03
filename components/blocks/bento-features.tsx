@@ -68,10 +68,8 @@ export function BentoFeatures() {
       <div className="mt-14 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {FEATURES.map((f) => (
           <div key={f.title}>
-            <span className="flex size-9 items-center justify-center rounded-lg bg-brand/10">
-              <f.icon className="size-4.5 text-brand" />
-            </span>
-            <h3 className="mt-4 font-semibold">{f.title}</h3>
+            <f.icon className="size-5 text-brand" strokeWidth={1.75} />
+            <h3 className="mt-3.5 font-semibold">{f.title}</h3>
             <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
               {f.description}
             </p>
