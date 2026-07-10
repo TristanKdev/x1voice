@@ -46,7 +46,7 @@ We link these because the honest way to evaluate a phone system is to hear from 
 const POS = [
   { name: "Square", slug: "square", url: "https://squareup.com", direct: true },
   { name: "Toast", slug: "toast", url: "https://pos.toasttab.com", direct: false },
-  { name: "Clover", slug: "clover", url: "https://www.clover.com", direct: true },
+  { name: "Clover", slug: "clover", url: "https://www.clover.com", direct: false },
   { name: "Lightspeed", slug: "lightspeed", url: "https://www.lightspeedhq.com", direct: false },
   { name: "TouchBistro", slug: "touchbistro", url: "https://www.touchbistro.com", direct: false },
   { name: "SpotOn", slug: "spoton", url: "https://www.spoton.com", direct: false },
@@ -54,7 +54,6 @@ const POS = [
   { name: "NCR Aloha", slug: "aloha", url: "https://www.ncr.com", direct: false },
   { name: "Epos Now", slug: "epos-now", url: "https://www.eposnow.com", direct: false },
   { name: "OrderCounter", slug: "ordercounter", url: "https://ordercounter.com", direct: true },
-  { name: "OrderOut", slug: "orderout", url: "https://orderout.co", direct: true },
   { name: "Micros Simphony", slug: "micros-simphony", url: "https://www.oracle.com/food-beverage/", direct: false },
   { name: "PAR Brink", slug: "par-brink", url: "https://partech.com", direct: false },
   { name: "Snackpass", slug: "snackpass", url: "https://www.snackpass.co", direct: false },

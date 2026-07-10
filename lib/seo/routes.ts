@@ -136,6 +136,14 @@ const STATIC_ROUTES: SiteRoute[] = [
     priority: 0.4,
   },
   {
+    path: "/support/integrations",
+    title: "Integration setup & support docs",
+    description: "How X1 Voice connects to your POS, setup, and troubleshooting.",
+    index: true,
+    changeFrequency: "monthly",
+    priority: 0.5,
+  },
+  {
     path: "/resellers",
     title: "Resellers, ISOs & Partners",
     description: "Sell X1 Voice to your restaurants.",

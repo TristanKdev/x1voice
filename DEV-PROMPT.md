@@ -103,11 +103,13 @@ at the spot to edit.
    `.mdx` files here (or an API + DB source) — the blog index, sitemap, and Article+FAQ JSON-LD
    pick them up automatically.
 
-### ⚠️ Data to confirm with the client
-`data/pos-systems.ts` currently marks Square, Clover, OrderCounter, OrderOut as "direct". The
-homepage now says **native = Square + OrderCounter only**, everything else via Deliverect.
-Reconcile the `/integrations/*` pages for Clover and OrderOut with that (they should read
-"via Deliverect", not "direct/native") before launch.
+### POS connection model (already applied — keep it consistent)
+**Native = Square + OrderCounter** (direct). **Everything else, including Clover, Toast,
+Lightspeed, and 80+ more, connects via Deliverect.** This is reflected across the homepage,
+POS grid, Deliverect flow, integration pages (`connection: "native" | "deliverect"` field),
+and `/support/integrations`. **OrderOut has been removed entirely — we do not work with them.**
+If you add a POS, set its `connection` in `data/integrations.ts` and keep this native-vs-Deliverect
+wording consistent.
 
 ---
 
@@ -162,7 +164,6 @@ in the repo: `components/blocks/pos-logos.tsx` holds plain serializable data; th
 - [ ] Telephony webhook for `/api/demo-call` with consent capture.
 - [ ] Replace `verified:false` reviews with real, permissioned ones (`data/site.ts`).
 - [ ] Real demo phone number (`DEMO_LINE` in `data/site.ts`).
-- [ ] Reconcile Clover/OrderOut integration pages with native-vs-Deliverect wording.
 - [ ] `npm run lint` clean + `npm run build` passes.
 
 See also `HANDOFF.md` (design tokens + POS logo drop-in details).

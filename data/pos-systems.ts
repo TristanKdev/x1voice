@@ -2,7 +2,7 @@
  * POS systems X1 Voice can send orders to.
  *
  * Two sources of truth, kept distinct on purpose:
- * - Direct integrations (Square, Clover, OrderCounter, OrderOut) have
+ * - Direct integrations (Square, OrderCounter) have
  * dedicated pages under /integrations, see data/integrations.ts.
  * - The wider list is reachable via our Deliverect connection.
  *
@@ -41,7 +41,6 @@ export const POS_SYSTEMS: PosSystem[] = [
 
   // ── Direct integrations without a marquee brand card ──
   { name: "OrderCounter", slug: "ordercounter" },
-  { name: "OrderOut", slug: "orderout" },
 
   // ── Reachable via Deliverect ──
   { name: "Flooid" },
@@ -159,7 +158,6 @@ export const POS_URLS: Record<string, string> = {
   Snackpass: "https://www.snackpass.co",
   Givex: "https://www.givex.com",
   OrderCounter: "https://ordercounter.com",
-  OrderOut: "https://orderout.co",
   Flooid: "https://flooid.com",
   "PAR Pixel Point": "https://partech.com",
   RockSpoon: "https://www.rockspoon.com",

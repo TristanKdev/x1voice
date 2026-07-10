@@ -94,7 +94,7 @@ export const solutions: SolutionPage[] = [
       {
         question: "Does it work with our POS for topping pricing?",
         answer:
-          "Menu and pricing sync straight from your POS. Square and Clover are supported today, with OrderCounter and OrderOut also available. Setup details live at /integrations.",
+          "Menu and pricing sync straight from your POS. Square and OrderCounter connect directly today, with Clover and 80+ more via Deliverect. Setup details live at /integrations.",
       },
     ],
     metaDescription:
@@ -224,7 +224,7 @@ export const solutions: SolutionPage[] = [
       {
         question: "Does it work with our POS?",
         answer:
-          "It syncs with Square and Clover today. OrderCounter and OrderOut are also available. When you update build-your-own pricing, the phone keeps up.",
+          "It syncs with Square and OrderCounter directly today. Clover and 80+ more connect via Deliverect. When you update build-your-own pricing, the phone keeps up.",
       },
     ],
     metaDescription:
@@ -359,7 +359,7 @@ export const solutions: SolutionPage[] = [
       {
         question: "How does it integrate with our POS?",
         answer:
-          "Square and Clover work today, and OrderCounter and OrderOut are also available. The full setup rundown is at /integrations.",
+          "Square and OrderCounter work directly today, and Clover and 80+ more via Deliverect. The full setup rundown is at /integrations.",
       },
     ],
     metaDescription:
