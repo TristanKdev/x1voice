@@ -1,46 +1,51 @@
+import { QuoteIcon } from "lucide-react"
+
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Card } from "@/components/ui/card"
-import { PLACEHOLDER_TESTIMONIALS } from "@/data/site"
+import { TESTIMONIALS } from "@/data/site"
 
 /**
- * Explicit, labeled placeholders — never fabricated customer names or
- * quotes. Swap PLACEHOLDER_TESTIMONIALS in data/site.ts for real
- * testimonials as they come in; this component doesn't need to change.
+ * Real customer feedback only — TESTIMONIALS in data/site.ts carries a
+ * `verified` flag and quotes are anonymized (names withheld on purpose).
+ * This component must never render invented quotes or attributions.
  */
 export function TestimonialMarquee() {
-  return (
-    <section className="mx-auto max-w-5xl px-6 py-20">
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-display font-semibold sm:text-4xl">
-          Customer stories
-        </h2>
-        <p className="mt-4 text-muted-foreground">
-          We&apos;re a young product. Real customer stories will land here as
-          they come in, and we&apos;d rather show you an honest empty slot
-          than an invented quote.
-        </p>
-      </div>
+  const quotes = TESTIMONIALS.filter((t) => t.verified)
 
-      <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
-        {PLACEHOLDER_TESTIMONIALS.map((t) => (
-          <Card
-            key={t.initials}
-            className="border-dashed p-6 text-left"
-          >
-            <div className="flex items-center gap-3">
-              <Avatar>
-                <AvatarFallback>{t.initials}</AvatarFallback>
-              </Avatar>
+  return (
+    <section className="border-t">
+      <div className="mx-auto max-w-6xl px-6 py-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-display text-3xl font-semibold sm:text-4xl">
+            What operators say
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            Real customer feedback, lightly edited for spelling and clarity.
+            Names withheld — we&rsquo;d rather anonymize than invent.
+          </p>
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {quotes.map((t) => (
+            <Card key={t.quote} className="flex flex-col justify-between p-6 text-left">
               <div>
-                <p className="text-sm font-medium">{t.roleLabel}</p>
-                <p className="text-xs text-muted-foreground">{t.segment}</p>
+                <QuoteIcon className="size-5 text-brand/40" fill="currentColor" strokeWidth={0} />
+                <p className="mt-3 text-sm leading-relaxed">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
               </div>
-            </div>
-            <p className="mt-4 text-sm text-muted-foreground italic">
-              &ldquo;{t.quote}&rdquo;
-            </p>
-          </Card>
-        ))}
+              <div className="mt-6 flex items-center gap-3 border-t pt-4">
+                <Avatar>
+                  <AvatarFallback className="text-xs">{t.initials}</AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="text-sm font-medium">{t.roleLabel}</p>
+                  <p className="text-xs text-muted-foreground">{t.segment}</p>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   )

@@ -1,11 +1,14 @@
 import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 
-import { Hero } from "@/components/blocks/hero"
+import { CinematicHero } from "@/components/blocks/cinematic-hero"
 import { TypeMarquee } from "@/components/blocks/type-marquee"
+import { VoiceDemo } from "@/components/blocks/voice-demo"
 import { BentoFeatures } from "@/components/blocks/bento-features"
-import { SourcedStat } from "@/components/blocks/sourced-stat"
+import { PosGrid } from "@/components/blocks/pos-grid"
+import { PosMarquee } from "@/components/blocks/pos-marquee"
 import { TestimonialMarquee } from "@/components/blocks/testimonial-marquee"
+import { PricingSection } from "@/components/blocks/pricing-section"
 import { FaqAccordion } from "@/components/blocks/faq-accordion"
 import { CtaSection } from "@/components/blocks/cta-section"
 import { JsonLd } from "@/components/seo/json-ld"
@@ -16,17 +19,24 @@ import { HOME_FAQS } from "@/data/site"
 export default function Home() {
   return (
     <>
-      <Hero />
+      <CinematicHero />
 
       <TypeMarquee />
 
-      <section className="border-b bg-muted/20">
-        <div className="mx-auto max-w-3xl px-6 py-16 text-center">
-          <SourcedStat className="mx-auto flex flex-col items-center" />
-        </div>
+      <VoiceDemo />
+
+      {/* Sourced missed-calls stat now lives inside the bento grid. */}
+      <BentoFeatures />
+
+      <PosGrid />
+
+      <section className="pb-8">
+        <PosMarquee />
       </section>
 
-      <BentoFeatures />
+      <TestimonialMarquee />
+
+      <PricingSection />
 
       <section className="border-t bg-muted/20">
         <div className="mx-auto max-w-4xl px-6 py-16 text-center">
@@ -50,8 +60,6 @@ export default function Home() {
           />
         </div>
       </section>
-
-      <TestimonialMarquee />
 
       <section className="border-t">
         <div className="mx-auto max-w-3xl px-6 py-20">

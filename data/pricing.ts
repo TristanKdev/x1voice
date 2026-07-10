@@ -10,6 +10,14 @@ export type PricingTier = {
   ctaHref: string
 }
 
+/**
+ * Discounted per-month price when billed annually. Single rounding rule —
+ * every surface that shows an annual price must use this, never inline math.
+ */
+export function annualMonthlyPrice(monthly: number, discountPct: number) {
+  return Math.round(monthly * (1 - discountPct / 100))
+}
+
 export const PRICING_TIERS: PricingTier[] = [
   {
     name: "Starter",
@@ -24,7 +32,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Email support",
     ],
     ctaLabel: "Get started",
-    ctaHref: "/register",
+    ctaHref: "/contact",
   },
   {
     name: "Professional",
@@ -40,7 +48,7 @@ export const PRICING_TIERS: PricingTier[] = [
     ],
     highlighted: true,
     ctaLabel: "Get started",
-    ctaHref: "/register",
+    ctaHref: "/contact",
   },
   {
     name: "Business",
@@ -55,7 +63,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Dedicated onboarding",
     ],
     ctaLabel: "Get started",
-    ctaHref: "/register",
+    ctaHref: "/contact",
   },
   {
     name: "Enterprise",
@@ -73,6 +81,16 @@ export const PRICING_TIERS: PricingTier[] = [
     ctaHref: "/contact",
   },
 ]
+
+/**
+ * Highest annual discount across paid tiers — the only number switch/badge
+ * labels ("save X%") may show. Derives from tier data so it can't drift.
+ */
+export const MAX_ANNUAL_DISCOUNT_PCT = Math.max(
+  ...PRICING_TIERS.filter((t) => typeof t.monthlyPrice === "number").map(
+    (t) => t.annualDiscountPct
+  )
+)
 
 export const PRICING_COMPARISON_ROWS: {
   feature: string
