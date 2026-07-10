@@ -14,8 +14,9 @@ import { TrendingUpIcon } from "lucide-react"
 const MISSED_RATE = 0.25 // ~1 in 4 unanswered at peak (industry estimate)
 const RECOVERY_RATE = 0.75 // share of missed calls that turn into orders
 const AVG_CALL_MIN = 3 // average call length, minutes
+const CALL_MIN_SD = 0.9 // call-length standard deviation, minutes
 const INCLUDED_MIN = 750 // minutes in the base plan
-const BASE_PRICE = 250 // base plan $/mo
+const BASE_PRICE = 250 // base plan $/mo, the floor
 const OVERAGE_PER_MIN = 0.15 // estimated $ per minute past included
 
 function money(n: number) {
@@ -34,10 +35,25 @@ export function RoiCalculator() {
   const recoveredOrders = callsPerDay * MISSED_RATE * RECOVERY_RATE * daysOpen
   const recoveredRevenue = recoveredOrders * avgTicket
 
-  const minutesUsed = callsPerDay * daysOpen * AVG_CALL_MIN
-  const overage = Math.max(0, minutesUsed - INCLUDED_MIN) * OVERAGE_PER_MIN
-  const estCost = BASE_PRICE + overage
-  const estNet = recoveredRevenue - estCost
+  // Monthly cost is a range: it depends on how long the average call runs.
+  // Low end uses the average call length; high end allows one standard
+  // deviation of longer calls. Floored at the $250 base plan either way.
+  const costForCallLen = (callMin: number) => {
+    const minutes = callsPerDay * daysOpen * callMin
+    const overage = Math.max(0, minutes - INCLUDED_MIN) * OVERAGE_PER_MIN
+    return Math.max(BASE_PRICE, BASE_PRICE + overage)
+  }
+  const estCostLow = costForCallLen(AVG_CALL_MIN)
+  const estCostHigh = costForCallLen(AVG_CALL_MIN + CALL_MIN_SD)
+
+  // Report the conservative case (higher cost) for net + ROI.
+  const estNet = recoveredRevenue - estCostHigh
+  const roi = estCostHigh > 0 ? recoveredRevenue / estCostHigh : 0
+
+  const costRange =
+    estCostLow === estCostHigh
+      ? `${money(estCostLow)}/mo`
+      : `${money(estCostLow)}–${money(estCostHigh)}/mo`
 
   return (
     <section className="border-t py-20 sm:py-28">
@@ -85,13 +101,21 @@ export function RoiCalculator() {
 
               <dl className="mt-6 space-y-2.5 border-t border-band-border pt-6 text-sm">
                 <Row k="Orders recaptured" v={`${Math.round(recoveredOrders).toLocaleString()}/mo`} />
-                <Row k="Estimated monthly cost" v={`${money(estCost)}/mo`} />
+                <Row k="Estimated monthly cost" v={costRange} />
                 <Row
                   k="Estimated net"
                   v={`${money(Math.max(0, estNet))}/mo`}
                   accent
                 />
+                <Row k="Estimated ROI on the agent" v={`≈ ${roi.toFixed(1)}× return`} accent />
               </dl>
+              <p className="relative mt-4 text-[11px] leading-relaxed text-band-muted/80">
+                Cost is a range because it depends on average call length, the low
+                end assumes a typical call, the high end allows for longer calls
+                (one standard deviation). It never drops below the $250 base plan.
+                Net and ROI use the higher-cost end to stay conservative. An
+                estimate, not a guarantee of results.
+              </p>
             </div>
           </div>
         </div>

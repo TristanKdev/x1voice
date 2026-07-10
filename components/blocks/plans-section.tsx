@@ -2,7 +2,12 @@ import Link from "next/link"
 import { CheckIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { PRICING_TIERS } from "@/data/pricing"
+import {
+  PRICING_TIERS,
+  SHARED_FEATURES,
+  minutesLabel,
+  overageLabel,
+} from "@/data/pricing"
 
 /**
  * Homepage "Plans" section (light theme). Every number comes from
@@ -19,11 +24,12 @@ export function PlansSection() {
             Plans
           </span>
           <h2 className="font-display mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Simple pricing, priced per location
+            Every plan, every feature. Pick your minutes.
           </h2>
           <p className="mt-3 text-muted-foreground">
-            No contracts. Self-serve. Every plan answers calls around the clock
-            and sends orders straight to your POS.
+            No contracts. Self-serve. Every plan has the exact same feature set,
+            the only thing that changes is the minutes included and the
+            per-minute rate after you use them.
           </p>
         </div>
 
@@ -66,9 +72,10 @@ export function PlansSection() {
                 </div>
 
                 <p className="mt-2 text-sm font-medium text-brand">
-                  {tier.monthlyPrice === "custom"
-                    ? "Custom minutes & locations"
-                    : tier.minutesIncluded}
+                  {minutesLabel(tier)}
+                  {tier.overagePerMin !== "custom" && (
+                    <span className="text-muted-foreground"> · {overageLabel(tier)}</span>
+                  )}
                 </p>
                 <p className="mt-2 text-sm text-muted-foreground">{tier.description}</p>
 
@@ -84,8 +91,11 @@ export function PlansSection() {
                   {tier.monthlyPrice === "custom" ? "Contact us" : tier.ctaLabel}
                 </Link>
 
-                <ul className="mt-6 space-y-2.5 border-t pt-5">
-                  {tier.features.map((f) => (
+                <p className="mt-6 border-t pt-5 text-xs font-semibold tracking-wide text-foreground uppercase">
+                  Everything included
+                </p>
+                <ul className="mt-3 space-y-2.5">
+                  {SHARED_FEATURES.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm">
                       <CheckIcon className="mt-0.5 size-4 shrink-0 text-brand" />
                       <span className="text-muted-foreground">{f}</span>
@@ -98,8 +108,8 @@ export function PlansSection() {
         </div>
 
         <p className="mt-8 text-center text-sm text-muted-foreground">
-          Each plan includes monthly minutes; usage past that is billed per
-          minute. Need something between Starter and Enterprise?{" "}
+          Same features on every plan. Usage past your included minutes is billed
+          at your plan&rsquo;s per-minute rate, nothing else. Ultra-high volume?{" "}
           <Link href="/pricing" className="font-semibold text-brand hover:underline">
             See all plans and minute options
           </Link>

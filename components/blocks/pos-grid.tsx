@@ -27,7 +27,7 @@ function BrandCard({ brand }: { brand: PosBrand }) {
   const slug = slugFor(brand.name)
   const className = cn(
     "group flex items-center justify-center rounded-xl border bg-card p-5 transition-all duration-200",
-    "grayscale hover:grayscale-0 hover:-translate-y-0.5 hover:border-brand/40",
+    "hover:-translate-y-0.5 hover:border-brand/40",
     "hover:shadow-[0_8px_24px_-10px_color-mix(in_srgb,var(--color-brand)_35%,transparent)]"
   )
   return slug ? (

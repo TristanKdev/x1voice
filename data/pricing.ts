@@ -1,17 +1,36 @@
 export type PricingTier = {
   name: string
   monthlyPrice: number | "custom"
+  /** Included minutes per month. */
+  minutes: number | "custom"
+  /** Billed per minute past the included minutes. */
+  overagePerMin: number | "custom"
   annualDiscountPct: number
   description: string
-  minutesIncluded: string
-  features: string[]
   highlighted?: boolean
   ctaLabel: string
   ctaHref: string
 }
 
 /**
- * Discounted per-month price when billed annually. Single rounding rule, 
+ * Every plan ships the SAME feature set. The only thing that changes between
+ * plans is the number of included minutes and the per-minute overage rate.
+ * This list is the single source of truth for "what you get", shown on every
+ * plan card so the difference is unmistakably just minutes + overage.
+ */
+export const SHARED_FEATURES: string[] = [
+  "24/7 answering, unlimited simultaneous calls",
+  "Full order-taking with modifiers, synced to your POS",
+  "Phone payment collection",
+  "Texts the customer as the order status changes",
+  "Answers in the caller's language",
+  "Custom menu training & greeting",
+  "Analytics dashboard",
+  "No setup fee, no contract, cancel anytime",
+]
+
+/**
+ * Discounted per-month price when billed annually. Single rounding rule,
  * every surface that shows an annual price must use this, never inline math.
  */
 export function annualMonthlyPrice(monthly: number, discountPct: number) {
@@ -22,30 +41,20 @@ export const PRICING_TIERS: PricingTier[] = [
   {
     name: "Starter",
     monthlyPrice: 250,
+    minutes: 750,
+    overagePerMin: 0.15,
     annualDiscountPct: 15,
-    description: "One location, everything you need to answer every call.",
-    minutesIncluded: "750 minutes/mo included",
-    features: [
-      "24/7 call answering",
-      "Order-taking with POS sync",
-      "1 location",
-      "Email support",
-    ],
+    description: "Every feature, sized for one busy location.",
     ctaLabel: "Get started",
     ctaHref: "/contact",
   },
   {
     name: "Professional",
     monthlyPrice: 750,
+    minutes: 2000,
+    overagePerMin: 0.12,
     annualDiscountPct: 15,
-    description: "Where most restaurants land. Full feature set, one location.",
-    minutesIncluded: "2,000 minutes/mo included",
-    features: [
-      "Everything in Starter",
-      "Payment collection on phone orders",
-      "Custom menu training",
-      "Priority support",
-    ],
+    description: "Same features, more minutes and a lower overage rate.",
     highlighted: true,
     ctaLabel: "Get started",
     ctaHref: "/contact",
@@ -53,34 +62,38 @@ export const PRICING_TIERS: PricingTier[] = [
   {
     name: "Business",
     monthlyPrice: 1500,
+    minutes: 6000,
+    overagePerMin: 0.1,
     annualDiscountPct: 15,
-    description: "Groups running several locations that want reporting in one place.",
-    minutesIncluded: "6,000 minutes/mo included",
-    features: [
-      "Everything in Professional",
-      "Up to 5 locations",
-      "Centralized analytics dashboard",
-      "Dedicated onboarding",
-    ],
+    description: "High call volume, the lowest per-minute rate.",
     ctaLabel: "Get started",
     ctaHref: "/contact",
   },
   {
     name: "Enterprise",
     monthlyPrice: "custom",
+    minutes: "custom",
+    overagePerMin: "custom",
     annualDiscountPct: 0,
-    description: "6+ locations, custom integrations, or franchise rollouts.",
-    minutesIncluded: "Custom minute allowance",
-    features: [
-      "Everything in Business",
-      "Unlimited locations",
-      "Custom POS/integration work",
-      "Dedicated account manager",
-    ],
+    description: "Ultra-high volume or franchise rollouts, custom minutes and rate.",
     ctaLabel: "Talk to sales",
     ctaHref: "/contact",
   },
 ]
+
+/** "750 minutes/mo included" / "Custom minutes". */
+export function minutesLabel(tier: PricingTier): string {
+  return tier.minutes === "custom"
+    ? "Custom minutes"
+    : `${tier.minutes.toLocaleString()} minutes/mo included`
+}
+
+/** "then $0.15/min" / "Custom rate". */
+export function overageLabel(tier: PricingTier): string {
+  return tier.overagePerMin === "custom"
+    ? "Custom overage rate"
+    : `then $${tier.overagePerMin.toFixed(2)}/min`
+}
 
 /**
  * Highest annual discount across paid tiers, the only number switch/badge
@@ -92,6 +105,11 @@ export const MAX_ANNUAL_DISCOUNT_PCT = Math.max(
   )
 )
 
+/**
+ * Plan comparison. The first two rows are the ONLY things that differ between
+ * plans; every feature row below is identical across all four columns, on
+ * purpose, so the table reads "same product, pick your minutes".
+ */
 export const PRICING_COMPARISON_ROWS: {
   feature: string
   starter: boolean | string
@@ -99,12 +117,15 @@ export const PRICING_COMPARISON_ROWS: {
   business: boolean | string
   enterprise: boolean | string
 }[] = [
+  { feature: "Minutes included / month", starter: "750", professional: "2,000", business: "6,000", enterprise: "Custom" },
+  { feature: "Overage, per minute after", starter: "$0.15", professional: "$0.12", business: "$0.10", enterprise: "Custom" },
   { feature: "24/7 call answering", starter: true, professional: true, business: true, enterprise: true },
-  { feature: "POS order sync", starter: true, professional: true, business: true, enterprise: true },
-  { feature: "Phone payment collection", starter: false, professional: true, business: true, enterprise: true },
-  { feature: "Locations included", starter: "1", professional: "1", business: "Up to 5", enterprise: "Unlimited" },
-  { feature: "Analytics dashboard", starter: "Basic", professional: "Basic", business: "Centralized, multi-location", enterprise: "Centralized, multi-location" },
-  { feature: "Support", starter: "Email", professional: "Priority", business: "Priority + onboarding", enterprise: "Dedicated account manager" },
-  { feature: "Setup fees", starter: false, professional: false, business: false, enterprise: false },
+  { feature: "Order-taking with POS sync", starter: true, professional: true, business: true, enterprise: true },
+  { feature: "Phone payment collection", starter: true, professional: true, business: true, enterprise: true },
+  { feature: "Texts customer on status change", starter: true, professional: true, business: true, enterprise: true },
+  { feature: "Multilingual answering", starter: true, professional: true, business: true, enterprise: true },
+  { feature: "Custom menu training", starter: true, professional: true, business: true, enterprise: true },
+  { feature: "Analytics dashboard", starter: true, professional: true, business: true, enterprise: true },
+  { feature: "Setup fee", starter: "None", professional: "None", business: "None", enterprise: "None" },
   { feature: "Contract required", starter: false, professional: false, business: false, enterprise: "Negotiable" },
 ]

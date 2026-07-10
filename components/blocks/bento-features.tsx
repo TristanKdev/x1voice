@@ -84,9 +84,14 @@ function WholeJobVisual() {
 
 function PriceVisual() {
   return (
-    <div className="flex items-baseline gap-1">
-      <span className="font-display text-4xl font-bold tracking-tight">$250</span>
-      <span className="text-sm text-muted-foreground">/mo · 750 min</span>
+    <div>
+      <div className="flex items-baseline gap-1">
+        <span className="font-display text-4xl font-bold tracking-tight">$250</span>
+        <span className="text-sm text-muted-foreground">/mo · 750 min</span>
+      </div>
+      <p className="mt-1.5 text-xs text-muted-foreground">
+        then $0.15/min · every feature included
+      </p>
     </div>
   )
 }
@@ -109,9 +114,14 @@ function SpeedVisual() {
 
 function PosVisual() {
   return (
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 grayscale">
+    <div className="flex w-full flex-wrap gap-2">
       {POS_BRANDS.slice(0, 4).map((b) => (
-        <PosLockup key={b.name} brand={b} />
+        <span
+          key={b.name}
+          className="flex min-w-[7rem] flex-1 items-center justify-center rounded-xl border bg-secondary/40 px-3 py-3"
+        >
+          <PosLockup brand={b} />
+        </span>
       ))}
     </div>
   )
@@ -171,7 +181,7 @@ export function BentoFeatures() {
           <Cell
             highlight
             title="Priced in the open"
-            body="$250/mo including 750 minutes, no setup fee, no contract. Most of the field won't quote a number without a sales call."
+            body="$250/mo with 750 minutes, no setup fee, no contract. Every plan has the same features, only the minutes and per-minute overage change. Most of the field won't quote a number without a sales call."
             visual={<PriceVisual />}
             cta={{ label: "Sign up", href: "/contact" }}
           />
