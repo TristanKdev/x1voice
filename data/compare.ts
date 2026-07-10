@@ -50,7 +50,7 @@ export const comparePages: ComparePage[] = [
     pricingComparison: {
       x1voice: {
         planName: "Professional",
-        priceLabel: "$750/mo",
+        priceLabel: "From $250/mo",
         billingNote: "No contract required; includes phone payment collection.",
       },
       competitor: {
@@ -108,11 +108,11 @@ export const comparePages: ComparePage[] = [
     competitorName: "HungerRush OrderAI",
     competitorUrl: "https://www.hungerrush.com/products/orderai-ai-ordering-system/",
     summary:
-      "OrderAI is HungerRush's voice-ordering add-on, built for restaurant groups already running the company's own POS, and its pricing isn't published; you have to talk to sales. X1 Voice publishes its pricing and works with several POS systems, including Square, Clover, OrderCounter, and OrderOut, rather than requiring you to run a specific POS.",
+      "OrderAI is HungerRush's voice-ordering add-on, built for restaurant groups already running the company's own POS, and its pricing isn't published; you have to talk to sales. X1 Voice publishes its pricing and works with several POS systems, including Square and OrderCounter directly plus Clover and 80+ more via Deliverect, rather than requiring you to run a specific POS.",
     pricingComparison: {
       x1voice: {
         planName: "Business",
-        priceLabel: "$1,500/mo",
+        priceLabel: "From $250/mo",
         billingNote: "Covers up to 5 locations with centralized reporting.",
       },
       competitor: {
@@ -129,7 +129,7 @@ export const comparePages: ComparePage[] = [
       { feature: "Order-taking synced to POS", x1voice: true, competitor: true },
       {
         feature: "Works with your existing POS",
-        x1voice: "Square, Clover, OrderCounter, OrderOut",
+        x1voice: "Square, OrderCounter (direct) + Clover, Toast & 80+ via Deliverect",
         competitor: "Requires HungerRush POS",
         note: "OrderAI is built for HungerRush's own POS ecosystem; it isn't sold as a standalone add-on for other POS systems.",
       },
@@ -163,7 +163,7 @@ export const comparePages: ComparePage[] = [
       {
         question: "Can I keep my current POS if I switch to X1 Voice?",
         answer:
-          "Yes, as long as it's one of X1 Voice's supported integrations: Square, Clover, OrderCounter, or OrderOut today. See /integrations for setup details on each.",
+          "Yes, as long as it's one of X1 Voice's supported integrations, Square and OrderCounter directly, or Clover and 80+ more via Deliverect. See /integrations for setup details on each.",
       },
     ],
     lastReviewedAt: "2026-01-15",
@@ -179,7 +179,7 @@ export const comparePages: ComparePage[] = [
     pricingComparison: {
       x1voice: {
         planName: "Professional",
-        priceLabel: "$750/mo",
+        priceLabel: "From $250/mo",
         billingNote: "Includes order-taking with payment collection on the call.",
       },
       competitor: {
@@ -246,7 +246,7 @@ export const comparePages: ComparePage[] = [
     pricingComparison: {
       x1voice: {
         planName: "Professional",
-        priceLabel: "$750/mo",
+        priceLabel: "From $250/mo",
         billingNote: "Includes order-taking with payment collection on the call.",
       },
       competitor: {
@@ -308,7 +308,7 @@ export const comparePages: ComparePage[] = [
     pricingComparison: {
       x1voice: {
         planName: "Starter",
-        priceLabel: "$250/mo",
+        priceLabel: "From $250/mo",
         billingNote: "500 minutes/mo included; order-taking with POS sync.",
       },
       competitor: {
@@ -343,7 +343,7 @@ export const comparePages: ComparePage[] = [
       {
         question: "Do answering services integrate with restaurant POS systems?",
         answer:
-          "Generally no. POS integration isn't a standard feature for traditional live answering services, which are built for a wide range of businesses, not restaurants specifically. X1 Voice syncs directly with Square, Clover, OrderCounter, and OrderOut.",
+          "Generally no. POS integration isn't a standard feature for traditional live answering services, which are built for a wide range of businesses, not restaurants specifically. X1 Voice syncs directly with Square and OrderCounter, plus Clover and 80+ more via Deliverect.",
       },
       {
         question: "What's the real advantage of a human answering service?",
@@ -365,7 +365,7 @@ export const comparePages: ComparePage[] = [
     pricingComparison: {
       x1voice: {
         planName: "Starter",
-        priceLabel: "$250/mo",
+        priceLabel: "From $250/mo",
         billingNote: "500 minutes/mo included, 24/7, unlimited concurrent calls.",
       },
       competitor: {
@@ -423,7 +423,7 @@ export const comparePages: ComparePage[] = [
     pricingComparison: {
       x1voice: {
         planName: "Starter",
-        priceLabel: "$250/mo",
+        priceLabel: "From $250/mo",
         billingNote: "Flat rate, includes order-taking with POS sync.",
       },
       competitor: {

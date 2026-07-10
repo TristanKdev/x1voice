@@ -212,7 +212,7 @@ export const locations: LocationPage[] = [
       {
         question: "Does it work with the POS systems Chicago restaurants actually use?",
         answer:
-          "It syncs with Square and Clover today, and OrderCounter and OrderOut are also available, so pricing stays accurate across both peaks.",
+          "It syncs with Square and Clover today, and Clover and 80+ more connect via Deliverect, so pricing stays accurate across both peaks.",
       },
     ],
     metaDescription:
@@ -572,7 +572,7 @@ export const locations: LocationPage[] = [
       {
         question: "Does it work with our POS?",
         answer:
-          "Square and Clover sync today. OrderCounter and OrderOut are available too.",
+          "Square and OrderCounter sync directly today. Clover and 80+ more via Deliverect.",
       },
     ],
     metaDescription:
@@ -631,7 +631,7 @@ export const locations: LocationPage[] = [
       {
         question: "Does it work with our POS?",
         answer:
-          "If you run Square or Clover, yes, those sync today. OrderCounter and OrderOut are also options.",
+          "If you run Square or Clover, yes, those sync directly today. Clover and 80+ more connect via Deliverect.",
       },
     ],
     metaDescription:
@@ -690,7 +690,7 @@ export const locations: LocationPage[] = [
       {
         question: "Does it work with our POS?",
         answer:
-          "Most likely. Square and Clover sync today, and OrderCounter and OrderOut are supported as well.",
+          "Most likely. Square and OrderCounter sync directly, and Clover and 80+ more via Deliverect.",
       },
     ],
     metaDescription:
@@ -753,7 +753,7 @@ export const locations: LocationPage[] = [
       {
         question: "Does it work with our POS?",
         answer:
-          "Square and Clover are the direct syncs today; OrderCounter and OrderOut work too.",
+          "Square and OrderCounter are the direct syncs today; Clover and 80+ more via Deliverect.",
       },
     ],
     metaDescription:

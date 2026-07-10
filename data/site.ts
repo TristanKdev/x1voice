@@ -202,6 +202,6 @@ export const HOME_FAQS: { question: string; answer: string }[] = [
   },
   {
     question: "Which POS systems does it work with?",
-    answer: `Square, Clover, OrderCounter, and OrderOut directly, plus ${POS_VIA_DELIVERECT_COUNT} more POS systems, Toast, Lightspeed, TouchBistro, SpotOn, and others, through our Deliverect connection. See /integrations for setup details.`,
+    answer: `Square and OrderCounter directly, plus Clover and ${POS_VIA_DELIVERECT_COUNT} more POS systems, Toast, Lightspeed, TouchBistro, SpotOn, and others, through our Deliverect connection. See /integrations for setup details.`,
   },
 ]

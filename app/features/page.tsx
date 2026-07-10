@@ -25,7 +25,7 @@ const FEATURE_DETAILS = [
   },
   {
     title: "What 'syncs to your POS' means concretely",
-    body: "There's no manual re-entry step. Once a call ends, the order appears in your POS (Square, Clover, OrderCounter, or OrderOut) within seconds, itemized the same way a ticket entered by staff would be. Your kitchen sees it exactly where it expects to.",
+    body: "There's no manual re-entry step. Once a call ends, the order appears in your POS (Square and OrderCounter directly, or Clover and others via Deliverect) within seconds, itemized the same way a ticket entered by staff would be. Your kitchen sees it exactly where it expects to.",
   },
   {
     title: "Payment collection without a human touching a card",
@@ -41,7 +41,7 @@ const FEATURES_FAQS = [
   {
     question: "Which POS systems does it work with?",
     answer:
-      "Square and Clover today, with OrderCounter and OrderOut integrations also available. See /integrations for the full list and setup details.",
+      "Square and OrderCounter directly today, with Clover and 80+ more via Deliverect. See /integrations for the full list and setup details.",
   },
   {
     question: "Can it handle complicated orders with substitutions?",

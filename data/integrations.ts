@@ -4,6 +4,8 @@ export type IntegrationPage = {
   slug: string
   partnerName: string
   partnerUrl: string
+  /** How the order actually reaches this POS. */
+  connection: "native" | "deliverect"
   heroHeadline: string
   summary: string
   /** Concrete, verifiable capabilities, what data actually flows and which direction. */
@@ -18,6 +20,7 @@ export const integrations: IntegrationPage[] = [
     slug: "square",
     partnerName: "Square",
     partnerUrl: "https://squareup.com/",
+    connection: "native",
     heroHeadline: "Phone orders land in your Square POS automatically.",
     summary:
       "X1 Voice connects to your Square account and reads your live menu, including items, modifiers, and prices. Every phone order it takes is priced the way your register already prices it, and every finished call shows up in Square as a normal ticket.",
@@ -74,6 +77,7 @@ export const integrations: IntegrationPage[] = [
     slug: "clover",
     partnerName: "Clover",
     partnerUrl: "https://www.clover.com/",
+    connection: "deliverect",
     heroHeadline: "Every phone order shows up in Clover, no re-typing required.",
     summary:
       "X1 Voice reads your live Clover menu and inventory, prices phone orders against it, and drops each completed order into Clover as a normal ticket. Your kitchen handles it the same way it handles an in-person or online order.",
@@ -130,6 +134,7 @@ export const integrations: IntegrationPage[] = [
     slug: "ordercounter",
     partnerName: "OrderCounter",
     partnerUrl: "https://www.ordercounter.com/",
+    connection: "native",
     heroHeadline: "X1 Voice orders flow straight into your OrderCounter POS.",
     summary:
       "For restaurants on OrderCounter's hybrid POS, X1 Voice pulls the menu from your catalog and sends each completed phone call back in as a regular ticket. Phone orders ride the same order-management flow OrderCounter already runs for your in-person, delivery, and online business.",
@@ -176,55 +181,5 @@ export const integrations: IntegrationPage[] = [
     ],
     metaDescription:
       "How X1 Voice connects to OrderCounter POS: menu sync, phone orders dropped into your existing ticket flow, and the setup steps to get live.",
-  },
-  {
-    slug: "orderout",
-    partnerName: "OrderOut",
-    partnerUrl: "https://www.orderout.co/",
-    heroHeadline: "Phone orders join the same queue as your delivery-app orders.",
-    summary:
-      "OrderOut routes orders from delivery marketplaces like Uber Eats, DoorDash, and Grubhub into your POS so staff never re-type them. If you already run OrderOut with Square or Clover, X1 Voice phone orders can join that same consolidated queue instead of coming in through a separate channel.",
-    capabilities: [
-      {
-        title: "One order queue, not two",
-        description:
-          "Phone orders taken by X1 Voice line up next to the marketplace orders OrderOut already routes into your POS. Nothing shows up in a separate system.",
-      },
-      {
-        title: "Retyping goes away on both sides",
-        description:
-          "Phone orders and delivery-app orders both arrive as normal POS tickets, so staff aren't transcribing either one.",
-      },
-      {
-        title: "Works with your existing Square or Clover setup",
-        description:
-          "OrderOut integrates natively with Square and Clover, so this sits on top of a POS you're probably already running.",
-      },
-    ],
-    setupSteps: [
-      "Confirm you have OrderOut connected to your Square or Clover POS.",
-      "Connect your X1 Voice account so completed phone orders route through the same order pipeline.",
-      "Confirm menu items and modifiers match across your POS, OrderOut, and X1 Voice.",
-      "Test with a live call to confirm the order lands in your POS the same way a delivery-app order does.",
-    ],
-    faqs: [
-      {
-        question: "Do I need OrderOut to use X1 Voice?",
-        answer:
-          "No. X1 Voice connects directly to Square, Clover, and OrderCounter on its own. This setup is for restaurants that already use OrderOut to consolidate delivery-marketplace orders and want phone orders in that same queue.",
-      },
-      {
-        question: "Which POS systems does this work with?",
-        answer:
-          "OrderOut's native POS support currently covers Square and Clover, so this combined setup is built around restaurants running one of those two.",
-      },
-      {
-        question: "Does this change how DoorDash, Uber Eats, or Grubhub orders are handled?",
-        answer:
-          "No. OrderOut keeps routing those marketplace orders exactly as it does now. The only change is that X1 Voice phone orders join the same consolidated flow.",
-      },
-    ],
-    metaDescription:
-      "How X1 Voice works with OrderOut: phone orders join the same consolidated queue as your Uber Eats, DoorDash, and Grubhub orders on Square or Clover.",
   },
 ]

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { HelpCircleIcon, MailIcon, MessageSquareIcon, PhoneCallIcon } from "lucide-react"
+import { HelpCircleIcon, MailIcon, MessageSquareIcon, PhoneCallIcon, PlugZapIcon } from "lucide-react"
 
 import { buildMetadata } from "@/lib/seo/metadata"
 import { PageHeader } from "@/components/blocks/page-header"
@@ -53,6 +53,21 @@ export default function SupportPage() {
             >
               {DEMO_LINE.display}
             </a>
+          </Card>
+
+          <Card className="p-6">
+            <PlugZapIcon className="size-5 text-brand" aria-hidden />
+            <h2 className="mt-3 font-medium">Integration setup docs</h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Connect your POS, step-by-step guides, and fixes for the common
+              integration issues.
+            </p>
+            <Link
+              href="/support/integrations"
+              className="mt-4 inline-block text-sm text-brand underline underline-offset-2"
+            >
+              Read the integration docs
+            </Link>
           </Card>
 
           <Card className="p-6">
