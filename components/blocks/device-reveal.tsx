@@ -255,6 +255,13 @@ export function DeviceReveal() {
             <PosCard />
           </div>
         </motion.div>
+
+        {/* On phones the floating overlays are hidden, so stack the call + ticket
+            below the dashboard — the call loop is too good to drop on mobile. */}
+        <div className="mt-10 flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:justify-center lg:hidden">
+          <PhoneTranscript />
+          <PosCard />
+        </div>
       </div>
     </section>
   )

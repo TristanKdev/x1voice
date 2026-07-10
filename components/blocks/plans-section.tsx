@@ -109,7 +109,8 @@ export function PlansSection() {
 
         <p className="mt-8 text-center text-sm text-muted-foreground">
           Same features on every plan. Usage past your included minutes is billed
-          at your plan&rsquo;s per-minute rate, nothing else. Ultra-high volume?{" "}
+          at your plan&rsquo;s per-minute rate, nothing else. No setup fee, cancel
+          anytime. Ultra-high volume?{" "}
           <Link href="/pricing" className="font-semibold text-brand hover:underline">
             See all plans and minute options
           </Link>
