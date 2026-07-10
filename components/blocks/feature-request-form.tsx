@@ -14,7 +14,7 @@ const featureRequestSchema = z.object({
   name: z.string().min(2, "Enter your name."),
   restaurant: z.string().optional(),
   email: z.email("Enter a valid email address."),
-  request: z.string().min(10, "Tell us a bit more — at least 10 characters."),
+  request: z.string().min(10, "Tell us a bit more, at least 10 characters."),
 })
 
 type FeatureRequestValues = z.infer<typeof featureRequestSchema>
@@ -60,7 +60,7 @@ export function FeatureRequestForm() {
       <div className="mt-8 rounded-lg border border-brand/40 bg-brand/5 p-6 text-center">
         <p className="font-medium">Request received.</p>
         <p className="mt-1 text-sm text-muted-foreground">
-          Thanks — the team reads every one. If we build it, we&rsquo;ll let you
+          Thanks, the team reads every one. If we build it, we&rsquo;ll let you
           know.
         </p>
         <Button

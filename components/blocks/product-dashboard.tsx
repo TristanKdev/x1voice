@@ -14,11 +14,16 @@ import {
 } from "lucide-react"
 
 /**
- * Product dashboard preview — mirrors the real X1 Voice operator dashboard
- * (sidebar + KPI cards + revenue trend + live orders + status). All values
- * are illustrative product-UI content, not claims. Presentational; a dev
- * swaps the mock for live data.
+ * Product dashboard preview, mirrors the real X1 Voice operator dashboard
+ * (orange brand, sidebar, KPI cards, revenue trend + order sources, live
+ * orders, quick status). All values are illustrative product-UI content,
+ * not claims. Presentational; a dev swaps the mock for live data.
+ *
+ * ACCENT is the product's own orange, kept distinct from the site's blue on
+ * purpose, this is a screenshot of the app, so it shows the app's brand.
  */
+
+const ACCENT = "#FF7A1A"
 
 const NAV = [
   { icon: LayoutDashboardIcon, label: "Dashboard", active: true },
@@ -35,22 +40,28 @@ const NAV = [
 
 const KPIS = [
   { icon: DollarSignIcon, label: "Revenue", value: "$21,450", sub: "+31% vs prev period", tint: "#12b76a" },
-  { icon: ShoppingCartIcon, label: "Orders", value: "947", sub: "$22.65 avg per order", tint: "var(--tech-blue)" },
-  { icon: PhoneIcon, label: "Voice AI Calls", value: "1,284", sub: "74% conversion rate", tint: "var(--tech-violet)" },
-  { icon: TrendingUpIcon, label: "Conversion Rate", value: "74%", sub: "+14% ticket lift", tint: "#f59e0b" },
+  { icon: ShoppingCartIcon, label: "Orders", value: "947", sub: "$22.65 avg per order", tint: "#3b82f6" },
+  { icon: PhoneIcon, label: "Voice AI Calls", value: "1,284", sub: "74% conversion rate", tint: "#8b5cf6" },
+  { icon: TrendingUpIcon, label: "Conversion Rate", value: "74%", sub: "+14% ticket lift", tint: ACCENT },
 ]
 
 const ORDERS = [
-  { name: "Marcus W.", amt: "$23.37" },
-  { name: "Dana K.", amt: "$41.10" },
+  { name: "Marcus Webb", amt: "$23.37" },
+  { name: "Riley", amt: "$20.65" },
   { name: "Priya S.", amt: "$18.50" },
+]
+
+const SOURCES = [
+  { label: "Phone", pct: 58, color: ACCENT },
+  { label: "Online", pct: 27, color: "#3b82f6" },
+  { label: "Walk-in", pct: 15, color: "#8b5cf6" },
 ]
 
 const TREND = [22, 30, 26, 38, 34, 52, 48, 63, 58, 74, 70, 88]
 
 function AreaChart() {
   const w = 520
-  const h = 150
+  const h = 140
   const max = Math.max(...TREND)
   const pts = TREND.map((v, i) => [
     (i / (TREND.length - 1)) * w,
@@ -62,13 +73,44 @@ function AreaChart() {
     <svg viewBox={`0 0 ${w} ${h}`} className="w-full" preserveAspectRatio="none" aria-hidden>
       <defs>
         <linearGradient id="dash-area" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="var(--tech-blue)" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="var(--tech-blue)" stopOpacity="0" />
+          <stop offset="0%" stopColor="#12b76a" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#12b76a" stopOpacity="0" />
         </linearGradient>
       </defs>
       <path d={area} fill="url(#dash-area)" />
-      <path d={line} fill="none" stroke="var(--tech-cyan)" strokeWidth="2.5" strokeLinecap="round" />
+      <path d={line} fill="none" stroke="#12b76a" strokeWidth="2.5" strokeLinecap="round" />
     </svg>
+  )
+}
+
+function Donut() {
+  // simple conic donut from SOURCES
+  const stops: string[] = []
+  let acc = 0
+  for (const s of SOURCES) {
+    stops.push(`${s.color} ${acc}% ${acc + s.pct}%`)
+    acc += s.pct
+  }
+  return (
+    <div className="flex items-center gap-4">
+      <div
+        className="relative size-24 shrink-0 rounded-full"
+        style={{ background: `conic-gradient(${stops.join(",")})` }}
+      >
+        <div className="absolute inset-[10px] grid place-items-center rounded-full bg-band-2">
+          <span className="text-xs font-semibold">947</span>
+        </div>
+      </div>
+      <ul className="space-y-1.5 text-xs">
+        {SOURCES.map((s) => (
+          <li key={s.label} className="flex items-center gap-2">
+            <span className="size-2 rounded-full" style={{ background: s.color }} />
+            <span className="text-band-muted">{s.label}</span>
+            <span className="ml-auto font-semibold">{s.pct}%</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
@@ -84,120 +126,145 @@ export function ProductDashboard() {
             See what the phone is actually worth
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Revenue, orders, calls, and conversion in one view — with live
-            orders and menu, POS, and phone status at a glance.
+            Revenue, orders, calls, conversion, and order sources in one view, 
+            with live orders and menu, POS, and phone status at a glance.
           </p>
         </div>
 
-        <div className="mt-14 overflow-hidden rounded-2xl border border-band-border bg-band text-band-foreground shadow-2xl shadow-band/30">
-          <div className="flex">
-            {/* Sidebar */}
-            <aside className="hidden w-52 shrink-0 border-r border-band-border p-4 lg:block">
-              <div className="flex items-center gap-2 px-1 pb-4">
-                <span className="flex size-7 items-center justify-center rounded-lg bg-brand text-brand-foreground">
-                  <PhoneIcon className="size-3.5" />
-                </span>
-                <span className="font-display text-sm font-bold">X1 Voice</span>
+        <div className="mt-14">
+          <ProductDashboardFrame />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/** The dashboard frame on its own, reused by the scroll reveal. */
+export function ProductDashboardFrame() {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-band-border bg-band text-band-foreground shadow-2xl shadow-band/40">
+      <div className="flex">
+        {/* Sidebar */}
+        <aside className="hidden w-52 shrink-0 border-r border-band-border p-4 lg:block">
+          <div className="flex items-center gap-2 px-1 pb-4">
+            <span
+              className="flex size-7 items-center justify-center rounded-lg"
+              style={{ background: `color-mix(in srgb, ${ACCENT} 18%, transparent)` }}
+            >
+              <PhoneIcon className="size-3.5" style={{ color: ACCENT }} />
+            </span>
+            <span className="font-display text-sm font-bold">X1 Voice</span>
+          </div>
+          <nav className="space-y-0.5">
+            {NAV.map((n) => (
+              <div
+                key={n.label}
+                className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-xs"
+                style={
+                  n.active
+                    ? { background: `color-mix(in srgb, ${ACCENT} 15%, transparent)`, color: ACCENT, fontWeight: 600 }
+                    : { color: "var(--band-muted)" }
+                }
+              >
+                <n.icon className="size-3.5" />
+                {n.label}
               </div>
-              <nav className="space-y-0.5">
-                {NAV.map((n) => (
-                  <div
-                    key={n.label}
-                    className={`flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-xs ${
-                      n.active
-                        ? "bg-brand/15 font-semibold text-brand"
-                        : "text-band-muted"
-                    }`}
+            ))}
+          </nav>
+        </aside>
+
+        {/* Main */}
+        <div className="min-w-0 flex-1 p-5 sm:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h3 className="font-display text-lg font-bold">Welcome back, Tony&rsquo;s</h3>
+              <p className="text-xs" style={{ color: ACCENT }}>
+                Voice AI overview
+              </p>
+            </div>
+            <div className="flex rounded-full border border-band-border bg-white/5 p-0.5 text-xs">
+              <span className="rounded-full px-3 py-1 text-band-muted">Today</span>
+              <span className="rounded-full bg-white/10 px-3 py-1 font-semibold">This Week</span>
+              <span className="rounded-full px-3 py-1 text-band-muted">This Month</span>
+            </div>
+          </div>
+
+          {/* KPI cards */}
+          <div className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
+            {KPIS.map((k) => (
+              <div key={k.label} className="rounded-xl border border-band-border bg-band-2 p-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] text-band-muted">{k.label}</span>
+                  <span
+                    className="flex size-6 items-center justify-center rounded-md"
+                    style={{ background: `color-mix(in srgb, ${k.tint} 22%, transparent)` }}
                   >
-                    <n.icon className="size-3.5" />
-                    {n.label}
+                    <k.icon className="size-3.5" style={{ color: k.tint }} />
+                  </span>
+                </div>
+                <p className="font-display mt-1.5 text-xl font-bold tracking-tight">{k.value}</p>
+                <p className="mt-0.5 text-[11px] text-band-muted">{k.sub}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Trend + order sources */}
+          <div className="mt-3 grid gap-3 lg:grid-cols-[1.6fr_1fr]">
+            <div className="rounded-xl border border-band-border bg-band-2 p-4">
+              <div className="flex items-center justify-between">
+                <p className="text-xs font-semibold">Revenue trend</p>
+                <div className="flex items-center gap-3 text-[11px] text-band-muted">
+                  <span className="flex items-center gap-1">
+                    <span className="size-1.5 rounded-full bg-emerald-400" /> Revenue
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <span className="size-1.5 rounded-full bg-blue-400" /> Orders
+                  </span>
+                </div>
+              </div>
+              <div className="mt-4">
+                <AreaChart />
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-band-border bg-band-2 p-4">
+              <p className="text-xs font-semibold">Order sources</p>
+              <div className="mt-4">
+                <Donut />
+              </div>
+            </div>
+          </div>
+
+          {/* Active orders + quick status */}
+          <div className="mt-3 grid gap-3 lg:grid-cols-[1fr_1fr]">
+            <div className="rounded-xl border border-band-border bg-band-2 p-4">
+              <div className="flex items-center justify-between">
+                <p className="text-xs font-semibold">Active orders</p>
+                <span className="flex items-center gap-1.5 text-[11px] text-band-muted">
+                  <span className="relative flex size-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex size-1.5 rounded-full bg-emerald-400" />
+                  </span>
+                  Live
+                </span>
+              </div>
+              <p className="font-display mt-1 text-3xl font-bold tracking-tight">249</p>
+              <div className="mt-3 space-y-1.5">
+                {ORDERS.map((o) => (
+                  <div
+                    key={o.name}
+                    className="flex items-center justify-between rounded-lg bg-white/5 px-3 py-2 text-xs"
+                  >
+                    <span>{o.name}</span>
+                    <span className="font-semibold">{o.amt}</span>
                   </div>
                 ))}
-              </nav>
-            </aside>
-
-            {/* Main */}
-            <div className="min-w-0 flex-1 p-5 sm:p-6">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <div>
-                  <h3 className="font-display text-lg font-bold">Welcome back, Tony&rsquo;s</h3>
-                  <p className="text-xs text-band-muted">Voice AI overview</p>
-                </div>
-                <div className="flex rounded-full border border-band-border bg-white/5 p-0.5 text-xs">
-                  <span className="rounded-full px-3 py-1 text-band-muted">Today</span>
-                  <span className="rounded-full bg-white/10 px-3 py-1 font-semibold">This Week</span>
-                  <span className="rounded-full px-3 py-1 text-band-muted">This Month</span>
-                </div>
               </div>
+            </div>
 
-              {/* KPI cards */}
-              <div className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
-                {KPIS.map((k) => (
-                  <div key={k.label} className="rounded-xl border border-band-border bg-band-2 p-3.5">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[11px] text-band-muted">{k.label}</span>
-                      <span
-                        className="flex size-6 items-center justify-center rounded-md"
-                        style={{ background: `color-mix(in srgb, ${k.tint} 22%, transparent)` }}
-                      >
-                        <k.icon className="size-3.5" style={{ color: k.tint }} />
-                      </span>
-                    </div>
-                    <p className="font-display mt-1.5 text-xl font-bold tracking-tight">{k.value}</p>
-                    <p className="mt-0.5 text-[11px] text-band-muted">{k.sub}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Trend + live orders */}
-              <div className="mt-3 grid gap-3 lg:grid-cols-[1.5fr_1fr]">
-                <div className="rounded-xl border border-band-border bg-band-2 p-4">
-                  <div className="flex items-center justify-between">
-                    <p className="text-xs font-semibold">Revenue trend</p>
-                    <div className="flex items-center gap-3 text-[11px] text-band-muted">
-                      <span className="flex items-center gap-1">
-                        <span className="size-1.5 rounded-full" style={{ background: "var(--tech-cyan)" }} />
-                        Revenue
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <span className="size-1.5 rounded-full" style={{ background: "var(--tech-blue)" }} />
-                        Orders
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-3">
-                    <AreaChart />
-                  </div>
-                </div>
-
-                <div className="rounded-xl border border-band-border bg-band-2 p-4">
-                  <div className="flex items-center justify-between">
-                    <p className="text-xs font-semibold">Active orders</p>
-                    <span className="flex items-center gap-1.5 text-[11px] text-band-muted">
-                      <span className="relative flex size-1.5">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                        <span className="relative inline-flex size-1.5 rounded-full bg-emerald-400" />
-                      </span>
-                      Live
-                    </span>
-                  </div>
-                  <p className="font-display mt-2 text-3xl font-bold tracking-tight">249</p>
-                  <div className="mt-3 space-y-1.5">
-                    {ORDERS.map((o) => (
-                      <div
-                        key={o.name}
-                        className="flex items-center justify-between rounded-lg bg-white/5 px-3 py-2 text-xs"
-                      >
-                        <span>{o.name}</span>
-                        <span className="font-semibold">{o.amt}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Quick status strip */}
-              <div className="mt-3 grid grid-cols-2 gap-3 rounded-xl border border-band-border bg-band-2 p-4 sm:grid-cols-4">
+            <div className="rounded-xl border border-band-border bg-band-2 p-4">
+              <p className="text-xs font-semibold">Quick status</p>
+              <div className="mt-3 grid grid-cols-2 gap-3">
                 {[
                   { k: "Menu items", v: "128" },
                   { k: "POS connection", v: "Connected", ok: true },
@@ -216,6 +283,6 @@ export function ProductDashboard() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

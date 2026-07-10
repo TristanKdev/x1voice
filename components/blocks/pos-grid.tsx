@@ -2,7 +2,8 @@ import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { POS_BRANDS, PosLockup, type PosBrand } from "@/components/blocks/pos-logos"
+import { POS_BRANDS, type PosBrand } from "@/components/blocks/pos-logos"
+import { PosLockup } from "@/components/blocks/pos-lockup"
 import {
   POS_COUNT_LABEL,
   POS_SYSTEMS,
@@ -11,7 +12,7 @@ import {
 
 /**
  * Highlighted POS integrations, shown as real brand lockups. Framing is
- * always "works with" — these are integration partners, not customers.
+ * always "works with", these are integration partners, not customers.
  * Grayscale at rest, brand color on hover. Cards for a POS that has a
  * dedicated /integrations/[slug] page link to it.
  */
@@ -56,7 +57,7 @@ export function PosGrid() {
             Works with the POS you already run
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Orders land in your register as normal tickets — directly, or
+            Orders land in your register as normal tickets, directly, or
             through our {POS_VIA} connection. No new hardware, no double entry.
           </p>
         </div>

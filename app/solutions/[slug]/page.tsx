@@ -4,7 +4,7 @@ import { getAllSolutions, getSolutionBySlug } from "@/lib/content/solutions"
 import { buildMetadata } from "@/lib/seo/metadata"
 import { SolutionPageTemplate } from "@/components/templates/solution-page-template"
 
-// A slug outside generateStaticParams() cannot render — real 404, not the
+// A slug outside generateStaticParams() cannot render, real 404, not the
 // old site's SPA fallback.
 export const dynamicParams = false
 

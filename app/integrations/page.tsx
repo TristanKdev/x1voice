@@ -22,12 +22,12 @@ export default function IntegrationsHubPage() {
       <PageHeader
         eyebrow="Integrations"
         title="Syncs straight into your existing POS"
-        description="No re-keying, no missed tickets — orders land where your team already works."
+        description="No re-keying, no missed tickets, orders land where your team already works."
       />
       <section className="mx-auto max-w-5xl px-6 py-16">
         {integrations.length === 0 ? (
           <p className="text-center text-muted-foreground">
-            Integration pages are being added — check back soon.
+            Integration pages are being added, check back soon.
           </p>
         ) : (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

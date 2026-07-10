@@ -11,7 +11,7 @@ export type PricingTier = {
 }
 
 /**
- * Discounted per-month price when billed annually. Single rounding rule —
+ * Discounted per-month price when billed annually. Single rounding rule, 
  * every surface that shows an annual price must use this, never inline math.
  */
 export function annualMonthlyPrice(monthly: number, discountPct: number) {
@@ -83,7 +83,7 @@ export const PRICING_TIERS: PricingTier[] = [
 ]
 
 /**
- * Highest annual discount across paid tiers — the only number switch/badge
+ * Highest annual discount across paid tiers, the only number switch/badge
  * labels ("save X%") may show. Derives from tier data so it can't drift.
  */
 export const MAX_ANNUAL_DISCOUNT_PCT = Math.max(

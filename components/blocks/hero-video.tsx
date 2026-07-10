@@ -5,15 +5,12 @@ import Link from "next/link"
 import { ArrowRightIcon, PhoneIcon } from "lucide-react"
 
 /**
- * Landing hero — full-bleed muted video background with a readable scrim.
- * This is one of the site's intentional DARK bands (see HANDOFF.md), so it
- * uses band tokens for text.
+ * Landing hero, full-bleed muted video background with a readable scrim.
+ * One of the site's intentional DARK bands (see HANDOFF.md). The headline
+ * has a color wave sweeping through it (.text-wave).
  *
- * Presentational only. The video file lives at /media/hero.mp4 (poster
- * /media/hero-poster.jpg) — swap those to rebrand. Reduced-motion visitors
- * see the poster frame, no playback.
- *
- * WIRE: the two CTAs are anchor links (#see-it, /pricing). No logic here.
+ * Presentational only. Video at /media/hero.mp4 (poster /media/hero-poster.jpg).
+ * Reduced-motion visitors see the poster, no playback, static headline.
  */
 export function HeroVideo() {
   const videoRef = React.useRef<HTMLVideoElement>(null)
@@ -26,15 +23,12 @@ export function HeroVideo() {
       v.removeAttribute("autoplay")
       v.pause()
     } else {
-      v.play().catch(() => {
-        /* autoplay can be blocked; poster remains, which is fine */
-      })
+      v.play().catch(() => {})
     }
   }, [])
 
   return (
     <section className="relative isolate overflow-hidden bg-band text-band-foreground">
-      {/* Video background */}
       <video
         ref={videoRef}
         className="absolute inset-0 -z-20 h-full w-full object-cover"
@@ -49,31 +43,22 @@ export function HeroVideo() {
         <source src="/media/hero.mp4" type="video/mp4" />
       </video>
 
-      {/* Scrim + tech grid so text stays legible over any frame */}
       <div aria-hidden className="video-scrim absolute inset-0 -z-10" />
-      <div aria-hidden className="tech-grid-dark absolute inset-0 -z-10 opacity-60 [mask-image:radial-gradient(120%_100%_at_50%_0%,black,transparent_75%)]" />
+      <div
+        aria-hidden
+        className="tech-grid-dark absolute inset-0 -z-10 opacity-60 [mask-image:radial-gradient(120%_100%_at_50%_0%,black,transparent_75%)]"
+      />
 
       <div className="mx-auto flex min-h-[clamp(560px,88svh,940px)] max-w-6xl flex-col items-start justify-center px-6 py-28 sm:py-32">
-        <span className="inline-flex items-center gap-2 rounded-full border border-band-border bg-white/5 px-3 py-1 text-xs font-medium backdrop-blur-sm">
-          <span className="relative flex size-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
-          </span>
-          Answering calls right now
-        </span>
-
-        <h1 className="font-display mt-6 max-w-3xl text-balance text-[clamp(2.5rem,6vw,5rem)] leading-[1.02] font-semibold tracking-tight">
-          Every call answered,{" "}
-          <span className="bg-gradient-to-r from-[var(--tech-cyan)] via-white to-[var(--tech-blue)] bg-clip-text text-transparent">
-            every order captured.
-          </span>
+        <h1 className="font-display max-w-3xl text-balance text-[clamp(2.6rem,6.2vw,5.2rem)] leading-[1.02] font-semibold tracking-tight">
+          <span className="text-wave">Every call answered, every order captured.</span>
         </h1>
 
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-band-muted">
           X1 Voice is the AI phone agent for restaurants. It picks up, takes the
-          full order, collects payment, and drops the ticket straight into your
-          POS — through the dinner rush, after close, and every time the line is
-          slammed.
+          full order, collects the payment, and drops a clean ticket into your
+          POS. It works the dinner rush, it works after close, it works every
+          time the line is slammed.
         </p>
 
         <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -94,7 +79,7 @@ export function HeroVideo() {
         </div>
 
         <p className="mt-8 text-xs text-band-muted/80">
-          No setup fees · No contract · Live in about a day
+          No contracts. Self-serve. Live in minutes.
         </p>
       </div>
     </section>

@@ -23,11 +23,11 @@ export type ComparePage = {
     competitor: PricingSnapshot
     /** ISO date the competitor pricing snapshot was taken. */
     asOf: string
-    /** Link to the competitor's own public pricing page — required, not optional. */
+    /** Link to the competitor's own public pricing page, required, not optional. */
     sourceUrl: string
   }
   featureMatrix: FeatureMatrixRow[]
-  /** Min 3 — feeds FAQPage JSON-LD too. */
+  /** Min 3, feeds FAQPage JSON-LD too. */
   faqs: Faq[]
   /** ISO date, surfaced on-page as a recurring content-ops obligation. */
   lastReviewedAt: string
@@ -38,7 +38,7 @@ export type ComparePage = {
  * Consolidates the old site's separate /compare/vs-X and /alternatives/X
  * pages (13 pages, zero citations, one had a math error) into one sourced
  * page per competitor. Every price claim must render through
- * <PricingDisclaimer> — never state a competitor's price as bare fact.
+ * <PricingDisclaimer>, never state a competitor's price as bare fact.
  */
 export const comparePages: ComparePage[] = [
   {

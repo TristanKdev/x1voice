@@ -34,7 +34,7 @@ const STEPS = [
 
 /**
  * Request-a-feature page. The form is PRESENTATIONAL ONLY.
- * WIRE (dev): the <form> posts nowhere — hook up an action / endpoint
+ * WIRE (dev): the <form> posts nowhere, hook up an action / endpoint
  * (e.g. GHL form, /api/feature-request) and success/error states. Fields
  * are named so a handler can read them directly.
  */
@@ -45,7 +45,7 @@ export default function RequestFeaturePage() {
       <PageHeader
         eyebrow="Roadmap"
         title="Request a feature"
-        description="X1 Voice is built from operator feedback. If something would make your restaurant run better, tell us — the team reads every request."
+        description="X1 Voice is built from operator feedback. If something would make your restaurant run better, tell us, the team reads every request."
       />
 
       <section className="mx-auto max-w-5xl px-6 py-16">

@@ -22,7 +22,7 @@ export type ComparisonRow = {
 }
 
 /**
- * Neutral check/x/text markers, never color-only encoding — used for both
+ * Neutral check/x/text markers, never color-only encoding, used for both
  * the pricing feature matrix and the compare-page feature matrix so the two
  * families of pages render comparisons identically.
  */

@@ -5,7 +5,7 @@ export type NavLink = {
 
 /**
  * Single source of truth for the primary header nav. Blog is intentionally
- * NOT here — it stays a crawlable backlink from the footer only (FOOTER_COMPANY).
+ * NOT here, it stays a crawlable backlink from the footer only (FOOTER_COMPANY).
  * "Plans" points at /pricing (route kept for stable links; label updated).
  */
 export const MAIN_NAV: NavLink[] = [

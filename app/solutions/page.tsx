@@ -28,7 +28,7 @@ export default function SolutionsHubPage() {
       <section className="mx-auto max-w-5xl px-6 py-16">
         {solutions.length === 0 ? (
           <p className="text-center text-muted-foreground">
-            Solution pages are being added — check back soon.
+            Solution pages are being added, check back soon.
           </p>
         ) : (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

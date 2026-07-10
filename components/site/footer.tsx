@@ -8,7 +8,7 @@ import { getAllComparePages } from "@/lib/content/compare"
 
 /**
  * Every column here is generated from live content data (data/nav.ts or the
- * content getters) — the old site's footer hand-listed only 6 of 11
+ * content getters), the old site's footer hand-listed only 6 of 11
  * solutions and 5 of 7 compare pages. A page can't silently drop out of the
  * footer here without also dropping out of the sitemap.
  */

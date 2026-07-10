@@ -531,3 +531,70 @@
     transform: rotate(360deg);
   }
 }
+
+/* Hand-drawn "marker circle" ring: an imperfect stroked path (pathLength=1)
+   that draws itself in, then the molten gradient shimmers via hue rotation.
+   Reduced motion → fully drawn, static. */
+@layer components {
+  .drawn-ring-path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .drawn-ring-path {
+      stroke-dashoffset: 1;
+      animation:
+        ring-draw 1.7s 0.2s cubic-bezier(0.65, 0, 0.35, 1) forwards,
+        molten-hue 9s 2s linear infinite;
+    }
+  }
+}
+
+@keyframes ring-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes molten-hue {
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* A band of color that sweeps left-to-right through white text. Used on the
+   dark hero headline. Reduced motion → static white. */
+@layer components {
+  .text-wave {
+    background: linear-gradient(
+      100deg,
+      #ffffff 0%,
+      #ffffff 22%,
+      var(--tech-cyan) 40%,
+      var(--tech-blue) 50%,
+      var(--tech-violet) 60%,
+      #ffffff 78%,
+      #ffffff 100%
+    );
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: text-wave 7s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .text-wave {
+      animation: none;
+      background: #ffffff;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+  }
+}
+
+@keyframes text-wave {
+  to {
+    background-position: -250% 0;
+  }
+}

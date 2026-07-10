@@ -3,7 +3,7 @@ import { PhoneIncomingIcon, UtensilsCrossedIcon } from "lucide-react"
 import { POS_VIA, POS_VIA_DELIVERECT_COUNT } from "@/data/pos-systems"
 
 /**
- * "How it connects" — the data flow from a phone call, through X1 Voice and
+ * "How it connects", the data flow from a phone call, through X1 Voice and
  * Deliverect, into the POS and back-of-house. Shows what actually runs on
  * the rails. Presentational.
  */
@@ -70,7 +70,7 @@ export function DeliverectFlow() {
           </h2>
           <p className="mt-3 text-muted-foreground">
             X1 Voice takes the order and hands it to {POS_VIA}, which fans it out
-            to your POS and channels — {POS_VIA_DELIVERECT_COUNT}+ systems
+            to your POS and channels, {POS_VIA_DELIVERECT_COUNT}+ systems
             supported. No re-keying, no order sitting on a sticky note.
           </p>
         </div>

@@ -24,7 +24,7 @@ export default function BlogIndexPage() {
       <section className="mx-auto max-w-3xl px-6 py-16">
         {posts.length === 0 ? (
           <p className="text-center text-muted-foreground">
-            Posts are being added — check back soon.
+            Posts are being added, check back soon.
           </p>
         ) : (
           <div className="space-y-4">

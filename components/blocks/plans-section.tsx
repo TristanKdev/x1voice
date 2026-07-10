@@ -6,7 +6,7 @@ import { PRICING_TIERS } from "@/data/pricing"
 
 /**
  * Homepage "Plans" section (light theme). Every number comes from
- * data/pricing.ts — no hardcoded prices. Starter is the anchor at
+ * data/pricing.ts, no hardcoded prices. Starter is the anchor at
  * $250/mo including 750 minutes; Enterprise routes to contact.
  */
 
@@ -22,7 +22,7 @@ export function PlansSection() {
             Simple pricing, priced per location
           </h2>
           <p className="mt-3 text-muted-foreground">
-            No setup fees, no contract. Every plan answers calls around the clock
+            No contracts. Self-serve. Every plan answers calls around the clock
             and sends orders straight to your POS.
           </p>
         </div>

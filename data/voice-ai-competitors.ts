@@ -2,7 +2,7 @@
  * How X1 Voice compares to the main restaurant voice-AI vendors.
  *
  * Positioning is factual (sourced from the market landscape). X1 Voice is
- * framed favorably but every competitor cell is defensible — no fabricated
+ * framed favorably but every competitor cell is defensible, no fabricated
  * weaknesses, and where a competitor is strong we say so. Update as the
  * market moves.
  */
@@ -39,11 +39,11 @@ export const MATRIX_DIMENSIONS: { key: keyof VoiceVendor["cells"]; label: string
   { key: "posWrite", label: "Deep POS order write" },
   { key: "payments", label: "Payment on the call" },
   { key: "independents", label: "Built for independents" },
-  { key: "fastSetup", label: "Live in days" },
+  { key: "fastSetup", label: "Setup in minutes" },
 ]
 
 export const COMPARE_INTRO =
-  "Most restaurant voice tools do one thing well — answering, or reservations, or enterprise drive-thru. X1 Voice is built for independents and growing groups that need the whole job done: answer every call, take the full order, collect payment, and drop a clean ticket into the POS. Here's how the field lines up."
+  "Most restaurant voice tools do one thing well, answering, or reservations, or enterprise drive-thru. X1 Voice is built for independents and growing groups that need the whole job done: answer every call, take the full order, collect payment, and drop a clean ticket into the POS. Here's how the field lines up."
 
 export const VOICE_VENDORS: VoiceVendor[] = [
   {
@@ -82,7 +82,7 @@ export const VOICE_VENDORS: VoiceVendor[] = [
   {
     name: "Loman AI",
     category: "Reservations / answering",
-    buyer: "Small independents (1–3 units)",
+    buyer: "Small independents (1 to 3 units)",
     pricingModel: "Per minute",
     transparentPricing: false,
     pricingNote: "Good at call recovery; weaker on complex modified orders.",
@@ -118,6 +118,22 @@ export const VOICE_VENDORS: VoiceVendor[] = [
     pricingModel: "Per location (quote)",
     transparentPricing: false,
     pricingNote: "Order-accuracy focus; Toast/Square/Clover/SpotOn integrations.",
+    cells: {
+      answering: "yes",
+      ordering: "yes",
+      posWrite: "deep",
+      payments: "partial",
+      independents: "yes",
+      fastSetup: "yes",
+    },
+  },
+  {
+    name: "Maple AI",
+    category: "Phone ordering",
+    buyer: "Mid-market groups (5 to 15 units)",
+    pricingModel: "Subscription (quote)",
+    transparentPricing: false,
+    pricingNote: "Inventory-aware ordering on Toast/SkyTab; upsell-focused.",
     cells: {
       answering: "yes",
       ordering: "yes",

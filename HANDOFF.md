@@ -57,7 +57,7 @@ a centered child), `.tech-glow`. All respect `prefers-reduced-motion`.
 | **Contact form** | `components/blocks/contact-form.tsx` → `app/api/contact/route.ts` | Same shape. **TODO in-route:** wire real email/CRM delivery. |
 | **Dashboard data** | `components/blocks/product-dashboard.tsx` | All numbers are illustrative mock UI. Replace with live metrics. Mirrors the real app dashboard layout. |
 | **Login / app** | `components/site/header.tsx` → `/login` | Route doesn't exist yet (404s, and the header prefetch logs a console 404). Point at the real app subdomain or remove. |
-| **POS logos** | `components/blocks/pos-logos.tsx` | Lightweight SVG recreations, not official brand files. If Brand supplies official SVGs, drop them in `public/pos/<slug>.svg` and swap the `Mark` render — the grid doesn't change. Colors are tagged per entry. |
+| **POS logos** | `public/pos/<slug>.png` · `pos-lockup.tsx` | **Drop an official PNG at `public/pos/<slug>.png` and it renders automatically** (slugs: square, toast, clover, lightspeed, touchbistro, spoton, revel, aloha, epos-now, snackpass). Until a file exists, each card falls back to a lightweight recreation. The build environment had no outbound network, so the real files could not be fetched here — just add them. |
 | **Cal.com demo booking** | *removed* | The old `demo-dialog.tsx` (Cal embed, was 404ing) is deleted. Demo = the call line now; "Book a demo" links to `/contact`. Re-add a booking flow if you want one. |
 
 Content/data (edit, no code): `data/pricing.ts` (plans), `data/pos-systems.ts`

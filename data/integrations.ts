@@ -6,7 +6,7 @@ export type IntegrationPage = {
   partnerUrl: string
   heroHeadline: string
   summary: string
-  /** Concrete, verifiable capabilities — what data actually flows and which direction. */
+  /** Concrete, verifiable capabilities, what data actually flows and which direction. */
   capabilities: { title: string; description: string }[]
   setupSteps: string[]
   faqs: Faq[]

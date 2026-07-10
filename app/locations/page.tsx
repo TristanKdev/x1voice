@@ -26,7 +26,7 @@ export default function LocationsHubPage() {
       <PageHeader
         eyebrow="Locations"
         title="Where X1 Voice is answering calls"
-        description="A dedicated page exists for markets with real local data behind it — every other served city is listed below."
+        description="A dedicated page exists for markets with real local data behind it, every other served city is listed below."
       />
 
       <section className="mx-auto max-w-4xl px-6 py-12">
@@ -73,7 +73,7 @@ export default function LocationsHubPage() {
           </>
         ) : (
           <p className="text-center text-muted-foreground">
-            Featured market pages are being added — check back soon.
+            Featured market pages are being added, check back soon.
           </p>
         )}
       </section>

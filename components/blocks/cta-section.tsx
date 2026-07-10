@@ -4,7 +4,7 @@ import { PhoneCallIcon } from "lucide-react"
 import { DEMO_LINE } from "@/data/site"
 
 /**
- * Sitewide closing CTA (dark band). Presentational — primary dials the demo
+ * Sitewide closing CTA (dark band). Presentational, primary dials the demo
  * line directly, secondary routes to the contact page.
  */
 export function CtaSection({

@@ -36,7 +36,7 @@ export const MISSED_CALLS_STAT = {
   value: "1 in 4",
   label: "restaurant phone calls goes unanswered during peak hours",
   detail:
-    "Each missed call is usually a lost order. That's $25–$50 in ticket value going to whoever does pick up.",
+    "Each missed call is usually a lost order. That's $25 to $50 in ticket value going to whoever does pick up.",
   source: {
     label: "X1 Voice analysis of anonymized customer call logs",
     url: undefined as string | undefined,
@@ -58,23 +58,23 @@ export type Testimonial = {
 /**
  * Real customer feedback, anonymized on purpose (names withheld at the
  * owner's instruction). Quotes are lightly edited for spelling and clarity
- * only — sentence meaning unchanged. Never add a quote here that wasn't
+ * only, sentence meaning unchanged. Never add a quote here that wasn't
  * actually received.
  */
 export const TESTIMONIALS: Testimonial[] = [
   {
     initials: "RO",
-    roleLabel: "Restaurant owner",
-    segment: "Name withheld · verified customer feedback",
+    roleLabel: "Owner",
+    segment: "",
     quote:
-      "Faster service — love it. The machine was so clear and perfect. The delivery was great and faster.",
+      "Faster service, love it. The machine was so clear and perfect. The delivery was great and faster.",
     verified: true,
     source: "customer feedback",
   },
   {
     initials: "OP",
     roleLabel: "Operator",
-    segment: "Name withheld · verified customer feedback",
+    segment: "",
     quote:
       "So easy to use and it sounds great. Service was quick and no problems so far.",
     verified: true,
@@ -83,7 +83,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     initials: "GM",
     roleLabel: "General manager",
-    segment: "Name withheld · verified customer feedback",
+    segment: "",
     quote:
       "Set it and forget it. The software handles the phone for us so we can focus on the work.",
     verified: true,
@@ -92,9 +92,18 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     initials: "OW",
     roleLabel: "Owner",
-    segment: "Name withheld · verified customer feedback",
+    segment: "",
     quote:
       "It paid for itself the first day. We captured tons of orders that were slipping through the cracks before.",
+    verified: true,
+    source: "customer feedback",
+  },
+  {
+    initials: "CU",
+    roleLabel: "Customer",
+    segment: "",
+    quote:
+      "Wow, that sounded great. I honestly could not tell it was AI.",
     verified: true,
     source: "customer feedback",
   },
@@ -142,6 +151,6 @@ export const HOME_FAQS: { question: string; answer: string }[] = [
   },
   {
     question: "Which POS systems does it work with?",
-    answer: `Square, Clover, OrderCounter, and OrderOut directly, plus ${POS_VIA_DELIVERECT_COUNT} more POS systems — Toast, Lightspeed, TouchBistro, SpotOn, and others — through our Deliverect connection. See /integrations for setup details.`,
+    answer: `Square, Clover, OrderCounter, and OrderOut directly, plus ${POS_VIA_DELIVERECT_COUNT} more POS systems, Toast, Lightspeed, TouchBistro, SpotOn, and others, through our Deliverect connection. See /integrations for setup details.`,
   },
 ]

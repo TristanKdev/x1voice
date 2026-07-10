@@ -1,7 +1,7 @@
 import { PhoneCallIcon, PlugZapIcon, TrendingUpIcon } from "lucide-react"
 
 /**
- * "How it works" — three steps, anchored on the speed-to-live promise.
+ * "How it works", three steps, anchored on the speed-to-live promise.
  * Paired with a POS + tablet device visual so the operator sees the
  * hardware they already own. Presentational; copy lives inline.
  */
@@ -11,13 +11,13 @@ const STEPS = [
     n: "01",
     icon: PlugZapIcon,
     title: "Set up in minutes",
-    body: "Connect your POS, import your menu, set your hours and greeting. Prefer it done for you? Our team handles white-glove setup. You go live in under 24 hours.",
+    body: "Connect your POS, import your menu, set your hours and greeting. Prefer it done for you? Our team handles white-glove setup. You go live in minutes, not weeks.",
   },
   {
     n: "02",
     icon: PhoneCallIcon,
     title: "AI answers every call",
-    body: "X1 Voice picks up instantly — no hold time, no voicemail. It takes orders, answers questions, and routes edge cases cleanly to your team.",
+    body: "X1 Voice picks up instantly, no hold time, no voicemail. It takes orders, answers questions, and routes edge cases cleanly to your team.",
   },
   {
     n: "03",
@@ -50,7 +50,7 @@ function DeviceVisual() {
 
           <div className="mt-4 space-y-2">
             {[
-              "1× Large pizza — half pepperoni",
+              "1× Large pizza, half pepperoni",
               "Add ranch on the side",
               "Make it gluten-free",
             ].map((line, i) => (
@@ -99,10 +99,10 @@ export function HowItWorks() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full border border-brand/30 bg-brand/5 px-3 py-1 text-xs font-semibold text-brand">
-            Live in under 24 hours
+            Live in minutes
           </span>
           <h2 className="font-display mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-            From sign-up to answering calls in a day
+            From sign-up to answering calls in minutes
           </h2>
           <p className="mt-3 text-muted-foreground">
             No integrator, no six-week rollout. Connect the tools you already

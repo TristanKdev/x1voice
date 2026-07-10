@@ -2,14 +2,14 @@
  * POS systems X1 Voice can send orders to.
  *
  * Two sources of truth, kept distinct on purpose:
- *  - Direct integrations (Square, Clover, OrderCounter, OrderOut) have
- *    dedicated pages under /integrations — see data/integrations.ts.
- *  - The wider list is reachable via our Deliverect connection.
+ * - Direct integrations (Square, Clover, OrderCounter, OrderOut) have
+ * dedicated pages under /integrations, see data/integrations.ts.
+ * - The wider list is reachable via our Deliverect connection.
  *
  * Presentation rule (do not violate): these are systems we INTEGRATE WITH,
  * never "customers" or "companies that use X1 Voice". Headings that render
  * this list must say works-with/integrates. Wordmarks are rendered as
- * styled text — no fabricated or hotlinked logo assets.
+ * styled text, no fabricated or hotlinked logo assets.
  */
 
 export type PosSystem = {
@@ -120,7 +120,7 @@ export const POS_SYSTEMS: PosSystem[] = [
 export const HIGHLIGHTED_POS = POS_SYSTEMS.filter((p) => p.highlighted)
 
 /**
- * Systems reachable via Deliverect only — everything without a dedicated
+ * Systems reachable via Deliverect only, everything without a dedicated
  * direct-integration page. Surfaces that credit Deliverect (the marquee
  * caption, the FAQ) must draw from this list, not from "everything else",
  * so direct integrations are never misattributed to Deliverect.
