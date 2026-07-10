@@ -3,9 +3,11 @@ import { MenuIcon } from "lucide-react"
 
 import { SITE_NAME } from "@/data/site"
 import { MAIN_NAV } from "@/data/nav"
+import { getAllSolutions } from "@/lib/content/solutions"
+import { getAllComparePages } from "@/lib/content/compare"
 import { Button } from "@/components/ui/button"
 import { Logo } from "@/components/site/logo"
-import { NavPill } from "@/components/site/nav-pill"
+import { MegaNav } from "@/components/site/mega-nav"
 import {
   Sheet,
   SheetContent,
@@ -15,6 +17,14 @@ import {
 } from "@/components/ui/sheet"
 
 export function SiteHeader() {
+  const solutions = getAllSolutions()
+    .slice(0, 6)
+    .map((s) => ({ label: s.restaurantType, href: `/solutions/${s.slug}` }))
+  const compares = getAllComparePages().map((c) => ({
+    label: `vs ${c.competitorName}`,
+    href: `/compare/${c.slug}`,
+  }))
+
   return (
     <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur-md">
       <div className="mx-auto grid h-16 max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-6">
@@ -25,8 +35,10 @@ export function SiteHeader() {
           </Link>
         </div>
 
-        {/* Center: sliding-pill nav */}
-        <NavPill />
+        {/* Center: hover mega-menu nav */}
+        <div className="flex justify-center">
+          <MegaNav solutions={solutions} compares={compares} />
+        </div>
 
         {/* Right: account actions only */}
         <div className="flex items-center justify-end gap-1.5">
