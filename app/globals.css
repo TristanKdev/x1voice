@@ -565,18 +565,26 @@
 /* A band of color that sweeps left-to-right through white text. Used on the
    dark hero headline. Reduced motion → static white. */
 @layer components {
+  /* Two identical colour bands spaced exactly 50% apart over a 200%-wide
+     image; shifting the position by one text-width (-100%) swaps band two
+     into band one's place, so the loop is perfectly seamless. */
   .text-wave {
-    background: linear-gradient(
+    background-image: linear-gradient(
       100deg,
       #ffffff 0%,
-      #ffffff 22%,
-      var(--tech-cyan) 40%,
-      var(--tech-blue) 50%,
-      var(--tech-violet) 60%,
-      #ffffff 78%,
+      #ffffff 8%,
+      var(--tech-cyan) 14%,
+      var(--tech-blue) 18%,
+      var(--tech-violet) 22%,
+      #ffffff 30%,
+      #ffffff 58%,
+      var(--tech-cyan) 64%,
+      var(--tech-blue) 68%,
+      var(--tech-violet) 72%,
+      #ffffff 80%,
       #ffffff 100%
     );
-    background-size: 250% 100%;
+    background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -595,6 +603,6 @@
 
 @keyframes text-wave {
   to {
-    background-position: -250% 0;
+    background-position: -100% 0;
   }
 }

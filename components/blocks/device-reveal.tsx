@@ -1,17 +1,16 @@
 "use client"
 
 import * as React from "react"
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
+import { motion, useReducedMotion } from "motion/react"
 import { CheckIcon, PhoneIncomingIcon } from "lucide-react"
 
 import { ProductDashboardFrame } from "@/components/blocks/product-dashboard"
 
 /**
- * Scroll-scrubbed reveal that carries the dark video hero into a light
- * section: as you scroll, the tablet/dashboard, a phone, and a POS ticket
- * rise and assemble, showing the product in action. A sticky stage inside a
- * tall section, no pinning hacks, so it can't corrupt layout. Reduced-motion
- * visitors get the assembled state, static.
+ * The product, shown immediately below the hero. The dashboard is visible the
+ * moment you reach the section; as it enters view the phone and POS ticket
+ * rise in around it (once, quick). No scroll scrubbing, so nothing is ever
+ * blank on arrival. Reduced-motion visitors get the static assembled state.
  */
 
 function PhoneCard() {
@@ -50,9 +49,18 @@ function PhoneCard() {
 function PosCard() {
   return (
     <div className="w-[210px] rounded-xl border bg-card p-4 shadow-2xl">
-      <p className="text-[10px] font-semibold tracking-widest text-muted-foreground uppercase">
-        POS · New ticket
-      </p>
+      <div className="flex items-center justify-between">
+        <p className="text-[10px] font-semibold tracking-widest text-muted-foreground uppercase">
+          POS · New order
+        </p>
+        <span className="flex items-center gap-1 rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[9px] font-bold text-emerald-600">
+          <span className="relative flex size-1.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500" />
+          </span>
+          NEW
+        </span>
+      </div>
       <div className="mt-3 space-y-2">
         {["1× Large pizza", "½ pepperoni ½ mushroom", "Ranch, side"].map((l, i) => (
           <div key={l} className="flex items-center gap-2 text-xs">
@@ -70,79 +78,62 @@ function PosCard() {
 }
 
 export function DeviceReveal() {
-  const ref = React.useRef<HTMLDivElement>(null)
   const reduced = useReducedMotion()
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  })
 
-  // Staggered rise, front-loaded so the cluster assembles early and then
-  // holds. Hooks must run unconditionally; we ignore them when reduced.
-  const headingY = useTransform(scrollYProgress, [0, 0.08], ["20px", "0px"])
-  const headingOpacity = useTransform(scrollYProgress, [0, 0.05], [0, 1])
-  const tabletY = useTransform(scrollYProgress, [0.03, 0.26], ["34%", "0%"])
-  const tabletOpacity = useTransform(scrollYProgress, [0.03, 0.16], [0, 1])
-  const tabletScale = useTransform(scrollYProgress, [0.03, 0.26], [0.94, 1])
-  const phoneY = useTransform(scrollYProgress, [0.1, 0.32], ["60%", "0%"])
-  const phoneOpacity = useTransform(scrollYProgress, [0.1, 0.24], [0, 1])
-  const posY = useTransform(scrollYProgress, [0.16, 0.38], ["60%", "0%"])
-  const posOpacity = useTransform(scrollYProgress, [0.16, 0.3], [0, 1])
-
-  const s = (
-    y: import("motion/react").MotionValue<string>,
-    o: import("motion/react").MotionValue<number>,
-    scale?: import("motion/react").MotionValue<number>
-  ) => (reduced ? {} : { y, opacity: o, ...(scale ? { scale } : {}) })
+  const rise = (delay: number) =>
+    reduced
+      ? {}
+      : {
+          initial: { opacity: 0, y: 28 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, amount: 0.3 },
+          transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] as const },
+        }
 
   return (
-    <section id="in-action" ref={ref} className="relative h-[135vh] scroll-mt-16 bg-background">
-      {/* seam from the dark hero into white */}
+    <section
+      id="in-action"
+      className="relative scroll-mt-16 overflow-hidden bg-background pt-28 pb-24 sm:pt-32 sm:pb-28"
+    >
+      {/* soft blurred seam: dark hero fading into white */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-band to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-band via-band/45 to-transparent blur-[2px]"
       />
-      <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden px-6">
-        <div aria-hidden className="tech-grid absolute inset-0 opacity-60 [mask-image:radial-gradient(100%_70%_at_50%_40%,black,transparent)]" />
-        <div aria-hidden className="tech-glow absolute top-1/3 left-1/2 h-72 w-[36rem] max-w-none -translate-x-1/2" />
+      {/* soft blurred seam: white fading back into the dark section below */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-band via-band/40 to-transparent blur-[2px]"
+      />
+      <div aria-hidden className="tech-grid absolute inset-0 opacity-50 [mask-image:radial-gradient(100%_60%_at_50%_40%,black,transparent)]" />
+      <div aria-hidden className="tech-glow absolute top-1/3 left-1/2 h-72 w-[36rem] max-w-none -translate-x-1/2" />
 
-        <motion.div
-          style={reduced ? {} : { y: headingY, opacity: headingOpacity }}
-          className="relative z-10 mb-8 max-w-2xl text-center"
-        >
-          <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
-            One call. It answers, takes it, and shows you everything.
+      <div className="relative mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="inline-flex items-center rounded-full border border-brand/30 bg-brand/5 px-3 py-1 text-xs font-semibold text-brand">
+            Live order
+          </span>
+          <h2 className="font-display mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+            Watch it work
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Scroll to watch a live order move from the phone, into the POS, onto
-            your dashboard.
+            One order, from the ring to the kitchen.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="relative z-10 flex w-full max-w-5xl items-end justify-center">
+        <div className="relative mt-14 flex items-end justify-center">
           {/* Phone, front left */}
-          <motion.div
-            style={s(phoneY, phoneOpacity)}
-            className="relative z-20 -mr-8 hidden translate-y-6 sm:block"
-          >
+          <motion.div {...rise(0.12)} className="relative z-20 -mr-8 hidden translate-y-6 sm:block">
             <PhoneCard />
           </motion.div>
 
-          {/* Tablet / dashboard, center */}
-          <motion.div
-            style={s(tabletY, tabletOpacity, tabletScale)}
-            className="relative z-10 w-full max-w-3xl"
-          >
-            <div className="scale-[0.92] sm:scale-100">
-              <ProductDashboardFrame />
-            </div>
+          {/* Dashboard, center, visible immediately */}
+          <motion.div {...rise(0)} className="relative z-10 w-full max-w-3xl">
+            <ProductDashboardFrame />
           </motion.div>
 
-          {/* POS ticket, front right */}
-          <motion.div
-            style={s(posY, posOpacity)}
-            className="relative z-20 -ml-8 hidden translate-y-2 lg:block"
-          >
+          {/* POS new order, front right */}
+          <motion.div {...rise(0.24)} className="relative z-20 -ml-8 hidden translate-y-2 lg:block">
             <PosCard />
           </motion.div>
         </div>

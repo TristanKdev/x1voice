@@ -98,7 +98,8 @@ export function PlansSection() {
         </div>
 
         <p className="mt-8 text-center text-sm text-muted-foreground">
-          Need something between Starter and Enterprise?{" "}
+          Each plan includes monthly minutes; usage past that is billed per
+          minute. Need something between Starter and Enterprise?{" "}
           <Link href="/pricing" className="font-semibold text-brand hover:underline">
             See all plans and minute options
           </Link>

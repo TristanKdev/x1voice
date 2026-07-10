@@ -13,6 +13,8 @@ import {
   UtensilsIcon,
 } from "lucide-react"
 
+import { LiveCounter } from "@/components/blocks/live-counter"
+
 /**
  * Product dashboard preview, mirrors the real X1 Voice operator dashboard
  * (orange brand, sidebar, KPI cards, revenue trend + order sources, live
@@ -38,10 +40,19 @@ const NAV = [
   { icon: SettingsIcon, label: "Settings" },
 ]
 
-const KPIS = [
-  { icon: DollarSignIcon, label: "Revenue", value: "$21,450", sub: "+31% vs prev period", tint: "#12b76a" },
-  { icon: ShoppingCartIcon, label: "Orders", value: "947", sub: "$22.65 avg per order", tint: "#3b82f6" },
-  { icon: PhoneIcon, label: "Voice AI Calls", value: "1,284", sub: "74% conversion rate", tint: "#8b5cf6" },
+type Kpi = {
+  icon: typeof DollarSignIcon
+  label: string
+  sub: string
+  tint: string
+  value?: string
+  live?: { base: number; prefix?: string; min: number; max: number; everyMs: number }
+}
+
+const KPIS: Kpi[] = [
+  { icon: DollarSignIcon, label: "Revenue", sub: "+31% vs prev period", tint: "#12b76a", live: { base: 21450, prefix: "$", min: 12, max: 70, everyMs: 2200 } },
+  { icon: ShoppingCartIcon, label: "Orders", sub: "$22.65 avg per order", tint: "#3b82f6", live: { base: 947, min: 1, max: 2, everyMs: 4200 } },
+  { icon: PhoneIcon, label: "Voice AI Calls", sub: "74% conversion rate", tint: "#8b5cf6", live: { base: 1284, min: 1, max: 3, everyMs: 3000 } },
   { icon: TrendingUpIcon, label: "Conversion Rate", value: "74%", sub: "+14% ticket lift", tint: ACCENT },
 ]
 
@@ -202,7 +213,19 @@ export function ProductDashboardFrame() {
                     <k.icon className="size-3.5" style={{ color: k.tint }} />
                   </span>
                 </div>
-                <p className="font-display mt-1.5 text-xl font-bold tracking-tight">{k.value}</p>
+                <p className="font-display mt-1.5 text-xl font-bold tracking-tight">
+                  {k.live ? (
+                    <LiveCounter
+                      base={k.live.base}
+                      prefix={k.live.prefix}
+                      min={k.live.min}
+                      max={k.live.max}
+                      everyMs={k.live.everyMs}
+                    />
+                  ) : (
+                    k.value
+                  )}
+                </p>
                 <p className="mt-0.5 text-[11px] text-band-muted">{k.sub}</p>
               </div>
             ))}
@@ -248,7 +271,9 @@ export function ProductDashboardFrame() {
                   Live
                 </span>
               </div>
-              <p className="font-display mt-1 text-3xl font-bold tracking-tight">249</p>
+              <p className="font-display mt-1 text-3xl font-bold tracking-tight">
+                <LiveCounter base={249} min={1} max={4} everyMs={1900} fluctuate clampLow={242} clampHigh={310} />
+              </p>
               <div className="mt-3 space-y-1.5">
                 {ORDERS.map((o) => (
                   <div

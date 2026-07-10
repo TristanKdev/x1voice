@@ -1,15 +1,14 @@
 import Link from "next/link"
-import { ArrowRightIcon } from "lucide-react"
+import { ArrowRightIcon, ClockIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { POS_BRANDS } from "@/components/blocks/pos-logos"
 import { PosLockup } from "@/components/blocks/pos-lockup"
+import { EXAMPLE_LANGUAGES } from "@/data/languages"
 
 /**
  * "What makes us different" bento. Each cell carries a small custom visual
  * (not a generic icon in a box) so the grid reads as designed, not templated.
- * Copy is the differentiation vs. the rest of the field: the whole job,
- * transparent pricing, live in a day, deep POS.
  */
 
 function Cell({
@@ -17,17 +16,25 @@ function Cell({
   title,
   body,
   visual,
+  link,
+  cta,
+  highlight,
 }: {
   className?: string
   title: string
   body: string
   visual: React.ReactNode
+  link?: { label: string; href: string }
+  cta?: { label: string; href: string }
+  highlight?: boolean
 }) {
   return (
     <div
       className={cn(
-        "group relative flex flex-col justify-between overflow-hidden rounded-2xl border bg-card p-6 transition-all duration-300",
-        "hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-[0_16px_50px_-20px_color-mix(in_srgb,var(--color-brand)_35%,transparent)]",
+        "group relative flex flex-col justify-between overflow-hidden rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-0.5",
+        highlight
+          ? "border-brand/50 bg-gradient-to-br from-brand/10 to-brand/[0.02] hover:border-brand"
+          : "bg-card hover:border-brand/30 hover:shadow-[0_16px_50px_-20px_color-mix(in_srgb,var(--color-brand)_35%,transparent)]",
         className
       )}
     >
@@ -35,6 +42,23 @@ function Cell({
       <div>
         <h3 className="font-semibold tracking-tight">{title}</h3>
         <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{body}</p>
+        {link && (
+          <Link
+            href={link.href}
+            className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand hover:underline"
+          >
+            {link.label}
+            <ArrowRightIcon className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        )}
+        {cta && (
+          <Link
+            href={cta.href}
+            className="mt-4 inline-flex h-10 items-center justify-center rounded-full bg-brand px-6 text-sm font-semibold text-brand-foreground transition hover:bg-brand-bright"
+          >
+            {cta.label}
+          </Link>
+        )}
       </div>
     </div>
   )
@@ -43,7 +67,7 @@ function Cell({
 /* ---- small custom visuals ------------------------------------------- */
 
 function WholeJobVisual() {
-  const steps = ["Answers", "Takes order", "Takes payment", "Fires to POS"]
+  const steps = ["Answers", "Takes order", "Takes payment", "Fires to POS", "Texts updates"]
   return (
     <div className="flex w-full flex-wrap items-center gap-2">
       {steps.map((s, i) => (
@@ -51,9 +75,7 @@ function WholeJobVisual() {
           <span className="rounded-lg border bg-secondary/60 px-2.5 py-1 text-xs font-medium">
             {s}
           </span>
-          {i < steps.length - 1 && (
-            <span className="text-brand/50">›</span>
-          )}
+          {i < steps.length - 1 && <span className="text-brand/50">›</span>}
         </span>
       ))}
     </div>
@@ -72,11 +94,14 @@ function PriceVisual() {
 function SpeedVisual() {
   return (
     <div className="flex items-center gap-3">
+      <span className="flex size-11 shrink-0 items-center justify-center rounded-full border border-brand/20 bg-brand/5 text-brand">
+        <ClockIcon className="size-5" strokeWidth={1.75} />
+      </span>
       <span className="font-display text-3xl font-bold tracking-tight text-brand">
-        &lt;24h
+        Minutes
       </span>
       <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-secondary">
-        <div className="h-full w-[85%] rounded-full bg-gradient-to-r from-brand to-brand-bright" />
+        <div className="h-full w-[88%] rounded-full bg-gradient-to-r from-brand to-brand-bright" />
       </div>
     </div>
   )
@@ -94,13 +119,13 @@ function PosVisual() {
 
 function LangVisual() {
   return (
-    <div className="flex items-center gap-2">
-      {["EN", "ES", "+"].map((l) => (
+    <div className="flex flex-wrap gap-1.5">
+      {EXAMPLE_LANGUAGES.map((l) => (
         <span
-          key={l}
-          className="flex size-9 items-center justify-center rounded-full border bg-secondary/60 text-xs font-bold"
+          key={l.name}
+          className="rounded-full border bg-secondary/60 px-2.5 py-1 text-xs font-medium"
         >
-          {l}
+          {l.native}
         </span>
       ))}
     </div>
@@ -135,7 +160,7 @@ export function BentoFeatures() {
           <Cell
             className="lg:col-span-2"
             title="It doesn't just answer, it finishes the order"
-            body="Answering is the easy part. X1 Voice takes the full order with modifiers, collects payment, and fires a clean ticket to your POS. One agent, the entire call."
+            body="X1 Voice takes the full order with modifiers, collects payment, fires a clean ticket to your POS, and texts the customer as the status changes, confirmed, in the kitchen, ready. One agent, the whole call."
             visual={<WholeJobVisual />}
           />
           <Cell
@@ -144,9 +169,11 @@ export function BentoFeatures() {
             visual={<AlwaysOnVisual />}
           />
           <Cell
+            highlight
             title="Priced in the open"
             body="$250/mo including 750 minutes, no setup fee, no contract. Most of the field won't quote a number without a sales call."
             visual={<PriceVisual />}
+            cta={{ label: "Sign up", href: "/contact" }}
           />
           <Cell
             className="lg:col-span-2"
@@ -156,14 +183,15 @@ export function BentoFeatures() {
           />
           <Cell
             className="lg:col-span-2"
-            title="Live in under 24 hours"
+            title="Live in minutes"
             body="Connect your POS, import your menu, set your greeting, test, go live, the same shift. White-glove setup if you'd rather we do it."
             visual={<SpeedVisual />}
           />
           <Cell
             title="Speaks your customer's language"
-            body="Detects and answers in the caller's language, English, Spanish, and more, while the ticket stays in the format your kitchen reads."
+            body="Detects and answers in the caller's language while the ticket stays in the format your kitchen reads."
             visual={<LangVisual />}
+            link={{ label: "See full language list", href: "/languages" }}
           />
         </div>
 

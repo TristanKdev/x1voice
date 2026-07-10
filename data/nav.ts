@@ -18,6 +18,7 @@ export const MAIN_NAV: NavLink[] = [
 export const FOOTER_COMPANY: NavLink[] = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+  { label: "Support", href: "/support" },
   { label: "Blog", href: "/blog" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },

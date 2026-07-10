@@ -26,7 +26,7 @@ export function DemoCall() {
           Hear it in action
         </span>
         <h2 className="font-display mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
-          Call the demo line. Talk to it yourself.
+          Words don&rsquo;t do it justice. Hear it yourself.
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-band-muted">
           No scripted video, no sales rep. Pick up your phone, call the number
@@ -86,7 +86,7 @@ export function DemoCall() {
             <a href="/privacy" className="underline underline-offset-2 hover:text-band-foreground">
               Privacy Policy
             </a>{" "}
-            for details.
+            for details. Terms and conditions apply.
           </span>
         </p>
       </div>

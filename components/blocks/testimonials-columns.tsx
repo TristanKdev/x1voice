@@ -3,38 +3,50 @@
 import * as React from "react"
 import { motion } from "motion/react"
 
-import { TESTIMONIALS, type Testimonial } from "@/data/site"
+import { REVIEWS, type Review } from "@/data/site"
 
 /**
- * Vertical auto-scrolling testimonial columns spanning the full width. Uses
- * the real, anonymized customer reviews from data/site.ts (initials avatars,
- * no fabricated photos). Reduced-motion visitors get a static grid.
+ * Full-width wall of auto-scrolling reviews. Three columns at different
+ * speeds and directions, each a seamless infinite loop. Initials avatars,
+ * no fabricated photos. Reduced-motion visitors get a static grid.
+ *
+ * Content note: only the verified reviews are real; the rest are illustrative
+ * samples (see data/site.ts REVIEWS) and must be replaced before launch.
  */
 
-function Card({ t }: { t: Testimonial }) {
+function Card({ r }: { r: Review }) {
   return (
     <figure className="w-full rounded-2xl border bg-card p-6 shadow-sm">
-      <blockquote className="leading-relaxed">&ldquo;{t.quote}&rdquo;</blockquote>
+      <blockquote className="leading-relaxed">&ldquo;{r.quote}&rdquo;</blockquote>
       <figcaption className="mt-5 flex items-center gap-3">
         <span className="flex size-9 items-center justify-center rounded-full bg-brand/10 text-xs font-bold text-brand">
-          {t.initials}
+          {r.initials.slice(0, 2).toUpperCase()}
         </span>
-        <span className="text-sm font-medium">{t.roleLabel}</span>
+        <span className="text-sm font-medium">{r.role}</span>
       </figcaption>
     </figure>
   )
 }
 
-function Column({ items, duration }: { items: Testimonial[]; duration: number }) {
+function Column({
+  items,
+  duration,
+  direction,
+}: {
+  items: Review[]
+  duration: number
+  direction: "up" | "down"
+}) {
+  const y = direction === "down" ? ["-50%", "0%"] : ["0%", "-50%"]
   return (
     <div className="[mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
       <motion.div
         className="flex flex-col gap-5"
-        animate={{ y: ["0%", "-50%"] }}
+        animate={{ y }}
         transition={{ duration, repeat: Infinity, ease: "linear", repeatType: "loop" }}
       >
-        {[...items, ...items, ...items, ...items].map((t, i) => (
-          <Card key={i} t={t} />
+        {[...items, ...items].map((r, i) => (
+          <Card key={i} r={r} />
         ))}
       </motion.div>
     </div>
@@ -52,11 +64,10 @@ export function TestimonialsColumns() {
     () => false
   )
 
-  const verified = TESTIMONIALS.filter((t) => t.verified)
   const cols = [
-    verified.filter((_, i) => i % 3 === 0),
-    verified.filter((_, i) => i % 3 === 1),
-    verified.filter((_, i) => i % 3 === 2),
+    REVIEWS.filter((_, i) => i % 3 === 0),
+    REVIEWS.filter((_, i) => i % 3 === 1),
+    REVIEWS.filter((_, i) => i % 3 === 2),
   ]
 
   return (
@@ -66,26 +77,26 @@ export function TestimonialsColumns() {
           Operators love it
         </span>
         <h2 className="font-display mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-          The phone stopped being a problem
+          Even the skeptics came around
         </h2>
         <p className="mt-3 text-muted-foreground">
-          Real customer feedback, lightly edited for spelling and clarity.
+          What operators say once the phone stops being their problem.
         </p>
       </div>
 
       <div className="mx-auto mt-14 max-w-7xl px-6">
         {reduced ? (
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {verified.map((t) => (
-              <Card key={t.quote} t={t} />
+            {REVIEWS.slice(0, 9).map((r) => (
+              <Card key={r.quote} r={r} />
             ))}
           </div>
         ) : (
-          <div className="grid h-[32rem] grid-cols-1 items-start gap-5 overflow-hidden sm:grid-cols-2 lg:grid-cols-3">
-            <Column items={cols[0]} duration={28} />
-            <Column items={cols[1]} duration={34} />
+          <div className="grid h-[34rem] grid-cols-1 items-start gap-5 overflow-hidden sm:grid-cols-2 lg:grid-cols-3">
+            <Column items={cols[0]} duration={40} direction="up" />
+            <Column items={cols[1]} duration={30} direction="down" />
             <div className="hidden lg:block">
-              <Column items={cols[2]} duration={30} />
+              <Column items={cols[2]} duration={48} direction="up" />
             </div>
           </div>
         )}
