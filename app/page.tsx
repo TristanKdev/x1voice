@@ -1,79 +1,88 @@
 import Link from "next/link"
-import { ArrowRightIcon } from "lucide-react"
 
-import { CinematicHero } from "@/components/blocks/cinematic-hero"
-import { TypeMarquee } from "@/components/blocks/type-marquee"
-import { VoiceDemo } from "@/components/blocks/voice-demo"
+import { HeroVideo } from "@/components/blocks/hero-video"
+import { DeviceReveal } from "@/components/blocks/device-reveal"
+import { StatMolten } from "@/components/blocks/stat-molten"
+import { RoiCalculator } from "@/components/blocks/roi-calculator"
+import { HowItWorks } from "@/components/blocks/how-it-works"
 import { BentoFeatures } from "@/components/blocks/bento-features"
+import { DeliverectFlow } from "@/components/blocks/deliverect-flow"
 import { PosGrid } from "@/components/blocks/pos-grid"
-import { PosMarquee } from "@/components/blocks/pos-marquee"
-import { TestimonialMarquee } from "@/components/blocks/testimonial-marquee"
-import { PricingSection } from "@/components/blocks/pricing-section"
+import { VoiceComparison } from "@/components/blocks/voice-comparison"
+import { TestimonialsColumns } from "@/components/blocks/testimonials-columns"
+import { PlansSection } from "@/components/blocks/plans-section"
 import { FaqAccordion } from "@/components/blocks/faq-accordion"
-import { CtaSection } from "@/components/blocks/cta-section"
+import { DemoCall } from "@/components/blocks/demo-call"
+import { Reveal } from "@/components/blocks/reveal"
 import { JsonLd } from "@/components/seo/json-ld"
 import { buildFaqJsonLd } from "@/lib/seo/jsonld"
-import { Button } from "@/components/ui/button"
 import { HOME_FAQS } from "@/data/site"
 
 export default function Home() {
   return (
     <>
-      <CinematicHero />
+      <HeroVideo />
+      <DeviceReveal />
 
-      <TypeMarquee />
+      <Reveal>
+        <StatMolten />
+      </Reveal>
+      <Reveal>
+        <RoiCalculator />
+      </Reveal>
+      <Reveal>
+        <HowItWorks />
+      </Reveal>
+      <Reveal>
+        <BentoFeatures />
+      </Reveal>
+      <Reveal>
+        <DeliverectFlow />
+      </Reveal>
+      <Reveal>
+        <PosGrid />
+      </Reveal>
+      <Reveal>
+        <VoiceComparison limit={8} />
+      </Reveal>
+      <Reveal>
+        <TestimonialsColumns />
+      </Reveal>
+      <Reveal>
+        <PlansSection />
+      </Reveal>
 
-      <VoiceDemo />
+      {/* "Words don't do it justice, hear it yourself" sits right above the FAQ */}
+      <Reveal>
+        <DemoCall />
+      </Reveal>
 
-      {/* Sourced missed-calls stat now lives inside the bento grid. */}
-      <BentoFeatures />
-
-      <PosGrid />
-
-      <section className="pb-8">
-        <PosMarquee />
-      </section>
-
-      <TestimonialMarquee />
-
-      <PricingSection />
-
-      <section className="border-t bg-muted/20">
-        <div className="mx-auto max-w-4xl px-6 py-16 text-center">
-          <h2 className="text-2xl font-display font-semibold">
-            Built for how your restaurant actually runs
-          </h2>
-          <p className="mt-3 text-muted-foreground">
-            A pizzeria&apos;s phone problems look nothing like a fine-dining
-            room&apos;s. See what changes for your kind of restaurant.
-          </p>
-          <Button
-            variant="outline"
-            className="mt-6 gap-2 rounded-full px-5"
-            nativeButton={false}
-            render={
-              <Link href="/solutions">
-                Browse solutions by restaurant type
-                <ArrowRightIcon className="size-4" />
-              </Link>
-            }
-          />
-        </div>
-      </section>
-
-      <section className="border-t">
-        <div className="mx-auto max-w-3xl px-6 py-20">
-          <JsonLd data={buildFaqJsonLd(HOME_FAQS)} />
-          <h2 className="text-center text-3xl font-display font-semibold">
-            Frequently asked questions
-          </h2>
-          <div className="mt-10">
-            <FaqAccordion faqs={HOME_FAQS} />
+      <Reveal>
+        <section id="faq" className="scroll-mt-20 border-t">
+          <div className="mx-auto max-w-3xl px-6 py-20">
+            <JsonLd data={buildFaqJsonLd(HOME_FAQS)} />
+            <div className="text-center">
+              <h2 className="font-display text-3xl font-semibold tracking-tight">
+                Frequently asked questions
+              </h2>
+              <p className="mt-3 text-muted-foreground">
+                Still have questions?{" "}
+                <Link href="/#see-it" className="font-semibold text-brand hover:underline">
+                  Hear it in action
+                </Link>{" "}
+                and ask it anything, or{" "}
+                <Link href="/support" className="font-semibold text-brand hover:underline">
+                  reach support
+                </Link>
+                .
+              </p>
+            </div>
+            <div className="mt-10">
+              <FaqAccordion faqs={HOME_FAQS} />
+            </div>
           </div>
-        </div>
-      </section>
-
-      <CtaSection />
+        </section>
+      </Reveal>
     </>
   )
 }

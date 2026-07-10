@@ -28,6 +28,11 @@ const PRICING_FAQS = [
       "No long-term contract on Starter, Professional, or Business, and you can cancel anytime. Enterprise plans are custom, so contract terms there are negotiable based on your rollout.",
   },
   {
+    question: "What's actually different between the plans?",
+    answer:
+      "Only two things: the number of minutes included each month and the per-minute rate once you go past them. Every feature, 24/7 answering, order-taking with POS sync, phone payments, SMS status updates, multilingual answering, menu training, and the analytics dashboard, is included on every plan, Starter through Enterprise.",
+  },
+  {
     question: "Can I change plans later?",
     answer:
       "Yes. You can move between Starter, Professional, and Business as your call volume changes. Multi-location groups that outgrow Business can move to a custom Enterprise plan whenever it makes sense.",
@@ -35,7 +40,7 @@ const PRICING_FAQS = [
   {
     question: "What happens if I go over my included minutes?",
     answer:
-      "Each plan includes a set number of minutes per month, from 500 on Starter up to 6,000 on Business. If you're consistently running over, we'll reach out to help you move to a plan sized for your actual call volume rather than billing surprise overage fees.",
+      "Included minutes run from 750 on Starter up to 6,000 on Business. Once you pass them, extra minutes are billed at your plan's per-minute rate, $0.35 on Starter, $0.30 on Professional, $0.25 on Business, so a heavier plan lowers your overage rate. If you're consistently running over, we'll help you move to a plan sized for your call volume.",
   },
   {
     question: "Do you offer a discount for paying annually?",

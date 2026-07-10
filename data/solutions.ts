@@ -13,7 +13,7 @@ export type SolutionPage = {
   restaurantType: string
   heroHeadline: string
   heroSubhead: string
-  /** Min 3 — must reflect the actual operational reality of this restaurant type, not boilerplate. */
+  /** Min 3, must reflect the actual operational reality of this restaurant type, not boilerplate. */
   painPoints: PainPoint[]
   /** Concrete, type-specific capabilities (e.g. half-and-half pizza logic, VIP recognition for fine dining). */
   features: PainPoint[]
@@ -25,7 +25,7 @@ export type SolutionPage = {
 
 /**
  * 11 restaurant-type solution pages. Each entry must be genuinely
- * differentiated — the pre-rebuild audit found this page family was the one
+ * differentiated, the pre-rebuild audit found this page family was the one
  * bright spot on the old site (real per-type pain points), so the bar here
  * is to preserve and extend that, not template it out.
  */

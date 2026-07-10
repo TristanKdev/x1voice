@@ -8,6 +8,9 @@ import {
   annualMonthlyPrice,
   MAX_ANNUAL_DISCOUNT_PCT,
   PRICING_TIERS,
+  SHARED_FEATURES,
+  minutesLabel,
+  overageLabel,
 } from "@/data/pricing"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -79,12 +82,15 @@ export function PricingTable() {
                   </>
                 )}
               </div>
-              <p className="mt-1 text-xs text-muted-foreground">
-                {tier.minutesIncluded}
+              <p className="mt-1 text-xs font-medium text-foreground">
+                {minutesLabel(tier)}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {overageLabel(tier)}
               </p>
 
               <ul className="mt-6 flex-1 space-y-2.5 text-sm">
-                {tier.features.map((f) => (
+                {SHARED_FEATURES.map((f) => (
                   <li key={f} className="flex items-start gap-2">
                     <CheckIcon className="mt-0.5 size-4 shrink-0 text-brand" />
                     <span>{f}</span>
@@ -104,7 +110,8 @@ export function PricingTable() {
       </div>
 
       <p className="mt-6 text-center text-xs text-muted-foreground">
-        No setup fees. No long-term contract. Cancel anytime.
+        Every plan includes the same features. Only the included minutes and the
+        per-minute overage rate change. No setup fees, no contract, cancel anytime.
       </p>
     </div>
   )

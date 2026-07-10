@@ -7,7 +7,7 @@ import {
 import type { Faq } from "@/data/solutions"
 
 /**
- * Doubles as the on-page AEO Q&A surface — direct-answer-first content that
+ * Doubles as the on-page AEO Q&A surface, direct-answer-first content that
  * answer engines can extract, and the same `faqs` array feeds FAQPage
  * JSON-LD via lib/seo/jsonld.ts's buildFaqJsonLd().
  */

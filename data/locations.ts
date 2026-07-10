@@ -26,14 +26,14 @@ export type LocationPage = {
   /** Min 3, feeds FAQPage JSON-LD. */
   localFaqs: Faq[]
   metaDescription: string
-  /** ISO date — shown on-page as "Data updated as of …". */
+  /** ISO date, shown on-page as "Data updated as of …". */
   updatedAt: string
 }
 
 /**
  * Quality-gated subset of the old 47 near-identical city pages (down to a
  * ceiling of ~10-12). A dedicated page ships ONLY for a city that can
- * honestly fill every required field above — ship fewer if fewer qualify.
+ * honestly fill every required field above, ship fewer if fewer qualify.
  * Cities without a dedicated page still appear in the /locations hub list.
  */
 export const locations: LocationPage[] = [
@@ -41,7 +41,7 @@ export const locations: LocationPage[] = [
     slug: "austin-tx",
     city: "Austin",
     stateAbbr: "TX",
-    metroArea: "Austin–Round Rock Metro",
+    metroArea: "Austin, Round Rock Metro",
     timezone: "America/Chicago",
     population: 980000,
     populationSource: { label: "U.S. Census Bureau", asOf: "2024" },
@@ -102,7 +102,7 @@ export const locations: LocationPage[] = [
     slug: "nashville-tn",
     city: "Nashville",
     stateAbbr: "TN",
-    metroArea: "Nashville–Davidson Metro",
+    metroArea: "Nashville, Davidson Metro",
     timezone: "America/Chicago",
     population: 684000,
     populationSource: { label: "U.S. Census Bureau", asOf: "2024" },
@@ -762,7 +762,7 @@ export const locations: LocationPage[] = [
   },
 ]
 
-/** Full coverage list for the /locations hub — includes cities with no dedicated page. */
+/** Full coverage list for the /locations hub, includes cities with no dedicated page. */
 export const allServedCities: { city: string; stateAbbr: string }[] = [
   { city: "Austin", stateAbbr: "TX" },
   { city: "Nashville", stateAbbr: "TN" },

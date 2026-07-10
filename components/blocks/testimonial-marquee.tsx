@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card"
 import { TESTIMONIALS } from "@/data/site"
 
 /**
- * Real customer feedback only — TESTIMONIALS in data/site.ts carries a
+ * Real customer feedback only, TESTIMONIALS in data/site.ts carries a
  * `verified` flag and quotes are anonymized (names withheld on purpose).
  * This component must never render invented quotes or attributions.
  */
@@ -21,7 +21,7 @@ export function TestimonialMarquee() {
           </h2>
           <p className="mt-4 text-muted-foreground">
             Real customer feedback, lightly edited for spelling and clarity.
-            Names withheld — we&rsquo;d rather anonymize than invent.
+            Names withheld, we&rsquo;d rather anonymize than invent.
           </p>
         </div>
 

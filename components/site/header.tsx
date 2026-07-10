@@ -3,10 +3,11 @@ import { MenuIcon } from "lucide-react"
 
 import { SITE_NAME } from "@/data/site"
 import { MAIN_NAV } from "@/data/nav"
+import { getAllSolutions } from "@/lib/content/solutions"
+import { getAllComparePages } from "@/lib/content/compare"
 import { Button } from "@/components/ui/button"
 import { Logo } from "@/components/site/logo"
-import { ModeToggle } from "@/components/site/mode-toggle"
-import { DemoDialog } from "@/components/blocks/demo-dialog"
+import { MegaNav } from "@/components/site/mega-nav"
 import {
   Sheet,
   SheetContent,
@@ -16,36 +17,42 @@ import {
 } from "@/components/ui/sheet"
 
 export function SiteHeader() {
+  const solutions = getAllSolutions()
+    .slice(0, 6)
+    .map((s) => ({ label: s.restaurantType, href: `/solutions/${s.slug}` }))
+  const compares = getAllComparePages().map((c) => ({
+    label: `vs ${c.competitorName}`,
+    href: `/compare/${c.slug}`,
+  }))
+
   return (
     <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Link href="/" aria-label={SITE_NAME}>
-          <Logo />
-        </Link>
+      <div className="mx-auto grid h-16 max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-6">
+        {/* Left: logo */}
+        <div className="flex justify-start">
+          <Link href="/" aria-label={SITE_NAME}>
+            <Logo />
+          </Link>
+        </div>
 
-        <nav className="hidden items-center gap-6 text-sm md:flex">
-          {MAIN_NAV.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        {/* Center: hover mega-menu nav */}
+        <div className="flex justify-center">
+          <MegaNav solutions={solutions} compares={compares} />
+        </div>
 
-        <div className="flex items-center gap-2">
-          <ModeToggle />
+        {/* Right: account actions only */}
+        <div className="flex items-center justify-end gap-1.5">
           <Button
             variant="ghost"
             className="hidden sm:inline-flex"
             nativeButton={false}
             render={<Link href="/login">Log in</Link>}
           />
-          <DemoDialog className="hidden rounded-full px-5 sm:inline-flex">
-            Book a demo
-          </DemoDialog>
+          <Button
+            className="hidden rounded-full bg-brand px-5 text-brand-foreground hover:bg-brand-bright sm:inline-flex"
+            nativeButton={false}
+            render={<Link href="/contact">Get started</Link>}
+          />
 
           <Sheet>
             <SheetTrigger
@@ -68,10 +75,13 @@ export function SiteHeader() {
                     {link.label}
                   </Link>
                 ))}
-                <Link
-                  href="/login"
-                  className="rounded-md px-2 py-2.5 text-sm hover:bg-muted"
-                >
+                <Link href="/#see-it" className="rounded-md px-2 py-2.5 text-sm hover:bg-muted">
+                  Hear a demo
+                </Link>
+                <Link href="/support" className="rounded-md px-2 py-2.5 text-sm hover:bg-muted">
+                  Support
+                </Link>
+                <Link href="/login" className="rounded-md px-2 py-2.5 text-sm hover:bg-muted">
                   Log in
                 </Link>
               </nav>

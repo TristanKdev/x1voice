@@ -14,13 +14,13 @@ const contactFormSchema = z.object({
   name: z.string().min(2, "Enter your name."),
   email: z.email("Enter a valid email address."),
   restaurantName: z.string().min(2, "Enter your restaurant's name."),
-  message: z.string().min(10, "Tell us a bit more — at least 10 characters."),
+  message: z.string().min(10, "Tell us a bit more, at least 10 characters."),
 })
 
 type ContactFormValues = z.infer<typeof contactFormSchema>
 
 /**
- * Real, client-validated contact form — the old site's /contact page had
+ * Real, client-validated contact form, the old site's /contact page had
  * only mailto/tel links and nothing else, which the pre-rebuild audit
  * flagged on its own. Submits to app/api/contact/route.ts, which validates
  * the payload again server-side but does not send email yet (see that
