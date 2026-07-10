@@ -57,8 +57,9 @@ export function PosGrid() {
             Works with the POS you already run
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Orders land in your register as normal tickets, directly, or
-            through our {POS_VIA} connection. No new hardware, no double entry.
+            Native with Square and OrderCounter; everything else lands through
+            our {POS_VIA} connection. Orders arrive as normal tickets, no new
+            hardware, no double entry.
           </p>
         </div>
 

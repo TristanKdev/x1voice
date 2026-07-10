@@ -52,6 +52,11 @@ export default function Home() {
         <PlansSection />
       </Reveal>
 
+      {/* "Words don't do it justice, hear it yourself" sits right above the FAQ */}
+      <Reveal>
+        <DemoCall />
+      </Reveal>
+
       <Reveal>
         <section id="faq" className="scroll-mt-20 border-t">
           <div className="mx-auto max-w-3xl px-6 py-20">
@@ -78,9 +83,6 @@ export default function Home() {
           </div>
         </section>
       </Reveal>
-
-      {/* "Words don't do it justice, hear it yourself" closes the page */}
-      <DemoCall />
     </>
   )
 }

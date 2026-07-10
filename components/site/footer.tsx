@@ -1,9 +1,8 @@
 import Link from "next/link"
-import { PhoneCallIcon } from "lucide-react"
 
 import { Logo } from "@/components/site/logo"
 import { BackToTop } from "@/components/site/back-to-top"
-import { SITE_NAME, DEMO_LINE } from "@/data/site"
+import { SITE_NAME } from "@/data/site"
 import { FOOTER_COMPANY, FOOTER_PRODUCT } from "@/data/nav"
 import { getAllSolutions } from "@/lib/content/solutions"
 import { getAllComparePages } from "@/lib/content/compare"
@@ -22,34 +21,7 @@ export function SiteFooter() {
     <footer className="relative overflow-hidden border-t bg-band text-band-foreground">
       <div aria-hidden className="tech-grid-dark absolute inset-0 opacity-40" />
 
-      {/* Closing CTA */}
-      <div className="relative mx-auto max-w-6xl px-6 pt-20 pb-14">
-        <div className="flex flex-col items-start justify-between gap-8 border-b border-band-border pb-14 md:flex-row md:items-end">
-          <div>
-            <h2 className="font-display max-w-xl text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
-              Ready to stop missing calls?
-            </h2>
-            <p className="mt-3 max-w-md text-band-muted">
-              Call the demo line and hear it yourself, or book time with the team.
-            </p>
-          </div>
-          <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
-            <a
-              href={`tel:${DEMO_LINE.tel}`}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand px-7 text-sm font-semibold text-brand-foreground transition hover:bg-brand-bright"
-            >
-              <PhoneCallIcon className="size-4" />
-              Call the demo line
-            </a>
-            <Link
-              href="/contact"
-              className="inline-flex h-12 items-center justify-center rounded-full border border-band-border bg-white/5 px-7 text-sm font-semibold backdrop-blur-sm transition hover:bg-white/10"
-            >
-              Book a demo
-            </Link>
-          </div>
-        </div>
-
+      <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-14">
         {/* Link columns */}
         <div className="grid grid-cols-2 gap-8 py-14 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">

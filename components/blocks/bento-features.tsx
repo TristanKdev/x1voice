@@ -90,7 +90,7 @@ function PriceVisual() {
         <span className="text-sm text-muted-foreground">/mo · 750 min</span>
       </div>
       <p className="mt-1.5 text-xs text-muted-foreground">
-        then $0.15/min · every feature included
+        then $0.35/min · every feature included
       </p>
     </div>
   )
@@ -113,16 +113,20 @@ function SpeedVisual() {
 }
 
 function PosVisual() {
+  // 7 real logos + a "& more" tile, laid out 4 on top, 3 + "& more" on the row below.
   return (
-    <div className="flex w-full flex-wrap gap-2">
-      {POS_BRANDS.slice(0, 4).map((b) => (
+    <div className="grid w-full grid-cols-4 gap-2">
+      {POS_BRANDS.slice(0, 7).map((b) => (
         <span
           key={b.name}
-          className="flex min-w-[7rem] flex-1 items-center justify-center rounded-xl border bg-secondary/40 px-3 py-3"
+          className="flex items-center justify-center rounded-xl border bg-secondary/40 px-2 py-3"
         >
           <PosLockup brand={b} />
         </span>
       ))}
+      <span className="flex items-center justify-center rounded-xl border border-dashed bg-secondary/20 px-2 py-3 text-xs font-semibold text-muted-foreground">
+        &amp; more
+      </span>
     </div>
   )
 }
@@ -138,6 +142,9 @@ function LangVisual() {
           {l.native}
         </span>
       ))}
+      <span className="rounded-full border border-dashed bg-secondary/20 px-2.5 py-1 text-xs font-semibold text-muted-foreground">
+        &amp; more
+      </span>
     </div>
   )
 }
@@ -188,7 +195,7 @@ export function BentoFeatures() {
           <Cell
             className="lg:col-span-2"
             title="Lands in the POS you already run"
-            body="Square, Toast, Clover, and 80+ more, directly or through Deliverect. Orders arrive as normal tickets, nobody re-types anything."
+            body="Native with Square and OrderCounter; Toast, Clover, Lightspeed and 80+ more connect through Deliverect. Orders arrive as normal tickets, nobody re-types anything."
             visual={<PosVisual />}
           />
           <Cell

@@ -42,10 +42,12 @@ export const LANGUAGES: Language[] = [
 
 /** A deliberately diverse handful shown as example chips before the full list. */
 export const EXAMPLE_LANGUAGES = [
+  "English",
   "Spanish",
   "Mandarin Chinese",
   "Vietnamese",
+  "Korean",
+  "Tagalog",
   "Russian",
   "Arabic",
-  "Korean",
 ].map((n) => LANGUAGES.find((l) => l.name === n)!).filter(Boolean)

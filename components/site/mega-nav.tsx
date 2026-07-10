@@ -28,16 +28,27 @@ const PLAN_LINKS: NavItem[] = [
   { label: "Enterprise", href: "/contact", desc: "Custom volume, rollouts, and rates." },
 ]
 
-/** Small "hear it / book it" block that sits inside every dropdown. */
+function CompareChip({ href, label }: { href: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      className="rounded-full border border-border bg-card px-2 py-0.5 text-[11px] font-medium transition hover:border-brand/40 hover:text-brand"
+    >
+      {label}
+    </Link>
+  )
+}
+
+/** Small "have questions / hear it / compare" block inside every dropdown. */
 function DemoRail() {
   return (
     <div className="mt-1 rounded-lg border border-brand/30 bg-brand/5 p-3">
       <p className="flex items-center gap-1.5 text-sm font-semibold">
         <PhoneCallIcon className="size-4 text-brand" />
-        Hear it answer a real call
+        Have questions? Call us!
       </p>
       <p className="mt-1 text-xs text-muted-foreground">
-        {DEMO_LINE.display}
+        It answers a real call live — {DEMO_LINE.display}
       </p>
       <div className="mt-2.5 flex gap-2">
         <a
@@ -52,6 +63,12 @@ function DemoRail() {
         >
           Book a demo
         </Link>
+      </div>
+      <div className="mt-2.5 flex flex-wrap items-center gap-1.5 border-t border-brand/15 pt-2.5">
+        <span className="text-[11px] text-muted-foreground">See how it compares:</span>
+        <CompareChip href="/compare" label="vs other voice AI" />
+        <CompareChip href="/compare/hiring-staff" label="vs hiring" />
+        <CompareChip href="/compare/answering-service" label="vs an answering service" />
       </div>
     </div>
   )

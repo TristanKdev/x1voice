@@ -69,9 +69,10 @@ export function DeliverectFlow() {
             One clean pipe, from the ring to the kitchen
           </h2>
           <p className="mt-3 text-muted-foreground">
-            X1 Voice takes the order and hands it to {POS_VIA}, which fans it out
-            to your POS and channels, {POS_VIA_DELIVERECT_COUNT}+ systems
-            supported. No re-keying, no order sitting on a sticky note.
+            Square and OrderCounter connect natively. For everything else, X1
+            Voice hands the order to {POS_VIA}, which fans it out to your POS and
+            channels, {POS_VIA_DELIVERECT_COUNT}+ systems supported. No re-keying,
+            no order sitting on a sticky note.
           </p>
         </div>
 

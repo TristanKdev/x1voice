@@ -17,7 +17,7 @@ const AVG_CALL_MIN = 3 // average call length, minutes
 const CALL_MIN_SD = 0.9 // call-length standard deviation, minutes
 const INCLUDED_MIN = 750 // minutes in the base plan
 const BASE_PRICE = 250 // base plan $/mo, the floor
-const OVERAGE_PER_MIN = 0.15 // estimated $ per minute past included
+const OVERAGE_PER_MIN = 0.35 // estimated $ per minute past included (Starter rate)
 
 function money(n: number) {
   return n.toLocaleString("en-US", {
