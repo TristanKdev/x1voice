@@ -5,7 +5,7 @@ import type { SVGProps } from "react"
 
 import { type PosBrand } from "@/components/blocks/pos-logos"
 
-/* ---- true glyphs (only where the glyph IS the mark) ---------------- */
+/* ---- recreation glyphs (fallback if the real logo file is missing) --- */
 
 type GlyphProps = SVGProps<SVGSVGElement>
 
@@ -32,10 +32,7 @@ function CloverGlyph(p: GlyphProps) {
 function ToastGlyph(p: GlyphProps) {
   return (
     <svg viewBox="0 0 32 32" fill="none" aria-hidden {...p}>
-      <path
-        d="M6 15c0-5.5 4.5-9 10-9s10 3.5 10 9v8a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3v-8Z"
-        fill="#FF4C00"
-      />
+      <path d="M6 15c0-5.5 4.5-9 10-9s10 3.5 10 9v8a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3v-8Z" fill="#FF4C00" />
     </svg>
   )
 }
@@ -46,11 +43,32 @@ const GLYPHS: Record<string, (p: GlyphProps) => React.ReactElement> = {
   toast: ToastGlyph,
 }
 
-function Recreation({ brand }: { brand: PosBrand }) {
+/**
+ * Brand lockup: the real logo mark from /pos/<slug>.png (falls back to a
+ * recreation glyph if the file is missing) + the wordmark in the brand color.
+ * Drop a better official file in and it swaps in automatically.
+ */
+export function PosLockup({ brand }: { brand: PosBrand }) {
+  const [failed, setFailed] = React.useState(false)
   const Glyph = GLYPHS[brand.slug]
+
   return (
     <div className="flex items-center gap-2">
-      {Glyph ? <Glyph className="size-6 shrink-0" /> : null}
+      {failed ? (
+        Glyph ? (
+          <Glyph className="size-6 shrink-0" />
+        ) : null
+      ) : (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={`/pos/${brand.slug}.png`}
+          alt=""
+          aria-hidden
+          className="size-6 shrink-0 rounded-[5px] object-contain"
+          loading="lazy"
+          onError={() => setFailed(true)}
+        />
+      )}
       <span
         className="font-display text-lg font-bold"
         style={{ color: brand.color, letterSpacing: "-0.01em" }}
@@ -58,24 +76,5 @@ function Recreation({ brand }: { brand: PosBrand }) {
         {brand.wordmark ?? brand.name}
       </span>
     </div>
-  )
-}
-
-/**
- * Renders the official logo file at /pos/<slug>.png if it loads, else the
- * recreation. Adding a real file "just works" with no code change.
- */
-export function PosLockup({ brand }: { brand: PosBrand }) {
-  const [failed, setFailed] = React.useState(false)
-  if (failed) return <Recreation brand={brand} />
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={`/pos/${brand.slug}.png`}
-      alt={`${brand.name} logo`}
-      className="h-7 w-auto max-w-[70%] object-contain"
-      loading="lazy"
-      onError={() => setFailed(true)}
-    />
   )
 }

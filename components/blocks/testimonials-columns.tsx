@@ -100,6 +100,17 @@ export function TestimonialsColumns() {
             </div>
           </div>
         )}
+
+        <p className="mx-auto mt-10 max-w-3xl text-center text-xs text-muted-foreground/70">
+          Reviews reflect individual experiences and are not a guarantee of
+          results. Some entries are illustrative examples. X1 Voice does not
+          warrant the authenticity of any individual review and accepts no
+          liability for statements attributed to third parties. See our{" "}
+          <a href="/terms" className="underline underline-offset-2 hover:text-foreground">
+            Terms
+          </a>
+          .
+        </p>
       </div>
     </section>
   )

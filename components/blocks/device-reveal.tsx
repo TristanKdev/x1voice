@@ -1,22 +1,23 @@
 "use client"
 
 import * as React from "react"
-import { motion, useReducedMotion } from "motion/react"
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { CheckIcon, PhoneIncomingIcon } from "lucide-react"
 
 import { ProductDashboardFrame } from "@/components/blocks/product-dashboard"
 
 /**
- * The product, shown immediately below the hero. The dashboard is visible the
- * moment you reach the section; as it enters view the phone and POS ticket
- * rise in around it (once, quick). No scroll scrubbing, so nothing is ever
- * blank on arrival. Reduced-motion visitors get the static assembled state.
+ * The product below the hero. A "container scroll" reveal: the dashboard card
+ * sits tilted back and rotates flat + settles as you scroll it toward the
+ * middle of the screen. It's visible the whole time (just tilted), so nothing
+ * is ever blank. The phone and POS ticket float over it. Reduced-motion
+ * visitors get the flat, static state.
  */
 
 function PhoneCard() {
   return (
-    <div className="w-[190px] rounded-[2rem] border-4 border-band/80 bg-band p-1.5 shadow-2xl">
-      <div className="rounded-[1.6rem] bg-band-2 p-3 text-band-foreground">
+    <div className="w-[180px] rounded-[1.8rem] border-4 border-band/80 bg-band p-1.5 shadow-2xl">
+      <div className="rounded-[1.4rem] bg-band-2 p-3 text-band-foreground">
         <div className="flex items-center gap-1.5 text-[10px] font-semibold">
           <span className="relative flex size-1.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
@@ -48,7 +49,7 @@ function PhoneCard() {
 
 function PosCard() {
   return (
-    <div className="w-[210px] rounded-xl border bg-card p-4 shadow-2xl">
+    <div className="w-[200px] rounded-xl border bg-card p-4 shadow-2xl">
       <div className="flex items-center justify-between">
         <p className="text-[10px] font-semibold tracking-widest text-muted-foreground uppercase">
           POS · New order
@@ -78,65 +79,72 @@ function PosCard() {
 }
 
 export function DeviceReveal() {
+  const ref = React.useRef<HTMLDivElement>(null)
   const reduced = useReducedMotion()
+  const [isMobile, setIsMobile] = React.useState(false)
 
-  const rise = (delay: number) =>
-    reduced
-      ? {}
-      : {
-          initial: { opacity: 0, y: 28 },
-          whileInView: { opacity: 1, y: 0 },
-          viewport: { once: true, amount: 0.3 },
-          transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] as const },
-        }
+  React.useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)")
+    const set = () => setIsMobile(mq.matches)
+    set()
+    mq.addEventListener("change", set)
+    return () => mq.removeEventListener("change", set)
+  }, [])
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "center center"],
+  })
+
+  const rotate = useTransform(scrollYProgress, [0, 1], [17, 0])
+  const scale = useTransform(scrollYProgress, [0, 1], isMobile ? [0.9, 1] : [1.06, 1])
+  const headerY = useTransform(scrollYProgress, [0, 1], [40, 0])
+
+  const cardStyle = reduced ? {} : { rotateX: rotate, scale }
+  const headerStyle = reduced ? {} : { y: headerY }
 
   return (
     <section
+      ref={ref}
       id="in-action"
-      className="relative scroll-mt-16 overflow-hidden bg-background pt-28 pb-24 sm:pt-32 sm:pb-28"
+      className="relative scroll-mt-16 overflow-hidden border-b bg-background pt-24 pb-16 sm:pt-28"
     >
-      {/* soft blurred seam: dark hero fading into white */}
+      {/* soft blurred seam from the dark hero into white */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-band via-band/45 to-transparent blur-[2px]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-52 bg-gradient-to-b from-band via-band/45 to-transparent blur-[2px]"
       />
-      {/* soft blurred seam: white fading back into the dark section below */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-band via-band/40 to-transparent blur-[2px]"
-      />
-      <div aria-hidden className="tech-grid absolute inset-0 opacity-50 [mask-image:radial-gradient(100%_60%_at_50%_40%,black,transparent)]" />
-      <div aria-hidden className="tech-glow absolute top-1/3 left-1/2 h-72 w-[36rem] max-w-none -translate-x-1/2" />
+      <div aria-hidden className="tech-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(100%_55%_at_50%_45%,black,transparent)]" />
 
-      <div className="relative mx-auto max-w-6xl px-6">
-        <div className="mx-auto max-w-2xl text-center">
+      <div className="relative mx-auto max-w-6xl px-6" style={{ perspective: "1200px" }}>
+        <motion.div style={headerStyle} className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center rounded-full border border-brand/30 bg-brand/5 px-3 py-1 text-xs font-semibold text-brand">
-            Live order
+            Welcome to the future
           </span>
-          <h2 className="font-display mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 className="font-display mt-4 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
             Watch it work
           </h2>
           <p className="mt-3 text-muted-foreground">
             One order, from the ring to the kitchen.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="relative mt-14 flex items-end justify-center">
-          {/* Phone, front left */}
-          <motion.div {...rise(0.12)} className="relative z-20 -mr-8 hidden translate-y-6 sm:block">
-            <PhoneCard />
-          </motion.div>
-
-          {/* Dashboard, center, visible immediately */}
-          <motion.div {...rise(0)} className="relative z-10 w-full max-w-3xl">
+        <motion.div
+          style={cardStyle}
+          className="relative mx-auto mt-12 max-w-4xl rounded-[26px] border-4 border-band/60 bg-band p-2 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.6)] sm:p-3"
+        >
+          <div className="overflow-hidden rounded-2xl">
             <ProductDashboardFrame />
-          </motion.div>
+          </div>
 
-          {/* POS new order, front right */}
-          <motion.div {...rise(0.24)} className="relative z-20 -ml-8 hidden translate-y-2 lg:block">
+          {/* floating phone + POS over the card */}
+          <div className="pointer-events-none absolute -bottom-8 -left-6 hidden sm:block">
+            <PhoneCard />
+          </div>
+          <div className="pointer-events-none absolute -right-6 -bottom-6 hidden lg:block">
             <PosCard />
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
