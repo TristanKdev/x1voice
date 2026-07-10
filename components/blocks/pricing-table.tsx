@@ -4,7 +4,11 @@ import * as React from "react"
 import Link from "next/link"
 import { CheckIcon } from "lucide-react"
 
-import { PRICING_TIERS } from "@/data/pricing"
+import {
+  annualMonthlyPrice,
+  MAX_ANNUAL_DISCOUNT_PCT,
+  PRICING_TIERS,
+} from "@/data/pricing"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -37,7 +41,7 @@ export function PricingTable() {
         >
           Annual{" "}
           <Badge variant="secondary" className="ml-1">
-            Save 15%
+            Save {MAX_ANNUAL_DISCOUNT_PCT}%
           </Badge>
         </span>
       </div>
@@ -48,9 +52,7 @@ export function PricingTable() {
             tier.monthlyPrice === "custom"
               ? null
               : annual
-                ? Math.round(
-                    tier.monthlyPrice * (1 - tier.annualDiscountPct / 100)
-                  )
+                ? annualMonthlyPrice(tier.monthlyPrice, tier.annualDiscountPct)
                 : tier.monthlyPrice
 
           return (

@@ -1,3 +1,5 @@
+import { POS_VIA_DELIVERECT_COUNT } from "./pos-systems"
+
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://x1voice.com"
 
@@ -42,38 +44,59 @@ export const MISSED_CALLS_STAT = {
   },
 }
 
-export type PlaceholderTestimonial = {
+export type Testimonial = {
   initials: string
   roleLabel: string
   segment: string
   quote: string
+  /** True only for feedback actually received from a customer. */
+  verified: boolean
+  /** Where the quote came from. */
+  source: "customer feedback"
 }
 
 /**
- * Explicit, labeled placeholders — never fabricated names or quotes.
- * Swap for real customer testimonials as they come in (one data edit).
+ * Real customer feedback, anonymized on purpose (names withheld at the
+ * owner's instruction). Quotes are lightly edited for spelling and clarity
+ * only — sentence meaning unchanged. Never add a quote here that wasn't
+ * actually received.
  */
-export const PLACEHOLDER_TESTIMONIALS: PlaceholderTestimonial[] = [
+export const TESTIMONIALS: Testimonial[] = [
   {
-    initials: "QSR",
-    roleLabel: "Customer story: coming soon",
-    segment: "Multi-location quick-service group",
+    initials: "RO",
+    roleLabel: "Restaurant owner",
+    segment: "Name withheld · verified customer feedback",
     quote:
-      "This slot is reserved for a real customer testimonial once we have one to share.",
+      "Faster service — love it. The machine was so clear and perfect. The delivery was great and faster.",
+    verified: true,
+    source: "customer feedback",
   },
   {
-    initials: "PZA",
-    roleLabel: "Customer story: coming soon",
-    segment: "Independent pizzeria, single location",
+    initials: "OP",
+    roleLabel: "Operator",
+    segment: "Name withheld · verified customer feedback",
     quote:
-      "This slot is reserved for a real customer testimonial once we have one to share.",
+      "So easy to use and it sounds great. Service was quick and no problems so far.",
+    verified: true,
+    source: "customer feedback",
   },
   {
-    initials: "GHK",
-    roleLabel: "Customer story: coming soon",
-    segment: "Ghost kitchen operator",
+    initials: "GM",
+    roleLabel: "General manager",
+    segment: "Name withheld · verified customer feedback",
     quote:
-      "This slot is reserved for a real customer testimonial once we have one to share.",
+      "Set it and forget it. The software handles the phone for us so we can focus on the work.",
+    verified: true,
+    source: "customer feedback",
+  },
+  {
+    initials: "OW",
+    roleLabel: "Owner",
+    segment: "Name withheld · verified customer feedback",
+    quote:
+      "It paid for itself the first day. We captured tons of orders that were slipping through the cracks before.",
+    verified: true,
+    source: "customer feedback",
   },
 ]
 
@@ -92,8 +115,7 @@ export const HOME_FAQS: { question: string; answer: string }[] = [
   },
   {
     question: "Which POS systems does it work with?",
-    answer:
-      "Square and Clover today, with OrderCounter and OrderOut integrations also available. See /integrations for the full list and setup details.",
+    answer: `Square, Clover, OrderCounter, and OrderOut directly, plus ${POS_VIA_DELIVERECT_COUNT} more POS systems — Toast, Lightspeed, TouchBistro, SpotOn, and others — through our Deliverect connection. See /integrations for setup details.`,
   },
   {
     question: "How long does setup take?",
