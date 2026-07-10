@@ -51,7 +51,7 @@ export function SiteHeader() {
           <Button
             className="hidden rounded-full bg-brand px-5 text-brand-foreground hover:bg-brand-bright sm:inline-flex"
             nativeButton={false}
-            render={<Link href="/contact">Sign up</Link>}
+            render={<Link href="/contact">Get started</Link>}
           />
 
           <Sheet>

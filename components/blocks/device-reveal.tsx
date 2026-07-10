@@ -14,34 +14,71 @@ import { ProductDashboardFrame } from "@/components/blocks/product-dashboard"
  * visitors get the flat, static state.
  */
 
-function PhoneCard() {
+const TRANSCRIPT: { who: "agent" | "caller"; t: string }[] = [
+  { who: "agent", t: "Tony's Pizzeria, what can I get you?" },
+  { who: "caller", t: "Large pie, half pepperoni half mushroom." },
+  { who: "agent", t: "Large, half pep half mushroom. Anything to drink?" },
+  { who: "caller", t: "A two-liter Coke." },
+  { who: "agent", t: "Got it, that's $18.50. Pickup or delivery?" },
+  { who: "caller", t: "Pickup, under Maria." },
+  { who: "agent", t: "Thanks Maria, about 25 minutes. Texting your confirmation now." },
+]
+
+/** A live-feeling call transcript that types itself out and loops. */
+function CallTranscript() {
+  const reduced = useReducedMotion()
+  const [n, setN] = React.useState(reduced ? TRANSCRIPT.length : 1)
+
+  React.useEffect(() => {
+    if (reduced) return
+    let timer: ReturnType<typeof setTimeout>
+    const step = () => {
+      setN((v) => {
+        if (v >= TRANSCRIPT.length) {
+          timer = setTimeout(() => setN(1), 2800)
+          return v
+        }
+        timer = setTimeout(step, 1300)
+        return v + 1
+      })
+    }
+    timer = setTimeout(step, 1300)
+    return () => clearTimeout(timer)
+  }, [reduced])
+
+  const shown = reduced ? TRANSCRIPT : TRANSCRIPT.slice(0, n)
+
   return (
-    <div className="w-[180px] rounded-[1.8rem] border-4 border-band/80 bg-band p-1.5 shadow-2xl">
-      <div className="rounded-[1.4rem] bg-band-2 p-3 text-band-foreground">
-        <div className="flex items-center gap-1.5 text-[10px] font-semibold">
+    <div className="w-[264px] rounded-2xl border border-band-border bg-band p-4 text-band-foreground shadow-2xl">
+      <div className="flex items-center justify-between border-b border-band-border pb-3">
+        <span className="flex items-center gap-1.5 text-[11px] font-semibold">
           <span className="relative flex size-1.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex size-1.5 rounded-full bg-emerald-400" />
           </span>
           Live call · 0:42
-        </div>
-        <div className="mt-3 flex items-center justify-between">
-          <span className="text-xs font-bold">(415) ···-··84</span>
-          <span className="flex size-6 items-center justify-center rounded-full bg-emerald-500/15">
-            <PhoneIncomingIcon className="size-3 text-emerald-400" />
-          </span>
-        </div>
-        <div className="mt-3 space-y-1.5">
-          {["Large pizza, half pep", "Add ranch", "Gluten-free"].map((l) => (
-            <div key={l} className="rounded-lg bg-white/5 px-2.5 py-1.5 text-[10px]">
-              {l}
-            </div>
-          ))}
-        </div>
-        <div className="mt-3 flex items-center justify-between rounded-lg border border-band-border px-2.5 py-1.5">
-          <span className="text-[10px] text-band-muted">Total</span>
-          <span className="text-xs font-bold">$18.50</span>
-        </div>
+        </span>
+        <span className="flex size-6 items-center justify-center rounded-full bg-emerald-500/15">
+          <PhoneIncomingIcon className="size-3 text-emerald-400" />
+        </span>
+      </div>
+      <div className="mt-3 flex min-h-[220px] flex-col gap-2">
+        {shown.map((line, i) => (
+          <div
+            key={i}
+            className={`flex ${line.who === "caller" ? "justify-end" : "justify-start"}`}
+          >
+            <span
+              className={`max-w-[85%] rounded-2xl px-3 py-1.5 text-[11px] leading-snug ${
+                line.who === "caller"
+                  ? "rounded-br-sm bg-brand text-brand-foreground"
+                  : "rounded-bl-sm bg-white/8 text-band-foreground"
+              }`}
+            >
+              {line.t}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -137,9 +174,9 @@ export function DeviceReveal() {
             <ProductDashboardFrame />
           </div>
 
-          {/* floating phone + POS over the card */}
-          <div className="pointer-events-none absolute -bottom-8 -left-6 hidden sm:block">
-            <PhoneCard />
+          {/* floating live transcript + POS ticket over the card */}
+          <div className="pointer-events-none absolute top-1/2 -left-10 hidden -translate-y-1/2 lg:block">
+            <CallTranscript />
           </div>
           <div className="pointer-events-none absolute -right-6 -bottom-6 hidden lg:block">
             <PosCard />

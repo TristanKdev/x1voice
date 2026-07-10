@@ -64,25 +64,31 @@ export function HeroVideo() {
         </p>
 
         <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+          {/* Primary: the conversion action */}
+          <Link
+            href="/contact"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand px-8 text-sm font-semibold text-brand-foreground shadow-[0_8px_30px_-8px_var(--color-brand)] transition hover:bg-brand-bright"
+          >
+            Get started
+            <ArrowRightIcon className="size-4" />
+          </Link>
+          {/* Secondary: subordinate demo path */}
           <a
             href="#see-it"
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand px-7 text-sm font-semibold text-brand-foreground shadow-[0_8px_30px_-8px_var(--color-brand)] transition hover:bg-brand-bright"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-band-border bg-white/5 px-7 text-sm font-semibold backdrop-blur-sm transition hover:bg-white/10"
           >
             <PhoneIcon className="size-4" />
             Hear it in action
           </a>
-          <Link
-            href="/pricing"
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-band-border bg-white/5 px-7 text-sm font-semibold backdrop-blur-sm transition hover:bg-white/10"
-          >
-            See plans
-            <ArrowRightIcon className="size-4" />
-          </Link>
         </div>
 
-        <p className="mt-8 max-w-lg text-xs text-band-muted/80">
-          No contracts. Self-serve. Live in minutes. Claims are illustrative,
-          not a guarantee of results, and terms and conditions apply.
+        {/* Risk-reducer, right under the button */}
+        <p className="mt-4 text-sm font-medium text-band-foreground/90">
+          No credit card. Set up in minutes. Cancel anytime.
+        </p>
+        <p className="mt-3 max-w-lg text-xs text-band-muted/70">
+          Claims are illustrative, not a guarantee of results. Terms and
+          conditions apply.
         </p>
       </div>
     </section>
