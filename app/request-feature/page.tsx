@@ -4,6 +4,7 @@ import { buildMetadata } from "@/lib/seo/metadata"
 import { PageHeader } from "@/components/blocks/page-header"
 import { Breadcrumbs } from "@/components/blocks/breadcrumbs"
 import { CtaSection } from "@/components/blocks/cta-section"
+import { FeatureRequestForm } from "@/components/blocks/feature-request-form"
 import { Card } from "@/components/ui/card"
 
 export const metadata = buildMetadata({
@@ -71,57 +72,7 @@ export default function RequestFeaturePage() {
             </p>
           </div>
 
-          {/* WIRE: presentational form — no action wired. */}
-          <form className="mt-8 space-y-5" aria-label="Feature request form">
-            <div className="grid gap-5 sm:grid-cols-2">
-              <label className="block">
-                <span className="text-sm font-medium">Your name</span>
-                <input
-                  name="name"
-                  type="text"
-                  autoComplete="name"
-                  className="mt-1.5 h-11 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
-                  placeholder="Jordan Rivera"
-                />
-              </label>
-              <label className="block">
-                <span className="text-sm font-medium">Restaurant</span>
-                <input
-                  name="restaurant"
-                  type="text"
-                  className="mt-1.5 h-11 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
-                  placeholder="Tony's Pizzeria"
-                />
-              </label>
-            </div>
-            <label className="block">
-              <span className="text-sm font-medium">Email</span>
-              <input
-                name="email"
-                type="email"
-                autoComplete="email"
-                className="mt-1.5 h-11 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
-                placeholder="you@restaurant.com"
-              />
-            </label>
-            <label className="block">
-              <span className="text-sm font-medium">
-                What would you like X1 Voice to do?
-              </span>
-              <textarea
-                name="request"
-                rows={5}
-                className="mt-1.5 w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
-                placeholder="Describe the problem and how a feature would solve it…"
-              />
-            </label>
-            <button
-              type="submit"
-              className="inline-flex h-11 items-center justify-center rounded-full bg-brand px-7 text-sm font-semibold text-brand-foreground transition hover:bg-brand-bright"
-            >
-              Submit request
-            </button>
-          </form>
+          <FeatureRequestForm />
         </div>
       </section>
 

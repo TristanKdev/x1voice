@@ -51,9 +51,10 @@ a centered child), `.tech-glow`. All respect `prefers-reduced-motion`.
 
 | What | File | Note |
 |---|---|---|
-| **Demo phone line** | `data/site.ts` → `DEMO_LINE` | Placeholder number. Set `NEXT_PUBLIC_DEMO_TEL` / `NEXT_PUBLIC_DEMO_DISPLAY` or edit the constant. Used by the hero CTA, `demo-call.tsx`, and `cta-section.tsx`. Calling it is the consent event (recording + marketing) — copy is on `demo-call.tsx`. **You handle the actual telephony + logging every inbound number.** |
-| **Request-a-feature form** | `app/request-feature/page.tsx` | `<form>` posts nowhere. Add an `action`/endpoint (GHL form or `/api/…`) + success/error states. Field names are set. |
-| **Contact form** | `components/blocks/contact-form.tsx` | Presentational; wire submission. |
+| **Demo phone line** | `data/site.ts` → `DEMO_LINE` | Placeholder number. Set `NEXT_PUBLIC_DEMO_TEL` / `NEXT_PUBLIC_DEMO_DISPLAY` or edit the constant. Used by the hero CTA, `demo-call.tsx`, and `cta-section.tsx`. Calling it is the consent event (recording + marketing) — copy is on `demo-call.tsx`. |
+| **Demo-call webhook** | `app/api/demo-call/route.ts` | Stub. Point your telephony provider's inbound webhook here; it validates the shape and returns `{ ok }`. **TODO in-file:** log every calling number + consent and push to GHL (DNC-checked). |
+| **Request-a-feature form** | `components/blocks/feature-request-form.tsx` → `app/api/feature-request/route.ts` | Client-validated form POSTs to the route, which re-validates and returns `{ ok }`. **TODO in-route:** forward to GHL / a product board. |
+| **Contact form** | `components/blocks/contact-form.tsx` → `app/api/contact/route.ts` | Same shape. **TODO in-route:** wire real email/CRM delivery. |
 | **Dashboard data** | `components/blocks/product-dashboard.tsx` | All numbers are illustrative mock UI. Replace with live metrics. Mirrors the real app dashboard layout. |
 | **Login / app** | `components/site/header.tsx` → `/login` | Route doesn't exist yet (404s, and the header prefetch logs a console 404). Point at the real app subdomain or remove. |
 | **POS logos** | `components/blocks/pos-logos.tsx` | Lightweight SVG recreations, not official brand files. If Brand supplies official SVGs, drop them in `public/pos/<slug>.svg` and swap the `Mark` render — the grid doesn't change. Colors are tagged per entry. |
