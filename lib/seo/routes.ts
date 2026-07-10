@@ -119,6 +119,38 @@ const STATIC_ROUTES: SiteRoute[] = [
     changeFrequency: "yearly",
     priority: 0.2,
   },
+  {
+    path: "/languages",
+    title: "Languages",
+    description: "Languages X1 Voice answers restaurant calls in.",
+    index: true,
+    changeFrequency: "monthly",
+    priority: 0.5,
+  },
+  {
+    path: "/support",
+    title: "Support",
+    description: "Get help with X1 Voice.",
+    index: true,
+    changeFrequency: "monthly",
+    priority: 0.4,
+  },
+  {
+    path: "/resellers",
+    title: "Resellers, ISOs & Partners",
+    description: "Sell X1 Voice to your restaurants.",
+    index: true,
+    changeFrequency: "monthly",
+    priority: 0.5,
+  },
+  {
+    path: "/request-feature",
+    title: "Request a Feature",
+    description: "Tell the X1 Voice team what to build next.",
+    index: true,
+    changeFrequency: "yearly",
+    priority: 0.3,
+  },
 ]
 
 /**
