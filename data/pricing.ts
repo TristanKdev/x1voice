@@ -23,8 +23,8 @@ export const PRICING_TIERS: PricingTier[] = [
     name: "Starter",
     monthlyPrice: 250,
     annualDiscountPct: 15,
-    description: "One location, trying AI call answering for the first time.",
-    minutesIncluded: "500 minutes/mo included",
+    description: "One location, everything you need to answer every call.",
+    minutesIncluded: "750 minutes/mo included",
     features: [
       "24/7 call answering",
       "Order-taking with POS sync",

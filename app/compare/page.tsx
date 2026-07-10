@@ -6,6 +6,7 @@ import { buildMetadata } from "@/lib/seo/metadata"
 import { PageHeader } from "@/components/blocks/page-header"
 import { Breadcrumbs } from "@/components/blocks/breadcrumbs"
 import { Card } from "@/components/ui/card"
+import { VoiceComparison } from "@/components/blocks/voice-comparison"
 
 export const metadata = buildMetadata({
   title: "Compare X1 Voice",
@@ -25,7 +26,14 @@ export default function CompareHubPage() {
         title="How X1 Voice compares"
         description="Sourced pricing and feature comparisons — not marketing fluff."
       />
+
+      {/* Full vendor matrix */}
+      <VoiceComparison heading={false} />
+
       <section className="mx-auto max-w-5xl px-6 py-16">
+        <h2 className="font-display mb-6 text-center text-2xl font-semibold">
+          Head-to-head breakdowns
+        </h2>
         {comparePages.length === 0 ? (
           <p className="text-center text-muted-foreground">
             Comparison pages are being added — check back soon.

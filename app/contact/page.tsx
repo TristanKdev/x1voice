@@ -4,10 +4,9 @@ import { buildMetadata } from "@/lib/seo/metadata"
 import { PageHeader } from "@/components/blocks/page-header"
 import { Breadcrumbs } from "@/components/blocks/breadcrumbs"
 import { ContactForm } from "@/components/blocks/contact-form"
-import { DemoDialog } from "@/components/blocks/demo-dialog"
 import { CtaSection } from "@/components/blocks/cta-section"
 import { Card } from "@/components/ui/card"
-import { CONTACT } from "@/data/site"
+import { CONTACT, DEMO_LINE } from "@/data/site"
 
 export const metadata = buildMetadata({
   title: "Contact",
@@ -86,11 +85,14 @@ export default function ContactPage() {
           </div>
           <div className="mt-8 flex flex-col items-center gap-3 border-t pt-8 text-center">
             <p className="text-sm text-muted-foreground">
-              Prefer to see it live instead of filling out a form?
+              Prefer to hear it live instead of filling out a form?
             </p>
-            <DemoDialog variant="outline" size="default" className="gap-2">
-              Book a 15-minute demo
-            </DemoDialog>
+            <a
+              href={`tel:${DEMO_LINE.tel}`}
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-border bg-secondary/60 px-5 text-sm font-semibold transition hover:bg-secondary"
+            >
+              Call the demo line · {DEMO_LINE.display}
+            </a>
           </div>
         </div>
       </section>

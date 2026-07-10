@@ -1,93 +1,80 @@
-"use client"
-
 import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { PixelCanvas } from "@/components/ui/pixel-canvas"
-import { HIGHLIGHTED_POS, POS_COUNT_LABEL, type PosSystem } from "@/data/pos-systems"
+import { POS_BRANDS, PosLockup, type PosBrand } from "@/components/blocks/pos-logos"
+import {
+  POS_COUNT_LABEL,
+  POS_SYSTEMS,
+  POS_VIA,
+} from "@/data/pos-systems"
 
 /**
- * Highlight grid for the most recognizable POS integrations. Wordmarks are
- * rendered as styled text on purpose — no fabricated logo assets — and the
- * framing is always "works with", never "trusted by" or "customers".
- * Cards with a dedicated /integrations page link to it.
+ * Highlighted POS integrations, shown as real brand lockups. Framing is
+ * always "works with" — these are integration partners, not customers.
+ * Grayscale at rest, brand color on hover. Cards for a POS that has a
+ * dedicated /integrations/[slug] page link to it.
  */
 
-const PIXEL_COLORS = ["#635BFF", "#8B85FF", "#BDB9FF"]
+function slugFor(name: string): string | undefined {
+  return POS_SYSTEMS.find(
+    (p) => p.name.toLowerCase() === name.toLowerCase()
+  )?.slug
+}
 
-/* lg-only placements around a center text block spanning cols 2-4, rows 2-3. */
-const LG_POSITIONS = [
-  "lg:col-start-1 lg:row-start-1",
-  "lg:col-start-2 lg:row-start-1",
-  "lg:col-start-3 lg:row-start-1",
-  "lg:col-start-4 lg:row-start-1",
-  "lg:col-start-5 lg:row-start-1",
-  "lg:col-start-1 lg:row-start-2",
-  "lg:col-start-1 lg:row-start-3",
-  "lg:col-start-5 lg:row-start-2",
-  "lg:col-start-5 lg:row-start-3",
-  "lg:col-start-1 lg:row-start-4",
-  "lg:col-start-2 lg:row-start-4",
-  "lg:col-start-3 lg:row-start-4",
-  "lg:col-start-4 lg:row-start-4",
-  "lg:col-start-5 lg:row-start-4",
-]
-
-function PosCard({ pos, lgPosition }: { pos: PosSystem; lgPosition?: string }) {
-  const inner = (
-    <>
-      <PixelCanvas colors={PIXEL_COLORS} gap={6} speed={30} />
-      <span className="font-display relative z-10 px-3 text-center text-sm font-bold tracking-tight text-muted-foreground/70 transition-colors duration-300 group-hover:text-brand sm:text-base">
-        {pos.name}
-      </span>
-    </>
-  )
-
+function BrandCard({ brand }: { brand: PosBrand }) {
+  const slug = slugFor(brand.name)
   const className = cn(
-    "group relative isolate grid h-20 place-items-center overflow-hidden bg-card transition-shadow duration-300 select-none lg:h-full",
-    "hover:z-[2] hover:shadow-[0_8px_24px_-8px_color-mix(in_srgb,var(--color-brand)_25%,transparent),0_0_0_1px_color-mix(in_srgb,var(--color-brand)_40%,transparent)]",
-    lgPosition
+    "group flex items-center justify-center rounded-xl border bg-card p-5 transition-all duration-200",
+    "grayscale hover:grayscale-0 hover:-translate-y-0.5 hover:border-brand/40",
+    "hover:shadow-[0_8px_24px_-10px_color-mix(in_srgb,var(--color-brand)_35%,transparent)]"
   )
-
-  return pos.slug ? (
+  return slug ? (
     <Link
-      href={`/integrations/${pos.slug}`}
-      aria-label={`X1 Voice + ${pos.name} integration details`}
+      href={`/integrations/${slug}`}
+      aria-label={`X1 Voice + ${brand.name} integration`}
       className={className}
     >
-      {inner}
+      <PosLockup brand={brand} />
     </Link>
   ) : (
-    <div className={className}>{inner}</div>
+    <div className={className}>
+      <PosLockup brand={brand} />
+    </div>
   )
 }
 
 export function PosGrid() {
   return (
-    <section className="border-t py-24">
+    <section className="border-t bg-secondary/40 py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="grid grid-cols-2 gap-px border bg-border lg:grid-cols-5 lg:grid-rows-[repeat(4,6rem)]">
-          {/* Center block: first in DOM (mobile top), centered on lg. */}
-          <div className="col-span-2 flex flex-col items-center justify-center gap-4 bg-card px-6 py-10 lg:col-start-2 lg:col-span-3 lg:row-start-2 lg:row-span-2">
-            <span className="inline-flex items-center rounded-full border bg-card px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
-              {POS_COUNT_LABEL}
-            </span>
-            <h2 className="font-display max-w-md text-center text-2xl leading-tight font-semibold tracking-tight md:text-3xl">
-              Works with the POS you already run
-            </h2>
-            <Link
-              href="/integrations"
-              className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-brand hover:underline"
-            >
-              See integration details
-              <ArrowRightIcon className="size-3.5 transition-transform group-hover/link:translate-x-0.5" />
-            </Link>
-          </div>
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="inline-flex items-center rounded-full border bg-card px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
+            {POS_COUNT_LABEL}
+          </span>
+          <h2 className="font-display mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+            Works with the POS you already run
+          </h2>
+          <p className="mt-3 text-muted-foreground">
+            Orders land in your register as normal tickets — directly, or
+            through our {POS_VIA} connection. No new hardware, no double entry.
+          </p>
+        </div>
 
-          {HIGHLIGHTED_POS.map((pos, i) => (
-            <PosCard key={pos.name} pos={pos} lgPosition={LG_POSITIONS[i]} />
+        <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          {POS_BRANDS.map((brand) => (
+            <BrandCard key={brand.name} brand={brand} />
           ))}
+        </div>
+
+        <div className="mt-8 text-center">
+          <Link
+            href="/integrations"
+            className="group inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:underline"
+          >
+            See every integration and how it connects
+            <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
         </div>
       </div>
     </section>

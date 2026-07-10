@@ -102,24 +102,46 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const CAL_LINK = process.env.NEXT_PUBLIC_CAL_LINK ?? "x1voice/demo"
 
+/**
+ * The public "call it yourself" demo line. Calling is the consent event
+ * (recording + marketing follow-up), disclosed on the DemoCall section.
+ *
+ * WIRE (dev): replace with the live demo number. `tel` is the dialable
+ * form (E.164, no spaces); `display` is what renders on screen.
+ */
+export const DEMO_LINE = {
+  tel: process.env.NEXT_PUBLIC_DEMO_TEL ?? "+15558675309",
+  display: process.env.NEXT_PUBLIC_DEMO_DISPLAY ?? "(555) 867-5309",
+}
+
 export const HOME_FAQS: { question: string; answer: string }[] = [
   {
-    question: "Does X1 Voice replace my phone number?",
+    question: "What can X1 Voice handle on a call?",
     answer:
-      "No. It answers calls to your existing number. Setup means forwarding that number to X1 Voice, not getting a new one.",
+      "Pickup and delivery orders, payments, menu and allergen questions, hours and directions, wait times, order status, catering inquiries, and smart routing to your team. It supports multiple languages and syncs clean tickets to your systems.",
   },
   {
-    question: "What happens if the AI can't handle a call?",
+    question: "Can AI phone ordering take payments over the phone?",
     answer:
-      "Calls it can't confidently resolve, like a complaint or a request outside the menu, get transferred to your staff or sent to voicemail with a transcript. You set the rules for that.",
+      "Yes. X1 Voice securely takes credit and debit card payments over the phone for both pickup and delivery orders. It integrates directly with your POS, so customers can place an order and pay instantly without staff intervention.",
+  },
+  {
+    question: "How fast is setup and what do we need?",
+    answer:
+      "X1 Voice can get you up and running in under 24 hours. Connect your POS, import the menu, choose a greeting, set hours and rules, then test. Most restaurants go live in under a day, and our team handles white-glove setup if you want it done for you.",
+  },
+  {
+    question: "Does it work for multi-location and franchise groups?",
+    answer:
+      "Yes. Manage a shared menu with per-store overrides, local numbers, store-specific hours and holidays, and region-based routing. Analytics roll up by location, so you see call volume, conversion, and average ticket per store.",
+  },
+  {
+    question: "What happens with edge cases or unhappy callers?",
+    answer:
+      "X1 Voice detects intent and either solves it or hands off cleanly. It can transfer to a live line, capture a voicemail with transcript, or message your team with caller info and context so guests get fast, human follow-up.",
   },
   {
     question: "Which POS systems does it work with?",
     answer: `Square, Clover, OrderCounter, and OrderOut directly, plus ${POS_VIA_DELIVERECT_COUNT} more POS systems — Toast, Lightspeed, TouchBistro, SpotOn, and others — through our Deliverect connection. See /integrations for setup details.`,
-  },
-  {
-    question: "How long does setup take?",
-    answer:
-      "Most single-location restaurants are live within a day: menu import, call forwarding, and a short test-call review before it starts taking real orders.",
   },
 ]

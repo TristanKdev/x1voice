@@ -6,7 +6,6 @@ import { MAIN_NAV } from "@/data/nav"
 import { Button } from "@/components/ui/button"
 import { Logo } from "@/components/site/logo"
 import { ModeToggle } from "@/components/site/mode-toggle"
-import { DemoDialog } from "@/components/blocks/demo-dialog"
 import {
   Sheet,
   SheetContent,
@@ -43,9 +42,11 @@ export function SiteHeader() {
             nativeButton={false}
             render={<Link href="/login">Log in</Link>}
           />
-          <DemoDialog className="hidden rounded-full px-5 sm:inline-flex">
-            Book a demo
-          </DemoDialog>
+          <Button
+            className="hidden rounded-full bg-brand px-5 text-brand-foreground hover:bg-brand-bright sm:inline-flex"
+            nativeButton={false}
+            render={<Link href="/#see-it">Book a demo</Link>}
+          />
 
           <Sheet>
             <SheetTrigger

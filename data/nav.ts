@@ -4,16 +4,15 @@ export type NavLink = {
 }
 
 /**
- * Single source of truth for the primary header nav. The old site's nav
- * pointed at in-page anchors (#features, #pricing) instead of real routes —
- * every entry here is a real, crawlable page.
+ * Single source of truth for the primary header nav. Blog is intentionally
+ * NOT here — it stays a crawlable backlink from the footer only (FOOTER_COMPANY).
+ * "Plans" points at /pricing (route kept for stable links; label updated).
  */
 export const MAIN_NAV: NavLink[] = [
   { label: "Features", href: "/features" },
   { label: "Solutions", href: "/solutions" },
   { label: "Compare", href: "/compare" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Blog", href: "/blog" },
+  { label: "Plans", href: "/pricing" },
 ]
 
 export const FOOTER_COMPANY: NavLink[] = [
@@ -26,7 +25,8 @@ export const FOOTER_COMPANY: NavLink[] = [
 
 export const FOOTER_PRODUCT: NavLink[] = [
   { label: "Features", href: "/features" },
-  { label: "Pricing", href: "/pricing" },
+  { label: "Plans", href: "/pricing" },
   { label: "Integrations", href: "/integrations" },
+  { label: "Request a feature", href: "/request-feature" },
   { label: "Locations we serve", href: "/locations" },
 ]
