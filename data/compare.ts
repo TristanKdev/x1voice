@@ -46,12 +46,12 @@ export const comparePages: ComparePage[] = [
     competitorName: "Kea AI",
     competitorUrl: "https://kea.ai/",
     summary:
-      "Kea AI sells a flat-rate voice AI built for single-location restaurants. Its price runs lower than X1 Voice's comparable tier, but the rate is typically sold on an annual contract and charged per location, with no multi-location bundle. X1 Voice bills month to month at published prices and bundles multiple locations under one plan.",
+      "Kea AI sells a flat-rate voice AI built for single-location restaurants. Its headline rate can look lower, but it's typically sold on an annual contract and charged per location, with no multi-location bundle. X1 Voice starts at $250/mo, month to month, with every feature on every plan, and bundles multiple locations under one plan.",
     pricingComparison: {
       x1voice: {
-        planName: "Professional",
+        planName: "Starter (every feature included)",
         priceLabel: "From $250/mo",
-        billingNote: "No contract required; includes phone payment collection.",
+        billingNote: "No contract. Every plan includes phone payment and the full feature set.",
       },
       competitor: {
         planName: "Flat-rate plan (per location)",
@@ -65,7 +65,7 @@ export const comparePages: ComparePage[] = [
     featureMatrix: [
       { feature: "24/7 call answering", x1voice: true, competitor: true },
       { feature: "Order-taking synced to POS", x1voice: true, competitor: true },
-      { feature: "Phone payment collection", x1voice: true, competitor: true, note: "Both include this at their all-in tier." },
+      { feature: "Phone payment collection", x1voice: true, competitor: true, note: "X1 Voice includes it on every plan; Kea includes it in its flat rate." },
       { feature: "Monthly, no-contract billing", x1voice: true, competitor: "Typically annual contract" },
       {
         feature: "Multi-location bundling under one plan",
@@ -81,7 +81,7 @@ export const comparePages: ComparePage[] = [
       {
         question: "Is Kea AI cheaper than X1 Voice?",
         answer:
-          "On the monthly number, yes. Kea's published flat rate (about $450/mo) is lower than X1 Voice's Professional plan ($750/mo), which is the closest match on features like phone payment collection. Kea's rate is typically tied to an annual contract, though, so compare total first-year cost rather than the monthly figure alone, and confirm current terms directly with Kea before signing.",
+          "On the monthly sticker, Kea's published flat rate (about $450/mo) can look lower than X1 Voice, which starts at $250/mo. But every X1 Voice plan includes the same features, phone payment collection included, and bills month to month, while Kea's rate is typically tied to an annual contract and charged per location. Compare total first-year cost rather than the monthly figure alone, and confirm current terms directly with Kea before signing.",
       },
       {
         question: "Does Kea AI work for multi-location restaurant groups?",
@@ -91,7 +91,7 @@ export const comparePages: ComparePage[] = [
       {
         question: "Do both handle phone payments?",
         answer:
-          "Yes. Kea's flat-rate plan and X1 Voice's Professional plan both support collecting payment during the call. On X1 Voice, payment collection is a Professional-tier feature; the Starter plan ($250/mo) doesn't include it.",
+          "Yes. Both collect payment during the call. On X1 Voice, phone payment collection is included on every plan, starting with Starter at $250/mo, it's not gated to a higher tier.",
       },
       {
         question: "Is switching from Kea AI to X1 Voice difficult?",
@@ -111,9 +111,9 @@ export const comparePages: ComparePage[] = [
       "OrderAI is HungerRush's voice-ordering add-on, built for restaurant groups already running the company's own POS, and its pricing isn't published; you have to talk to sales. X1 Voice publishes its pricing and works with several POS systems, including Square and OrderCounter directly plus Clover and 80+ more via Deliverect, rather than requiring you to run a specific POS.",
     pricingComparison: {
       x1voice: {
-        planName: "Business",
+        planName: "Starter (every feature included)",
         priceLabel: "From $250/mo",
-        billingNote: "Covers up to 5 locations with centralized reporting.",
+        billingNote: "Every feature from $250/mo; multi-location bundling available on higher plans.",
       },
       competitor: {
         planName: "OrderAI Talk (quote-based)",
@@ -178,9 +178,9 @@ export const comparePages: ComparePage[] = [
       "Slang AI centers on reservations, hospitality-style call handling, and guest messaging. What it doesn't do, per its own published materials, is take a phone order directly: callers who want to order get a text with a link to your online ordering page. X1 Voice is built to complete the order, including payment, on the call itself.",
     pricingComparison: {
       x1voice: {
-        planName: "Professional",
+        planName: "Starter (every feature included)",
         priceLabel: "From $250/mo",
-        billingNote: "Includes order-taking with payment collection on the call.",
+        billingNote: "Order-taking with payment collection on the call, included on every plan.",
       },
       competitor: {
         planName: "Core (per location)",
@@ -225,7 +225,7 @@ export const comparePages: ComparePage[] = [
       {
         question: "How does pricing compare?",
         answer:
-          "Slang's published Core plan starts around $399/mo per location, less than X1 Voice's Professional plan at $750/mo. But Slang's plans don't take orders on the call, so the two aren't doing the same job at those price points. Confirm current Slang pricing directly before comparing.",
+          "Slang's published Core plan starts around $399/mo per location. X1 Voice starts at $250/mo with every feature included. But Slang's plans don't take orders on the call, so the two aren't doing the same job at those price points. Confirm current Slang pricing directly before comparing.",
       },
       {
         question: "Can X1 Voice also handle reservations?",
@@ -242,12 +242,12 @@ export const comparePages: ComparePage[] = [
     competitorName: "Loman AI",
     competitorUrl: "https://loman.ai/",
     summary:
-      "Loman AI answers restaurant phones at what appears to be a lower starting price than X1 Voice, though Loman's own pricing page currently asks you to contact sales rather than listing current numbers, so that price is an estimate. Both products offer full order-taking with POS integration on their higher tiers.",
+      "Loman AI answers restaurant phones at what appears to be a lower starting price than X1 Voice's $250/mo, though Loman's own pricing page currently asks you to contact sales rather than listing current numbers, so that price is an estimate. Both products offer full order-taking with POS integration, on X1 Voice it's included on every plan from $250/mo; Loman puts it on their higher tier.",
     pricingComparison: {
       x1voice: {
-        planName: "Professional",
+        planName: "Starter (every feature included)",
         priceLabel: "From $250/mo",
-        billingNote: "Includes order-taking with payment collection on the call.",
+        billingNote: "Order-taking with payment collection on the call, included on every plan.",
       },
       competitor: {
         planName: "Premium (order-taking + POS)",
@@ -277,7 +277,7 @@ export const comparePages: ComparePage[] = [
       {
         question: "Is Loman AI cheaper than X1 Voice?",
         answer:
-          "Possibly, on paper. Third-party pricing trackers put Loman's order-capable Premium plan around $299/mo, well under X1 Voice's Professional plan at $750/mo. But Loman's own site no longer lists prices and asks you to contact sales, so treat that estimate as a starting point rather than a quote, and confirm current numbers before deciding.",
+          "Possibly, on paper. Third-party pricing trackers put Loman's order-capable Premium plan around $299/mo, in the range of X1 Voice's $250/mo starting price, which includes every feature. But Loman's own site no longer lists prices and asks you to contact sales, so treat that estimate as a starting point rather than a quote, and confirm current numbers before deciding.",
       },
       {
         question: "Does Loman AI's cheaper plan also take orders?",

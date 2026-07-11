@@ -51,7 +51,7 @@ const FEATURES_FAQS = [
   {
     question: "Does it collect payment over the phone?",
     answer:
-      "Phone-order payment collection is available starting on the Professional plan and included on Business and Enterprise. See /pricing for the full feature breakdown by plan.",
+      "Phone-order payment collection is included on every plan, starting with Starter at $250/mo. See /pricing for the full feature breakdown by plan.",
   },
   {
     question: "What happens if the AI can't complete a call?",

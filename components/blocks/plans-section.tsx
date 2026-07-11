@@ -79,10 +79,25 @@ export function PlansSection() {
                 </p>
                 <p className="mt-2 text-sm text-muted-foreground">{tier.description}</p>
 
+                <div className="mt-6 flex-1 border-t pt-5">
+                  <p className="text-xs font-semibold tracking-wide text-foreground uppercase">
+                    Everything included
+                  </p>
+                  <ul className="mt-3 space-y-2.5">
+                    {SHARED_FEATURES.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-sm">
+                        <CheckIcon className="mt-0.5 size-4 shrink-0 text-brand" />
+                        <span className="text-muted-foreground">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* CTA anchored to the card bottom so every button aligns on one row */}
                 <Link
                   href={tier.monthlyPrice === "custom" ? "/contact" : tier.ctaHref}
                   className={cn(
-                    "mt-6 inline-flex h-11 items-center justify-center rounded-full text-sm font-semibold transition",
+                    "mt-6 inline-flex h-11 w-full items-center justify-center rounded-full text-sm font-semibold transition",
                     highlighted
                       ? "bg-brand text-brand-foreground hover:bg-brand-bright"
                       : "border border-border bg-secondary/60 hover:bg-secondary"
@@ -90,18 +105,6 @@ export function PlansSection() {
                 >
                   {tier.monthlyPrice === "custom" ? "Contact us" : tier.ctaLabel}
                 </Link>
-
-                <p className="mt-6 border-t pt-5 text-xs font-semibold tracking-wide text-foreground uppercase">
-                  Everything included
-                </p>
-                <ul className="mt-3 space-y-2.5">
-                  {SHARED_FEATURES.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm">
-                      <CheckIcon className="mt-0.5 size-4 shrink-0 text-brand" />
-                      <span className="text-muted-foreground">{f}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             )
           })}

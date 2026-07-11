@@ -4,7 +4,6 @@ import { buildMetadata } from "@/lib/seo/metadata"
 import { PageHeader } from "@/components/blocks/page-header"
 import { Breadcrumbs } from "@/components/blocks/breadcrumbs"
 import { ContactForm } from "@/components/blocks/contact-form"
-import { CtaSection } from "@/components/blocks/cta-section"
 import { Card } from "@/components/ui/card"
 import { CONTACT, DEMO_LINE } from "@/data/site"
 
@@ -96,11 +95,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      <CtaSection
-        title="Ready to stop missing calls?"
-        description="Book a live demo and we'll call your own restaurant number so you can hear it work."
-      />
     </>
   )
 }
