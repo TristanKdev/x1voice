@@ -155,8 +155,8 @@ export function ProductDashboardFrame() {
   return (
     <div className="overflow-hidden rounded-2xl border border-band-border bg-band text-band-foreground shadow-2xl shadow-band/40">
       <div className="flex">
-        {/* Sidebar */}
-        <aside className="hidden w-52 shrink-0 border-r border-band-border p-4 lg:block">
+        {/* Sidebar (kept at every size; the frame is scaled to fit as a whole) */}
+        <aside className="block w-52 shrink-0 border-r border-band-border p-4">
           <div className="flex items-center gap-2 px-1 pb-4">
             <span
               className="flex size-7 items-center justify-center rounded-lg"
@@ -185,7 +185,7 @@ export function ProductDashboardFrame() {
         </aside>
 
         {/* Main */}
-        <div className="min-w-0 flex-1 p-5 sm:p-6">
+        <div className="min-w-0 flex-1 p-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <h3 className="font-display text-lg font-bold">Welcome back, Tony&rsquo;s</h3>
@@ -201,7 +201,7 @@ export function ProductDashboardFrame() {
           </div>
 
           {/* KPI cards */}
-          <div className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
+          <div className="mt-5 grid grid-cols-4 gap-3">
             {KPIS.map((k) => (
               <div key={k.label} className="rounded-xl border border-band-border bg-band-2 p-3.5">
                 <div className="flex items-center justify-between">
@@ -232,7 +232,7 @@ export function ProductDashboardFrame() {
           </div>
 
           {/* Trend + order sources */}
-          <div className="mt-3 grid gap-3 lg:grid-cols-[1.6fr_1fr]">
+          <div className="mt-3 grid gap-3 grid-cols-[1.6fr_1fr]">
             <div className="rounded-xl border border-band-border bg-band-2 p-4">
               <div className="flex items-center justify-between">
                 <p className="text-xs font-semibold">Revenue trend</p>
@@ -259,7 +259,7 @@ export function ProductDashboardFrame() {
           </div>
 
           {/* Active orders + quick status */}
-          <div className="mt-3 grid gap-3 lg:grid-cols-[1fr_1fr]">
+          <div className="mt-3 grid gap-3 grid-cols-[1fr_1fr]">
             <div className="rounded-xl border border-band-border bg-band-2 p-4">
               <div className="flex items-center justify-between">
                 <p className="text-xs font-semibold">Active orders</p>
