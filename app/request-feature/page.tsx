@@ -8,9 +8,9 @@ import { FeatureRequestForm } from "@/components/blocks/feature-request-form"
 import { Card } from "@/components/ui/card"
 
 export const metadata = buildMetadata({
-  title: "Request a feature",
+  title: "Request a feature or integration",
   description:
-    "Tell the X1 Voice team what would make the product better for your restaurant. We build from operator feedback.",
+    "Tell the X1 Voice team what would make the product better for your restaurant, a feature, or a POS/platform integration you don't see yet. We build from operator feedback.",
   path: "/request-feature",
 })
 
@@ -41,11 +41,11 @@ const STEPS = [
 export default function RequestFeaturePage() {
   return (
     <>
-      <Breadcrumbs items={[{ name: "Request a feature", path: "/request-feature" }]} />
+      <Breadcrumbs items={[{ name: "Request a feature or integration", path: "/request-feature" }]} />
       <PageHeader
         eyebrow="Roadmap"
-        title="Request a feature"
-        description="X1 Voice is built from operator feedback. If something would make your restaurant run better, tell us, the team reads every request."
+        title="Request a feature or integration"
+        description="X1 Voice is built from operator feedback. Want a new capability, or don't see your POS or platform yet? Tell us, the team reads every request."
       />
 
       <section className="mx-auto max-w-5xl px-6 py-16">
@@ -64,11 +64,11 @@ export default function RequestFeaturePage() {
         <div className="mx-auto max-w-2xl px-6 py-16">
           <div className="text-center">
             <h2 className="font-display text-2xl font-semibold">
-              What should we build?
+              What should we build or integrate?
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              The more specific, the better. Tell us the job, not just the
-              feature.
+              The more specific, the better. A feature, or a POS/platform you
+              need us to connect to, tell us the job, not just the name.
             </p>
           </div>
 

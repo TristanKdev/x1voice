@@ -17,6 +17,9 @@ export const MAIN_NAV: NavLink[] = [
 
 export const FOOTER_COMPANY: NavLink[] = [
   { label: "About", href: "/about" },
+  { label: "Partners", href: "/partners" },
+  { label: "Resellers & ISOs", href: "/resellers" },
+  { label: "Investors", href: "/investors" },
   { label: "Contact", href: "/contact" },
   { label: "Support", href: "/support" },
   { label: "Blog", href: "/blog" },
@@ -28,6 +31,7 @@ export const FOOTER_PRODUCT: NavLink[] = [
   { label: "Features", href: "/features" },
   { label: "Plans", href: "/pricing" },
   { label: "Integrations", href: "/integrations" },
-  { label: "Request a feature", href: "/request-feature" },
+  { label: "Integration docs", href: "/support/integrations" },
+  { label: "Request a feature or integration", href: "/request-feature" },
   { label: "Locations we serve", href: "/locations" },
 ]

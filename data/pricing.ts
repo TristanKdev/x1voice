@@ -52,7 +52,7 @@ export const PRICING_TIERS: PricingTier[] = [
     name: "Professional",
     monthlyPrice: 750,
     minutes: 2000,
-    overagePerMin: 0.3,
+    overagePerMin: 0.32,
     annualDiscountPct: 15,
     description: "Same features, more minutes and a lower overage rate.",
     highlighted: true,
@@ -63,7 +63,7 @@ export const PRICING_TIERS: PricingTier[] = [
     name: "Business",
     monthlyPrice: 1500,
     minutes: 6000,
-    overagePerMin: 0.25,
+    overagePerMin: 0.3,
     annualDiscountPct: 15,
     description: "High call volume, the lowest per-minute rate.",
     ctaLabel: "Get started",
@@ -118,7 +118,7 @@ export const PRICING_COMPARISON_ROWS: {
   enterprise: boolean | string
 }[] = [
   { feature: "Minutes included / month", starter: "750", professional: "2,000", business: "6,000", enterprise: "Custom" },
-  { feature: "Overage, per minute after", starter: "$0.35", professional: "$0.30", business: "$0.25", enterprise: "Custom" },
+  { feature: "Overage, per minute after", starter: "$0.35", professional: "$0.32", business: "$0.30", enterprise: "Talk to us" },
   { feature: "24/7 call answering", starter: true, professional: true, business: true, enterprise: true },
   { feature: "Order-taking with POS sync", starter: true, professional: true, business: true, enterprise: true },
   { feature: "Phone payment collection", starter: true, professional: true, business: true, enterprise: true },

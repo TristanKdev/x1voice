@@ -40,7 +40,7 @@ const PRICING_FAQS = [
   {
     question: "What happens if I go over my included minutes?",
     answer:
-      "Included minutes run from 750 on Starter up to 6,000 on Business. Once you pass them, extra minutes are billed at your plan's per-minute rate, $0.35 on Starter, $0.30 on Professional, $0.25 on Business, so a heavier plan lowers your overage rate. If you're consistently running over, we'll help you move to a plan sized for your call volume.",
+      "Included minutes run from 750 on Starter up to 6,000 on Business. Once you pass them, extra minutes are billed at your plan's per-minute rate, $0.35 on Starter, $0.32 on Professional, $0.30 on Business, so a heavier plan lowers your overage rate. Enterprise rates are custom, talk to us. If you're consistently running over, we'll help you move to a plan sized for your call volume.",
   },
   {
     question: "Do you offer a discount for paying annually?",

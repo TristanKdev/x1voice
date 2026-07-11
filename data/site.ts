@@ -21,6 +21,7 @@ export const ORG = {
 export const CONTACT = {
   salesEmail: "sales@x1voice.com",
   supportEmail: "support@x1voice.com",
+  investorsEmail: "investors@x1voice.com",
   phone: "+1-555-010-1010",
 }
 

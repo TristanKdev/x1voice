@@ -152,6 +152,22 @@ const STATIC_ROUTES: SiteRoute[] = [
     priority: 0.5,
   },
   {
+    path: "/partners",
+    title: "Partner with X1 Voice",
+    description: "Why partner with X1 Voice, and the ways to work together.",
+    index: true,
+    changeFrequency: "monthly",
+    priority: 0.5,
+  },
+  {
+    path: "/investors",
+    title: "Investors",
+    description: "Private equity and venture capital inquiries for X1 Voice.",
+    index: true,
+    changeFrequency: "yearly",
+    priority: 0.4,
+  },
+  {
     path: "/request-feature",
     title: "Request a Feature",
     description: "Tell the X1 Voice team what to build next.",
