@@ -38,7 +38,7 @@ function Cell({
         className
       )}
     >
-      <div className="mb-6 flex min-h-24 items-center">{visual}</div>
+      <div className="mb-6 flex min-h-24 flex-1 items-center">{visual}</div>
       <div>
         <h3 className="font-semibold tracking-tight">{title}</h3>
         <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{body}</p>
@@ -69,14 +69,22 @@ function Cell({
 function WholeJobVisual() {
   const steps = ["Answers", "Takes order", "Takes payment", "Fires to POS", "Texts updates"]
   return (
-    <div className="flex w-full flex-wrap items-center gap-2">
+    <div className="flex w-full items-start">
       {steps.map((s, i) => (
-        <span key={s} className="flex items-center gap-2">
-          <span className="rounded-lg border bg-secondary/60 px-2.5 py-1 text-xs font-medium">
-            {s}
-          </span>
-          {i < steps.length - 1 && <span className="text-brand/50">›</span>}
-        </span>
+        <div
+          key={s}
+          className={cn("flex items-center", i < steps.length - 1 && "flex-1")}
+        >
+          <div className="flex w-16 shrink-0 flex-col items-center gap-2 text-center">
+            <span className="flex size-9 items-center justify-center rounded-full bg-brand/10 text-sm font-bold text-brand ring-1 ring-brand/20">
+              {i + 1}
+            </span>
+            <span className="text-[11px] font-medium leading-tight">{s}</span>
+          </div>
+          {i < steps.length - 1 && (
+            <span className="-mt-5 h-0.5 flex-1 rounded-full bg-gradient-to-r from-brand/50 to-brand/15" />
+          )}
+        </div>
       ))}
     </div>
   )
@@ -115,16 +123,16 @@ function SpeedVisual() {
 function PosVisual() {
   // 7 real logos + a "& more" tile, laid out 4 on top, 3 + "& more" on the row below.
   return (
-    <div className="grid w-full grid-cols-4 gap-2">
+    <div className="grid w-full grid-cols-4 gap-2.5">
       {POS_BRANDS.slice(0, 7).map((b) => (
         <span
           key={b.name}
-          className="flex items-center justify-center rounded-xl border bg-secondary/40 px-2 py-3"
+          className="flex items-center justify-center rounded-xl border bg-secondary/40 px-3 py-5 transition-colors hover:border-brand/40"
         >
           <PosLockup brand={b} />
         </span>
       ))}
-      <span className="flex items-center justify-center rounded-xl border border-dashed bg-secondary/20 px-2 py-3 text-xs font-semibold text-muted-foreground">
+      <span className="flex items-center justify-center rounded-xl border border-dashed bg-secondary/20 px-3 py-5 text-sm font-semibold text-muted-foreground">
         &amp; more
       </span>
     </div>
