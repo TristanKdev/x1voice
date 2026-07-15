@@ -46,7 +46,7 @@ export function SiteHeader() {
             variant="ghost"
             className="hidden sm:inline-flex"
             nativeButton={false}
-            render={<Link href="/login">Log in</Link>}
+            render={<a href="/login">Log in</a>}
           />
           <Button
             className="hidden rounded-full bg-brand px-5 text-brand-foreground hover:bg-brand-bright sm:inline-flex"
@@ -81,9 +81,9 @@ export function SiteHeader() {
                 <Link href="/support" className="rounded-md px-2 py-2.5 text-sm hover:bg-muted">
                   Support
                 </Link>
-                <Link href="/login" className="rounded-md px-2 py-2.5 text-sm hover:bg-muted">
+                <a href="/login" className="rounded-md px-2 py-2.5 text-sm hover:bg-muted">
                   Log in
-                </Link>
+                </a>
               </nav>
             </SheetContent>
           </Sheet>
