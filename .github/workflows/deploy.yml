@@ -1,0 +1,115 @@
+name: Deploy to production
+
+# Push to main → build here (a broken build never touches the server) →
+# upload the artifact to S3 → SSM into the prod host, where
+# scripts/deploy-prod.sh swaps it into /opt/x1-marketing with health-check
+# and rollback. Auth is GitHub OIDC → a minimal AWS role scoped to this
+# repo's main branch; there are no repo secrets.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+env:
+  AWS_REGION: us-east-1
+  ROLE_ARN: arn:aws:iam::651706762238:role/github-actions-x1-marketing-deploy
+  EC2_INSTANCE_ID: i-0e69919f0cd5bd376
+  S3_BUCKET: x1-voice-deploy-artifacts
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://x1voice.com
+
+      - name: Prune to production dependencies
+        run: npm prune --omit=dev
+
+      - name: Create artifact
+        run: |
+          printf "NEXT_PUBLIC_SITE_URL=https://x1voice.com\n" > .env.production
+          tar czf /tmp/marketing-deploy.tar.gz \
+            .next public content node_modules \
+            package.json next.config.ts .env.production \
+            scripts/deploy-prod.sh
+          ls -lh /tmp/marketing-deploy.tar.gz
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Upload artifact to S3
+        run: |
+          ARTIFACT="marketing-$(date +%Y%m%d-%H%M%S)-${GITHUB_SHA::7}.tar.gz"
+          echo "ARTIFACT=$ARTIFACT" >> "$GITHUB_ENV"
+          aws s3 cp /tmp/marketing-deploy.tar.gz "s3://$S3_BUCKET/marketing/$ARTIFACT"
+
+      - name: Deploy on server via SSM
+        run: |
+          # $ARTIFACT is expanded by THIS (runner) shell before send-command; the
+          # single quotes around the inner `bash -c '...'` are literal at this
+          # level and belong to the remote shell.
+          COMMAND_ID=$(aws ssm send-command \
+            --instance-ids "$EC2_INSTANCE_ID" \
+            --document-name "AWS-RunShellScript" \
+            --parameters "commands=[\"sudo -iu ec2-user bash -c 'set -e && aws s3 cp s3://$S3_BUCKET/marketing/$ARTIFACT /tmp/marketing-deploy.tar.gz && tar xzf /tmp/marketing-deploy.tar.gz -C /tmp scripts/deploy-prod.sh && bash /tmp/scripts/deploy-prod.sh /tmp/marketing-deploy.tar.gz && echo $ARTIFACT > /opt/x1-marketing/.current-deploy && rm -rf /tmp/marketing-deploy.tar.gz /tmp/scripts'\"]" \
+            --timeout-seconds 600 \
+            --query "Command.CommandId" \
+            --output text)
+          echo "SSM Command ID: $COMMAND_ID"
+
+          for i in $(seq 1 60); do
+            sleep 10
+            STATUS=$(aws ssm get-command-invocation \
+              --command-id "$COMMAND_ID" \
+              --instance-id "$EC2_INSTANCE_ID" \
+              --query "Status" --output text 2>/dev/null || echo "Pending")
+            echo "[$i] status: $STATUS"
+            if [ "$STATUS" = "Success" ]; then
+              aws ssm get-command-invocation --command-id "$COMMAND_ID" \
+                --instance-id "$EC2_INSTANCE_ID" \
+                --query "StandardOutputContent" --output text
+              exit 0
+            fi
+            if [ "$STATUS" = "Failed" ] || [ "$STATUS" = "Cancelled" ] || [ "$STATUS" = "TimedOut" ]; then
+              echo "deploy FAILED on server (rollback ran if health check failed):"
+              aws ssm get-command-invocation --command-id "$COMMAND_ID" \
+                --instance-id "$EC2_INSTANCE_ID" \
+                --query "StandardOutputContent" --output text
+              aws ssm get-command-invocation --command-id "$COMMAND_ID" \
+                --instance-id "$EC2_INSTANCE_ID" \
+                --query "StandardErrorContent" --output text
+              exit 1
+            fi
+          done
+          echo "timed out waiting for SSM command" && exit 1
+
+      - name: Verify live site
+        run: |
+          sleep 5
+          curl -sf -o /dev/null https://x1voice.com/
+          curl -s https://x1voice.com/ | grep -q "X1 Voice" && echo "live site healthy"
