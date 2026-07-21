@@ -16,6 +16,15 @@ PREV=/opt/x1-marketing-prev
 FAILED=/opt/x1-marketing-failed
 HEALTH_URL=http://127.0.0.1:3002/
 
+# One-time self-heal: the release dirs are siblings under /opt, which is
+# root-owned by default, so ec2-user can't mkdir/mv/rm them. Grant ownership
+# once. Idempotent (skipped when already writable); needs ec2-user sudo, which
+# is the default on Amazon Linux. Without this the very first deploy fails on
+# `mkdir /opt/x1-marketing-new: Permission denied`.
+if [ ! -w /opt ]; then
+  sudo chown ec2-user:ec2-user /opt
+fi
+
 rm -rf "$NEW"
 mkdir -p "$NEW"
 tar xzf "$TARBALL" -C "$NEW"
