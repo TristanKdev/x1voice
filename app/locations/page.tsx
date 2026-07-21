@@ -41,7 +41,7 @@ export default function LocationsHubPage() {
             </Link>{" "}
             or the{" "}
             <Link href="/pricing" className="underline underline-offset-2">
-              Business and Enterprise plans
+              Professional and Enterprise plans
             </Link>
             .
           </p>

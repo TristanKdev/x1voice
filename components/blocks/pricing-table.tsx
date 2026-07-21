@@ -49,7 +49,7 @@ export function PricingTable() {
         </span>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {PRICING_TIERS.map((tier) => {
           const price =
             tier.monthlyPrice === "custom"
@@ -61,7 +61,7 @@ export function PricingTable() {
           return (
             <Card
               key={tier.name}
-              className={`relative flex flex-col p-6 ${tier.highlighted ? "border-brand ring-1 ring-brand" : ""}`}
+              className={`relative flex flex-col p-6 ${tier.highlighted ? "overflow-visible border-brand ring-1 ring-brand" : ""}`}
             >
               {tier.highlighted ? (
                 <Badge className="absolute -top-3 left-6 bg-brand text-brand-foreground">

@@ -42,8 +42,8 @@ export default function TermsPage() {
         <h2>Billing</h2>
         <p>
           Plans bill monthly or annually as selected at signup. There are no
-          setup fees and no long-term contract on the Starter, Professional,
-          or Business tiers; you can cancel at any time effective at the end
+          setup fees and no long-term contract on the Starter or Professional
+          tiers; you can cancel at any time effective at the end
           of your current billing period. Usage beyond your plan&rsquo;s
           included minutes is billed as described on the pricing page.
         </p>

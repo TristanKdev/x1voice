@@ -60,16 +60,6 @@ export const PRICING_TIERS: PricingTier[] = [
     ctaHref: "/contact",
   },
   {
-    name: "Business",
-    monthlyPrice: 1500,
-    minutes: 6000,
-    overagePerMin: 0.3,
-    annualDiscountPct: 15,
-    description: "High call volume, the lowest per-minute rate.",
-    ctaLabel: "Get started",
-    ctaHref: "/contact",
-  },
-  {
     name: "Enterprise",
     monthlyPrice: "custom",
     minutes: "custom",
@@ -114,18 +104,17 @@ export const PRICING_COMPARISON_ROWS: {
   feature: string
   starter: boolean | string
   professional: boolean | string
-  business: boolean | string
   enterprise: boolean | string
 }[] = [
-  { feature: "Minutes included / month", starter: "750", professional: "2,000", business: "6,000", enterprise: "Custom" },
-  { feature: "Overage, per minute after", starter: "$0.35", professional: "$0.32", business: "$0.30", enterprise: "Talk to us" },
-  { feature: "24/7 call answering", starter: true, professional: true, business: true, enterprise: true },
-  { feature: "Order-taking with POS sync", starter: true, professional: true, business: true, enterprise: true },
-  { feature: "Phone payment collection", starter: true, professional: true, business: true, enterprise: true },
-  { feature: "Texts customer on status change", starter: true, professional: true, business: true, enterprise: true },
-  { feature: "Multilingual answering", starter: true, professional: true, business: true, enterprise: true },
-  { feature: "Custom menu training", starter: true, professional: true, business: true, enterprise: true },
-  { feature: "Analytics dashboard", starter: true, professional: true, business: true, enterprise: true },
-  { feature: "Setup fee", starter: "None", professional: "None", business: "None", enterprise: "None" },
-  { feature: "Contract required", starter: false, professional: false, business: false, enterprise: "Negotiable" },
+  { feature: "Minutes included / month", starter: "750", professional: "2,000", enterprise: "Custom" },
+  { feature: "Overage, per minute after", starter: "$0.35", professional: "$0.32", enterprise: "Talk to us" },
+  { feature: "24/7 call answering", starter: true, professional: true, enterprise: true },
+  { feature: "Order-taking with POS sync", starter: true, professional: true, enterprise: true },
+  { feature: "Phone payment collection", starter: true, professional: true, enterprise: true },
+  { feature: "Texts customer on status change", starter: true, professional: true, enterprise: true },
+  { feature: "Multilingual answering", starter: true, professional: true, enterprise: true },
+  { feature: "Custom menu training", starter: true, professional: true, enterprise: true },
+  { feature: "Analytics dashboard", starter: true, professional: true, enterprise: true },
+  { feature: "Setup fee", starter: "None", professional: "None", enterprise: "None" },
+  { feature: "Contract required", starter: false, professional: false, enterprise: "Negotiable" },
 ]

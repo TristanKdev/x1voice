@@ -69,12 +69,12 @@ export const comparePages: ComparePage[] = [
       { feature: "Monthly, no-contract billing", x1voice: true, competitor: "Typically annual contract" },
       {
         feature: "Multi-location bundling under one plan",
-        x1voice: "Up to 5 locations on Business plan",
+        x1voice: "Up to 5 locations on Enterprise plan",
         competitor: "Priced per location",
         note: "Kea's flat rate is per single location; a 3-location group pays 3x, with no bundled discount published.",
       },
       { feature: "Multi-language call handling", x1voice: true, competitor: "Not documented publicly" },
-      { feature: "Centralized multi-location reporting", x1voice: "Business plan and up", competitor: "Not documented publicly" },
+      { feature: "Centralized multi-location reporting", x1voice: "Enterprise plan and up", competitor: "Not documented publicly" },
       { feature: "Published, self-serve pricing", x1voice: true, competitor: true, note: "Rare among AI phone-agent vendors; most require a sales call." },
     ],
     faqs: [
@@ -86,7 +86,7 @@ export const comparePages: ComparePage[] = [
       {
         question: "Does Kea AI work for multi-location restaurant groups?",
         answer:
-          "It's sold per location, and Kea doesn't publicly document a multi-location bundle or centralized reporting. X1 Voice's Business plan covers up to 5 locations under one plan with a shared analytics dashboard, which is typically simpler for a growing group to manage.",
+          "It's sold per location, and Kea doesn't publicly document a multi-location bundle or centralized reporting. X1 Voice's Enterprise plan covers up to 5 locations under one plan with a shared analytics dashboard, which is typically simpler for a growing group to manage.",
       },
       {
         question: "Do both handle phone payments?",
@@ -270,7 +270,7 @@ export const comparePages: ComparePage[] = [
       },
       { feature: "Published, self-serve pricing", x1voice: true, competitor: false, note: "Loman's site currently requires contacting sales for a quote." },
       { feature: "Multi-language call handling", x1voice: true, competitor: "Not documented publicly" },
-      { feature: "Centralized multi-location reporting", x1voice: "Business plan and up", competitor: "Not documented publicly" },
+      { feature: "Centralized multi-location reporting", x1voice: "Enterprise plan and up", competitor: "Not documented publicly" },
       { feature: "Setup fee", x1voice: false, competitor: "Reported by some third-party sources; not listed on Loman's current site" },
     ],
     faqs: [
@@ -385,7 +385,7 @@ export const comparePages: ComparePage[] = [
       { feature: "Can perform in-person tasks (hosting, running food, bussing)", x1voice: false, competitor: true, note: "A real, fair advantage of a human hire: an AI voice agent only handles the phone." },
       { feature: "Order synced to POS automatically", x1voice: true, competitor: "Manual entry" },
       { feature: "Consistent order accuracy under pressure", x1voice: true, competitor: "Varies by individual and shift" },
-      { feature: "Cost scales with locations", x1voice: "Bundled up to 5 locations on Business plan", competitor: "Separate hire per location" },
+      { feature: "Cost scales with locations", x1voice: "Bundled up to 5 locations on Enterprise plan", competitor: "Separate hire per location" },
       { feature: "Sick days, turnover, and retraining risk", x1voice: false, competitor: true },
     ],
     faqs: [

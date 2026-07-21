@@ -25,7 +25,7 @@ const PRICING_FAQS = [
   {
     question: "Do you require a contract?",
     answer:
-      "No long-term contract on Starter, Professional, or Business, and you can cancel anytime. Enterprise plans are custom, so contract terms there are negotiable based on your rollout.",
+      "No long-term contract on Starter or Professional, and you can cancel anytime. Enterprise plans are custom, so contract terms there are negotiable based on your rollout.",
   },
   {
     question: "What's actually different between the plans?",
@@ -35,17 +35,17 @@ const PRICING_FAQS = [
   {
     question: "Can I change plans later?",
     answer:
-      "Yes. You can move between Starter, Professional, and Business as your call volume changes. Multi-location groups that outgrow Business can move to a custom Enterprise plan whenever it makes sense.",
+      "Yes. You can move between Starter and Professional as your call volume changes. Multi-location groups that outgrow Professional can move to a custom Enterprise plan whenever it makes sense.",
   },
   {
     question: "What happens if I go over my included minutes?",
     answer:
-      "Included minutes run from 750 on Starter up to 6,000 on Business. Once you pass them, extra minutes are billed at your plan's per-minute rate, $0.35 on Starter, $0.32 on Professional, $0.30 on Business, so a heavier plan lowers your overage rate. Enterprise rates are custom, talk to us. If you're consistently running over, we'll help you move to a plan sized for your call volume.",
+      "Included minutes run from 750 on Starter up to 2,000 on Professional. Once you pass them, extra minutes are billed at your plan's per-minute rate, $0.35 on Starter, $0.32 on Professional, so a heavier plan lowers your overage rate. Enterprise rates are custom, talk to us. If you're consistently running over, we'll help you move to a plan sized for your call volume.",
   },
   {
     question: "Do you offer a discount for paying annually?",
     answer:
-      "Yes. Starter, Professional, and Business all save 15% when billed annually instead of monthly. Toggle the pricing table above to compare.",
+      "Yes. Starter and Professional both save 15% when billed annually instead of monthly. Toggle the pricing table above to compare.",
   },
 ]
 
@@ -87,7 +87,6 @@ export default function PricingPage() {
                 values: {
                   starter: row.starter,
                   professional: row.professional,
-                  business: row.business,
                   enterprise: row.enterprise,
                 },
               }))}
