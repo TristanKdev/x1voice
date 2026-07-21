@@ -17,12 +17,21 @@ FAILED=/opt/x1-marketing-failed
 HEALTH_URL=http://127.0.0.1:3002/
 
 # One-time self-heal: the release dirs are siblings under /opt, which is
-# root-owned by default, so ec2-user can't mkdir/mv/rm them. Grant ownership
-# once. Idempotent (skipped when already writable); needs ec2-user sudo, which
-# is the default on Amazon Linux. Without this the very first deploy fails on
-# `mkdir /opt/x1-marketing-new: Permission denied`.
+# root-owned by default, so ec2-user can't mkdir/mv/rm them. Grant ec2-user
+# rwx on the /opt directory ONLY, via an ACL — root keeps ownership and every
+# existing entry under /opt is left untouched. This is the least privilege the
+# sibling-dir swap needs; deliberately NOT `chown /opt` (which would hand over
+# all of /opt) or `chown -R`. Idempotent (skipped once /opt is writable); needs
+# ec2-user sudo, the default on Amazon Linux. Without it the first deploy fails
+# on `mkdir /opt/x1-marketing-new: Permission denied`.
 if [ ! -w /opt ]; then
-  sudo chown ec2-user:ec2-user /opt
+  if command -v setfacl >/dev/null 2>&1; then
+    sudo setfacl -m u:ec2-user:rwx /opt
+  else
+    echo "ERROR: /opt not writable by ec2-user and setfacl is unavailable." >&2
+    echo "Run once on the host: sudo setfacl -m u:ec2-user:rwx /opt" >&2
+    exit 1
+  fi
 fi
 
 rm -rf "$NEW"
