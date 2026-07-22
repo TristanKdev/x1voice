@@ -1,0 +1,64 @@
+---
+title: "Reducing Phone-Order Fraud and Chargebacks With Voice AI"
+description: "How an AI voice agent plus proper payment handling can cut phone-order fraud and chargebacks — card data handled by the processor, order confirmations, callback verification, and processor dispute tools."
+publishedAt: "2026-06-06"
+faqs:
+  - question: "Can an AI voice agent eliminate phone-order fraud?"
+    answer: "No, and any vendor who says otherwise is overselling. What good payment handling does is shrink your exposure: raw card numbers stay with a compliant processor instead of on a sticky note, orders get confirmed back, and you can flag suspicious ones for a callback. Fraud still happens sometimes — the goal is fewer incidents and better evidence when you dispute, not zero."
+  - question: "Where does the card number actually go on a phone order?"
+    answer: "In a well-built setup, the card is captured through a PCI-compliant payment processor that tokenizes it, so your restaurant holds a token and a transaction record rather than the actual number. Nobody writes digits on paper. That both reduces fraud risk and keeps you out of the sensitive scope of card-security rules."
+  - question: "What do I do when a chargeback comes anyway?"
+    answer: "Lean on your payment processor's dispute tools. They provide the mechanism to respond to a chargeback with evidence — the transaction record, order details, delivery or pickup confirmation. Clean records from the call and a tokenized transaction give you something concrete to submit, which is far better than a handwritten slip."
+---
+
+Phone orders have always been the soft spot for fraud. A stolen card number is easy to read aloud, there's no chip or tap to verify, and the traditional workflow — a staff member scribbling digits on a pad — leaves both the customer and the restaurant exposed. Add a voice AI agent and the right payment plumbing and you can close a lot of that gap. Not all of it. No system eliminates fraud, and anyone who promises that is selling you something. What you *can* do is make fraud harder, confirmations routine, and disputes winnable. Here's how to think about it.
+
+## Where phone-order fraud actually comes from
+
+Most restaurant phone fraud falls into a few familiar buckets, and it helps to name them before reaching for tools:
+
+- **Stolen card numbers** used to place orders the real cardholder never made, which surface later as chargebacks.
+- **Friendly fraud**, where a real customer disputes a charge they actually made — sometimes honestly confused, sometimes not.
+- **Loose card handling on your side**, where a number written on paper or typed into the wrong place becomes a liability all its own, separate from whether the order was legitimate.
+
+Voice AI plus proper payment handling attacks the first and third directly and gives you evidence to fight the second. It won't read a caller's mind, but it changes the mechanics in your favor.
+
+## Get the card out of your staff's hands
+
+The single biggest improvement isn't clever fraud detection — it's never having raw card data in your restaurant in the first place. When a human writes a card number on a sticky note, you've created a risk that has nothing to do with whether the order was real: that slip can be photographed, lost, or misused, and it drags your operation into the sensitive scope of payment-security rules.
+
+A well-built voice agent handles payment differently. The card is captured through a PCI-compliant payment processor that tokenizes it, so what your restaurant ends up holding is a token and a transaction record — not the actual number. Or the agent texts the customer a secure payment link they fill in on their own phone, keeping the card off the voice channel entirely. Either way, no digits land on paper. We walk through exactly what "safe" looks like, and the questions to ask a vendor, in [collecting payment over the phone, safely](/blog/collecting-payment-over-the-phone-safely). Getting the card out of human hands doesn't stop a thief with a stolen number, but it removes an entire category of self-inflicted risk.
+
+## Confirm the order back, every time
+
+A consistent, recorded confirmation is quietly one of your best anti-fraud and anti-dispute tools. An AI agent does it the same way on every call, without getting tired at 9pm on a Saturday:
+
+- It reads the order back — items, total, pickup or delivery.
+- It confirms the name and, for delivery, the address.
+- It logs the whole exchange as a transcript tied to the transaction.
+
+That routine does two things. It catches honest mistakes before the kitchen fires the ticket, and it creates a clear record that the order was placed and confirmed. When a "friendly fraud" dispute shows up weeks later, a confirmed order with a matching total and a delivery address is exactly the kind of detail that helps your case. A human might skip the read-back on a busy night; the AI doesn't.
+
+## Callback verification for the suspicious ones
+
+Not every order deserves the same scrutiny, and the trick is spending friction where it matters. An unusually large first-time order, a delivery to an address that doesn't match the card, or a rush job for a stack of gift cards are the classic red flags. For those, a light verification step is worth the small friction:
+
+- Offer a **secure payment link** instead of a card read aloud, so the transaction runs through a proper checkout the customer completes themselves.
+- For a genuinely high-value or odd order, **call the number back** before you fire it, or hold it for staff review. A real customer won't mind a quick confirmation on a $400 order; a fraudster often won't answer.
+- Set an **escalation rule** so orders above a dollar threshold route to a human for a second look rather than going straight to the kitchen.
+
+You're not trying to interrogate every caller. You're adding one verification step to the small slice of orders that carry most of the risk.
+
+## When a chargeback comes anyway, lean on your processor
+
+Some fraud gets through no matter how careful you are, and it shows up as a chargeback. This is where the earlier work pays off, and where your payment processor — not your voice vendor — does the heavy lifting.
+
+Reputable processors (the same PCI-compliant one that captured the payment) provide dispute tools: a structured way to respond to a chargeback with evidence and, in some cases, fraud-screening features that flag risky transactions before they settle. Your job is to hand them something to work with. A tokenized transaction record, the confirmed order details, and the call transcript give you concrete evidence to submit — dramatically better footing than a handwritten slip and a "I'm pretty sure they ordered it." Learn how your processor's dispute flow works *before* you're in one, and keep your records clean so you can produce them fast. You won't win every dispute, but clean records tilt the odds.
+
+## What voice AI doesn't fix
+
+Be clear-eyed about the limits. An AI agent can't verify that the person on the phone is the real cardholder — that's what the tokenized transaction, address checks, and your processor's fraud screening are for. It won't stop a determined fraudster with valid stolen card details from getting one order through before the dispute lands. And it doesn't replace basic judgment on your team about orders that feel off. The value is in the aggregate: fewer sticky notes, consistent confirmations, verification on the risky orders, and real evidence when you dispute. That's a materially smaller fraud surface, not an invincible one. Measure your own chargeback rate before and after rather than trusting a number from a vendor deck.
+
+## The bottom line
+
+You can't make phone orders fraud-proof, but you can stop making them easy. Keep raw card data out of your restaurant by routing payment through a compliant, tokenizing processor. Let the AI confirm every order back and log it. Add a verification step — a payment link or a callback — for the handful of orders that look risky. And when a chargeback comes anyway, lean on your processor's dispute tools with the clean records the call gave you. That combination won't get you to zero, but it moves you from "hope the card is good" to "here's exactly what was ordered, confirmed, and charged." If you want to see how payment and confirmation work on a live call, [reach out](/contact) and we'll walk you through it.

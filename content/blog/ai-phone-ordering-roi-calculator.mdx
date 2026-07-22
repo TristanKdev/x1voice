@@ -1,0 +1,62 @@
+---
+title: "How to Build an Honest ROI Calculator for AI Phone Ordering"
+description: "Most online ROI calculators are rigged to spit out a big number. Here's how to build one you can actually trust, using your own miss rate, ticket, and volume."
+publishedAt: "2026-07-20"
+faqs:
+  - question: "What numbers do I need to calculate ROI on AI phone ordering?"
+    answer: "Five inputs cover most of it: your daily call volume, your peak-hour miss rate, your average phone-order ticket, the labor hours you currently spend triaging the phone, and any delivery-commission you'd avoid by keeping callers direct. The first three build the revenue side; the last two are cost offsets. Every one of them should come from your own records, not a vendor's example."
+  - question: "What's a realistic payback period?"
+    answer: "For a lot of single locations, recovered orders alone cover a flat monthly plan within the first month, which is why the direction of the math is usually favorable. But payback depends entirely on how many calls you actually miss. A restaurant that barely misses any calls will see a long payback; one that misses a chunk of its peak-hour volume will see a short one. Measure before you assume."
+  - question: "Should I count delivery-commission savings in my ROI?"
+    answer: "Count it, but treat it as the softest input in the model. You genuinely do avoid a commission when a caller who couldn't reach you would otherwise have reordered through a marketplace app. The problem is you can't cleanly observe how many missed callers do that, so any number you put here is an estimate. Keep it separate from your hard recovered-order figure so you can see the case with and without it."
+  - question: "Aren't vendor ROI calculators just marketing?"
+    answer: "Usually, yes. Most are pre-loaded with optimistic defaults — a high miss rate, a high recovery rate, a fat ticket — so the output looks great before you touch it. The fix isn't to distrust the math, it's to replace every default with a number you measured yourself. The formula is fine; the inputs are where the spin lives."
+---
+
+Return-on-investment math for a phone tool sounds like a dry spreadsheet exercise, and it is one. The problem is that almost every ROI calculator you'll find online is built to sell, not to inform — pre-loaded with flattering defaults that guarantee a big green number before you've entered a thing about your own restaurant. A calculator you can trust is one you build from your own records. Here's how to assemble it, input by input, with a worked example that doesn't cheat.
+
+## Start with the revenue side: three inputs
+
+The money a voice agent makes you comes from orders you're currently losing. To size that, you need three numbers, all of which you already have.
+
+**Daily call volume.** Pull it from your phone provider's call log or your POS. Use a busy day, not an average one, because the whole point is the peak.
+
+**Peak-hour miss rate.** This is the percentage of calls that ring out or hit voicemail when you're slammed. The commonly cited industry estimate lands somewhere around 1 in 4 at peak, but that's a general approximation and yours could be far higher or lower. Our [missed-call framework](/blog/how-many-calls-does-your-restaurant-miss) walks through estimating it from your actual logs — do that rather than borrowing the industry figure.
+
+**Average phone-order ticket.** Not your overall average — phone and pickup orders often run differently than dine-in. Pull the real number from your POS.
+
+Multiply them and you have a recovered-revenue estimate: `call volume × miss rate × recovery rate × ticket`. The recovery rate matters and it isn't 100% — a voice agent answers the call, but some callers were tire-kickers, wrong numbers, or people who'd have hung up anyway.
+
+## Add the two costs you stop paying
+
+Recovered orders are the headline, but two quieter offsets belong in the model.
+
+**Labor you stop burning on the phone.** Whoever currently drops what they're doing to triage the phone during a rush is a real cost, even if it's the owner and it never shows on a schedule. Estimate the hours per day and multiply by a loaded wage. We go deeper on this in [cutting restaurant labor costs with AI phone answering](/blog/cut-restaurant-labor-costs-ai-phone).
+
+**Delivery-commission you avoid.** Some callers who can't reach you will reorder through a marketplace app that takes a cut of that order and every future one. Keeping them on your direct line avoids that commission. This is the softest input in the whole model — you can't cleanly observe how many missed callers reroute — so estimate it conservatively and keep it separate from your hard numbers.
+
+## A worked example, kept honest
+
+Let me run one so the mechanics are concrete. These are illustrative figures, not claims about your restaurant.
+
+Say a location takes **70 calls on a busy day** and misses **20% at peak**. That's roughly 14 missed calls. Not all of those are orders — suppose two-thirds are genuine order attempts, so about 9 recoverable orders a day. Assume the agent recovers most but not all of them, call it **7 orders a day**. At a **$28 ticket**, that's about **$196 a day**. Over a 30-day month, roughly **$5,900** in recovered orders.
+
+Now the offsets, both estimated conservatively. Say the phone pulls someone off the floor for about **an hour a day** at a $17 loaded wage — call it **$500 a month** in reclaimed labor. And suppose keeping a handful of those callers direct avoids a few hundred dollars of delivery commission a month; I'll leave that as a soft **$0–$400** rather than bake in a number I can't defend.
+
+So the illustrative monthly upside is somewhere in the low-to-mid four figures, dominated by recovered orders, with labor and commission as smaller, fuzzier add-ons. Notice how much the whole thing hinges on that miss rate — halve it and the case gets much weaker; that's exactly why you measure it instead of trusting mine.
+
+## Put the tool's cost on the other side
+
+Against that upside sits a flat, predictable number. [X1 Voice pricing](/pricing) starts at **$250/month** for the Starter plan (750 minutes), with Professional at **$750/month** (2,000 minutes), no setup fee and no contract. Match the plan to your call volume — a high-volume location that blows past 750 minutes should model the Professional tier so the comparison is fair.
+
+The reason per-minute and per-order pricing models are worth scrutinizing here is that they scale their bill with your busiest, most profitable periods. A flat plan doesn't, which makes the payback math easier to trust because the cost side is a constant, not a variable that grows with your success. We break the single-location version of this down further in [the economics of AI phone answering for one location](/blog/economics-ai-phone-answering-single-location).
+
+## Why every number above is a placeholder until you measure
+
+Here's the honest part most calculators skip. The model is only as good as its weakest input, and in this case that's your miss rate. Everything downstream multiplies off it. If you plug in an industry-average 25% when your real figure is 8%, your ROI is fiction. If your real figure is 35% and you assumed 25%, you're underselling the case to yourself.
+
+So before you trust any output — mine, a vendor's, or your own — spend the hour to measure. Pull a week of call logs, count the calls that went unanswered at peak, and get a real percentage. Do the same for your ticket and your labor hours. The formula is trivial; the discipline is in refusing to guess the inputs.
+
+## The bottom line
+
+An ROI calculator for AI phone ordering isn't hard math — it's recovered orders plus two cost offsets, weighed against a flat monthly plan. What makes it trustworthy or worthless is entirely the inputs. Replace every optimistic default with a number you measured from your own records, keep your softest estimate (commission avoidance) clearly separated from your hard ones, and pay attention to how much everything rides on your true miss rate. Do that, and you'll have a number you can actually stand behind — whichever way it comes out. When you're ready to sanity-check it against reality, the fastest test is to [call the demo line](/#see-it) and order like a customer.

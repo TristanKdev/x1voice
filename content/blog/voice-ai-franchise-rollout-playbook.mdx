@@ -1,0 +1,63 @@
+---
+title: "A Voice AI Rollout Playbook for Franchise and Multi-Location Groups"
+description: "Deploying voice AI phone ordering across a franchise group is a coordination problem, not just a tech one. Here's a practical playbook: pilot one store, standardize menus, decide config, measure, then scale."
+publishedAt: "2026-07-04"
+faqs:
+  - question: "Should we roll out to every location at once?"
+    answer: "Almost never. Start with one store, prove the menu training and POS integration work in a real environment, and fix what the pilot exposes before you replicate it. Rolling out group-wide on day one means replicating your mistakes across every location at the same time. A staged rollout is slower on paper but far faster to a result that actually holds."
+  - question: "How do we handle menus that differ between locations?"
+    answer: "Standardize what you can and treat genuine per-location differences as deliberate exceptions rather than accidents. Most groups have a core menu that's identical everywhere plus real local variations — regional items, different pricing, locations that 86 things at different times. The goal isn't to force every store into one menu; it's to know exactly where they differ so the agent quotes the right thing at each one."
+  - question: "Who owns the configuration — corporate or the franchisee?"
+    answer: "Usually both, split by layer. Brand-level things like greeting style, core menu, and how orders reach the POS tend to live centrally for consistency. Location-level realities like hours, local pricing, and daily availability have to be editable by the people who actually run the store. The rollout question is drawing that line clearly before you scale, not after."
+  - question: "How long does a multi-location rollout take?"
+    answer: "It depends on how consistent your menus and POS setup already are across the group. A single location can often go live quickly, but a group rollout is paced by coordination — menu standardization, deciding config ownership, and training each location's staff — not by the technology. Plan in waves and measure each one; don't promise the whole estate a single go-live date."
+---
+
+Getting voice AI phone ordering working at one restaurant is a fairly contained project. Getting it working consistently across twenty or two hundred — often with different franchisees, different local menus, and sometimes different POS systems underneath — is a different kind of job. The technology is rarely the hard part at that scale. The coordination is.
+
+This is a practical playbook for that rollout. It assumes you've already decided voice AI is worth doing and you're now facing the "across the whole group" version of the problem. If you're earlier than that, the [complete guide to AI phone ordering](/blog/ai-phone-ordering-for-restaurants-complete-guide) is a better starting point. If you're here, the goal is to get the rollout right without turning it into a permanent operations project.
+
+## Start with one store, not the whole group
+
+The strongest instinct to resist is switching on every location at once. It feels efficient. It isn't. A group-wide launch means that whatever your pilot would have caught — a menu item the agent mishears, an integration edge case, a greeting that doesn't fit the brand — gets replicated across every location simultaneously, and now you're firefighting in parallel.
+
+Pick one store to pilot. Ideally one with a representative menu, a typical call volume, and a manager who'll actually give you candid feedback. Get it fully live: menu trained, [POS integration wired](/blog/how-ai-phone-ordering-works-the-pipeline), payments and SMS status working, staff comfortable with it. Then let it run long enough to see real ordering patterns — a busy weekend, not just a quiet Tuesday. The pilot's job is to surface the problems you didn't anticipate while they're still cheap to fix.
+
+## Standardize the menu before you scale
+
+Menus are where multi-location rollouts get messy, because groups almost never have one clean menu. They have a core menu that's supposed to be identical everywhere, plus a layer of real differences: regional items, location-specific pricing, different tax handling, stores that 86 things at different times of day.
+
+Before scaling, get honest about which differences are intentional and which are just drift. A price that's wrong in three locations because nobody updated them isn't a local variation — it's a data problem you'll bake into the agent if you don't catch it. Standardize the core, document the genuine exceptions, and treat the menu as the shared source of truth the agent trains on. Groups already running middleware have an advantage here, since [pairing a voice agent with a system like Deliverect](/blog/deliverect-voice-agent-multi-location-restaurants) keeps menus and availability on the same rails across every channel and location rather than re-entered store by store.
+
+## Decide central versus per-location config early
+
+Every multi-location deployment has to answer one question clearly: what's set centrally, and what does each location control? Get this wrong and you either have corporate fielding requests to change one store's hours, or you have franchisees quietly drifting away from brand standards.
+
+A workable split usually looks like this:
+
+- **Central (brand-level):** greeting and tone, core menu structure, how orders reach the POS, payment handling, and anything that should be identical to protect the brand experience.
+- **Per-location:** operating hours, local pricing where it legitimately differs, daily availability and 86'd items, and store-specific pickup details.
+
+The exact line depends on your franchise structure and how much autonomy stores have. What matters is drawing it deliberately before you scale, so the answer to "who changes this?" is never a surprise. The stores that run smoothest are the ones where the people closest to daily operations can update the daily realities without a ticket to corporate.
+
+## Plan for the coordination, not just the tech
+
+Here's the part that's easy to underestimate: the bottleneck in a group rollout is rarely the software. It's getting menus verified, getting franchisees on board, scheduling staff training, and aligning everyone on what "done" looks like at each store. A single location can [go live in well under an hour](/blog/how-to-set-up-ai-phone-ordering-in-30-minutes) once its inputs are ready — but "once its inputs are ready" is doing a lot of work when you multiply it across an estate with independent operators.
+
+Be honest with yourself and your locations about this. Don't promise the whole group a single go-live date; promise a wave schedule and hit it. Assign someone to own the rollout end to end rather than letting it be everyone's part-time responsibility, because a rollout with no clear owner stalls at the first location that pushes back. And expect franchisee questions — about cost, about who's answering their phones, about what happens when the agent can't handle a call — and have real answers ready before you ask them to flip the switch.
+
+## Measure each wave before the next
+
+The pilot gave you a baseline; each subsequent wave should confirm the pattern holds. Watch a small, consistent set of signals per location rather than drowning in dashboards: what share of calls the agent handled without a human, order accuracy against what actually hit the POS, and how the store's staff and customers are reacting. Analytics should make this visible per location so you can spot the store that's an outlier rather than assuming the group is uniform.
+
+Treat unexpected numbers as questions, not verdicts. A location with a high transfer-to-human rate might have a menu the agent wasn't trained well on, an accent or language mix worth accounting for, or simply a quirk in how that store operates. These are estimates to investigate against your own data, not benchmarks to take on faith. Fix what a wave reveals before you commit the next set of stores, and the rollout compounds in your favor instead of accumulating small unaddressed problems.
+
+## Scale in waves, then hand it off
+
+Once a wave is stable, the next one is mostly replication — the same menu-standardization, config-split, train-and-measure loop, now faster because you've done it. Groups running mixed POS systems or existing aggregators will find the [middleware path](/blog/deliverect-voice-agent-multi-location-restaurants) makes each additional location an extension of an existing layer rather than a fresh integration project, which is what keeps later waves from getting slower instead of faster.
+
+The end state you're aiming for is a rollout that no longer needs you. Locations that can manage their own daily settings, a central layer that holds brand consistency, and a measurement habit that flags problems before they spread. For a group at real scale, this is typically an [Enterprise conversation](/pricing) rather than a plan-per-store one — worth talking through with someone who's done multi-location deployments before, via [our team](/contact), rather than improvising the coordination as you go.
+
+## The bottom line
+
+A franchise voice AI rollout succeeds or fails on coordination, not technology. Pilot one store and learn from it. Standardize the menu and document the real exceptions. Draw the central-versus-local config line deliberately. Measure each wave and fix what it exposes before scaling the next. Do that and "we automated the phone at one location" becomes "we automated it consistently across the whole company" — which is the harder, more valuable thing, and the reason to treat the rollout as a real project rather than a switch you flip everywhere at once.

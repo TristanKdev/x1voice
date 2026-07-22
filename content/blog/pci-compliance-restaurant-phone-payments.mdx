@@ -1,0 +1,60 @@
+---
+title: "PCI Compliance and Restaurant Phone Payments: What to Understand"
+description: "Taking cards over the phone drags your restaurant into PCI scope. Here's what PCI DSS actually asks of you, and how an AI agent's payment handling can reduce that scope versus staff keying in numbers."
+publishedAt: "2026-07-07"
+faqs:
+  - question: "Does using an AI voice agent make my restaurant PCI compliant?"
+    answer: "No single tool makes you compliant. PCI compliance is your merchant obligation, not something a vendor grants you. What a well-built payment flow can do is reduce your scope — the number of systems and people that touch raw card data — which usually makes compliance simpler and cheaper. Confirm what applies to you with your payment processor or a Qualified Security Assessor (QSA)."
+  - question: "What's actually wrong with staff taking card numbers over the phone?"
+    answer: "It pulls people, phones, and any call recordings into PCI scope. A staff member hears and often writes down the full card number, and if you record calls those recordings may capture the number and security code. Storing the security code (CVV) after a transaction is authorized is prohibited outright under PCI DSS, and paper slips with card numbers are exactly what the standard is trying to eliminate."
+  - question: "What does 'reducing PCI scope' mean in plain terms?"
+    answer: "Scope is everything that stores, processes, or transmits cardholder data — systems, staff, and paperwork. The more of that you have, the more the standard asks of you. If card data is captured directly by a compliant processor and never enters your environment, fewer things are in scope, so your assessment is typically shorter and less burdensome. It does not eliminate your obligations, but it shrinks them."
+  - question: "Do I still have to do anything if a processor handles the card?"
+    answer: "Yes. Even with reduced scope you almost always still complete a Self-Assessment Questionnaire (SAQ) each year and maintain basic security practices. Reducing scope changes which SAQ applies and how much it covers — it doesn't make the obligation disappear. Your processor can tell you which SAQ fits your setup."
+---
+
+Most restaurant owners meet PCI compliance as a line item on a processor statement or an annual questionnaire nobody enjoys filling out. It rarely gets thought about until phone payments enter the picture — and phone payments are one of the fastest ways to make your compliance situation more complicated than it needs to be.
+
+This is the compliance-and-scope lens on taking cards over the phone. A [companion post covers the practical safety of phone payment capture](/blog/collecting-payment-over-the-phone-safely); here the question is narrower and more bureaucratic: what does PCI DSS actually ask of you, and how does the way you capture a card change how much of it lands on your plate? None of this is legal advice, and the specifics for your business should come from your processor or a Qualified Security Assessor. But you can make much better decisions once you understand the shape of it.
+
+## What PCI DSS actually is
+
+PCI DSS — the Payment Card Industry Data Security Standard — is a set of security requirements maintained by the [PCI Security Standards Council](https://www.pcisecuritystandards.org). It applies to any business that accepts, processes, stores, or transmits payment card data. That includes essentially every restaurant that takes cards, whether in person, online, or over the phone.
+
+Compliance isn't a government law; it's a contractual obligation that flows through your merchant agreement with the card brands and your processor. How you demonstrate compliance depends on your transaction volume and how you accept cards. For most restaurants that means completing a Self-Assessment Questionnaire (SAQ) once a year and attesting that you meet the relevant controls. The key thing to internalize: the standard scales with what you touch. Handle more raw card data, and more of the standard applies to you.
+
+## Why phone payments are a scope problem
+
+"Scope" is the PCI term for everything in your world that stores, processes, or transmits cardholder data — the systems, the people, and the paperwork. Reducing scope is the single most effective way to make compliance manageable, because anything out of scope is something you don't have to secure and assess.
+
+The traditional phone-payment method expands scope in every direction at once. A staff member hears the full card number and the security code. They key it into a terminal or, worse, write it on a slip. The phone line itself becomes part of the path card data travels. Every one of those is now something PCI expects you to control. You've taken what could have been a narrow, well-contained payment flow and spread sensitive data across your staff and your counter.
+
+## The call-recording trap most operators miss
+
+Here's the one that catches people off guard. If you record calls — for quality, training, or dispute resolution — and a customer reads their card number and security code aloud, your recordings now contain cardholder data. That pulls your recording system, its storage, and its backups into scope.
+
+It gets stricter. PCI DSS prohibits storing the card security code (the CVV/CVC) after a transaction is authorized, full stop. A recording that captures a customer speaking their CVV is a stored security code, which is not something you're permitted to keep. Restaurants that record calls and also take card numbers by voice often don't realize they've created a compliance problem until someone asks about it. If any part of your operation records calls, this alone is a reason to keep spoken card numbers out of the equation.
+
+## How reducing scope actually works
+
+The modern approach to phone payments is to make sure the raw card number never enters your environment in the first place. That's achieved by having a PCI-compliant processor capture the card directly and hand your systems back only a token — a stand-in value that references the payment but isn't the card number and is useless to a thief.
+
+There are a few common patterns for this. The customer can be sent a secure payment link they open on their own phone, entering the card into the processor's compliant checkout page — the data never touches your systems or your call at all. Or the capture can be handled through a payment flow where the sensitive digits are routed straight to the processor rather than being spoken to a person or written down. In both cases, the goal is the same: keep the card number out of scope so that your systems, staff, and recordings simply never hold it.
+
+When card data genuinely stays out of your environment, the SAQ that applies to you is typically a shorter, lighter one than the version required of a business handling raw card numbers. That's the practical payoff of reducing scope — less to secure, less to attest to, less that can go wrong.
+
+## Where an AI agent fits
+
+An AI phone agent doesn't grant you compliance — no vendor can. What it can do is take payment through the reduced-scope patterns above instead of the read-it-aloud method. A well-built agent routes payment through a compliant processor so the card is tokenized, or texts a secure payment link the customer fills in themselves. Either way, the full number needn't pass through a staff member's hands or sit in a call recording.
+
+That's a genuinely better default than the sticky-note habit, but it's only better if it's built that way, so ask directly. X1 Voice supports [payment capture on the call](/pricing) routed through compliant processing for exactly this reason. Before you trust any agent — ours or anyone's — get a vendor to walk you through precisely where the card number goes, whether it's ever stored in raw form, and how the flow keeps it out of your environment. Then take that description to your processor and confirm what it means for your specific scope.
+
+## What you still have to do yourself
+
+Reducing scope is not the same as eliminating your obligations, and it would be dishonest to suggest otherwise. Even with a clean, tokenized payment flow, you almost certainly still complete an annual SAQ, maintain basic security hygiene, and keep your attestation current. What changes is how much the questionnaire covers and how heavy the lift is — not whether it exists.
+
+Two things are worth doing regardless of how you take payment. Confirm with your processor which SAQ applies to your setup, because that answer depends on the exact payment architecture you end up with. And if your volume or structure is at all complex, a Qualified Security Assessor can tell you where your real scope boundaries sit — which is far better than assuming.
+
+## The bottom line
+
+PCI compliance is your obligation, and phone payments are one of the easiest ways to make it harder than it should be — especially if you record calls. The lever you actually control is scope: keep the raw card number out of your environment and both your risk and your paperwork shrink. An AI agent that captures payment through a compliant processor or a secure link supports that far better than staff keying in numbers by hand. Just don't mistake a better tool for a compliance certificate. Build the flow so card data never touches your systems, then confirm the specifics with your processor or a QSA. That combination — reduced scope plus verified specifics — is what actually protects you.

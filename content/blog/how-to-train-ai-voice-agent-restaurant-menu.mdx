@@ -1,0 +1,60 @@
+---
+title: "How to Train an AI Voice Agent on Your Restaurant's Menu"
+description: "What it actually takes to teach a voice agent your items, modifiers, the nicknames regulars use, 86'd items, and how to keep it all in sync over time."
+publishedAt: "2026-07-02"
+faqs:
+  - question: "How long does the initial menu training take?"
+    answer: "The mechanical import is usually 10 to 20 minutes for a clean single-location menu. The part that takes longer is writing down the modifiers, combos, and nicknames that only ever lived in your staff's heads. Budget a week of watching transcripts to catch the gaps, not a single afternoon."
+  - question: "Do I have to retrain it every time I 86 something?"
+    answer: "No. 86'ing an item is a live toggle, not a retrain — you or your staff mark it out and the agent stops offering it within seconds. Retraining is only for structural changes like a new item, a renamed dish, or a price update."
+  - question: "What happens when a customer uses a nickname the agent doesn't know?"
+    answer: "It either asks a clarifying question or, if it can't map the phrase to anything, offers to read back options. That's the moment to catch in your transcripts — every unrecognized nickname is a five-minute alias fix that makes the next caller's order smoother."
+  - question: "Can I edit the menu myself, or do I need the vendor?"
+    answer: "You should be able to edit it yourself. Any system worth using lets you change prices, add items, and mark things 86'd without opening a support ticket. If a vendor makes you wait on them for a Tuesday-night special, that's a real limitation to weigh."
+---
+
+Training an AI voice agent on your menu isn't a one-click import, and any vendor who tells you it is has never watched a real Friday call go sideways. The base menu is the easy 20 percent. The other 80 percent is everything your printed menu doesn't say: the modifiers cooks keep in their heads, the names regulars actually use, the rules about what to upsell and when. Here's what the work really looks like, and what keeps it accurate after week one.
+
+## Start with the structured menu, not a photo
+
+The foundation is your items, sizes, and prices in a form the system can read. A [POS export or a clean CSV](/blog/how-to-set-up-ai-phone-ordering-in-30-minutes) beats a PDF, and a PDF beats a photo of a laminated menu with three years of marker corrections on it. The reason isn't laziness — it's that every ambiguity in the source becomes an ambiguity on the call. If "Large" means a 16-inch pizza in your POS but a 14-inch in your online listing, the agent needs one clear answer, not two conflicting ones.
+
+Spend the extra ten minutes here making the source clean. It pays off everywhere, not just on the phone. A menu that's consistent enough to train a voice agent is also consistent enough to make your POS and online ordering accurate.
+
+## Modifiers and combos are where the real work lives
+
+Base items are simple. The complexity is in the modifiers: sizes, toppings, sides, sauces, temperatures, substitutions, and the combos that bundle them. This is the stage that took longest in setup for nearly every restaurant we've watched, and it's the stage that most affects whether the order lands correctly.
+
+The hard part is that a lot of your modifiers were never written down. "Extra crispy," "light sauce," "well done," "on the side," "make it a combo" — these exist verbally between your order-taker and your kitchen, and nowhere on paper. The agent can't infer them. You have to enumerate them, and you have to say how each one maps to a real ticket the kitchen reads. As we covered in [how the pipeline works](/blog/how-ai-phone-ordering-works-the-pipeline), the order-taking conversation is only worth anything if the modifier writes to the POS correctly. "No cheese on the second half" is a specific modifier, not a note in the special-instructions box.
+
+## Teach it the nicknames your regulars actually use
+
+Customers don't order off the menu you wrote. They order off the menu in their heads. "The usual," "a number three," "the big one," "gimme a Sinatra" — every restaurant has a vocabulary its regulars use that appears nowhere official. These are aliases, and mapping them is some of the highest-value training you can do.
+
+You already know most of them. Ask the person who's answered the phone for two years; they'll rattle off a dozen without thinking. Add those as aliases up front. Then let the rest surface naturally: when a caller uses a phrase the agent doesn't recognize, it shows up in your transcripts, and you add it. Over a few weeks the alias list gets genuinely good. This is ongoing work, not a one-time task, and it's the difference between an agent that feels like it knows your shop and one that makes every regular repeat themselves.
+
+## Upsell rules: say what, and say when to stop
+
+An agent can suggest a drink, a side, or a size bump, and a well-placed suggestion is worth real money over a year. But an agent that upsells on every single item is annoying, and annoyed callers hang up. So this is a rules decision, not a "turn it on" decision.
+
+Decide the specifics: which items get a suggested add-on, what the suggestion is, and how many times per call it's allowed to try before it drops it. A single, relevant prompt — "want to add a drink for two dollars?" — lands fine. Three of them in one order makes people feel worked over. Set the ceiling low and let the data tell you whether to raise it. Measure your own attach rate before and after; don't take a vendor's number for it.
+
+## 86'd items, hours, and specials are live toggles, not retraining
+
+There's a real distinction worth understanding. Structural changes — a new item, a renamed dish, a price update — mean editing the menu the agent trains on. But the day-to-day stuff should be live controls you flip without retraining anything:
+
+- **86'd items.** When you run out of something at 7:15, you mark it out and the agent stops offering it within seconds. It should never sell a dish you can't make. If a customer asks for it anyway, it says it's unavailable and offers the nearest alternative.
+- **Hours.** Different hours for pickup, delivery, and dine-in phone orders should be set once and respected automatically, including holidays you enter ahead of time.
+- **Specials.** A Tuesday-night feature you want mentioned in the greeting, or a limited item you're pushing, goes in as a temporary entry and comes back out when it's done.
+
+The test of a vendor here is simple: can your closing manager 86 the wings from their phone at 9 p.m. without calling support? If not, that's a limitation to price into your decision.
+
+## Keeping it in sync after go-live
+
+A menu is a living thing, and the agent's copy of it drifts from reality the moment you change a price and forget to update it. Two things keep them aligned. First, a live POS connection carries price and availability changes automatically, so the agent quotes what actually rings up. Second — and this matters more than people expect — the connection has to be deep enough that a menu change in your POS reaches the agent, not just orders flowing the other way.
+
+Where there's no automatic sync, you're the sync. That means a habit: when the menu changes, the agent's menu changes in the same motion, the way you'd update a printed board. It's a two-minute task if you do it in the moment and a frustrating cleanup if you let a week of edits pile up.
+
+## The honest bottom line
+
+Training a voice agent on your menu is mostly the unglamorous work of writing down what your restaurant already knows but never documented — the modifiers, the nicknames, the rules. The import is quick; the accuracy is earned over the first week or two of reading transcripts and closing gaps. Budget for that, keep the menu in sync as a daily habit, and the agent gets genuinely good at your specific shop. Skip it, and you'll blame the AI for gaps that were really just an incomplete menu. If you want help getting the first pass right, [reach out](/contact) or see [what it costs](/pricing).

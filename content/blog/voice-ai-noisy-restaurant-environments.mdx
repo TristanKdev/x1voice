@@ -1,0 +1,70 @@
+---
+title: "Voice AI on Noisy Calls: Bars, Busy Kitchens, and the Road"
+description: "Real callers phone from loud places, and noise makes speech recognition harder. Here's what background noise actually does and how a well-built agent works around it."
+publishedAt: "2026-06-11"
+faqs:
+  - question: "Can an AI phone agent handle calls from noisy places?"
+    answer: "It can, within limits. Background noise from a bar, a kitchen, or a car does make speech recognition harder, and no system is immune to that. A well-built agent compensates by confirming orders back and re-prompting when a turn comes through unclearly, so noise leads to a double-check rather than a wrong ticket. Extremely loud lines will still be hard for any system."
+  - question: "Does background noise cause the AI to get orders wrong?"
+    answer: "Noise raises the odds of a misheard word, which is exactly why a good agent reads the order back before finalizing. The caller catches errors in the moment. The design assumption is that some turns will be noisy, so the safety net is built in rather than bolted on."
+  - question: "What does the agent do when it can't hear the caller?"
+    answer: "It should ask the caller to repeat, rephrase, or move somewhere quieter, and confirm what it did catch. If the line stays unusable after a couple of tries, a well-designed agent escalates — takes a message or routes to a person — instead of looping on 'sorry, I didn't catch that.'"
+  - question: "Is a call from a car harder than a call from a quiet room?"
+    answer: "Yes. Road noise, wind, and a hands-free speaker all degrade the signal the recognition stage has to work with. It's usually still workable, but it's a harder case, and it's exactly the kind of call worth testing on a demo line before you commit."
+---
+
+Your callers don't phone from a recording studio. They call from the bar with a game on, from a car doing 65 with the window cracked, from the doorway of a kitchen mid-rush. Background noise is the normal condition of a restaurant phone line, not the exception — and noise is one of the things that makes speech recognition genuinely harder. Any honest look at a voice agent has to start there.
+
+The good news is that a well-built agent is designed for noisy calls, not just clean ones. The important thing to understand is how noise affects recognition and, more usefully, what the agent does about it.
+
+## Where the noise actually comes from
+
+It helps to separate the sources, because they behave differently. Most of the noise on a restaurant call is on the caller's end, not yours: the crowd at a bar, music, traffic, wind across a phone mic, a hands-free speaker in a moving car. Some of it is on your end if the agent is fielding calls from inside a loud room, though that's usually more controllable.
+
+The caller-side noise is the harder problem because you can't do anything about it. You can't ask the whole bar to quiet down. So the agent has to be built to get a usable order out of an imperfect signal — and to know when the signal has gotten too bad to trust.
+
+## What noise does to recognition
+
+Under the hood, noise makes the speech-recognition stage's job harder by burying parts of the caller's speech in competing sound. A word that would be obvious on a clean line becomes ambiguous when there's a crowd behind it, so the system's confidence on that word drops.
+
+There's a second, subtler cost: sorting speech from background sound takes processing, and processing takes time. That time competes with the agent's tight response budget — the same [sub-second latency](/blog/sub-second-latency-voice-ai-restaurants) that makes a call feel like a conversation instead of a walkie-talkie. Noise doesn't just threaten accuracy; it pressures speed too. No vendor can make that tradeoff disappear, and one who claims noise is a non-issue isn't being straight with you.
+
+## The agent's first defense: confirm, don't assume
+
+Because some turns on a noisy call will be uncertain, a well-built agent treats confirmation as the default, not a formality. The core tool is the read-back: before finalizing, it repeats the order so the caller catches anything that came through wrong. "That's two cheeseburgers, one no pickles, and a large fry — right?" On a noisy line, that single sentence is what keeps a misheard word from becoming a wrong ticket.
+
+The design assumption is that some turns will be noisy, so the check is built in rather than added as an afterthought. It's the same discipline a careful human order-taker uses on a bad connection — repeat it back, make the caller the final judge.
+
+## Re-prompting when a turn comes back garbled
+
+The read-back catches errors at the end. During the call, the agent needs a lighter-weight move for the moment a single turn comes through unclearly. A good one asks the caller to repeat just that piece, rephrases its question, or — when it's clearly the environment — suggests moving somewhere quieter for a second.
+
+What it should not do is silently guess and push on. The distinction between re-prompting and guessing is a design choice, and it's the one that most affects how a noisy call actually goes. When you test a system, deliberately create some noise and mumble an item — a good agent asks you to repeat it; a weak one commits to whatever it thought it heard.
+
+## Noise, interruptions, and the risk of false triggers
+
+Noise also complicates a problem that's already subtle: knowing when the caller is talking versus when it's just background sound. A burst of crowd noise or a car horn can look, to the system, like the caller starting to speak — which ties directly into [interruption handling and endpointing](/blog/interruption-handling-endpointing-voice-agents).
+
+An agent that's too twitchy will stop its own sentence every time a glass clinks in the background. One that's too sluggish will talk over a caller who's genuinely trying to cut in. Tuning that balance on a noisy line is one of the harder pieces of engineering behind a voice agent, and it's a real part of why noisy calls separate polished systems from rough ones.
+
+## Knowing when the line is just too bad
+
+Sometimes the signal is simply unusable — a caller in a club, a phone in a pocket, a connection that keeps breaking up. The mark of a well-designed agent is that it recognizes this instead of grinding through it. After a couple of failed attempts on the same point, it should escalate: ask the caller to move somewhere quieter, offer to take a message, send a text, or route to a person.
+
+The failure mode to watch for is the loop — "sorry, I didn't catch that," again and again, with no way out. That's worse than not answering, because it strands a caller who was ready to spend money. A system that gracefully bails on the truly bad calls is more trustworthy than one that pretends it can salvage every one.
+
+## How to test it from a noisy spot
+
+Don't evaluate a voice agent from a quiet office — that's the one place your callers won't be. Call the demo line from the conditions your customers actually use:
+
+- **Call from a genuinely loud room** and place a normal multi-item order.
+- **Try it from a car**, hands-free, with some road noise — one of the harder real cases.
+- **Mumble one item over background noise** and check that it re-asks instead of guessing.
+- **Listen for false triggers** — does it stop its own sentence every time something clatters behind you?
+- **Push a truly bad line** and confirm it escalates rather than looping.
+
+A few minutes of that tells you how the system behaves where it'll actually live, which no clean-room demo can.
+
+## The bottom line
+
+Noise is the default condition of a restaurant phone line, and it genuinely makes recognition harder — no system escapes that. What a good agent does is build for it: confirm the order back, re-prompt on unclear turns, hold its composure against background sound, and escalate when a line is truly unusable. Set realistic expectations, then test a vendor from a bar or a car rather than a quiet desk. That's where you'll learn whether an agent was built for your calls or just for the demo.
