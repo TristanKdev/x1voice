@@ -1,0 +1,35 @@
+{
+  "name": "@x1voice/seo-audit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Three-prong SEO, AEO, and GEO audit engine. Search performance, technical crawl, and answer-engine analysis, reduced to a single weighted score and a standardized report.",
+  "type": "module",
+  "bin": {
+    "x1-audit": "./dist/cli.js"
+  },
+  "scripts": {
+    "audit": "tsx src/cli.ts",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "search": "tsx src/cli.ts --only search",
+    "crawl": "tsx src/cli.ts --only crawl",
+    "ai": "tsx src/cli.ts --only ai"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.68.0",
+    "cheerio": "^1.0.0",
+    "commander": "^12.1.0",
+    "fast-xml-parser": "^4.5.0",
+    "googleapis": "^144.0.0",
+    "p-limit": "^6.1.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=20.11.0"
+  }
+}

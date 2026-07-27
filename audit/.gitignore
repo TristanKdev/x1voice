@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.env.local
+*.log
+
+# Raw data pulls and generated reports are run artifacts, not source.
+# Keep the committed sample under reports/x1voice.com/ and ignore the rest.
+/out/
+/reports/**/raw/
