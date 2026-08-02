@@ -41,6 +41,14 @@ jobs:
         # tangle, npm 10 and 11 both); install still honors the committed lock
         # for resolved versions without the strict sync check.
         run: npm install --no-audit --no-fund
+      - name: Lockfile drift check (supply-chain visibility)
+        # npm install may resolve inside semver ranges where npm ci would have
+        # failed closed. Surface any divergence from the committed lock loudly
+        # in the log; a non-empty diff here means the build used versions the
+        # repo did not pin.
+        run: |
+          git diff --stat package-lock.json
+          git diff --quiet package-lock.json && echo "lockfile: no drift" || echo "::warning::package-lock.json drifted during install — review versions above"
 
       - name: Build
         run: npm run build
