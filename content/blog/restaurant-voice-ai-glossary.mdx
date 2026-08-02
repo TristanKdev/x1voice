@@ -1,0 +1,106 @@
+---
+title: "Restaurant Voice AI Glossary: The Terms Vendors Use, in Plain English"
+description: "Containment, endpointing, barge-in, ASR, tokenization, SIP. A working definition of every term you'll hear in a voice AI sales conversation, and why each one matters."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Which terms actually matter when comparing vendors?"
+    answer: "Containment rate, integration depth, endpointing, and latency do most of the work. Containment tells you what share of calls the system handles alone, integration depth determines whether your kitchen gets a correct ticket, and endpointing and latency together determine whether the conversation feels natural. Most other terminology is descriptive rather than differentiating."
+  - question: "Is a higher containment rate always better?"
+    answer: "No, and this is the most commonly misread metric in the category. Containment goes up when the system stops transferring frustrated callers, which is worse service, not better. Read it alongside escalation reasons and order accuracy rather than on its own."
+  - question: "Do I need to understand the technical terms to buy well?"
+    answer: "Not deeply, but enough to ask a follow-up. The value of knowing what endpointing is isn't that you'll evaluate the algorithm; it's that you can ask 'how do you decide the caller has finished speaking' and recognize a real answer from a deflection."
+  - question: "Why do vendors use so much jargon?"
+    answer: "Some of it is genuine technical vocabulary with no plain-English equivalent, and some of it makes ordinary capabilities sound proprietary. A useful test: ask a vendor to explain a term without using another piece of jargon. If they can't, it may not mean much."
+---
+
+Voice AI sales conversations are dense with vocabulary, some of it genuinely technical and some of it dressing up ordinary things. This is a working glossary written for restaurant operators, organized by where you'll encounter each term rather than alphabetically, with a note on why it matters when it does.
+
+If you only learn four, learn containment rate, integration depth, endpointing, and latency. Those four cover most of what actually differs between systems.
+
+## Terms about how the conversation works
+
+**ASR (Automatic Speech Recognition)**, sometimes called speech-to-text. Turning the caller's audio into words. This is where accent, background noise, and audio quality do their damage, and it's the first place errors enter. See [accent and speech recognition accuracy](/blog/voice-ai-accent-speech-recognition-accuracy).
+
+**TTS (Text-to-Speech)**, or speech synthesis. Turning the system's response back into audio. Quality here is largely commoditized now, which is why we'd tell you not to weight voice naturalness heavily when comparing serious vendors.
+
+**NLU (Natural Language Understanding)**. Working out what the caller meant, not just what they said. "No onions on the first one" is easy to transcribe and harder to apply correctly.
+
+**Endpointing.** Deciding when the caller has finished speaking. Genuinely hard and genuinely important: cut too early and you interrupt someone mid-order, wait too long and every exchange drags. Ask any vendor how they handle it. Details in [interruption handling and endpointing](/blog/interruption-handling-endpointing-voice-agents).
+
+**Barge-in.** Whether a caller can talk over the system and be heard, instead of having to wait for it to finish. Systems without barge-in feel like phone trees. Systems with it feel like conversation.
+
+**Turn-taking.** The overall rhythm of who speaks when. Endpointing and barge-in together produce it.
+
+**Latency.** The delay between the caller finishing and the system responding. The single most noticeable quality signal on a call, and the one operators react to without being able to name. See [sub-second latency](/blog/sub-second-latency-voice-ai-restaurants).
+
+**Streaming.** Processing audio continuously as it arrives rather than waiting for a complete utterance. It's how low latency is achieved.
+
+**Prompt.** The instructions given to the underlying language model that shape how the agent behaves — tone, rules, what it should and shouldn't do.
+
+**Hallucination.** When a model states something confidently that isn't true. In this context, inventing a menu item, a price, or a policy. It's why a system should be constrained to your actual menu data rather than freely generating answers.
+
+## Terms about your menu and your POS
+
+**Integration depth.** How thoroughly the voice system connects to your POS. Shallow means it creates an order; deep means it maps every modifier, applies correct pricing, and routes to the right station. This varies enormously between vendors and matters more than almost anything else — [why POS integration depth matters](/blog/why-pos-integration-depth-matters-more-than-voice-quality).
+
+**One-way vs. two-way sync.** One-way pulls your menu into the voice system. Two-way also writes the finished order back into the POS as a real ticket. You almost certainly need both, and "menu sync" on a feature list sometimes means only the first. See [menu sync deep dive](/blog/menu-sync-deep-dive-voice-ai).
+
+**Polling vs. push.** Polling means the voice system checks your POS for changes on a schedule; push means the POS notifies it immediately. Push is faster, and the difference is exactly how long you can sell an item you've 86'd.
+
+**86 / 86'ing.** Restaurant shorthand for an item being unavailable. In this context, how quickly that state reaches the phone agent. See [real-time 86ing](/blog/real-time-86ing-menu-sync).
+
+**Modifier mapping.** Connecting how a customer talks ("no onions," "extra cheese") to the specific modifier records in your POS. Unglamorous and the source of most wrong tickets.
+
+**Daypart.** Time-based menu variation — breakfast versus lunch, happy hour pricing. The agent needs to know what's available right now, not just what's on the menu generally.
+
+**Middleware.** A third-party layer sitting between the voice system and your POS. Common and often fine, but ask what it does to modifiers and who supports it when it breaks.
+
+## Terms about measurement
+
+**Containment rate.** The share of calls the system handles end to end without a human. The headline metric, and the most commonly misread one, because it improves when a system stops transferring frustrated callers. Read it with escalation reasons. Full treatment in [what is call containment](/blog/what-is-call-containment) and [measuring call containment rate](/blog/measuring-call-containment-rate).
+
+**Escalation rate.** The share of calls handed to a human. The inverse of containment, roughly, and more useful when broken down by reason.
+
+**Deflection.** Sometimes used interchangeably with containment. Occasionally used to mean pushing a caller to another channel, which is a different and less flattering thing. Ask which meaning a vendor intends.
+
+**Abandonment rate.** Callers who hang up before reaching a resolution. On a phone-tree system this is a major metric; on a well-designed voice agent it should be low.
+
+**AHT (Average Handle Time).** How long a call takes. Borrowed from call centers, where shorter is better. In a restaurant it's more ambiguous — a longer call that captures a large catering order is a good call.
+
+**Order accuracy.** The share of orders that land in the POS correctly. The metric that matters most and the hardest to measure without checking tickets by hand. Ask any vendor quoting a number how it's measured and on what mix of calls. See [improving phone order accuracy](/blog/improving-phone-order-accuracy).
+
+More on the full metric set in [voice AI metrics and KPIs](/blog/voice-ai-metrics-kpis-restaurants).
+
+## Terms about telephony
+
+**SIP / VoIP.** The protocols that carry phone calls over the internet rather than traditional phone lines. Mostly invisible to you.
+
+**Porting.** Moving your phone number from one provider to another. Slow, regulated, and hard to reverse mid-process, which is why we suggest forwarding first. See the [porting guide](/blog/phone-number-porting-guide-restaurants).
+
+**Call forwarding.** Pointing your existing number at another system without moving it. Reversible in minutes, which makes it the right tool for a trial.
+
+**Hunt group.** A configuration where a call rings several phones in sequence or at once. The traditional answer to phone coverage, compared in [multi-line hunt groups vs. voice AI](/blog/multi-line-hunt-groups-vs-voice-ai).
+
+**IVR.** The press-one-for-hours phone tree. What voice AI is generally replacing — [voice AI vs. IVR phone trees](/blog/voice-ai-vs-ivr-phone-trees-restaurants).
+
+**Concurrency.** How many calls the system can handle simultaneously. The structural advantage over a person, who handles one.
+
+**DTMF.** The tones produced when a caller presses keypad buttons. Still used for some payment and menu flows.
+
+**Branded calling / CNAM.** How your restaurant's name displays on a caller's phone. Related: the "Spam Likely" problem, covered in [fixing Spam Likely caller ID](/blog/fixing-spam-likely-caller-id-restaurant).
+
+## Terms about payments and data
+
+**Tokenization.** Replacing a card number with a reference that can charge the card but isn't the card. The single most important thing to confirm about phone payments — [tokenization explained](/blog/phone-payment-tokenization-explained).
+
+**PCI DSS.** The card industry's security standard. What matters to you is which SAQ level applies given how your vendor handles cards. See [PCI compliance](/blog/pci-compliance-restaurant-phone-payments).
+
+**Card-not-present.** A transaction where the physical card isn't swiped, which describes every phone payment and carries different chargeback exposure — [call fraud and chargebacks](/blog/voice-ai-restaurant-call-fraud-chargebacks).
+
+**Subprocessor.** A third party your vendor uses to deliver the service: telephony carrier, speech provider, cloud host. Normal to have; reasonable to ask for the list. See [data ownership and privacy](/blog/voice-ai-data-ownership-privacy).
+
+**Retention period.** How long recordings and transcripts are kept. Shorter is generally safer for you.
+
+## A test for jargon
+
+When a term comes up that you don't recognize, ask the vendor to explain it without using another technical word. Real concepts survive that translation. Ones that don't were probably doing marketing work rather than describing a capability, and noticing the difference is most of what this glossary is for.

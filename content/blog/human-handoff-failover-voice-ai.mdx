@@ -1,0 +1,80 @@
+---
+title: "Human Handoff and Failover in Restaurant Voice AI"
+description: "What should happen when the AI can't handle a call, and what should happen when the AI isn't there at all. Two different problems that get discussed as one."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "What's the difference between handoff and failover?"
+    answer: "Handoff is a working system deciding a human should take this call — a complaint, a catering inquiry, a caller who asks for a person. Failover is what happens when the system itself is unavailable and can't decide anything. They need different designs, and vendors sometimes answer a question about one with an answer about the other."
+  - question: "Should the AI transfer to a human, or take a message?"
+    answer: "It depends on whether a human is actually available. A transfer to a phone nobody picks up is worse than a clear message-and-callback, because the caller has now waited twice. Configure transfer during shifts when someone can realistically answer, and message-taking outside them."
+  - question: "What should the agent say when it hands off?"
+    answer: "Something short and honest that sets expectation — that it's connecting them to someone, or taking a message and when to expect a callback. What it should not do is apologize repeatedly or explain its own limitations at length. Callers want the next step, not the reason."
+  - question: "How do I know how often handoffs are happening?"
+    answer: "Your vendor's analytics should show escalation rate and, ideally, escalation reason. If reasons aren't categorized, transcripts of escalated calls will tell you within an afternoon. Distinguishing legitimate handoffs from failures matters more than the raw rate."
+---
+
+Two questions get collapsed into one in voice AI sales conversations. The first is what happens when the agent is working fine but this particular call needs a person. The second is what happens when the agent isn't working at all. They're different problems with different designs, and a vendor answering the first when you asked the second is a pattern worth noticing.
+
+Handoff is a routing decision made by a functioning system. Failover is a fallback that has to work when the system can't make decisions. Get both defined before you go live, because the shift where you discover the gap will not be a quiet one.
+
+## When a handoff should happen
+
+Some calls should reach a person even if the agent could technically have handled them. Deciding which ones is a business decision, not a technical one, and it's yours to make.
+
+**The caller asks for a human.** This should always work, immediately, without an argument. An agent that tries to talk a caller out of it will produce exactly one outcome, and it isn't a sale.
+
+**Complaints.** A caller who is upset about a wrong order or a bad experience needs someone with authority to fix it. Attempting to process that through an ordering flow is a bad experience compounding itself. See [handling refund and complaint calls](/blog/handling-refund-complaint-calls).
+
+**Large or complex orders.** Catering, private events, anything with a delivery time negotiation or a custom item. Many of these are your highest-value calls, and they usually justify a person even when the agent could take the order. Qualification-then-handoff is a reasonable middle ground, covered in [catering lead qualification](/blog/catering-lead-qualification-ai).
+
+**Repeated misunderstanding.** If the agent has failed to parse the same request twice, a third attempt rarely works. Two strikes and transfer is a defensible rule.
+
+**Anything outside the defined scope.** Vendor calls, job applicants, the health inspector, a reporter. These aren't failures of the agent; they're calls that were never in scope.
+
+## Designing the handoff itself
+
+The mechanics matter as much as the trigger.
+
+**Transfer or message?** Transfer only makes sense when someone will actually pick up. During a dinner rush, the phone at the host stand may be exactly the thing you bought the agent to stop ringing. Consider configuring transfer to a specific person or a mobile rather than the main line, and configure message-taking during periods when nobody can realistically answer.
+
+**Does context travel?** When a caller is transferred after spending ninety seconds explaining themselves, do they have to start over? A system that passes a summary — what the caller wanted, what was already collected — makes the handoff feel like continuity rather than a restart. Ask specifically whether this happens, because it's a real differentiator and it's rarely on a feature list.
+
+**What does the caller hear?** Silence during a transfer reads as a dropped call. A brief statement of what's happening, then hold treatment, then a human. If the transfer fails, the agent should come back rather than leaving the caller in dead air.
+
+**What if the message path is used?** Then the callback has to actually happen. A message-taking system with no owner is a queue of disappointed customers. Assign it.
+
+## Failover: when the system is unavailable
+
+Now the harder problem. Your internet is down, the vendor is having an outage, or the POS integration has broken. The agent can't make a routing decision because the agent isn't running.
+
+Ask the vendor exactly what a caller experiences in each of these cases:
+
+**Vendor platform outage.** Do calls ring your existing line, hit a recorded message, get a busy signal, or fail silently? Falling back to ringing your restaurant is usually the best of the bad options — you're back to where you were before, which is survivable.
+
+**Your internet or power is out.** This one is often better than operators expect, because the voice platform typically sits in front of your restaurant rather than inside it. The agent may keep answering and taking orders that you can't fulfill, which is its own problem. Ask whether you can put the line into a closed or information-only state quickly, from a phone, without a laptop.
+
+**POS integration down but voice working.** Covered in more detail in [menu sync](/blog/menu-sync-deep-dive-voice-ai), but the short version is that the agent either keeps taking orders against a cached menu, degrades to information-only, or hands off. Know which.
+
+**Telephony carrier issue.** Largely outside anyone's control, but worth asking whether there's a secondary route.
+
+## The failover behavior worth insisting on
+
+If you take one thing from this: get a written answer to "what does a caller hear during an outage." Not "we have high uptime." The specific caller experience.
+
+The reason is that silent failure is disproportionately damaging. A caller who gets an error tone or dead air assumes you're closed, or worse, out of business. A caller who reaches a ringing phone or a message that says you're temporarily taking orders in person has a path forward. The difference in engineering effort is small; the difference to your Saturday is not.
+
+We treat the uptime commitment side of this in [voice AI SLAs and uptime for restaurants](/blog/voice-ai-slas-uptime-restaurants), but the SLA number matters less than the failure behavior. Every system has downtime eventually.
+
+## Measuring whether it's working
+
+Once you're live, watch two numbers.
+
+**Escalation rate** — the share of calls that reach a human. There's no correct value. A fine-dining room with a lot of reservation nuance will legitimately escalate more than a pizza counter. What you want is stability and explainability.
+
+**Escalation reason.** This is the number that's actually useful. Handoffs for complaints and catering are the system working as designed. Handoffs because the agent couldn't understand a menu item are a fixable defect, and each one points at a specific menu or language-layer correction. This distinction is the core of interpreting call containment honestly — containment that goes up because the agent stopped transferring frustrated callers is not an improvement.
+
+Read a sample of escalated call transcripts monthly. It's the fastest way to find the handful of corrections that will move both numbers.
+
+## The bottom line
+
+Define handoff triggers as business rules — always on request, always for complaints, transfer only when someone can answer — and make sure context travels with the caller. Separately, get the failover behavior in writing for each failure mode, with particular attention to what a caller actually hears when the platform is down. Then watch escalation reasons rather than escalation rate, because the reasons are where the fixes are. Both designs are cheap to get right in advance and expensive to discover during a rush.

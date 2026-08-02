@@ -1,0 +1,92 @@
+---
+title: "Order Throttling: Matching Phone Orders to Kitchen Capacity"
+description: "Answering every call is only good if the kitchen can produce what you sold. Here's how to throttle phone orders against real capacity without turning customers away unnecessarily."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "What is order throttling?"
+    answer: "It's limiting how many orders can be accepted into a given time window so the kitchen isn't sold more than it can produce. In practice it means capping orders per fifteen or thirty minutes, and offering the next available slot when a window fills rather than accepting and hoping."
+  - question: "Won't throttling cost me orders?"
+    answer: "It costs you some, and it prevents worse outcomes: 50-minute quotes that become 90, food going out cold, and refund calls. The comparison isn't throttling versus more revenue, it's throttling versus taking orders you then deliver badly."
+  - question: "How do I figure out my actual capacity?"
+    answer: "Start from your best real data — how many orders you've actually produced in your busiest fifteen-minute windows without falling behind. Estimates made in a calm office tend to be optimistic, so start conservative and loosen once you've watched it hold."
+  - question: "Does an AI phone agent respect capacity limits?"
+    answer: "Only if you configure them and it's connected to something that knows current load. An agent that takes unlimited orders makes overselling easier, not harder. Ask specifically how a vendor handles capacity and quoted times before assuming it's covered."
+---
+
+Fixing your missed calls is only half a solution. If you go from answering 70% of calls to answering all of them, you've just increased the orders reaching a kitchen whose capacity didn't change. Without a throttle, that shows up as quoted times that were never real, food going out late, and a stack of complaint calls that erase the gain.
+
+Throttling means deciding in advance how many orders each time window can hold, enforcing that at the moment the order is taken, and offering the next available slot when a window is full. It costs you some orders. It costs you fewer than overselling does.
+
+## The failure this prevents
+
+The overselling failure has a specific shape and most operators recognize it immediately.
+
+Orders come in steadily. Nobody is tracking total load across phone, online, and delivery apps. The 6:15 window quietly accumulates twice what the kitchen can produce. Tickets back up. The quoted times given an hour ago are now fiction. Drivers wait. Food that came up on time sits. Customers start calling to ask where their order is, which consumes the person who should be taking orders, which makes everything worse.
+
+Nothing in that sequence is a kitchen failure. It's a demand-acceptance failure that happened forty-five minutes earlier, when orders were taken against a capacity nobody was tracking.
+
+## Figure out what your capacity actually is
+
+You need a number, and the honest way to get it is from observation rather than estimation.
+
+Look at your best nights — the ones where the kitchen ran hard and stayed on time — and figure out how many orders went out per fifteen-minute window. That's a real, achieved number, not a theoretical one. Your POS timestamps can usually get you there.
+
+Some refinements worth making:
+
+- **Capacity isn't one number.** A window of ten simple orders is different from ten large ones. Some operators weight by item count or by station load rather than counting tickets.
+- **Station bottlenecks matter more than total volume.** If everything goes through the fryer, your capacity is the fryer's capacity regardless of how many hands you have.
+- **Staffing changes it.** A Friday with a full crew has a different ceiling than a Tuesday with two cooks. If your system supports different limits by daypart, use them.
+
+Start conservative. A limit that turns away a few orders and holds is more valuable than an aggressive one that fails on your busiest night.
+
+## Enforce it at order time
+
+This is the part that gets skipped. A capacity number that lives on a whiteboard doesn't throttle anything, because the person taking orders under pressure will squeeze in one more, and the delivery app doesn't know your whiteboard exists.
+
+Enforcement means the system taking the order knows the window is full and offers the next one instead. That requires the orders to be in one place — which is why channel consolidation is a prerequisite here rather than a separate project. If your phone orders live on a pad while your app orders live on tablets, nothing can see total load. See [consolidating third-party delivery and phone orders](/blog/consolidating-third-party-delivery-phone-orders).
+
+For phone orders specifically, this means orders landing in the POS rather than on paper. The integration depth question is covered in [why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality).
+
+## Throttle gracefully, not bluntly
+
+There's a large difference between "we're not taking any more orders" and "the earliest we can have that ready is 7:15." The first loses the customer, the second usually keeps them.
+
+Better throttling behaviors, roughly in order of preference:
+
+- **Extend the quoted time.** Often the customer is fine with waiting longer if they know up front. This captures the order and sets expectations honestly.
+- **Offer the next available window.** Concrete and easy to accept.
+- **Suggest a channel switch.** If delivery is backed up but pickup isn't, offering pickup keeps the order.
+- **Narrow the menu temporarily.** Pausing the slowest items keeps the kitchen moving while still taking orders.
+- **Pause the channel entirely.** Last resort, and better than accepting orders you'll cancel.
+
+The one thing to avoid is accepting the order at an unreal time. That converts a small disappointment now into a complaint call, a refund, and sometimes a chargeback later. The downstream cost is in [handling refund and complaint calls](/blog/handling-refund-complaint-calls).
+
+## Special cases: surge days
+
+On holidays, game days, and weather events, throttling matters more and capacity is less predictable. Two adjustments:
+
+- **Be more conservative than usual.** Surge-day capacity estimates are the most optimistic ones people make.
+- **Cap total pre-orders**, not just per-window. On a holiday, the total volume you've committed to producing is itself a constraint.
+
+The event-specific playbooks are in [the holiday rush playbook](/blog/holiday-rush-phone-ordering-playbook).
+
+## Where automation helps and where it hurts
+
+An automated phone agent is neutral on this by itself. It increases how many orders you capture, which without a throttle makes overselling more likely, not less. That's worth saying plainly, because "we answer every call now" is only good news if the kitchen can keep up.
+
+Where it helps is consistency of enforcement. A system configured with slot limits applies them at 7pm on a Saturday the same way it does at 3pm on a Tuesday, and it doesn't get talked into an exception by a persistent caller. It can also quote current times accurately on every call if it's connected to something that knows real load.
+
+When evaluating a vendor, ask specifically: can it enforce per-window order limits, does it know current kitchen load or just a static schedule, and what does it say to a caller when a window is full. A vague answer here is a real gap.
+
+## Measure whether the throttle is set right
+
+Two signals tell you if your limit is wrong in either direction:
+
+- **Too loose:** quoted times routinely beaten by reality's worse number, late orders, a rise in status calls and complaints.
+- **Too tight:** windows filling early and callers being turned away while the kitchen visibly has room.
+
+Both are observable within a couple of weeks. Adjust in small steps and watch, rather than making a big change and losing the ability to attribute the result. Read it against your own call and order data rather than an impression.
+
+## The bottom line
+
+Answering more calls without a capacity limit just moves the failure from the phone to the pass. Derive a real per-window capacity number from nights you actually ran well, enforce it at the moment the order is taken rather than on a whiteboard, and make sure every channel counts against the same number — which requires orders landing in one system. When a window fills, extend the quote or offer the next slot rather than accepting an order at a time you can't hit. Be more conservative on surge days. And check the setting periodically, because a throttle that's too tight quietly costs you as much as one that's too loose.

@@ -1,0 +1,83 @@
+---
+title: "What Happens When Voice AI Fails?"
+description: "Every phone system fails sometimes. What separates a good one is whether it fails loudly and safely or quietly and expensively. The failure modes worth planning for, and the questions to ask before you sign."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "What happens if the AI phone system goes down?"
+    answer: "That depends entirely on how the failover is configured, which is why it's the first thing to ask about. The behavior you want is that calls fall through to your existing line or to a defined backup automatically, so a customer hears your restaurant ring rather than nothing. A system with no defined failover puts your entire phone line on one vendor's uptime."
+  - question: "What does the agent do when it can't understand a caller?"
+    answer: "A well-built one recognizes low confidence and asks a clarifying question, transfers to a person, or takes a message with a transcript. What it must not do is guess confidently and submit a wrong order. If a vendor can't clearly explain their escalation logic, treat that as a red flag."
+  - question: "Who finds out when something breaks?"
+    answer: "Someone at your restaurant should, quickly, and that's worth confirming rather than assuming. The worst failures are the silent ones — an integration that stops writing to the POS while calls keep getting answered — because nobody looks until orders are already missing."
+  - question: "Should I keep my old phone setup as a backup?"
+    answer: "Many operators keep a fallback path for a while, and it's a reasonable precaution during the first weeks. What matters more than the specific arrangement is that you've thought through and tested what happens when the primary path stops working, before you need it."
+---
+
+Every phone system fails sometimes, including the one you have now. The useful question isn't whether a voice agent will ever fail — it will — but whether it fails in a way you find out about immediately and can recover from, or in a way that quietly costs you orders for three hours before anyone notices.
+
+That distinction is the whole subject. Loud failures are annoying and cheap. Silent failures are calm and expensive. Most of the planning worth doing is about converting the second kind into the first.
+
+## Five ways it can fail, from least to most dangerous
+
+### 1. It doesn't understand a caller
+
+The most common and least serious. Bad connection, heavy background noise, an unusual request. A well-built system detects low confidence and does one of three things: asks a clarifying question, transfers to a person, or takes a message with a transcript.
+
+The important thing is that it should feel like a failure — "sorry, let me get someone for you" — rather than resolving into a confident wrong guess. Callers forgive a system that admits confusion. They don't forgive food they didn't order. This is the escalation logic covered in [how AI handles the weird calls](/blog/how-ai-handles-restaurant-edge-cases), and it's the first thing to probe in a demo.
+
+### 2. The caller wants a human and can't get one
+
+A caller says "can I talk to a person" and gets routed in circles. This is the failure that generates actual anger, because the customer has clearly stated what they want and the system is refusing.
+
+The fix is configuration, not technology: an explicit, immediate path to a human or a message. Test it by asking for a person in three different phrasings, including an impatient one.
+
+### 3. The system is unreachable
+
+Calls don't connect, or ring out. Bad, but at least obvious — customers will tell you, quickly and loudly.
+
+What matters here is failover. If your number routes through a vendor and that vendor has an outage, what happens? The answer should be defined in advance: calls fall through to your existing line, or to a defined backup, automatically. A setup where an outage means your restaurant's phone simply doesn't work is a setup you should understand fully before you agree to it. Ask specifically what the failover path is and how it's triggered — this is part of the broader [uptime and reliability](/blog/what-to-ask-before-buying-an-ai-phone-system) conversation you should be having anyway.
+
+### 4. Orders stop reaching the POS
+
+Now we're into the dangerous half. Calls are answered normally. Customers place orders, hear confirmations, and hang up satisfied. Nothing arrives in the kitchen.
+
+This is worse than the phone being down, because the phone being down is visible and this isn't. Customers show up for food nobody made. You find out from an angry person at your counter rather than from a monitor.
+
+Two things reduce this risk: an integration that fails loudly rather than silently, with an alert that reaches a human at your restaurant, and a habit of glancing at whether phone orders are flowing during a shift. It's also the strongest practical argument for [integration depth](/blog/why-pos-integration-depth-matters-more-than-voice-quality) — a deep connection has real state to monitor, while a shallow one has more places to fail quietly.
+
+### 5. It works but gets things subtly wrong
+
+The most insidious. Everything runs. Orders arrive. But a modifier is being dropped, or an item is being mapped to the wrong POS entry, or a price is stale. Nothing alerts because nothing is technically broken.
+
+You find this through complaints, remakes, and eventually a pattern nobody connected. The defense is unglamorous: look at a sample of phone tickets weekly for the first month, and take repeated remakes seriously as a signal rather than as bad luck. Availability drift is a common version of this, covered in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes).
+
+## The questions to ask before you sign
+
+Get real answers to these, and prefer specificity over reassurance:
+
+- **What happens to calls if your service is down?** You want a described, automatic failover path.
+- **How do I find out something's wrong?** Ideally an alert reaching a person at the restaurant, not a status page you'd have to think to check.
+- **What does the agent do at low confidence?** A vendor who can describe their escalation thresholds has thought about it. One who says it always understands has not.
+- **If the POS integration drops, do calls keep getting answered?** Both answers are defensible — continuing to answer means capturing orders you'll have to handle manually; stopping means missed calls. What matters is that it's a deliberate choice you know about.
+- **What's the support path at 7 p.m. on a Friday?** The only time it matters.
+
+## Plan your own fallback
+
+Independent of the vendor, decide what your restaurant does when the phone system misbehaves during service. This doesn't need to be elaborate:
+
+- Who notices, and what are they watching for?
+- Who do they tell?
+- What's the manual path — forwarding to a cell, putting someone on the line — and has anyone practiced it?
+- If orders were taken but didn't land, how do you reconstruct them?
+
+That last question is the one worth answering in advance, because it's the hardest to figure out under pressure. Whether there's a transcript or an order record you can work from is a good thing to know before you need it.
+
+## The reframe worth keeping
+
+It's easy to hold a new system to a standard your current one doesn't meet. Your existing phone setup fails too — it fails every time a rush means nobody picks up, which is the most common and expensive [failure of all](/blog/the-real-cost-of-a-missed-restaurant-phone-call). That failure is so familiar it stopped registering as one.
+
+The honest comparison isn't "voice agent with occasional failures" versus "perfect current state." It's one set of failure modes against another. Voice agents fail differently: less often on volume, more often on unusual calls, and with the specific risk of failing quietly. Knowing that lets you plan for it instead of being surprised.
+
+## The bottom line
+
+Voice AI fails in five main ways, and they get more dangerous as they get quieter. Misunderstanding a caller is fine if it escalates honestly. An outage is survivable with a defined failover. Orders silently not reaching the POS is the one to actively guard against. Ask about failover, alerting, and low-confidence behavior before signing, decide your own manual fallback, and check a sample of tickets for the first few weeks. A system that fails loudly and hands off cleanly is worth more than one that claims it never fails.

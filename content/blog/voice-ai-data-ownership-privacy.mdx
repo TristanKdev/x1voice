@@ -1,0 +1,96 @@
+---
+title: "Who Owns Your Voice AI Data? Ownership and Privacy for Restaurants"
+description: "Call recordings, transcripts, and customer records are business assets. What to ask about ownership, retention, portability, and deletion before you sign."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Do I own my call recordings and transcripts?"
+    answer: "That depends on what your contract says, which is why it's worth reading rather than assuming. The practical test isn't the ownership language, it's whether you can export the data in a usable format and require its deletion. Ownership you can't exercise isn't worth much."
+  - question: "Can a vendor use my calls to train their AI models?"
+    answer: "Some do, some don't, and several acceptable arrangements exist — your data used for your account only, used in aggregate and de-identified, or not used at all. What isn't acceptable is not knowing. Ask for the answer in writing and check whether you can opt out."
+  - question: "What happens to my data if I cancel?"
+    answer: "Ask specifically, because retention after termination varies and access often ends at cancellation rather than later. Export everything you might want while your account is still active. This is one of the most common ways operators lose their own call history."
+  - question: "Do privacy laws apply to a small restaurant?"
+    answer: "Some do, depending on your state and your size, and the thresholds vary enough that a blog post can't tell you where you land. What's generally true is that you can't honor a customer's deletion request if your vendor gives you no mechanism to execute one, so the capability question is worth answering regardless of which laws reach you. Confirm your specific obligations with your own counsel."
+---
+
+A voice AI system generates data your restaurant has never had before: a recording or transcript of every call, a record of what customers asked about, and an accumulating set of customer names, numbers, addresses, and order histories. That's genuinely useful. It's also a category of information with legal weight attached, sitting on someone else's servers.
+
+The contract questions here are short and the answers should be specific. Who owns it, where does it live, how long is it kept, can you take it with you, can you delete it, and is it used for anything beyond serving you? A vendor that answers all six clearly is easy to work with. One that answers vaguely is telling you something.
+
+## What data actually accumulates
+
+Worth enumerating, because the scope surprises people.
+
+**Call recordings**, if recording is enabled. Audio of your customers' voices.
+
+**Transcripts** of every conversation, which are searchable in a way audio isn't and therefore more useful and more sensitive at the same time.
+
+**Customer records.** Phone numbers at minimum, plus names, delivery addresses, and order history where the system collects them.
+
+**Payment tokens**, if the system takes card payments. Not card numbers if it's built correctly, but references that can charge a card.
+
+**Operational analytics.** Call volumes, containment rates, escalation reasons, item-level ordering patterns.
+
+Each category has a different sensitivity and, potentially, a different retention answer.
+
+## The six questions
+
+**Who owns it?** Contracts usually say the customer owns their data, but read the license granted back to the vendor. A broad, perpetual, irrevocable license to use your data for any purpose is materially different from a license to process it in order to provide the service.
+
+**Where does it live?** Which country or region. This matters if you have any cross-border exposure, and it's a one-line answer.
+
+**How long is it retained?** Ask for a specific period, not "as long as necessary." Then ask whether you can shorten it. Shorter retention is generally better for you: data you don't hold can't be breached, subpoenaed, or misused.
+
+**Can you export it?** In a usable format, without a fee, while your account is active. This is the practical form of ownership.
+
+**Can you delete it?** Both wholesale on termination and per-customer on request. If a customer asks you to delete their information, you need a mechanism.
+
+**Is it used for anything else?** Model training, benchmarking, product development, aggregate reporting. Any of these can be fine; the answer should just exist.
+
+## Recording, consent, and the greeting
+
+Whether calls are recorded is your decision, not the vendor's default. Some operators want recordings for dispute resolution and training; some prefer transcripts only, which is a meaningfully lower-sensitivity footprint.
+
+If you record, consent rules apply and they vary by state, with some requiring all-party consent. In practice this means your greeting has to disclose it, and the disclosure has to actually be heard rather than buried. Ask whether the greeting is configurable and what it currently says. We cover the landscape in [call recording consent laws for restaurants](/blog/call-recording-consent-laws-restaurants), with the standard caveat that you should confirm your state's specifics with your own counsel rather than with a vendor's blog.
+
+One detail that's easy to miss: if a caller reads out a card number during a recorded call, that number is now in an audio file. Ask whether payment segments are excluded from recording or redacted from transcripts, and how that's verified. It's on the list in our [security questionnaire](/blog/voice-ai-security-questionnaire), and the payment side is covered in [PCI compliance for restaurant phone payments](/blog/pci-compliance-restaurant-phone-payments).
+
+## Who at the vendor can see your calls
+
+A question people rarely ask and vendors rarely volunteer.
+
+Can support staff pull any call? Can engineers? Is access logged and auditable, or is it open to anyone on the team? "Access requires a ticket and is recorded" is a different posture from "anyone can look."
+
+This isn't about suspecting bad intent. It's about the fact that your customers' conversations with your restaurant are being held by a third party's employees, and reasonable controls should exist.
+
+## The training question, handled honestly
+
+Vendors improve their systems using data, and there's nothing inherently wrong with that. What matters is the arrangement being disclosed and, ideally, controllable.
+
+Reasonable arrangements: your data used only to improve your own account's accuracy; data used in aggregate after de-identification; data not used for training at all. Ask which one applies and whether you can opt out. If the answer is "we don't use customer data for training," ask whether that's contractual or just current practice — those aren't the same thing.
+
+## Subprocessors
+
+Your vendor isn't the only company touching your calls. Telephony carriers, speech recognition providers, cloud hosting, possibly payment processors. These are called subprocessors and having them is entirely normal.
+
+Ask for the list. A vendor that maintains one is usually further along operationally than one that has to assemble it for your question. Also ask whether you're notified when it changes.
+
+## Portability is the ownership that matters
+
+Here's the practical framing. Ownership language in a contract is worth exactly as much as your ability to act on it. If you own your transcripts but the only way to see them is a dashboard with no export, you don't functionally own them.
+
+So test it. During a pilot, export your data and look at what you get. Is it a usable file with the fields you'd want, or a PDF of a summary screen? That five-minute test tells you more than the contract clause does.
+
+This is also the single most common way operators get hurt: they cancel, then discover their history went with the account. Export before you give notice. The full sequence is in [switching voice AI vendors](/blog/switching-voice-ai-vendors).
+
+## Your own obligations
+
+Two things sit on your side regardless of vendor.
+
+You're the one with the customer relationship, so a deletion or access request from a customer comes to you. You need a mechanism to honor it, and that mechanism is your vendor's export and delete capability. Confirm it exists before you need it.
+
+And if you use phone numbers collected through calls for any outbound marketing — texts, promotions — that's a separate body of rules with real teeth around consent. Collecting a number to fulfill an order is not the same as consent to market to it. Talk to your own counsel before doing anything with that list.
+
+## The bottom line
+
+Ask the six questions — ownership, location, retention, export, deletion, secondary use — and get the answers in writing before signing. Then test the export during your trial rather than trusting the clause, because portability is the only form of ownership that does anything. Decide deliberately whether to record calls at all, confirm that payment segments stay out of recordings, and get the subprocessor list. None of this takes more than an hour, and it's the hour that determines whether your call history is an asset you keep or one you rent.

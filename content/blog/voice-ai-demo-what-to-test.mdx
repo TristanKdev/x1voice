@@ -1,0 +1,96 @@
+---
+title: "What to Actually Test During a Voice AI Demo"
+description: "Vendor demos are designed to succeed. Here are the specific calls to place, in order, that will tell you what the demo script won't."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Should I let the vendor run the demo or do it myself?"
+    answer: "Both, in that order. Let them show you their flow, then ask to call the line yourself with no coaching and no script. The second call is the one that tells you something, and a vendor's willingness to hand you the phone is itself informative."
+  - question: "Can I test on my own menu?"
+    answer: "You should insist on it. A demo on a generic template menu tests the vendor's demo, not their fit for your restaurant. If a vendor can't load your real menu before a serious evaluation, that's a meaningful limitation on how fast they'll respond to your menu changes later."
+  - question: "What's the single most revealing test?"
+    answer: "Change your mind mid-order. Say an item, then say 'actually, make that two, and no onions on the first one.' Handling a correction gracefully requires the system to track state across turns, which is much harder than parsing a clean order and much closer to how people actually talk."
+  - question: "How long should a demo take?"
+    answer: "Thirty to forty-five minutes if you're driving it, most of which should be you on the phone rather than watching a slide deck. If more than half the time is presentation, ask to reschedule for a working session instead."
+---
+
+A vendor demo is a performance with a known script. The menu is loaded, the scenarios are rehearsed, and the person placing the call knows exactly how to phrase things. That's not dishonest, it's just uninformative, because the demo tests the situation the vendor prepared for.
+
+What you want is the twenty minutes after the demo, where you call the line yourself and try the things real customers do. Below is the specific list, roughly in order of how much it will teach you. Run the same list against every vendor you're seriously considering so the comparison is fair.
+
+## Before you dial: get your own menu loaded
+
+Ask for the demo to run on your actual menu, not a template. If the vendor says they need a week to load it, note that — it's a direct signal about how fast they'll handle your menu changes after you're live. If they can do it in an hour, that's also a signal.
+
+Also decide who's calling. Use three different people with different voices, speaking speeds, and accents if your customer base varies. One person testing tells you how well the system understands that person, which is not the question.
+
+## Test 1: the completely normal order
+
+Place a standard order the way a regular would. Two or three items, no complications, spoken at normal speed.
+
+Everything should work. If it doesn't, you're done evaluating this vendor. What you're actually watching here is the rhythm: how long the pause is before it responds, whether it interrupts you, whether it sounds like a conversation or like a form being filled in. That timing sensitivity is the thing operators notice within one call and can't articulate — the mechanics are in [interruption handling and endpointing](/blog/interruption-handling-endpointing-voice-agents).
+
+## Test 2: change your mind mid-order
+
+The single most revealing test. Order an item, then say "actually, make that two, and can you do the first one without onions."
+
+This requires the system to track what's already in the cart, modify one line item and not the other, and do it without re-reading the whole order back at you. Systems that parse a clean order beautifully often fall apart here, and this is much closer to how people actually order than test 1 is.
+
+Variation: order something, then remove it entirely. "Actually, scratch the salad."
+
+## Test 3: three modifiers and a substitution
+
+Something like "large, extra cheese, no mushrooms, and can I swap the fries for a side salad?"
+
+Then, and this is the part people skip, go look at the POS ticket. Right items, right modifiers, right price for the substitution, routed correctly? A perfect transcript with a mangled ticket is a failure. Ask the vendor to show you the created order on their screen if you can't see your own POS. We argue this is the highest-signal thing in the whole evaluation in [why POS integration depth matters](/blog/why-pos-integration-depth-matters-more-than-voice-quality).
+
+## Test 4: order something that's 86'd
+
+Have the vendor mark an item unavailable during the call, or before it, then order that item. Does the agent know? How long did it take to know?
+
+This tests whether menu sync is live or a nightly import, which is one of the biggest practical differences between systems. The full breakdown is in [menu sync deep dive](/blog/menu-sync-deep-dive-voice-ai). Ask directly whether the mechanism is push or poll, and what the worst-case delay is.
+
+## Test 5: use your customers' words, not your POS's words
+
+Order using the nickname or shorthand your regulars actually use, not the item name in your system. "The usual chicken thing." "A number three." "The big one with the sauce."
+
+Some of this will fail, and that's expected. What matters is what happens next: does the agent ask a sensible clarifying question, or does it guess wrong and move on? Guessing wrong silently is much worse than asking.
+
+## Test 6: an informational call that never becomes an order
+
+"Are you open on Sunday?" "Do you have parking?" "Is there anything gluten-free?" "Do you deliver to [address]?"
+
+A large share of restaurant call volume never becomes an order, and how gracefully the system handles that determines a lot of your caller experience. Also watch whether it tries to force the conversation toward ordering when the caller clearly just wanted information. See [answering FAQs about hours and parking](/blog/voice-ai-answering-faqs-hours-parking).
+
+## Test 7: call from a car with the windows down
+
+Or from your kitchen during prep, or from anywhere loud. Background noise is the normal condition for a large share of real calls, and a quiet office demo tests none of it.
+
+You're looking for whether recognition degrades gracefully — asking you to repeat — or fails confidently by hearing something you didn't say. The honest treatment of this is in voice AI in noisy environments.
+
+## Test 8: ask for a human
+
+Say "can I talk to a person." It should work immediately, with no negotiation and no attempt to talk you out of it.
+
+Then ask what happens on the other end during a real dinner rush. Does it transfer to a phone that's already the thing you're trying to stop ringing? Does context travel, or does the caller start over? The design questions are in human handoff and failover.
+
+## Test 9: be difficult
+
+Mumble. Talk over the agent. Give a phone number too fast. Say something completely out of scope — ask about a job, or complain about an order from last week. Give a partial address.
+
+You're not trying to break it for sport. You're finding out how it behaves at the edges, because your customers will find those edges within the first week. How AI handles restaurant edge cases covers what reasonable behavior looks like.
+
+## Test 10: ask the vendor a hard question mid-demo
+
+Not a call test, but the highest-value minute of the session. Ask something like: "What's the most common thing your system gets wrong for restaurants like mine?"
+
+A vendor who answers with a specific, real limitation is more trustworthy than one who says there isn't one. This is the same signal we flag throughout evaluating voice AI vendors.
+
+## What a demo can't tell you
+
+Be clear about the limits. A demo won't tell you how the system holds up over hundreds of calls, how it handles genuine peak concurrency, how fast the vendor fixes problems, or whether it stays accurate as your menu drifts. Those need a real pilot on live traffic, which is a different exercise covered in designing a voice AI pilot.
+
+Use the demo to eliminate vendors, not to select one. It's good at the first job and unreliable at the second.
+
+## The bottom line
+
+Load your real menu, take the phone yourself, and run ten specific calls: normal order, mid-order correction, heavy modifiers with a POS ticket check, an 86'd item, customer shorthand, an information-only call, a noisy call, a request for a human, a deliberately difficult call, and one hard question to the vendor. The correction test and the ticket check are the two that separate systems most reliably. Everything past that requires a pilot.

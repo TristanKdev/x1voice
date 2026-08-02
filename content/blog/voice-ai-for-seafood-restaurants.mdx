@@ -1,0 +1,74 @@
+---
+title: "Voice AI for Seafood Restaurants: Market Price, Daily Catch, and Shellfish Questions"
+description: "Seafood phones ring with availability and price questions that change daily. Here's what a voice agent can honestly answer, and what it should hand to a person."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Can a voice agent quote market price?"
+    answer: "Only if today's price lives somewhere it can read. Market-price items are the hardest thing in this category for any automated system, because the number changes and often isn't entered anywhere until service. The safe configuration is for the agent to say the item is market price, offer today's number if your POS has it, and otherwise take the caller's contact info or connect them to a person."
+  - question: "How does it handle the daily catch or sold-out items?"
+    answer: "The same way it handles market price — it reflects whatever your POS knows. If your kitchen 86s the halibut in the register when it runs out, the agent stops selling it. If availability is communicated verbally at pre-shift and nowhere else, the agent will keep taking orders for it. That workflow gap is worth fixing before you buy, not after."
+  - question: "Are shellfish allergy questions safe to automate?"
+    answer: "Partly. The agent can accurately state which dishes contain shellfish based on your menu data, and that's useful. It should not make cross-contact assurances in a kitchen that fries shrimp and fish in shared oil. The right setup gives the ingredient facts and offers a person for anything involving a real allergy."
+  - question: "Is this more useful for takeout or reservations?"
+    answer: "It depends on your format. A fried-seafood takeout counter or a crab boil place gets real order volume and benefits from order-taking. A white-tablecloth seafood house gets mostly reservation and question calls, and the value there is capturing bookings and answering hours, parking, and menu questions rather than writing tickets."
+---
+
+Seafood restaurants have a phone problem built on variability. More than almost any other category, what you can sell changes day to day, the price changes with it, and a large share of your calls are people asking about exactly those two things. Do you have the soft shells yet, what's the market price on the whole branzino, is the crab boil still running, do you have oysters tonight.
+
+Those calls take time and they arrive during service. A voice agent can absorb a lot of them, but only to the extent that today's reality lives somewhere the system can read. That's the honest gate for this category, and it's a bigger deal here than in a pizzeria where the menu is the same every day.
+
+## Availability is the constraint, not the technology
+
+The most common failure mode for automation in a seafood restaurant is confidently selling something the kitchen doesn't have. That produces a customer who drove across town for a fish you ran out of at 6:15, which is worse than a phone that rang out.
+
+So the first question to answer isn't about voice quality or POS brands. It's whether your team marks items unavailable in your register when they run out. If they do, an agent reflects that on the next call and stops offering it. If availability is announced at pre-shift and tracked nowhere, the agent has no source of truth.
+
+This is a workflow fix, not a software purchase, and it's worth making regardless. Any vendor's [POS integration depth](/blog/why-pos-integration-depth-matters-more-than-voice-quality) claim is only as good as the data your restaurant actually enters.
+
+## Market price needs a deliberate answer
+
+Market-price items are a genuinely hard case. The price changes, it often isn't set until the day's fish comes in, and callers ask about it specifically because it isn't printed.
+
+There are three defensible configurations, and you should pick one on purpose:
+
+- **Quote from the POS**, if today's price is entered there before service.
+- **State that it's market price and offer to connect the caller**, which is honest and costs you a handoff.
+- **Take the caller's number and have someone call back**, which works when volume is low.
+
+What you should not do is let an agent guess or quote yesterday's number. Ask any vendor how they handle this specific case, because it's the one that separates a system configured for seafood from one configured generically.
+
+## Shellfish allergy questions deserve care
+
+Shellfish is one of the most serious common food allergies, and seafood restaurants field those calls constantly. An agent can accurately report which dishes contain shrimp, crab, or shellfish stock, and that's a real service — a rushed host guessing is worse.
+
+Where it must stop is cross-contact. A kitchen with shared fryer oil and a shared grill has genuine risk, and a phone system should not be the thing that reassures someone about it. Configure factual ingredient answers plus a clear offer to reach a person, which is the same boundary we describe in our [allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions) piece. Get the wording in writing with any vendor before going live.
+
+## Two different seafood businesses
+
+The right deployment depends heavily on which kind of seafood restaurant you run.
+
+**Takeout-heavy fried seafood, crab boils, and fish markets** look like a normal high-volume ordering business. Baskets, platters, boils by the pound, sides. The value is order-taking during peak, and the modifier work is ordinary: fried or grilled, sides, seasoning level, extra sauce. Boils in particular price by weight and add-in, which works fine as long as your register prices them the same way.
+
+**Full-service seafood houses** get a different call mix: reservations, large parties, questions about the raw bar, private dining, and hours. There the value is booking capture and question absorption, not ticket writing. The split between what an agent should book outright and what it should capture and hand off is covered in our [reservations versus ordering](/blog/voice-ai-reservations-vs-ordering) piece.
+
+Be clear about which one you are, because vendors will pitch the ordering story to everyone.
+
+## Seasonality and event spikes
+
+Seafood demand spikes on a predictable calendar: Lent and Fridays for fish fries, summer for boils and shore-season traffic, holidays for large family orders. Those spikes hit the phone hardest, and they're the windows where an agent's ability to take every call at once actually converts into revenue.
+
+Whole-order catering — a boil for thirty people, a seafood platter for an office — is the high-ticket call worth capturing even when you're closed. The [catering call guide](/blog/ai-phone-answering-catering-orders) covers the intake fields, and the after-hours case matters because event planning happens at night.
+
+## Pickup timing matters more here
+
+Fried seafood degrades fast and raw items need to stay cold. A pickup time quote that's off by fifteen minutes is a quality problem, not just an inconvenience. An accurate ready time plus a text when the order is actually up keeps customers arriving at the right moment — the practical case for order status texts in a category where holding time is short.
+
+## Where it may not fit
+
+A small seafood house doing mostly walk-in dinner with a host who answers the phone doesn't need this. Neither does a restaurant whose menu changes so completely and so informally that configuring it accurately is a daily chore nobody will keep up with — in that case the agent becomes a source of wrong answers.
+
+Where it fits is a restaurant with real unanswered phone demand, a menu stable enough to configure, and availability tracked in the register. Weigh recovered orders and captured bookings against a flat monthly cost — [X1 Voice](/pricing) starts at $250/month for 750 minutes — using your own logs and the method in our single-location economics breakdown.
+
+## The bottom line
+
+Seafood is a category where the software is the easy part and the data discipline is the hard part. If today's availability and market prices live in your POS, an agent handles the constant availability calls well and captures the high-value boil and platter orders you're currently missing. If they don't, fix that first — an agent selling yesterday's fish is not an improvement. To hear how it handles an availability question, [call the demo line](/#see-it).

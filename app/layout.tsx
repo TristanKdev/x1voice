@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/site/footer"
 import { JsonLd } from "@/components/seo/json-ld"
 import { buildOrganizationJsonLd, buildWebSiteJsonLd } from "@/lib/seo/jsonld"
 import { buildMetadata } from "@/lib/seo/metadata"
-import { SITE_DESCRIPTION, SITE_NAME } from "@/data/site"
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/data/site"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,6 +48,17 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        {/*
+          Hoisted into <head> by React. Not routed through buildMetadata's
+          `alternates` because every page overrides that key with its own
+          canonical, which would drop the feed link everywhere but home.
+        */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title={`${SITE_NAME} Blog`}
+          href={`${SITE_URL}/feed.xml`}
+        />
         {/* Organization + WebSite JSON-LD emitted exactly once, here, nowhere else. */}
         <JsonLd data={[buildOrganizationJsonLd(), buildWebSiteJsonLd()]} />
         <ThemeProvider

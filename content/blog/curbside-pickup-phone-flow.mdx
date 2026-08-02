@@ -1,0 +1,72 @@
+---
+title: "Designing a Curbside Pickup Flow That Starts on the Phone"
+description: "Curbside works when the handoff is choreographed and falls apart when it isn't. What information the phone call needs to capture, where the process usually breaks, and how to evaluate a phone system's role in it."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "What does a phone agent need to capture for curbside to work?"
+    answer: "At minimum: the name on the order, a mobile number, and whatever your staff uses to find the car — usually make, color, and a spot number if you have marked spaces. If you skip the vehicle detail, someone ends up walking the lot squinting at windshields during your rush."
+  - question: "Isn't curbside dead now that dining rooms are open?"
+    answer: "It's smaller than it was, but a real share of pickup customers still prefer not to park and walk in — parents with kids in car seats, people in a hurry, anyone in bad weather. Whether it's worth staffing depends on your parking situation and how many of your pickup orders actually use it. Look at your own numbers rather than the general trend."
+  - question: "Should the customer call when they arrive, or text?"
+    answer: "Text is usually better, because an arrival call ties up the same line other customers are ordering on, right at the peak. If you're going to do curbside at volume, giving people a way to signal arrival that doesn't consume a phone line is the single highest-leverage design choice."
+  - question: "Can a voice agent tell staff a customer has arrived?"
+    answer: "How arrival notification is handled varies a lot by system and by what it's connected to, so treat it as a specific question to ask a vendor rather than an assumed capability. What any phone agent can do reliably is capture the vehicle and contact details on the order so the handoff has what it needs."
+---
+
+Curbside pickup succeeds or fails on a handoff that takes about ninety seconds: a customer parks, someone inside knows they're there, and a bag reaches the right car. Everything upstream — the ordering, the cooking, the packing — can be flawless and the customer still leaves annoyed if that last ninety seconds is a person wandering a parking lot holding a bag and calling a name.
+
+Most of what makes that handoff work is decided on the phone call, long before anyone parks. This piece is about what the call needs to capture, where curbside actually breaks, and how to think about a phone system's role in it.
+
+## What the call has to capture
+
+A curbside order needs strictly more information than a walk-in pickup order. The additions are small, and skipping them is what creates the parking-lot search:
+
+- **A mobile number.** Non-negotiable. Without it, the only way to reach an arriving customer is for them to call you, which puts the burden back on your phone line.
+- **Vehicle make and color.** "Silver Honda" is enough almost every time. It converts a name-based search into a visual one.
+- **A spot number, if you have marked spaces.** The cleanest version, because it removes the search entirely.
+- **A rough arrival time,** especially for orders placed well in advance.
+
+Any phone system taking curbside orders should be capturing these as structured fields on the order, not as a note buried in special instructions where the expo won't read it. That's the same principle that makes [modifier handling](/blog/how-voice-ai-handles-menu-modifiers) matter: information that arrives as unstructured text tends to be information nobody acts on.
+
+## Where curbside actually breaks
+
+Four failure points, in rough order of how often they cause a bad experience:
+
+**The arrival signal.** The customer parks and now has to tell you. If your answer is "call us," you've routed your curbside traffic onto the same line your ordering traffic uses, at exactly the moment both are busiest. That's a genuine operational trap. A text-based arrival signal, or a marked-spot system where the runner just watches the lot, avoids it.
+
+**Nobody owns the lot.** Curbside without an assigned person becomes everybody's job, which means it's nobody's job during a rush. The bag sits. The customer waits eleven minutes and decides curbside at your place doesn't work.
+
+**The order isn't ready when they are.** Curbside customers arrive on the estimate you gave them. If your quoted time is optimistic, they're sitting in a car watching your door, which feels much longer than waiting inside where there's something to look at.
+
+**Wrong car, wrong bag.** Solved almost entirely by capturing the vehicle detail and reading the name back at the window.
+
+Notice that only the first is really a technology problem. The rest are staffing and timing, which is worth saying plainly: buying software doesn't fix a curbside process nobody owns.
+
+## The phone line problem is the one worth solving
+
+If you take one thing from this: the arrival call is the expensive part. Every curbside customer who calls to say "I'm here in the silver Civic" occupies a line and a staff member for thirty seconds during your peak — and they'll do it at the same time as everyone else, because rushes cluster.
+
+That's the same tax as the "is my order ready?" callback, and it has the same fix: give the customer a channel that isn't your phone line. If you're already [texting customers status updates](/blog/restaurant-order-status-text-updates) as their order progresses, the natural extension is a message the customer can reply to on arrival. Whether a given system supports that reply path is worth asking directly, because it varies, and a number that silently swallows replies is worse than no number at all.
+
+The alternative that requires no software: numbered spots and a sign that says "text your spot number to X" or, simpler, a runner whose job during peak is to watch the three curbside spaces. Low tech, works fine, costs labor.
+
+## Where a phone agent helps and where it doesn't
+
+Being straight about the boundary: a voice agent's clear contribution to curbside is on the ordering side. It answers when your staff can't, takes the order accurately, captures the vehicle and contact details as part of the order, and lands it in your POS so the kitchen sees it as a normal ticket. During a rush, that's the difference between capturing a curbside order and missing the call entirely, which is the [most expensive thing your phone does](/blog/the-real-cost-of-a-missed-restaurant-phone-call).
+
+What it doesn't do is run your lot. It won't tell you your quoted times are ten minutes optimistic, and it won't decide who's carrying bags out at 6:45. Those are yours. A vendor who implies otherwise is overselling.
+
+## A simple test of any setup
+
+Before committing to a curbside flow, place a live test order as a customer:
+
+1. Order for curbside and see whether the system asks for vehicle details unprompted, or only if you volunteer them.
+2. Check that the vehicle and contact info actually appear on the ticket your staff sees — not just in the vendor's dashboard.
+3. Time the quoted estimate against reality on a busy night. Twice.
+4. Park in your own lot and count how long until someone comes out.
+
+Step four is the one operators skip and the one that changes minds. The customer experience of curbside is almost entirely that wait.
+
+## The bottom line
+
+Curbside is a choreography problem with a small data dependency. The phone call's job is to capture the name, the mobile number, and the car, and to get the order into the kitchen with a time estimate you can actually hit. The lot's job is to have someone who owns it and an arrival signal that doesn't eat your phone line. Get those right and curbside is quietly good; get the arrival signal wrong and you've just invented a new way for your busiest hour to get busier.

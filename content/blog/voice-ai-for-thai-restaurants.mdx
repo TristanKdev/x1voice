@@ -1,0 +1,64 @@
+---
+title: "Voice AI for Thai Restaurants: Heat Scales, Protein Swaps, and the Peanut Question"
+description: "Thai phone orders are built from choices — protein, noodle, spice number, and a peanut question that has to be right. Here's how a voice agent handles that structure."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Can a voice agent handle a 1-to-5 spice scale?"
+    answer: "Yes, and a numbered scale is easier for an agent than vague descriptions because it maps to a modifier in your POS. The agent asks for the number on every dish that needs one and records it on the ticket. What it can't do is tell you whether a caller's idea of a four matches your kitchen's four — that gap exists with human order-takers too."
+  - question: "How should peanut allergy calls be handled?"
+    answer: "Carefully, and with a human available. An agent can accurately state which dishes contain peanuts based on your menu data, but Thai kitchens have real cross-contact risk across woks and prep surfaces, and that's not a question a phone system should answer with confidence. The right configuration gives the factual ingredient answer and offers to connect the caller to someone in the restaurant."
+  - question: "What about protein and noodle substitutions?"
+    answer: "These are structured modifiers, which is where voice agents are strongest. Chicken to tofu, rice noodle to egg noodle, brown rice instead of white, each with whatever upcharge your register applies. The important thing to verify is that the substitution prices correctly in your POS, not just that the agent understood the words."
+  - question: "Our staff answers the phone in Thai sometimes. Does the agent need to?"
+    answer: "Usually not for callers, since most inbound calls in a US Thai restaurant come in English. Multi-language support exists if your neighborhood needs it. The more common language issue is the reverse — accented English on the restaurant side is irrelevant to an agent, and accented English from callers is handled reasonably well but not perfectly."
+---
+
+Thai restaurant orders have a distinctive shape: a base dish, then a stack of choices. Pad thai with chicken, spice level two. Green curry with tofu, no bell pepper, spice three, brown rice. Drunken noodles, shrimp, extra spicy, no egg. Nearly every item on the phone is a short conversation with three or four branch points, and each branch is a place a rushed order-taker can drop something.
+
+That structure is why Thai restaurants are a reasonable fit for a voice agent. Not because the calls are unusually numerous, but because they're consistently multi-step, and an agent that asks every question in order doesn't skip the spice level when the dining room gets loud. The honest counterweight: if your phone rarely rings and your host has time, none of this is worth paying for.
+
+## The choice stack is the order
+
+The mechanics of a Thai phone order are close to a decision tree. Pick the dish, pick the protein, pick the heat, pick the rice or noodle, note any exclusions. A staffer who takes this order fifty times a night does it fast and mostly right, but "mostly" is where the remakes come from — the missed spice level, the shrimp that was supposed to be tofu.
+
+A voice agent walks the same tree the same way every time. It asks the protein question on every dish that has one. It asks the number on every dish with a heat scale. Those are structured modifiers that map onto your POS the way your register already understands them, which is the part that matters. A system that hears the words but writes a ticket your kitchen misreads is worse than the status quo — the reason [POS integration depth](/blog/why-pos-integration-depth-matters-more-than-voice-quality) is the question to ask before voice quality.
+
+## Heat scales are numbers, and numbers are easy
+
+Most Thai restaurants use a numeric scale, usually one through five, sometimes with a "Thai hot" tier past the top. This is genuinely easier for an ordering system than the mild-medium-hot descriptions other cuisines use, because the caller's answer is unambiguous and it drops straight into a modifier field.
+
+What an agent cannot do is calibrate. A caller who confidently orders a four and comes back complaining is a problem no phone system solves, human or otherwise. What you can do is give the agent a short, honest description of your scale to read when someone asks — a sentence about what your four actually means goes further than a number alone.
+
+## Peanuts deserve their own answer
+
+Thai food has the highest baseline peanut anxiety of any category on an American takeout line, and it comes up on a real share of calls. The agent should be able to say accurately which dishes contain peanuts, which contain peanut oil, and which garnishes can be left off.
+
+Where it should stop is cross-contact. A wok line that cooks pad thai all night has genuine cross-contact risk, and a confident "yes that's safe" from a phone system is the wrong answer to give a caller with a severe allergy. The right configuration states the ingredient facts and offers a person. That handoff design is the core of our [allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions) guidance, and it's worth confirming in writing with any vendor before you go live.
+
+The same care applies to fish sauce and shrimp paste, which appear in curries and dressings that read as vegetarian on a menu. Vegetarian callers ask about this constantly, and it's a place where an incomplete configuration produces confidently wrong answers.
+
+## Lunch specials and the compressed midday window
+
+Many Thai restaurants run a lunch special with its own menu and its own end time, and the midday window is short and dense. Calls cluster between 11:30 and 1:00, exactly when your kitchen is at capacity and your front of house is running plates.
+
+This is the concurrency problem in miniature. One person answers one call; a voice agent answers all of them at once and quotes accurate pickup times. If your lunch specials are configured in your POS with their time window, the agent also enforces the cutoff consistently rather than fielding an argument at 3:10. Our [missed-call framework](/blog/how-many-calls-does-your-restaurant-miss) is a reasonable way to size how much of that midday window you're actually losing.
+
+## Pickup timing and the noodle problem
+
+Thai food travels reasonably well but not indefinitely, and pad thai that sits fifteen minutes past pickup is not the dish you intended to sell. Quoting an accurate ready time and confirming it by text keeps the customer arriving when the food is ready rather than fifteen minutes off in either direction. [Order status texts](/blog/restaurant-order-status-text-updates) do more for a category like this than for one where the food holds.
+
+## Where the delivery apps fit
+
+A lot of Thai restaurants have significant third-party delivery volume and have quietly let the direct phone line degrade as a result. That's a defensible business decision until you look at what the commission costs on every ticket. A phone order taken directly costs you a flat monthly platform fee spread across all calls, not a percentage of each order — the comparison we lay out in voice AI versus delivery app commissions.
+
+The realistic goal isn't to leave the apps. It's to stop losing the callers who wanted to order direct and couldn't get through.
+
+## Where it honestly may not fit
+
+A small Thai restaurant doing mostly dine-in with a handful of phone orders a night doesn't need this. Neither does one where the phone volume has already migrated almost entirely to apps and online ordering and shows no sign of coming back. The tool addresses unanswered phone demand, and if that demand isn't there, no feature list changes the math.
+
+The way to tell is your call log for a busy week. Count the calls that rang out or hit voicemail during lunch and dinner, estimate what share had order intent, and weigh it against a flat monthly cost — [X1 Voice](/pricing) starts at $250/month for 750 minutes. The single-location economics breakdown shows how to do that without flattering the numbers.
+
+## The bottom line
+
+Thai restaurants suit a voice agent because their orders are built from clean, structured choices and their call volume compresses into two windows nobody can staff around. The two things to get right are peanut and fish-sauce handling, where the agent must be accurate and know when to hand off, and POS pricing on substitutions. Verify both in a demo rather than trusting a feature list. When you want to hear it take a curry order with a protein swap, [call the demo line](/#see-it).

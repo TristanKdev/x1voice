@@ -1,0 +1,96 @@
+---
+title: "Measuring Call Containment Rate for Restaurant Phone AI"
+description: "Containment rate is the headline metric vendors quote, and it's easy to game. Here's what it actually measures, how to define it honestly, and why a high number isn't automatically good."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "What is call containment rate?"
+    answer: "The share of calls fully handled by the automated system without transferring to a person. If 100 calls come in and 80 are resolved by the agent, containment is 80%. The definition sounds simple and the details of what counts as 'resolved' are where it gets slippery."
+  - question: "Is a higher containment rate always better?"
+    answer: "No, and this is the important part. A system that traps callers who wanted a person shows high containment and produces unhappy customers. Containment is only meaningful alongside whether the caller actually got what they wanted."
+  - question: "What containment rate should I expect?"
+    answer: "It depends entirely on your call mix. A restaurant whose calls are mostly straightforward pickup orders will see a very different number than one with lots of catering, complaints, and special requests. Comparing your number to someone else's is less useful than tracking your own over time."
+  - question: "How do I verify a vendor's containment number?"
+    answer: "Ask exactly how they define a contained call, whether abandons count, and whether calls where the caller hung up in frustration are excluded. Then listen to a sample of calls the system counted as contained. The transcripts settle it faster than any dashboard."
+---
+
+Containment rate is the number vendors put on the first slide: the share of calls the automated system handled without passing to a person. It's a genuinely useful operational metric and it's also the easiest one to make look good without delivering anything, because "handled" can mean resolved or it can mean the caller gave up.
+
+The honest way to use it is as one number in a pair. Containment tells you how much work the system absorbed. Whether callers got what they wanted tells you whether that absorption was good. Either one alone is misleading.
+
+## What containment actually measures
+
+The basic calculation is calls fully handled by the system divided by total calls received. The value of the metric is operational: it's a direct proxy for how much phone work your staff no longer does. A restaurant going from answering everything manually to containing most routine calls has genuinely freed up floor time, and that's worth measuring.
+
+It's also the metric most connected to what you're paying for. If you're spending on an automated phone system and containment is low, either the system isn't handling your call types or it's configured badly, and both are worth knowing.
+
+## Where the definition gets slippery
+
+The problems all live in what counts as "contained."
+
+**Abandoned calls.** If a caller hangs up mid-conversation, was that call contained? It didn't reach a human. It also didn't accomplish anything. Counting abandons as contained is the single biggest way this number gets inflated.
+
+**Calls the caller wanted escalated.** Someone asks for a manager, doesn't get one, and eventually hangs up. Technically not transferred. Obviously a failure.
+
+**Partial resolution.** The agent answers a hours question but the caller actually wanted to place an order and couldn't. Contained, unhelpful.
+
+**Spam and wrong numbers.** These are trivially contained and can be a real share of your inbound volume, which quietly pads the number. They should be excluded from the denominator entirely.
+
+**Intentional transfers.** A call routed to a person because your policy says complaints always go to a human isn't a system failure. Counting it against containment penalizes the system for doing the right thing.
+
+That last point matters for how you read your own number. Some transfers are the design working.
+
+## Define it honestly for yourself
+
+Rather than accepting a vendor's definition, write your own and apply it consistently:
+
+- **Exclude spam and wrong numbers** from the denominator.
+- **Count a call as contained only if the caller's intent was addressed** — an order placed, a question answered, a callback captured.
+- **Count abandons separately**, as their own metric, never as contained.
+- **Separate policy transfers from failure transfers.** A complaint routed to a manager by design is different from an agent that couldn't understand the order.
+
+Applying that definition will produce a lower number than any vendor dashboard. That's the point. A number you trust at 70% is worth more than one you don't at 90%.
+
+## Pair it with the metrics that make it meaningful
+
+Containment alone can't tell you if things are going well. The companion numbers:
+
+**Abandon rate.** Callers hanging up during the automated interaction. If containment is high and abandons are high, the system is producing containment by exhaustion.
+
+**Transfer reason mix.** Why calls escalate. Policy transfers are fine. A cluster of transfers because the agent couldn't handle a common request is a configuration gap you can fix.
+
+**Order conversion.** Of calls that were order intents, how many became orders. This is closest to revenue and hardest to fake.
+
+**Order accuracy.** A contained call that produced a wrong order is worse than a transfer. See [improving phone order accuracy](/blog/improving-phone-order-accuracy).
+
+**Complaint volume.** If complaints about the phone experience rise while containment looks great, believe the complaints.
+
+The broader metric set is in [voice AI metrics and KPIs for restaurants](/blog/voice-ai-metrics-kpis-restaurants), and the general call-data discipline in [restaurant phone analytics](/blog/restaurant-phone-analytics-guide).
+
+## Listen to the calls
+
+This is the step that replaces a month of dashboard interpretation. Pull twenty calls the system counted as contained and review the transcripts or recordings.
+
+You'll learn quickly whether "contained" means what you hoped. Common discoveries: callers repeating themselves, people asking for a person and not getting one, orders that were technically taken but missing a modifier the caller stated twice. None of that shows up in a percentage.
+
+If you're recording or reviewing calls, be aware there are consent and data-handling questions to sort out first — see [call recording and consent for restaurants](/blog/call-recording-consent-laws-restaurants) and confirm the requirements for your locations with counsel.
+
+## Why comparing to a benchmark is mostly useless
+
+Containment depends overwhelmingly on your call mix, which varies enormously by restaurant. A pickup-heavy counter-service spot whose calls are 80% simple orders will contain far more than a fine-dining room fielding reservation negotiations, special requests, and private-event inquiries.
+
+So a vendor quoting an industry containment figure is telling you about their customer base, not about what you'd get. The useful comparison is your own number over time: is it improving as you tune the menu and rules, and is it improving without abandons or complaints rising?
+
+## Using it to improve rather than to grade
+
+The most productive use of containment isn't as a scorecard, it's as a pointer. Look at the calls that weren't contained and group them by reason. That list is your improvement backlog:
+
+- Missing menu items or modifiers the agent couldn't handle
+- Questions it doesn't have an answer for
+- Request types nobody configured
+- Audio or recognition failures, which point at a different class of problem
+
+Fix the top two or three, then re-measure. That loop moves containment for real reasons, rather than by adjusting the definition.
+
+## The bottom line
+
+Containment rate measures how much phone work your system absorbed, which is worth knowing and easy to inflate. Define it yourself: exclude spam, count abandons separately, don't penalize transfers your own policy requires, and only count a call as contained if the caller's intent was actually addressed. Read it alongside abandon rate, transfer reasons, order conversion, and accuracy, because a high containment number paired with rising complaints means the system is winning the metric and losing the customer. Ignore industry benchmarks, track your own trend, and use the uncontained calls as a to-do list rather than a grade.

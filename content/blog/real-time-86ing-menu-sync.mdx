@@ -1,0 +1,75 @@
+---
+title: "Real-Time 86ing: Why Menu Availability Sync Is the Feature You'll Notice Most"
+description: "When you run out of an item at 7:15, the phone agent needs to know at 7:16. How real-time 86ing works, why lag causes disproportionate damage, and what to verify before you trust a system with it."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "How fast should an 86'd item disappear from what the agent offers?"
+    answer: "Within seconds of you marking it out, not on a nightly menu refresh. 86ing is a live toggle, not a retrain. If a vendor's answer involves a sync window measured in minutes or a support ticket, that's a real limitation and you should price it into your decision."
+  - question: "Can my closing manager 86 something without calling support?"
+    answer: "That's the practical test. Any system worth using lets your own staff mark an item out from a phone or tablet, the same way they'd 86 it for the floor. If updating the phone agent's menu requires the vendor, you'll end up selling things you can't make."
+  - question: "What should the agent say when someone orders an 86'd item?"
+    answer: "Say it's unavailable and offer the nearest alternative, immediately and without drama. What it must never do is take the order anyway and let the kitchen discover the problem. A clean 'we're out of the wings tonight, the tenders are the closest thing' costs you nothing; a wrong ticket costs you a refund and a bad review."
+  - question: "Does 86ing sync automatically from my POS?"
+    answer: "It depends entirely on your POS and how deep the integration goes. Some systems track item availability in a way an integration can read; others don't really model it at all, which means the toggle lives in the phone agent instead. Ask specifically how availability flows for your POS rather than assuming, because the answer varies by system."
+---
+
+You ran out of the short rib at 7:15 on a Saturday. Everything downstream of that moment depends on how fast every ordering channel learns about it. If your phone agent finds out at 7:16, you lose nothing. If it finds out at 9:00, you've sold a dish you can't make to a dozen callers, and each one becomes a phone call, an apology, a substitution negotiation, or a refund — during the busiest two hours of your week.
+
+That's why real-time availability sync, "86ing," is the feature operators end up caring about most, even though it never wins a demo. Voice quality is what a vendor shows you. Whether the agent stops offering the wings the second you mark them out is what you'll actually feel.
+
+## What 86ing means for a phone agent specifically
+
+On the floor, 86ing is a verbal broadcast: the expo yells it, servers stop selling it, and the board gets updated. It works because everyone who takes orders is in the building.
+
+A phone agent isn't in the building. It only knows what it's told, through a system. So 86ing becomes a data problem: someone toggles availability somewhere, and that state has to reach the thing answering the phone before the next call comes in. There's no yelling across the pass to fall back on.
+
+The good news is that the toggle itself is simple. Marking an item out should be a live change, not a retrain of the agent's menu. Adding a new dish or renaming one is a structural change that takes more work; telling the system "we're out of this tonight" should be instant and self-service. We go deeper on that distinction in [training a voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu).
+
+## Why lag hurts more than it looks like it should
+
+The damage from a stale menu isn't linear with the delay. It compounds, for three reasons.
+
+**It clusters at the worst time.** You 86 things when you're slammed. That's the same window with the highest call volume, so an hour of lag on a Saturday costs far more orders than an hour of lag on a Tuesday afternoon.
+
+**Each bad order costs more than a missed one.** A caller who hears "we're out of that" orders something else. A caller who successfully orders an unavailable dish generates a downstream event: a callback, a substitution conversation, a comp, or a customer who shows up for food that doesn't exist. That's not a lost sale, it's a negative one.
+
+**It erodes trust in the system internally.** Once your staff catches the phone agent selling 86'd items twice, they start double-checking every phone ticket. At that point you've reintroduced the manual work the system was supposed to remove, which is the same failure mode as [shallow POS integration](/blog/why-pos-integration-depth-matters-more-than-voice-quality) generally.
+
+## Where the availability state actually lives
+
+This is the part worth understanding before you evaluate anyone, because the honest answer varies by setup.
+
+**In your POS.** Some point-of-sale systems track item availability natively, and a deep integration can read it. When that's true, your staff 86 things exactly where they already do, and the phone agent inherits it. This is the cleanest arrangement because it has one source of truth and no new habit to teach.
+
+**In middleware.** For multi-location groups running menus through a platform like Deliverect, availability rides the same rails as your delivery menus, so an item marked out propagates to the phone agent alongside your third-party channels. We cover that pattern in [Deliverect and multi-location groups](/blog/deliverect-voice-agent-multi-location-restaurants).
+
+**In the phone agent itself.** If your POS doesn't model availability in a way an integration can read, the toggle lives in the agent's own dashboard. That works, but it's a second place your staff has to remember, and "remember to also do the thing" is a promise that fails on the busiest nights.
+
+None of these is wrong. What's wrong is not knowing which one you're getting. Ask the question in exactly this form: *when my closing manager 86s the wings, where do they click, and how long until the phone agent stops offering them?*
+
+## The failure modes worth asking about
+
+Real systems fail in specific ways, and a vendor who can describe theirs is more trustworthy than one who says it just works. The common ones:
+
+- **A sync that runs on a schedule** rather than on change. Fine at 3 p.m., useless at 7:15.
+- **A one-way sync** that pushes menu structure but not availability, so prices update and 86s don't.
+- **An integration that fails quietly.** The connection drops and the agent keeps serving yesterday's menu with no alert to anyone.
+- **Partial coverage of modifiers.** The dish is available but you're out of the blue cheese. Whether the agent knows depends on how granular the availability model goes, and it's usually less granular than you'd like.
+
+That last one is worth accepting realistically. Most systems handle item-level 86ing better than modifier-level, so plan on your staff catching some of it. We break down these specific breakages further in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes).
+
+## How to verify it before you commit
+
+Do this during a trial, not from a feature list:
+
+1. 86 an item from wherever your staff would actually do it.
+2. Immediately call the agent and order that item.
+3. Time the gap between the toggle and the agent refusing the item.
+4. Then order a *modifier* you've marked out, and see whether that's tracked at all.
+5. Un-86 it and confirm it comes back just as fast, because a stale "unavailable" costs you sales too.
+
+Five minutes, and it answers a question a sales call cannot.
+
+## The bottom line
+
+Real-time 86ing is a small feature with outsized consequences, because it fails precisely when you're least able to absorb the fallout. The bar is straightforward: your own staff can mark an item out in seconds without calling anyone, the agent honors it on the very next call, and it offers a sensible alternative rather than an awkward dead end. Verify the timing yourself with a live test. It's the fastest way to learn whether a vendor's integration is deep or decorative.

@@ -1,0 +1,87 @@
+---
+title: "How POS and 86 Sync Actually Breaks: The Failure Modes Worth Knowing"
+description: "Menu and availability sync fails in specific, recognizable ways. Here are the ones that cause real damage, why the quiet ones are worse than the loud ones, and how to catch each before your customers do."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "What's the most damaging way menu sync fails?"
+    answer: "Silently. An integration that stops updating while calls keep getting answered normally is worse than one that goes down, because nobody looks until customers are already being sold items you can't make. Loud failures are cheap; quiet ones compound for hours."
+  - question: "How would I even notice a sync problem?"
+    answer: "Usually through symptoms rather than alerts: repeated remakes on phone orders, staff mentioning the phone agent sold something you're out of, or prices on phone tickets not matching the register. Treating those as data rather than bad luck is what turns a three-week problem into a same-day one."
+  - question: "Should the phone agent stop taking orders if the POS connection drops?"
+    answer: "Both answers are defensible and it should be a deliberate choice. Continuing means capturing orders you'll have to enter manually; stopping means missed calls. What matters is that you know which behavior you have and that someone at the restaurant gets told."
+  - question: "Do modifier-level 86s sync as reliably as item-level ones?"
+    answer: "Generally not. Most systems handle 'we're out of the wings' better than 'we're out of blue cheese,' because availability is often modeled at the item level. Plan on your staff catching some modifier-level gaps rather than assuming the system will."
+---
+
+Menu and availability sync between a phone agent and your POS doesn't fail in one dramatic way. It fails in about six specific ways, and they vary enormously in how much damage they do — mostly as a function of how quickly you find out.
+
+The organizing principle worth carrying through this whole piece: loud failures are cheap and quiet failures are expensive. An integration that throws an error and stops working costs you an evening of manual entry. An integration that keeps working while being subtly wrong costs you three weeks of remakes before anyone connects the pattern.
+
+## 1. The scheduled sync
+
+**What it is.** Availability updates on a timer — every fifteen minutes, hourly, or nightly — rather than on change.
+
+**Why it hurts.** You 86 the short rib at 7:15. Depending on the timer, the agent keeps selling it until 7:30, or 8:00, or tomorrow. During your peak, that's a lot of orders you can't make.
+
+**How to catch it.** Time it. 86 something, then call and try to order it. Note the gap. If it's more than a few seconds, you have a scheduled sync and you should know its period. The standard to hold to is in [real-time 86ing](/blog/real-time-86ing-menu-sync).
+
+## 2. The one-way sync
+
+**What it is.** Menu structure and prices flow from the POS to the agent, but availability doesn't — because your POS doesn't expose it, or the integration doesn't read it.
+
+**Why it hurts.** Everything looks synced. Prices are right, items are right. But 86ing does nothing, and your staff assume it does because they marked it out where they always do.
+
+**How to catch it.** Same test as above, plus asking the direct question: *where does my staff mark an item out so the phone agent knows?* If the answer is a different place than the POS, availability isn't syncing from the POS — which is fine if everyone knows, and dangerous if they don't.
+
+## 3. The silent disconnect
+
+**What it is.** The connection drops. The agent keeps answering calls, working from a cached menu. Orders may or may not be landing anywhere useful.
+
+**Why it hurts.** This is the worst one. Calls sound normal. Customers hear confirmations and hang up satisfied. Then they arrive for food nobody made, and you find out from an angry person at your counter rather than from a monitor.
+
+**How to catch it.** You can't, by observation, which is the point. Ask the vendor: *if the connection drops, who gets told, and how?* An alert reaching a person at the restaurant is the answer you want. A status page you'd have to think to check is not. This is the central case in [what happens when voice AI fails](/blog/what-happens-when-voice-ai-fails).
+
+## 4. Modifier-level blindness
+
+**What it is.** The dish is available but you're out of the blue cheese, the avocado, the good bread. Availability is modeled at the item level, so the modifier gap is invisible.
+
+**Why it hurts.** Less than the others individually, but constantly. Every one produces a small negotiation at pickup.
+
+**How to catch it.** Mark a modifier out and try to order it. Most systems will let you, and that's worth knowing rather than discovering. The realistic response is a staff habit — when you run out of something used across items, someone checks whether it needs handling at the item level too.
+
+## 5. Price drift
+
+**What it is.** You raise a price in the POS. The agent quotes the old one.
+
+**Why it hurts.** Quietly, in margin, and then loudly when a customer is charged more than they were quoted. It also creates the worst kind of counter conversation, because the customer is right.
+
+**How to catch it.** After any price change, call and order the changed item. Ten seconds. Also worth checking against your [payment flow](/blog/collecting-payment-over-the-phone-safely) if you collect on the call, because a quoted total and a charged total that disagree will generate a call every time.
+
+## 6. Structural drift
+
+**What it is.** You add an item, rename a dish, or restructure a combo. The agent's menu model doesn't follow, so it either can't sell the new thing or maps a renamed item to the wrong POS entry.
+
+**Why it hurts.** The wrong-mapping version is genuinely nasty: orders arrive, tickets look plausible, and the kitchen makes the wrong food with no error anywhere.
+
+**How to catch it.** Make menu changes a checklist item rather than an afterthought. After any structural change, order the affected item and look at the resulting ticket in the POS. The setup discipline is covered in [training a voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu).
+
+## The pattern across all six
+
+Notice what the dangerous ones have in common: nothing errors. The system reports success. The failure is in the content, not the transport, which means monitoring the connection isn't enough. You have to occasionally check the output.
+
+That's why the single highest-value habit here is unglamorous: for the first month, look at a sample of phone tickets against what was ordered, weekly. After that, look after every menu change and every price change. It takes minutes and catches five of the six failure modes above.
+
+## Questions to ask before you sign
+
+- Is availability sync event-driven or scheduled? If scheduled, what's the interval?
+- Where does my staff 86 something so the phone agent knows?
+- Does availability sync at the modifier level, or only the item level?
+- If the integration drops, does the agent keep answering? Who at my restaurant gets alerted?
+- After a price change in the POS, how long until the agent quotes the new price?
+- If I rename or restructure an item, what breaks and what do I need to do?
+
+A vendor with crisp answers to these has run into all of them. A vendor who says it just works has not been paying attention, and that's the more worrying answer. This is the practical core of the [integration depth](/blog/why-pos-integration-depth-matters-more-than-voice-quality) argument — depth isn't a marketing word, it's the difference between these failure modes being rare and being routine.
+
+## The bottom line
+
+Sync fails in about six recognizable ways, and they range from mildly annoying to genuinely expensive depending on how quickly you find out. Scheduled syncs cost you during peaks. Silent disconnects cost you customers. Structural drift produces wrong food with no error anywhere. Ask whether sync is event-driven, find out who gets alerted when it breaks, and build a habit of checking a sample of phone tickets after every menu or price change. The connection working is not the same as the connection being right.

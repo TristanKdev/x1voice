@@ -1,0 +1,82 @@
+---
+title: "Order-Ahead and Scheduled Pickup Times on Phone Orders"
+description: "Someone calls at 3 p.m. wanting food at 6:30. That simple request touches your hours, your kitchen pacing, and your ticket flow. What a phone agent needs to get right, and what to verify."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Can a voice agent take an order for later?"
+    answer: "Taking the order and capturing a requested time is the straightforward part. The part that varies by system and POS is when that ticket actually fires to the kitchen — immediately, or held until the right prep window. Ask that question directly, because the wrong answer means food sitting under a heat lamp for two hours."
+  - question: "How far ahead should we let people order?"
+    answer: "That's a policy decision, and it should be an explicit one. Same-day is easy. Multi-day gets complicated because your staffing, availability, and hours may change between the order and the pickup. Pick a horizon you can honor and configure it, rather than letting the system accept anything."
+  - question: "What if the customer picks a time we're not open?"
+    answer: "The system should decline and offer the nearest available window. An order accepted for a time you're closed is a customer arriving at a dark building, which is worse than never taking the order. This is the same configuration that governs holiday and hours overrides."
+  - question: "Do scheduled orders mess up kitchen pacing?"
+    answer: "They can, if a lot of them land in the same window with no cap. A 6:30 slot that accumulates fifteen pre-orders on top of walk-in volume is a problem you created in advance. Whether a system supports capacity limits per window is worth asking about specifically."
+---
+
+A caller at 3 p.m. asking for pickup at 6:30 is placing a very different order than a caller at 6:15 asking for it as soon as possible. The words are similar. The operational consequences aren't. A scheduled order has to be captured now, held, fired at the right moment, and made against availability and staffing that may look different by then.
+
+Most of what makes scheduled ordering work is deciding your own policy, and most of what makes it fail is a system accepting a time you can't honor. Here's how to think about both.
+
+## The core question: when does the ticket fire?
+
+This is the thing to establish first with any system, because everything else follows from it.
+
+**If tickets fire immediately,** a 3 p.m. order for 6:30 pickup hits the kitchen at 3 p.m. Someone has to notice the pickup time and set it aside, or the food gets made three hours early. That's a process you can run — plenty of restaurants do, with a rail for future orders — but it's a process, and it fails on busy nights when nobody has time to sort.
+
+**If tickets are held and fire at the right prep window,** the kitchen sees the order when they should start it. Much better, and it requires the system to know your prep lead time for that order and to actually hold and release.
+
+Which behavior you get depends on your POS and the depth of the integration, not just on the phone agent. So the question to ask is specific: *when I take a scheduled order, when does it appear on my kitchen display?* If a vendor hasn't got a crisp answer, assume immediate firing and plan a manual process.
+
+## Your policy decisions, before any software
+
+Four things to decide. Automation will expose whichever one you haven't.
+
+**How far ahead you'll accept.** Same day is straightforward. Tomorrow is usually fine. A week out means accepting an order against hours, staffing, and menu availability that could all change. Pick a horizon and enforce it.
+
+**Your time granularity.** Fifteen-minute windows are typical, and "6:30" from a customer usually means "somewhere near 6:30." Being precise about what a slot means avoids a customer arriving at 6:29 for food targeted at 6:40.
+
+**Your capacity per window.** This is the one people skip. Without a cap, popular slots accumulate. Friday at 6:30 collects scheduled orders on top of your worst walk-in volume, and you've engineered your own disaster. Whether the system can cap orders per window is worth asking about; if it can't, you'll need to watch the board manually.
+
+**Your cutoff before close.** Last order time, not closing time. Related to the same reasoning in [holiday hours and schedule overrides](/blog/holiday-hours-overrides-voice-ai).
+
+## Where scheduled orders go wrong
+
+**Accepting an unavailable time.** The worst one. A customer with a 9 p.m. pickup at a restaurant that closes at 8:30 will show up, and it will be your fault. Test this deliberately.
+
+**Availability drift.** You accepted a short-rib order at 3 p.m. You 86 the short rib at 7:15. The 8 p.m. pickup is now a problem, and nobody has connected the two. Some [86ing](/blog/real-time-86ing-menu-sync) implementations flag affected future orders; many don't. Worth asking, and worth having a manual habit of scanning future orders when you 86 something significant.
+
+**Time-zone and date confusion.** "Tomorrow at noon" placed at 11:45 p.m. is genuinely ambiguous, and the confirmation should state the actual date.
+
+**Quoted times that ignore load.** A system quoting 20 minutes at 7:30 on a Friday when you're running 45 is setting the customer up to be annoyed at your counter. If quoted times are static rather than load-aware, know that going in.
+
+## What the confirmation must say
+
+Scheduled orders raise the stakes on confirmation, because there's a long gap between ordering and pickup during which the customer will forget the details. The confirmation — spoken and, better, in an [SMS confirmation](/blog/sms-order-confirmations-voice-ai) — should state the date explicitly, the time, whether it's pickup or delivery, and the items with modifiers.
+
+"Tomorrow at 6:30" in a text sent at 11 p.m. is a trap. "Saturday, March 14, 6:30 p.m." isn't.
+
+## What it's actually good for
+
+Setting aside the mechanics, scheduled ordering earns its keep in a few specific situations:
+
+**Office lunch orders.** Someone calls mid-morning for a noon pickup. Reliable, valuable, repeatable business, and it's often the on-ramp to [catering inquiries](/blog/catering-lead-qualification-ai).
+
+**Smoothing your own peaks.** Every order placed at 3 p.m. for a 6:30 pickup is an order your kitchen knew about in advance, which is strictly better than the same order arriving at 6:25.
+
+**Capturing after-hours intent.** Someone calls at 11 p.m. wanting lunch tomorrow. Without after-hours answering, that call goes to voicemail and often to a competitor instead. The general case for that is in [24/7 after-hours answering](/blog/24-7-restaurant-phone-answering-after-hours).
+
+## How to verify it works
+
+On a live test call:
+
+1. Order for a time three hours out. Then go look at your kitchen display and see whether it's there now.
+2. Order for a time you're closed. It should decline and offer an alternative.
+3. Order for "tomorrow" and check that the confirmation states an actual date.
+4. Order something for later, then 86 it, and see whether anything flags the conflict.
+5. Place several orders for the same window and see whether anything caps or warns.
+
+Tests one and five are the ones that determine whether scheduled ordering helps your kitchen or quietly sabotages it.
+
+## The bottom line
+
+Scheduled ordering is mostly a policy problem with one hard technical question underneath it: when does the ticket reach the kitchen. Decide your horizon, your granularity, your per-window capacity, and your last-order cutoff. Then verify that the system refuses times you're closed and that the confirmation states a real date. Done well, it turns a chunk of your rush into orders you saw coming. Done carelessly, it stacks your worst hour with tickets you agreed to hours ago.

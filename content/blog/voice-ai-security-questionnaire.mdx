@@ -1,0 +1,78 @@
+---
+title: "A Security Questionnaire for Restaurant Voice AI Vendors"
+description: "The security and privacy questions worth asking a voice AI vendor, written for restaurant operators rather than IT departments."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Do I really need a security review for a phone system?"
+    answer: "You need a proportionate one. A system that handles card payments and stores recordings of your customers' voices touches two genuinely sensitive categories, and the questions below take an hour. You don't need an enterprise procurement process, but 'we never asked' is a poor answer if something goes wrong."
+  - question: "What's the single most important question to ask?"
+    answer: "How card payments are handled — specifically whether card numbers ever reach the vendor's systems or your staff, or whether they go directly to a payment processor. That one answer determines most of your exposure and most of your PCI scope."
+  - question: "Should I ask for a SOC 2 report?"
+    answer: "You can, and a vendor serving larger accounts will likely have one. For a single-location restaurant, whether the vendor answers your direct questions clearly and in writing usually tells you more than whether they have a certificate you won't read. Ask for both if the vendor is going to handle payments."
+  - question: "Who is responsible if there's a breach?"
+    answer: "That depends on your contract and on which systems were involved, and it's a question for your own counsel rather than a blog post. What you can do before signing is read the liability and indemnification sections rather than assuming they say something reasonable."
+---
+
+A voice AI system for a restaurant touches three things worth protecting: your customers' card details, recordings and transcripts of their conversations, and a live connection into your POS. Any one of those justifies asking some questions. All three together justify writing the answers down.
+
+You don't need an enterprise security program to do this well. You need about an hour, a willingness to ask plain questions, and a vendor who'll answer in writing. The questions below are organized by what they protect, and every one of them has a right answer that a competent vendor can give without hedging.
+
+## Payments: the questions that matter most
+
+If the system takes card payments over the phone, this section carries most of your risk.
+
+**Does the card number ever touch your systems, or my staff, or is it captured directly by a payment processor?** The answer you want is that the card data goes straight to a PCI-compliant processor and the vendor holds only a token — a reference that can charge the card but isn't the card. This is the single biggest determinant of your own PCI scope.
+
+**Is the card number ever present in a call recording or transcript?** If the system records calls and a caller reads out a card number, that number is now in an audio file. Ask specifically whether payment segments are excluded from recording, or whether card numbers are redacted from transcripts, and how that redaction is verified.
+
+**What is your PCI DSS status, and which SAQ applies to me as a result of using you?** A vendor handling card data should be able to answer this immediately. Our [PCI compliance overview for restaurant phone payments](/blog/pci-compliance-restaurant-phone-payments) explains what the answers mean, and [collecting payment over the phone safely](/blog/collecting-payment-over-the-phone-safely) covers the operational side.
+
+**Who is liable for a fraudulent phone order?** Card-not-present transactions carry chargeback risk that generally sits with the merchant. Understand where you stand before volume grows — see [call fraud and chargebacks](/blog/voice-ai-restaurant-call-fraud-chargebacks).
+
+## Recordings and transcripts
+
+**Are calls recorded by default, and can I turn it off?** Both answers can be legitimate. What matters is that you know which one applies and that you control it.
+
+**Where are recordings and transcripts stored, and for how long?** Ask for a specific retention period, not "as long as necessary." Then ask whether you can shorten it.
+
+**Who at the vendor can access my recordings?** Support staff? Engineers? Under what circumstances, and is that access logged? "Anyone on the team can pull any call" is a different posture than "access requires a ticket and is audited."
+
+**How do you handle the consent requirements for recording?** Recording laws vary by state, and some require all-party consent. The vendor should be able to tell you what their greeting says and whether it's configurable, but the compliance obligation is ultimately yours. We cover the landscape in [call recording consent laws for restaurants](/blog/call-recording-consent-laws-restaurants), and you should confirm specifics for your state with your own counsel.
+
+**Are my recordings or transcripts used to train models?** This is a fair question with several acceptable answers — used for your account only, used in aggregate and de-identified, not used at all. What isn't acceptable is not knowing.
+
+## POS and system access
+
+**What level of access does the integration have to my POS?** Read-only menu access is a very different exposure than full write access to orders, refunds, and customer records. Ask for the specific permission scope.
+
+**Can the system issue refunds or voids?** Most restaurants want the answer to be no, or at least gated. Confirm rather than assume.
+
+**How is the integration authenticated, and can I revoke it myself?** You want the ability to cut access from your own POS admin without filing a support ticket. If revoking access requires the vendor's cooperation, that's a dependency worth knowing about.
+
+**What happens to the integration if I cancel?** Access should terminate. Ask when, and how you'd verify it.
+
+## Customer data
+
+**What customer information does the system store?** Phone numbers, names, order history, addresses if you deliver. Get the list.
+
+**Can I export it, and can I delete it?** Both should be yes. Privacy laws in several states give consumers deletion rights, and you can't honor a request you have no mechanism to execute.
+
+**Is customer data ever shared with third parties?** Subprocessors are normal — telephony providers, speech vendors, cloud hosting. A list of subprocessors is a reasonable thing to ask for, and a vendor that maintains one is usually further along than one that has to assemble it for you.
+
+## Availability and incident handling
+
+**What happens to calls if your system is down?** For a restaurant this is the security question that will actually affect you most. The answer should be a specific failover behavior, not an assurance. See voice AI SLAs and uptime.
+
+**How and when would you notify me of a security incident affecting my data?** Look for a defined timeframe. "As soon as practicable" is weaker than a stated number of hours or days.
+
+**Do you carry cyber liability insurance?** A short question with a yes or no answer, and worth asking if the vendor will be handling payments.
+
+## How to run this without becoming a procurement department
+
+Send the questions in one email, ask for written answers, and give the vendor a week. Written answers matter more than the answers themselves being perfect, because written answers are the ones you can hold someone to later.
+
+Then judge two things. First, the substance: are payments tokenized, is access scoped, is retention defined? Second, the response: did they answer directly, or did they answer a different, easier question? A vendor that deflects a plain security question during the sales process is unlikely to become more forthcoming after you've signed. That's the same signal we flag throughout our buyer's checklist.
+
+## The bottom line
+
+Focus your effort where the risk is: payments first, recordings second, POS access third. Ask for tokenized card handling, a stated retention period, scoped POS permissions, an exportable and deletable customer data set, and a defined incident notification window. Get it in writing. An hour spent here is cheap compared to explaining to a regular why their card number ended up in an audio file nobody thought about.

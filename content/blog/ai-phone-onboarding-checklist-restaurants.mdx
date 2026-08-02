@@ -1,0 +1,80 @@
+---
+title: "AI Phone Onboarding Checklist for Restaurants"
+description: "Everything to gather, decide, and test before your AI phone agent takes its first real call, in the order it actually needs to happen."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "How long does onboarding usually take?"
+    answer: "The technical setup is often fast — a clean menu and a supported POS can be configured in well under an hour. What extends the timeline is almost always on the restaurant's side: an out-of-date menu, unclear delivery zones, or nobody assigned to make decisions. Budget a day of your own attention rather than a week of vendor time."
+  - question: "What's the most common thing that delays go-live?"
+    answer: "Menu data. Not the number of items, but the inconsistencies inside it — the same item priced differently in two places, modifiers that exist on paper but not in the POS, and specials that were never removed. The cleanup is worth doing regardless, because those inconsistencies were already confusing your own staff."
+  - question: "Should I go live during a busy shift or a quiet one?"
+    answer: "Start on a moderately busy shift when you're personally on site, not a dead Tuesday and not your Friday peak. A dead shift won't surface problems and a peak shift is the worst place to discover one. You want enough real calls to learn something, with enough slack to intervene."
+  - question: "Do I need to tell customers the phone is answered by AI?"
+    answer: "Disclosure practice varies by vendor and jurisdiction, and some states have their own rules about automated callers and recording. Most operators find a short, plain disclosure in the greeting works better than trying to hide it — callers tend to respond to being told rather than figuring it out. Confirm the specific legal requirements for your state with your own counsel."
+---
+
+Onboarding an AI phone agent is less about the software and more about pinning down decisions your restaurant has been making informally for years. What are your real hours on a holiday? What's actually in the delivery zone? Which modifiers cost extra? The system needs explicit answers where your staff has been using judgment.
+
+The good news is that the technical side is usually quick. A clean menu on a supported POS can be configured fast. The work that determines whether go-live goes well is preparation you do before the vendor is involved. Here's that work, in order.
+
+## Before you talk to the vendor: gather the source data
+
+**Your current menu, from the POS, not a PDF.** The printed menu and the POS are almost never identical, and the POS is the version that matters because it's what pricing and order routing run against. Export it and read it. You will find items you stopped selling, prices that don't match the board, and modifier groups that were built once and never revisited.
+
+**A written list of your real hours,** including the ones you don't advertise. Kitchen close versus door close. Last delivery order versus last pickup order. Lunch cutoffs. Days you close early when it's slow. If your staff currently makes these calls by feel, you need to convert that feel into rules.
+
+**Delivery zones and rules,** if you deliver directly. Which streets, what minimum, what fee, what happens to an address just outside the line. "We use our judgment" is a valid business policy and a terrible configuration input.
+
+**Your five most common phone questions,** written down. Parking, allergens, whether you take reservations, whether you have a gluten-free option, whether you're open on a specific holiday. Most restaurants can list these from memory, and they typically account for a large share of call volume that never becomes an order.
+
+## Decisions to make before configuration
+
+**Who owns this system.** One named person who reviews transcripts, updates the menu, and handles escalations. Software without an owner drifts out of date, and a phone agent running on a three-month-old menu is worse than no phone agent.
+
+**Your escalation policy.** When should the agent hand a caller to a human, and to which human? A complaint, a large catering request, a caller who's clearly frustrated, a request the agent can't parse. Decide the categories now — the mechanics are covered in [human handoff and failover design](/blog/human-handoff-failover-voice-ai), but the policy is yours.
+
+**Your greeting and tone.** How the agent identifies your restaurant, whether it discloses that it's AI, and how formal it sounds. This is a brand decision, not a technical one.
+
+**Your upsell policy.** Whether the agent suggests anything, and if so what and how often. A restaurant that hates being upsold should say so up front. See [upselling without being pushy](/blog/upselling-without-being-pushy-ai) for the tradeoffs.
+
+**What happens after hours** versus during hours. Same behavior, or different? Many restaurants want full ordering during service and information-only overnight.
+
+## The technical setup
+
+**Confirm your POS integration specifically.** Not "compatible with most systems" — your exact POS, your exact version, confirmed working. If you're on a common platform there's likely a documented integration; our [POS integration guides](/blog/why-pos-integration-depth-matters-more-than-voice-quality) explain why depth here matters more than voice quality.
+
+**Decide your call routing.** Three common patterns: the AI answers everything, the AI answers only after a set number of rings when staff don't pick up, or the AI answers only outside business hours. Overflow-only is the gentlest starting point and the one we'd suggest for a cautious first week.
+
+**Handle the phone number.** Either forward your existing line or port it. Forwarding is reversible in minutes and is the right choice for a pilot. Porting is cleaner long-term but takes days and is harder to undo — see the [porting guide](/blog/phone-number-porting-guide-restaurants) before you start.
+
+**Load and verify the menu.** Then read the loaded version item by item against your POS. This is tedious and it's the single highest-value hour in the whole process.
+
+## Test before you go live
+
+Call your own line and place five orders. Not one — five, deliberately chosen:
+
+1. A completely standard order, spoken normally.
+2. An order with two or three modifiers, including one substitution.
+3. An informational call that never becomes an order ("are you open Sunday?").
+4. Something slightly off-script — a mumbled item name, a mid-sentence correction, an item you no longer carry.
+5. A call where you ask for a human.
+
+Then check the other end. Did each order land in the POS correctly, with the right modifiers, the right price, and the right pickup time? An order the agent handled beautifully on the call and dropped into the POS wrong is still a wrong order. Our piece on edge case handling covers what "off-script" looks like in practice.
+
+## Go-live week
+
+Pick a moderately busy shift when you're on site. Tell your staff what's happening and what to do if a caller complains or asks for a person — they should not be discovering this from a customer.
+
+Then read transcripts. Every day, for the first week. Not the dashboard summary, the actual transcripts. You're looking for three things: orders that went into the POS wrong, questions the agent couldn't answer, and moments where a caller sounded confused. Each of those is a specific fix, usually a menu correction or an added FAQ answer.
+
+Expect to make changes. A first week with zero adjustments usually means nobody looked, not that everything was perfect.
+
+## Week two and beyond
+
+By the second week the corrections should be slowing down. Now shift from fixing to measuring: what share of calls are being handled end to end without a human, what share escalate, and what's actually driving the escalations. That's the call containment picture, and it's the number that tells you whether the thing is working.
+
+Set a recurring calendar item — monthly is fine — to re-verify the menu against your POS. Prices change, items get 86'd permanently, seasonal specials come and go. Fifteen minutes a month keeps the whole thing honest.
+
+## The bottom line
+
+The vendor handles the configuration; you handle the decisions. Come to onboarding with a clean POS menu, written hours and delivery rules, a named owner, and an escalation policy, and the technical part is short. Skip that prep and you'll spend go-live week discovering that your restaurant never actually wrote down how it operates. That discovery is worth having either way — it just costs less before the phone starts ringing.

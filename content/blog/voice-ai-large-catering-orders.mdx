@@ -1,0 +1,86 @@
+---
+title: "Large Catering Orders and Voice AI: Where the Line Should Be"
+description: "A fifty-person order isn't a big takeout order, it's a different kind of transaction. What a phone agent should and shouldn't do with one, and how to build a handoff that doesn't lose the sale."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Should a voice agent take a large catering order end to end?"
+    answer: "Usually not. A large order involves headcount math, timing logistics, deposits, and judgment calls that deserve a person. The valuable job is capturing the inquiry completely and getting it to whoever owns catering quickly, rather than attempting to close a hundred-person event on a phone call."
+  - question: "Where's the cutoff between a big order and a catering order?"
+    answer: "There isn't a universal number, and picking one for your restaurant is a useful exercise. The practical test isn't headcount, it's whether the order changes how you'd prep or staff. If twenty sandwiches slots into normal service and forty means calling someone in, your line is somewhere between."
+  - question: "Why not let it quote a price for a big order?"
+    answer: "Because catering pricing depends on date, staffing, delivery, and setup, and a number quoted on an inquiry call becomes a number you're negotiating against later. It's much easier to give a range with conditions on a callback than to walk back a firm quote a caller heard on Tuesday."
+  - question: "What if a large order comes in outside business hours?"
+    answer: "That's common and it's where after-hours answering earns its keep. Capturing the details at 9 p.m. and routing them to the right person means the callback happens first thing rather than after the caller has already booked elsewhere."
+---
+
+A fifty-person order is not a large takeout order. It's a different transaction with different failure modes: it needs prep planning, possibly extra staffing, a delivery or setup arrangement, and often a deposit. Treating it as a big version of a normal order is the mistake that produces a Saturday where your kitchen discovers at 9 a.m. that it owes someone forty sandwiches at 11.
+
+So the useful question about voice AI and large orders isn't "can it take one." It's "where should the automated part stop, and how does the handoff work." That boundary, drawn deliberately, is what keeps a high-value inquiry from becoming an operational emergency.
+
+## Find your own threshold
+
+Before configuring anything, decide what counts as large *for your restaurant*. Headcount is the obvious axis and the wrong one. The real test is operational: does this order change how you'd prep or staff?
+
+For a busy pizzeria, ten pizzas might slot into normal service unnoticed. For a small café, twenty sandwiches is a morning's work that requires ordering more bread. The threshold is wherever "we'd just make it" becomes "someone needs to plan for this."
+
+Once you know that number, you have something to configure. Below it, the agent takes the order like any other. Above it, the agent captures and routes rather than confirms. Without that number, you're relying on the system's default, which was not designed around your kitchen.
+
+## Why closing a large order automatically is a bad idea
+
+Four concrete reasons, each of which has cost a restaurant real money:
+
+**Capacity isn't visible to the phone.** Can your kitchen absorb forty sandwiches at 11 a.m. Saturday? That depends on what else is booked, who's on, and what prep looks like. A phone agent generally doesn't have visibility into any of that, so a confirmation is a promise made without the relevant information.
+
+**Pricing isn't a lookup.** Large-order pricing involves delivery, setup, disposables, and sometimes staffing. Menu-price times quantity is frequently the wrong number, and it's the number an automated close would produce.
+
+**Deposits and cancellation terms need a human.** A large order carries real exposure if the customer cancels. That conversation is not one to automate.
+
+**The details matter more.** Dietary constraints across forty people, packaging, serving utensils, arrival timing. Missing one of these on a takeout order is annoying; missing it on an event is a ruined event.
+
+## What the agent should do instead
+
+The valuable and realistic job is capture and routing. X1 Voice can capture a catering inquiry and route it to whoever owns catering, so a high-value lead doesn't sit in a voicemail box overnight. Concretely, that means collecting:
+
+- Name and callback number
+- Date and time needed
+- Headcount
+- Pickup, delivery, or setup
+- Dietary constraints
+- Rough idea of what they want
+
+Six fields, two minutes, and the callback becomes a real conversation rather than a restart. The reasoning behind treating speed of response as the dominant variable is in [catering lead qualification](/blog/catering-lead-qualification-ai), and the broader mechanics are in [AI phone answering for catering orders](/blog/ai-phone-answering-catering-orders).
+
+The agent should also be clear with the caller about what's happening. "Let me get your details and have our catering manager call you back within the hour" sets an accurate expectation. What it shouldn't do is imply the order is booked.
+
+## The awkward middle
+
+Between "normal order" and "catering event" sits the case that causes the most trouble: the order that's large but not obviously an event. Fifteen sandwiches for an office. Eight pizzas for a party. Big enough to matter, small enough that the caller thinks of it as just an order and would be annoyed by a callback.
+
+Two reasonable approaches:
+
+**Take it, but flag it.** The agent completes the order and it's marked as large so a manager sees it before the kitchen commits. Good for restaurants where these are routine.
+
+**Take it with a caveat.** The agent takes the order and says someone will confirm timing. Slightly less smooth, more honest about the uncertainty.
+
+What doesn't work is silently accepting it and letting the kitchen discover it. Which of the two you pick depends on how often it happens and how much slack your kitchen has.
+
+## Timing and lead time
+
+Large orders have a lead-time requirement, and it should be configured rather than assumed. A caller asking for thirty box lunches in ninety minutes needs to hear no, or hear "let me check," rather than yes.
+
+This connects to [scheduled ordering](/blog/voice-ai-order-ahead-scheduling) generally — the same questions about how far ahead you accept, and what happens when availability changes between order and pickup, apply with more weight when the order is big enough to require prep.
+
+## Routing is the part that determines whether this works
+
+Capture without routing is just a nicer voicemail. Decide explicitly:
+
+- Who gets notified, by name, and through what channel?
+- Does that change by time of day?
+- What's the target callback time, and who checks whether it happened?
+- What's the backstop if nobody responds?
+
+A named person with a text notification beats a shared inbox that three people half-watch, even though the shared inbox feels more organized. And track the outcome, even roughly — inquiries received, callbacks made, and how long they took. That rough data usually makes the case for taking response speed seriously better than any argument does, and it fits alongside the other [metrics worth tracking](/blog/voice-ai-metrics-kpis-restaurants).
+
+## The bottom line
+
+Draw the line where an order stops fitting into normal service and starts requiring a plan. Below it, let the agent take the order. Above it, let the agent capture six fields and route to a named person fast. Don't automate pricing, availability, or deposits on large orders, and don't let a big order reach the kitchen without a human having seen it. The competitive edge in catering is usually being the restaurant that called back first with real information — and that's a routing problem, not an AI problem.

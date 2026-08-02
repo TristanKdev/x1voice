@@ -1,0 +1,93 @@
+---
+title: "What Is Call Containment, and Why It's Easy to Misread"
+description: "Containment rate is the headline metric for voice AI, and it can improve for bad reasons. Here's what it means, what it hides, and what to read alongside it."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "What is call containment?"
+    answer: "The share of calls a voice system handles from start to finish without transferring to a human. If 100 calls come in and 80 are resolved by the agent alone, containment is 80 percent. It's the standard headline metric for voice AI, and it's meaningful only alongside the reasons for the other 20."
+  - question: "What's a good containment rate for a restaurant?"
+    answer: "There's no universal target, because the right number depends on your call mix. A pizza counter where nearly every call is a straightforward order should contain more than a fine-dining room fielding private-event inquiries. Watch your own number's trend and its reasons rather than benchmarking against a figure from a different kind of restaurant."
+  - question: "Can containment be high and the system still be bad?"
+    answer: "Yes, and this is the main reason to be careful with it. A system that refuses to transfer callers, or that confidently completes orders incorrectly, will post a strong containment number while doing real damage. Always read it next to order accuracy and escalation reasons."
+  - question: "Should containment be the metric I optimize?"
+    answer: "No. Optimize order accuracy and answered-call rate, and treat containment as a diagnostic that tells you where the friction is. Containment is most useful when you break it down by reason, not when you're chasing the top-line number upward."
+---
+
+Call containment is the share of calls a voice system handles completely on its own, without handing off to a person. A hundred calls in, eighty resolved by the agent, twenty escalated: containment is 80 percent.
+
+It's the metric vendors lead with, and it's a reasonable one. It's also the metric most likely to mislead you, because it improves for at least two bad reasons as readily as it does for good ones. Understanding what it hides is more useful than knowing what number to aim for.
+
+## What it's actually measuring
+
+Containment tells you how much of your call volume the system absorbed. That's a real thing worth knowing — it's roughly proportional to how much phone work came off your staff.
+
+What it doesn't tell you is whether those calls went well. A contained call is one that didn't reach a human. It might have been a perfectly handled order. It might have been an order with the wrong modifiers. It might have been a caller who gave up and hung up. All three count the same way in most definitions, which is the crux of the problem.
+
+Ask any vendor quoting a containment figure for their exact definition. Specifically: does an abandoned call count as contained? Does a call where the agent took a message count? Does a caller who was transferred at their own request count against the number? Definitions vary enough that two vendors' figures often aren't comparable. Our [measurement guide](/blog/measuring-call-containment-rate) goes through the definitional traps in detail.
+
+## The two ways it improves for bad reasons
+
+**A system that won't let go.** If the agent resists transferring, argues with callers who ask for a person, or loops through clarification attempts instead of escalating, containment rises. The caller experience gets worse. This is the failure mode to watch for most, because the number moves in the direction that looks like success.
+
+**A system that's confidently wrong.** An agent that completes an order it misunderstood has contained the call. The error surfaces later, at the pass, when the food is wrong and someone calls back — which registers as a second contained call. Containment can look excellent while your remake rate climbs.
+
+Both of these are why containment should never be optimized in isolation, and why a vendor whose only metric is containment is showing you the number that's easiest to move.
+
+## What to read alongside it
+
+Three things, and they're all more informative than containment on its own.
+
+**Escalation reasons.** This is the actually useful breakdown. A handoff for a complaint or a large catering inquiry is the system working as designed — those calls should reach a person, and it's a policy decision covered in [human handoff and failover](/blog/human-handoff-failover-voice-ai). A handoff because the agent couldn't parse a menu item is a defect with a specific fix. Sorting escalations into "by design" and "by failure" turns a vague percentage into a work list.
+
+**Order accuracy.** The share of orders landing in the POS correctly, measured by actually checking tickets rather than by trusting a dashboard. This is the metric that should be optimized, and containment is only good news when accuracy holds. See [improving phone order accuracy](/blog/improving-phone-order-accuracy).
+
+**Abandonment during the agent conversation.** Callers who hung up mid-call. If your containment went up and your abandonment went up with it, containment went up for the wrong reason.
+
+## Why there's no benchmark worth chasing
+
+Containment varies legitimately by call mix, and call mix varies enormously by restaurant.
+
+A pizza counter where nearly every call is a straightforward order should contain a high share, because the calls are homogeneous and the agent was built exactly for them. A fine-dining room fielding private-event inquiries, dietary conversations, and regulars who expect a familiar voice should contain far less, and that's correct rather than a failure. Same for a catering-heavy operation where the valuable calls are the ones you deliberately route to a person — see [catering lead qualification](/blog/catering-lead-qualification-ai).
+
+So a containment figure from another restaurant tells you very little about yours. What's useful is your own number over time, and specifically what changed when it moved.
+
+## Reading the trend
+
+Once you have a baseline, movement is informative.
+
+**Containment rising while accuracy holds and escalation reasons shift toward "by design"** is genuine improvement. Usually it means menu and language-layer fixes are working.
+
+**Containment rising while abandonment also rises** means callers are giving up, not being served.
+
+**Containment falling** isn't automatically bad. A new menu, a seasonal item, or a change in your escalation rules will move it. Check the reasons before treating it as a problem.
+
+**Containment flat while accuracy improves** is a good month. You handled the same share of calls and got more of them right.
+
+## Using it as a work list
+
+Here's the practical version. Once a month, pull the escalated calls and read a sample of transcripts. Categorize each one:
+
+- Caller asked for a human (fine, no action)
+- Complaint or refund (fine, by design — see handling refund and complaint calls)
+- Catering or large order (fine, by design)
+- Out of scope: vendor, job applicant, wrong number (fine)
+- Agent couldn't understand a menu item (fixable: language layer)
+- Agent couldn't answer a question (fixable: add an FAQ answer)
+- Agent didn't know availability (fixable: check menu sync)
+
+The bottom three are your actual to-do list, and they're usually a small number of specific, cheap corrections. Fixing them moves containment for the right reason. That loop is most of the ongoing work of running a voice agent well.
+
+## What to ask a vendor
+
+Four questions:
+
+1. What exactly counts as contained in your reporting — specifically, how are abandoned calls and caller-requested transfers treated?
+2. Do you break escalations down by reason, or only report a rate?
+3. Can I see transcripts of escalated calls, not just the aggregate?
+4. Do you report order accuracy, and if so how is it measured?
+
+A vendor who reports containment without reasons is giving you a number you can't act on. A vendor who can't show you the underlying transcripts is asking you to trust their scoring of their own product.
+
+## The bottom line
+
+Containment is a useful diagnostic and a bad target. It measures how much call volume the system absorbed, not whether it did the job well, and it rises when an agent refuses to transfer or completes an order incorrectly. Read it next to order accuracy and abandonment, break escalations into "by design" versus "by failure," and treat the failure bucket as a monthly work list. The number worth optimizing is accuracy; containment is how you find out where to look. The broader metric set sits in voice AI metrics and KPIs for restaurants.

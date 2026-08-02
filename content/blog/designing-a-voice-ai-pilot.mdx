@@ -1,0 +1,93 @@
+---
+title: "How to Design a Voice AI Pilot That Actually Tells You Something"
+description: "A two-week pilot with no success criteria teaches you nothing. Here's how to scope, instrument, and judge a restaurant voice AI trial before you commit."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "How long should a voice AI pilot run?"
+    answer: "Long enough to cover at least two full weekly cycles including your busiest shift, so roughly two to three weeks. One week tells you how the system handles your menu; the second tells you whether the first week's fixes held. A single weekend demo mostly tests the demo."
+  - question: "Should I pilot on my main phone line or a separate number?"
+    answer: "A separate number is safer and teaches you less, because you have to drive traffic to it artificially. Most operators get better data routing the real line to the agent only on overflow — calls your staff didn't pick up within a set number of rings. That's real traffic with a built-in safety net."
+  - question: "What's a reasonable success threshold?"
+    answer: "Set it before you start, in your own terms, and keep it modest. Something like 'orders that land in the POS correctly without staff intervention on the large majority of straightforward calls, with zero orders lost outright' is a defensible bar. Chasing a perfect number will fail every vendor, including ones that would have served you well."
+  - question: "Who should judge the pilot?"
+    answer: "Whoever will own the system afterward, plus at least one person who works the phone today. Owners tend to evaluate on the demo call they personally made; the person who normally answers will notice the things that actually change their shift."
+---
+
+Most voice AI pilots fail to produce a decision. They run for two weeks, everyone forms a vague impression, and the choice gets made on gut feel or on whichever vendor followed up more persistently. That's not a pilot, it's an extended demo.
+
+A pilot that earns its name has three things a demo doesn't: a defined scope, a small number of pre-committed success criteria, and a mechanism for seeing what actually happened on the calls. Set those up in advance and two weeks will give you a real answer. Skip them and two months won't.
+
+## Decide what the pilot is testing
+
+Be specific, because different questions need different setups.
+
+If you're testing **whether AI can handle your menu**, you want maximum exposure to ordering calls, including complicated ones, and you should be reading transcripts closely.
+
+If you're testing **whether it reduces staff interruption**, the measurement is on your floor, not in the software: how many times per shift does someone drop what they're doing for the phone, before and after.
+
+If you're testing **whether it recovers missed calls**, you need a baseline miss rate first. Our [missed-call framework](/blog/how-many-calls-does-your-restaurant-miss) walks through pulling that from your existing call log. Without it you have nothing to compare against.
+
+If you're testing **whether customers accept it**, you're watching hang-up rates and requests for a human, and you should be asking regulars directly.
+
+Most operators care about all four, which is fine, but rank them. The top one determines how you configure the pilot.
+
+## Scope the traffic
+
+Three practical patterns, in increasing order of risk and information:
+
+**After-hours only.** The agent answers when you're closed. Nearly zero risk, and it tests information handling and order-ahead but not peak-rush behavior. Good first step for a nervous operator, insufficient on its own.
+
+**Overflow only.** The agent picks up after your staff have had a set number of rings. This is the setup we'd recommend for most pilots. The traffic is real, the calls are exactly the ones you're currently losing, and your staff remain the first line, so a bad agent response can't cost you a call you were already going to answer.
+
+**Full front line.** The agent answers everything. Most information, most risk. Reasonable for a second pilot phase once overflow has gone well, not as a starting point.
+
+Whichever you pick, keep it consistent for the duration. Changing the routing mid-pilot destroys your ability to compare week one to week two.
+
+## Write down your criteria before day one
+
+This is the step people skip, and it's the one that turns impressions into a decision. Three to five criteria, written down, with a number or a clear yes/no.
+
+Reasonable examples:
+
+- **Order accuracy:** of the orders placed through the agent, how many landed in the POS with the correct items, modifiers, and price? Define your threshold now.
+- **Zero lost orders:** no order that a caller completed should vanish. This should be a hard gate, not a percentage.
+- **Escalation rate and reason:** what share of calls ended up with a human, and were the reasons legitimate (complaints, catering) or failures (couldn't understand the menu)?
+- **Staff interruption:** count phone interruptions on two comparable shifts, before and during.
+- **Caller experience:** hang-up rate during the agent conversation, plus any direct customer complaints.
+
+Set the thresholds at a level you'd genuinely sign at. Setting them impossibly high isn't rigor, it's a way of avoiding the decision.
+
+## Instrument it so you can see what happened
+
+You need access to transcripts, not just a summary dashboard. A vendor that shows you aggregate numbers but not the underlying calls is asking you to trust their scoring of their own product. Confirm transcript access before the pilot starts, not after.
+
+On your side, keep a simple log. A clipboard by the pass works. Every time a staff member has to fix something the agent did, or a customer mentions it, one line. Twenty lines over two weeks tells you more than any dashboard.
+
+## Seed the hard cases deliberately
+
+Real traffic won't cover your edge cases in two weeks, so create them. Have three different people — different voices, different accents, different speaking speeds — call in and place orders. Include:
+
+- An item with an unusual modifier combination.
+- A mid-sentence correction ("actually, make that two").
+- An item you 86'd that morning, to see whether [menu sync](/blog/menu-sync-deep-dive-voice-ai) is live.
+- A caller with background noise, ideally from a car.
+- A request for something you don't offer.
+- A caller who asks for a person immediately.
+
+Do this in week one, fix what breaks, and repeat the same set in week two. That repeat run is how you learn whether the vendor's fixes actually stick, which is a better signal about the vendor than the initial results were. Our guide to [what to test in a demo](/blog/voice-ai-demo-what-to-test) covers the same scenarios in a shorter format.
+
+## Tell your staff, and tell them what to do
+
+Staff who discover the AI from a confused customer will undermine it, reasonably. Brief them: what it is, why you're trying it, what to do if a caller asks for a person, and where to report anything that went wrong. Ask for their honest read at the end — they're closer to the phone than you are.
+
+Don't ask them to hide it from customers. If a regular asks, "yes, we're trying an AI system for calls we can't get to, tell me if it's annoying" is a fine answer and often a well-received one.
+
+## Judge it against the criteria, not the impression
+
+At the end, sit down with the written criteria and mark each one. Then, separately, note your impression. If they disagree, take it seriously in both directions: sometimes the numbers are fine and the experience is wrong for your brand, and sometimes a single bad call has colored an otherwise good result.
+
+Also weigh how the vendor behaved during the pilot. How fast did they fix things? Did they explain failures honestly or deflect? You're evaluating a relationship, not just software, and the pilot is the only sample of that relationship you'll get before committing. That's the same lens we apply in [evaluating voice AI vendors](/blog/evaluating-voice-ai-vendors-restaurants).
+
+## The bottom line
+
+A useful pilot is small, scoped, instrumented, and judged against criteria you wrote before you started. Route overflow traffic rather than everything, run it two full weeks including your worst shift, read the actual transcripts, seed the hard cases twice, and hold the vendor to how they respond when something breaks. Do that and you'll end with a decision you can defend — including, legitimately, the decision not to buy.

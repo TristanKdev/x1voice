@@ -1,0 +1,83 @@
+---
+title: "Holiday Hours and Schedule Overrides: The Setting Everyone Forgets Until Thanksgiving"
+description: "A phone agent quoting last week's hours on Christmas Eve is a small configuration problem with a large customer-facing cost. How to handle overrides, who should own them, and what to check before the holidays arrive."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Can I change my phone agent's hours myself, or does it require the vendor?"
+    answer: "You should be able to do it yourself, in minutes, from wherever you are. The same standard applies to hours as to 86ing an item: if changing a Thanksgiving closing time requires a support ticket, that's a real limitation and you'll feel it every holiday and every unexpected closure."
+  - question: "What should the agent do when the restaurant is closed?"
+    answer: "That's your decision to configure, and the options are genuinely different: take orders for the next open window, take a message, transfer somewhere, or simply state the hours and end politely. The wrong outcome is an agent that cheerfully accepts a pickup order for a time you're not open."
+  - question: "How far in advance should I set holiday hours?"
+    answer: "As soon as you know them. The realistic risk isn't forgetting the holiday, it's the week-of change — deciding on Tuesday to close early Wednesday for a private event. Whatever system you use has to make same-day changes easy, because those are the ones that actually bite."
+  - question: "Does the phone agent's schedule need to match my POS or Google listing?"
+    answer: "Ideally every place a customer can check says the same thing, but in practice these drift because they're maintained separately. Keeping a single checklist of every place your hours are published, and running it before each holiday, is unglamorous and prevents most of the confusion."
+---
+
+The phone agent that tells a caller you're open until 10 on Christmas Eve, when you closed at 4, causes a specific and avoidable kind of damage: a customer drives to a dark building. That's worse than a missed call. A missed call is an absence. A wrong hours quote is an active promise you broke.
+
+The fix is a settings problem, which makes it easy to dismiss and easy to forget. This piece is about treating hours overrides as an operational routine rather than a configuration afterthought, and about what to demand from any system that answers your phone.
+
+## Three kinds of schedule change, with different risks
+
+Not all hours changes are the same, and the ones that cause trouble aren't the ones you'd expect.
+
+**Recurring hours.** Your normal weekly schedule. Set once, rarely wrong, low risk. Everyone gets this right.
+
+**Known holidays.** Thanksgiving, Christmas Eve, New Year's Day, the Fourth. Predictable, on the calendar, and still frequently missed because updating the phone agent isn't on anyone's holiday prep list. Medium risk, entirely preventable with a checklist.
+
+**Unplanned changes.** A burst pipe. A snowstorm. Closing early for a private event booked on Tuesday for Wednesday. Staff out sick and you're pulling back to a limited menu. High risk, high frequency, and the true test of whether your system's hours handling is usable.
+
+Most vendor conversations focus on the second category because it's the one with a name. The third is where you'll actually spend your frustration, and it's the one to evaluate against.
+
+## The real requirement: your manager can change it in two minutes
+
+This is the whole standard, and it's the same one that applies to [86ing an item](/blog/real-time-86ing-menu-sync). If a closing manager at 9 p.m. on a Tuesday can't change tomorrow's hours from their phone without calling anyone, the system will be wrong sometimes, guaranteed. Not because anyone is careless, but because the moment of realization rarely coincides with access to a laptop and a support line that's open.
+
+So when you evaluate, ask in operational terms rather than feature terms: *who at my restaurant can change hours, from what device, at what hour of the night, and how quickly does it take effect?* A good answer is short. A bad answer includes the word "ticket."
+
+## What "closed" should actually mean
+
+An override needs to say more than "not open." It needs to say what the agent does with a call that arrives during the closed window, and the reasonable options genuinely differ by restaurant:
+
+- **Take orders for the next open window.** Great for a place doing scheduled pickups, confusing for one that isn't.
+- **State hours and end politely.** The simplest, and often right for a hard closure.
+- **Take a message with a transcript.** Sensible when the calls might be catering inquiries or something else worth a callback.
+- **Transfer somewhere.** Rarely right for a closed restaurant, sometimes right for a multi-location group where a sibling store is open.
+
+X1 Voice treats after-hours calls with the same order-taking flow as peak-hour calls, governed by the hours and routing rules you set rather than by whether anyone is near the phone. That's the point of the setting: what happens after close should be a deliberate choice, not a default. We cover the broader case for that in [24/7 after-hours answering](/blog/24-7-restaurant-phone-answering-after-hours).
+
+The thing to avoid, in every configuration: an agent that takes an order for a pickup time you won't be open for. That's the failure mode that generates an actual angry customer rather than a mildly disappointed one.
+
+## Hours are more than open and closed
+
+Several restaurant realities look like hours but aren't, and they're where configurations get thin:
+
+**Menu availability windows.** Breakfast ends at 11. If the agent will take a breakfast order at 11:40, you have a hours problem wearing a menu costume. Worth testing explicitly, especially for [breakfast and brunch spots](/blog/how-to-train-ai-voice-agent-restaurant-menu) where the daypart boundary is sharp.
+
+**Last-order times.** The kitchen stops taking tickets before the doors close. If the agent uses closing time as the cutoff, you'll get orders your kitchen won't make.
+
+**Delivery hours that differ from pickup hours.** Very common, rarely configured correctly on the first pass.
+
+**Holiday menus.** Some restaurants run a limited menu on the holiday itself. That's an hours change and a menu change happening together, which is the most error-prone combination.
+
+## A pre-holiday checklist
+
+Ten minutes, run a few days before each holiday:
+
+1. Set the override in the phone agent, including delivery hours if they differ.
+2. Set the last-order time, not just the closing time.
+3. Update your Google Business listing.
+4. Update your website.
+5. Update your online ordering platform.
+6. If you're running a limited menu, 86 what isn't available.
+7. Call your own number and ask "what time are you open tomorrow?"
+
+Step seven catches everything the first six missed, and it takes thirty seconds. It's the same discipline as testing a demo with a live call rather than trusting a feature list — a principle we come back to in [what to ask before buying an AI phone system](/blog/what-to-ask-before-buying-an-ai-phone-system).
+
+## Who owns this
+
+Assign it. Hours overrides fail most often not because the software is bad but because "someone will update it" is not a plan. Pick a person, put the holiday list on a calendar, and make the pre-holiday call part of the same routine as ordering extra prep. The task is small enough that it only gets done if someone specific owns it.
+
+## The bottom line
+
+Schedule overrides are a low-drama feature with a high-drama failure mode. The bar is that your own manager can change hours in two minutes from a phone, that "closed" behavior is a deliberate configuration rather than a default, and that last-order times and delivery windows are handled separately from the closing time. Then call your own number before every holiday. That last habit will catch more problems than any amount of setup care.

@@ -1,0 +1,68 @@
+---
+title: "AI Phone Answering Pricing Models, Explained for Restaurants"
+description: "Per-minute, per-call, per-order, and flat monthly pricing all bill the same service differently. Here's how each one behaves when your restaurant gets busy."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Which pricing model is cheapest for a restaurant?"
+    answer: "There isn't a categorically cheapest model, because each one wins at a different call volume. Usage-based pricing tends to be cheapest when volume is low and unpredictable; flat pricing tends to be cheapest and easier to budget once volume is steady. The only reliable way to know is to run your own last-90-days call minutes through each vendor's rate card."
+  - question: "Why do some vendors charge per order instead of per call?"
+    answer: "Because it sounds aligned with your success — you only pay when something sells. The catch is that it makes your busiest, most profitable shifts the most expensive ones, and it usually leaves the informational calls (hours, directions, allergen questions) technically free but still consuming the service. Read the definition of a billable order carefully before assuming it's the friendlier model."
+  - question: "What does X1 Voice charge?"
+    answer: "Starter is $250/month with 750 included minutes, and Professional is $750/month with 2,000 included minutes. Minutes past the included pool bill at $0.35 on Starter and $0.32 on Professional. There's no setup fee and no long-term contract on either plan; Enterprise is custom for multi-location groups."
+  - question: "Are overage rates a red flag?"
+    answer: "No, overages are normal and honest as long as they're published and you can see your usage. What matters is whether you can predict them. A plan sized to your real call volume should put overages in the occasional-spike category, not the every-month category. If you're paying overage every month, you're on the wrong plan."
+---
+
+Four pricing models dominate AI phone answering: per-minute, per-call, per-order, and flat monthly with an included allotment. They aren't just different numbers on the same invoice. Each one distributes cost differently across your week, and the difference shows up hardest on exactly the shifts where you can least afford a surprise.
+
+The short version: usage-based models (per-minute, per-call, per-order) make your bill move with your volume, which is fine when volume is low and painful when a snowstorm or a game day triples your calls. Flat models with an included pool make your bill predictable, which is easier to budget but means you pay the same on a dead Tuesday. Neither is dishonest. You're choosing which risk you'd rather hold.
+
+## Per-minute pricing
+
+The vendor bills for connected talk time, usually rounded up to the second or to a six-second increment. This is the most transparent model in the sense that the meter is obvious, and it's the model most closely tied to the vendor's own underlying costs, since speech recognition and synthesis genuinely bill by time.
+
+What to watch: rounding rules and what counts as a billable minute. Does the meter start on ring or on answer? Does a caller who hangs up after two seconds cost you anything? Does a transfer to a human keep billing while the human talks? Ask for the rounding increment in writing, because at scale the difference between per-second and per-minute rounding is real.
+
+Per-minute also quietly penalizes a chatty agent. If a system takes ninety seconds to do what another does in fifty, you pay for that difference every call. This is one of the few places where the [latency and interruption handling](/blog/interruption-handling-endpointing-voice-agents) of the underlying system shows up directly on an invoice.
+
+## Per-call pricing
+
+The vendor bills a flat amount each time the phone is answered, regardless of duration. This is easier to forecast than per-minute if your calls are uniform, and it removes any incentive for the vendor to keep callers talking.
+
+The problem is that restaurant calls are not uniform. A ten-second "what time do you close" costs the same as a four-minute catering inquiry. If a meaningful share of your volume is quick informational calls, per-call pricing charges you a full unit for something that consumed almost no resources. Ask whether there's a minimum duration before a call becomes billable, and whether wrong numbers and robocalls are excluded. Spam volume is real, and you shouldn't be paying per-call rates on it — see our notes on [blocking spam and robocalls on a restaurant line](/blog/blocking-spam-robocalls-restaurant-line).
+
+## Per-order pricing
+
+The vendor bills only when an order is placed. On its face this is the most aligned model available: no order, no charge.
+
+Read the definition carefully. Questions worth asking: Is a $9 single-item pickup billed the same as a $200 catering order? Is a percentage of ticket involved, and if so, how is that different from what delivery marketplaces charge? What happens to an order that's placed and then cancelled? What happens on a modification call?
+
+The structural issue with per-order pricing is that it makes your best nights your most expensive nights. That's the same shape as delivery-app commissions, which is precisely the cost structure a lot of restaurants adopt phone AI to reduce. If you're comparing on that basis, our piece on [voice AI versus delivery app commissions](/blog/voice-ai-vs-delivery-app-commissions) is the closer comparison.
+
+## Flat monthly with included minutes
+
+The vendor charges a fixed monthly price that includes a pool of minutes, then bills a published per-minute rate past the pool. This is the model X1 Voice uses: [Starter is $250/month with 750 minutes and Professional is $750/month with 2,000 minutes](/pricing), with overage at $0.35 and $0.32 per minute respectively, no setup fee and no long-term contract on either.
+
+The appeal is budgeting. You know the number before the month starts, and a busy month doesn't rewrite your P&L. The honest tradeoff is that a genuinely quiet location pays for headroom it doesn't use. If your call volume is a handful of calls a week, a flat plan of any kind may be more than the problem warrants, and we'd rather say that than sell you a plan.
+
+The other thing a flat model does is decouple vendor revenue from your busy periods, which makes ROI math easier to trust because the cost side is a constant rather than a variable that grows with your success. That's the point we make at length in our [ROI calculator guide](/blog/ai-phone-ordering-roi-calculator).
+
+## How to compare across models without getting fooled
+
+You cannot compare a per-minute rate to a per-order rate directly. You have to convert everything to a monthly total using your own numbers.
+
+Pull your last ninety days of phone data and get three figures: total inbound calls, total connected minutes, and roughly what share of calls end in an order. Most phone providers will give you the first two from a call log export. Then run those exact numbers through each vendor's published rate card and compare monthly totals, not unit prices.
+
+Do it twice: once with a normal month and once with your busiest month. The second run is the one that separates the models. A rate card that looks close in October can diverge sharply in December, and the whole point of the exercise is to find out before you sign rather than after.
+
+## The line items that hide outside the headline rate
+
+The advertised price is rarely the whole invoice. Ask specifically about setup or onboarding fees, menu-import or menu-change fees, per-location fees for a second store, telephony or number-porting charges, charges for SMS confirmations sent to callers, and whether integration into your POS carries its own line. Any of these can be legitimate; none of them should be a surprise on your first bill.
+
+Also ask what happens to the price at renewal. A first-year rate that steps up automatically is a normal commercial term, but it belongs in your comparison, not in a footnote. We cover the rest of that ground in contract terms worth pushing back on.
+
+## The bottom line
+
+Pricing model is a risk-allocation decision more than a cost decision. Usage-based models hand the volume risk to you and are gentler when you're small or seasonal. Flat models hold that risk for you and are gentler when you're steady or growing. Neither is a trick as long as it's published and the definitions are clear.
+
+Convert every option to a monthly total using your own call log, run it against your worst month as well as an average one, and ask directly about every fee that isn't in the headline number. If a vendor can't or won't give you that in writing, that answer is itself useful information.

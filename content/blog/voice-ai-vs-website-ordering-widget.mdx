@@ -1,0 +1,84 @@
+---
+title: "Voice AI vs. a Website Ordering Widget: They Serve Different Customers"
+description: "Online ordering and phone AI aren't competing for the same order. Here's who uses each, and why most restaurants end up needing both."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "If I have online ordering, do I still need phone AI?"
+    answer: "It depends on whether your phone still rings, and for most restaurants it does. Online ordering serves customers who are already on your site with time to browse. The phone serves people driving, working, ordering for a group, or asking a question first. Adding a widget rarely makes the phone stop ringing — it just changes who's calling."
+  - question: "Do phone orders and online orders have different ticket sizes?"
+    answer: "They often behave differently, though the direction varies by restaurant and you should check your own POS rather than trust a general claim. Phone orders skew toward groups and complicated requests; online skews toward solo and repeat orders. Pull the numbers for your own location before assuming either way."
+  - question: "Should I push callers toward my website instead?"
+    answer: "You can try, and some restaurants do it successfully with a message during hold. But a caller redirected to a website is a caller you might lose, and a customer who prefers the phone usually prefers it for a reason. Pushing works better as an option than as a requirement."
+  - question: "Can both write into the same POS?"
+    answer: "Usually yes, and they should. Two channels writing to the same ticket queue is the goal, since split systems create double-entry work and inventory confusion. Confirm that both integrations write structured orders into your POS rather than one of them landing as a printed slip nobody reconciles."
+---
+
+Online ordering widgets and AI phone agents get compared as alternatives, and they mostly aren't. They serve different customers at different moments, and the overlap is smaller than the feature lists suggest. The restaurants that get this wrong tend to add a widget, assume the phone problem is solved, and then keep missing calls.
+
+The short version: a website widget serves someone who has already decided to order from you, has a screen in front of them, and has time to browse. A phone agent serves someone who is driving, at work, ordering for a group, or has a question before they commit. Both are real customers. They're not the same customer.
+
+## Who actually uses the phone
+
+It's worth being concrete, because the assumption that "everyone orders online now" doesn't survive contact with a restaurant's call log.
+
+**People with their hands full.** Driving home, walking, holding a kid. A phone call is hands-free-ish; a website isn't.
+
+**Group orders.** Six people around a table deciding what to get is a conversation, and conversations happen on the phone. Trying to collect six sets of modifiers through a web form while people change their minds is worse than saying it out loud.
+
+**Anyone with a question first.** Is the special still on? Do you have a gluten-free option? Can you do it without the sauce? Is my address in your delivery zone? These are answered faster by asking than by hunting through a site.
+
+**Older customers and regulars.** Some people prefer the phone. That's not a problem to be solved.
+
+**Complicated or high-value orders.** Catering, large pickups, anything with a special instruction. These are frequently your best tickets, and they call.
+
+**Anyone who already tried your website and got stuck.** Which happens more than most operators realize.
+
+## Who uses the website
+
+Equally real. Solo orders, repeat orders where someone already knows exactly what they want, people who want to browse a menu with photos, anyone ordering during a meeting or somewhere they can't talk, and customers who simply prefer not to speak to anyone. That last group is substantial and growing, and a restaurant without an online option is losing them.
+
+## The failure mode of choosing one
+
+**Website only.** Your phone still rings and nobody answers it. The calls that go unanswered aren't people who would have used the site — they're the group order, the question, the driver. Those calls just leave. That's the loss we ask operators to measure in [how many calls does your restaurant miss](/blog/how-many-calls-does-your-restaurant-miss), and adding a widget doesn't change the number.
+
+**Phone only.** You're invisible to the customer who wants to order at 11pm without talking, and you're doing more manual work than you need to for orders that could have arrived structured.
+
+Neither is a strategy. The channels are additive.
+
+## Conversion works differently on each
+
+A website widget has a funnel: land, browse, add, checkout. People fall out at every step, and the ones who fall out are usually gone silently. Improving that funnel is real work — page speed, menu photos, a checkout that doesn't demand account creation.
+
+A phone call has almost no funnel. If someone dials, they've already decided. The only real drop-off point is whether you answer. That makes the phone unusually high-intent traffic, which is why the cost of not answering it is disproportionate — the point of [the real cost of a missed restaurant phone call](/blog/the-real-cost-of-a-missed-restaurant-phone-call).
+
+It's also why "just send them to the website" is a lossy move. You're taking a customer who was one conversation from ordering and putting them back at the top of a funnel.
+
+## What each channel is better at operationally
+
+**The widget wins on** structured data with zero ambiguity, photos and descriptions that sell, scheduled orders, saved carts and reorder, and handling volume at 2am with no cost per order.
+
+**The phone agent wins on** answering questions before an order exists, handling group orders spoken aloud, catching customers who'd never open the site, capturing the caller who's already reaching for the phone anyway, and turning an informational call into an order without a channel switch. It also produces something the widget doesn't: a transcript of what people actually asked about.
+
+We covered the head-to-head in more detail in [AI phone ordering vs. online ordering](/blog/ai-phone-ordering-vs-online-ordering); this piece is about why the comparison is usually the wrong frame.
+
+## Making them work together
+
+Two things matter operationally.
+
+**Both should write into the same POS queue.** If phone orders land in one place and web orders in another, your kitchen is reconciling two streams and your inventory picture is split. A voice system with a real POS integration should produce the same structured ticket the widget does. See [why POS integration depth matters](/blog/why-pos-integration-depth-matters-more-than-voice-quality).
+
+**Menu and availability should come from one source.** Nothing erodes trust faster than an item that's available on the website and 86'd on the phone. Both channels should read the same live availability, which is the whole argument in menu sync.
+
+There's also a soft handoff worth building: a caller asking about something visual — a catering platter, a specialty item — can be sent a link by text mid-call. That's using each channel for what it's good at rather than forcing a choice.
+
+## How to decide where to spend next
+
+Look at your own numbers rather than the general argument.
+
+If your online ordering conversion is poor and your phone is quiet, fix the website. If your website converts fine and your phone rings out during dinner service, the phone is where the recoverable money is. If both are true, start with whichever has more volume, since it has more upside.
+
+And if you don't know your phone miss rate, measure it before spending anything. It's an hour with a call log export, and it's the number every downstream decision depends on.
+
+## The bottom line
+
+These aren't competing channels; they're different doors into the same restaurant. A widget serves the browsing, decided, solo customer. A phone agent serves the driving, asking, group-ordering customer who was going to call whether or not you were ready. Most restaurants need both, wired into the same POS with the same live menu. The only question worth arguing about is which one you're currently losing more orders through.

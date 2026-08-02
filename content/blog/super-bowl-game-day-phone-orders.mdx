@@ -1,0 +1,73 @@
+---
+title: "Handling Super Bowl and Game Day Phone Orders"
+description: "Game day compresses a week of pickup and delivery volume into a four-hour window, most of it by phone. Here's how to prepare the phone side without overselling your kitchen."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "What makes game day different from a normal busy Saturday?"
+    answer: "The concentration. Instead of demand spread across an evening, most orders want the same ninety-minute window before kickoff. A normal rush is a wave; game day is a wall, and a single phone line becomes the bottleneck long before the kitchen does."
+  - question: "Should I limit the menu on game day?"
+    answer: "Many operators do, and it usually helps. A shorter menu of items your kitchen can batch means faster production, fewer modifier errors, and a phone conversation that takes half as long. It also makes capacity planning far easier because you're estimating fewer variables."
+  - question: "How do I stop everyone from ordering for the same pickup time?"
+    answer: "Cap each pickup window and offer the next available slot when one fills, rather than accepting the order and hoping. Whether a person or a system takes the order, the limit has to be enforced at order time. Fixing it afterward means calling customers back on the busiest day of your year."
+  - question: "Can an AI phone agent handle game day volume?"
+    answer: "The main advantage is concurrency — it answers multiple callers at once instead of queuing them behind one handset, which is the specific constraint that fails on game day. It still needs the game day menu, hours, and slot limits loaded in advance, and a human path for problems."
+---
+
+Game day is the most concentrated demand event most restaurants see. It isn't a busier evening, it's a wall: a large share of the day's orders want the same ninety minutes before kickoff, and most of them arrive by phone. The constraint that breaks first is almost never the kitchen — it's the single phone line that can only talk to one person at a time.
+
+Plan around two things and you'll survive it: answer concurrently, and cap what you sell into each pickup window. Everything else is detail.
+
+## Why the phone is the bottleneck
+
+Your kitchen scales somewhat with prep and staffing. Your phone doesn't. One handset serves one caller, and every other caller gets a busy signal or a ring-out. On a normal night that costs you a few orders. On game day, when everyone in your neighborhood is deciding where to get wings in the same half hour, it costs a meaningful share of the day.
+
+Worse, the callers you lose don't wait. They open a delivery app or call the next place. A missed call on game day is closer to a permanently lost order than a missed call on a Tuesday, because the demand window closes at kickoff. The general framing is in [the real cost of a missed restaurant phone call](/blog/the-real-cost-of-a-missed-restaurant-phone-call); game day is that cost compressed.
+
+## Prepare the menu before you prepare the phone
+
+The single most useful operational decision is narrowing what you sell. A limited game day menu does three things at once: the kitchen batches instead of cooking to order, phone calls get shorter because there's less to explain, and capacity planning becomes tractable because you're estimating a handful of items rather than your whole book.
+
+Publish that menu clearly ahead of time — website, listing, social, and wherever you take orders. Callers who already know what's available place faster orders, and you take fewer calls that consist entirely of reading your menu aloud.
+
+## Cap your pickup windows honestly
+
+Decide, in advance, how many orders your kitchen can actually produce per fifteen-minute window in the pre-kickoff rush. Be conservative; game day production estimates made in a calm office are usually optimistic.
+
+Then enforce the cap at order time. When a window fills, the answer is "the next available time is X," not accepting the order and sorting it out later. Sorting it out later means calling customers back on the busiest afternoon of your year, which nobody has time to do.
+
+This is the difference between a hard day and a bad one. Overselling the 5:15 window doesn't just delay those orders — it backs up every order behind them and turns your pickup area into a crowd. More on the mechanics in [order throttling against kitchen capacity](/blog/order-throttling-kitchen-capacity-phone).
+
+## Solve for concurrency, not speed
+
+Faster order-taking helps a little. Simultaneous order-taking helps a lot. The realistic options:
+
+- **More lines and more people.** Genuinely works if you can staff it, though hiring for a four-hour spike once a year is difficult and the people you'd use are the people the kitchen needs.
+- **Push volume to online ordering.** Advertise it aggressively for game day. Some of your phone volume will happily move if you make it easy, and online orders don't queue behind each other. Tradeoffs in [AI phone ordering vs. online ordering](/blog/ai-phone-ordering-vs-online-ordering).
+- **Automated phone coverage.** An agent that handles multiple concurrent calls removes the one-caller-at-a-time constraint entirely, takes orders against your live menu, and works the whole window without a break.
+
+None of these are free, and the honest planning move is deciding which combination you can actually execute rather than assuming volume will spread out.
+
+## Cut the status calls before they start
+
+The second wave of game day phone volume isn't orders, it's "is my order ready." That wave lands right when your kitchen is at peak, and it's largely preventable.
+
+- Send a confirmation with a specific pickup time at order time.
+- Send a text when the order is actually ready. This removes a real share of inbound calls — see [restaurant order status text updates](/blog/restaurant-order-status-text-updates).
+- Give clear pickup instructions up front: which door, where to park, whether to come in.
+- Staff the pickup area separately from the phone. A crowd at the counter generates its own calls when people can't get through the door.
+
+## Keep a human reachable
+
+Automation and volume plans handle the routine. Game day also produces the calls that most need a person: a wrong order that has to be fixed before kickoff, a large order that needs a change, a customer who's genuinely upset. Those calls have a hard deadline and no patience.
+
+Decide in advance who takes them and make sure a caller can reach that person by asking. This is the same escalation discipline you'd use any night, except on a day where every minute matters more.
+
+## Run a dry run
+
+A week or two out, call your own restaurant during a normal rush and place a game day order end to end. Ask a question mid-order. Change your mind. Ask for a time that should be full. You'll find configuration problems — a missing item, a wrong price, a slot limit that isn't enforced — while there's still time to fix them.
+
+If you're using any automated system, this test is not optional. A system confidently giving wrong information at scale is worse than no system, and the only way to know is to call it yourself.
+
+## The bottom line
+
+Game day breaks the phone before it breaks the kitchen, because one line serves one caller and everyone wants the same ninety minutes. Narrow the menu so orders are fast and batchable. Cap each pickup window at real kitchen capacity and enforce it at order time. Solve for answering callers simultaneously, whether through more staff, a push to online ordering, or automated coverage. Kill the status calls with proactive texts. Keep a human reachable for the orders that go wrong. And test the whole thing on a normal night first, because the day itself is the worst possible time to discover a problem.

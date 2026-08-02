@@ -1,0 +1,79 @@
+---
+title: "How to Improve Phone Order Accuracy in a Restaurant"
+description: "Wrong phone orders cost you food, labor, and goodwill. Here's where the errors actually come from and what reduces them, including the parts an AI phone agent handles well and the parts it doesn't."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Where do most phone order errors come from?"
+    answer: "In our experience the common sources are noise and mishearing, modifiers getting lost between the phone and the POS, and the read-back being skipped during a rush. Handwriting and transcription between a paper pad and the terminal adds another failure point. Very few errors come from customers being unclear."
+  - question: "Does an AI agent get orders right more often than staff?"
+    answer: "On the mechanical parts, usually yes, because it confirms every order back and enters items directly against your menu without a handwriting step. On unusual or ambiguous requests, a good human can still outperform it. The realistic claim is fewer routine errors, not perfection."
+  - question: "How do I measure my current accuracy rate?"
+    answer: "Log remakes, voids, and comps that trace back to a phone order for two weeks, and note the cause where you can. It's imperfect, since some errors never get reported, but a real two-week count beats an impression and gives you a baseline to compare against after any change."
+  - question: "What's the single highest-impact fix?"
+    answer: "Making the read-back non-negotiable. Repeating items, modifiers, total, and pickup or delivery back to the caller catches most errors before the kitchen fires the ticket. It's also the step most likely to be skipped on the nights when it matters most."
+---
+
+Most phone order errors don't come from customers who can't explain what they want. They come from the handoffs: a noisy line, a modifier heard but not written, a pad that becomes a POS entry, and a read-back that got skipped because the room was slammed. Fix the handoffs and accuracy improves, whether a person or a system is taking the order.
+
+The practical priority order is: confirm every order back, remove the paper step, capture modifiers the way your POS expects them, and reduce the noise on the line. That's roughly in order of how much each one is worth.
+
+## Where the errors actually come from
+
+Worth being specific, because the fix depends on the cause.
+
+**Mishearing.** A restaurant phone is used in the loudest place in the building, often on a handset with mediocre audio. Similar-sounding items, sizes, and names get confused. This is a physics problem before it's an attention problem. We go deeper on it in [voice AI in noisy restaurant environments](/blog/voice-ai-noisy-restaurant-environments).
+
+**Modifiers.** The item is right and the modification is wrong: no onions, extra sauce, substitute the side, allergy note. Modifiers are the most error-prone part of any order because they're the part most easily heard and then not recorded.
+
+**Transcription.** An order written on a pad and later keyed into the POS passes through handwriting, memory, and a second person's interpretation. Each hop is a place to lose something.
+
+**Skipped confirmation.** The read-back catches most of the above. It's also the step that vanishes when there's a line at the counter.
+
+**Missing context.** The caller assumes you know something you don't — which location, that they always get it a certain way, that "the usual" means something specific.
+
+## Fix one: make the read-back mandatory
+
+If you change one thing, change this. Every order gets repeated back: each item with its modifiers, the total, whether it's pickup or delivery, the name, and the time.
+
+The reason it works is that it moves error detection to the cheapest possible point. An error caught during the read-back costs ten seconds. The same error caught at pickup costs a remake, a refund, or a customer who doesn't come back.
+
+The reason it fails is that it's a discipline requirement placed on the busiest person during the busiest hour. Post it at the phone, include it in training, and spot-check by calling your own restaurant during a rush. This is one of the clearest structural advantages of an automated agent — it has no reason to skip the read-back and no incentive to rush it.
+
+## Fix two: remove the paper step
+
+Anything written down and re-entered later is a transcription risk. If your phone orders go pad first and POS second, that's a fixable failure point.
+
+Options: take orders directly into the POS while on the phone, use a phone station with a terminal at it, or use a system that writes the order into the POS as it's taken. Direct POS entry also forces the order to be valid — you can't enter a modifier the system doesn't have, which surfaces problems on the call instead of at the pass. Our writeup on [why POS integration depth matters](/blog/why-pos-integration-depth-matters-more-than-voice-quality) covers what "writes into the POS" actually needs to mean to be useful.
+
+## Fix three: handle modifiers deliberately
+
+Modifiers deserve their own treatment because they cause disproportionate damage. An order with the wrong protein is obviously wrong; an order missing an allergy note can be genuinely serious.
+
+Practical steps:
+
+- Ask about modifiers explicitly per item rather than waiting for the caller to volunteer them.
+- Read modifiers back individually, not as part of a fast summary.
+- Treat allergy and dietary requests as a separate confirmation, not a modifier. We cover the specific care these need in [voice AI and allergen or dietary questions](/blog/voice-ai-allergen-dietary-questions).
+- Make sure whatever takes the order can only apply modifiers the kitchen can actually execute.
+
+## Fix four: reduce the noise
+
+Small physical changes help more than people expect. Move the phone station away from the expo window and the dish pit. Use a headset rather than a handset held against a shoulder. If you're on a VoIP system with poor call quality, that's worth fixing before blaming the process.
+
+For an automated agent, noise matters on the caller's side too — people call from cars, bars, and windy sidewalks. Ask any vendor how their system behaves on a poor connection and test it yourself on a deliberately bad line during a demo.
+
+## Where an AI agent genuinely helps
+
+Automation attacks three of the four causes directly. It performs the read-back on every call without exception. It writes the order into the POS with no paper hop. And it can only select items and modifiers that exist in your menu, so invalid combinations get caught during the call rather than at the pass.
+
+It doesn't fix everything. Genuinely ambiguous requests, unusual off-menu asks, and callers who want to negotiate still go better with a person, and a poor connection is hard for any listener. The realistic claim is fewer routine errors and more consistent confirmation, not a system that never gets anything wrong. How the pieces fit together is in [how AI phone ordering works](/blog/how-ai-phone-ordering-works-the-pipeline).
+
+## Measure it, before and after
+
+Accuracy is measurable enough to be worth measuring. For two weeks, log every remake, void, comp, or complaint that traces to a phone order, with the cause where you can identify it. That's your baseline.
+
+Then make one change — the read-back, or removing the paper step — and count again. Changing several things at once feels efficient and tells you nothing about which one worked. If your count comes back low to begin with, that's genuinely useful: it means accuracy isn't where your money is leaking and you can rule it out.
+
+## The bottom line
+
+Phone order accuracy is a handoff problem. The order gets heard, written, re-entered, and sometimes never confirmed, and each step drops something. Make the read-back non-negotiable, remove the paper hop between the phone and the POS, treat modifiers and allergies as explicit confirmations rather than afterthoughts, and clean up the audio on both ends. Automation helps most on exactly the steps that erode under pressure. But measure your own error rate first — it's the only way to know whether you're fixing a real problem or a suspected one.

@@ -1,0 +1,76 @@
+---
+title: "Voice AI for Wing Shops: Counts, Sauce Splits, and Game-Day Surges"
+description: "Wing orders are counts and sauces, and the volume arrives in violent spikes around games. Here's how a voice agent handles a 50-piece order with three sauces and a Sunday that breaks the phone."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Can a voice agent split sauces across a wing count?"
+    answer: "Yes, when it's configured for it. Twenty wings as ten buffalo and ten lemon pepper is a normal request and a well-tuned agent handles the split, including any per-sauce upcharge. Verify it in a demo with a three-way split on a fifty-count, because that's the order that exposes systems that only handle one sauce per line item."
+  - question: "What happens on a Sunday when the phone rings nonstop?"
+    answer: "An agent answers every call at the same time, so there's no busy signal and no fifth caller waiting. Game days are the clearest case for a wing shop, because the spike is short, extreme, and completely predictable, and it's exactly when your fryers and your staff have zero slack to pick up a phone."
+  - question: "Can it handle flats-only and drums-only requests?"
+    answer: "If your POS has those as modifiers with whatever upcharge you apply, yes. If your kitchen handles the request informally and it isn't in the register, the agent has nowhere to put it and the note may not survive to the ticket. This is worth checking, because flats-only is one of the most common requests a wing shop gets."
+  - question: "Should we take payment over the phone for large game-day orders?"
+    answer: "It's worth considering for large pre-orders specifically. Fifty-wing orders that don't get picked up are a real cost on a day you're already at capacity. Card payment on the call reduces that, though it isn't free of friction and some regulars will resist. Decide based on your actual no-show rate rather than a vendor's recommendation."
+---
+
+A wing shop's phone has two modes. Most of the week it's steady and manageable. Then a Sunday afternoon in football season arrives, or a title fight, or the local team makes a run, and the line rings continuously for three hours while every fryer is full and every employee has both hands busy. You lose orders in that window, and you know you do.
+
+That predictable, extreme spike is the strongest argument for a voice agent at a wing shop. It's not that your daily volume is unmanageable. It's that your peak is four times your normal and it arrives on a schedule you can't staff around economically.
+
+## The spike is the whole business case
+
+Concurrency is the property that matters. A person handles one call. An agent handles as many as are ringing, at once. During a game-day surge that difference isn't incremental — it's the difference between capturing a hundred orders and capturing the forty your two available hands could take.
+
+Nobody hears a busy signal and waits patiently. They call the next wing place. Our [missed-call framework](/blog/how-many-calls-does-your-restaurant-miss) is worth running against a game-day log specifically, because the losses cluster so hard that an average across a normal week badly understates them.
+
+There's a related benefit worth naming: an agent doesn't get flustered. The tenth simultaneous caller gets the same measured order-taking as the first, which is not true of a staffer three hours into a surge.
+
+## Counts and sauce splits are the order structure
+
+A wing order is a count and one or more sauces, and the interaction between those two is where accuracy lives. Ten wings, one sauce, easy. Fifty wings as twenty buffalo, twenty lemon pepper, and ten garlic parm, with the buffalo extra saucy and the garlic parm dry — that's a normal order at a wing shop and it's a genuine test of any ordering system.
+
+The agent has to hold the split, apply per-sauce charges if you have them, and write a ticket the fry station can read. This is a [POS integration](/blog/why-pos-integration-depth-matters-more-than-voice-quality) question more than a voice question. Order a three-way split in any demo and look at what appears in the register, not what the agent repeated back.
+
+Related modifiers your callers use constantly:
+
+- **Flats only or drums only**, usually with an upcharge.
+- **Sauce on the side** versus tossed.
+- **Extra crispy** or well done.
+- **Sauce intensity** — light, extra, double-dipped.
+- **Boneless versus bone-in** on the same order.
+
+Each needs a home in your register. A request the agent understands but can't record is a request that gets lost.
+
+## Dips, sides, and the attach rate
+
+Wings have unusually clean attach items: ranch and blue cheese, celery, fries, a two-liter. A busy human order-taker forgets to offer them a good share of the time, especially during a surge, and dips in particular carry margin.
+
+An agent offers them consistently, once, in the right moment. That's the honest version of [average ticket lift](/blog/ai-phone-ordering-average-ticket-upsell) — a consistent single offer rather than a scripted push. It also means asking how many ranches the caller wants, which prevents the extremely common complaint of a fifty-wing order arriving with one dip.
+
+## Timing quotes during a surge
+
+The most damaging thing a wing shop can do on a game day is quote fifteen minutes when the real number is fifty. Callers plan around that number, and a bad quote produces an angry pickup counter at exactly the moment you can least afford one.
+
+If your POS or kitchen system exposes current throughput, the agent can quote a realistic time and text a confirmation when the order is ready. [Order status texts](/blog/restaurant-order-status-text-updates) matter more on a surge day than any other day, because they keep people from crowding your counter early. If your system can't produce a live quote, decide in advance what the agent should say during peak and configure it honestly, even if that's a wide range.
+
+## Pre-orders are underused
+
+The most valuable thing a wing shop can do with a game day is move demand out of the surge and into the hours before it. Callers are happy to schedule a 4pm pickup at noon; most shops just have no reliable way to take those calls while running lunch.
+
+An agent that takes scheduled orders around the clock captures that demand as it occurs to the customer, including on the nights before, when your line is closed. The after-hours case is unusually strong for wings because event-driven ordering is planned ordering, and planning happens at night.
+
+## Delivery apps and the commission question
+
+A lot of wing volume has migrated to third-party apps, and on game day those apps take a percentage of every one of the biggest tickets you'll write all month. The direct phone order costs you a flat monthly platform fee spread across every call instead — the comparison in voice AI versus delivery app commissions.
+
+Nobody's suggesting you leave the apps. The point is that the callers who wanted to order direct and got a busy signal were your cheapest orders, and you lost them.
+
+## The realistic limits
+
+Two honest caveats. First, a wing shop with modest volume and no real surge — a small counter inside a bar, say — may not clear the cost, and a flat plan doesn't change that if the calls aren't there. Second, an agent doesn't add fryer capacity. If your constraint on game day is the kitchen rather than the phone, answering more calls creates longer quotes, not more revenue. Know which constraint you actually have before you buy.
+
+For the shops where the phone is the bottleneck, weigh recovered surge orders against a flat monthly cost — [X1 Voice](/pricing) starts at $250/month for 750 minutes — using the approach in our single-location economics breakdown.
+
+## The bottom line
+
+Wing shops have the most predictable demand spike in food service, and the phone is usually the first thing that breaks when it hits. A voice agent's concurrency is a direct answer to that, provided your sauce splits and flats-only modifiers are properly configured in your POS and your kitchen can actually absorb the volume you'd capture. Test a fifty-count three-way split before you sign anything. To try it, [call the demo line](/#see-it) and order like it's a Sunday.

@@ -1,0 +1,69 @@
+---
+title: "SMS Order Confirmations for Phone Orders: What to Send and What to Skip"
+description: "A text confirmation after a phone order gives the customer something to check instead of calling you back. Here's what belongs in that message, what doesn't, and how to judge whether a voice agent handles it well."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Why send a text if the agent already read the order back on the call?"
+    answer: "Because the read-back disappears the moment the caller hangs up. A text is the version they can look at again in the parking lot, or forward to whoever's picking up. It also gives them a way to catch a mistake before the kitchen makes it, which is cheaper for you than catching it at the counter."
+  - question: "Do customers have to opt in to get a confirmation text?"
+    answer: "A transactional confirmation for an order the customer just placed is a different thing from marketing, and it's generally treated that way — but the rules around texting are real and they vary. The safe operating principle is to keep the message about the order they just placed, honor a stop request immediately, and not reuse that number for promotions unless they clearly agreed to it. If you're unsure how that applies to you, ask a lawyer rather than a vendor."
+  - question: "What if the caller is on a landline?"
+    answer: "Then the text won't land, and the system should behave sanely rather than silently failing. Some callers will also decline to give a number. The confirmation should be a helpful addition to a call that already worked on its own, not a load-bearing part of the order flow."
+  - question: "Does an order confirmation replace status updates?"
+    answer: "They answer different questions. The confirmation says 'here's what we heard and what it costs.' Status updates say 'here's where it is now.' A lot of operators find the confirmation prevents wrong orders and the status texts prevent callbacks, so they're worth thinking about separately."
+---
+
+A confirmation text after a phone order is a small thing that quietly removes a category of problems: the customer no longer has to remember what they ordered, what it cost, or when it's supposed to be ready. They have it in writing, on the device they were already holding. If something's wrong, they see it while the ticket is still fixable instead of when they open the bag at home.
+
+X1 Voice already texts customers as their order moves through your process, and it can text a secure payment link when a caller would rather not read a card number aloud. The confirmation belongs in the same family: a short, factual message tied to a transaction the customer just completed. This piece is about what to put in it, what to keep out, and how to tell whether a given system does this thoughtfully or just blasts a template.
+
+## What a good confirmation actually contains
+
+Keep it boring. A confirmation is a receipt, not a marketing surface.
+
+- **The items, as ordered, including modifiers.** "Large pepperoni, no onions" — not "1x Pizza." The modifiers are precisely where phone orders go wrong, so they're the part worth showing.
+- **The total.** Including tax, so nobody is surprised at the counter.
+- **Pickup or delivery, and the time estimate.** The single most common follow-up question, answered before it's asked.
+- **Your name and phone number.** So the message doesn't read like a scam, and so fixing something is one tap away.
+
+That's most of it. If you're doing delivery, the address you captured belongs in there too, because a transposed house number is much easier to catch on a screen than by ear.
+
+## What to leave out
+
+The temptation with any channel you've earned access to is to use it for more. Resist it here.
+
+Skip the promotional add-on ("show this text for a discount next time"). Skip the loyalty pitch. Skip the survey link. Not because those things are never appropriate, but because the confirmation's job is to be trusted at a glance, and every extra element makes it slower to scan and more likely to read as spam. The customer gave you their number so you could take their order. Using it for a clean confirmation is obviously in scope. Using it to sell them something else is a separate decision that deserves its own consent, and treating it casually is how a helpful channel turns into one people opt out of.
+
+## The confirmation is a second chance at accuracy
+
+Here's the operational argument that matters more than the customer-experience one. A voice agent reads the order back at the end of the call — that's the primary accuracy check, and it catches most of what goes wrong. But a caller who's driving, or distracted, or half-listening will say "yep, that's right" to a read-back they didn't fully process.
+
+The text is a second, slower check. They glance at it thirty seconds later with full attention and see that they said "no onions" and the ticket says onions. Now you're fixing a mistake before the line makes it, which costs you a remake at worst. Catch it at pickup instead and you've got a re-fire, a wait, an apology, and a customer who's now suspicious of the whole system.
+
+This is also why the confirmation should show modifiers explicitly. A confirmation that collapses the order into item names verifies nothing. The details are the whole point — the same reason [modifier handling](/blog/how-voice-ai-handles-menu-modifiers) is the part of a voice agent worth testing hardest.
+
+## Timing: right after the call, not later
+
+Send it when the call ends. A confirmation that shows up eight minutes later has missed the window where the customer could have caught an error, and it lands in an odd emotional spot — they'd already moved on.
+
+If payment happened on the call, the confirmation and the payment record should agree. A customer who gets a confirmation for $34.80 and a card charge for $38.20 will call, and that call costs you more than the text saved. Both numbers come from the same order, so any disagreement is a sign something in the handoff between the agent and your [payment flow](/blog/collecting-payment-over-the-phone-safely) is wrong.
+
+## What to actually test in a demo
+
+Since confirmation behavior is easy to describe and easy to fake, test it directly:
+
+1. **Place an order with two modifiers and one substitution.** Check whether all three appear in the text, in language a normal person understands.
+2. **Give a landline or decline to give a number.** Does the call still complete cleanly, or does the flow stumble?
+3. **Check the total against what the agent quoted on the call.** They should match exactly.
+4. **Reply to the text.** Find out whether anyone sees the reply, and what happens if a customer texts "actually can you make that no pickles." A number that silently swallows replies is a small trap you should know about in advance.
+5. **Reply STOP.** Confirm opt-outs are honored, because that's not optional.
+
+None of that takes long, and it tells you more than a feature list will. It's the same principle behind [what to test on a demo call](/blog/what-to-ask-before-buying-an-ai-phone-system) generally: the demo is where you probe the unglamorous parts, since the glamorous ones already work.
+
+## Where it fits with status texts
+
+A confirmation and a status update do different jobs, and the confirmation is the one that protects order accuracy. Status texts — received, in the kitchen, ready — protect your phone line from "is it ready yet" callbacks, which we cover in [texting order-status updates](/blog/restaurant-order-status-text-updates). Most restaurants benefit from both, but if you only had one, the confirmation is the one that prevents a wrong ticket from reaching the pass.
+
+## The bottom line
+
+An SMS confirmation is unglamorous, cheap, and does two useful things: it gives the customer a durable record of what they ordered, and it gives them a chance to catch a mistake while it's still cheap to fix. Keep it factual, include the modifiers and the total, send it immediately, and don't turn it into an ad. If a vendor treats the confirmation as an afterthought, that's a small signal about how they think about the parts of the job that don't demo well.

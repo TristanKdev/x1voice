@@ -1,0 +1,98 @@
+---
+title: "Switching Voice AI Vendors Without Dropping Calls"
+description: "What to extract, what to test, and how to sequence a cutover so your phone keeps working while you change the system behind it."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "How long does switching voice AI vendors take?"
+    answer: "The technical cutover can be quick, often a single afternoon if you're forwarding rather than porting a number. What extends it is everything before: extracting your data from the outgoing vendor, rebuilding the menu language layer, and testing enough to be confident. Budget two to three weeks end to end, most of it preparation."
+  - question: "Will I lose my call history and transcripts?"
+    answer: "Possibly, if you don't export before you cancel. Retention after termination varies by vendor and is a contract question rather than a technical one. Export everything you might want while your account is still active, because access often ends at cancellation rather than at some later date."
+  - question: "Should I run both systems in parallel?"
+    answer: "Briefly, yes, if you can. Pointing overflow calls at the new vendor while the incumbent still handles the main line gives you real traffic on the new system with a working fallback. Running both fully in parallel isn't usually possible on one number, so this generally means a phased routing change rather than true duplication."
+  - question: "What's the riskiest part of a switch?"
+    answer: "Porting the phone number, because it's the one step that's slow to reverse and briefly outside your control. If you can avoid porting during the cutover by using call forwarding first, do that, and port later once the new system is proven."
+---
+
+Switching vendors is a different exercise than buying for the first time, and it's usually less risky than operators fear. You already know what you need, you already have data about what works, and you have something the first-time buyer doesn't: a live system to compare against.
+
+The two things that go wrong are both avoidable. First, people cancel before they extract their data and lose their call history. Second, people port the phone number as the first step of the cutover rather than the last, which turns a reversible change into an irreversible one.
+
+## Before you do anything: decide what's actually wrong
+
+Switching to fix a problem you've misdiagnosed just relocates it. Spend an hour being specific.
+
+Read a sample of transcripts from the current system and categorize the failures. Are orders landing in the POS wrong? Is recognition failing on particular items or particular callers? Is the escalation rate high because the agent can't handle things, or because your escalation rules are too broad? Is the vendor slow to fix things, or is the product itself limited?
+
+That distinction matters. A menu language layer that was never properly built is a fixable configuration problem, and a new vendor will inherit it if you don't fix it during the move. A shallow POS integration that flattens modifiers is a product limitation, and switching genuinely solves it.
+
+Also check the boring explanations. A system running on a menu nobody has updated in eight months will look broken regardless of vendor.
+
+## Extract everything while your account is live
+
+Do this first, before you give notice, because access frequently ends at cancellation.
+
+**Call transcripts and recordings.** Your business records. Export in whatever format is offered, even if it's imperfect.
+
+**Order history.** Especially anything not mirrored in your POS.
+
+**Customer records.** Phone numbers, names, addresses, order preferences. Check what you're legally permitted to retain and transfer, and be careful here — the fact that you have the data doesn't automatically mean it's yours to move anywhere. Our [data ownership and privacy](/blog/voice-ai-data-ownership-privacy) piece covers the questions.
+
+**Your configuration.** The menu language layer, FAQ answers, greeting text, escalation rules, hours and holiday overrides, delivery zones. Some of this may not be exportable in a usable form, in which case screenshot it. Rebuilding this from memory is the most tedious part of a switch and the easiest to underestimate.
+
+**Analytics history.** Baseline numbers matter, because without them you can't tell whether the new vendor is actually better.
+
+If a vendor charges for export or won't provide it, that's worth remembering and worth checking in your next contract before signing it. It's on the list in [contract terms to avoid](/blog/voice-ai-contract-terms-to-avoid).
+
+## Read the exit terms before you commit to the new vendor
+
+Check three things in your current agreement: the notice period, the auto-renewal date, and any early termination fee. A thirty-day notice window on an agreement that renews next month is a very different situation than one that renews in seven months.
+
+Sequence accordingly. There's rarely a reason to sign with a new vendor before you know your exit date, and knowing it lets you plan the overlap.
+
+## Set up the new vendor properly, not identically
+
+Resist the urge to replicate your old configuration exactly. You have information now that you didn't have at first setup: you know which items callers ask about, which phrasings caused problems, which questions come up constantly, and where escalations actually happen.
+
+Use it. Build the language layer around the real phrasings from your transcripts rather than around your POS item names. Add FAQ answers for the questions you saw people ask. Tighten or loosen escalation rules based on what actually happened rather than what you guessed a year ago.
+
+Then re-verify the menu against your POS line by line. Prices drift, items get retired, and the outgoing system may have been carrying errors you never noticed. The [onboarding checklist](/blog/ai-phone-onboarding-checklist-restaurants) applies here in full.
+
+## Test against your own history
+
+This is the advantage a switcher has. Take twenty real calls from your existing transcripts — including the ones that went badly — and replay them against the new system yourself.
+
+Run the standard scenarios too: normal order, mid-order correction, three modifiers plus a substitution, an 86'd item, customer shorthand, a noisy call, a request for a human. The full list is in [what to test during a demo](/blog/voice-ai-demo-what-to-test).
+
+Then check the POS ticket every time. Integration depth is the most common reason a switch is happening in the first place, and it's the thing to verify most carefully.
+
+## Sequence the cutover to stay reversible
+
+Order matters here more than anything else in the process.
+
+**Step 1: forward, don't port.** Point your existing number at the new vendor via call forwarding. This is reversible in minutes from your phone provider's portal. Keep the number where it is.
+
+**Step 2: start with a subset.** After-hours only, or overflow only, for the first several days. Real traffic, limited exposure.
+
+**Step 3: expand to full coverage** once you've read a few days of transcripts and fixed what surfaced.
+
+**Step 4: run for two to three weeks** at full coverage before doing anything irreversible.
+
+**Step 5: port the number** only if you need to, and only after the new system has proven itself. Porting is slower and harder to undo, and doing it during a cutover means a bad week becomes a bad month. The mechanics are in the phone number porting guide.
+
+**Step 6: cancel the old vendor** last, after your data is exported and the new system is stable. Paying for one month of overlap is cheap insurance.
+
+## Tell your staff, and watch the first week closely
+
+Staff should know the change is happening, what's different, and where to report problems. If your escalation destination changed, make sure whoever now receives transferred calls knows they're receiving them.
+
+Read transcripts daily for the first week. You're looking for the same three things as at any go-live: orders landing wrong in the POS, questions the agent can't answer, and callers who sound confused. Expect a handful of corrections. A first week with zero adjustments usually means nobody looked.
+
+## Measure against your baseline
+
+You kept the old analytics for this. Compare containment rate, escalation rate and reasons, and order accuracy against the previous system over a comparable period — same days of week, similar volume. See measuring call containment rate and voice AI metrics and KPIs for what to track.
+
+If the new system isn't clearly better after a month of tuning, that's worth knowing early, while you still remember why you switched.
+
+## The bottom line
+
+Diagnose the actual problem before assuming it's the vendor, export every piece of data and configuration while your account is still live, and rebuild the setup using what your transcripts taught you rather than copying the old config. Then sequence the cutover so every step is reversible: forward before you port, start with overflow, expand gradually, and cancel the incumbent last. Done in that order, a switch is a couple of careful weeks rather than a risk to your Friday night.

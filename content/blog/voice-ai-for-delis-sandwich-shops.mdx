@@ -1,0 +1,69 @@
+---
+title: "Voice AI for Delis and Sandwich Shops: The 90-Minute Lunch Window"
+description: "A deli's entire phone problem happens between 11:30 and 1:00. Here's how a voice agent handles build-your-own sandwiches, office orders, and a rush that can't be staffed."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Can a voice agent handle a build-your-own sandwich?"
+    answer: "Yes, because a build is a chain of structured choices — bread, protein, cheese, toppings, condiments, toasted or not — and those map cleanly onto POS modifiers. The agent asks each question in order and doesn't skip one because the counter got loud. Where it gets harder is a caller who describes a sandwich from memory rather than building it, and that's worth testing in a demo."
+  - question: "What about a 15-sandwich office order?"
+    answer: "This is the call most worth capturing, and also the longest. An agent can take it end to end without tying up your one available employee for eight minutes at the worst possible moment. Have it collect a name per sandwich if that's how your shop labels them, which is a small configuration detail that saves real confusion at pickup."
+  - question: "Our whole rush is 90 minutes. Is a monthly plan worth it for that?"
+    answer: "It depends on how much you're actually losing in that window. A deli that drops a dozen calls a day at lunch is losing far more than the plan costs; one that drops two probably isn't. Pull a week of call logs and count the rung-out calls between 11 and 1 rather than estimating. That number decides it, not the feature list."
+  - question: "Can it handle cold cuts sold by the pound?"
+    answer: "If weight-based items exist in your register, yes — half a pound of turkey, a pound of provolone, sliced thin. The detail worth configuring is slice thickness, which callers specify constantly and which needs somewhere to live on the ticket. Ask the vendor how free-text preparation notes reach the kitchen."
+---
+
+A deli's phone problem is almost entirely a scheduling problem. For most of the day the line is quiet and manageable. Then between roughly 11:30 and 1:00 you get a wave of orders that would take three people to answer, at the exact moment every employee is behind the counter with a knife or a slicer. Calls ring out. Office orders go to the sandwich shop that picked up. And by 1:15 the phone is quiet again.
+
+You can't staff for a ninety-minute peak. That's the honest structural argument for a voice agent at a deli: not that your total call volume justifies a phone system, but that your volume is stacked into a window where every additional call is a lost order and additional labor is uneconomical.
+
+## The lunch window is the entire case
+
+Concurrency is the property doing the work. A person takes one call. An agent takes every call ringing at once, so the fourth caller at 12:10 gets the same treatment as the first. Nothing else about the technology matters as much for a deli.
+
+Two other things follow from the compressed window. Speed of response matters, because callers ordering lunch are in a hurry and an awkward pause reads as a broken system — [sub-second latency](/blog/sub-second-latency-voice-ai-restaurants) is a real requirement, not a spec-sheet flourish. And accurate ready-time quotes matter, because a lunch customer with a 30-minute break plans around your number.
+
+If you want to know what the window is actually costing you, count the rung-out calls between 11 and 1 for a week using the approach in our [missed-call framework](/blog/how-many-calls-does-your-restaurant-miss). That number, not a category average, is the one to weigh against the cost.
+
+## Builds are structured choices
+
+A sandwich order is a decision chain: bread, protein, cheese, toasted or cold, lettuce tomato onion, condiments, salt and pepper, cut in half. Every one of those is a POS modifier, and that structure is what voice agents handle best. The agent asks each question, in order, on every sandwich, and doesn't skip the toasted question because someone shouted an order across the counter.
+
+The harder input is a caller who doesn't build — who says "the Italian, no onions" or names a sandwich from your board they half-remember. That's a [menu training](/blog/how-to-train-ai-voice-agent-restaurant-menu) problem: the agent needs your named sandwiches, their contents, and the informal names regulars use. Test that specifically. An agent that asks a clarifying question when two named subs are close is behaving well; one that silently picks is not.
+
+## Office orders are the high-value calls
+
+The single most valuable call a deli takes at lunch is the fifteen-sandwich office order. It's a large ticket, it's repeat business if it goes smoothly, and it is exactly the call your one free employee cannot afford to spend eight minutes on at 12:15.
+
+An agent takes it without consuming your counter. A few configuration details make those orders actually work at pickup:
+
+- **A name per sandwich**, if that's how you label the bags.
+- **Split ticketing**, if the office wants individual receipts.
+- **Delivery or pickup**, and a clear cutoff for delivery orders.
+- **Repeat-order capture**, so a standing Thursday order is easy to re-place.
+
+Larger platters and party trays are a related but distinct call, and worth handling with the intake fields in our [catering call guide](/blog/ai-phone-answering-catering-orders).
+
+## Cold cuts by the pound
+
+Delis that sell sliced meats and cheeses by weight get a different kind of call, often earlier in the day and often from customers who specify slice thickness. Weight-based items work like any POS quantity item, but the preparation detail needs somewhere to go. Ask any vendor how a note like "sliced thin, no shingle" reaches your slicer, because the answer varies more than you'd expect.
+
+## Modifiers, allergies, and the gluten question
+
+Sandwich shops get a consistent allergen question set — gluten-free bread availability, dairy in dressings, nuts in pesto or a chicken salad. The agent should answer accurately from your menu data and hand off to a person when the stakes are high, particularly on cross-contact questions in a shop where one slicer handles everything. That handoff design is what our allergen and dietary questions piece covers.
+
+## Attach items without the push
+
+Chips, a drink, a cookie, a side of pasta salad. These are forgotten more often than any other category's attach items because deli order-taking is fast and interruptive. An agent offers them once, consistently, without the pushy energy — the honest version of ticket lift. Across a lunch service that's a real number, and it costs your staff nothing.
+
+## The parts to be skeptical about
+
+Two honest limits. First, a deli inside a busy office building that turns over a line of walk-ups and takes six phone calls a day is not the customer for this. The tool addresses unanswered phone demand, and if that demand is small, a flat monthly fee is money spent on nothing.
+
+Second, capturing more lunch calls only helps if your line can make the sandwiches. If your constraint at 12:15 is prep capacity rather than the phone, answering more calls produces longer quotes and unhappy customers, not revenue. Know which bottleneck you have.
+
+Where the phone is genuinely the constraint, weigh recovered lunch orders against a flat monthly cost — [X1 Voice](/pricing) starts at $250/month for 750 minutes — with the method in our single-location economics breakdown.
+
+## The bottom line
+
+Delis are a clean concurrency case: a ninety-minute peak that can't be staffed, orders built from structured choices that map well onto a POS, and high-value office orders that currently tie up your one free pair of hands. Verify that your named sandwiches and preparation notes survive the trip into your register, and count your actual rung-out calls at lunch before deciding. To hear it take a build, [call the demo line](/#see-it) and order a sandwich the way you'd order it at the counter.

@@ -1,0 +1,74 @@
+---
+title: "Consolidating Third-Party Delivery and Phone Orders"
+description: "Tablet farms, separate menus, and phone orders on paper create a fractured order flow. Here's how to consolidate channels into one stream and where the phone fits in that plan."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "What's actually wrong with running separate delivery tablets?"
+    answer: "Each tablet is a separate menu to maintain, a separate place to mark items 86'd, and a separate stream your kitchen has to merge by hand. The errors show up as stale prices, items sold that you're out of, and tickets that reach the line out of order during a rush."
+  - question: "Does consolidating mean I should drop delivery apps?"
+    answer: "Not necessarily. Apps bring real incremental customers, and dropping them is a business decision about commission versus reach. Consolidation is about making the operational side sane regardless of which channels you keep."
+  - question: "Where do phone orders fit in a consolidated setup?"
+    answer: "They should land in the same place as everything else — your POS — rather than on a pad. A phone order that gets keyed in separately or written on paper is the same fragmentation problem as an unintegrated tablet, just with worse handwriting."
+  - question: "What's a middleware or aggregator layer?"
+    answer: "It's a service that connects multiple delivery marketplaces to your POS so orders arrive in one stream and menu changes push out from one place. Whether you need one depends on how many channels you run and whether your POS already connects to them directly."
+---
+
+If your kitchen is reading tickets off three tablets, a POS terminal, and a handwritten pad, the problem isn't any one of those channels. It's that nothing shares a menu, a capacity view, or a ticket queue, so your staff is doing the integration work manually during the exact hours they have the least time.
+
+Consolidation means one menu source, one order stream into the kitchen, and one place where availability is true. Phone orders belong inside that, not beside it.
+
+## The real costs of a fragmented order flow
+
+Worth naming specifically, because "tablet farm" gets treated as a joke rather than a cost center.
+
+**Menu drift.** Each channel holds its own menu. A price change or a new item has to be made in every place, and one of them will be missed. The result is selling at last year's price or advertising an item you removed.
+
+**86'ing doesn't propagate.** You run out of a protein at 7pm. Someone marks it unavailable on the POS and one tablet, and the other two keep selling it for an hour. Every one of those orders becomes a refund or an unhappy substitution call.
+
+**Ticket sequencing.** Orders that arrive on separate devices don't merge into one queue by time. The kitchen either builds a manual sequence or works device by device, and both produce orders that go out badly out of order during a rush.
+
+**Blind capacity.** No single channel knows total demand. Each one thinks you have room, so they collectively oversell your kitchen. This is where a busy Friday turns into a 50-minute quote nobody was warned about.
+
+**Manual re-entry.** Anywhere a human retypes an order, you have a transcription error waiting.
+
+## Step one: pick one menu source of truth
+
+Before touching integrations, decide where your menu lives canonically. For most restaurants that's the POS. Every other channel should derive from it rather than holding its own copy.
+
+Then audit reality: pull up each channel's menu side by side and find the differences. Most operators find stale prices, items that no longer exist, and modifiers that differ between channels. That audit is worth doing even if you change nothing else, because it's usually finding money.
+
+Why the POS is the right anchor is covered in [why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality).
+
+## Step two: get the channels into one stream
+
+There are broadly three routes, and which fits depends on your POS and how many marketplaces you run.
+
+**Direct POS integrations.** Many modern POS platforms connect to major delivery marketplaces natively. If yours does and covers the apps you use, this is the simplest path — one less vendor.
+
+**A middleware or aggregator layer.** Services in this category connect multiple marketplaces to your POS, pushing menu changes out from one place and pulling orders into one stream. Deliverect is one example operators encounter frequently; we cover how a voice agent fits alongside that kind of setup in [Deliverect voice agent for multi-location restaurants](/blog/deliverect-voice-agent-multi-location-restaurants). Useful when you run several marketplaces or several locations.
+
+**Staying manual.** Legitimate if you run one delivery app and low volume. The cost of integration isn't always worth it. Be honest about which situation you're in rather than defaulting either way.
+
+## Step three: bring the phone into the same stream
+
+This is the step that gets skipped. Restaurants consolidate their delivery tablets and leave phone orders on a pad, which reintroduces every problem they just solved: a separate menu in someone's head, no visibility into total capacity, and a manual re-entry step.
+
+A phone order should land in the POS the same way an app order does. That means either taking it directly into the terminal while on the call, or using a system that writes it in. Once it's in the same stream, phone orders participate in ticket sequencing, count against your capacity, and respect the same 86 list as everything else.
+
+That last point matters more than it sounds. If your POS knows you're out of an item, an integrated phone agent stops selling it in the same moment the tablets do. A person taking orders on a pad finds out when the kitchen tells them. The pipeline that makes this work is described in [how AI phone ordering works](/blog/how-ai-phone-ordering-works-the-pipeline).
+
+## Step four: use the consolidated view to manage capacity
+
+The payoff of one stream is that you can finally see total demand. That enables the thing nobody can do with fragmented channels: throttle honestly.
+
+When the kitchen is at capacity, you can extend quoted times across every channel at once, or pause a channel deliberately rather than discovering the backlog at the pass. The mechanics are in [order throttling against kitchen capacity](/blog/order-throttling-kitchen-capacity-phone).
+
+## Be realistic about what consolidation doesn't fix
+
+Consolidation is plumbing. It doesn't reduce marketplace commissions, it doesn't make a slow kitchen fast, and it doesn't decide which channels are worth keeping. Those remain business decisions.
+
+It also isn't free. Integrations cost money, take setup time, and add a dependency — when middleware has an outage, several channels go quiet at once. Ask any vendor what happens during a failure and what the manual fallback is, before you need to know. The commission question is a separate decision from the plumbing one.
+
+## The bottom line
+
+A fragmented order flow costs you in stale menus, items sold after you're out, tickets that reach the line in the wrong order, and a capacity picture nobody can see. Fix it by naming one menu source of truth — usually your POS — then getting every channel to derive from it, whether through direct integrations or a middleware layer. Don't stop at the delivery tablets: phone orders on a pad are the same problem, and pulling them into the same stream is what finally gives you one accurate view of demand. Consolidation won't lower your commissions or speed up your kitchen, but it removes an entire class of errors your staff is currently absorbing by hand.

@@ -1,0 +1,91 @@
+---
+title: "Upselling Without Being Pushy: How a Phone Agent Should Handle the Add-On"
+description: "A consistent, well-placed suggestion raises tickets. A scripted pitch on every order annoys regulars. Where the line is, and how to configure a voice agent that stays on the right side of it."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Does an AI phone agent upsell every order?"
+    answer: "That depends on how you configure it, and the default you choose matters. A single relevant suggestion at a natural point in the order is generally well received; a pitch on every item is not. The advantage of an automated system here is consistency, which cuts both ways — it will do exactly what you tell it, every single time."
+  - question: "Will upselling annoy my regulars?"
+    answer: "It can, especially the ones who order the same thing weekly and get pitched the same add-on weekly. That repetition is the specific risk of a consistent system. If a suggestion feels like a script rather than a suggestion, it stops working and starts costing goodwill."
+  - question: "What's the most effective kind of suggestion?"
+    answer: "Ones that are genuinely relevant to what was ordered and easy to say yes to — a drink with a sandwich, a side that completes a meal, a dessert on a family-sized order. Suggestions that require the caller to think, or that don't obviously go with what they ordered, mostly just add time to the call."
+  - question: "How do I know if upselling is actually working?"
+    answer: "Compare average ticket on phone orders before and after, and watch whether it holds over several weeks rather than spiking and fading. Also watch for the counter-signal: calls getting longer without tickets getting bigger means you're adding friction without adding revenue."
+---
+
+The case for upselling on the phone is simple and real: a suggestion that gets said out loud converts more often than one that doesn't, and human order-takers skip it constantly. They're busy, they forget, they don't feel like it, or they're new. An automated system says it every time, which is the entire mechanical advantage.
+
+The case against doing it badly is equally real. A pitch on every order, delivered identically to a regular who orders the same thing every Thursday, stops reading as service and starts reading as a machine trying to squeeze them. This piece is about where that line sits and how to configure toward the right side of it.
+
+## Consistency is the whole advantage, and the whole risk
+
+Understand this trade clearly, because everything else follows from it.
+
+A human order-taker suggests an add-on maybe some of the time, depending on how busy they are and how they're feeling. A voice agent suggests it exactly as often as you tell it to, on every single call, forever. That reliability is why the technique works at scale — and it's why the same suggestion, repeated to the same person every week, becomes grating in a way a human's inconsistency never does.
+
+So the design goal isn't "how do we upsell more." It's "what's the one suggestion we'd want made, every time, that a customer wouldn't mind hearing repeatedly." That's a much narrower and better question.
+
+## What good looks like
+
+Four properties, and a suggestion should have all of them.
+
+**Relevant to what was actually ordered.** A drink with a sandwich. A side that completes a plate. Garlic knots with a pizza. If the connection isn't obvious to the caller, the suggestion registers as noise.
+
+**Placed at a natural moment.** After the order is essentially complete, before the total. Interrupting mid-order to pitch something is the fastest way to make the whole call feel transactional, and it also risks disrupting the order itself.
+
+**Easy to decline.** One clear question, and a "no thanks" ends it. No second attempt. The single worst configuration is a system that pitches again after a refusal.
+
+**Said once.** Not once per item. A caller ordering four things should hear one suggestion, not four.
+
+## What bad looks like
+
+The failure patterns are recognizable, and most of them come from treating the suggestion as a revenue lever rather than a service moment:
+
+- Pitching on every item, so a four-item order becomes a negotiation.
+- Suggesting something unrelated because it has a high margin.
+- Re-asking after a no.
+- A long, adjective-heavy pitch when a short question would do. Every second here costs you against the [response-speed budget](/blog/sub-second-latency-voice-ai-restaurants) that makes calls feel natural.
+- Suggesting an item you're out of, which is both annoying and a sign your [86ing](/blog/real-time-86ing-menu-sync) isn't syncing.
+
+That last one is worth flagging because it happens more than you'd think, and it undermines confidence in the whole system.
+
+## The regulars problem
+
+Here's the case that requires an actual decision. Someone orders the same thing every week. Every week, they hear the same suggestion. By week five it's not a suggestion, it's a toll they pay to order dinner.
+
+There's no perfect fix without customer recognition, which not every setup has. What you can do is choose a suggestion mild enough to survive repetition — a short, easy question rather than an enthusiastic pitch — and accept that this is a real cost of consistency. Some operators decide the ticket lift is worth it. Others decide their regulars matter more. Both are defensible; drifting into it without deciding is not.
+
+If your setup does connect order history, the calculus improves, but that capability varies a lot by system and by POS, so it's worth confirming for your specific setup rather than assuming.
+
+## Combo prompts versus upsells
+
+Worth distinguishing, because they're different in kind. X1 Voice handles combo and upsell prompts against your actual menu structure, and combos are the friendlier version: telling a caller who ordered a sandwich, fries, and a drink separately that the combo is cheaper is a service, not a pitch. It costs you a little margin and buys real goodwill.
+
+If you're going to do one thing here, doing combos correctly is a better starting point than adding a dessert prompt. It also has a lower annoyance ceiling, because a caller who's told they could pay less doesn't get annoyed the fifth time.
+
+## Measuring whether it's working
+
+Two numbers, tracked over weeks rather than days:
+
+**Average phone ticket.** Before and after. This is the headline, and it's covered further in [average ticket and upsell](/blog/ai-phone-ordering-average-ticket-upsell).
+
+**Average call length.** The counter-metric. If calls get longer and tickets don't get bigger, you've added friction for nothing, and you're also reducing how many calls you can handle in a rush.
+
+Watch for the fade. A new suggestion often lifts numbers briefly and then settles. Judge on the settled number, not the first week. And if you can, watch repeat-order rate for phone customers — a suggestion that lifts tickets while quietly reducing how often people call back is a bad trade you'd never notice from ticket size alone. These fit into the wider set of [metrics worth tracking](/blog/voice-ai-metrics-kpis-restaurants).
+
+## A reasonable default configuration
+
+If you want a starting point rather than a philosophy:
+
+- One suggestion per call, after the order is complete.
+- Tied to what they ordered, from a short list you chose.
+- One sentence. A question, not a pitch.
+- No re-ask after a decline.
+- Combo prompts always on, because they help the customer.
+- Never suggest anything currently 86'd.
+
+Run that for a month, look at average ticket and call length, and adjust from evidence rather than intuition.
+
+## The bottom line
+
+The value of automated upselling is that it happens every time, and the risk is exactly the same thing. Pick one relevant, short suggestion, place it after the order, take no for an answer, and turn combo prompts on because they genuinely serve the customer. Then measure ticket size and call length together. If calls are getting longer without tickets getting bigger, you're not upselling, you're just taking more of your customer's time.

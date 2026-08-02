@@ -1,0 +1,79 @@
+---
+title: "Voice AI for Fast Casual Chains: One Configuration, Many Locations"
+description: "Fast casual has the advantage of a standardized menu, which makes multi-location voice deployment far easier. Here's what changes when you go from one store to forty."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Why is fast casual an easier deployment than independent restaurants?"
+    answer: "Because the menu is already standardized and documented. Most of the configuration work in a voice deployment is teaching the system your menu, modifiers, and pricing, and a chain has done that work once for every location. You configure the brand and adjust per-store details like hours, local pricing, and regional items, rather than starting from scratch forty times."
+  - question: "Can each location have its own hours and menu differences?"
+    answer: "It should. Any serious multi-location deployment supports store-level overrides for hours, holiday closures, delivery zones, local pricing, and items a specific store doesn't carry. Ask exactly which fields can be overridden per store and who can change them, because a system that requires a corporate ticket to fix Saturday hours will not survive contact with your operators."
+  - question: "How do calls get routed to the right store?"
+    answer: "Usually by the number the caller dialed, which is the cleanest approach — each store keeps its own line and the agent knows which store it's answering for. If you publish one central number, the agent has to identify the location, either by asking or by the caller's stated address. Ask which model a vendor supports before assuming."
+  - question: "Should we pilot at a few stores first?"
+    answer: "Yes. A pilot at a small number of stores with different volume profiles surfaces the problems that a demo never will — modifier edge cases, local menu differences, how your operators react. Rolling to the full fleet before you've run a peak week at a few stores is how these projects go badly."
+---
+
+Fast casual chains have a genuine structural advantage in voice deployment, and it's worth naming plainly: your menu is already standardized. The single most labor-intensive part of setting up a voice agent — teaching it every item, modifier, and price — is work your brand did once and applies everywhere. An independent restaurant configures from scratch. You configure once and roll.
+
+That doesn't mean multi-location deployment is easy. It means the hard parts move somewhere else: store-level variation, call routing, operator adoption, and the governance question of who's allowed to change what. Those are the things that determine whether a rollout works, and they're where most of your planning should go.
+
+## The standardized menu is the head start
+
+A chain's menu exists as structured data already, usually in a central POS configuration that every store inherits. Items, modifiers, combo rules, and pricing tiers are documented because they have to be for training and for the register.
+
+That means the [menu training](/blog/how-to-train-ai-voice-agent-restaurant-menu) effort is a brand-level project, not a store-level one. Get it right once, test it thoroughly, and every location benefits. It also means quality is consistent — a customer calling your Dallas store and your Denver store hears the same descriptions, which is the sort of consistency brands spend real money trying to enforce in person.
+
+The corollary is that a configuration error is also brand-level. A modifier that prices wrong is wrong at every store simultaneously. That argues for careful testing before rollout and for treating the configuration like any other brand-critical system.
+
+## Store-level overrides are non-negotiable
+
+Standardization only goes so far. Real chains have per-store variation that has to be representable:
+
+- **Hours**, including stores in different time zones and stores in malls with landlord-set hours.
+- **Holiday closures**, which vary by market and franchisee.
+- **Local pricing**, where regional cost differences apply.
+- **Menu exceptions**, where a store doesn't carry an item or carries a regional one.
+- **Delivery zones**, which are inherently local.
+- **Temporary 86s**, which are per-store and change hourly.
+
+Ask any vendor precisely which fields can be overridden at the store level and, just as importantly, who can change them. A system where a general manager has to file a corporate ticket to correct Saturday hours will be wrong constantly, because nobody files the ticket. Our [multi-location and franchise groups](/blog/voice-ai-multi-location-franchise-groups) piece goes deeper on that governance split.
+
+## Routing: one number or many
+
+Two models, and the choice has consequences.
+
+**Per-store numbers** are the simpler design. Each location keeps its published line, the agent knows which store it's answering for, and orders route to that store's POS without ambiguity. This is what most chains should do, and it also preserves the local search listings that already point at those numbers.
+
+**A single brand number** requires the agent to identify the location before it can do anything — by asking the caller, by their address, or by area code. That adds a step to every call and creates a failure mode where an order lands at the wrong store. It's workable when the brand genuinely wants centralized routing, but it's a real tradeoff rather than a free upgrade.
+
+Whichever you pick, phone number continuity matters. Existing signage, listings, and third-party profiles point at numbers you don't want to change.
+
+## Catering is where the chain-level revenue is
+
+For most fast casual brands, catering is a disproportionate share of profit and a disproportionate share of missed opportunity. Those calls are large, they're planned in advance, and they routinely arrive when the store is in a lunch rush and nobody can take them.
+
+An agent that captures the full catering inquiry at every location — head count, date, delivery or pickup, menu selections, contact details — and routes it to whoever owns catering is a direct revenue play. The fields worth collecting are in our [catering call guide](/blog/ai-phone-answering-catering-orders). For chains with a central catering team, routing those leads centrally while keeping ordinary orders local is a sensible split.
+
+## The lunch peak, multiplied
+
+Fast casual lives on a compressed lunch window. At one store, a phone that rings out from 11:45 to 12:45 is a modest daily loss. Across forty stores, it's the same loss forty times, every day, and it never shows up as a line item because unanswered calls don't appear in your sales data.
+
+An agent takes every call concurrently at every store. To size it, run the [missed-call framework](/blog/how-many-calls-does-your-restaurant-miss) at a handful of representative stores rather than accepting a fleet-wide estimate from a vendor. Volume varies enormously between locations, and averaging hides it.
+
+## Pilot, then roll
+
+Do not deploy to the whole fleet at once. A pilot at a small number of stores — chosen to include a high-volume location, a low-volume one, and one with unusual local variation — surfaces the problems a demo never will.
+
+Things a pilot catches: modifier combinations your configuration missed, how the agent behaves when the store 86s something mid-rush, whether operators actually use the handoff, whether the ready-time quotes match reality, and how customers react. Our franchise rollout playbook covers sequencing a rollout in more detail, including the franchisee-consent questions that apply if your stores aren't all corporate-owned.
+
+Run the pilot through at least one full peak week. A quiet Tuesday proves nothing.
+
+## Franchise politics are real
+
+If your system is franchised, this isn't purely a technology decision. Franchisees may have opinions about a corporate-mandated phone system, about who pays for it, about who controls the greeting, and about whether call data flows to corporate.
+
+Answer those before the rollout, not during. Whether the brand mandates or offers it, who bears the cost, and what data each party sees are contract-adjacent questions, and getting ahead of them determines whether adoption is smooth or a fight.
+
+## The bottom line
+
+Fast casual chains start ahead on voice deployment because the menu configuration is a brand-level asset rather than a per-store project. The work that decides success is elsewhere: store-level overrides that GMs can actually control, a routing model you've chosen deliberately, catering lead capture, and a real pilot before a fleet rollout. Get those right and the lunch-peak losses you've never seen in your sales data start showing up as orders. To hear how it handles a standardized menu, [call the demo line](/#see-it), and see [pricing](/pricing) for how multi-location plans are structured.

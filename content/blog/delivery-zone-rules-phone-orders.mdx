@@ -1,0 +1,77 @@
+---
+title: "Delivery Zone Rules on Phone Orders: Getting 'Do You Deliver to Me?' Right"
+description: "The most common delivery question on the phone has a surprisingly messy answer. How to define zones, minimums, and fees clearly enough that a phone agent can answer without guessing — and what to check before trusting one to."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Can a phone agent tell a caller whether they're in the delivery zone?"
+    answer: "It can answer reliably only if your zone is defined as data it can check, and if it captures enough of the address to check against. If your zone lives in a manager's head as 'anything north of the highway, unless it's a big order,' no system can answer it consistently — and neither can a new hire. Defining the rule is the prerequisite, not the software."
+  - question: "What should happen if the caller is just outside the zone?"
+    answer: "The honest move is to say so plainly and offer pickup, rather than taking the order and letting a driver discover the problem. Some restaurants want a manager consulted on borderline addresses. Either is reasonable, but the decision should be an explicit rule, not something the system improvises."
+  - question: "How should delivery minimums and fees be handled on a call?"
+    answer: "Stated before the caller commits, not discovered at the end. A minimum revealed after a five-minute order is a bad experience and a likely abandon. If you're evaluating a vendor, test exactly this: order below your minimum from a far address and listen to when and how the constraints get raised."
+  - question: "Is address capture over the phone reliable?"
+    answer: "It's one of the harder things to get right, because street names are easy to mishear and apartment numbers get mumbled. Any system taking delivery orders should read the address back and, ideally, put it in a confirmation text so the customer can catch a transposed number before a driver goes to the wrong place."
+---
+
+"Do you deliver to me?" is one of the most common questions your phone takes, and it's harder to answer well than it looks. The reason isn't technology. It's that most restaurants have never written their delivery zone down as an actual rule. It exists as a shared understanding among whoever's been there longest: usually yes to these neighborhoods, sometimes to that one if the order's big enough, never past the bridge on a Friday.
+
+That works when a human with three years of context answers the phone. It stops working the moment you hand the phone to anyone else — a new hire, an answering service, or an AI agent. So before evaluating any system's "delivery zone support," the more useful exercise is writing your zone down. This piece covers how to do that, what a phone agent can reasonably do with it, and what to test before you trust one.
+
+## Your zone is probably three rules wearing a trench coat
+
+When operators actually write it out, the "delivery zone" usually decomposes into several separate rules that got tangled together:
+
+- **A geographic boundary.** Where you'll go at all.
+- **A minimum order value,** which often changes with distance.
+- **A delivery fee,** which often also changes with distance.
+- **Time-of-day exceptions.** You'll go farther at 2 p.m. than at 7:30 on a Friday.
+- **Driver-capacity exceptions.** Where you'll go depends on how many drivers are on.
+
+Those last two are where it gets genuinely difficult, and where honest evaluation matters. A static boundary and a minimum are easy to encode. "It depends on how slammed we are" is a live operational judgment, and expecting any automated system to make it correctly is optimistic. The practical resolution most operators land on is to encode the static rules, then decide what happens at the edges: either a hard no with a pickup offer, or a handoff to a person.
+
+## What a phone agent can reasonably do
+
+Given a written-down zone, a capable phone system should be able to answer the coverage question and capture the order. In practice that means:
+
+**Capturing the address accurately enough to check.** This is the real bottleneck. Street names get mangled, apartment numbers get swallowed, and callers give landmarks instead of addresses. A read-back is mandatory, and putting the address in an [SMS confirmation](/blog/sms-order-confirmations-voice-ai) gives the customer a chance to catch an error before a driver is dispatched.
+
+**Stating the minimum and fee up front.** Not at the end. A caller who builds a $14 order and then learns the minimum is $25 for their address is going to be annoyed regardless of how politely it's delivered.
+
+**Behaving sanely at the boundary.** The near-miss address is the case that separates a thoughtful setup from a brittle one. Decide in advance whether it's a decline with a pickup offer, or a transfer to a person.
+
+X1 Voice handles the "do you deliver to my area" class of question as part of routine call handling, and delivery orders sync to your POS the same way pickup orders do. How precisely a zone boundary can be encoded is worth asking about for your specific setup rather than assuming, because the answer depends on how your delivery is dispatched.
+
+## The question of who actually dispatches
+
+Delivery zone logic gets murkier when the delivery itself isn't yours. Three common arrangements, each with different implications:
+
+**Your own drivers.** You own the zone, the fee, and the decision. Cleanest case for encoding rules, because nobody else's system has an opinion.
+
+**A third-party dispatch service** handling delivery for orders you take directly. Here the boundary may be partly theirs — their coverage area and their fee structure interact with yours. Worth confirming which system is authoritative when the two disagree.
+
+**Third-party marketplace orders.** Those don't come through your phone at all, so they're outside this problem, though they're very much part of the [commission math](/blog/voice-ai-vs-delivery-app-commissions) that makes direct phone delivery attractive in the first place.
+
+The reason to be clear about this is that "we support delivery zones" means different things in each arrangement, and a vendor demo rarely distinguishes them.
+
+## How to evaluate any vendor's implementation
+
+Regardless of who you're looking at, run these tests on a live call:
+
+1. **Give an address squarely inside your zone.** Does it accept, quote a fee, and read the address back?
+2. **Give an address clearly outside.** Does it decline cleanly and offer pickup, or does it take the order anyway?
+3. **Give an address near the edge.** This is the one that matters. Whatever it does, is that what you'd want?
+4. **Order below your minimum.** When does the constraint get mentioned — before you've built the order, or after?
+5. **Give a messy address.** An apartment number, a unit letter, a street with a common homophone. Check the read-back.
+6. **Give an address with no unit number on a building that needs one.** Does it ask?
+
+Test six catches a surprising number of systems, and it's the one that generates the most real-world driver phone calls.
+
+## Don't automate a rule you haven't decided
+
+The recurring lesson here is that automation exposes undefined policy. A phone agent doesn't create the delivery-zone problem, it reveals that you never resolved it. That's genuinely useful — the same way [writing your menu down properly](/blog/how-to-train-ai-voice-agent-restaurant-menu) surfaces items nobody could price consistently.
+
+So the sequencing is: define the boundary, set the minimum and fee by distance band, decide the edge-case policy, decide who owns the exception, and only then ask a vendor whether their system can express it. Reversing that order means you'll evaluate systems against a spec you haven't written and be disappointed by all of them.
+
+## The bottom line
+
+Getting delivery zones right on the phone is mostly an operations exercise and only partly a software one. Write the rule down, including what happens at the edge and below the minimum. Then insist on hearing it work on a live test call, especially the near-miss address and the messy apartment number. A system that handles the clean cases and improvises at the boundary will be fine four nights a week and cost you on the fifth.

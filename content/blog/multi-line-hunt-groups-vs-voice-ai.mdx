@@ -1,0 +1,81 @@
+---
+title: "Multi-Line Hunt Groups vs. Voice AI for Restaurants"
+description: "Adding lines and hunt groups is the traditional answer to a busy restaurant phone. Here's an honest look at what it fixes, what it doesn't, and when a voice agent solves a different problem."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "What is a hunt group?"
+    answer: "It's a phone system feature that rings a call at multiple destinations, either in sequence or all at once, until someone picks up. It's the standard way businesses stop callers from hitting a busy signal when the first line is in use."
+  - question: "Do more phone lines actually fix missed calls?"
+    answer: "They fix the busy signal. They don't add people. If your calls are missed because everyone is already occupied, more lines just means more phones ringing at the same busy staff, which can make the rush feel worse rather than better."
+  - question: "Is voice AI a replacement for a hunt group?"
+    answer: "It solves a different constraint. A hunt group distributes calls across people you have; an agent handles calls without consuming a person. Many restaurants end up with both — an agent for routine calls and a hunt group for the escalations that reach staff."
+  - question: "What's the cheapest thing to try first?"
+    answer: "Find out whether your misses are busy signals or ring-outs. Busy signals mean you need more concurrent capacity, which is a lines-and-routing fix. Ring-outs mean the calls are arriving and nobody is free, which more lines won't help at all."
+---
+
+Adding lines and configuring a hunt group is the traditional restaurant answer to a phone that's always busy, and it does fix a real problem: callers hitting a busy signal because your one line is occupied. What it doesn't fix is the more common problem, which is that the calls arrive fine and nobody is free to answer them.
+
+That distinction is the whole comparison. A hunt group multiplies the paths a call can take to reach a person. It doesn't create the person. If your constraint is people, more lines mostly means more ringing.
+
+## Diagnose before you buy
+
+The first thing to determine is whether your missed calls are busy signals or ring-outs, because they point at completely different fixes.
+
+**Busy signals** mean your concurrent call capacity is the limit — a second caller literally cannot get through while the first is on the line. That's a phone system problem and more lines genuinely solve it.
+
+**Ring-outs and abandons** mean calls are arriving and going unanswered because everyone is busy. That's a staffing or coverage problem, and adding lines does nothing for it.
+
+Most restaurants running a modern VoIP system already have multiple concurrent call capacity and are experiencing the second problem while shopping for the first solution. Your phone system's call logs usually distinguish these; the counting method in [how many calls does your restaurant actually miss](/blog/how-many-calls-does-your-restaurant-miss) works too.
+
+## What a hunt group does well
+
+Give it credit where it's due.
+
+- **Eliminates the busy signal.** Callers reach a ring instead of a tone, which is a meaningful experience difference.
+- **Distributes across stations.** The bar phone, the office, the host stand — whoever is free can take it.
+- **Provides failover.** If one handset is down or one person steps away, calls still land somewhere.
+- **Costs relatively little.** It's usually a configuration change on a system you already have, not a new vendor.
+
+For a restaurant with a couple of staff who are genuinely available and one line that keeps getting tied up, this is the right fix and it's cheap.
+
+## Where hunt groups break down
+
+Three failure modes, all common in restaurants.
+
+**Ringing everywhere means nobody answers.** A simultaneous-ring hunt group across four handsets creates a diffusion-of-responsibility problem. Each person assumes someone closer will grab it. This is well known to anyone who has worked a floor.
+
+**Sequential ringing adds delay.** If it rings the host for four rings, then the bar for four, then the office, the caller has waited a long time before anyone picks up. A meaningful share hang up during that.
+
+**It rings busy people.** This is the core one. During the rush, every destination in your hunt group belongs to someone with a guest in front of them. Adding a fifth handset to the group doesn't add a fifth person with free hands. The interruption cost — covered in [reducing host stand phone interruptions](/blog/reduce-host-stand-phone-interruptions) — actually goes up, because now more stations get pulled away.
+
+## What a voice agent does differently
+
+The structural difference is that an agent handles a call without consuming a person. That changes two things.
+
+**Concurrency without staff.** Multiple callers can be handled simultaneously without any of them queuing behind each other or interrupting the floor. This is the constraint that fails hardest on game days, holidays, and Friday peaks.
+
+**Coverage when nobody exists.** After close, before open, mid-shift-change — a hunt group with nobody logged in rings out. An agent doesn't have a schedule. That's the case laid out in [24/7 restaurant phone answering](/blog/24-7-restaurant-phone-answering-after-hours).
+
+The honest limits: an agent isn't better than a good human on judgment calls, complaints, or a regular who wants a conversation. It requires setup — your menu, hours, and rules loaded correctly — and a badly configured one confidently gives wrong answers at scale. And it costs a recurring fee where a hunt group is often a free config change.
+
+## The comparison, honestly
+
+For a restaurant whose only problem is a single line getting tied up during modest call volume, a hunt group is cheaper and sufficient. Don't buy software for a configuration problem.
+
+For a restaurant whose calls arrive and ring out because the team is slammed, more lines are the wrong tool entirely. The choice there is between adding a person dedicated to the phone — real, effective, and expensive to staff for a two-hour spike — and automating the routine calls. We work through that tradeoff in [phone coverage during a staffing shortage](/blog/restaurant-staffing-shortage-phone-coverage).
+
+Worth noting they aren't exclusive. A common setup is an agent handling routine calls with a hunt group behind it for escalations, so a caller who needs a person reaches whoever is free rather than one specific handset. That combination uses each tool for what it's actually good at.
+
+## Questions to ask before changing anything
+
+- Are we getting busy signals, or ring-outs? Check the logs rather than guessing.
+- How many concurrent calls can our current system actually handle?
+- When calls ring in a group, who is realistically free to answer during our peak?
+- What share of our calls are routine — hours, orders, status — versus needing judgment?
+- What happens to calls outside operating hours right now?
+
+That last one catches a lot of operators off guard. Hunt groups do nothing at 11pm, and the after-hours calls are often a bigger gap than the peak-hour ones.
+
+## The bottom line
+
+Hunt groups and voice agents solve different constraints, and picking between them starts with knowing which constraint you have. If callers hear a busy signal, add lines and configure a hunt group — it's cheap and it works. If calls ring out because everyone is occupied, more ringing destinations makes the rush worse, not better, and the real choice is between dedicated staff and automation. Check your call logs for busy signals versus ring-outs before spending anything, look at your after-hours gap separately, and don't assume the two options are mutually exclusive.

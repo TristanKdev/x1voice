@@ -1,0 +1,85 @@
+---
+title: "A Practical Guide to Restaurant Phone Analytics"
+description: "Most restaurants have call data they've never looked at. Here's which numbers actually matter, where to find them, and how to avoid drawing confident conclusions from bad data."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "What phone metrics should a restaurant actually track?"
+    answer: "Start with four: total call volume by hour and day, answer rate, abandoned calls, and what share of calls are orders versus questions. Those four tell you whether you have a coverage problem and when it happens, which is enough to make decisions."
+  - question: "Where does this data come from?"
+    answer: "Most VoIP and cloud phone systems log call volume, duration, and missed calls in a dashboard nobody opens. Your POS may separate phone orders from other channels. If you're on a basic landline, you may need a manual count instead, which still works."
+  - question: "How much data do I need before I trust it?"
+    answer: "Several weeks, and be careful about seasonality. A single week during a holiday or a slow stretch will mislead you. Compare like periods, and be suspicious of any conclusion that rests on one unusual week."
+  - question: "What's the most common mistake in reading call data?"
+    answer: "Not excluding spam and wrong numbers. A meaningful share of inbound calls at many restaurants aren't customers at all, and leaving them in distorts your answer rate and your conversion numbers in ways that make everything look worse or better than it is."
+---
+
+Most restaurants have more phone data than they realize and use almost none of it. The dashboard in your phone provider's portal has been logging call volume and missed calls for years. Opening it is usually the highest-return thirty minutes available, because it turns "we think we miss a lot of calls" into a number you can act on.
+
+The four metrics worth starting with are call volume by time, answer rate, abandoned calls, and the mix of what people are calling about. Everything else is refinement, and most of it isn't worth the effort until those four are telling you something.
+
+## Where the data lives
+
+Before deciding what to measure, find out what you already have.
+
+**Your phone provider's dashboard.** Most VoIP and cloud systems log inbound volume, duration, missed calls, and often time-of-day breakdowns. This is the primary source for most restaurants and the one most commonly ignored.
+
+**Your POS.** If it distinguishes phone orders from walk-in, online, and delivery-app orders, that's your conversion denominator — you can compare calls received to orders placed.
+
+**A voice agent or answering platform**, if you use one, which typically provides call logs, transcripts, and outcome data at more granularity than a phone system does.
+
+**Manual counting**, if you're on a basic landline with no logging. A tally sheet by the phone for one representative week produces real numbers. The method is in [how many calls does your restaurant actually miss](/blog/how-many-calls-does-your-restaurant-miss).
+
+## The four metrics that matter first
+
+**Call volume by hour and day of week.** This is the foundation, because it tells you when your problem is. Most restaurants find volume concentrates into a few narrow windows rather than spreading evenly, and that shape determines whether the fix is scheduling, routing, or coverage.
+
+**Answer rate.** Calls answered divided by calls received. Look at it by time window, not just overall — an 85% overall answer rate can hide a 50% rate during your dinner rush, which is where all the money is.
+
+**Abandoned calls.** Callers who hung up before being answered, or during a hold or menu. This is the most direct measure of caller frustration, and a high abandon rate on a menu is a strong argument for removing your phone tree.
+
+**Call mix.** Roughly what share of calls are orders, hours and directions questions, order status checks, reservations, complaints, and spam. This one usually requires a sample rather than full data — listening to or reviewing fifty calls tells you a lot. It's also the metric that most changes what you should do, since a restaurant whose calls are 60% hours questions has a very different problem than one whose calls are 80% orders.
+
+## Metrics worth adding once the basics work
+
+- **Time to answer.** How long callers wait before someone picks up. Correlates strongly with abandonment.
+- **Call-to-order conversion.** Of calls that were order intents, how many became orders. Requires connecting call data to POS data, which is more work but is the number closest to revenue.
+- **Average phone order ticket**, compared to your other channels. Useful for valuing coverage improvements.
+- **Containment rate**, if you run an automated system — what share of calls were fully handled without a human. Covered in detail in [measuring call containment rate](/blog/measuring-call-containment-rate).
+- **After-hours volume.** Calls arriving when you're closed. Often larger than operators expect and entirely invisible without looking.
+
+## How to avoid fooling yourself
+
+Bad conclusions from call data are common and mostly come from a handful of predictable mistakes.
+
+**Not excluding spam and wrong numbers.** At many restaurants these are a real share of inbound volume, and leaving them in inflates your call count and depresses your answer rate and conversion. Filter them or at least estimate them. Spam volume also tends to be steadier than customer volume, so it skews quiet hours most.
+
+**Too small a sample.** One week is noise. Seasonality, weather, a local event, or a holiday can dominate a short window entirely.
+
+**Comparing unlike periods.** A December against a February tells you about seasons, not about the change you made.
+
+**Changing several things at once.** If you add lines, publish your hours, and install a new system in the same month, you learn that something worked. You don't learn which, and you'll keep paying for all three.
+
+**Averages hiding the problem.** Almost every restaurant phone problem is concentrated in specific windows. An overall average is the number most likely to hide it.
+
+## Turning numbers into a decision
+
+Data is only worth collecting if it changes what you do. Some common readings and what they point at:
+
+- **High volume and low answer rate in two or three narrow windows** — a coverage problem for those windows specifically, which is a much cheaper fix than a general staffing one.
+- **Substantial after-hours volume** — you're losing orders to hours nobody covers at all, which is the easiest gap to close.
+- **High abandon rate during a menu or hold** — your routing is costing you callers before they ever reach anyone.
+- **A large share of calls being hours, parking, and directions** — publish those answers where people look and watch the volume drop.
+- **Call volume fine, but order errors high** — this isn't a coverage problem at all, it's an accuracy problem. See [improving phone order accuracy](/blog/improving-phone-order-accuracy).
+- **Low miss rate overall** — genuinely useful. It means this isn't where your revenue is leaking and you can stop thinking about it.
+
+That last one deserves emphasis. Measuring to rule something out is a real result, and it saves you from buying a solution to a problem you don't have.
+
+## Set a baseline before you change anything
+
+If you're considering any change to how your phone is handled, capture several weeks of the four core metrics first. Without a baseline, you'll be evaluating the change on impressions, and impressions about phone volume are unreliable in both directions.
+
+Then change one thing, wait a few weeks, and compare like periods. It's slower than it feels like it should be, and it's the only way to know whether you bought something that worked. The related vendor-facing metrics are in [voice AI metrics and KPIs for restaurants](/blog/voice-ai-metrics-kpis-restaurants).
+
+## The bottom line
+
+Your phone system has been collecting data you've probably never looked at, and four numbers — volume by time, answer rate, abandons, and call mix — are enough to tell you whether you have a problem and when it happens. Pull them before you buy anything. Exclude spam, use several weeks rather than one, and look at your peak windows separately, because averages hide exactly the problem you're trying to find. Then change one thing at a time and compare against your baseline. And if the numbers come back healthy, treat that as a real finding rather than a disappointment.

@@ -1,0 +1,82 @@
+---
+title: "Menu Sync in Voice AI: What It Actually Means and Where It Breaks"
+description: "A deep look at how a voice agent stays current with your menu, why one-way and two-way sync differ, and the failure modes worth asking a vendor about."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "What's the difference between one-way and two-way menu sync?"
+    answer: "One-way sync pulls your menu from the POS into the voice system so the agent knows what exists and what it costs. Two-way adds the reverse: the order the agent takes is written back into the POS as a real ticket. Most restaurants need both, and a vendor advertising 'menu sync' may only mean the first one, so ask explicitly."
+  - question: "How fast should an 86'd item disappear from the phone agent?"
+    answer: "As close to immediately as the POS allows, because the gap is exactly when you sell something you don't have. Push-based systems, where your POS notifies the voice platform of a change, are faster than poll-based ones that check every few minutes. Ask which model the vendor uses and what the worst-case delay looks like."
+  - question: "What happens if the sync breaks?"
+    answer: "The important question is what the agent does when it can't confirm the menu is current. A system that keeps taking orders against a stale cache will sell 86'd items; one that degrades to information-only or hands off to staff will lose some orders but won't create ticket disputes. Neither is free, and you should know which behavior you're buying."
+  - question: "Do I still have to maintain the menu manually?"
+    answer: "Less, but not never. Sync keeps items, prices, and availability current automatically. What it usually can't infer is the language side — how customers actually say an item out loud, common nicknames, and which modifiers are realistic substitutions. That layer generally needs a human pass at setup and after big menu changes."
+---
+
+"Menu sync" appears on nearly every voice AI feature list, and it covers at least four different things. Understanding which one a vendor means is the difference between a system that reflects your kitchen in real time and one that confidently sells a caller something you 86'd at noon.
+
+The four layers, in rough order of difficulty: knowing what items exist and what they cost, knowing what's available right now, knowing how customers actually refer to those items out loud, and writing the finished order back into the POS as a real ticket. A vendor can be excellent at one and weak at another, which is why the question "do you sync with my POS?" doesn't get you very far.
+
+## Layer one: the catalog
+
+This is the foundation — item names, prices, categories, and modifier groups pulled from your POS. It's the easiest layer and the one everyone does.
+
+The failure mode here isn't technical, it's data quality. Most restaurant POS menus have accumulated cruft: items that were seasonal three years ago, duplicate entries at different prices, modifier groups built for one item and reused where they don't apply, and internal shorthand in item names that means nothing to a customer. Sync faithfully imports all of it.
+
+This is why the highest-value hour in onboarding is reading the imported menu against reality, which we flag in the [onboarding checklist](/blog/ai-phone-onboarding-checklist-restaurants). The cleanup is worth doing regardless — those inconsistencies were already confusing your own staff.
+
+## Layer two: availability, and the 86 problem
+
+Knowing an item exists is different from knowing you have it right now. This is where menu sync earns its keep and where it most often disappoints.
+
+Two mechanisms are common. **Polling**: the voice platform asks your POS for the current menu state on a schedule, every few minutes. **Push**: your POS notifies the voice platform the moment something changes. Push is faster and requires the POS to support outbound notifications, which not all do. Polling always has a window, and that window is exactly when the agent will sell something you don't have.
+
+Ask three questions. Which mechanism does the integration use for my specific POS? What's the worst-case delay between marking an item unavailable and the agent knowing? And can I 86 something directly from the voice platform if the POS path is slow?
+
+The last one matters more than it sounds. During a rush, whoever discovers you're out of an item is at the pass, not at the POS terminal. A system that lets any staff member 86 something from a phone in ten seconds beats a faster sync that nobody triggers. We go further into the real-time side in [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) and into what goes wrong in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes).
+
+## Layer three: the language layer
+
+Your POS calls it "SM CHZ PIZZA." Your customer calls it "a small cheese." Neither the POS nor a generic import knows they're the same thing.
+
+This layer is about mapping how people actually order — nicknames, abbreviations, the way regulars describe things, common mispronunciations, and the modifier phrasings customers use that don't match your modifier group names ("no onions" versus a modifier called "ONION REM"). It also covers realistic substitutions: which swaps are actually allowed, which cost extra, and which are physically impossible.
+
+Sync doesn't generate this. It has to be built, usually at setup with a human pass and then refined by reading transcripts of real calls where the agent didn't understand something. That refinement loop is the actual maintenance work of running a voice agent, and it's covered in [training a voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu).
+
+Expect this layer to need attention after any significant menu change, not just after item additions. Renaming an item in the POS can silently break the mapping that made it recognizable on the phone.
+
+## Layer four: writing the order back
+
+The order the agent takes has to become a ticket in your POS with the right items, the right modifiers, the right price, and the right destination — pickup, delivery, or table.
+
+This is where "integration depth" separates systems that look similar on a feature list. A shallow integration might create an order but flatten modifiers into a note field, which means your kitchen reads free text instead of getting a properly structured ticket. A deeper one maps every modifier to its POS equivalent, applies the right pricing, and routes to the correct printer or KDS station. We argue this matters more than voice quality in why POS integration depth matters.
+
+Test it directly. Place an order with three modifiers and one substitution, then walk to the expo printer and look at the ticket. The transcript can be perfect and the ticket still wrong.
+
+## What happens when sync fails
+
+Integrations break. The POS has an outage, credentials expire, a version update changes an endpoint. The design question is what the voice agent does in that window.
+
+Three behaviors are possible. It can keep taking orders against its last known menu, which maximizes captured orders and risks selling 86'd items at stale prices. It can degrade to information-only, answering questions but not taking orders. Or it can hand callers to staff.
+
+There's no universally correct choice — a pizza shop at 7pm Friday and a fine-dining room at 3pm Tuesday would reasonably pick differently. What's not acceptable is not knowing which one you've got. Ask the vendor to state the failure behavior explicitly, and ask whether you get notified when sync is stale. Related design questions live in human handoff and failover.
+
+## Multi-location and multi-menu complications
+
+If you run more than one location, ask whether menus are per-location or shared with overrides. Prices, availability, and even item lists commonly differ by store, and a system that assumes one menu per brand will be wrong somewhere.
+
+The same applies to time-based menus. Breakfast versus lunch, happy hour pricing, weekend-only items. The agent needs to know not just what's on the menu but what's on it right now, and daypart handling is a specific capability worth confirming rather than assuming.
+
+## Questions to ask a vendor
+
+- Is your sync one-way or two-way for my specific POS?
+- Push or poll, and what's the worst-case staleness?
+- Can I 86 an item from the voice platform directly, and can any staff member do it?
+- How are modifiers written back — structured, or as a note?
+- What does the agent do when the integration is unavailable?
+- Are per-location menu differences and daypart menus supported?
+- Who updates the language layer when I rename an item?
+
+## The bottom line
+
+Menu sync is four separate capabilities wearing one label. The catalog layer is table stakes, the availability layer determines whether you sell things you don't have, the language layer determines whether the agent understands real customers, and the write-back layer determines whether your kitchen gets a correct ticket. Ask about each one separately, test the write-back with a genuinely complicated order, and get the failure behavior in writing before you find it out on a Saturday.

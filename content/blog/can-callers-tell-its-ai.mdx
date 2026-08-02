@@ -1,0 +1,76 @@
+---
+title: "Can Callers Tell It's AI?"
+description: "Some will, some won't, and the honest plan accounts for both. What actually gives a voice agent away, how customers tend to react, and how to handle the regulars who notice."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Can callers tell they're talking to AI?"
+    answer: "Some can, some can't. Modern systems sound natural enough that many callers don't immediately notice, but a meaningful share figure it out — usually from timing or from how the agent handles something unexpected, not from the voice. Plan on some of your regulars knowing rather than assuming nobody will."
+  - question: "Should we tell callers it's automated?"
+    answer: "Reasonable operators go both ways, and some vendors disclose as a matter of policy. Disclosing sets expectations honestly and avoids the awkward mid-call discovery; not disclosing avoids priming callers to be skeptical before they've experienced that it works. What isn't defensible is denying it if someone asks directly."
+  - question: "How do customers usually react when they realize?"
+    answer: "Most commonly with mild curiosity and then indifference, provided the call went well. Negative reactions cluster around calls that went badly, where 'it was a robot' becomes the explanation for a bad experience. A minority of people dislike it on principle regardless of outcome, and that's worth accepting rather than arguing with."
+  - question: "What should happen if a caller asks for a human?"
+    answer: "They should get one, or a clean path to one — a transfer or a message with a transcript so someone calls back informed. A system that traps a caller who has explicitly asked for a person is the fastest way to turn a small preference into a real complaint."
+---
+
+Some will and some won't, and any plan built on "nobody will notice" is going to meet reality badly. Modern voice agents sound natural enough that a lot of callers don't clock it, especially on a routine order that goes smoothly. But a meaningful share of people figure it out, and among your regulars — who know your staff's voices — the share is higher.
+
+That's the useful starting point, because it moves the question from "can we get away with it" to something more productive: what actually tips people off, how do they react, and what should you do about the ones who notice.
+
+## What gives it away
+
+Not the voice, usually. The tells are behavioral.
+
+**Timing.** The single most common giveaway. A reply that arrives a beat late, or a pause where a person would have said "mm-hm," reads as not-a-person before the caller can articulate why. This is why response speed is an engineering priority and not a vanity metric, as we cover in [sub-second latency](/blog/sub-second-latency-voice-ai-restaurants).
+
+**Handling the unexpected.** A caller asks something slightly off-script — "hey, is Maria working tonight?" — and the response is smooth but oddly generic. That's the moment a lot of people realize.
+
+**Consistency.** The agent never sounds tired, never sighs at 9:50 p.m., never has background kitchen noise behind it. Perfect consistency is itself a signal.
+
+**Not knowing them.** For a regular, the biggest tell is being treated like a stranger. The person who's ordered the same thing every Thursday for three years notices immediately when nobody recognizes their voice.
+
+That last one deserves weight. It's not a technology failure, it's a relationship one, and it's the version of this that actually costs you something.
+
+## How people react
+
+Broadly, three groups.
+
+**Most people don't care, if the call went well.** They wanted food. They got food, quickly, and correctly. The mechanism is not something they spend time on afterward. This is the largest group and it's easy to forget because they don't say anything.
+
+**Some react badly when the call went badly.** This is the important asymmetry. When an order comes out wrong or the caller feels stuck, "it was some AI thing" becomes the explanation and the complaint. The AI didn't necessarily cause the problem, but it becomes the story. Which means the quality of the system matters more than its detectability — a natural-sounding agent that mangles orders will generate more anti-AI sentiment than an obvious one that gets them right.
+
+**A minority object on principle.** Some people don't want to talk to a machine, full stop, regardless of how well it works. Arguing with that position is a waste of energy. Give them a fast path to a human and move on.
+
+## The disclosure question
+
+Whether to say so up front is a genuine judgment call, and the arguments cut both ways.
+
+Disclosing means the caller knows what they're dealing with, which removes the discovery moment and gives them permission to speak clearly. Some vendors do it as policy. Some operators prefer it because it feels straightforwardly honest.
+
+Not disclosing means callers experience the system on its merits before forming an opinion — which matters, because "AI phone system" carries baggage from a decade of bad phone trees that has nothing to do with what modern systems do.
+
+Where the ambiguity ends: if a caller asks directly, the answer should be honest. Denying it is a small lie that becomes a large problem the moment anyone talks about it publicly. We touch on how greeting design interacts with this in [custom greetings and brand voice](/blog/custom-greetings-brand-voice-ai).
+
+Rules around notification and call recording also vary by state, and if you're recording calls that's a separate question worth getting actual legal advice on rather than a vendor's summary.
+
+## The regulars conversation
+
+Your regulars are the group worth thinking about specifically, and the good news is you have a channel to them that you don't have with new customers: your staff, in person.
+
+A restaurant that lets its regulars discover the change on the phone gets a worse reaction than one where the manager mentioned it at the counter last week. "We've got something answering the phone during rushes now so we stop missing calls — if you ever want a person, just say so" is a sentence that costs nothing and preempts most of the friction. It also frames the change accurately, which is the part that makes it land: for most restaurants this is filling a coverage gap, not replacing the people your regulars like.
+
+## Give people the exit
+
+The single most important configuration decision here is what happens when someone asks for a human. It should be immediate and clean — a transfer, or a message with a transcript so somebody calls back already knowing what the caller wanted. Nobody should have to fight the system to escape it.
+
+This is the same escalation logic that governs complaints and edge cases generally, covered in [how AI handles the weird calls](/blog/how-ai-handles-restaurant-edge-cases). The principle is that a system which knows its limits and hands off cleanly is more trustworthy than one that tries to handle everything.
+
+## What this means for your decision
+
+Don't optimize for undetectability. It's the wrong target: it's not fully achievable, it's not what customers actually judge you on, and chasing it can push you toward chattier, slower systems that perform worse.
+
+Optimize instead for calls that go well. A fast, accurate agent that some callers identify as AI produces happier customers than a maximally human-sounding one that gets substitutions wrong. And keep the human path obvious for the people who want it, because that costs you almost nothing and prevents the complaints that actually hurt. The broader version of this argument is in [can AI actually take restaurant phone orders](/blog/can-ai-take-restaurant-phone-orders).
+
+## The bottom line
+
+Yes, some callers will tell — usually from timing or from how the agent handles the unexpected, and reliably among regulars who know your staff. Most won't mind if the call went well. Be honest if asked, tell your regulars before they discover it, always give people a fast route to a person, and put your effort into the call being good rather than the agent being undetectable.
