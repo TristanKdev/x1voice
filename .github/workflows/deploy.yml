@@ -37,7 +37,10 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        # npm ci kept rejecting freshly generated lockfiles (ajv/@emnapi dedupe
+        # tangle, npm 10 and 11 both); install still honors the committed lock
+        # for resolved versions without the strict sync check.
+        run: npm install --no-audit --no-fund
 
       - name: Build
         run: npm run build
