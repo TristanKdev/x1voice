@@ -1,50 +1,57 @@
 ---
 title: "How to Set Up AI Phone Ordering in About 30 Minutes"
-description: "A vendor-agnostic walkthrough of what setting up AI phone ordering really involves: menu import, greeting, POS handoff, test calls, and the slowest steps."
+description: "What setting up AI phone ordering really involves: menu import, greeting, POS handoff, test calls, and the two steps that quietly blow past the half hour."
 publishedAt: "2025-10-22"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Do I need a new phone number?"
-    answer: "No, in almost every case. You forward or route your existing number to the AI system rather than replacing it, so nothing on your menus, signage, or Google listing needs to change."
+    answer: "No, in almost every case. You forward or route your existing number to the system rather than replacing it, so nothing on your menus, signage, or Google listing needs to change. Forwarding is a setting on your current phone provider's account, not a port, and it can be switched back in a minute if you want to go back to ringing the handset."
   - question: "What if the menu changes mid-week?"
-    answer: "Any system worth using lets you edit the live menu yourself (mark an item 86'd, change a price, add a special) without waiting on a vendor to push an update."
+    answer: "Any system worth using lets you edit the live menu yourself. Marking an item 86'd, changing a price, or adding a special should take seconds and take effect on the next call, without a support ticket. Ask this before you sign. A vendor who has to push menu updates on your behalf becomes a bottleneck the first Saturday you run out of something at 7pm."
   - question: "Can I keep a human answering some calls?"
-    answer: "Yes. Most setups let you route by time of day (AI after close, human during the day) or let staff take over a live call mid-conversation if they want to."
+    answer: "Yes. Most setups route by time of day, by call type, or by caller request, so you can have staff answer during the lunch shift and the agent cover after close. Staff can also take over a live call mid-conversation. Decide the rules before launch rather than after, because an undefined escalation path is what makes early calls feel chaotic."
+  - question: "What actually takes longer than 30 minutes?"
+    answer: "Menu cleanup and modifier mapping, almost always. If your item names are inconsistent, your prices differ between dine-in and delivery, or half your modifiers live in the cooks' heads, that work has to happen before the agent can quote anything correctly. Budget an hour or two for a messy menu. The mechanical setup around it really is fast."
+  - question: "How soon can I trust it unattended?"
+    answer: "Give it about a week. The software is ready on day one, but that first week is when the handful of menu edge cases every restaurant has surface on real calls. Read transcripts daily, fix what you find, and by the end of the week the correction rate usually drops to near zero. Going hands-off on day one is the most common way this goes badly."
 ---
 
-Thirty minutes is a realistic number for a single-location restaurant with a menu that's already in reasonably good shape, not a marketing claim. Here's what actually happens during that half hour, whichever vendor you use, and what tends to blow past the 30-minute mark if you're not ready for it.
+Thirty minutes is a realistic number for a single-location restaurant with a menu that's already in reasonably good shape. It is not a marketing claim, and it is not the whole story either. Here's what actually happens during that half hour, whichever vendor you use, and what tends to blow past the mark if you're not ready for it.
 
 ## Before you start: what to have ready
 
-Setup goes fast when you walk in with these already gathered:
+Setup goes fast when you walk in with the inputs gathered. You want your current menu as a POS export or a clean file, not a photo of a printed menu with three years of handwritten price changes on it. You want your modifiers and combos written out, since sizes, toppings, sides and sauces take longer to configure than the base items do. You want your hours, including any different hours for delivery versus pickup. You want login access to your POS if you plan to connect one. And you want a decision already made about which calls should always reach a person.
 
-- **Your current menu**, ideally as a POS export or a clean PDF, not a photo of a printed menu with three years of handwritten price changes on it
-- **Your modifiers and combos** written out (sizes, toppings, sides, sauces) since these take longer to configure than the base menu items
-- **Your hours**, including any different hours for delivery vs. pickup vs. dine-in phone orders
-- **Login access to your POS**, if you're planning to connect one
-- **A decision on escalation**: which calls should always go to a human, if any (catering, complaints, large orders)
-
-If your menu is messy (inconsistent naming, prices that don't match what's actually charged, modifiers that only exist verbally), expect setup to take longer than 30 minutes, because that cleanup work has to happen somewhere. It's worth doing it now regardless of which system you use; a clean menu also makes your POS and online ordering more accurate.
+If your menu is messy, expect setup to take longer, because the cleanup has to happen somewhere. Inconsistent naming, prices that don't match what you actually charge, modifiers that only exist verbally: all of it has to be resolved before an agent can quote a total. Doing that work now pays off regardless of which system you pick, since a clean menu also makes your POS and online ordering more accurate. [Menu naming for voice clarity](/blog/menu-naming-for-voice-clarity) is the piece to read first if you suspect yours needs work.
 
 ## The setup walkthrough
 
-1. **Import the menu (10–15 minutes).** Most platforms let you upload a POS export or CSV, then you review it item by item. This is the step to actually double-check rather than skim. A wrong price or a missing modifier here is what causes a bad customer call later.
-2. **Set your voice and greeting (2–3 minutes).** Pick a voice, write or approve the greeting script (restaurant name, basic framing), and decide whether it should mention specials.
-3. **Configure escalation rules (5 minutes).** Decide what gets transferred live to a staff member, what goes to voicemail with a transcript, and what the AI should handle end to end.
-4. **Connect your POS, if applicable (5–10 minutes).** This is usually an OAuth-style login to your POS account rather than anything technical on your end. If you don't have POS integration available, orders can typically route to a screen, printer, or SMS/email instead.
-5. **Forward your number (2 minutes).** This is a call-forwarding setting through your existing phone provider. You're not porting or changing your number, just telling it where to route.
-6. **Run test calls (5–10 minutes).** Call in yourself. Order something normal, then something slightly odd — a substitution, a "no onions," a question about hours. This is the step people skip and shouldn't.
+**Import the menu, 10 to 15 minutes.** Most platforms take a POS export or a CSV, then hand you the parsed result to review item by item. This is the step to actually check rather than skim. A wrong price or a missing modifier here is what causes a bad customer call three weeks later, and it's far cheaper to catch now.
+
+**Set your voice and greeting, 2 to 3 minutes.** Pick a voice, approve the greeting, decide whether it mentions specials. Keep the greeting short. A caller who has to sit through fifteen seconds of branding before they can say "pickup order" is already annoyed.
+
+**Configure escalation rules, about 5 minutes.** Decide what transfers live to a staff member, what goes to voicemail with a transcript, and what the agent handles end to end. Complaints, catering inquiries, and unusually large orders are the common transfers.
+
+**Connect your POS, 5 to 10 minutes.** This is usually an account login rather than anything technical. X1 Voice connects directly to Square, Clover and OrderCounter, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink, Micros and others through Deliverect. See [integrations](/integrations) for how a given POS connects. If direct integration isn't available on your setup, orders can route to a screen, a printer, or SMS instead.
+
+**Forward your number, about 2 minutes.** A call-forwarding setting on your existing provider. You're not porting or changing anything, just telling the line where to send calls. [Forwarding a Google Voice number](/blog/forwarding-google-voice-to-voice-ai) covers the one case that trips people up.
+
+**Run test calls, 5 to 10 minutes.** Call in yourself from a phone that isn't in the building. Order something normal, then something slightly awkward: a substitution, a "no onions," a question about hours. This is the step people skip and shouldn't. [What to test on a demo call](/blog/voice-ai-demo-what-to-test) has a fuller list.
 
 ## What actually goes wrong
 
-- **Menu items with the same name but different prices** across dine-in and delivery. Decide up front which the phone system should quote.
-- **Modifiers that exist "in the cooks' heads"** but were never written down anywhere, so the AI has no way to know about them until you tell it.
-- **Forwarding set up incorrectly**, so calls ring through but audio doesn't connect. Always end with a real test call from a phone that isn't in the building.
-- **No plan for a system outage.** Ask your vendor what happens if their service goes down: does the call fail silently, or fall back to ringing your phone normally?
+Four failure modes account for most of the trouble.
 
-## After you go live
+Items with the same name but different prices across dine-in and delivery, where nobody has decided which one the phone should quote. Modifiers that exist in the cooks' heads and were never written anywhere, so the agent has no way to know they're options. Forwarding configured so calls ring through but audio doesn't connect, which only surfaces on a real outside call. And no plan for an outage, which is worth asking about directly: if the service goes down, does the call fail silently or fall back to ringing your phone? [Internet outage failover](/blog/internet-outage-phone-failover) is the version of that question you should be asking your internet provider too.
 
-Setup isn't really "done" after the first day. It's worth checking call transcripts for the first week to catch anything the menu import missed (an unusual modifier request, a mispronounced dish name it didn't recognize). Most of what looks like an AI "mistake" in week one turns out to be a menu configuration gap, and it's a five-minute fix once you see it.
+## The first week is the real setup
+
+Setup isn't done when the first test call succeeds. Read call transcripts every day for the first week. What looks like an agent mistake is almost always a menu configuration gap: a dish the import named differently than customers say it, a modifier that wasn't in the export, an availability question nobody anticipated. Each one is a five-minute fix once you can see it, and they run out fast.
+
+Set aside ten minutes a day for this. Not an hour, not a project. Ten minutes with the transcripts, a short list of corrections, and someone who has permission to make them. [Transcript sampling as a QA habit](/blog/transcript-sampling-qa) describes how to keep a lighter version of this running after the first week.
 
 ## The honest timeline
 
-Thirty minutes covers the mechanical setup. Give yourself the better part of a week before you fully trust it unattended — not because the software is slow, but because that's how long it takes to catch the handful of menu edge cases every restaurant has and nobody thinks to mention until a customer asks for it.
+Thirty minutes covers the mechanical setup, and that part genuinely is fast. Setup on X1 Voice is typically complete within 24 hours including the menu review. What takes longer is the confidence, and confidence comes from a week of reading what real callers said and watching the corrections dry up.
+
+If someone tells you a phone agent is fully dialed in the moment it goes live, they're describing the software install, not the deployment. Plan the half hour, then plan the week. The restaurants that do both stop thinking about the phone entirely by day ten. The ones that skip the week spend a month convinced the product is worse than it is, when what they actually had was a menu export nobody read.

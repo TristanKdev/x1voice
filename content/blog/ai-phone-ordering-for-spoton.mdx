@@ -1,44 +1,81 @@
 ---
 title: "AI Phone Ordering for SpotOn: How the Integration Works"
-description: "How X1 Voice takes restaurant phone orders and sends them into SpotOn as clean tickets, with payment on the call. What to check before you buy."
+description: "How X1 Voice reads a live SpotOn menu, takes card payment on the call, and drops phone orders into SpotOn as normal tickets, plus the tests worth running first."
 publishedAt: "2026-03-24"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Does X1 Voice work with SpotOn?"
-    answer: "Yes. X1 Voice reads your live SpotOn menu and sends completed phone orders into SpotOn as normal tickets, through our Deliverect integration. Nobody re-keys the order."
+    answer: "Yes, through our Deliverect integration. X1 Voice reads your live SpotOn menu, prices each call against it, and sends the completed order into SpotOn as a normal ticket that reaches the kitchen the same way your other digital orders do. Nobody re-keys anything. Deliverect is a well-worn path into SpotOn, so the ticket your staff sees is a familiar shape."
   - question: "Can it take payment for SpotOn phone orders?"
-    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in your reporting."
+    answer: "Yes. Callers pay by card during the call for pickup and delivery, and that payment reconciles alongside your other tender types in reporting. Nobody on your staff hears a card number, repeats one back across a counter, or writes one on a ticket, which removes the most common way card data leaks out of a restaurant."
   - question: "How long does SpotOn setup take?"
-    answer: "Usually minutes. You connect your account, import the menu, set hours and rules, test with a live call, and go live, often the same day."
+    answer: "Usually under 24 hours, sometimes the same shift. You connect the account, import the menu, set hours and any phone-only rules, run test calls, and forward the line. The connection is the fast part. The decisions that take real time are which items belong on a phone menu and what the agent should do with the requests your staff field weekly."
+  - question: "Does it work for a table-service restaurant, not just takeout?"
+    answer: "Yes, though the value shifts. In a table-service room the agent earns its keep by absorbing hours, directions, wait-time, and reservation-adjacent calls that pull a host away from the door, rather than by placing large volumes of orders. Decide up front which call types you want handled and which should always reach a person before you judge the results."
+  - question: "What happens when the kitchen 86s something?"
+    answer: "That depends on how your menu sync is configured, which is worth testing rather than assuming. Mark an item unavailable, wait, then call and try to order it. The gap you measure is the window in which a caller can buy food you cannot make, and it should decide whether daily specials belong on the phone menu at all."
 ---
 
-Phone orders are still a real slice of revenue for most restaurants, and if you run SpotOn, the only question that matters about a voice agent is simple: does the order end up in SpotOn correctly? A great-sounding voice that drops a modifier or sends the kitchen the wrong ticket is worse than a missed call.
+If you run SpotOn, the only question that decides whether a voice agent is worth paying for is whether the order lands in SpotOn correctly. Voice quality is the thing vendors demo and the thing that matters least. A pleasant agent that drops a modifier hands you a remake, a refund, and a customer who will not call back, which is worse than the call you simply missed.
 
-Here's how X1 Voice works with SpotOn, and what to check before you buy.
+Here is what the connection does, the way it usually fails, and what to test before you commit.
 
-## The order has to land in SpotOn, cleanly
+## How the order gets from the call into SpotOn
 
-X1 Voice connects to SpotOn through our Deliverect integration. It reads your live menu, prices each phone order against it, and routes the finished ticket into SpotOn so it lands the same way an in-person or online order would. Nobody re-keys anything. The value is in the round trip: [reading the live menu and firing a correctly-modified ticket](/blog/why-pos-integration-depth-matters-more-than-voice-quality), not just sounding human on the call.
+X1 Voice reaches SpotOn through Deliverect, the middleware many restaurants already run to pull third-party orders into their POS. The agent reads your live SpotOn menu with its modifiers and prices, holds the conversation against that menu, and writes the finished order back as a ticket that fires the way your other digital orders fire.
 
-The one thing to test with any vendor, SpotOn or otherwise, is a deliberately awkward order — "no onions, sub fries, add a drink, apply the coupon" — and confirm it arrives in the POS right, not just that the voice repeated it back.
+The round trip is the whole value. A system that sounds human and then hands a staff member a transcript to key in during a rush has relocated the work rather than removed it, which is the argument laid out in [why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality). Ask any vendor to show you the ticket, not the conversation.
 
-## Payments and reporting
+If you want the step-by-step of what the route looks like in practice, [the SpotOn voice order flow](/blog/spoton-voice-order-flow) walks it end to end.
 
-Callers can pay by card on the phone for pickup and delivery. That payment reconciles alongside your other tender types, so your end-of-day numbers stay in one place. Staff never read a card number out loud or write one down.
+## What it changes on a real shift
 
-## Setup
+Not silence. The end of triage.
 
-Connecting SpotOn takes minutes, not a six-week project: link your account, import the menu, set your hours and any phone-only rules, run a test call, and go live. Most single-location restaurants are live the same day, and our team can handle white-glove setup if you'd rather.
+Take 6:30 on a Friday. Your host is seating a table, two guests are waiting to be greeted, and the phone rings three times inside two minutes. Today one of those calls gets answered, badly, while a guest stands there. The other two hear ringing and call somewhere else.
 
-If you run more than SpotOn across locations, that's fine too — X1 Voice reaches [80+ POS systems](/integrations), directly or through Deliverect, so a mixed estate isn't a blocker.
+With an agent on the line, all three are picked up immediately. Two pickup orders write into SpotOn with times attached. The third caller asks about parking and gets the answer you configured, and if you never configured one, it escalates to the host as a single interruption instead of three.
 
-You can read more about SpotOn on their [official site](https://www.spoton.com).
+The labor effect is real and modest. Multiply your calls per shift by your honest average handle time and you get the floor minutes returned. Use your own numbers. The version on a vendor slide is almost always generous.
 
-## Where restaurant operators discuss this
+## Decide the handoff before you go live
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+This is the setting operators skip and later regret. Complaints, large catering inquiries, and any caller who asks twice for a person should reach a person, and the agent should hand off cleanly rather than trying one more clarifying question. Those are policy choices you make, not limits you discover in a bad review. [Human handoff and failover](/blog/human-handoff-failover-voice-ai) covers how to write the rules and, just as important, how to confirm the escalation rings somewhere a human will actually hear it mid-rush.
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+## The failure mode: the menu drifts
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+Everything matches on day one because you just imported it. Six weeks later it does not.
+
+The kitchen 86s the special every Saturday by eight. A limited-time item goes into SpotOn under a name no caller would ever say out loud. A price moves on the register and the phone quote stays where it was. None of that raises an error anywhere. It shows up as a customer arriving for food you cannot make, or a small tax discrepancy at close that nobody wants to chase down.
+
+The fix is procedural. Whoever owns the SpotOn menu owns the phone menu, and every menu change earns a test call the same week. The specific ways sync goes sideways are catalogued in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes), and it is worth twenty minutes before you go live.
+
+## Payment on the call
+
+Callers can pay by card while they are still on the phone for pickup and delivery, and the payment reconciles alongside your other tender types, so end-of-day close does not sprout a new manual pile.
+
+The underrated benefit is what stops happening. No digits read aloud at a counter, no card number written on a ticket sitting by the register until close, no staff member holding a stranger's payment details in their head. That path is gone.
+
+## The numbers to check in the first month
+
+Four, in order of how much they should influence you.
+
+Answered-call rate moves immediately and is the reason you bought this. Order accuracy matters most, and the only credible way to measure it is pulling twenty phone tickets and checking them against transcripts rather than reading a dashboard. Escalation reasons are your work list once you sort them into handoffs that were correct by design and handoffs that were defects. Average phone ticket tells you whether the agent's prompts do anything, and it is the number most easily flattered by a small sample.
+
+If accuracy holds and answered-call rate goes from something like 70 percent to near 100, the system is doing its job. If accuracy slipped, stop everything else and fix the menu.
+
+One trap in that first month is counting every phone order as new revenue. Some share of it is volume you were already capturing, just through a different door, and reading the lift honestly means separating the two. [Attribution between phone and online orders](/blog/attribution-phone-vs-online-orders) covers how to set that up so the month-two review is a real number instead of a flattering one.
+
+## Setup, realistically
+
+Connecting takes minutes. Being ready to go live takes about a day.
+
+You link SpotOn through Deliverect, import the menu, set hours and phone-only rules, run test calls including one deliberately awkward order, then forward your number. Most single locations are live inside 24 hours, and our team will handle the menu pass if you would rather not. Plans start at $250 per month.
+
+Mixed estates are fine. X1 Voice connects directly to Square, Clover and OrderCounter and reaches SpotOn, Toast, Lightspeed, TouchBistro, Aloha, Revel, PAR Brink and Micros through Deliverect, so locations on different systems can run the same phone experience. The current list lives on the [integrations page](/integrations).
+
+## The test that settles it
+
+Call the demo line, from us or any vendor, and place the worst order your kitchen sees. No onions, sub the fries, add a drink, apply the promo, then change your mind about the size. Look at the ticket that comes out.
+
+If the ticket is right, the rest is tuning. If the voice repeated your order back perfectly and the ticket is wrong, no amount of onboarding will fix that, and you learned it in five minutes rather than over a season of comps.

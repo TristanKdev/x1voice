@@ -1,44 +1,73 @@
 ---
-title: "AI Phone Ordering for Revel Systems: How the Integration Works"
-description: "How X1 Voice takes restaurant phone orders and sends them into Revel Systems as clean tickets, with payment on the call. What to check before you buy."
+title: "AI Phone Ordering for Revel Systems: How It Works"
+description: "How X1 Voice writes phone orders into Revel as clean tickets, what the Deliverect connection changes about menu syncs, and the test to run before you buy."
 publishedAt: "2026-04-07"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Does X1 Voice work with Revel Systems?"
-    answer: "Yes. X1 Voice reads your live Revel Systems menu and sends completed phone orders into Revel Systems as normal tickets, through our Deliverect integration. Nobody re-keys the order."
-  - question: "Can it take payment for Revel Systems phone orders?"
-    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in your reporting."
-  - question: "How long does Revel Systems setup take?"
-    answer: "Usually minutes. You connect your account, import the menu, set hours and rules, test with a live call, and go live, often the same day."
+    answer: "Yes, through our Deliverect integration. X1 Voice reads your published Revel menu, prices each phone call against it, and writes the completed order back into Revel as a normal ticket so nobody re-keys it at the counter. The prerequisite is that your Revel menu is published to Deliverect, which is already true for most operators who push to delivery marketplaces."
+  - question: "Can it take payment for Revel phone orders?"
+    answer: "Yes. Callers pay by card during the call for pickup and delivery, and the payment reconciles alongside your other tender types in reporting. Staff never hear a card number, write one on a ticket, or key one into a terminal. You can also run phone orders as pay-at-pickup if that matches how you close out the day."
+  - question: "How long does Revel setup take?"
+    answer: "Typically under 24 hours once your menu is published to Deliverect. Connecting the account and setting hours, delivery rules and escalation behavior takes minutes. The part that deserves real attention is reading through the imported item and modifier names and fixing the ones that sound like screen labels rather than words a person would say."
+  - question: "What happens when the agent isn't confident about an order?"
+    answer: "It should hand off, and you set the rules for when. Complaints, catering above a threshold, or anything it has asked about twice without a clear answer should transfer to a staff phone during service or leave a message with a full transcript outside hours. Treat a vendor claiming no call ever needs a person as a warning rather than a feature."
+  - question: "Will phone orders be separated in reporting?"
+    answer: "They arrive tagged as their own order source, so phone revenue can be read apart from dine-in and online. That split is the number that settles whether the agent is worth its cost: it tells you whether you are capturing orders that used to ring out or simply moving orders that staff were already answering, which are two very different business cases."
 ---
 
-Phone orders are still a real slice of revenue for most restaurants, and if you run Revel Systems, the only question that matters about a voice agent is simple: does the order end up in Revel Systems correctly? A great-sounding voice that drops a modifier or sends the kitchen the wrong ticket is worse than a missed call.
+If you run Revel, one question decides whether a voice agent is worth buying: does a finished phone order land in Revel as a correct ticket, priced the way the register would have priced it? Voice quality is the part every demo leads with and the least useful thing to judge. An agent that sounds excellent and drops a modifier costs you more than a call that rang out, because you make the food twice and the person on the other end was already your customer.
 
-Here's how X1 Voice works with Revel Systems, and what to check before you buy.
+X1 Voice reaches Revel through Deliverect. Your published items, prices and modifier groups come across, the agent prices each call against them, and the completed order is written back as a normal order. Nobody re-types anything.
 
-## The order has to land in Revel Systems, cleanly
+That routing is worth understanding rather than skipping, because it explains both what setup asks of you and where the system will occasionally get in your way.
 
-X1 Voice connects to Revel Systems through our Deliverect integration. It reads your live menu, prices each phone order against it, and routes the finished ticket into Revel Systems so it lands the same way an in-person or online order would. Nobody re-keys anything. The value is in the round trip: [reading the live menu and firing a correctly-modified ticket](/blog/why-pos-integration-depth-matters-more-than-voice-quality), not just sounding human on the call.
+## What the Deliverect connection changes
 
-The one thing to test with any vendor, Revel Systems or otherwise, is a deliberately awkward order — "no onions, sub fries, add a drink, apply the coupon" — and confirm it arrives in the POS right, not just that the voice repeated it back.
+A direct integration talks to the POS. A channel integration talks to middleware that talks to the POS. Three things follow.
 
-## Payments and reporting
+Your Revel menu has to be published to Deliverect first. If you already push to delivery marketplaces, this exists and setup is short. If you don't, publishing the menu is the actual first task and it is the step most likely to add a day to the schedule.
 
-Callers can pay by card on the phone for pickup and delivery. That payment reconciles alongside your other tender types, so your end-of-day numbers stay in one place. Staff never read a card number out loud or write one down.
+Menu changes land on a sync, not on the next ring. A price change on that cadence is harmless. An item you 86 at 7pm on a Saturday is not, which is why you want a clear answer about how sold-out items are handled before you trust the agent to tell callers what is available. [Voice AI and POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes) covers what to ask.
 
-## Setup
+Names come across as whatever they are in Revel. Menus that have been running for a few years accumulate item names built for a tap target rather than for speech: abbreviations, internal codes, sizes glued to the front. The agent inherits all of it and will say it aloud on a call. That is the most common reason a working agent sounds wrong on its first day, and it is a naming job rather than a software defect. Read your item list aloud once and you will find them in about ten minutes.
 
-Connecting Revel Systems takes minutes, not a six-week project: link your account, import the menu, set your hours and any phone-only rules, run a test call, and go live. Most single-location restaurants are live the same day, and our team can handle white-glove setup if you'd rather.
+## What it looks like on a real shift
 
-If you run more than Revel Systems across locations, that's fine too — X1 Voice reaches [80+ POS systems](/integrations), directly or through Deliverect, so a mixed estate isn't a blocker.
+It's 6:45 on a Friday. Two lines are ringing, the counter is four deep, and somebody wants to know whether the sauce has dairy in it.
 
-You can read more about Revel Systems on their [official site](https://revelsystems.com).
+The agent answers on the second ring, takes a pickup order with a substitution and a hold, charges the card, and the ticket prints at expo with the modifier attached. Nobody behind the counter looked up. A second caller asks about catering for thirty on Sunday, and the agent doesn't attempt it: it captures the name, number, headcount and date, transfers if a manager is on the floor, and leaves a transcript if not.
 
-## Where restaurant operators discuss this
+That second behavior is the one worth checking in a demo, and it is a configuration decision rather than a capability. [Human handoff and failover](/blog/human-handoff-failover-voice-ai) covers how to write those rules so the agent hands off on the calls you actually want a person taking.
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+The gain shows up in calls you currently have no record of. A phone ringing out during a rush leaves no trace, which is exactly why most operators underestimate their own miss rate. Count a typical week's missed calls, multiply by your average ticket, and check the number before deciding the problem is too small to solve.
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+## The failure mode nobody puts in a demo
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+Modifier structure, and it is worth being direct about it.
+
+Menus grow by accretion. Somebody adds a half-and-half option to one item and not its sibling. Somebody builds three sizes as three separate items instead of a size group. A required modifier group carries a default that only makes sense with a person standing at the screen. None of this hurts you today, because the employee ringing it in knows what the buttons mean and works around the structure without thinking about it.
+
+An agent has no such judgment. It follows the structure literally, so it will either refuse a combination that is obviously fine or fire a ticket that validates and is wrong in the kitchen.
+
+The fix is structural rather than conversational, and for most menus it is a couple of hours of one-time work. [Simplifying modifier trees](/blog/simplifying-modifier-trees) covers the specific shapes that break.
+
+So test for it. Ask any vendor to take a deliberately awkward order on your real menu, not a sample: "large, half one way half the other, no onions on the second half, sub the side, add a drink, apply the promo." Then walk to the printer and look at the ticket. Do not accept the agent repeating the order back correctly as evidence. The repeat-back and the injected ticket are two different systems, and only one of them feeds the line. That is why integration depth decides this purchase and voice quality does not.
+
+## The numbers to pull after a month
+
+Four, and they take about twenty minutes.
+
+Answered-call rate, which should approach 100 percent and is the reason you bought it. Order accuracy, measured by reading a sample of phone tickets against their transcripts rather than trusting a dashboard, using the [order accuracy measurement method](/blog/order-accuracy-measurement-method). Escalation reasons, sorted into "by design" and "by defect," where only the defect bucket is a to-do list. And phone revenue against the same weeks before you turned it on.
+
+If answered calls went up and phone revenue did not, the agent is absorbing calls that staff were already picking up. That still buys you labor back, but it is a different case than incremental revenue, and you should know which one you are making rather than assuming the better one.
+
+## What setup actually costs in time
+
+The connection is minutes. Reviewing what came across is the part that takes a person's attention.
+
+Plan on someone sitting with the imported menu once, reading item names aloud, and fixing the ones that sound like database fields. Set hours, delivery zones if you deliver, and any phone-only rules such as a delivery minimum. Then place five or six test calls yourself and order the way your regulars talk rather than the way the menu is written. Most single locations are live well inside a day, and plans start at $250 a month, which you can size against your own call volume on the [pricing page](/pricing).
+
+If you run Revel at some locations and something else at others, that is not a blocker. X1 Voice connects directly to Square, Clover and OrderCounter and reaches the rest of the [supported POS list](/integrations) through Deliverect, so a mixed estate runs on one agent configuration.
+
+The decision rule is small enough to run this week. Place five hard test calls on your own menu, walk to the printer each time, and count how many produced a ticket you would have been happy to see a new hire ring in. Five means the integration is doing its job. Three means the problem is almost certainly your modifier structure rather than the voice, and that is worth fixing before you sign anything.

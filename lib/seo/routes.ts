@@ -56,8 +56,9 @@ const STATIC_ROUTES: SiteRoute[] = [
   },
   {
     path: "/pricing",
-    title: "Pricing",
-    description: "X1 Voice pricing tiers.",
+    title: "AI Phone Ordering Pricing for Restaurants",
+    description:
+      "Plans that scale with call volume, with no setup fee and no long-term contract. Every plan includes the same features; only minutes and overage change.",
     index: true,
     section: "pages",
     changeFrequency: "monthly",
@@ -65,8 +66,9 @@ const STATIC_ROUTES: SiteRoute[] = [
   },
   {
     path: "/features",
-    title: "Features",
-    description: "What X1 Voice does.",
+    title: "Features: What the AI Phone Agent Does",
+    description:
+      "Round-the-clock call answering, orders with modifiers and substitutions, card payments by phone, POS sync, after-hours coverage, and per-call reporting.",
     index: true,
     section: "pages",
     changeFrequency: "monthly",
@@ -74,8 +76,9 @@ const STATIC_ROUTES: SiteRoute[] = [
   },
   {
     path: "/about",
-    title: "About",
-    description: "About X1 Voice.",
+    title: "About X1 Voice",
+    description:
+      "Why we built an AI phone agent for restaurants: too many calls go unanswered during the rush, and every missed call is an order that went elsewhere.",
     index: true,
     section: "pages",
     changeFrequency: "monthly",
@@ -83,8 +86,9 @@ const STATIC_ROUTES: SiteRoute[] = [
   },
   {
     path: "/contact",
-    title: "Contact",
-    description: "Get in touch with X1 Voice.",
+    title: "Contact X1 Voice Sales and Support",
+    description:
+      "Reach the team by phone or email, or send a message directly. Sales and support contacts, plus live demo booking, all on one page.",
     index: true,
     section: "pages",
     changeFrequency: "yearly",
@@ -92,8 +96,9 @@ const STATIC_ROUTES: SiteRoute[] = [
   },
   {
     path: "/solutions",
-    title: "Solutions by Restaurant Type",
-    description: "X1 Voice for every kind of restaurant.",
+    title: "Voice AI by Restaurant Type",
+    description:
+      "How the phone agent adapts to pizzerias, fast casual, fine dining, ghost kitchens and more: the menu quirks, call patterns and rules that differ by format.",
     index: true,
     section: "pages",
     changeFrequency: "monthly",
@@ -101,8 +106,9 @@ const STATIC_ROUTES: SiteRoute[] = [
   },
   {
     path: "/compare",
-    title: "Compare X1 Voice",
-    description: "How X1 Voice compares to alternatives.",
+    title: "Compare Restaurant Phone Answering Options",
+    description:
+      "Feature-by-feature comparisons against the other ways restaurants handle calls: answering services, IVR phone trees, extra staff, and rival voice agents.",
     index: true,
     section: "pages",
     changeFrequency: "monthly",
@@ -110,8 +116,9 @@ const STATIC_ROUTES: SiteRoute[] = [
   },
   {
     path: "/integrations",
-    title: "Integrations",
-    description: "POS and platform integrations.",
+    title: "POS Integrations",
+    description:
+      "How phone orders reach Square, Clover and OrderCounter directly, and Toast, Lightspeed, TouchBistro, SpotOn and others through Deliverect.",
     index: true,
     section: "pages",
     changeFrequency: "monthly",
@@ -119,8 +126,9 @@ const STATIC_ROUTES: SiteRoute[] = [
   },
   {
     path: "/locations",
-    title: "Locations We Serve",
-    description: "Restaurants using X1 Voice across the US.",
+    title: "Cities and Regions We Serve",
+    description:
+      "Restaurants running X1 Voice across US cities and metros, what local setup involves, and how multi-location and franchise rollouts are handled.",
     index: true,
     section: "pages",
     changeFrequency: "monthly",
@@ -128,8 +136,9 @@ const STATIC_ROUTES: SiteRoute[] = [
   },
   {
     path: "/blog",
-    title: "Blog",
-    description: "Articles on AI phone ordering for restaurants.",
+    title: "Restaurant Phone Ordering Blog",
+    description:
+      "450 articles for restaurant owners on AI phone answering, POS integration, call handling, compliance, and the economics of every call you miss.",
     index: true,
     section: "pages",
     changeFrequency: "weekly",
@@ -138,7 +147,8 @@ const STATIC_ROUTES: SiteRoute[] = [
   {
     path: "/privacy",
     title: "Privacy Policy",
-    description: "X1 Voice privacy policy.",
+    description:
+      "How X1 Voice collects, uses, stores and protects data from restaurant phone calls, including recordings, transcripts, caller details and payment information.",
     index: true,
     section: "pages",
     changeFrequency: "yearly",
@@ -147,7 +157,8 @@ const STATIC_ROUTES: SiteRoute[] = [
   {
     path: "/terms",
     title: "Terms of Service",
-    description: "X1 Voice terms of service.",
+    description:
+      "The terms governing use of X1 Voice: service scope, acceptable use, billing and cancellation, uptime commitments, data handling and limits of liability.",
     index: true,
     section: "pages",
     changeFrequency: "yearly",
@@ -155,8 +166,9 @@ const STATIC_ROUTES: SiteRoute[] = [
   },
   {
     path: "/languages",
-    title: "Languages",
-    description: "Languages X1 Voice answers restaurant calls in.",
+    title: "Languages the Phone Agent Answers In",
+    description:
+      "The agent answers callers in their own language, English and Spanish included, while the ticket reaches your kitchen in the format your staff reads.",
     index: true,
     section: "pages",
     changeFrequency: "monthly",
@@ -164,8 +176,9 @@ const STATIC_ROUTES: SiteRoute[] = [
   },
   {
     path: "/support",
-    title: "Support",
-    description: "Get help with X1 Voice.",
+    title: "Support and Setup Help",
+    description:
+      "Help with setup, menu sync, POS connections and call routing. Email support, answers to common questions, and a live demo line you can call any time.",
     index: true,
     section: "pages",
     changeFrequency: "monthly",
@@ -183,7 +196,8 @@ const STATIC_ROUTES: SiteRoute[] = [
   {
     path: "/resellers",
     title: "Resellers, ISOs & Partners",
-    description: "Sell X1 Voice to your restaurants.",
+    description:
+      "Sell X1 Voice to your restaurants: partner terms, white-glove onboarding, recurring revenue, and a product that demos itself over the phone.",
     index: true,
     section: "pages",
     changeFrequency: "monthly",
@@ -200,8 +214,9 @@ const STATIC_ROUTES: SiteRoute[] = [
   },
   {
     path: "/investors",
-    title: "Investors",
-    description: "Private equity and venture capital inquiries for X1 Voice.",
+    title: "Investor Relations",
+    description:
+      "Investor relations for X1 Voice, the AI phone agent for restaurants. Private equity and venture capital inquiries go to investors@x1voice.com.",
     index: true,
     section: "pages",
     changeFrequency: "yearly",
@@ -209,8 +224,9 @@ const STATIC_ROUTES: SiteRoute[] = [
   },
   {
     path: "/request-feature",
-    title: "Request a Feature",
-    description: "Tell the X1 Voice team what to build next.",
+    title: "Request a feature or integration",
+    description:
+      "Tell us what would make the product better for your restaurant: a missing feature, or a POS or delivery platform you need connected to the phone agent.",
     index: true,
     section: "pages",
     changeFrequency: "yearly",

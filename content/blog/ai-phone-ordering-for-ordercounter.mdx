@@ -1,44 +1,73 @@
 ---
-title: "AI Phone Ordering for OrderCounter: How the Integration Works"
-description: "How X1 Voice takes restaurant phone orders and sends them into OrderCounter as clean tickets, with payment on the call. What to check before you buy."
+title: "AI Phone Ordering for OrderCounter: How It Works"
+description: "How X1 Voice connects directly to OrderCounter, writes phone orders in as clean tickets, and what a direct integration changes about menu syncs and 86ing."
 publishedAt: "2026-05-19"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Does X1 Voice work with OrderCounter?"
-    answer: "Yes. X1 Voice reads your live OrderCounter menu and sends completed phone orders into OrderCounter as normal tickets, connecting directly. Nobody re-keys the order."
+    answer: "Yes, and the connection is direct rather than routed through middleware. X1 Voice reads your live OrderCounter menu, prices each phone call the way your register prices it, and drops the finished order back into OrderCounter as a normal ticket. Nobody re-keys anything, and there is no separate menu publishing step to maintain in a third system."
   - question: "Can it take payment for OrderCounter phone orders?"
-    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in your reporting."
+    answer: "Yes. Callers pay by card during the call for pickup and delivery, and the payment reconciles alongside your other tender types in reporting. Staff never hear a card number or write one on a ticket. If you would rather have phone orders settle at pickup, configure that instead and the agent will not ask for payment on the call."
   - question: "How long does OrderCounter setup take?"
-    answer: "Usually minutes. You connect your account, import the menu, set hours and rules, test with a live call, and go live, often the same day."
+    answer: "Typically under 24 hours, and often the same afternoon. You connect the account, import the menu, review how items and modifier groups came across, set hours and any phone-only rules, run test calls, and forward the line. The step worth real attention is reading the imported item names aloud and fixing the ones that sound like screen labels."
+  - question: "What happens when a caller asks for something the agent can't handle?"
+    answer: "It hands off, on rules you set. Complaints, catering over a dollar threshold, or anything it has asked about twice without a confident answer should transfer to a staff phone during service and take a message with a transcript outside hours. A vendor claiming no call ever needs a human is describing a system that will argue with your customers."
+  - question: "How does 86ing work with a direct integration?"
+    answer: "Because there is no middleware layer in between, availability changes reach the agent faster than they would on a routed connection. That matters most on a Saturday night when an item runs out at seven and you do not want the phone selling it for another hour. Confirm the actual behavior on a test call rather than assuming it, since this is the detail vendors describe loosely."
 ---
 
-Phone orders are still a real slice of revenue for most restaurants, and if you run OrderCounter, the only question that matters about a voice agent is simple: does the order end up in OrderCounter correctly? A great-sounding voice that drops a modifier or sends the kitchen the wrong ticket is worse than a missed call.
+If you run OrderCounter, one question decides whether a voice agent is worth buying: does a finished phone order land in OrderCounter as a correct ticket, priced the way your register would have priced it? Voice quality is what every demo leads with and the least useful thing to judge. An agent that sounds excellent and drops a modifier costs you more than an unanswered ring, because you make the food twice and the person on the other end was already a customer.
 
-Here's how X1 Voice works with OrderCounter, and what to check before you buy.
+X1 Voice connects to OrderCounter directly. It reads your live menu, prices each phone order the way the register does, and drops the finished ticket back in as a normal order. Nobody re-types anything at the counter.
 
-## The order has to land in OrderCounter, cleanly
+The direct part is worth a paragraph, because it is the main practical difference between this integration and most of the others.
 
-X1 Voice connects to OrderCounter directly. It reads your live OrderCounter menu, prices every phone order the way your register already prices it, and drops the finished ticket back into OrderCounter as a normal order. Nobody re-keys anything. The value is in the round trip: [reading the live menu and firing a correctly-modified ticket](/blog/why-pos-integration-depth-matters-more-than-voice-quality), not just sounding human on the call.
+## What a direct connection changes
 
-The one thing to test with any vendor, OrderCounter or otherwise, is a deliberately awkward order — "no onions, sub fries, add a drink, apply the coupon" — and confirm it arrives in the POS right, not just that the voice repeated it back.
+Most voice vendors reach most POS systems through a middleware layer, usually because building and maintaining a direct connection per POS is expensive. That routing works, and it costs you two things.
 
-## Payments and reporting
+It costs you a publishing step. On a routed integration, your menu has to be published into the middleware before the agent can read it, and it has to stay published as the menu changes. Direct means one fewer system holding a copy of your menu, and one fewer place for the copies to disagree.
 
-Callers can pay by card on the phone for pickup and delivery. That payment reconciles alongside your other tender types, so your end-of-day numbers stay in one place. Staff never read a card number out loud or write one down.
+It costs you time on availability. Routed connections sync on a cadence. Direct connections do not have that extra hop, so a change on your side reaches the agent faster. On a Saturday at seven, when the wings run out, that gap is the difference between the phone selling something you don't have and the phone declining it. It is the detail most operators skip in an evaluation and the one they most often regret skipping.
 
-## Setup
+None of that makes a direct integration automatically better than a routed one for your restaurant. It does mean the questions you should ask are different, and it means one less thing to keep in sync. The [OrderCounter integration page](/integrations/ordercounter) has the current specifics, and [OrderCounter menu sync tips](/blog/ordercounter-menu-sync-tips) covers the configuration details that make imports come across cleanly.
 
-Connecting OrderCounter takes minutes, not a six-week project: link your account, import the menu, set your hours and any phone-only rules, run a test call, and go live. Most single-location restaurants are live the same day, and our team can handle white-glove setup if you'd rather.
+## What it looks like on a real shift
 
-If you run more than OrderCounter across locations, that's fine too — X1 Voice reaches [80+ POS systems](/integrations), directly or through Deliverect, so a mixed estate isn't a blocker.
+It's 6:45 on a Friday. Two lines are ringing, the counter is four deep, and somebody wants to know whether the sauce has dairy in it.
 
-You can read more about OrderCounter on their [official site](https://ordercounter.com).
+The agent answers on the second ring, takes a pickup order with a substitution and a hold, charges the card, and the ticket prints at expo with the modifier attached. Nobody behind the counter looked up.
 
-## Where restaurant operators discuss this
+A second caller asks about catering for thirty on Sunday. The agent doesn't attempt it. It captures the name, number, headcount and date, transfers if a manager is on the floor, and leaves a transcript if not. That behavior is a configuration decision rather than a capability, and it is the one worth checking in a demo. [Human handoff and failover](/blog/human-handoff-failover-voice-ai) covers how to write the rules so the agent gives up on exactly the calls you want a person taking.
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+The gain shows up in calls you currently have no record of, which is why most operators underestimate their own miss rate. A phone ringing out during a rush leaves no trace. Count the calls you miss in a typical week, multiply by your average ticket, and check whether the problem is as small as it feels before you decide it isn't worth solving.
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+## The failure mode nobody puts in a demo
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+Modifier structure, and it is worth being blunt about it.
+
+Menus grow by accretion. Somebody adds a half-and-half option to one item and not its sibling. Somebody builds three sizes as three separate items rather than a size group. A required modifier group carries a default that only makes sense with a person standing at the screen. None of that hurts you today, because the employee ringing it in knows what the buttons mean and works around the structure without thinking.
+
+An agent has no such judgment. It follows the structure literally, so it will either refuse a combination that is obviously fine or fire a ticket that validates and is wrong at the pass.
+
+The fix is structural rather than conversational, and for most menus it is a couple of hours of one-time work. [Simplifying modifier trees](/blog/simplifying-modifier-trees) covers the shapes that break.
+
+So test for it before you buy. Ask the vendor to take a deliberately awkward order on your real menu: "large, half one way half the other, no onions on the second half, sub the side, add a drink, apply the promo." Then walk to the printer and read the ticket. Do not accept the agent repeating the order back correctly as evidence, because the repeat-back and the injected ticket are two different systems and only one of them feeds the kitchen.
+
+## The numbers to pull after a month
+
+Four, and they take about twenty minutes.
+
+Answered-call rate, which should approach 100 percent and is the reason you bought it. Order accuracy, measured by reading a sample of phone tickets against their transcripts rather than trusting a dashboard, using the [order accuracy measurement method](/blog/order-accuracy-measurement-method). Escalation reasons, sorted into "by design" and "by defect," where only the defect bucket is a to-do list. And phone revenue against the same weeks before you turned it on.
+
+If answered calls went up and phone revenue did not, the agent is absorbing calls staff were already picking up. That still buys back labor, but it is a different case than incremental revenue, and you should know which one you are actually making.
+
+## What setup costs you in time
+
+The connection is minutes. Reviewing what came across is the part that takes attention.
+
+Plan on someone sitting with the imported menu once, reading item names aloud, and fixing the ones that sound like database fields. Set your hours, delivery zones if you deliver, and any phone-only rules such as a delivery minimum. Then place five or six test calls yourself, ordering the way your regulars talk rather than the way the menu is written. Most single locations are live inside a day, and plans start at $250 a month, which you can size against your own call volume on the [pricing page](/pricing).
+
+If you run OrderCounter at some locations and something else at others, that is not a blocker. X1 Voice also connects directly to Square and Clover, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink, Micros and others through Deliverect, so a mixed estate runs on one agent configuration.
+
+The decision rule is small enough to run this week. Place five hard test calls on your own menu, walk to the printer each time, and count how many produced a ticket you would have been glad to see a new hire ring in. Five means the integration is doing its job. Three means the problem is almost certainly your modifier structure rather than the voice, and that is worth fixing before you sign anything.

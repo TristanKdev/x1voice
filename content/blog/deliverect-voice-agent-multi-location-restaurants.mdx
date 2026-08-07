@@ -2,55 +2,74 @@
 title: "Deliverect Plus a Voice Agent for Restaurant Groups"
 description: "One restaurant is usually fine on a direct POS integration. For a multi-location group on several systems, a voice agent plus Deliverect changes what you run."
 publishedAt: "2026-06-04"
+updatedAt: "2026-08-06"
 faqs:
   - question: "What does Deliverect do, in plain terms?"
     answer: "Deliverect is middleware that sits between order sources (delivery marketplaces, and increasingly voice agents) and your POS. It normalizes orders from many channels into a consistent format your point-of-sale can accept, and helps keep menus in sync across those channels. For a group, it's a single integration layer instead of a tangle of one-off connections."
   - question: "If I'm a single location, do I need this?"
     answer: "Often not. A single restaurant on one POS can usually be served cleanly by a direct integration. The case for middleware gets stronger as you add locations, run more than one POS across the group, or already depend on an aggregator to manage delivery marketplaces. It's a scale-and-consistency tool more than a single-store one."
   - question: "Does routing a voice order through middleware slow it down or add errors?"
-    answer: "A well-built integration adds a hop but shouldn't meaningfully hurt the caller experience, because the conversation happens in real time and the order write completes after. What middleware buys you is consistency — the same normalized order format and menu source across every location — which usually reduces errors at scale rather than adding them."
+    answer: "A well-built integration adds a hop but shouldn't meaningfully hurt the caller experience, because the conversation happens in real time and the order write completes after. What middleware buys you is consistency, the same normalized order format and menu source across every location, which usually reduces errors at scale rather than adding them."
+  - question: "Who owns the menu once the voice agent runs through Deliverect?"
+    answer: "Whoever already owns your Deliverect menus, and that is the point. The voice agent reads the same menu record your delivery channels read, so a price change or an 86 propagates to the phone without a second update. Decide before rollout whether corporate or the store manager can publish, because the answer determines how fast a mistake spreads across the estate."
+  - question: "What breaks first when a group wires voice through middleware?"
+    answer: "Menu drift between what the POS holds and what the middleware publishes. A store adds a local item straight into its POS, the middleware never sees it, and the agent tells callers you don't sell something you visibly sell. Audit each location's middleware menu against its POS menu during the first month, then quarterly."
 ---
 
-For a single restaurant on a single POS, the integration question is simple: does the voice agent write cleanly into your system? A direct connection usually answers it. For a group running five, twenty, or a hundred locations — often across more than one POS platform — the question changes shape entirely. Now it's not "does it connect to my POS," it's "can I manage this consistently across all of them without it becoming a full-time job."
+For a single restaurant on a single POS, the integration question is simple: does the voice agent write cleanly into your system? A direct connection usually answers it. For a group running five, twenty, or a hundred locations, often across more than one POS platform, the question changes shape entirely. Now it isn't "does it connect to my POS," it's "can I manage this consistently across all of them without it becoming somebody's full-time job."
 
-That's the problem middleware like Deliverect is built for, and it's why pairing it with a voice agent unlocks things a pile of direct integrations can't.
+That's the problem middleware like Deliverect is built for, and it's why pairing it with a voice agent does something a pile of direct integrations can't.
 
 ## The multi-location problem middleware solves
 
-Groups accumulate complexity in a few predictable ways:
-
-- **More than one POS across the estate**, because of acquisitions, franchisee choice, or legacy systems that never got consolidated.
-- **A web of order channels** — several delivery marketplaces, online ordering, and now phone — each of which wants to push orders into each location.
-- **Menus that drift** between locations and channels, so a price or an 86'd item is right in one place and wrong in three others.
+Groups accumulate complexity in a few predictable ways. They end up on more than one POS, because of acquisitions, franchisee choice, or a legacy system nobody ever consolidated. They collect order channels, several delivery marketplaces plus online ordering and now the phone, each of which wants to push tickets into each location. And their menus drift, so a price or an 86'd item is right in one place and wrong in three others.
 
 Wiring all of that up as individual point-to-point integrations is where operations teams lose their weekends. Every new channel times every POS is another connection to build, monitor, and fix.
 
-Deliverect collapses that. It acts as a normalization layer: orders from many sources arrive in a consistent format the POS can accept, and menus can be managed from a more central place rather than re-entered per channel. It's a single integration surface instead of a combinatorial mess.
+Deliverect collapses that. It acts as a normalization layer: orders from many sources arrive in a consistent format the POS can accept, and menus can be managed from a more central place rather than re-entered per channel. It's a single integration surface instead of a combinatorial mess. Our [Deliverect setup guide](/blog/deliverect-setup-guide-restaurants) covers the mechanics of standing it up.
 
 ## Where a voice agent plugs in
 
-Historically, middleware like this handled the digital channels — the delivery apps and online orders. Adding a voice agent extends the same pattern to the phone, which for most groups has been the least automated channel of all.
+Historically, middleware like this handled the digital channels, the delivery apps and online orders. Adding a voice agent extends the same pattern to the phone, which for most groups has been the least automated channel of all.
 
-When a voice agent writes through Deliverect rather than straight into each POS, you get the group-level properties that matter:
+When a voice agent writes through Deliverect rather than straight into each POS, you get three group-level properties. Phone orders reach the kitchen by one consistent path across every location, regardless of which POS a given store runs. Menu and availability ride the same rails as your other channels, so the agent quotes the same prices and honors the same 86'd items your delivery menus already reflect. And you have a single place to reason about order flow instead of auditing a different direct integration for every store.
 
-- **One consistent path** for how a phone order reaches the kitchen, across every location, regardless of which POS a given store runs.
-- **Menu and availability that ride the same rails** as your other channels, so the agent is quoting the same prices and honoring the same 86'd items your delivery menus already reflect.
-- **A single place to reason about order flow** instead of auditing a different direct integration for every store.
+For a group, that consistency is often worth more than shaving one hop off the path. Uniform behavior across a hundred locations is the genuinely hard thing to achieve, and it's exactly what a shared middleware layer provides. It's the same principle behind why [integration depth beats voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality), except here the depth is about consistency at scale.
 
-For a group, that consistency is often worth more than shaving one hop off the path. Uniform behavior across a hundred locations is the thing that's genuinely hard to achieve, and it's exactly what a shared middleware layer provides. It's the same principle behind why [integration depth beats voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality) — except here the depth is about consistency at scale.
+## What this looks like on a Friday at store 14
 
-## Direct or through middleware: it's not either/or dogma
+A caller in a car orders two large pies, one with no cheese on half, and a side of wings that the store 86'd at 6:40.
 
-None of this makes direct integrations wrong. For a single location, direct is frequently the cleaner choice, and X1 Voice supports both direct POS connections and the Deliverect path deliberately, because the right answer depends on your footprint.
+If the agent reads the middleware menu and the store 86'd the wings in its POS, one of two things happens. Either the 86 has propagated to Deliverect and the agent offers a substitute, or it hasn't and the agent sells wings nobody can make. The difference is not a property of the voice agent. It's a property of how your 86 flow is wired, which is why [real-time 86 sync](/blog/real-time-86ing-menu-sync) is the first thing to test at each store rather than a detail to sort out later.
 
-A useful way to think about it:
+Assuming the menu is current, the order lands as a normalized ticket, prints or fires to the KDS the same way a marketplace order does, and your expo sees a format the staff already recognizes. That last part matters more than it sounds. Staff at a group location have usually learned one ticket layout. A phone order that arrives looking like every other digital order requires no retraining.
 
-- **One location, one POS:** a direct integration is usually simplest.
-- **Several locations, mixed POS, existing aggregator setup:** middleware like Deliverect tends to win on consistency and manageability.
-- **Growing group:** the middleware path also future-proofs you, since adding the next location or channel is an extension of an existing layer rather than a brand-new integration project.
+## The failure modes worth planning for
 
-The goal isn't to pick a camp. It's to match the integration architecture to the size and shape of your operation.
+Middleware adds a dependency, and honest evaluation means naming what that costs you.
 
-## The bottom line
+Menu drift is the most common failure and the least dramatic. A store manager adds a seasonal item directly in the POS, the middleware menu never learns about it, and the agent politely tells callers you don't sell a thing sitting on the counter. Nothing alarms. You find out from a complaint. The fix is procedural rather than technical: decide that the middleware menu is the source of truth for every off-premise channel, then check it. [Per-store overrides for menu and hours](/blog/per-store-overrides-menu-hours) is where that policy actually gets configured.
 
-A voice agent stops phone orders from slipping away. Middleware like Deliverect makes that reliable and uniform across an entire group, no matter how many POS systems are running underneath. For a single store, direct integration is often all you need. For a multi-location operator, the combination is what turns "we automated the phone at one location" into "we automated the phone consistently across the whole company" — which is a genuinely different, and harder, thing to pull off.
+The second failure is a middleware outage or a POS connection dropping at one store. Ask what happens to a call in progress. A reasonable answer is that the agent still takes the order and the write retries, or the order falls back to a ticket your staff can act on. An unreasonable answer is that the caller gets told to call back. [What happens when voice AI fails](/blog/what-happens-when-voice-ai-fails) walks through the failover behavior worth demanding in writing.
+
+The third is diagnostic distance. With a direct integration, a bad ticket has two suspects. With middleware, it has three, and the store manager reporting it can't tell which. Decide before rollout who reads the logs and how a store escalates, or every integration question becomes a group-office ticket.
+
+## The numbers that tell you it's working
+
+Four things, checked per location rather than in aggregate, because a group average hides the one store that's broken.
+
+Order write success rate is the first. The share of completed calls that produced a POS ticket without a human retyping it. Anything short of near-total is a defect with a specific cause, not background noise.
+
+Menu parity is the second: the count of items where the middleware menu and the POS menu disagree on price or availability. You want that number measured, not assumed. Third is time from 86 to agent, meaning how long after a store marks an item unavailable does the agent stop selling it. Ask your vendors for a real figure and then verify it with a test call.
+
+Fourth is escalation rate per store. If one location transfers callers at three times the rate of its neighbors, that store has a menu or configuration problem, not a caller problem. [Reporting rollups across locations](/blog/reporting-rollups-multi-location) is what makes those comparisons readable instead of a spreadsheet chore.
+
+## Direct or through middleware: not either/or dogma
+
+None of this makes direct integrations wrong. For a single location, direct is frequently the cleaner choice, and X1 Voice supports both direct POS connections and the Deliverect path deliberately, because the right answer depends on your footprint. You can see the current connection list on the [integrations page](/integrations).
+
+The decision rule is close to mechanical. One location on one POS: go direct. Several locations on mixed POS, especially if you already run an aggregator for delivery marketplaces: middleware wins on consistency and manageability. A group that expects to keep adding stores: middleware also makes the next location an extension of an existing layer rather than a new integration project, which is most of the argument in [rolling out to fifty locations](/blog/rolling-out-to-50-locations).
+
+The one case that trips people up is a group where twenty stores share a POS and two don't. Running twenty direct and two through middleware gives you two operating models and two sets of habits. Usually it's cheaper to standardize on the path that covers everybody, even if it's marginally less direct for the majority.
+
+So before you pick, count your POS platforms and your channels, multiply them, and ask whether the resulting number of connections is one your operations team can actually watch. If it isn't, the architecture question already answered itself.

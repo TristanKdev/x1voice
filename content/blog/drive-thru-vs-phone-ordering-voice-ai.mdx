@@ -2,16 +2,21 @@
 title: "Drive-Thru vs. Phone Ordering: Two Different Problems"
 description: "Drive-thru voice AI and phone ordering voice AI look alike from outside. The audio conditions, the failure modes, and the vendor lists are genuinely different."
 publishedAt: "2026-05-05"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Is drive-thru voice AI the same product as phone-ordering voice AI?"
     answer: "Usually not, and the vendors tend to specialize. Drive-thru systems (from companies like SoundHound and ConverseNow, and in-house builds like Wendy's FreshAI) are tuned for a fixed, high-volume QSR menu in a very noisy outdoor setting. Phone-ordering systems handle a wider variety of caller situations and often a broader menu, over a phone line rather than a lane speaker. The core pipeline is similar; the tuning is different."
   - question: "Why did some big drive-thru AI projects get pulled back?"
-    answer: "The drive-thru is one of the hardest audio environments there is — engine noise, wind, multiple voices in a car, a compressed speaker. McDonald's ended its IBM-partnered drive-thru voice test in 2024 after accuracy issues drew attention. Others, like Wendy's work with Google and Yum! Brands' work with Nvidia, have continued. It reflects how genuinely hard the lane is, not that the whole category doesn't work."
+    answer: "The drive-thru is one of the hardest audio environments there is, with engine noise, wind, multiple voices in a car, and a compressed speaker. McDonald's ended its IBM-partnered drive-thru voice test in 2024 after accuracy issues drew attention. Others, like Wendy's work with Google and Yum! Brands' work with Nvidia, have continued. It reflects how genuinely hard the lane is, not that the whole category doesn't work."
   - question: "If I run a full-service restaurant, which one do I need?"
     answer: "Almost certainly phone-ordering (and answering) voice AI, not drive-thru tech. Drive-thru automation is a QSR-lane problem. A full-service restaurant's voice AI need is answering the phone for orders, reservations, and questions, which is a different category entirely."
+  - question: "I run a QSR with both a lane and a busy phone. Do I buy two systems?"
+    answer: "Often yes, and you should sequence them rather than buy both at once. The lane is a hardware and throughput project with a longer install; the phone is a software configuration you can run in days. Start with whichever channel is losing you more orders today, measure it for a quarter, then decide whether the second one earns its own budget."
+  - question: "Does a strong drive-thru demo predict how a vendor handles my phone?"
+    answer: "No, and treating it as proof is the common buying mistake. A lane demo shows noise handling against a fixed combo menu. Your phone brings substitution requests, allergen questions, large orders, and callers who change their mind halfway through. Ask to hear recordings from a restaurant with your format and menu size before you take a lane result as evidence."
 ---
 
-From the customer's seat, drive-thru voice AI and phone-ordering voice AI look like the same thing: you talk, a computer takes your order. Under the hood, they're solving noticeably different problems, in different environments, for different kinds of restaurants. Treating them as one category is how operators end up shopping for the wrong tool.
+From the customer's seat, drive-thru voice AI and phone-ordering voice AI look like the same thing: you talk, a computer takes your order. Under the hood they solve noticeably different problems, in different environments, for different kinds of restaurants. Treating them as one category is how operators end up shopping for the wrong tool.
 
 Here's where they actually diverge.
 
@@ -19,37 +24,52 @@ Here's where they actually diverge.
 
 Start with the audio, because everything else follows from it.
 
-A **drive-thru** is close to a worst-case listening environment. There's engine noise, wind across the microphone, a stereo playing, sometimes three people in the car talking at once, and a compressed outdoor speaker between the customer and the system. The agent has to pull a clean order out of that mess, reliably, hundreds of times a shift.
+A drive-thru is close to a worst-case listening environment. There's engine noise, wind across the microphone, a stereo playing, sometimes three people in the car talking at once, and a compressed outdoor speaker between the customer and the system. The agent has to pull a clean order out of that mess, reliably, hundreds of times a shift.
 
-A **phone line** is noisy too, but differently. The caller might be in a loud room or a moving car, but the audio comes through a phone connection built (however imperfectly) to carry a human voice. It's a more familiar signal than a lane speaker, even when the caller's surroundings are chaotic.
+A phone line is noisy too, but differently. The caller might be in a loud room or a moving car, but the audio comes through a connection built, however imperfectly, to carry a human voice. It's a more familiar signal than a lane speaker, even when the caller's surroundings are chaotic. The phone side has its own hard cases, which we go through in [voice AI in noisy restaurant environments](/blog/voice-ai-noisy-restaurant-environments).
 
-That single difference — outdoor lane speaker versus phone line — shapes how each system is tuned, and it's part of why the two rarely come from the same product.
+That single difference, outdoor lane speaker versus phone line, shapes how each system is tuned, and it's part of why the two rarely come from the same product.
 
 ## The menu and the flow are different too
 
-A drive-thru handles a **fixed, well-known QSR menu** at very high volume. The upside for the AI is that the menu is bounded and repetitive; the same combos come up over and over. The pressure is throughput: keep the line moving, don't add seconds to the average car.
+A drive-thru handles a fixed, well-known QSR menu at very high volume. The upside for the system is that the menu is bounded and repetitive; the same combos come up over and over. The pressure is throughput. Keep the line moving and don't add seconds to the average car.
 
-Phone ordering usually spans a **wider range of situations**. A caller might place a large family order, ask whether a dish is gluten-free, request a substitution, or want to know if you're still open. Some phone-ordering restaurants also run broader or more customizable menus than a typical QSR window. The system has to handle more variety of intent, even if the raw volume per hour is lower than a busy lane.
+Phone ordering usually spans a wider range of situations. A caller might place a large family order, ask whether a dish is gluten-free, request a substitution, or want to know if you're still open. Some phone-ordering restaurants also run broader or more customizable menus than a typical QSR window. The system has to handle more variety of intent, even if the raw volume per hour is lower than a busy lane.
+
+That variety changes what "good" means. In the lane, the win condition is speed with acceptable accuracy. On the phone, a caller will wait an extra beat for a correct answer about an allergen, and getting that answer wrong costs you far more than three seconds.
+
+## What each one fails at
+
+The failure modes are almost mirror images, and knowing them is more useful than knowing the feature lists.
+
+A lane system fails on the audio first. It mishears a size or a drink under noise, the car pulls forward, and the correction happens at the window with a line building behind. The cost is throughput and a visible, in-person moment of friction. Because the menu is bounded, comprehension errors cluster in a small number of items, which is also why they're fixable with tuning.
+
+A phone system fails on the long tail. The caller uses a name for an item that appears nowhere on your printed menu, asks a question the agent has no answer for, or orders for a party of twelve with four modifications. The cost is a lost order or a call that escalates. Nobody sees it happen. You find it in transcripts, which is why sampling them is the actual maintenance work of running a phone agent, covered in [transcript sampling for QA](/blog/transcript-sampling-qa).
+
+Both systems share one budget: the response has to come back fast enough that the person doesn't feel the gap, roughly under a second of round trip. That constraint is the same in both environments and it's the subject of [sub-second latency](/blog/sub-second-latency-voice-ai-restaurants).
 
 ## The vendors specialize, and that's a signal
 
 Because the problems differ, the market has split, and paying attention to which problem a vendor actually specializes in tells you a lot.
 
-On the **drive-thru** side, you see companies built around the QSR lane — **SoundHound** and **ConverseNow** among them — plus major chains building in-house: **Wendy's FreshAI** (with Google), and **Yum! Brands** working with **Nvidia**. **McDonald's** ran a well-publicized test with **IBM** and ended that partnership in 2024 after accuracy issues, a reminder of how brutally hard the lane is rather than a verdict on the whole idea.
+On the drive-thru side, you see companies built around the QSR lane, SoundHound and ConverseNow among them, plus major chains building in-house: Wendy's FreshAI with Google, and Yum! Brands working with Nvidia. McDonald's ran a well-publicized test with IBM and ended that partnership in 2024 after accuracy issues, a reminder of how brutally hard the lane is rather than a verdict on the whole idea. We pulled the operator lessons out of that episode in [what the McDonald's drive-thru test taught](/blog/mcdonalds-drive-thru-ai-lessons).
 
-On the **phone-ordering and answering** side, the field looks different — companies like **ConverseNow**, **Kea**, **VOICEplug**, **Bite Buddy**, and **Loman** work on off-premise phone orders, while others focus on reservations and answering for full-service. X1 Voice sits in the phone-ordering and answering category: 24/7 call coverage with deep POS sync, not lane hardware.
+On the phone-ordering and answering side, the field looks different. Companies like ConverseNow, Kea, VOICEplug, Bite Buddy, and Loman work on off-premise phone orders, while others focus on reservations and answering for full-service. X1 Voice sits in the phone-ordering and answering category: 24/7 call coverage with deep POS sync, not lane hardware.
 
-If a vendor pitches you on both a drive-thru lane and your phone with equal confidence, it's worth asking which one they've actually built for.
+If a vendor pitches you on both a drive-thru lane and your phone with equal confidence, ask which one they've actually built for, and ask for reference customers in your format rather than in theirs.
 
 ## What this means for your decision
 
-The practical takeaway is short: match the tool to your format.
+Match the tool to your format.
 
-- **A QSR with a busy drive-thru** shopping to automate the lane is looking at drive-thru voice AI, a hardware-and-throughput problem tied to the window.
-- **A full-service, fast-casual, or delivery-heavy restaurant** trying to stop missing calls is looking at phone-ordering and answering voice AI, a coverage-and-comprehension problem tied to the phone. That's a different category, and we lay out the whole landscape in [the five categories of restaurant voice AI](/blog/five-categories-of-restaurant-voice-ai).
+A QSR with a busy drive-thru shopping to automate the lane is looking at drive-thru voice AI, a hardware-and-throughput problem tied to the window. A full-service, fast-casual, or delivery-heavy restaurant trying to stop missing calls is looking at phone-ordering and answering voice AI, a coverage-and-comprehension problem tied to the phone. That's a different category, and we lay out the whole map in [the five categories of restaurant voice AI](/blog/five-categories-of-restaurant-voice-ai).
 
-Plenty of operators could benefit from one and have no use for the other. A neighborhood full-service restaurant has no drive-thru to automate; a high-volume QSR lane is a different animal from its phone.
+Plenty of operators could benefit from one and have no use for the other. A neighborhood full-service restaurant has no lane to automate. A high-volume QSR lane is a different animal from its phone, even in the same building.
 
-## The bottom line
+## A test that settles it in an afternoon
 
-Drive-thru and phone voice AI share a family resemblance and a common pipeline, but they solve different problems in different environments for different restaurants — and the serious vendors specialize accordingly. Figure out which problem you actually have first: automating a noisy lane, or answering a phone that rings out during the rush. The answer points you at a whole different shelf of products.
+Before you take a single sales call, count two numbers for one week.
+
+Count cars that balked or orders corrected at the window, and count calls that rang out unanswered during your two busiest hours. Whichever number is larger, in orders rather than in percentages, is the channel losing you money right now. If you don't have call data, your phone system's logs will show unanswered calls, and [how many calls your restaurant misses](/blog/how-many-calls-does-your-restaurant-miss) walks through pulling them.
+
+Then buy for that channel and measure it for a quarter before you touch the other one. The operators who regret this purchase are almost always the ones who bought both at once, changed two things at the same time, and then couldn't tell which one was working.

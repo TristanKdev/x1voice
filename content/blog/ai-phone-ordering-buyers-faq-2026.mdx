@@ -2,47 +2,86 @@
 title: "AI Phone Ordering for Restaurants: A 2026 Buyer's FAQ"
 description: "Straight answers to the questions restaurants ask before buying an AI phone agent, covering POS, payments, languages, setup, edge cases, and cost."
 publishedAt: "2026-06-09"
+updatedAt: "2026-08-06"
 faqs:
   - question: "How much does AI phone ordering cost for a restaurant?"
-    answer: "It varies by vendor and model. X1 Voice starts at $250/month including 750 minutes, with no setup fee and no contract. Some vendors bill per minute or per order, and many enterprise systems quote only on a sales call."
+    answer: "It varies by vendor and pricing model. X1 Voice starts at $250/month including 750 minutes, with no setup fee and no contract. Some vendors bill per minute, some per order, and many enterprise systems quote only on a sales call. The model matters as much as the number: per-order pricing scales with your success, and a flat plan does not."
   - question: "Does AI phone ordering take payments over the phone?"
-    answer: "Yes. It securely takes card payments for pickup and delivery and reconciles them in your POS alongside your other tender types, with no staff handling raw card data."
+    answer: "Yes. It takes card payments for pickup and delivery and reconciles them in your POS alongside your other tender types, with no staff handling raw card data. Most operators require payment on the call for delivery and for tickets above a threshold they set, and leave small pickup orders as pay-at-counter so a $12 order does not gain friction."
   - question: "Which POS systems does AI phone ordering support?"
-    answer: "Common ones include Square, Toast, Clover, Lightspeed, TouchBistro, and SpotOn, directly or through Deliverect, which reaches 80+ POS systems total."
+    answer: "X1 Voice integrates directly with Square, Clover and OrderCounter, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink, Micros and others through Deliverect, which covers 80+ systems in total. The question worth asking any vendor is not whether they list your POS, but whether orders arrive as normal tickets or in a separate queue someone has to remember to check."
+  - question: "What happens when the agent cannot handle a call?"
+    answer: "It should transfer to a person, and you should be the one who decides when. Complaints, large catering inquiries and anyone who asks for a human are the usual always-transfer cases. A system that resists handing off will post a better containment number while making callers angrier, so ask any vendor to show you escalated-call transcripts rather than only a rate."
+  - question: "How long before it is actually taking orders?"
+    answer: "Setup is typically under 24 hours for a single location, and the connection itself takes minutes. What determines whether the first week goes well is your menu: item names written to be tapped rather than spoken, stale products nobody archived, and modifier groups with required selections nobody notices on the register. Budget an hour for that audit."
 ---
 
-This is a plain-language FAQ for operators evaluating an AI phone agent. If you want the community view alongside it, [r/restaurateur](https://www.reddit.com/r/restaurateur/) is where these same questions get argued out.
+This is a plain-language FAQ for operators evaluating an AI phone agent. It answers the questions that come up in the first sales call, plus the ones that come up in month two and would have been better asked in month one.
 
 ## What can it actually handle?
 
-Pickup and delivery orders, payments, menu and allergen questions, hours and directions, wait times, order status, catering inquiries, and clean routing to your team when a call needs a human.
+Pickup and delivery orders, payments, menu and allergen questions, hours and directions, wait times, order status, catering inquiries, and routing to your team when a call needs a person.
+
+What it does not handle well is anything requiring judgment about your business. A caller negotiating a price, a regular asking for a favor, a complaint that needs an apology from someone with authority. Those should transfer, and the quality of a system is largely the quality of its transfers rather than the quality of its voice.
 
 ## Does it work with my POS?
 
-If you run Square, Toast, Clover, Lightspeed, TouchBistro, SpotOn, or dozens of others, yes, [directly or through Deliverect](/integrations). Orders land as normal tickets.
+X1 Voice integrates directly with Square, Clover and OrderCounter, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink, Micros and dozens of others [through Deliverect](/integrations). Orders land as normal tickets.
+
+The distinction that matters more than the logo list: does the order arrive in your existing ticket flow, or in a separate screen? A side queue works fine on a Tuesday and fails on a Friday, because it depends on someone remembering to look at it during the exact hour nobody has a spare hand. [Why integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality) goes through what to test.
 
 ## Can it take payment?
 
-Yes, card payments over the phone for pickup and delivery, reconciled in your POS reporting.
+Yes, card payments over the phone for pickup and delivery, reconciled in your POS reporting. Staff never read a card number out loud or write one on a pad, which removes the least secure object in most restaurants.
+
+Where operators land, almost universally: payment required on the call for delivery and for anything over a set ticket size, pay-at-counter allowed for small pickup orders. That puts the friction where the risk is.
 
 ## What about non-English callers?
 
-A good agent detects the caller's language and answers in it. See the [full language list](/languages).
+A good agent detects the caller's language and answers in it, without the caller having to press anything. See the [full language list](/languages).
+
+Worth testing rather than assuming: not just whether it speaks Spanish, but whether it takes an accurate order in Spanish, including modifiers. Those are different capabilities and a demo usually only shows the first.
 
 ## How fast is setup?
 
-Minutes to a day for most single locations. Connect the POS, import the menu, set rules, test, go live.
+Minutes to connect, and typically under 24 hours to go live for a single location.
+
+The honest version is that the software is the fast part and your menu is the slow part. Item names written for a register button, products from a special two years ago that nobody archived, modifier groups with a required selection your staff click past without noticing. All of it is invisible on a POS screen and all of it is audible on a phone call. An hour spent on that before launch is the difference between a smooth first week and a week of corrections.
 
 ## What does it cost?
 
 X1 Voice starts at $250/month including 750 minutes, with no setup fee and no contract. [See plans](/pricing).
 
-## Where restaurant operators discuss this
+Compare the pricing model, not just the headline. A per-order fee grows exactly as the thing succeeds. A per-minute rate rewards a vendor for longer calls, which is not what you want optimized. A flat monthly plan with an included allowance is the easiest to forecast and the easiest to evaluate against a real number: how many orders would this have to save to pay for itself. For most single locations that arithmetic lands in the low single digits of orders per week, which is why the [single-location economics](/blog/economics-ai-phone-answering-single-location) usually come out favorable well before any upsell effect.
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+## The questions the first sales call skips
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+Five worth asking before you sign, in roughly this order of usefulness.
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+- What exactly counts as a handled call in your reporting, and are abandoned calls counted as successes?
+- Can I read transcripts of the calls that escalated, not just see the rate?
+- Who owns the call recordings and transcripts, and what happens to them if I leave?
+- What is the notice period, and is there an auto-renewal clause?
+- What does month two look like when I need a menu change made on a Saturday?
+
+The answers separate vendors far more reliably than a demo call does, because every demo sounds good. [Evaluating voice AI vendors](/blog/evaluating-voice-ai-vendors-restaurants) works through how to score them and what the contract language usually hides.
+
+## Will my customers mind?
+
+Some will, and it is worth being clear-eyed about who. A regular who has called the same number for eleven years and expects to hear a familiar voice is not going to be delighted, and no amount of natural-sounding speech fixes that. Neither will an older caller who wants to chat through the specials.
+
+Most callers, though, are comparing the experience against the realistic alternative rather than against an ideal. The alternative at 7pm on a Friday is a phone that rings out, a rushed thirty-second exchange with someone who is also running a register, or a hold queue. Measured against that, an agent that answers on the first ring and gets the order right is an improvement, and callers behave as if it is.
+
+The right response to the first group is not to argue with them. It is to make sure anyone who asks for a person gets one immediately, and to make sure your regulars know the direct line still exists.
+
+## What it will not do
+
+It will not fix a menu that confuses people, because the confusion just moves to the phone. It will not manufacture demand: it can only capture calls you were already getting and orders a caller was already willing to place. It will not replace a good server building a complicated order in person. And it will not save a restaurant whose phone rings six times a day, because six calls of upside is not a business case.
+
+Any vendor who tells you otherwise is selling the headline rather than the product. The realistic pitch is narrower and still worth money: the calls you currently miss get answered, the orders that used to get retyped stop getting retyped, and the add-on question gets asked on call forty the same way it got asked on call one.
+
+## How to decide without guessing
+
+Do not decide from a demo. Decide from a two-week trial with a defined test.
+
+Before you switch anything on, record your baseline: how many calls come in, how many currently go unanswered, and what your average phone ticket is. Then run the agent for two weeks and pull the same three numbers, plus a sample of twenty phone tickets checked against their recordings for accuracy. If answered calls went up and accuracy held, you have your answer. If accuracy slipped, you have a specific list of menu items to fix rather than a vague doubt. And if your phone volume turns out to be small enough that neither number moves much, that is a real result too, and the honest conclusion is to wait.

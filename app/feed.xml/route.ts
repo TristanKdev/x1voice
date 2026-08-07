@@ -27,8 +27,15 @@ function toRfc822(date: string): string {
  * Reads the same getAllBlogPosts() as the blog index and the sitemap, so the
  * feed can never drift from the set of posts that actually exist.
  */
+/**
+ * How many posts the feed carries. All 450 would be a multi-megabyte document
+ * that every reader re-downloads on every poll, to deliver items nobody is
+ * seeing for the first time. Readers want what is new.
+ */
+const FEED_LIMIT = 50
+
 export async function GET() {
-  const posts = getAllBlogPosts()
+  const posts = getAllBlogPosts().slice(0, FEED_LIMIT)
 
   const items = posts
     .map((p) => {

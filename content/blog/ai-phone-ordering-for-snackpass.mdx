@@ -1,44 +1,75 @@
 ---
-title: "AI Phone Ordering for Snackpass: How the Integration Works"
-description: "How X1 Voice takes restaurant phone orders and sends them into Snackpass as clean tickets, with payment on the call. What to check before you buy."
+title: "AI Phone Ordering for Snackpass: How It Works"
+description: "How X1 Voice reads a live Snackpass menu, takes card payment on the call, and writes phone orders in as normal tickets, plus the questions to ask first."
 publishedAt: "2026-06-30"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Does X1 Voice work with Snackpass?"
-    answer: "Yes. X1 Voice reads your live Snackpass menu and sends completed phone orders into Snackpass as normal tickets, through our Deliverect integration. Nobody re-keys the order."
+    answer: "Yes, through our Deliverect integration. X1 Voice reads your live Snackpass menu, prices each call against it, and sends the completed order in as a normal ticket that reaches the kitchen the way your other digital orders do. Nobody re-keys anything, and the ticket your line sees is shaped like the ones they already work from."
   - question: "Can it take payment for Snackpass phone orders?"
-    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in your reporting."
+    answer: "Yes. Callers pay by card during the call for pickup and delivery, and the payment reconciles alongside your other tender types in reporting. Your staff never hear a card number or write one down, which closes the most common way card data escapes a counter. Pay-on-pickup stays available if your regulars prefer it."
+  - question: "What about loyalty and rewards on a phone order?"
+    answer: "Ask any vendor to demonstrate this specifically rather than accepting a yes. Rewards logic usually lives in the ordering platform, and how a phone order interacts with it varies by setup. The practical answer for most operators is to decide in advance whether phone callers earn or redeem, tell them plainly on the call, and avoid a policy your staff has to explain at pickup."
   - question: "How long does Snackpass setup take?"
-    answer: "Usually minutes. You connect your account, import the menu, set hours and rules, test with a live call, and go live, often the same day."
+    answer: "Usually under 24 hours. You connect the account, import the menu, set hours and any phone-only rules, run test calls, and forward your line. The connection itself is quick. What takes real time is deciding which items belong on a phone menu and how the agent should handle the requests your counter staff field every week."
+  - question: "Is the phone even worth it if most of my orders come through the app?"
+    answer: "Check before assuming. Pull your carrier or phone system log for a week and count how many calls went unanswered, then multiply by your average ticket. If that number is small, spend your money elsewhere. If a third of your calls rang out on Friday nights, you are losing orders the app was never going to catch."
 ---
 
-Phone orders are still a real slice of revenue for most restaurants, and if you run Snackpass, the only question that matters about a voice agent is simple: does the order end up in Snackpass correctly? A great-sounding voice that drops a modifier or sends the kitchen the wrong ticket is worse than a missed call.
+If most of your volume comes through Snackpass, the phone is easy to treat as a legacy channel. That is sometimes correct and sometimes an expensive assumption, and the way to tell is not a vendor pitch. It is a week of your own call logs.
 
-Here's how X1 Voice works with Snackpass, and what to check before you buy.
+Once you know the phone is worth answering, the only question that matters about a voice agent is whether the order lands in Snackpass correctly. An agent that sounds warm and drops a modifier costs you a remake and a customer, which is worse than the call you missed.
 
-## The order has to land in Snackpass, cleanly
+## First, find out whether you are actually missing calls
 
-X1 Voice connects to Snackpass through our Deliverect integration. It reads your live menu, prices each phone order against it, and routes the finished ticket into Snackpass so it lands the same way an in-person or online order would. Nobody re-keys anything. The value is in the round trip: [reading the live menu and firing a correctly-modified ticket](/blog/why-pos-integration-depth-matters-more-than-voice-quality), not just sounding human on the call.
+Pull the log from your carrier or phone system for one busy week. Count the calls that rang out, went to voicemail, or were abandoned while on hold. Multiply by your average ticket.
 
-The one thing to test with any vendor, Snackpass or otherwise, is a deliberately awkward order — "no onions, sub fries, add a drink, apply the coupon" — and confirm it arrives in the POS right, not just that the voice repeated it back.
+That number is the entire business case, and it is often either obviously large or obviously small. A counter doing heavy app volume with eight missed calls a week should not be buying a voice agent. A shop with thirty unanswered calls on a Friday and Saturday is losing real money to a phone nobody has time to pick up. Do this arithmetic before you talk to anyone, because it is the one calculation a vendor cannot do for you honestly.
 
-## Payments and reporting
+## How the order gets from the call into Snackpass
 
-Callers can pay by card on the phone for pickup and delivery. That payment reconciles alongside your other tender types, so your end-of-day numbers stay in one place. Staff never read a card number out loud or write one down.
+X1 Voice reaches Snackpass through Deliverect, the middleware layer many restaurants already run to bring outside orders into their POS. The agent reads your live menu with its modifiers and prices, holds the conversation against that data, and writes the finished order back as a ticket.
 
-## Setup
+The round trip is the whole point. A voice model that converses well and hands your staff a transcript to key in during a rush has moved the work, not removed it, which is the argument in [why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality). If you have not set up the Deliverect side before, [the Deliverect setup guide](/blog/deliverect-setup-guide-restaurants) covers what that connection involves.
 
-Connecting Snackpass takes minutes, not a six-week project: link your account, import the menu, set your hours and any phone-only rules, run a test call, and go live. Most single-location restaurants are live the same day, and our team can handle white-glove setup if you'd rather.
+## Loyalty is the question worth pressing on
 
-If you run more than Snackpass across locations, that's fine too — X1 Voice reaches [80+ POS systems](/integrations), directly or through Deliverect, so a mixed estate isn't a blocker.
+If you chose Snackpass, rewards are probably central to how you run. So the phone raises a policy question before it raises a technical one.
 
-You can read more about Snackpass on their [official site](https://www.snackpass.co).
+Does a caller earn points? Can they redeem one? What does your counter say when someone arrives to pick up a phone order and asks why their reward did not apply? Rewards logic lives in the ordering platform, and how any phone channel touches it depends on your setup, so press a vendor for a demonstration rather than a yes. Then pick a policy simple enough that a nineteen-year-old at the register can explain it in one sentence. The tradeoffs are laid out in [voice AI and loyalty programs](/blog/voice-ai-and-loyalty-programs).
 
-## Where restaurant operators discuss this
+Whatever you choose, say it on the call. A caller who is told up front that phone orders do not earn points is mildly disappointed. A caller who finds out at pickup is annoyed at your staff.
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+## What a real rush looks like
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+At 12:20 on a weekday your line is out the door and the tablet is chirping. The phone rings four times in six minutes. Today, one of those gets answered by whoever is closest, badly, while a customer waits mid-transaction. Three do not get answered at all.
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+With an agent on the line, all four are picked up on the first or second ring. The orders write into Snackpass with pickup times. The caller asking whether you still have the special gets the answer you configured, or escalates to the counter as one interruption instead of three.
+
+The staffing gain is real and smaller than the pitch. Calls per shift multiplied by your genuine average handle time is the number of counter minutes you get back, and that is the figure to bring to your own decision.
+
+## Decide the handoff before you go live
+
+Complaints, catering inquiries, and anyone who asks twice for a person should reach a person, and the agent should give up gracefully rather than trying one more clarifying question. Write those rules down, then test them by calling in as an unhappy customer and confirming the escalation rings somewhere a human hears it at noon on a Friday. [Human handoff and failover](/blog/human-handoff-failover-voice-ai) covers the rules worth setting and the ones operators forget.
+
+## The failure mode: menu drift
+
+Everything matches on day one because you just imported it. Then it stops matching and nothing tells you.
+
+A limited-time item goes in under a name no caller would say out loud. Something sells out at eight every Saturday. A price moves and the phone quote stays where it was. None of these raise an error. They arrive as a customer at your counter waiting for food the kitchen cannot make.
+
+The fix is a rule. Whoever owns the Snackpass menu owns the phone menu, and every menu change earns a test call the same week. If you run daily specials, read [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) and keep the phone menu conservative until you have timed your own sync lag with an actual call.
+
+## Payment, and the numbers to watch
+
+Callers pay by card during the call for pickup and delivery, and the payment reconciles with your other tender types, so close does not gain a new manual step. Nobody on your staff hears a card number or writes one on a ticket that sits by the register.
+
+Four numbers matter in month one. Answered-call rate moves first and is the reason you bought this. Order accuracy matters most, measured by pulling twenty phone tickets and checking them against transcripts rather than reading a dashboard. Escalation reasons become your work list once you sort them into handoffs that were correct by design and handoffs that were defects. Average phone ticket tells you whether the agent's prompts are doing anything.
+
+Watch one more, given your mix: whether app volume moved. If phone orders went up and app orders went down by a similar amount, you did not add revenue, you added a channel, and you should judge the spend accordingly.
+
+## Setup, and the test that decides it
+
+Connecting takes minutes and being ready takes a day. You link Snackpass through Deliverect, import the menu, set hours and phone-only rules, run test calls, then forward your number. Most single locations are live inside 24 hours, and our team will handle the menu pass. Plans start at $250 per month, and the current list of systems we reach is on the [integrations page](/integrations).
+
+Then run the test. Call the demo line and place the worst order your kitchen sees: no onions, sub the fries, add a drink, apply the promo, change the size halfway through. Look at the ticket. If it is right, everything else is tuning. If the voice read it back perfectly and the ticket is wrong, you found out in five minutes instead of after a season of comps.

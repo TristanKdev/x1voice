@@ -1,14 +1,19 @@
 ---
 title: "How Many Calls Does Your Restaurant Actually Miss?"
-description: "Skip the industry-wide averages. A simple way to estimate your own restaurant's missed calls from data you already have, and what those calls likely cost you."
+description: "Skip the industry-wide averages. A week-long counting method that gives you your own missed-call number, your own dollar figure, and a decision you can defend."
 publishedAt: "2025-11-10"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Do I need special equipment to measure this?"
-    answer: "No. Most phone systems and POS platforms already log call volume and duration. Check your phone provider's dashboard first, since the data you need may already exist."
+    answer: "No. Most phone systems and POS platforms already log call volume and duration, so check your provider's dashboard before buying anything. If the line is a cell phone or an old analog handset with no reporting, a paper tally sheet by the phone for one week produces a number that is good enough to make a decision on. You are after a real count, not a precise one."
   - question: "What counts as a 'missed' call for this purpose?"
-    answer: "Any call that isn't answered live and results in a hang-up before voicemail, plus any call that goes to voicemail and never gets a callback. Both represent a customer who didn't get served the way they wanted."
+    answer: "Any call that isn't answered live and results in a hang-up before voicemail, plus any call that goes to voicemail and never gets a callback. Both represent a customer who didn't get served the way they wanted. Calls a staff member answered and resolved don't count, even if the caller waited. Track holds separately, since a long hold is a different problem with a different fix."
   - question: "Is there an industry-standard number I should just use instead?"
-    answer: "You'll see figures like 'restaurants miss 1 in 4 calls during peak hours' cited around the industry (including by us, as an estimate based on aggregated call log analysis). Treat any such figure as a rough benchmark to sanity-check your own number against, not a substitute for measuring it."
+    answer: "You'll see figures like 'restaurants miss 1 in 4 calls during peak hours' cited around the industry, including by us, as an estimate based on aggregated call log analysis. Treat any such figure as a rough benchmark to sanity-check your own number against, not a substitute for measuring it. Call patterns vary too much between a pizza counter and a steakhouse for one average to mean much."
+  - question: "How long should I count before the number is trustworthy?"
+    answer: "One ordinary week gets you close enough to act. Two non-consecutive weeks in different months is better, because it separates a genuine pattern from a one-off staffing gap or a week when a local event skewed volume. If the two weeks disagree by more than about a third, count a third week before you spend money based on the average."
+  - question: "What if my count comes back low?"
+    answer: "That's a useful result, not a wasted week. It means phone coverage isn't where your revenue is leaking, and you can rule it out with evidence instead of a hunch. Keep the tally sheet, note the number and the date, and re-run the count if you add delivery, extend hours, or change your staffing, since any of those can move it quickly."
 ---
 
 Every article about restaurant phone systems opens with some version of "restaurants miss X% of calls." The number changes depending on who's selling what. The more useful exercise is measuring your own, because that's the only number that tells you whether this is a real problem for your restaurant specifically.
@@ -17,53 +22,52 @@ This isn't complicated, and you don't need new software to start.
 
 ## Step 1: Find your existing call data
 
-Before assuming you need to buy anything, check what you already have:
+Before assuming you need to buy anything, check what you already have. Most VoIP and cell-based restaurant lines log call volume, duration, and missed calls automatically, and that data sits in a dashboard nobody has opened in a year. Your POS may log phone orders separately from walk-in and app orders, which gives you the other half of the picture. If you're still on a physical handset, the caller ID history holds more than people expect.
 
-- **Your phone provider's dashboard** (most VoIP and cell-based restaurant lines log call volume, duration, and missed calls automatically)
-- **Your POS**, if it logs phone orders separately from walk-in and app orders
-- **Caller ID history** on the physical handset, if that's still what you're using
+What you want out of this step is two counts per day: how many calls came in, and how many were answered. If your provider gives you that, you can skip the manual count entirely. If it gives you inbound volume but no answer data, you still saved yourself half the work.
 
-If none of that exists, you can still get a real number the manual way in step 2.
+If none of that exists, you can still get a real number the manual way in step 2. Our [restaurant phone analytics guide](/blog/restaurant-phone-analytics-guide) walks through which reports are usually available on which kind of line.
 
 ## Step 2: Run a one-week manual count
 
-Pick one representative week (not a holiday, not a slow week) and have whoever's on the phone (or a manager doing a walkthrough) log three numbers each shift:
+Pick one representative week. Not a holiday week, not the week the road out front was closed. Have whoever's on the phone, or a manager doing a walkthrough, log three numbers each shift: calls answered, calls that rang out or hung up before being answered, and calls answered but abandoned mid-hold.
 
-- Calls answered
-- Calls that rang out or hung up before being answered
-- Calls answered but abandoned mid-hold
+A tally sheet taped next to the phone works fine. Nobody needs a clipboard or a form. The one thing that matters is that the sheet gets marked in the moment rather than reconstructed at close, because reconstructing at close reliably undercounts the rush, which is the exact window you're trying to measure.
 
-A simple tally sheet by the phone works fine. You're not after precision to the decimal point, just a real number instead of a guess.
+Tell your staff what the count is for. If they think it's a performance audit, the number will come back flattering and useless. If they understand you're deciding whether to get them help on the phone, they'll count honestly, and a few of them will start volunteering the pattern before the week is out.
 
 ## Step 3: Isolate your actual peak-hour gap
 
-Missed calls aren't evenly distributed. Look specifically at:
+Missed calls aren't evenly distributed, and the distribution is more actionable than the total.
 
-- **Friday and Saturday, 6–8pm** (or your restaurant's equivalent dinner rush)
-- **The first 20 minutes after you open**, when staff are still setting up
-- **Lunch rush**, if you do meaningful lunch volume
+Look at Friday and Saturday between roughly 6 and 8pm, or whatever your dinner rush actually is. Look at the first twenty minutes after you open, when staff are still setting up and the phone starts before anyone is ready for it. Look at your lunch rush if you do meaningful lunch volume. Most restaurants find the bulk of their missed calls cluster in two or three windows a week rather than spreading evenly.
 
-Most restaurants find the bulk of their missed calls cluster in two or three windows a week, not spread evenly. That matters, because it tells you whether the fix needs to cover all hours or just a few.
+That clustering is the whole point of the exercise. A gap concentrated in six hours a week is a scheduling or routing problem with a cheap fix. A gap spread flat across every open hour is a staffing problem, and staffing problems cost more to solve. The math for the first case is laid out in [peak-hour staffing math for phones](/blog/peak-hour-staffing-math-phone).
 
 ## Step 4: Put a rough dollar figure on it
 
-This step is where it's easy to either wildly overstate or dismiss the number, so keep it conservative and transparent:
+This is where it's easy to either wildly overstate the number or dismiss it, so keep the arithmetic conservative and visible.
 
-1. Take your missed-call count for the week.
-2. Estimate what share of those calls were likely a new or repeat order (not a wrong number, not a question you'd answer the same way regardless of missing the call).
-3. Multiply by your average ticket size for a phone/pickup order. Pull this from your POS rather than guessing.
-4. Multiply by 52 for a rough annual figure, understanding this is a directional estimate, not an audited number.
+Take your missed-call count for the week. Estimate what share of those calls were likely an order rather than a wrong number, a vendor, or a question you'd have answered the same way regardless. Multiply by your average ticket for a phone or pickup order, pulled from your POS rather than guessed. Multiply by 52 for a directional annual figure.
 
-A restaurant missing 15 order-related calls a week at a $35 average ticket is looking at roughly $27,000 a year in orders that didn't happen — not because customers didn't want to order, but because nobody picked up. Your own numbers may be higher or lower; that's the point of measuring rather than borrowing someone else's statistic.
+A restaurant missing 15 order-related calls a week at a $35 average ticket lands at roughly $27,000 a year in orders that didn't happen. Not because customers didn't want to order, but because nobody picked up. Your own numbers will be higher or lower, which is the entire reason to measure instead of borrowing someone else's statistic.
+
+Be honest about the share estimate, because it's the number doing the most work. If you have no basis for it, use half and say so. A figure you can explain to your bookkeeper beats a bigger one you can't defend. The [true cost of a missed call](/blog/the-real-cost-of-a-missed-restaurant-phone-call) breaks down what else rides on that ticket, including the repeat visits a first-time caller would have made.
 
 ## Step 5: Decide what's actually worth fixing
 
-Once you have a real number, the decision gets simpler:
+Once you have a real number, the decision narrows to three cases.
 
-- If missed calls cluster in a few predictable windows, a part-time host, a call-forwarding rule to a manager's cell, or an AI phone system covering just those hours might close most of the gap.
-- If it's spread across all hours because you're simply understaffed on phones generally, that's a different (and usually more expensive) problem to solve.
-- If your manual count comes back low, that's useful too. It means this genuinely isn't where your revenue is leaking, and you can rule it out with confidence instead of guessing.
+If the misses cluster in a few predictable windows, the fix is small: a part-time host on those shifts, a forwarding rule that sends overflow to a manager's cell, or an automated system covering only those hours. [Overflow routing on a busy line](/blog/overflow-call-routing-busy-line) covers the mechanics.
 
-## Why this beats a generic industry stat
+If the misses are spread across all hours because you're simply short-handed on phones generally, you're looking at a coverage problem rather than a peak problem, and it's usually more expensive either way you solve it.
 
-Every restaurant's call pattern is different. A delivery-heavy operation gets a different volume than a reservation-driven one, and a strip-mall lunch spot gets a different rhythm than a downtown dinner destination. A single industry-wide number can't tell you whether this is a $2,000 problem or a $30,000 problem at your specific location. A week of real counting can.
+If the count comes back low, stop here. You've ruled something out, which is worth the week it took.
+
+## What the number doesn't tell you
+
+Your missed-call count measures the calls that never connected. It says nothing about the calls that did connect and went badly: the order taken wrong, the caller put on a four-minute hold, the question about allergens that got a shrug. Those cost you too, and they don't show up on the tally sheet.
+
+If you want the fuller picture, pair this count with a second week of tracking [abandoned call rate](/blog/abandoned-call-rate-restaurants) and a sample of what actually happened on the calls you did answer. The missed number tells you whether to act. The answered-call quality tells you what to build once you do.
+
+Run the count twice a year. The number moves when you add delivery, change hours, or lose a shift lead, and a stale figure from eighteen months ago is barely better than the industry average you were trying to avoid.

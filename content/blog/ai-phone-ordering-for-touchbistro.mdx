@@ -1,44 +1,75 @@
 ---
-title: "AI Phone Ordering for TouchBistro: How the Integration Works"
-description: "How X1 Voice takes restaurant phone orders and sends them into TouchBistro as clean tickets, with payment on the call. What to check before you buy."
+title: "AI Phone Ordering for TouchBistro: How It Works"
+description: "How X1 Voice reads a live TouchBistro menu, takes card payment on the call, and writes phone orders in as normal tickets, plus what to test before you commit."
 publishedAt: "2026-03-10"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Does X1 Voice work with TouchBistro?"
-    answer: "Yes. X1 Voice reads your live TouchBistro menu and sends completed phone orders into TouchBistro as normal tickets, through our Deliverect integration. Nobody re-keys the order."
+    answer: "Yes, through our Deliverect integration. X1 Voice reads your live TouchBistro menu, prices each call against it, and sends the finished order in as a normal ticket that reaches the kitchen the way your other digital orders do. Nobody re-keys anything, and your staff see a ticket shaped like the ones they already handle every night."
   - question: "Can it take payment for TouchBistro phone orders?"
-    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in your reporting."
+    answer: "Yes. Callers pay by card during the call for pickup and delivery, and the payment reconciles alongside your other tender types in reporting. Nobody on your staff hears a card number, repeats digits back across a host stand, or writes one on a ticket that sits by the terminal until close. That exposure simply goes away."
+  - question: "Is this useful for a table-service restaurant?"
+    answer: "Often more useful than for a takeout counter, but for a different reason. In a table-service room most calls are not orders. They are hours, directions, wait times, and reservation questions that pull your host away from guests standing at the door. The agent absorbs those, and the win shows up as attention returned to the room rather than as phone ticket volume."
   - question: "How long does TouchBistro setup take?"
-    answer: "Usually minutes. You connect your account, import the menu, set hours and rules, test with a live call, and go live, often the same day."
+    answer: "Usually under 24 hours. You connect the account, import the menu, set hours and any phone-only rules, run test calls, and forward the line. The connection is quick. What takes real time is deciding which items belong on a phone menu and writing down how the agent should handle the questions your host currently answers from memory."
+  - question: "Can it handle reservations?"
+    answer: "Treat reservations and ordering as separate problems and confirm exactly which one a vendor solves before you buy. X1 Voice is built around taking orders and answering caller questions, and many table-service operators route booking requests to a person or to their existing booking system. Ask any vendor to demonstrate the specific path a reservation call takes end to end."
 ---
 
-Phone orders are still a real slice of revenue for most restaurants, and if you run TouchBistro, the only question that matters about a voice agent is simple: does the order end up in TouchBistro correctly? A great-sounding voice that drops a modifier or sends the kitchen the wrong ticket is worse than a missed call.
+If you run TouchBistro, one question decides whether a voice agent is worth the line item: does what happened on the call end up in TouchBistro correctly? Voice quality is what gets demoed and what matters least. An agent that sounds warm and drops a modifier costs you a remake, a comp, and a guest, which is a worse outcome than the call you never answered.
 
-Here's how X1 Voice works with TouchBistro, and what to check before you buy.
+Here is what the connection actually does, where it fails, and what to test before you commit.
 
-## The order has to land in TouchBistro, cleanly
+## How the order gets from the call into TouchBistro
 
-X1 Voice connects to TouchBistro through our Deliverect integration. It reads your live menu, prices each phone order against it, and routes the finished ticket into TouchBistro so it lands the same way an in-person or online order would. Nobody re-keys anything. The value is in the round trip: [reading the live menu and firing a correctly-modified ticket](/blog/why-pos-integration-depth-matters-more-than-voice-quality), not just sounding human on the call.
+X1 Voice reaches TouchBistro through Deliverect, the middleware many restaurants already run to bring third-party orders into their POS. The agent reads your live menu with its modifiers and prices, holds the conversation against that menu, and writes the completed order back as a ticket that fires like your other digital orders.
 
-The one thing to test with any vendor, TouchBistro or otherwise, is a deliberately awkward order — "no onions, sub fries, add a drink, apply the coupon" — and confirm it arrives in the POS right, not just that the voice repeated it back.
+The round trip is the product. A system that converses beautifully and then hands a server a transcript to key in during a turn has moved the work rather than removed it, which is the case made in [why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality). Ask any vendor to show you the ticket rather than the conversation. [The TouchBistro voice order flow](/blog/touchbistro-voice-order-flow) walks the route step by step if you want to see it before a demo.
 
-## Payments and reporting
+## In a table-service room, most calls are not orders
 
-Callers can pay by card on the phone for pickup and delivery. That payment reconciles alongside your other tender types, so your end-of-day numbers stay in one place. Staff never read a card number out loud or write one down.
+This is the part worth being honest about, because it changes what success looks like.
 
-## Setup
+If you are a full-service restaurant, your phone is not mostly people ordering food. It is people asking whether you take reservations, how long the wait is, where to park, whether the kitchen is still open, and whether you have anything a vegetarian would eat. Those calls are short, repetitive, and arrive exactly when your host is seating a party.
 
-Connecting TouchBistro takes minutes, not a six-week project: link your account, import the menu, set your hours and any phone-only rules, run a test call, and go live. Most single-location restaurants are live the same day, and our team can handle white-glove setup if you'd rather.
+An agent that answers all of them well is worth more to you than one that places a lot of orders, and the metric that should move is not phone revenue. It is how often your host gets pulled off the door. [Reducing host stand phone interruptions](/blog/reduce-host-stand-phone-interruptions) is the frame that fits this kind of room better than a call-containment scoreboard.
 
-If you run more than TouchBistro across locations, that's fine too — X1 Voice reaches [80+ POS systems](/integrations), directly or through Deliverect, so a mixed estate isn't a blocker.
+Booking is its own question. Ordering and reservations are different systems solving different problems, and the distinction is worth reading up on in [reservations versus ordering](/blog/voice-ai-reservations-vs-ordering) before a sales call, so you can ask the specific version of the question rather than the general one.
 
-You can read more about TouchBistro on their [official site](https://www.touchbistro.com).
+## What a real Saturday looks like
 
-## Where restaurant operators discuss this
+At 7:15 your host is walking a six-top to a table with three parties waiting. The phone goes four times in the next five minutes. Two of those callers want a wait time, one wants to know about parking, and one is a pickup order.
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+Today, one call gets answered while a guest stands there being ignored, and three do not. With an agent running, all four are picked up on the first or second ring. Three get answers you wrote in advance. The pickup order writes into TouchBistro. Your host stays on the floor.
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+Multiply your calls per shift by your honest average handle time and you get the floor minutes returned. Use your own figures rather than the ones on a vendor slide, and expect a smaller number than the pitch suggests. It is still real.
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+## Decide the handoff before go-live
+
+Complaints, large private-event inquiries, and any caller who asks twice for a person should reach a person. The agent should hand off cleanly rather than attempt one more clarifying question, and the escalation has to ring somewhere a human will hear it at 7:30 on a Saturday, which is a thing to test and not assume. For a room with regulars, decide explicitly which callers you never want handled by an agent at all.
+
+## The failure mode: menu drift
+
+Everything matches on day one because you just imported it. Then the menu moves and the phone does not follow.
+
+A seasonal dish goes into TouchBistro under a name no caller would say out loud. The kitchen 86s something at eight every Saturday. A price rises on the terminal and the phone quote stays where it was. None of these throw an error. They arrive as a guest at your counter waiting for food you cannot make.
+
+The fix is a rule rather than a feature. Whoever owns the TouchBistro menu owns the phone menu, and every menu change earns a test call the same week. If your specials change daily, read [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) and keep the phone menu conservative until you have measured your own sync lag with a stopwatch.
+
+## Payment on the call
+
+Callers pay by card during the call for pickup and delivery, and the payment reconciles with your other tender types, so close does not gain a new manual step.
+
+The quieter benefit is what stops happening at the host stand. No digits read back across a crowded entryway, no card number on a slip of paper by the terminal, no staff member holding a stranger's payment details in their head through a rush.
+
+## The numbers to watch
+
+Answered-call rate first, because it moves immediately and it is why you bought this. Order accuracy next, measured by pulling twenty phone tickets and checking them against transcripts rather than trusting a summary. Escalation reasons after that, sorted into handoffs that were correct by design and handoffs that were defects you can fix in an afternoon.
+
+For a table-service room, add one more: how often your host had to take a call anyway. If that number is not falling, the agent is answering the phone without actually absorbing the work, and the fix is usually a handful of missing answers rather than anything structural.
+
+## Setup, and the test that settles it
+
+Connecting takes minutes. Being ready takes a day. You link TouchBistro through Deliverect, import the menu, set hours and phone-only rules, run test calls, then forward your number. Most single locations are live inside 24 hours, and our team will do the menu pass. Plans start at $250 per month, and the full list of systems we reach is on the [integrations page](/integrations).
+
+Then run the only test that matters. Call the demo line and place the worst order your kitchen sees, no onions, sub the fries, add a drink, apply the promo, change the size halfway through. Look at the ticket. If it is right, everything after that is tuning. If the voice repeated it back perfectly and the ticket is wrong, you learned in five minutes what would otherwise have cost you a season of comps.
