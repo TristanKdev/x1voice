@@ -1,17 +1,22 @@
 ---
-title: "Sub-Second Latency: Why It Makes or Breaks a Voice Agent"
+title: "Why Sub-Second Latency Makes or Breaks a Voice Agent"
 description: "Response latency decides whether a voice agent feels like a conversation or a walkie-talkie. What the 800-millisecond target means and why it is hard to hit."
 publishedAt: "2026-04-16"
+updatedAt: "2026-08-06"
 faqs:
   - question: "What's a good response latency for a voice agent?"
-    answer: "A widely used rule of thumb is to keep the response under about 800 milliseconds — close to the pause length people naturally leave in human conversation. Above roughly a second, callers start to feel the lag, talk over the agent, or assume the line dropped. It's an approximate target, not a hard line, but it's a reasonable bar to hold vendors to."
+    answer: "A widely used rule of thumb is to keep the response under about 800 milliseconds, close to the pause length people naturally leave in human conversation. Above roughly a second, callers start to feel the lag, talk over the agent, or assume the line dropped. It's an approximate target, not a hard line, but it's a reasonable bar to hold vendors to."
   - question: "Why can't the system just take a moment to think for a better answer?"
-    answer: "Because a phone call has no visual feedback. On a website, a spinner tells you to wait. On a call, silence reads as a dropped connection or a confused agent, so the caller fills it — by repeating themselves or interrupting. Speed isn't a luxury on voice; it's part of being understood."
+    answer: "Because a phone call has no visual feedback. On a website, a spinner tells you to wait. On a call, silence reads as a dropped connection or a confused agent, so the caller fills it by repeating themselves or interrupting. Speed isn't a luxury on voice; it's part of being understood at all."
   - question: "Does a faster system mean a less accurate one?"
-    answer: "Not necessarily, but there's real engineering tension between the two. The systems that handle it well overlap their stages — they start transcribing and interpreting while the caller is still talking — rather than racing through each step. Ask a vendor how they hit their latency target, not just what the number is."
+    answer: "Not necessarily, but there's real engineering tension between the two. The systems that handle it well overlap their stages, starting to transcribe and interpret while the caller is still talking, rather than racing through each step in turn. Ask a vendor how they hit their latency target, not just what the number is."
+  - question: "How do I test latency without any measuring tools?"
+    answer: "Call the agent yourself and count under your breath after you stop speaking. If you reach 'one' before it answers, you're already past a second. Do it five times: a simple order, a modified order, a question about hours, an interruption mid-sentence, and one call from a noisy room. The modified order is where lag usually appears."
+  - question: "What causes a voice agent to slow down after it was fast at launch?"
+    answer: "Usually something new in the loop rather than the model itself. A menu that grew, a payment step added mid-call, an extra lookup against your POS, or a network path that got longer. If your agent felt quick in week one and sluggish in week eight, ask the vendor what changed in the pipeline rather than assuming the whole thing degraded."
 ---
 
-Every other quality of a restaurant voice agent — how natural it sounds, how well it understands your menu — sits on top of one unglamorous number: how fast it responds. Get that number wrong and nothing else rescues the call. Get it right and a synthesized voice starts to feel like an actual conversation.
+Every other quality of a restaurant voice agent, how natural it sounds and how well it understands your menu, sits on top of one unglamorous number: how fast it responds. Get that number wrong and nothing else rescues the call. Get it right and a synthesized voice starts to feel like an actual conversation.
 
 That number is response latency, and the target most serious teams aim for is under roughly 800 milliseconds.
 
@@ -19,13 +24,13 @@ That number is response latency, and the target most serious teams aim for is un
 
 The figure isn't arbitrary. It's tied to how humans take turns when we talk. In natural conversation, the gap between one person finishing and the other starting is remarkably short, often a few hundred milliseconds. We're exquisitely tuned to that rhythm. When a pause runs long, we read meaning into it: hesitation, confusion, or that the other person didn't hear us.
 
-A voice agent that takes a beat and a half to answer trips every one of those instincts. The caller assumes the line dropped and says "hello?" They assume the agent is confused and repeat the order. They talk over the response. None of that is the caller being difficult — it's them reacting normally to an unnatural pause.
+A voice agent that takes a beat and a half to answer trips every one of those instincts. The caller assumes the line dropped and says "hello?" They assume the agent is confused and repeat the order. They talk over the response. None of that is the caller being difficult. It's them reacting normally to an unnatural pause.
 
-Keeping the round trip under about 800 milliseconds keeps the agent inside the window where human turn-taking feels right. It's an approximate target, not a precise threshold, but it's a fair bar to hold a vendor to.
+Keeping the round trip under about 800 milliseconds keeps the agent inside the window where human turn-taking feels right. It's an approximate target rather than a precise threshold, but it's a fair bar to hold a vendor to.
 
 ## Where the time goes
 
-Remember that a voice agent runs a four-stage loop on every turn: speech recognition, a language model interpreting the words, speech synthesis, and (once the order's done) the POS write. We break that pipeline down in [how AI phone ordering actually works](/blog/how-ai-phone-ordering-works-the-pipeline).
+A voice agent runs a four-stage loop on every turn: speech recognition, a language model interpreting the words, speech synthesis, and, once the order's done, the POS write. We break that pipeline down in [how AI phone ordering actually works](/blog/how-ai-phone-ordering-works-the-pipeline).
 
 The catch is that all of those stages share the same sub-second budget. Speech recognition takes some. The language model deciding what the caller meant takes some. Turning the reply back into audio takes some. Add ordinary network round-trips between services and the budget is spent before you've done anything clever.
 
@@ -35,24 +40,42 @@ This is why latency is genuinely hard, not a matter of buying faster servers. Ev
 
 The systems that hit the target don't do it by rushing each step. They do it by refusing to run the steps strictly one after another.
 
-A well-built agent starts transcribing the first words while the caller is still speaking, and starts interpreting the order before the sentence is even finished — a technique built on streaming rather than waiting for a complete utterance. By the time the caller stops talking, much of the work is already done, so the response can begin almost immediately.
+A well-built agent starts transcribing the first words while the caller is still speaking, and starts interpreting the order before the sentence is even finished, a technique built on streaming rather than waiting for a complete utterance. By the time the caller stops talking, much of the work is already done, so the response can begin almost immediately.
 
-This overlap is also what makes graceful interruptions possible: because the system is always listening, it can stop talking the instant the caller cuts in. Latency and [interruption handling](/blog/interruption-handling-endpointing-voice-agents) are really the same engineering problem viewed from two angles.
+This overlap is also what makes graceful interruptions possible. Because the system is always listening, it can stop talking the instant the caller cuts in. Latency and [interruption handling](/blog/interruption-handling-endpointing-voice-agents) are really the same engineering problem viewed from two angles.
+
+## What lag actually does to a Friday-night order
+
+Watch a slow agent take one real order and the cost stops being abstract.
+
+A caller says "large pepperoni, extra cheese." The agent pauses a second and a half. The caller, hearing nothing, adds "and a two-liter" into the silence. Now the agent is replying to the first half of an utterance that has kept going, so it reads back "large pepperoni with extra cheese, is that everything?" The caller says "no, and a two-liter," slightly irritated. The agent asks which size. Two turns that should have taken eight seconds took twenty-five.
+
+Do that on every third call during a rush and two things happen. Your average handle time climbs, which matters directly if you're on a per-minute plan and running the [math on per-minute versus per-call pricing](/blog/per-minute-vs-per-call-pricing-math). And your abandonment climbs, because a caller who has repeated themselves twice starts wondering whether it would be faster to open an app.
+
+That's the real damage. Lag doesn't usually produce a wrong order. It produces a long one, and long calls during peak are what push people off the phone entirely.
 
 ## The added difficulty of a noisy restaurant
 
-Latency gets harder in exactly the environment restaurants operate in. A caller phoning from a loud dining room, a car, or a kitchen doorway gives the speech-recognition stage a harder signal to work with. Cleaning up noisy audio takes processing, and processing takes time — the same time the whole loop can't afford to spend. A drive-thru window adds engine noise and a menu speaker into the mix, which is part of why [drive-thru and phone ordering](/blog/drive-thru-vs-phone-ordering-voice-ai) are genuinely different technical problems.
+Latency gets harder in exactly the environment restaurants operate in. A caller phoning from a loud dining room, a car, or a kitchen doorway gives the speech-recognition stage a harder signal to work with. Cleaning up noisy audio takes processing, and processing takes the same time the whole loop can't afford to spend.
+
+A drive-thru window adds engine noise and a menu speaker into the mix, which is part of why [drive-thru and phone ordering](/blog/drive-thru-vs-phone-ordering-voice-ai) are genuinely different technical problems.
+
+There's a related trap on your side of the wire. If your agent has to hit your POS mid-conversation to confirm that an item is still available, that lookup sits inside the caller's patience budget. Vendors handle this by caching the menu and syncing in the background, which is fast but introduces its own risk around [86'd items going stale](/blog/voice-ai-pos-86-sync-failure-modes). Speed and freshness pull against each other, and it's fair to ask a vendor which way they resolved it.
 
 ## How to evaluate it without an engineering degree
 
-You don't need to measure milliseconds. Just call the system yourself and pay attention to how it feels:
+You don't need to measure milliseconds. Call the system yourself and pay attention to how it feels.
 
-- **Does the reply come back at conversational speed, or is there a beat where you wonder if it heard you?**
-- **When you interrupt mid-sentence, does it stop right away, or plow through the rest of its line?**
-- **Try it from a noisy spot** — a busy room, a car — not just a quiet office. That's where latency and comprehension both get tested.
+- Does the reply come back at conversational speed, or is there a beat where you wonder if it heard you?
+- When you interrupt mid-sentence, does it stop right away, or plow through the rest of its line?
+- Does a modified order stay as quick as a simple one, or does the pause stretch once you add "no onions, sub fries"?
+- Try it from a noisy spot, a busy room or a car, not just a quiet office.
+- Try it at 7pm on a Friday, not at 10am on a Tuesday, since some systems slow under concurrent load.
 
 If the call feels like talking to a person who's paying attention, the latency is where it needs to be. If it feels like a walkie-talkie with a delay, no amount of menu tuning will fix the underlying problem.
 
-## The bottom line
+## The number to hold onto
 
-Sub-second response time is the foundation the rest of a voice agent stands on. Under roughly 800 milliseconds, the conversation feels natural and callers relax into it. Much slower and they start fighting the system — repeating, interrupting, hanging up. When you evaluate vendors, test the feel of the pace first, because it's the one thing a good menu can't compensate for.
+Sub-second response time is the foundation the rest of a voice agent stands on. Under roughly 800 milliseconds, the conversation feels natural and callers relax into it. Much slower and they start fighting the system by repeating, interrupting, and hanging up.
+
+So here's the decision rule. Before you sign, place five calls at your actual dinner rush, and time from your last word to the agent's first. If more than one of the five leaves you wondering whether the line dropped, the pace is wrong, and it's the one flaw a good menu can't compensate for. Fold that test into a written [vendor evaluation](/blog/evaluating-voice-ai-vendors-restaurants) rather than trusting how the demo felt on a quiet afternoon.

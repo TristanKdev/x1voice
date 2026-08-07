@@ -44,6 +44,16 @@ Four failure modes account for most of the trouble.
 
 Items with the same name but different prices across dine-in and delivery, where nobody has decided which one the phone should quote. Modifiers that exist in the cooks' heads and were never written anywhere, so the agent has no way to know they're options. Forwarding configured so calls ring through but audio doesn't connect, which only surfaces on a real outside call. And no plan for an outage, which is worth asking about directly: if the service goes down, does the call fail silently or fall back to ringing your phone? [Internet outage failover](/blog/internet-outage-phone-failover) is the version of that question you should be asking your internet provider too.
 
+## What to test on that first call
+
+The test call is where thirty minutes of configuration either holds up or doesn't, so don't make it a friendly one.
+
+Order the way an ordinary customer does, at speed, without pausing helpfully between items. Then change your mind halfway through and remove something. Then ask a question that isn't about the menu at all, like whether you have parking or what time the kitchen closes. Then order the one item on your menu whose name nobody pronounces the way it's spelled.
+
+Each of those probes a different part of the setup. The fast order tests whether the menu import got the items right. The change tests whether the agent can modify an order in progress rather than restarting it. The off-menu question tests whether you filled in your basic information. The awkward item name tests whether the language layer knows what your customers actually say.
+
+Write down what fails. Most of it will be a two-minute correction in the same screen you just used to import the menu.
+
 ## The first week is the real setup
 
 Setup isn't done when the first test call succeeds. Read call transcripts every day for the first week. What looks like an agent mistake is almost always a menu configuration gap: a dish the import named differently than customers say it, a modifier that wasn't in the export, an availability question nobody anticipated. Each one is a five-minute fix once you can see it, and they run out fast.

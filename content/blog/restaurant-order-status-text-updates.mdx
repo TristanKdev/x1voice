@@ -1,60 +1,91 @@
 ---
 title: "Texting Order-Status Updates After a Phone Order"
-description: "Texting customers order-status updates after a phone order cuts 'is it ready?' callbacks and smooths pickup timing. A practical look at what to send and when."
+description: "Status texts after a phone order cut the 'is it ready?' callbacks and fix pickup timing. What to send, when to send it, and the consent rules that apply."
 publishedAt: "2026-06-16"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Won't customers find status texts annoying?"
-    answer: "A few messages tied to real events — order received, in the kitchen, ready or out for delivery — read as helpful, not spammy, because each one tells the customer something they actually wanted to know. The line you don't want to cross is texting for the sake of texting, or reusing the number for marketing they didn't ask for. Keep it to the order they just placed and it stays welcome."
+    answer: "A few messages tied to real events, meaning order received, in the kitchen, and ready or out for delivery, read as helpful rather than spammy, because each one answers a question the customer actually had. The line you don't want to cross is texting for the sake of texting, or reusing the number for marketing they didn't ask for. Keep it to the order they just placed and it stays welcome."
   - question: "Does the customer have to install an app to get these?"
-    answer: "No. That's the point of using SMS — it lands in the phone's normal text messages with nothing to download. A phone-ordering customer already gave you their number on the call, so there's no extra step for them."
+    answer: "No. That's the point of using SMS. It lands in the phone's normal text messages with nothing to download and no account to create. A phone-ordering customer already gave you their number during the call, so there's no extra step for them and no signup screen to abandon. It works identically on any phone that can receive a text."
   - question: "Will this actually reduce callbacks?"
-    answer: "It should reduce the 'is my order ready yet' type of callback, because you're answering that question before they think to ask it. It won't eliminate calls about genuine problems — a wrong item, a delivery that never arrived. Treat the callback reduction as a real but partial win, and measure your own before and after rather than trusting a headline number."
+    answer: "It should reduce the 'is my order ready yet' type of callback, because you're answering that question before the customer thinks to ask it. It won't eliminate calls about genuine problems like a wrong item or a delivery that never arrived. Treat the callback reduction as a real but partial win, and measure your own before and after rather than trusting a headline number."
+  - question: "Do texting consent rules apply to order-status messages?"
+    answer: "Transactional messages about an order the customer just placed sit in a different category from marketing, but the safe practice is still to tell callers on the call that you'll text updates, and to honor a stop request immediately. The moment you use that same number to promote a special, you're in marketing territory with a different consent standard. Keep the two lists separate from day one."
+  - question: "What if my 'ready' status isn't accurate?"
+    answer: "Then don't turn the feature on yet. A ready text that fires when the ticket is marked done, while the food actually sits another six minutes, teaches customers your texts are wrong and makes the timing worse than silence. Fix the trigger point first, usually by moving it to the moment the bag hits the shelf rather than the moment the kitchen clears the ticket."
 ---
 
-The order's placed and the customer has hung up. Now they're standing in their kitchen doing math: leave now, or in ten minutes? Guess too early and they're pacing your lobby while the food's still on the line. Guess too late and the bag's been sitting under the heat lamp going soft. Either way, a certain number of them will pick the phone back up and call you to ask "is my order ready?" — right in the middle of your rush, on the same line other customers are trying to order on. Texting status updates is the quiet fix for that, and it's less about flash than it is about removing a small, constant tax on your staff.
+The order's placed and the customer has hung up. Now they're standing in their kitchen doing math: leave now, or in ten minutes? Guess too early and they're pacing your lobby while the food's still on the line. Guess too late and the bag's been sitting under the heat lamp going soft.
+
+Either way, a certain number of them pick the phone back up and call to ask "is my order ready?" Right in the middle of your rush, on the same line other customers are trying to order on. Texting status updates is the quiet fix for that. It's less a feature than the removal of a small, constant tax on your staff.
 
 ## The "is my order ready?" callback tax
 
-That callback is worse than it looks. It ties up a line and a staff member during the exact window when both are scarcest. It usually comes from a customer who did nothing wrong — they just have no way of knowing where their order stands, so asking is the only tool they have.
+That callback is worse than it looks. It ties up a line and a person during the exact window when both are scarcest. It usually comes from a customer who did nothing wrong. They have no way of knowing where their order stands, so asking is the only tool available to them.
 
-Multiply one of those calls by a busy Friday and you've got a recurring drain that never shows up as a line item anywhere. Nobody logs "answered 'is it ready' for the ninth time tonight." But your team feels it, and every one of those calls is a moment they weren't taking a new order or expediting food.
+Multiply one of those calls by a busy Friday and you have a recurring drain that never appears as a line item anywhere. Nobody logs "answered 'is it ready' for the ninth time tonight." But your team feels it, and every one of those calls is a moment they weren't taking a new order or expediting food.
 
 ## What the status updates actually look like
 
-The idea is simple: as the order moves through your process, the customer gets a short text at each meaningful step. A typical sequence is something like:
+As the order moves through your process, the customer gets a short text at each meaningful step. A typical sequence is three messages:
 
-- **Received** — we've got your order, here's your total and rough time.
-- **In the kitchen** — it's being made now.
-- **Ready for pickup** (or **out for delivery**) — come get it, or it's on the way.
+- **Received.** We have your order, here's your total and a rough time.
+- **In the kitchen.** It's being made now.
+- **Ready for pickup**, or **out for delivery**. Come get it, or it's on the way.
 
-X1 Voice sends these automatically as the order's status changes, so nobody on your team has to remember to fire off a text. The customer already gave their number when they called to order, so there's no signup and nothing to install — the messages just show up in their normal texts. Each one answers a question the customer would otherwise have had to call to ask.
+X1 Voice sends these automatically as the order's status changes, so nobody on your team has to remember to fire off a text. The customer gave their number when they called, so there's no signup and nothing to install. Each message answers a question they would otherwise have had to call to ask. The same mechanism handles the initial [order confirmation by SMS](/blog/sms-order-confirmations-voice-ai) at the end of the call.
+
+Three is usually the right count. Two feels thin for delivery. Five starts to feel like a notification stream, and the extra messages carry no information the customer wanted.
 
 ## Why texts beat a phone call for this
 
-You could, in theory, call customers back with updates. Nobody does, because it's absurd — you'd need a person doing nothing but dialing. A text is asynchronous. It lands, the customer glances at it, and neither of you had to stop what you were doing. No line tied up, no "sorry, were you eating?"
+You could, in theory, call customers back with updates. Nobody does, because it's absurd. You'd need a person doing nothing but dialing, and half the calls would interrupt someone driving to you.
 
-It also beats making the customer refresh an app or a web page, because most of them won't. SMS meets people where they already are. For a phone order especially, that matters — someone who called to order is telling you they'd rather not fuss with an app, so honoring that with a plain text is the consistent move.
+A text is asynchronous. It lands, the customer glances at it, and neither party stopped what they were doing. No line tied up, no "sorry, were you eating?"
+
+It also beats making the customer refresh an app or a web page, because most of them won't. Someone who called to order is telling you they'd rather not fuss with software, so honoring that with a plain text is the consistent move.
 
 ## Better pickup timing means better food
 
-The underrated payoff here isn't just fewer calls. It's that the food is better when the customer shows up at the right moment.
+The underrated payoff isn't fewer calls. It's that the food is better when the customer arrives at the right moment.
 
-The whole problem with pickup is the gap between "ready" and "picked up." Every minute in that gap is a minute fries are wilting and a burger is steaming itself in the bag. A "ready now" text closes that gap. The customer who got the text at the right time walks in when the food is at its best, which means a better meal, a better review, and fewer remakes for orders that sat too long. You didn't change the cooking. You just synced the customer's clock to the kitchen's.
+The whole problem with pickup is the gap between "ready" and "picked up." Every minute in that gap is a minute fries are wilting and a burger is steaming itself in the bag. A "ready now" text closes the gap. The customer walks in when the food is at its best, which means a better meal, a better review, and fewer remakes for orders that sat too long.
+
+You didn't change the cooking. You synced the customer's clock to the kitchen's. That only works if the time you quoted on the call was honest in the first place, which is a separate discipline covered in [quoting accurate pickup times](/blog/quoting-accurate-pickup-times).
 
 ## Delivery is where it earns its keep
 
-For pickup the win is timing. For delivery it's reassurance. A customer waiting on a delivery has even less visibility — they can't see your lobby or hear the kitchen, they're just watching the door. An "out for delivery" text turns an anxious wait into a bounded one. It tends to cut the "where's my food" call, which for delivery is the single most common one, and it sets a fair expectation instead of leaving the customer to invent their own.
+For pickup the win is timing. For delivery it's reassurance.
+
+A customer waiting on a delivery has even less visibility. They can't see your lobby or hear the kitchen. They're watching the door. An "out for delivery" text turns an anxious wait into a bounded one, and it tends to cut the "where's my food" call, which for delivery is the most common one you get.
+
+It also sets a fair expectation instead of leaving the customer to invent their own. A customer who was told at 7:15 that the driver left is far less likely to call at 7:25 than one who has heard nothing since ordering.
+
+## Keep the transactional list separate from marketing
+
+This is the part that gets restaurants in trouble later.
+
+A text about the order someone just placed is transactional. A text about Taco Tuesday is marketing, and marketing texts carry a stricter consent standard, real penalties, and carrier registration requirements. The failure mode is a well-meaning manager exporting the order-status numbers into a promotional blast eighteen months from now, because those numbers were sitting right there.
+
+Decide now that the two lists never merge, and say so in writing to whoever handles promotions. If you do want a marketing list, collect that consent separately and explicitly. [Texting rules for restaurants](/blog/tcpa-restaurant-text-messages) covers what applies and how to gather opt-ins properly.
+
+Also honor stop requests immediately and permanently, including for transactional messages. A customer who replied STOP and kept getting texts is a complaint waiting to happen.
 
 ## Where it fits in the bigger picture
 
-Order-status texts aren't a standalone gadget — they're the tail end of the same phone-ordering flow that starts when the AI answers the call, takes the order, and writes it to your POS. If you want the full arc of how a call becomes a ticket, we lay it out in [how AI phone ordering actually works](/blog/how-ai-phone-ordering-works-the-pipeline), and the broader operator's view is in the [complete guide to AI phone ordering for restaurants](/blog/ai-phone-ordering-for-restaurants-complete-guide). Status updates ride on top of that — they only work because the system already knows the order and its state.
+Order-status texts aren't a standalone gadget. They're the tail end of the same phone-ordering flow that starts when the agent answers, takes the order, and writes it to your POS. If you want the full arc of how a call becomes a ticket, it's laid out in [how AI phone ordering actually works](/blog/how-ai-phone-ordering-works-the-pipeline), and the broader operator's view is in the [complete guide to AI phone ordering](/blog/ai-phone-ordering-for-restaurants-complete-guide). Status updates ride on top of that. They only work because the system already knows the order and its state.
 
 ## What it won't fix
 
-Be honest with yourself about the limits. Status texts reduce the "is it ready" kind of callback. They don't touch calls about real problems — a wrong item, a missing side, a delivery that went to the wrong address. Those calls should still reach a human quickly, and no text sequence replaces that.
+Be honest about the limits. Status texts reduce the "is it ready" callback. They don't touch calls about real problems: a wrong item, a missing side, a delivery to the wrong address. Those should still reach a human quickly, and no text sequence replaces that.
 
-They also depend on your status data being accurate. If your "ready" status fires when the ticket's marked done but the food actually sits another six minutes, the text is now lying to the customer and you've made the timing problem worse, not better. The texts are only as good as the moment they're triggered. And a few restaurants will find their customers simply prefer to call — that's fine, and worth noticing rather than overriding. As with anything here, measure your own before-and-after instead of assuming the feature paid for itself.
+They also depend on your status data being accurate. If "ready" fires when the ticket is marked done but the food sits another six minutes, the text is now lying and you've made the timing problem worse. The texts are only as good as the moment they're triggered.
 
-## The bottom line
+A few restaurants will find their customers simply prefer to call. That's worth noticing rather than overriding.
 
-Texting order-status updates is not a flashy feature and it won't headline anyone's sales deck. What it does is remove a small, constant tax — the "is my order ready" callbacks that pile up during your busiest hours — while getting customers to the counter at the moment the food is actually at its best. Set it up so the texts fire on real status changes, keep them to the order at hand, and watch your own callback volume. If the number drops, it's doing its job. If you want to see how it slots into the rest of the ordering flow, [get in touch](/contact).
+## How to tell whether it worked
+
+Count "is it ready" callbacks for two weeks before you switch it on, using a tally by the phone. Count them for two weeks after. If the number drops meaningfully, the feature is doing its job and you can stop thinking about it.
+
+If it doesn't drop, check the trigger timing before concluding the idea was wrong. Nine times out of ten the texts are firing at the wrong moment, and moving the ready trigger to the shelf instead of the ticket fixes it. If you want help wiring the status events to the right points in your flow, [get in touch](/contact).

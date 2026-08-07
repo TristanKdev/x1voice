@@ -1,34 +1,81 @@
 ---
 title: "Multilingual AI Phone Ordering: Serving Every Caller"
-description: "How a bilingual AI phone agent captures orders from Spanish, Chinese, Vietnamese, and other callers, while the ticket stays in the format your kitchen reads."
+description: "How a multilingual phone agent takes orders in Spanish, Mandarin, or Vietnamese while the kitchen ticket lands in the one format your staff already reads."
 publishedAt: "2026-06-30"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Can AI answer restaurant calls in Spanish?"
-    answer: "Yes. A multilingual agent detects the caller's language and responds in it, and the order still fires into your POS in the format your kitchen reads. English and Spanish are commonly supported, along with many more languages."
+    answer: "Yes. A multilingual agent detects the caller's language from their first few words and responds in it, and the order still fires into your POS in the format your kitchen reads. English and Spanish are the most commonly deployed pair in US restaurants, with Mandarin, Vietnamese, Russian and Arabic among the other supported languages. Nothing about your ticket format or kitchen workflow changes."
   - question: "Do I need bilingual staff for multilingual phone ordering?"
-    answer: "No. The agent handles the conversation in the caller's language while the kitchen ticket stays in your standard format, so your team reads orders the same way regardless of the call's language."
+    answer: "No. The agent handles the conversation in the caller's language while the kitchen ticket stays in your standard format, so your team reads orders the same way regardless of what language the call happened in. The one place staff language still matters is escalation. If a Spanish-speaking caller asks for a person and nobody on shift speaks Spanish, you need a plan for that call."
+  - question: "How does it know which language to use?"
+    answer: "It detects the language from the caller's speech rather than asking them to choose. The greeting typically plays in your primary language, and the agent switches as soon as the caller responds in another one. This is different from a phone tree that asks callers to press a number, which adds a step for everyone and tends to lose the callers it was built for."
+  - question: "What happens if a caller switches languages mid-call?"
+    answer: "A good agent follows. Bilingual callers mix languages constantly, often ordering in Spanish but naming menu items in English because that's how the item is written on your menu. The agent should handle that without resetting the conversation. Test this specifically during evaluation, because handling one clean language is much easier than handling the way people actually speak."
+  - question: "Will menu item names get translated badly?"
+    answer: "They can, and it's the failure mode to check. Your dish names should be spoken as written rather than translated word for word, since a caller asking for a Cubano wants the Cubano on your menu, not a literal rendering of it. Confirm during setup that proper dish names stay intact in every language you enable, and listen to a test call in each one."
 ---
 
-In a lot of markets, a real share of a restaurant's callers are more comfortable ordering in a language other than English. When the phone can't meet them there, those orders get shorter, error-prone, or lost. Operators in [r/restaurateur](https://www.reddit.com/r/restaurateur/) raise this often, and it's a solvable problem.
+In a lot of markets, a real share of a restaurant's callers would rather order in a language other than English. When the phone can't meet them there, those orders come out shorter, less accurate, or not at all. The caller orders the one thing they know how to say, skips the drink and the side, and hangs up before anyone can upsell them. Or they don't call twice.
+
+This is a solvable problem, and the solution is less complicated than most operators assume.
 
 ## Detection, not a phone tree
 
-The wrong way is "press 2 for Spanish." The right way is detection: the agent recognizes the caller's language and answers in it. See the [languages we support](/languages), including Spanish, Mandarin, Vietnamese, Russian, Arabic, and more.
+The instinct is to build a menu: press 1 for English, press 2 for Spanish. That's the wrong shape for a restaurant line, for two reasons.
+
+It adds a step for every caller, including the majority who didn't need it. And it front-loads a decision at the exact moment a caller is least patient. A hungry customer at 6:40pm who hears a language menu before they hear a human voice is measurably more likely to hang up and call the place down the street.
+
+Detection removes the step. The greeting plays, the caller says "hola, quiero ordenar," and the agent continues in Spanish from there. No button, no wait, no announcement that a special accommodation is being made. See the [languages we support](/languages) for the current list, which includes Spanish, Mandarin, Vietnamese, Russian and Arabic.
 
 ## The ticket stays universal
 
-The conversation's language and the kitchen ticket are separate. A caller can order entirely in Spanish and the [POS ticket](/integrations) still lands in the format your staff reads. Your kitchen doesn't need to be bilingual for your phone to be.
+The part that reassures operators most is that the language of the conversation and the language of the kitchen ticket are entirely separate.
 
-## Why it captures orders you're losing
+A caller can order start to finish in Spanish, and the [POS ticket](/integrations) lands in your standard format, with your item names, your modifier codes, your printer routing. The line cook reads it exactly as they read the ticket before it. Your kitchen doesn't need to be bilingual for your phone to be.
 
-Beyond the calls that go unanswered at peak, add the ones cut short by a language mismatch. A multilingual agent recovers both, consistently, on every call.
+This matters more than it sounds, because it removes the usual objection. Restaurants that have tried to serve non-English callers with a bilingual staff member have discovered the hard way that the capability walks out the door when that person quits or takes a Tuesday off. Detaching the conversation language from the ticket format means the capability belongs to the restaurant rather than to one employee's schedule.
 
-## Where restaurant operators discuss this
+## What it looks like on a Friday night
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+Picture a taqueria with a heavily Spanish-speaking customer base and one bilingual host who also runs the register.
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+Before, the Spanish calls stacked up behind whatever that host was doing. Some rang out. Some got handled by a staff member working from a short list of memorized phrases, which produced orders with the right protein and the wrong everything else. Callers who'd been burned once started driving over and ordering at the counter instead, which is fine for them and worse for your throughput.
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+After, those calls get answered on the first ring in the caller's language, with the full menu available and the modifiers actually asked about. The host stays on the register. The tickets print the same as always. The change your kitchen notices isn't the language, it's that the Spanish-language tickets suddenly have drinks and sides on them, because someone finally asked.
+
+## Where it still goes wrong
+
+Three things to check before you assume it's handled.
+
+Menu item names are the first. Dish names should be spoken as written, not translated. A caller asking for the Cubano wants the item on your menu, and a literal translation confuses everyone. Confirm this explicitly during setup and listen to a test call in each language you enable. The same care that goes into [modifier handling](/blog/how-voice-ai-handles-menu-modifiers) applies to proper nouns on your menu.
+
+Code-switching is the second. Bilingual callers mix languages within a single sentence, often because your menu is printed in English and their conversation isn't. An agent that resets when it hears an English dish name inside a Spanish sentence will frustrate exactly the customers it was meant to serve. Test this deliberately.
+
+Escalation is the third, and it's the one operators forget. If a Spanish-speaking caller asks for a human and nobody on shift speaks Spanish, the language capability ends at the transfer. Decide in advance what happens: a callback from a bilingual manager, a message taken in the caller's language and transcribed for staff, or a different routing rule during shifts when nobody bilingual is on. [Bilingual Spanish phone ordering](/blog/bilingual-spanish-ai-phone-ordering) goes deeper on the Spanish case specifically.
+
+## What it costs you to keep doing nothing
+
+The loss here is quieter than a missed call, which is why it rarely gets counted.
+
+A caller who reaches someone who can't fully serve them usually doesn't hang up in protest. They order the two things they're confident naming, decline anything they'd have to negotiate, and leave. The ticket exists, so it looks like a win in your POS. What's missing is the drink, the side, the dessert, and the modifier they wanted but couldn't ask for. Those absences never show up as a problem because there's no record of the order that didn't happen.
+
+The second loss is repeat frequency. A customer who found the call awkward orders from you less often, and that decay happens over months rather than in one visible moment. By the time you notice a segment of your customer base ordering less, the cause is far enough back that nobody connects it to the phone.
+
+Neither of these is a reason to buy anything on its own. They're a reason to be skeptical of your own sense that the phone is fine, since the mechanism that would tell you otherwise doesn't produce data.
+
+## Accent handling is a separate problem
+
+Language coverage and accent handling get conflated, and they shouldn't be.
+
+Supporting Spanish means the agent can converse in Spanish. It says nothing about how well it understands a caller speaking English with a strong accent, which is a much larger group in most restaurants and a genuinely harder recognition problem. A system can be excellent at one and mediocre at the other. Test both, and see [speech recognition accuracy across accents](/blog/voice-ai-accent-speech-recognition-accuracy) for what to listen for.
+
+If your callers mostly speak accented English rather than another language entirely, accent handling is the capability that matters and multilingual support is close to irrelevant. Knowing which situation you're in saves you from buying the wrong thing.
+
+## Deciding whether this is worth it for you
+
+The test is straightforward. For one week, have whoever answers the phone mark a tally every time a caller opens in a language your staff can't fully handle, and a second tally when that call ends in a completed order.
+
+If the first number is small, multilingual support is a nice feature and not a reason to switch anything. If the first number is meaningful and the second is much smaller, you've found orders you're currently losing at the moment of contact, and you can multiply the gap by your average ticket the same way you would for [any missed call](/blog/how-many-calls-does-your-restaurant-miss).
+
+Count first. The answer is different in a Houston taqueria than in a Vermont bistro, and the only version of this number that should drive a purchase is your own.

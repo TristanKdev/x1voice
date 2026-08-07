@@ -48,7 +48,7 @@ Assuming the menu is current, the order lands as a normalized ticket, prints or 
 
 Middleware adds a dependency, and honest evaluation means naming what that costs you.
 
-Menu drift is the most common failure and the least dramatic. A store manager adds a seasonal item directly in the POS, the middleware menu never learns about it, and the agent politely tells callers you don't sell a thing sitting on the counter. Nothing alarms. You find out from a complaint. The fix is procedural rather than technical: decide that the middleware menu is the source of truth for every off-premise channel, then check it. [Per-store overrides for menu and hours](/blog/per-store-overrides-menu-hours) is where that policy actually gets configured.
+Menu drift is the most common failure and the least dramatic. A store manager adds a seasonal item directly in the POS, the middleware menu never learns about it, and the agent politely tells callers you don't sell a thing sitting on the counter. Nothing alarms. You find out from a complaint. The fix is procedural rather than technical: decide that the middleware menu is the source of truth for every off-premise channel, then check it. Per-store overrides for menu and hours are where that policy actually gets configured, and they're worth setting deliberately rather than inheriting.
 
 The second failure is a middleware outage or a POS connection dropping at one store. Ask what happens to a call in progress. A reasonable answer is that the agent still takes the order and the write retries, or the order falls back to a ticket your staff can act on. An unreasonable answer is that the caller gets told to call back. [What happens when voice AI fails](/blog/what-happens-when-voice-ai-fails) walks through the failover behavior worth demanding in writing.
 
@@ -68,7 +68,7 @@ Fourth is escalation rate per store. If one location transfers callers at three 
 
 None of this makes direct integrations wrong. For a single location, direct is frequently the cleaner choice, and X1 Voice supports both direct POS connections and the Deliverect path deliberately, because the right answer depends on your footprint. You can see the current connection list on the [integrations page](/integrations).
 
-The decision rule is close to mechanical. One location on one POS: go direct. Several locations on mixed POS, especially if you already run an aggregator for delivery marketplaces: middleware wins on consistency and manageability. A group that expects to keep adding stores: middleware also makes the next location an extension of an existing layer rather than a new integration project, which is most of the argument in [rolling out to fifty locations](/blog/rolling-out-to-50-locations).
+The decision rule is close to mechanical. One location on one POS: go direct. Several locations on mixed POS, especially if you already run an aggregator for delivery marketplaces: middleware wins on consistency and manageability. A group that expects to keep adding stores: middleware also makes the next location an extension of an existing layer rather than a new integration project, which is most of the argument for standardizing early rather than after store thirty.
 
 The one case that trips people up is a group where twenty stores share a POS and two don't. Running twenty direct and two through middleware gives you two operating models and two sets of habits. Usually it's cheaper to standardize on the path that covers everybody, even if it's marginally less direct for the majority.
 

@@ -2,71 +2,90 @@
 title: "The Five Categories of Restaurant Voice AI"
 description: "Restaurant voice AI is not one market but five, each solving a different problem for a different kind of operator. A map of the categories, so you shop right."
 publishedAt: "2026-05-20"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Why does it matter which category a vendor is in?"
-    answer: "Because a tool built for one category often does a mediocre job in another. A general AI receptionist and a deep phone-ordering system can both 'answer your phone,' but only one is built to place a correctly modified order into your POS. Knowing the categories keeps you from buying a receptionist when you needed an order-taker, or vice versa."
+    answer: "Because a tool built for one category often does a mediocre job in another. A general AI receptionist and a deep phone-ordering system can both answer your phone, but only one is built to place a correctly modified order into your POS. Knowing the categories keeps you from buying a receptionist when you needed an order-taker, or the reverse."
   - question: "Can one product span more than one category?"
-    answer: "Some do, and a few vendors genuinely operate across two. But 'we do everything' is worth probing. Ask which category the vendor built for first and where their deepest customer base is — that's usually where the product is strongest and where the edge cases are handled."
+    answer: "Some do, and a few vendors genuinely operate across two. But a claim of doing everything is worth probing. Ask which category the vendor built for first and where their deepest customer base is. That is usually where the product is strongest and where the awkward edge cases have already been found and handled."
   - question: "Which category does a typical full-service or delivery-focused restaurant need?"
-    answer: "Usually off-premise phone ordering with real POS integration, sometimes combined with reservations and answering. Drive-thru automation is a QSR-lane problem, and a generic AI receptionist often isn't built to write a modified food order into your POS — which for most restaurants is the whole point."
+    answer: "Usually off-premise phone ordering with real POS integration, sometimes combined with reservations and answering. Drive-thru automation is a QSR-lane problem, and a generic AI receptionist often isn't built to write a modified food order into your POS, which for most restaurants is the whole point of buying anything."
+  - question: "What question fastest reveals which category a vendor is really in?"
+    answer: "Ask them to walk through what happens after the caller says the last word of a modified order. A phone-ordering vendor describes the POS write in detail: the item, the modifier mapping, the ticket the kitchen sees. A receptionist product describes a message, a text, or an email. Neither answer is wrong, but they identify two different products immediately."
+  - question: "Should I buy from two categories at once?"
+    answer: "Rarely, and never in the same month. Running a reservations tool and an order-taker on the same line means deciding which one answers first, and that routing rule is where most of the trouble lives. Buy for your dominant call type, measure a quarter, then add the second only if the transcripts show a real volume of calls the first one can't serve."
 ---
 
-"Restaurant voice AI" gets talked about as if it were a single product you either buy or don't. It isn't. It's at least five distinct categories, each built around a different problem, a different restaurant type, and often a different set of vendors. Shop without that map and it's easy to compare a reservations tool against a drive-thru system against an order-taker as though they're interchangeable. They aren't.
+"Restaurant voice AI" gets talked about as if it were a single product you either buy or don't. It isn't. It's at least five distinct categories, each built around a different problem, a different restaurant type, and often a different set of vendors. Shop without that map and it's easy to compare a reservations tool against a drive-thru system against an order-taker as though they were interchangeable. They aren't.
 
 Here's the map, and how to tell which shelf you should be standing in front of.
 
-## 1. Drive-thru automation (QSR)
+## 1. Drive-thru automation for QSR lanes
 
-This is voice AI at the drive-thru window: taking orders at the lane speaker for high-volume quick-service chains. It's a throughput-and-noise problem — a fixed menu, brutal audio, and pressure to not add seconds to the average car.
+This is voice AI at the drive-thru window: taking orders at the lane speaker for high-volume quick-service chains. It's a throughput-and-noise problem, a fixed menu, brutal audio, and pressure not to add seconds to the average car.
 
-The players here include specialists like **SoundHound** and **ConverseNow**, plus big-chain in-house builds such as **Wendy's FreshAI** (with Google) and **Yum! Brands** with **Nvidia**. It's a QSR-lane category, and it has little to do with a full-service restaurant's phone. We compare it to phone ordering in [drive-thru vs. phone ordering](/blog/drive-thru-vs-phone-ordering-voice-ai).
+The players here include specialists like SoundHound and ConverseNow, plus big-chain in-house builds such as Wendy's FreshAI with Google, and Yum! Brands with Nvidia. It's a QSR-lane category, and it has little to do with a full-service restaurant's phone. We compare the two environments directly in [drive-thru vs. phone ordering](/blog/drive-thru-vs-phone-ordering-voice-ai).
 
-**You need this if:** you run a QSR with a busy drive-thru and want to automate the lane.
+You're on this shelf if you run a QSR with a busy lane and want to automate the window.
 
 ## 2. Off-premise phone ordering
 
-This is the category most independent and multi-location restaurants actually mean when they think about voice AI: answering the phone and placing takeout and delivery orders directly into the POS. The hard part isn't the conversation, it's the [order write](/blog/why-pos-integration-depth-matters-more-than-voice-quality) — landing a correctly modified ticket the kitchen can make.
+This is the category most independent and multi-location restaurants actually mean when they think about voice AI: answering the phone and placing takeout and delivery orders directly into the POS. The hard part isn't the conversation, it's the [order write](/blog/why-pos-integration-depth-matters-more-than-voice-quality), landing a correctly modified ticket the kitchen can make.
 
-Vendors focused here include **ConverseNow**, **Kea**, **VOICEplug**, **Bite Buddy**, and **Loman**, among others. X1 Voice sits in this category: 24/7 answering with deep POS sync, direct and through middleware like Deliverect, plus payment taken on the call.
+Vendors focused here include ConverseNow, Kea, VOICEplug, Bite Buddy, and Loman, among others. X1 Voice sits in this category: 24/7 answering with deep POS sync, direct and through middleware like Deliverect, plus payment taken on the call.
 
-**You need this if:** you miss phone orders during the rush and want them captured and rung in without staff re-keying them.
+You're on this shelf if you miss phone orders during the rush and want them captured and rung in without staff re-keying them.
 
-## 3. Reservations and answering (full-service)
+## 3. Reservations and answering for full-service
 
 Full-service restaurants have a different phone problem. Fewer orders, more reservations, waitlist questions, hours, "do you have a table for six at eight." The job is answering gracefully and managing the book, not ringing in a modified pizza.
 
-This is the space of tools like **Slang.ai** and **Popmenu's** answering product, tuned for the full-service front-of-house voice and the reservation flow.
+This is the space of tools like Slang.ai and Popmenu's answering product, tuned for the full-service front-of-house voice and the reservation flow. The line between this shelf and the previous one is blurrier than the others, which is why [reservations versus ordering](/blog/voice-ai-reservations-vs-ordering) is worth reading before you assume you need only one.
 
-**You need this if:** you're a sit-down restaurant drowning in reservation and info calls rather than takeout orders.
+You're on this shelf if you're a sit-down restaurant drowning in reservation and info calls rather than takeout orders.
 
 ## 4. General AI receptionists
 
-Some products are horizontal: an AI receptionist for any small business — a salon, a clinic, a contractor — that happens to also work for a restaurant. They answer, take messages, route calls, and handle FAQs across industries.
+Some products are horizontal: an AI receptionist for any small business, a salon, a clinic, a contractor, that happens to also work for a restaurant. They answer, take messages, route calls, and handle FAQs across industries.
 
-Companies like **Goodcall** and **Numa** live here (Numa also does deeper restaurant-specific work), and enterprise conversational platforms like **PolyAI** power answering at scale across sectors. These tools can be a fine fit for basic coverage. The caution is depth: a general receptionist often isn't built to write a modified food order into your specific POS, which for most restaurants is the entire point.
+Companies like Goodcall and Numa live here, though Numa also does deeper restaurant-specific work, and enterprise conversational platforms like PolyAI power answering at scale across sectors. These tools can be a fine fit for basic coverage. The caution is depth. A general receptionist often isn't built to write a modified food order into your specific POS, which for most restaurants is the entire point.
 
-**You need this if:** you mainly need calls answered and messages taken, and full order-into-POS capture isn't essential.
+You're on this shelf if you mainly need calls answered and messages taken, and full order-into-POS capture isn't essential.
 
 ## 5. Build-your-own voice platforms
 
-The last category isn't a finished product at all — it's the infrastructure other products are built on. Platforms like **Vapi**, **Retell**, and **Bland** give developers the building blocks (the speech, language, and telephony plumbing) to assemble a custom voice agent.
+The last category isn't a finished product at all. It's the infrastructure other products are built on. Platforms like Vapi, Retell, and Bland give developers the building blocks, the speech, language, and telephony plumbing, to assemble a custom voice agent.
 
-For a restaurant, this is almost never a buy decision; it's what a vendor or a large group with an engineering team uses to build. We dig into whether that ever makes sense for an operator in our [2026 state of the market](/blog/state-of-voice-ai-for-restaurants-2026) piece.
+For a restaurant, this is almost never a buy decision. It's what a vendor or a large group with an engineering team uses to build. We dig into whether that ever makes sense for an operator in our [2026 state of the market](/blog/state-of-voice-ai-for-restaurants-2026) piece.
 
-**You need this if:** you're a technology team building your own agent, not an operator buying one.
+You're on this shelf if you're a technology team building your own agent, not an operator buying one.
 
-## How to place yourself
+## What buying the wrong shelf feels like
 
-The fastest way to find your shelf is to name your actual problem in one sentence:
+The categories matter because the mistake is quiet. Nothing fails on day one.
 
-- "Automate my drive-thru lane." → Category 1.
-- "Stop missing takeout and delivery calls, and get orders into my POS." → Category 2.
-- "Manage reservations and info calls at my sit-down spot." → Category 3.
-- "Just get the phone answered and messages taken." → Category 4.
-- "We're building our own." → Category 5.
+Buy a receptionist when you needed an order-taker and the phone gets answered, which feels like a win. Then the messages start arriving as texts and emails, and someone at the host stand re-types them into the POS during the rush. You've moved the labor to a worse moment rather than removed it. The tell is that your order accuracy gets worse even though your answered-call rate got better.
 
-Most operators land in category 2 or 3, sometimes both. Knowing that before you take a single sales call changes the questions you ask and keeps you from being sold the wrong category well.
+Buy an order-taker when you needed reservations and the reverse happens. The agent handles the trickle of takeout calls beautifully and fumbles the party of eight asking about the patio at eight-thirty, because the book isn't the system it was built around.
 
-## The bottom line
+Buy a build-your-own platform because the demo was impressive and you discover that the platform is the easy 20 percent. The menu mapping, the modifier trees, the 86 sync, and the POS certification are the rest, and they're an engineering program rather than a configuration weekend.
 
-Restaurant voice AI is five markets wearing one name. The vendors specialize, the strengths differ, and a tool that's excellent in its home category can be mediocre outside it. Figure out which problem is actually yours, shop that shelf, and treat any "we do all of it" pitch as a prompt to ask where the product really started.
+## How to place yourself in one sentence
+
+The fastest way to find your shelf is to name your actual problem out loud and keep it to one sentence:
+
+- "Automate my drive-thru lane." That's category 1.
+- "Stop missing takeout and delivery calls, and get orders into my POS." That's category 2.
+- "Manage reservations and info calls at my sit-down spot." That's category 3.
+- "Just get the phone answered and messages taken." That's category 4.
+- "We're building our own." That's category 5.
+
+Most operators land in category 2 or 3, sometimes both. If you can't pick, your call mix will pick for you: pull a week of calls and count how many were orders versus reservations versus questions. Whichever bucket holds more than half your volume is your category, and the rest is an escalation rule rather than a second purchase.
+
+## The three questions that place a vendor
+
+Once you know your shelf, three questions place any vendor on theirs, and none of them can be answered with a demo reel.
+
+Ask what happens in the seconds after a caller finishes a modified order. Ask which POS systems they hold live, certified connections to, by name, and how many of their customers run that exact one. Ask for the format and size of the reference customer closest to yours, and then call that reference. [What to ask before buying an AI phone system](/blog/what-to-ask-before-buying-an-ai-phone-system) has the longer list.
+
+A vendor who's genuinely in your category answers all three quickly and specifically, because those answers are what they've spent years building. A vendor answering from the next shelf over will be fluent about the conversation and vague about the ticket. That gap is the whole thing you're shopping for.

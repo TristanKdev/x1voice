@@ -1,34 +1,78 @@
 ---
-title: "Toast + AI Phone Ordering: How the Integration Works"
-description: "With Toast, a voice agent is only worth what it puts into your POS correctly. What a real Toast integration does, and what to test before you buy one."
+title: "Toast Menu Sync and Modifier Mapping for Voice AI"
+description: "The technical half of a Toast voice integration: how the menu is read, how orders are written back, and the modifier structures that break the mapping."
 publishedAt: "2026-06-11"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Does the voice agent read my live Toast menu?"
-    answer: "It should. A real integration pulls your Toast catalog — items, modifiers, and prices — so the agent only quotes what you actually sell, priced the way Toast already prices it. If a vendor asks you to maintain a separate menu just for the phone, that's a red flag; you'll be updating two menus and they'll drift apart."
+    answer: "It should. A real integration pulls your Toast catalog, items, modifiers, and prices, so the agent only quotes what you actually sell, priced the way Toast already prices it. If a vendor asks you to maintain a separate menu just for the phone, that's a red flag; you'll be updating two menus and they'll drift apart within a month."
   - question: "Do phone orders show up in Toast like any other ticket?"
     answer: "Yes, with a proper integration. A completed phone order lands in Toast as a normal ticket and routes to the kitchen the same way an in-person or online order does. Nobody re-keys it. That end-to-end write is the part to verify, because it's where a nice-sounding voice either delivers real value or quietly creates extra work."
+  - question: "How does X1 Voice connect to Toast specifically?"
+    answer: "Through Deliverect, the same middleware layer many restaurants already use to pull third-party orders into Toast. The agent reads your live Toast catalog through that connection and writes the finished order back as a ticket. Because it's a path your staff already recognizes, the ticket shape on the kitchen printer looks familiar rather than foreign."
+  - question: "What happens to a phone order if my Toast connection drops mid-shift?"
+    answer: "Ask the vendor directly, because the answers differ. The behavior you want is that the agent keeps taking calls, queues the orders, and tells you clearly that tickets are held rather than silently failing. The behavior to avoid is an agent that keeps selling from a stale cached menu, including items your kitchen 86'd hours ago."
+  - question: "What's the one test that proves a Toast integration is real?"
+    answer: "Place a deliberately awkward modified order on your own menu and go look at the ticket in Toast. Something like a large pizza, half one topping, no onions, substitute fries, add a drink, applied to a discount. If every modifier, the price, and the routing are correct without anyone touching it, the integration is real. If any part needs a human fix, it isn't."
 ---
 
-Toast is one of the most common POS systems in independent and multi-location restaurants, so "does it work with Toast" is usually the first question operators ask about a voice agent. It's the right question — but the honest version is more specific: does it read your live Toast menu, and does a finished order land back in Toast correctly? Everything else is secondary.
+Toast is one of the most common POS systems in independent and multi-location restaurants, so "does it work with Toast" is usually the first question operators ask about a voice agent. It's the right question, but the honest version is more specific: does it read your live Toast menu, and does a finished order land back in Toast correctly? Everything else is secondary.
 
 ## Reading the menu, not rebuilding it
 
-The foundation of a good Toast integration is that the agent pulls directly from your Toast catalog: item names, modifiers, and prices. That matters for two reasons. First, the agent only quotes things you actually sell today, priced the way your register prices them — no stale menu, no wrong totals. Second, you don't maintain a second menu. When you change an item in Toast, the phone agent reflects it. If a vendor requires you to keep a separate phone menu in sync by hand, you've signed up for drift and errors.
+The foundation of a good Toast integration is that the agent pulls directly from your Toast catalog: item names, modifiers, and prices.
 
-X1 Voice reads your live Toast menu, including modifiers and item-level customization, so the order it takes is priced against reality, not a copy that's a week out of date.
+That matters for two reasons. First, the agent only quotes things you actually sell today, priced the way your register prices them, so there's no stale menu and no wrong totals. Second, you don't maintain a second menu. When you change an item in Toast, the phone agent reflects it. If a vendor requires you to keep a separate phone menu in sync by hand, you've signed up for drift and errors, and the drift usually shows up as a price mismatch a customer notices before you do.
+
+X1 Voice reaches Toast through [Deliverect](/blog/deliverect-voice-agent-multi-location-restaurants), the middleware layer a lot of restaurants already use to pull third-party orders into their POS. The agent reads your live Toast menu, including modifiers and item-level customization, so the order it takes is priced against reality rather than a copy that's a week out of date.
 
 ## The write is where value is won
 
-Reading a menu is the easy half. The hard half — and the one that separates a real integration from a demo — is [firing a correctly-modified order back into the POS](/blog/why-pos-integration-depth-matters-more-than-voice-quality). "No onions, sub fries, add a drink, apply the coupon" has to arrive in Toast so the kitchen and the ticket match exactly. When that works, a phone order shows up in Toast as a normal ticket and routes like any other order; nobody transcribes anything.
+Reading a menu is the easy half. The hard half, and the one that separates a real integration from a demo, is [firing a correctly-modified order back into the POS](/blog/why-pos-integration-depth-matters-more-than-voice-quality). "No onions, sub fries, add a drink, apply the coupon" has to arrive in Toast so the kitchen and the ticket match exactly. When that works, a phone order shows up in Toast as a normal ticket and routes like any other order, and nobody transcribes anything.
 
-This is the single thing to test before you commit with any vendor, Toast or otherwise: place a deliberately awkward modified order and confirm it lands in the POS correctly, not just that the voice sounded good saying it back.
+This is the single thing to test before you commit with any vendor. Place a deliberately awkward modified order and confirm it lands in the POS correctly, not just that the voice sounded good saying it back.
+
+## Where Toast integrations actually break: modifier structure
+
+If a Toast integration goes wrong, the cause is almost never the audio. It's the shape of your modifier groups.
+
+Toast lets you build required groups, optional groups, nested groups, and modifiers that carry their own price. A caller doesn't know any of that exists. They say "a large pepperoni, light sauce, well done." Your Toast menu might have "Light Sauce" as an optional modifier on one pizza and a required choice on another, and "Well Done" might not be a modifier at all, just something your staff writes in the notes field.
+
+The agent has to resolve all of that in under a second, which means the mapping between what people say and what Toast stores has to be written down in advance. That's the real setup work, and it's covered in detail in [mapping Toast modifiers for voice](/blog/toast-menu-modifiers-voice-mapping). Restaurants that do this pass carefully have a smooth first week. Restaurants that skip it spend that week reading transcripts full of clarification loops.
+
+One specific thing to check: required modifier groups with no sensible default. If your POS demands a heat level on every wing order and the caller doesn't say one, the agent has to ask. That's correct behavior, but if half your items have required groups, your calls get long. Auditing those groups before launch is usually worth an afternoon.
+
+## What a Friday shift looks like with it running
+
+Here's the shift-level version. A call comes in at 6:45pm. The agent takes a three-item order with two modifiers, reads it back, takes payment on the line, and the ticket prints at the make station before the caller has hung up. Nobody at the counter touched it. Your closer, who would have taken that call with a phone on their shoulder while bagging an order, never stopped moving.
+
+At the same moment, a second caller asks whether you're open until eleven and gets an answer without occupying anyone. A third asks about a gluten allergy and gets handed to a person, which is the correct outcome.
+
+The thing to notice is what your staff experiences: the phone stops being an interruption during the exact ninety minutes when interruptions cost the most. That's the whole return. If your counter team still ends up re-keying anything, the integration isn't doing its job, whatever the demo showed.
+
+## The failure mode to ask about
+
+Every integration eventually meets a bad night. Your internet drops, Toast has a service issue, or the middleware connection stalls. What the agent does in that window is the question most operators never ask and later wish they had.
+
+The behavior you want is honest degradation. The agent keeps answering, keeps taking orders, tells you plainly that tickets are queued, and stops promising a ready time it can't back. The behavior to avoid is an agent that keeps selling confidently from a cached menu, including the item your kitchen ran out of at seven. Stale-cache selling produces refunds and angry callbacks, and it's the specific pattern covered in [86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes).
+
+Ask any vendor two questions: how quickly does an 86 in Toast reach the phone agent, and what does the agent say to a caller when the POS connection is down. Vague answers to either are informative.
 
 ## Payment and reconciliation
 
 For pickup and delivery, callers can [pay on the call](/blog/collecting-payment-over-the-phone-safely), and that payment reconciles in your reporting alongside your other tender types. The operator doesn't read card numbers aloud or write them down, and the money lands where the rest of your day's revenue does.
 
+Worth confirming during a pilot: pull one day's phone orders and check that the tender totals in your Toast reporting match what the agent recorded. If those two numbers agree on day one, they'll agree at month end, and your bookkeeper never has to think about the phone as a separate channel.
+
 ## Beyond a single POS
 
-Some groups run Toast at most locations and something else at a few. Because X1 Voice connects to Square and Clover directly and reaches [dozens more POS systems through Deliverect](/blog/deliverect-voice-agent-multi-location-restaurants), a mixed estate isn't a blocker — the phone experience is consistent even when the back-of-house systems aren't identical.
+If you are still deciding rather than configuring, the buyer-side version of
+this question — what a Toast restaurant gets, what it costs, what to measure in
+the first month — is in [does AI phone ordering work with Toast](/blog/ai-phone-ordering-for-toast).
 
-If you run Toast, the takeaway is simple: judge a voice agent on the round trip. A great voice that can't write a clean, modified ticket into Toast will cost you more than it saves. One that reads your live menu and lands correct tickets automatically is the version that actually earns its place on your phone.
+
+Some groups run Toast at most locations and something else at a few. Because X1 Voice connects to Square and Clover directly and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect, a mixed estate isn't a blocker. The phone experience stays consistent even when the back-of-house systems aren't identical, and the full list sits on the [integrations page](/integrations).
+
+If you run Toast, the takeaway is the round trip. A great voice that can't write a clean, modified ticket into Toast will cost you more than it saves.
+
+So do this before you sign anything. Take your five most-modified real menu items, order all five on one call, and then stand at the Toast terminal and read the ticket. Every modifier present, the price matching your register, the routing correct, no human intervention. Pass that and the integration is real. Fail any part of it and you've learned what you needed to know for the price of one phone call.

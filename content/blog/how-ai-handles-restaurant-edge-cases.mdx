@@ -2,37 +2,78 @@
 title: "How AI Handles the Weird Restaurant Calls"
 description: "Complaints, off-menu requests, upset guests, and catering. How a good AI phone agent solves what it can and hands off the rest cleanly, with context."
 publishedAt: "2026-07-06"
+updatedAt: "2026-08-06"
 faqs:
   - question: "What happens when an AI phone agent can't handle a call?"
-    answer: "It detects that the call needs a human and hands off cleanly, transferring to a live line or capturing a voicemail with a transcript and the caller's context, so your team picks up an informed call. You set the rules for which calls route where."
+    answer: "It detects that the call needs a human and hands off cleanly, transferring to a live line or capturing a voicemail with a transcript and the caller's context, so your team picks up an informed call rather than a cold one. You set the rules for which calls route where, and those rules can differ by location, daypart, and call type."
   - question: "Can AI handle restaurant complaints and upset callers?"
-    answer: "It recognizes those calls and routes them to a person with context rather than trying to resolve them itself, so guests get fast human follow-up. Routine calls it handles start to finish."
+    answer: "It should recognize those calls and route them to a person with context rather than trying to resolve them itself, so guests get fast human follow-up. Routine calls it handles start to finish. An agent that argues with an upset caller or loops through clarification attempts instead of transferring is misconfigured, and it's the behavior to test for during a demo."
+  - question: "What does an agent do with an off-menu request?"
+    answer: "The good behavior is to say plainly that it can't do that item and offer the nearest thing you do sell, or transfer if the caller pushes. The bad behavior is accepting the request into a notes field, where the kitchen may never see it and the guest arrives expecting something you never agreed to. Ask a vendor to demonstrate a refusal, not just a success."
+  - question: "How do I know whether the handoffs are working?"
+    answer: "Break escalations into two buckets: by design and by failure. Complaints, catering, and caller-requested transfers are by design and need no fix. An agent that couldn't parse a menu item or answer a common question is a defect with a specific, cheap correction. Read a sample of escalated transcripts monthly and the failure bucket becomes your work list."
+  - question: "Will the agent handle prank calls, vendors, and wrong numbers?"
+    answer: "Yes, and that traffic is a real share of restaurant call volume. The agent ends non-order calls quickly without occupying a person, which is most of the labor benefit on a slow afternoon. Set a rule for repeat prank numbers and decide whether unrecognized non-order calls should reach voicemail or simply be closed out."
 ---
 
-The easy calls are easy. The question operators actually ask, and debate in [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/), is what happens on the messy ones.
+The easy calls are easy. A caller wants your hours, a pickup time, a large pepperoni. Any competent agent handles those, and that's not the question operators actually ask.
 
-## It solves what it can
+The question is what happens on the messy ones. The guest whose order arrived wrong last night. The caller who wants a dish you don't make. The office manager who needs food for forty on Thursday and has a budget question. Those calls are a small share of volume and a large share of the risk, and how a system handles them is most of what separates a phone agent you can leave running from one you can't.
 
-Order status, a substitution, hours, directions, a wait-time quote, these it handles start to finish, no human needed.
+## It solves what it can, start to finish
 
-## It hands off the rest, cleanly
+Order status, a substitution, hours, directions, a wait-time quote, a repeat of last week's order: these run end to end with no human involved. So do the calls nobody counts as calls, the vendor checking on a delivery, the wrong number, the person who dialed you looking for the barber next door.
 
-A complaint, an off-menu request, an upset caller: the agent detects intent and routes to a person, transferring to a live line or capturing a voicemail with a transcript, plus the caller's context. Your team picks up an informed call, not a cold one.
+That last group matters more than it seems. On a slow Tuesday afternoon, a meaningful share of your ring volume isn't revenue at all, and each one still pulls a host away from a table. An agent that quietly disposes of them is doing real work even on a day when it takes almost no orders.
+
+Modifications inside your menu also belong here. "No onions, sauce on the side, cut in squares" is not an edge case, it's ordinary, and an agent that can't map it to real modifiers has a comprehension problem rather than an edge-case problem, and it's worth separating the two before you start blaming edge cases for ordinary misses.
+
+## It hands off the rest, with context
+
+A complaint, an off-menu request, an upset caller: the agent recognizes the intent and routes to a person. Depending on your rules, that's a transfer to a live line or a voicemail captured with a transcript and the caller's details, so your team picks up an informed call instead of a cold one.
+
+The word doing the work in that sentence is "context." A transfer that arrives as a ringing line with no information is barely better than the caller dialing again. A transfer that arrives with the caller's number, what they said, and what they were trying to do lets a manager open with "I'm sorry about the order last night" rather than "how can I help you." That difference is the whole argument for handoff over deflection, and [human handoff and failover](/blog/human-handoff-failover-voice-ai) covers how to configure it.
+
+## What this looks like on a Friday at 7:15
+
+Three calls land in the same two minutes.
+
+The first is a regular ordering the usual. The agent takes it, confirms the modifiers, and it prints. Nobody at the restaurant knows the call happened.
+
+The second is a guest whose delivery arrived missing a side. The agent recognizes a complaint, doesn't try to negotiate a remake, and transfers to the manager line with the order number and a transcript already attached. The manager spends ninety seconds on it instead of five minutes reconstructing what happened. If the manager line doesn't pick up within your set number of rings, it drops to voicemail with the same context rather than dying in a loop. [Handling refund and complaint calls](/blog/handling-refund-complaint-calls) works through the policy side of that.
+
+The third is a caller asking whether the fried rice has egg in it. This is the one worth watching. A well-configured agent gives the answer you loaded, or says it can't confirm and offers a person. An agent that guesses at an allergen answer is a liability, not a convenience, which is why [allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions) deserve an explicit configuration decision rather than a default.
 
 ## Catering and large orders
 
-It can capture the inquiry and route it to whoever owns catering, so a high-value lead doesn't sit in a voicemail box overnight.
+A catering inquiry is the most expensive call you can mishandle, because the ticket is large and the caller is usually shopping two or three restaurants that afternoon.
 
-## You set the rules
+The agent should capture the inquiry, the date, the headcount, the contact, and route it immediately to whoever owns catering, so a high-value lead doesn't sit in a mailbox overnight. Whether it should attempt to quote depends on your business. A fixed per-head package can be quoted. Anything requiring judgment about staffing or delivery should not be. [Catering lead qualification](/blog/catering-lead-qualification-ai) covers where to draw that line.
 
-Which calls transfer, which go to voicemail, which get a text follow-up, that's your call, per location.
+Response time is the metric here, not containment. A catering call that reaches a human within the hour is a working system, even though the agent escalated every single one of them.
 
-## Where restaurant operators discuss this
+## The failure modes worth testing for
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+Three things go wrong, and none of them announce themselves.
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+The agent refuses to let go. A caller asks for a person, and the agent asks another clarifying question instead. This is the most damaging failure because it makes your metrics look better while the caller experience gets worse, a trap explained in [what call containment hides](/blog/what-is-call-containment).
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+The agent is confidently wrong. It accepts an off-menu request into a notes field, or answers a question about an ingredient it was never told about. The error surfaces later, at the pass or at the door, and it costs more than the original call was worth.
+
+The handoff lands nowhere. The transfer rings a line nobody staffs during the rush, or the voicemail box fills, or the escalation goes to a manager who's off that day. This is a routing problem rather than an AI problem, and it's the one most likely to be discovered by a guest instead of by you.
+
+Test all three during a demo. Call in and ask for a human immediately. Order something you don't sell. Then check where a transfer actually lands at 7 p.m. on a Friday, not at 2 p.m. on a Tuesday when the office is quiet.
+
+## You set the rules, per location
+
+Which calls transfer, which go to voicemail, which get a text follow-up, and which are simply closed out: that's your configuration, and it should differ by location and by daypart. A store with a manager on the floor until close can take live transfers all evening. A store where the last manager leaves at nine should route after that to voicemail with a transcript rather than to a phone nobody is holding.
+
+Write those rules down before you launch. Most of the disappointment operators report with voice agents traces to routing decisions that were never made explicitly, so the defaults made them instead. [A complaint escalation matrix](/blog/complaint-escalation-matrix) is a reasonable format for writing yours.
+
+## The monthly hour that keeps it honest
+
+Once a month, pull the calls that escalated and read twenty transcripts. Sort each one into "by design" or "by failure."
+
+Complaints, catering, caller-requested transfers, vendors: by design, no action. An item the agent couldn't parse, a question it had no answer for, availability it didn't know: by failure, and each one has a small specific fix, usually a menu alias or an added answer.
+
+If the failure bucket is shrinking month over month, the system is being maintained. If it's the same three items every month, nobody is doing the maintenance, and that's a conversation to have with your vendor before it's a conversation to have with a guest.

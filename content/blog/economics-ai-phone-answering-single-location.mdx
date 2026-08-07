@@ -2,35 +2,76 @@
 title: "The Economics of AI Phone Answering for One Location"
 description: "A plain-math look at what a single-location restaurant gains from answering the calls it currently misses, and what an AI phone agent actually costs."
 publishedAt: "2026-07-03"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Is AI phone answering worth it for a single restaurant?"
-    answer: "For most single locations, yes. The recovered orders from calls that currently go unanswered at peak typically exceed a flat monthly plan cost. Measure your own missed-call rate rather than relying on a vendor's example."
+    answer: "For most single locations, yes, because the break-even is low. At a $28 average ticket, a $250 monthly plan pays for itself with roughly nine recovered orders, which is fewer than one every three days. Whether you clear that depends on how many calls you currently miss at peak, so measure your own missed-call rate before you decide rather than trusting anyone's example."
   - question: "How much does AI phone answering cost per month?"
-    answer: "X1 Voice starts at $250/month including 750 minutes, with no setup fee and no contract. Other vendors bill per minute or per order, which can cost more during busy periods."
+    answer: "X1 Voice starts at $250/month including 750 minutes, with no setup fee and no contract. Other vendors bill per minute or per order, which can cost more during busy periods because your bill rises exactly when your volume does. Ask any vendor to price your actual call volume and your busiest month, not your average month, before comparing."
+  - question: "How do I estimate recovered revenue without guessing?"
+    answer: "Pull unanswered calls from your phone system for two weeks, then discount that count twice. Subtract the callers who were not ordering, and subtract the ones who called back and got through. What remains is your genuinely lost orders. Multiply that by your average ticket and by the share the agent would realistically capture. The discounts matter more than the headline number."
+  - question: "What does 750 minutes actually cover?"
+    answer: "At roughly two to three minutes for a typical order call, 750 minutes is somewhere around 250 to 375 calls a month. Divide the plan cost by the calls you expect and you get your cost per handled call, usually well under a dollar at a normal volume. Time your own calls for a day, because a long menu pushes call length up."
+  - question: "How does this compare to an answering service or another host?"
+    answer: "An answering service typically runs a few hundred dollars a month and takes messages rather than placing orders into your POS, so the order still needs re-keying. Added labor costs far more: even two hours a day of dedicated phone coverage at a loaded hourly rate lands over a thousand dollars a month. The comparison is not only price, it is whether the order lands in the POS."
 ---
 
-You don't need a spreadsheet to see the case, but it helps to do the math once. Operators run these numbers in [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) all the time.
+You don't need a spreadsheet to see the case, but it helps to do the math once, with your own numbers rather than a vendor's example. The arithmetic below is deliberately simple enough that you can redo it on the back of a prep sheet.
 
 ## The number most owners never measure
 
-The recurring industry estimate is that roughly [1 in 4 calls goes unanswered at peak](/blog/the-real-cost-of-a-missed-restaurant-phone-call), an estimate worth measuring against your own logs. For a single location, those missed calls cluster in your busiest, highest-ticket hour.
+The recurring industry estimate is that roughly [one in four calls goes unanswered at peak](/blog/the-real-cost-of-a-missed-restaurant-phone-call), and it's an estimate worth checking against your own logs rather than repeating. For a single location, those missed calls don't spread evenly across the day. They cluster in your busiest, highest-ticket hour, when the host is seating a party and the line cook is calling for a runner.
 
-## Rough math
+That clustering is the whole economic story. A missed call at 2:30 on a Tuesday costs you little. A missed call at 6:45 on a Friday is a family order you never knew existed.
 
-Say you take 80 calls a day and average a $28 ticket. If a quarter go unanswered at peak and you recover most of them, that's a meaningful monthly number, often several thousand dollars, against a flat plan cost. Run your own numbers on the [revenue calculator](/#in-action) instead of trusting a vendor's example.
+Most operators can't state their own number. Your phone system almost certainly logs unanswered and abandoned calls, and pulling two weeks of that log is the single highest-value hour you can spend before talking to any vendor. [How many calls your restaurant misses](/blog/how-many-calls-does-your-restaurant-miss) walks through where to find the data on common systems.
 
-## The cost side
+## Working the recovery math honestly
 
-X1 Voice starts at $250/month including 750 minutes, no setup fee, no contract. Compare that to a shift of labor spent triaging the phone, plus the orders that shift still misses during the rush.
+Start with a plausible single location: 80 calls a day, a $28 average ticket.
 
-This is an illustration, not a guarantee, your real numbers depend on your restaurant. But the direction is consistent: for most single locations, answering the calls you currently miss pays for the tool quickly.
+If a quarter go unanswered at peak, that's 20 missed calls a day. Now discount it twice, because the raw number overstates the loss and any vendor quoting it undiscounted is selling you something.
 
-## Where restaurant operators discuss this
+First, not every caller was ordering. Some are vendors, some are wrong numbers, some want your hours. Say half were genuine order attempts, which leaves 10. Second, some of those callers try again or order online instead, so you didn't lose them at all. Say four in ten came back anyway, leaving 6 genuinely lost orders a day.
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+Six orders at $28 is $168 a day, roughly $5,000 a month at a seven-day week. Against a $250 plan, the ratio is not close. Even if you halve every assumption, cut the missed rate, the order share, and the recovery rate all in half, you land near $600 a month against $250, and it still clears.
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+The point of running it this way is that the conclusion survives pessimism. If you have to be optimistic about all three inputs to make a purchase look good, don't make it.
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+## The break-even is lower than the pitch
+
+Here's the number worth remembering. At a $250 monthly plan and a $28 average ticket, break-even is about nine orders a month. Not nine a week. Nine a month, which is roughly one order every three days.
+
+Do that division with your own ticket average. At a $45 average check, break-even is closer to six orders a month. At a $15 counter-service ticket, it's about seventeen. That's still under one a day.
+
+Once you can state your break-even in orders, the buying decision stops being a leap of faith and becomes a question with an answer: do I miss more than that? Almost every single location that has actually measured its missed calls finds the answer is yes by a wide margin. [The payback period on voice AI](/blog/payback-period-voice-ai) works through the same arithmetic on a longer horizon.
+
+## What the plan actually buys
+
+X1 Voice starts at $250/month including 750 minutes, with no setup fee and no contract, and setup is typically under 24 hours. The [pricing page](/pricing) has the current tiers.
+
+Divide it out. At two to three minutes for a typical order call, 750 minutes covers somewhere around 250 to 375 calls, which puts your cost per handled call somewhere under a dollar. Compare that to the value of the ticket on the other end of the call and the ratio explains itself.
+
+The structure matters as much as the number. A flat plan means your cost is predictable and your busiest month doesn't produce a surprise invoice. Per-minute and per-order billing does the opposite: the bill scales with exactly the volume you were trying to capture. Neither model is dishonest, but they behave very differently in December, and [per-minute versus per-call pricing math](/blog/per-minute-vs-per-call-pricing-math) shows what the difference looks like on a real volume curve.
+
+## Comparing it to the alternatives you already have
+
+You have three other ways to answer the phone, and each has a real number attached.
+
+Do nothing, and the cost is the recovery math above, paid every month whether or not you ever calculate it. An answering service runs roughly a few hundred dollars a month and takes messages, which means somebody still re-keys the order into the POS during the rush, so you've moved the labor rather than removed it.
+
+Adding labor is the expensive option nobody prices out. Two hours a day of someone dedicated to the phone, at a loaded hourly cost in the high teens to low twenties, lands north of a thousand dollars a month, and that person still can't answer two lines at once during the rush.
+
+## The costs that don't appear on the invoice
+
+Two things belong in the math that vendors rarely put there, and one of them cuts in your favor.
+
+The first is your own setup time. Even with a system that installs in under a day, somebody has to review the menu the agent will read, correct the item names your POS abbreviates, and decide the routing rules. Call it a few hours of an owner's or GM's attention in week one, plus an hour a month of reading transcripts afterward. That's real, it's small, and skipping it is the most common reason a system underperforms.
+
+The second is the labor you get back, which is harder to see because it doesn't show up as a shift you cut. The host who isn't answering the phone at 6:45 is seating tables and upselling at the counter instead. You probably won't reduce headcount off a phone agent at one location, and any vendor promising you will is overselling. What you get is the same payroll producing more, which is a slower but more durable gain than a line item removed. [How to calculate labor hours saved](/blog/labor-hours-saved-calculation) shows how to measure it without fooling yourself.
+
+## The check to run before you sign anything
+
+Pull your unanswered-call count for two weeks. Apply the two discounts, non-orders and callbacks. Multiply what's left by your average ticket. Then divide your monthly plan cost by that same average ticket to get your break-even in orders.
+
+If your discounted lost orders are not comfortably more than double your break-even, don't buy yet. Fix your call routing first, or run a shorter trial, and measure again. If they are, the remaining question isn't whether the math works. It's whether the specific system writes a correct ticket into your POS, which is a different evaluation entirely and the one worth spending your attention on.

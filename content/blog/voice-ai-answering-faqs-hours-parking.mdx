@@ -2,75 +2,88 @@
 title: "Hours, Parking, and the Other Calls That Aren't Orders"
 description: "Most restaurant calls never become orders; they are questions about hours and parking. Answering them well costs staff nothing and protects your ordering line."
 publishedAt: "2026-08-01"
+updatedAt: "2026-08-06"
 faqs:
   - question: "What kinds of non-order calls does a voice agent handle?"
-    answer: "The repetitive, well-defined ones: hours, whether you're open, location and directions, parking, whether you deliver to an area, basic menu questions, and order status. These are where automation is most reliable, because the answer space is narrow and the right answer doesn't require judgment."
+    answer: "The repetitive, well-defined ones: hours, whether you're open, location and directions, parking, whether you deliver to an area, basic menu questions, and order status. These are where automation is most reliable, because the answer space is narrow and the right answer doesn't require judgment from whoever happens to pick up."
   - question: "Are question calls actually worth automating?"
-    answer: "They're worth automating precisely because each one is individually trivial and collectively expensive. A thirty-second hours question costs almost nothing until it's the ninth one during your Friday rush, occupying a line and a person who could have been taking an order."
+    answer: "They're worth automating precisely because each one is individually trivial and collectively expensive. A thirty-second hours question costs almost nothing until it's the ninth one during your Friday rush, occupying a line and a person who could have been taking an order. The cost is in the clustering, not the call."
   - question: "Won't a question caller be annoyed by an automated answer?"
-    answer: "Generally less than by not getting through at all, which is the realistic alternative during a rush. Someone asking whether you're open wants the answer fast; they're not looking for a relationship. Getting it in eight seconds is a better experience than ringing out."
+    answer: "Generally less than by not getting through at all, which is the realistic alternative during a rush. Someone asking whether you're open wants the answer fast; they're not looking for a relationship. Getting it in eight seconds is a better experience than ringing out to voicemail nobody checks until closing."
   - question: "What if the answer isn't something we've configured?"
-    answer: "Then it should say so and offer a person or a message rather than guess. A confidently wrong answer about parking or allergens is worse than an honest 'let me have someone call you back.'"
+    answer: "Then it should say so and offer a person or a message rather than guess. A confidently wrong answer about parking or allergens is worse than an honest 'let me have someone call you back.' Ask a vendor to show you a transcript of a call where the agent didn't know something, because that behavior is what you're really buying."
+  - question: "How often does this configuration need updating?"
+    answer: "Check it monthly and before every holiday. Hours drift, a parking lot gets repaved, a delivery boundary changes, and none of those update themselves. The reliable habit is calling your own number once a month and asking five of your most common questions as a customer would, which takes about four minutes and catches nearly everything."
 ---
 
 A large share of the calls your restaurant takes will never become orders. They're questions: are you open, where do I park, do you deliver to my neighborhood, is my food ready. Each one takes thirty seconds and costs essentially nothing.
 
-Except they don't arrive one at a time. They cluster at exactly the hours when a line and a staff member are scarcest, and the ninth "what time do you close" during a Friday rush is a genuine tax on your ability to take orders. That's the case for handling them automatically — not that any individual question call is a problem, but that in aggregate they compete with revenue.
+Except they don't arrive one at a time. They cluster at exactly the hours when a line and a staff member are scarcest, and the ninth "what time do you close" during a Friday rush is a genuine tax on your ability to take orders. That's the case for handling them automatically. Not that any individual question call is a problem, but that in aggregate they compete with revenue.
 
 ## The questions that repeat
 
-If you listened to a week of your own calls, most of the non-order volume would fall into a short list:
+If you listened to a week of your own calls, most of the non-order volume would fall into a short list. Hours and whether you're open right now lead by a wide margin, and that one spikes around holidays and bad weather. Then location and directions, particularly for restaurants inside a complex or set back from the main road. Then parking. Then whether you deliver to a given address, which is its own [surprisingly messy topic](/blog/delivery-zone-rules-phone-orders). Then order status, the callback tax, addressed more directly by [texting status updates](/blog/restaurant-order-status-text-updates).
 
-- **Are you open / what are your hours?** The most common by a wide margin, and it spikes around holidays and weather.
-- **Where are you / how do I get there?** Especially for locations that are hard to find or in a complex.
-- **Where do I park?** Underrated. In dense areas this is a real decision factor for whether someone comes at all.
-- **Do you deliver to me?** Which is its own [surprisingly messy topic](/blog/delivery-zone-rules-phone-orders).
-- **Is my order ready?** The callback tax, addressed more directly by [texting status updates](/blog/restaurant-order-status-text-updates).
-- **Do you have [dish]? Is it gluten free? Do you have vegetarian options?**
-- **Do you take reservations / how big a party can you seat?**
-- **Are you hiring?**
+Below those sit the menu questions that recur constantly, usually a handful specific to your restaurant: do you have the seasonal item, is there a vegetarian option, how big is the family size.
 
-The first six are well-suited to automation because the answer space is narrow and stable. The last two are worth thinking about separately.
+Those are all well-suited to automation because the answer space is narrow and stable. Two other categories, reservations and anything touching allergens, deserve separate thought, and we get to them below.
 
 ## Why these are the easiest calls to automate well
 
-This category is where voice AI is at its most reliable, and it's worth understanding why: the answer doesn't require judgment. "We close at 10" is either right or wrong, and it's right if your hours are configured correctly. There's no menu mapping, no modifier structure, no POS write. Almost the entire risk is in the configuration rather than the conversation.
+This category is where voice AI is at its most reliable, and it's worth understanding why: the answer doesn't require judgment. "We close at 10" is either right or wrong, and it's right if your hours are configured correctly. There's no menu mapping, no modifier structure, no POS write. Almost the entire risk sits in the configuration rather than the conversation.
 
-That's a meaningfully different reliability profile from order-taking, where the system has to interpret ambiguous speech against a complex menu. If you're skeptical about AI taking orders, question-answering is the part of the job you should be least skeptical about — the same distinction we draw in [can AI actually take restaurant phone orders](/blog/can-ai-take-restaurant-phone-orders).
+That's a meaningfully different reliability profile from order-taking, where the system has to interpret ambiguous speech against a complex menu. If you're skeptical about AI taking orders, question-answering is the part of the job you should be least skeptical about, which is the same distinction we draw in [can AI actually take restaurant phone orders](/blog/can-ai-take-restaurant-phone-orders).
+
+## What this looks like at 6:45 on a Friday
+
+Here's the shift-level version, because the aggregate argument is easy to nod at and hard to feel.
+
+Your counter person is mid-transaction. The phone rings: what time do you close. They answer it while holding a card, and the customer in front of them waits. It rings again ninety seconds later: do you have parking. They give the version they know, which is the lot behind the building, and don't mention the garage that validates because they've never used it. It rings a third time: is my order ready. They walk to the expo window, look, come back, and by now the line has grown by two people.
+
+Three calls, maybe four minutes of attention, spread across the eight minutes when your counter was busiest. None of it was hard. All of it was expensive, because the cost isn't the four minutes, it's the four minutes taken from the exact window where a delay compounds down the line.
+
+Automating those three calls doesn't save four minutes of labor on a timesheet. It removes three interruptions from your most fragile stretch of the night, and that's the return worth counting.
+
+## The failure mode: a confident wrong answer
+
+The thing that goes wrong here isn't the agent failing to understand a caller. It's the agent answering correctly from information that stopped being true.
+
+Your Thursday hours changed in March and nobody updated the configuration. The lot behind the building got leased to the tenant next door. You paused delivery to the far side of the highway. In each case the agent gives a fast, confident, wrong answer to every caller who asks, which is worse than the inconsistent human answers it replaced, because at least a distracted human hedges.
+
+Holiday hours are the sharpest version of this. A caller asking whether you're open on Christmas Eve is making a plan around your answer, and an agent still reading last year's schedule will send them to your locked door. [Holiday hours overrides](/blog/holiday-hours-overrides-voice-ai) exist for exactly this, and they only work if somebody sets them.
+
+The compensating property is that this failure is findable. Wrong every time is a problem you can catch with one test call. Wrong only when your closer is slammed is a problem you'll never catch at all.
 
 ## Parking deserves its own paragraph
 
 It seems minor and isn't, particularly for urban restaurants. "Where do I park" is often the last question between someone and deciding to come to you, and the honest answer is frequently complicated: a lot behind the building, street parking after 6, a garage half a block down that validates.
 
-None of that fits on a website header, and staff answer it inconsistently because everyone knows a different subset. Writing it down once, properly, so it's answered the same way every time is a small win that's genuinely worth the ten minutes. It also has a side effect worth noting: it forces you to actually decide what the answer is.
+None of that fits on a website header, and staff answer it inconsistently because everyone knows a different subset. Writing it down once, properly, so it's answered the same way every time is a small win that's genuinely worth the ten minutes. It also has a useful side effect: it forces you to actually decide what the answer is.
 
 ## The questions that need care
 
 Two categories where automatic answering deserves more thought.
 
-**Allergen and dietary questions.** "Is the pasta gluten free" looks like a factual lookup and isn't, because the real answer usually involves shared fryers, shared surfaces, and preparation practices that change with who's on the line. A phone agent can state what's on the menu; it shouldn't be making binding safety promises. We cover the reasoning in [allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions), and the safe pattern is to answer factually about ingredients and route anything about severity or cross-contact to a person.
+Allergen and dietary questions look like a factual lookup and aren't, because the real answer usually involves shared fryers, shared surfaces, and preparation practices that change with who's on the line. A phone agent can state what's on the menu; it shouldn't be making binding safety promises. We cover the reasoning in [allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions), and the safe pattern is to answer factually about ingredients and route anything about severity or cross-contact to a person.
 
-**Reservations and party size.** If you don't take reservations, saying so cleanly is easy. If you do, this is a different system with its own state, and the honest boundary is covered in [reservations vs. ordering](/blog/voice-ai-reservations-vs-ordering).
+Reservations and party size are the other one. If you don't take reservations, saying so cleanly is easy. If you do, this is a different system with its own state, and the honest boundary is covered in [reservations vs. ordering](/blog/voice-ai-reservations-vs-ordering).
 
 ## Configuration is where this succeeds or fails
 
 Since the risk lives in the configuration rather than the conversation, the work is unglamorous: write the answers down, correctly, once.
 
-- Hours, including delivery hours if they differ, and last-order times.
-- Holiday overrides, kept current. See [holiday hours overrides](/blog/holiday-hours-overrides-voice-ai).
-- Parking, in specifics.
-- Directions, especially any non-obvious detail — "we're behind the bank, not on the main road."
-- Delivery boundary and minimum.
-- The handful of menu questions you get constantly.
+- Hours, including delivery hours if they differ, last-order times, and any day that breaks the pattern.
+- Holiday overrides, set in advance rather than the morning of.
+- Parking, in specifics, including the option you personally never use.
+- Directions, especially any non-obvious detail, such as "we're behind the bank, not on the main road."
+- The delivery boundary, the minimum, and the handful of menu questions you get constantly.
 
-Then call your own number monthly and ask five of them. Configuration drifts, and the only reliable way to find out is to be a customer occasionally.
+Then call your own number monthly and ask five of them as a customer would. Configuration drifts, and the only reliable way to find out is to be a customer occasionally.
 
 ## The quiet benefit
 
-Beyond freeing your line, there's a second effect worth naming. Question calls are frequently handled worst by human staff during a rush — clipped, distracted, occasionally wrong, because the person answering is expediting food with the phone on their shoulder. A caller asking whether you're open on Christmas Eve gets a confident guess from someone who hasn't seen the schedule.
+Beyond freeing your line, there's a second effect worth naming. Question calls are frequently handled worst by human staff during a rush: clipped, distracted, occasionally wrong, because the person answering is expediting food with the phone on their shoulder.
 
-A configured answer is consistent by construction. It's right every time, or wrong every time — and wrong every time is at least a problem you can find and fix, which is more than can be said for wrong-when-busy.
+A configured answer is consistent by construction. It's right every time, or wrong every time, and wrong every time is at least a problem you can find and fix.
 
-## The bottom line
-
-Non-order calls are individually trivial and collectively expensive, and they're the easiest thing for a voice agent to handle reliably because the answers are configuration rather than judgment. Write down your hours, parking, directions, and delivery boundary properly, be careful with allergen questions, keep holiday overrides current, and call your own number occasionally to check. It's the lowest-risk part of automating your phone and one of the more useful.
+So the decision rule is simple. Sit down and write out the answers to your ten most common non-order questions. If you can do it in fifteen minutes, you have everything a voice agent needs for the lowest-risk part of automating your phone. If you can't, that's the more interesting finding, because it means your staff has been improvising those answers all along and no two callers have been getting the same one.

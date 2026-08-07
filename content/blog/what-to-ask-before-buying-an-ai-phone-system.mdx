@@ -1,14 +1,19 @@
 ---
 title: "What to Ask Before Buying an AI Phone System"
-description: "A checklist of questions worth asking any AI phone ordering vendor, including us, before you sign: POS write depth, failure behavior, pricing, and exit terms."
+description: "A vendor-neutral checklist for buying restaurant phone AI: POS write depth, failure behavior, real all-in cost, data ownership, and what exit looks like."
 publishedAt: "2026-03-05"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Should I ask for references from other restaurants?"
-    answer: "Yes, and ask specifically for a restaurant similar to yours in size, cuisine, and call volume, not just any customer. A quick-service chain's experience tells you little about a single-location full-service restaurant's experience."
+    answer: "Yes, and ask specifically for a restaurant similar to yours in size, cuisine, and call volume, not just any customer. A quick-service chain's experience tells you little about a single-location full-service restaurant's experience. Ask the reference what broke in month two, not whether they like the product, because the interesting answers are about maintenance rather than the demo."
   - question: "How long should a trial period be?"
-    answer: "Long enough to cover at least one full weekly cycle including your busiest shift, ideally two to three weeks. A single quiet Tuesday demo won't show you how the system handles real peak volume."
+    answer: "Long enough to cover at least one full weekly cycle including your busiest shift, ideally two to three weeks. A single quiet Tuesday demo won't show you how the system handles real peak volume, overlapping calls, or a night when the kitchen 86s something mid-service. Insist the trial run on live calls to your real number."
   - question: "Is a long contract a red flag?"
-    answer: "Not automatically, but a vendor that won't offer a reasonable trial or month-to-month option before asking you to commit long-term is worth being more cautious about."
+    answer: "Not automatically, but a vendor that won't offer a reasonable trial or month-to-month option before asking you to commit long-term is worth being more cautious about. Read the auto-renewal window and the notice period specifically. A twelve-month term with a thirty-day cancellation notice behaves very differently from one requiring ninety days' written notice."
+  - question: "What's the single most useful question to ask a vendor?"
+    answer: "Ask them to show you a real ticket their system wrote into your exact POS model, with modifiers on it. Everything else in the evaluation is downstream of whether the order lands correctly. A vendor who can produce that screenshot in the first call has done the hard work; one who redirects to voice samples has not."
+  - question: "What should I get in writing before signing?"
+    answer: "Contract length, notice period, all-in monthly cost including any per-call or overage charges, what happens to your call recordings and order history if you leave, and the specific behavior during an outage. Verbal assurances about failover and cancellation are the two that most often turn out to be different from the document."
 ---
 
 Buying software for your restaurant is a different exercise than buying it for most businesses. A bad menu integration or a missed order at 7pm on a Saturday shows up immediately, in front of a customer, and it's hard to walk back. That makes the buying questions worth taking seriously before you sign anything, not after.
@@ -17,43 +22,59 @@ This is a genuinely vendor-neutral checklist. Use it on us or on anyone else you
 
 ## Questions about accuracy and your specific menu
 
-- **Can I test it on my actual menu before I commit**, not a generic demo menu? If a vendor won't let you do this, that's worth noting.
-- **How does it handle modifiers and substitutions** specific to how your customers actually order — half-and-half items, common allergen swaps, "the usual" for regulars?
-- **What happens when it doesn't understand something?** Ask for the specific escalation logic, not a vague "it's very accurate" answer.
-- **Who updates the menu when it changes**, and how fast? If a price changes or an item's 86'd mid-shift, can you make that edit yourself in minutes, or does it require a support ticket?
+Start by asking whether you can test the system on your actual menu before committing, rather than a generic demo menu. A demo menu is built to succeed. Yours has a half-and-half rule, three items with the same first word, and a modifier tree somebody built in 2019 and nobody has touched since. If a vendor won't run a trial on your real menu, you're being asked to buy on faith.
+
+Then push on modifiers. Ask how the system handles the substitutions your customers actually make: half-and-half items, common allergen swaps, "light sauce," "the usual" from a regular. These are exactly where shallow systems produce a friendly conversation and an unusable ticket, which is the [reason integration depth outranks voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality) in an evaluation.
+
+Ask what happens when it doesn't understand something. You want the specific escalation logic, not a reassurance about accuracy. Does it try twice and transfer? Does it take a message? Does it keep asking?
+
+And ask who updates the menu when it changes, and how fast. If a price changes or an item is 86'd mid-shift, can your closing manager make that edit in two minutes from a phone, or does it require a support ticket that lands Monday? This one question predicts more of your six-month experience than any other, because [menus drift constantly](/blog/real-time-86ing-menu-sync) and an agent quoting stale prices is a guest-facing problem.
 
 ## Questions about integration and reliability
 
-- **Is my specific POS a live, current integration**, not "compatible with most systems" or a roadmap item? Ask them to name the exact integration and confirm it's already working for another customer on your POS.
-- **What happens if the system goes down?** Does the call fail silently, get an error tone, or fall back to ringing your existing phone? Get a specific answer, not a general assurance.
-- **What happens if your POS or internet goes down** on your end? Does the order queue, get lost, or route somewhere else?
-- **Can I see real call transcripts or recordings** after go-live, so I can audit what's actually being said to my customers?
+Confirm that your specific POS is a live, current integration rather than "compatible with most systems" or a roadmap item. Ask the vendor to name the exact integration, and to confirm it's already running for another customer on your POS and your version of it. Check it against their published [integrations list](/integrations) rather than taking it verbally, because this eliminates options faster than any other question.
+
+Then work through the failure cases, one at a time, and refuse general assurances.
+
+If their system goes down, what does the caller hear? Silence, an error tone, or a fallback that rings your existing phone? If your internet goes down, does the order queue and land later, get lost, or route somewhere else? If your POS is down but the phone line is fine, can the agent still take orders and hold them, or does it stop selling? A vendor who has thought about restaurants will have crisp answers, because [outages are ordinary](/blog/what-happens-when-voice-ai-fails) rather than hypothetical.
+
+Finally, ask whether you can pull real call transcripts and recordings after go-live. Not a dashboard summary. The actual text of what was said to your customers. A vendor who scores their own product and won't show you the underlying calls is asking for trust you have no way to verify.
 
 ## Questions about cost and contract terms
 
-- **What's the actual all-in monthly cost**, including any per-call, per-minute, or overage charges, not just the advertised base price?
-- **Is there a trial period on real call volume**, not just a sandbox demo, and is it long enough to cover a full weekly cycle including your busiest shift?
-- **What's the contract length, and what does cancellation actually look like?** Get this in writing, not verbally.
-- **Are there setup or menu-import fees** beyond the subscription price?
+Ask for the all-in monthly cost, including per-call, per-minute, and overage charges, not the advertised base price. Then ask them to price a month at your real volume. If you take 1,800 calls a month, have them show you that invoice, not the starting tier. Our own plans start at $250 a month, and any vendor should be able to do the same arithmetic against your numbers on the spot. The gap between advertised and actual is where [the costs hide](/blog/hidden-costs-voice-ai-contracts).
 
-## Questions about what happens to your data and your customers
+Ask whether the trial runs on real call volume, and whether it's long enough to cover a full weekly cycle including your busiest shift. Ask about setup fees and menu-import fees beyond the subscription. Ask for the contract length, the auto-renewal window, and the exact notice period for cancellation, in writing.
 
-- **Where do call recordings and transcripts live**, and who has access to them?
-- **Does the system disclose to callers that they're speaking with AI**, and is that a policy you can control?
-- **What happens to customer data if you cancel?** Do you keep your order history and customer records, or does it stay locked in the vendor's system?
+Cancellation is the term most often described accurately in conversation and differently in the document. Read that clause yourself.
+
+One more cost question that rarely gets asked: what happens to your phone number. If the vendor provisions a new number and forwards your existing line, that's reversible. If they port your published number onto their account, leaving means porting it back, and the timeline for that is measured in days, not hours. Ask who holds the number on paper, and ask what the port-out process looks like before you need it.
+
+## What a good answer sounds like versus a deflection
+
+Across all of these, the pattern matters more than any single response. A vendor who works with restaurants answers operational questions operationally: they name the sync interval in minutes, they describe what the caller hears during an outage, they know what a forced modifier is. A vendor selling a general-purpose voice product redirects. Ask about 86 sync, get an answer about natural language understanding. Ask about the ticket, get a voice sample.
+
+Neither response tells you the product is bad. The second tells you they haven't been asked by enough restaurants yet, and you'd be paying to be the one who finds the gaps.
+
+## Questions about your data and your customers
+
+Where do call recordings and transcripts live, and who inside the vendor can access them? Does the system disclose to callers that they're speaking with software, and can you control that language? Some states and some brands have firm positions here, so this is a policy question rather than a preference.
+
+What happens to your data if you cancel? Specifically, do you leave with your order history and customer records in a usable export, or does it stay in the vendor's system? Ask for the export format. "You can request it" is not the same as a file you can hand to the next vendor.
 
 ## Questions to ask yourself, not the vendor
 
-- **What's my actual missed-call problem, specifically?** (See our [framework for estimating this yourself](/blog/how-many-calls-does-your-restaurant-miss) if you haven't measured it yet; walking in with your own numbers changes the conversation.)
-- **Is this solving a coverage gap, or am I trying to cut staff hours?** Both are legitimate reasons, but they lead to different configurations and different expectations for what "success" looks like.
-- **Who on my team will actually own this**: reviewing transcripts, updating the menu, handling escalations? Software without an owner tends to drift out of date.
+- What's my actual missed-call problem, in numbers? Use the [framework for estimating it](/blog/how-many-calls-does-your-restaurant-miss) before the first sales call, because walking in with your own figure changes the conversation entirely.
+- Am I closing a coverage gap, or trying to cut labor hours? Both are legitimate, and they lead to different configurations and different definitions of success.
+- Who on my team owns this: reviewing transcripts, updating the menu, handling escalations? Software without an owner drifts out of date within a quarter.
+- What would make me cancel? Write the number down now, while you're skeptical, rather than after you've defended the purchase to a partner.
 
 ## A reasonable evaluation process
 
-1. Shortlist two or three vendors based on POS compatibility first; this alone eliminates options fast.
+1. Shortlist two or three vendors on POS compatibility first, before you look at anything else.
 2. Get a live demo on your actual menu, not a template.
-3. Run a real trial covering your busiest shift, and personally call in with a normal order and a slightly odd one.
-4. Pull transcripts from the trial and read them — don't just trust a dashboard summary.
-5. Get contract terms and cancellation policy in writing before signing.
+3. Run a real trial covering your busiest shift, and personally call in with a normal order and a deliberately awkward one.
+4. Pull transcripts from the trial and read a sample, rather than trusting the dashboard.
+5. Get contract terms, cancellation policy, and outage behavior in writing before signing.
 
-None of this is exotic. It's the same diligence you'd apply to any vendor that's going to be the first voice a customer hears when they call your restaurant. The vendors worth working with will welcome the scrutiny; the ones that get defensive about it are telling you something too.
+None of this is exotic. It's the same diligence you'd apply to any vendor that becomes the first voice a customer hears when they call you. Run the awkward test order in week one of any trial, and let that single ticket carry more weight in your decision than every demo you sat through.

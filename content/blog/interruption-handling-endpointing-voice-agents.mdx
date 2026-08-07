@@ -1,17 +1,22 @@
 ---
 title: "Interruption Handling and Endpointing in Voice AI"
-description: "Two unglamorous problems decide whether a voice agent feels human: knowing when the caller has finished talking, and stopping cleanly when they cut in."
+description: "Two unglamorous problems decide whether a phone agent feels human: knowing when a caller has finished talking, and stopping cleanly when they cut in."
 publishedAt: "2026-04-02"
+updatedAt: "2026-08-06"
 faqs:
   - question: "What is endpointing?"
-    answer: "Endpointing is the system deciding when the caller has actually finished speaking versus just pausing mid-thought. Get it wrong in one direction and the agent talks over someone who wasn't done; get it wrong in the other and it leaves an awkward silence after every sentence. It's one of the least visible and most important parts of feeling natural."
+    answer: "Endpointing is the system deciding when the caller has actually finished speaking versus just pausing mid-thought. Get it wrong in one direction and the agent talks over someone who wasn't done. Get it wrong in the other and it leaves an awkward silence after every sentence. It's one of the least visible and most important parts of a call feeling natural."
   - question: "Why does interrupting the agent matter so much?"
-    answer: "Because real callers interrupt constantly — to correct an item, add a drink, or answer a question before the agent finishes asking it. A system that can't be interrupted forces the caller to wait through a full scripted line before every correction, which is exactly the friction that makes people hang up and try a human."
+    answer: "Because real callers interrupt constantly, to correct an item, add a drink, or answer a question before the agent finishes asking it. A system that can't be interrupted forces the caller to wait through a full scripted line before every correction, which is exactly the friction that makes people hang up and try a human instead."
   - question: "Can I test this myself before buying?"
-    answer: "Yes, easily. Call the system and deliberately trail off mid-sentence, then interrupt it mid-response. A good agent waits for you to finish your thought and stops instantly when you cut in. A weak one either jumps in too early or refuses to yield. You'll feel the difference in under a minute."
+    answer: "Yes, easily. Call the system, deliberately trail off mid-sentence, then interrupt it mid-response. A good agent waits for you to finish your thought and stops instantly when you cut in. A weak one either jumps in too early or refuses to yield. You'll feel the difference in under a minute, without knowing anything about the internals."
+  - question: "Is this the same thing as latency?"
+    answer: "They're related but distinct. Latency is how long the agent takes to start responding after you stop. Endpointing is the judgment about when you actually stopped. An agent can be fast and still feel wrong if it decides you're finished half a second early, and a well-tuned pause threshold can make a slightly slower system feel more attentive than a faster one."
+  - question: "Can these settings be tuned for my restaurant?"
+    answer: "Partly. Pause thresholds can be adjusted, which matters if your callers tend to think out loud or if your line is consistently noisy. What can't be tuned away is a system architecture that stops listening while it talks. Ask a vendor whether barge-in is on by default and whether the pause threshold is configurable before assuming either is true."
 ---
 
-Two restaurant voice agents can use the same speech recognition, the same language model, and voices you couldn't tell apart in a demo — and still feel completely different on a live call. One feels like talking to an attentive order-taker. The other feels like arguing with a robot reading off a form.
+Two restaurant voice agents can use the same speech recognition, the same language model, and voices you couldn't tell apart in a demo, and still feel completely different on a live call. One feels like talking to an attentive order-taker. The other feels like arguing with a form.
 
 The difference usually comes down to two problems that never make it into a sales pitch: endpointing and interruption handling. They're the plumbing of natural conversation, and they're where a lot of otherwise capable systems quietly fall down.
 
@@ -19,37 +24,57 @@ The difference usually comes down to two problems that never make it into a sale
 
 Endpointing is the agent's judgment about when you've actually finished speaking, as opposed to just taking a breath mid-thought.
 
-Humans do this effortlessly and unconsciously. We read a dozen cues — tone falling at the end of a sentence, the length of a pause, whether the thought sounds complete — to know when it's our turn. A voice agent has to make the same call, in real time, with none of the visual cues and often over a noisy line.
+Humans do this effortlessly and unconsciously. We read a dozen cues, including tone falling at the end of a sentence, the length of a pause, and whether the thought sounds complete, to know when it's our turn. A voice agent has to make the same call in real time, with none of the visual cues, often over a bad line.
 
-Get it wrong in one direction and the agent jumps in while the caller is still mid-order: "I'll have a large pepperoni and—" "Great, one large pepperoni, anything else?" "...and a small Caesar." Now there's a correction to untangle. Get it wrong the other way and the agent leaves a long, dead pause after everything the caller says, which reads as the system being slow or broken.
+Get it wrong in one direction and the agent jumps in while the caller is still mid-order. "I'll have a large pepperoni and..." "Great, one large pepperoni, anything else?" "...and a small Caesar." Now there's a correction to untangle. Get it wrong the other way and the agent leaves a long dead pause after everything the caller says, which reads as the system being slow or broken.
 
-Good endpointing threads that needle: it waits long enough to let a caller finish a genuine thought, but not so long that the conversation drags. It sounds trivial. It is one of the hardest things to get right, and one of the most noticeable when it's wrong.
+Good endpointing threads that needle. It waits long enough for a caller to finish a genuine thought, but not so long that the conversation drags. It sounds trivial. It's one of the hardest things to get right and one of the most noticeable when it's wrong.
 
-## Interruption handling: yielding gracefully when the caller cuts in
+## Why the pause threshold is a real decision
+
+Under the hood, most systems have a tunable idea of how much silence means "done." Set it short and the agent feels quick but interrupts thinkers. Set it long and the agent feels patient but sluggish.
+
+There's no universally correct value, because it depends on who calls you. A pizza counter where regulars rattle off the same order every Friday can run a short threshold and feel snappy. A restaurant whose callers read off a list, ask a spouse in the background, or say "hold on, let me check" needs more room. An older customer base generally needs more room than a younger one.
+
+This is worth asking a vendor about directly. If the answer is that the threshold is fixed and identical for every customer, you're getting a compromise tuned for someone else's call mix. If it's adjustable, you have a knob to turn when transcripts show the agent cutting people off.
+
+## Interruption handling: yielding when the caller cuts in
 
 The second problem is what happens when the caller talks over the agent, which real callers do constantly.
 
-Think about how people actually order. The agent starts reading back a five-item order and the caller jumps in at item three: "no, no onions on that one." Or the agent begins asking "would you like to add a—" and the caller is already saying "yeah, a large fry." A human order-taker stops immediately and adjusts. That instant yielding is most of what makes a conversation feel cooperative rather than combative.
+Think about how people actually order. The agent starts reading back a five-item order and the caller jumps in at item three: "no, no onions on that one." Or the agent begins asking "would you like to add a" and the caller is already saying "yeah, a large fry." A human order-taker stops immediately and adjusts. That instant yielding is most of what makes a conversation feel cooperative rather than combative.
 
-A weak voice agent can't do this. It's committed to finishing its scripted line, so it plows ahead while the caller is trying to correct it, and now two people are talking at once and neither is being heard. The caller's only options are to give up and repeat everything at the end, or hang up and hope a human answers. Both are exactly the friction the system was supposed to remove.
+A weak agent can't do this. It's committed to finishing its scripted line, so it plows ahead while the caller tries to correct it, and now two people are talking and neither is being heard. The caller's options are to give up and repeat everything at the end, or hang up and hope a human answers. Both are exactly the friction the system was supposed to remove.
 
-This capability is often called barge-in: the ability to stop talking the moment the caller starts. It depends on the agent listening even while it speaks — the same always-listening design that also enables [sub-second latency](/blog/sub-second-latency-voice-ai-restaurants). Interruptions and speed are two views of one underlying problem: an agent that's genuinely present in the conversation instead of running a script to completion.
+This capability is usually called barge-in: the ability to stop talking the moment the caller starts. It depends on the agent listening even while it speaks, the same always-on design that also enables [sub-second latency](/blog/sub-second-latency-voice-ai-restaurants). Speed and interruptibility are two views of one underlying property, which is whether the agent is genuinely present in the conversation or running a script to completion.
+
+## The order read-back is where this gets expensive
+
+Barge-in matters most during the confirmation, and confirmation is the step that protects your kitchen.
+
+A six-item order read back takes fifteen or twenty seconds. If the caller spots an error at second four and can't interrupt, one of two things happens. They wait, hold the correction in their head, and often forget half of it by the end. Or they talk anyway, get ignored, and the agent confirms an order that both parties now know is wrong.
+
+Either path ends with a ticket that doesn't match what the customer wanted, which surfaces at the pass as a remake or at the counter as an argument. A system that yields instantly turns that into a two-second fix. The read-back sits at the end of the [order pipeline](/blog/how-ai-phone-ordering-works-the-pipeline), and it's the last chance to catch anything upstream got wrong.
 
 ## Why restaurants make both problems harder
 
-These are hard problems anywhere, and a restaurant is close to the worst case for both.
+These are hard problems anywhere, and a restaurant is close to the worst case.
 
-The audio is noisy. A caller phoning from a loud dining room, a car with the radio on, or the doorway of a busy kitchen gives the system a messy signal, which makes it harder to tell a real pause from a gap filled with background sound, and harder to distinguish an interruption from a stray noise. Endpointing on clean studio audio is one thing; endpointing over the clatter of a Friday night is another. It's part of why the engineering behind restaurant voice AI is genuinely demanding rather than a solved commodity.
+The audio is noisy on both ends. A caller phoning from a loud dining room, a car with the radio on, or the doorway of a busy kitchen sends a messy signal, which makes it harder to tell a real pause from a gap filled with background sound, and harder to distinguish a genuine interruption from a stray noise. Endpointing on clean studio audio is one thing. Endpointing over the clatter of a Friday night is another, and it's a large part of why [noisy environments](/blog/voice-ai-noisy-restaurant-environments) separate systems that demo well from systems that work.
+
+Accents and speech patterns compound it. A caller whose rhythm doesn't match the model's expectations gets cut off more often, which is one of the quieter fairness problems in [speech recognition accuracy](/blog/voice-ai-accent-speech-recognition-accuracy).
 
 ## How to test it in one phone call
 
-You don't need to understand the internals to judge this. Call the system and try two things on purpose:
+You don't need to understand the internals to judge this. Call the system and try two things on purpose.
 
-- **Trail off mid-sentence.** Order something, pause like you're thinking, then continue. Does the agent wait for you, or cut in during the pause and force a correction?
-- **Interrupt it mid-response.** While it's reading something back, jump in with a change. Does it stop instantly and adjust, or talk over you to the end of its line?
+- Trail off mid-sentence. Order something, pause like you're thinking, then continue. Does the agent wait, or cut in during the pause and force a correction?
+- Interrupt it mid-response. While it's reading something back, jump in with a change. Does it stop instantly and adjust, or talk over you to the end of its line?
 
-A good agent handles both without you thinking about it. A weak one makes you feel like you're fighting for the floor. You'll know within a minute, and it's a better test of real-world quality than any scripted demo.
+A good agent handles both without you thinking about it. A weak one makes you feel like you're fighting for the floor. You'll know inside a minute, and it's a better read on real-world quality than any scripted demo.
 
-## The bottom line
+## What to do with the answer
 
-Endpointing and interruption handling are the difference between a voice agent that feels like a conversation and one that feels like a form with a voice. They rarely appear on a feature list, they don't demo well in a clip, and they're exactly where the caller experience is won or lost. When you evaluate a vendor, spend a minute deliberately testing both — it's the fastest way to tell a genuinely conversational system from one that only sounds like one.
+If a system fails either test, that's not a tuning detail you'll fix later. It's usually architectural, and it will show up on every call your customers make for as long as you run it.
+
+Run the two tests on every vendor you're evaluating, on the same day, from the same noisy spot in your restaurant. Then have someone who wasn't part of the evaluation do the same without knowing which system is which. The gap between the vendors will be obvious, and it will predict your caller complaints better than any feature comparison.

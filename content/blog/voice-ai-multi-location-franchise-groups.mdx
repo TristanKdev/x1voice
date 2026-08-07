@@ -1,36 +1,72 @@
 ---
-title: "Voice AI for Multi-Location and Franchise Restaurant Groups"
+title: "Voice AI for Multi-Location and Franchise Groups"
 description: "Running phones across five, fifteen, or fifty locations is a different problem than a single shop. How a voice agent handles shared menus and local numbers."
 publishedAt: "2026-04-24"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Can one voice agent handle a shared menu with per-store differences?"
-    answer: "Yes. The right setup uses a shared base menu with per-store overrides — a location that's out of an item, prices differently, or runs a local special shouldn't require a separate build. Each store keeps its own hours, holidays, and phone number while inheriting everything common from the group."
+    answer: "Yes. The right setup uses a shared base menu with per-store overrides. A location that's out of an item, prices differently, or runs a local special shouldn't require a separate build. Each store keeps its own hours, holidays, and phone number while inheriting everything common from the group, so a change to the shared menu propagates once instead of fifteen times."
   - question: "How do we see performance across all locations?"
-    answer: "Reporting should roll up by location: call volume, answer rate, conversion, and average ticket per store, plus a group total. That's what turns voice answering from a per-store utility into a management tool — you can see which locations are leaking the most phone revenue and staff accordingly."
+    answer: "Reporting should roll up by location: call volume, answer rate, conversion, and average ticket per store, plus a group total. That's what turns voice answering from a per-store utility into a management tool. You can see which locations are leaking the most phone revenue, which ones peak at unexpected hours, and staff accordingly."
+  - question: "Who controls the settings, the franchisor or the franchisee?"
+    answer: "Decide that before rollout, because it causes more friction than the technology does. A workable split gives the franchisor the base menu, brand greeting, and escalation policy, and gives the operator hours, holiday closures, local specials, and the transfer number. Write the split down and match it to your franchise agreement rather than letting each store discover the boundary by changing something."
+  - question: "How long does a fifteen-location rollout take?"
+    answer: "Store activations are typically under 24 hours each once the group menu is built, so the schedule is set by your pace, not the integration. Most groups run a two-store pilot for two or three weeks, fix what the pilot exposes, then activate the rest in waves. The menu modeling work happens once at the front and is the part worth spending time on."
+  - question: "What if our locations run different POS systems?"
+    answer: "That's common in groups that grew by acquisition, and it's workable. X1 Voice integrates directly with Square, Clover, and OrderCounter, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink, Micros and others through Deliverect. The practical consequence is that reporting still rolls up centrally even when the stores underneath are running different registers."
 ---
 
-A single restaurant's phone problem is straightforward: someone needs to pick up. A fifteen-location group's phone problem is an operations problem: fifteen different rushes, fifteen menus that are mostly-but-not-entirely the same, local numbers customers already know, and a head office that wants to see what's happening across all of it without calling each store.
+A single restaurant's phone problem is straightforward: someone needs to pick up. A fifteen-location group's phone problem is an operations problem. Fifteen different rushes, fifteen menus that are mostly-but-not-entirely the same, local numbers customers already know, and a head office that wants to see what's happening across all of it without calling each store.
 
-Voice AI fits multi-location groups well precisely because it turns a per-store headache into something you can manage centrally.
+Voice AI fits groups well precisely because it turns a per-store headache into something you can manage centrally. It also introduces a governance question that single locations never have to answer, and that question is where most rollouts get stuck.
 
 ## Shared menu, per-store reality
 
-The trap with multi-location rollouts is treating every store as a separate project. It isn't. Most of the menu is shared; what varies is the exceptions — this location is out of an item tonight, that one prices a large differently, another runs a regional special. The right model is a shared base menu with per-store overrides, so a change to the common menu propagates everywhere and local differences live where they belong.
+The trap with multi-location rollouts is treating every store as a separate project. It isn't. Most of the menu is shared. What varies is the exceptions: this location is out of an item tonight, that one prices a large differently, another runs a regional special the rest of the group has never heard of.
 
-X1 Voice is built around that: one menu the group maintains, with store-level overrides for pricing, availability, hours, holidays, and any phone-only rules. A caller to the Nashville store gets Nashville's prices and hours; the group doesn't maintain fifteen separate menus by hand.
+The right model is a shared base menu with per-store overrides, so a change to the common menu propagates everywhere and local differences live where they belong. X1 Voice is built around that. One menu the group maintains, with [store-level overrides](/blog/per-store-overrides-menu-hours) for pricing, availability, hours, holidays, and any phone-only rules. A caller to the Nashville store gets Nashville's prices and hours. The group doesn't maintain fifteen menus by hand.
+
+The modeling work is front-loaded and it is the part worth doing carefully. Sit down with your menus side by side and sort every difference into two piles: real regional variation that should be a permanent override, and drift that nobody intended and that should be corrected rather than encoded. Groups are usually surprised by how much of the second pile there is. Price differences between two stores four miles apart, an item that one location renamed years ago, a size that exists in three stores and not the rest.
+
+## Who owns which setting
+
+This is the question that has nothing to do with technology and delays more rollouts than anything else. In a franchise system, some settings belong to the brand and some belong to the operator, and if you don't decide which is which before launch, you'll find out when a franchisee changes something the brand considered fixed.
+
+A split that works in practice: the franchisor owns the base menu, the brand greeting, and the escalation policy. The operator owns hours, holiday closures, local specials, the transfer number, and same-day availability. Write it down, match it to what your franchise agreement actually permits, and put it in the onboarding packet. The [franchisee and franchisor rollout split](/blog/franchisee-vs-franchisor-rollout) has more on where the seams usually fall.
 
 ## Local numbers, local feel
 
-Customers dial the number on the door, the receipt, the fridge magnet. A group rollout has to preserve that. Each location keeps its own number and its own greeting, so the experience is local even though the agent is centralized. Region-based routing handles edge cases — transfers, overflow, or after-hours rules — per store.
+Customers dial the number on the door, the receipt, the fridge magnet. A rollout has to preserve that. Each location keeps its own number and its own greeting, so the experience is local even though the agent is centralized. Region-based routing handles the edge cases per store: transfers, overflow, after-hours rules.
 
-## Reporting is the real unlock
+Nothing about this should require reprinting menus or updating a decade of directory listings. If a vendor's answer to multi-location involves consolidating your stores onto one number, that's a customer-experience decision disguised as a technical constraint, and you should push back on it.
 
-For a group, the point isn't just that phones get answered — it's visibility. When call data [rolls up by location](/blog/why-pos-integration-depth-matters-more-than-voice-quality), you can finally see which stores are leaking the most revenue to unanswered calls, where average ticket is soft, and when each location's peak really hits. That's staffing intelligence you didn't have when the phone was just a receiver behind the counter.
+## The failure mode: one store quietly drifting
 
-The recurring industry estimate that [around one in four calls goes unanswered at peak](/blog/the-real-cost-of-a-missed-restaurant-phone-call) — an estimate, not a hard figure — compounds across a group. Fifteen locations each missing a slice of their busiest hour is a large number in aggregate, and it's invisible until you measure it.
+Here's what goes wrong six weeks in, and it's rarely dramatic.
+
+One location 86s an item at 7pm and doesn't mark it anywhere the agent can see. The agent keeps selling it for two hours. Nobody at head office knows until the complaint calls arrive the next day. Or a store changes its closing time for the season and updates the door sign but not the config, so the agent takes orders for a kitchen that's already broken down.
+
+The pattern is the same in both cases: the phone system knows what it was told, and one store stopped telling it. The fix is procedural rather than technical. Put availability updates into the same shift routine as the till count, make the store manager responsible for their own overrides, and check the exception report weekly to see which locations have stale settings. A group that treats configuration as a shift task catches this. A group that treats it as an IT setting does not.
+
+## Reporting is what makes it a management tool
+
+For a group, the point isn't just that phones get answered. It's visibility. When call data [rolls up by location](/blog/reporting-rollups-multi-location), you can see which stores are leaking the most revenue to unanswered calls, where average ticket is soft, and when each location's peak really hits.
+
+That last one is usually the surprise. Managers are confident they know their rush, and the call data frequently disagrees, often by thirty or forty minutes. Once you have that per store, it becomes staffing intelligence you simply didn't have when the phone was a receiver behind the counter.
+
+The recurring industry estimate that [around one in four calls goes unanswered at peak](/blog/the-real-cost-of-a-missed-restaurant-phone-call), which is an estimate rather than a measured figure, compounds across a group. Fifteen locations each missing a slice of their busiest hour adds up to a large number in aggregate, and it stays invisible until you measure it.
+
+Four things are worth pulling monthly rather than staring at a live dashboard:
+
+- Answer rate during each store's own peak hour, not the group's average peak, because the averages hide the worst store.
+- The spread between your best and worst location on answer rate. A wide spread is an operations finding, not a technology finding.
+- Average phone ticket per store, which tells you whether attach offers are landing evenly or whether one store's menu is modeled badly.
+- How many escalations each store sends to a person, and why. A location transferring far more calls than its peers usually has a config gap rather than harder customers.
+
+The point of the monthly cadence is that you act on it. A per-location number nobody reviews is the same as no number at all.
 
 ## Rollout without a six-week project
 
-Enterprise voice systems from the largest vendors are genuinely powerful but come with negotiated contracts and long implementations aimed at national chains. A growing group of five to fifty locations usually wants something faster. X1 Voice can bring locations live in about a day each, connecting to the POS you already run — [directly or through Deliverect](/blog/deliverect-voice-agent-multi-location-restaurants) for broader POS coverage — so a rollout is a sequence of quick store activations, not a quarter-long integration.
+Enterprise voice systems from the largest vendors are genuinely capable, but they come with negotiated contracts and long implementations aimed at national chains. A growing group of five to fifty locations usually wants something faster. X1 Voice can bring locations live in about a day each, connecting to the POS you already run, [directly or through Deliverect](/blog/deliverect-voice-agent-multi-location-restaurants) for broader coverage. A rollout becomes a sequence of quick store activations rather than a quarter-long integration.
 
-The through-line: for a group, voice AI isn't just call coverage. It's a shared menu you maintain once, local numbers customers recognize, and reporting that finally makes the phone a measurable channel instead of a black box.
+Sequence it anyway. Start with two stores that differ from each other, ideally your highest-volume location and one with an unusual menu, and run them for two or three weeks before touching the rest. The pilot's job is not to prove the concept. It's to surface the menu modeling problems and the ownership arguments while they're cheap to fix, so that store number fifteen is a fifteen-minute activation instead of a negotiation.

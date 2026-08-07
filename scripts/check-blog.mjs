@@ -18,7 +18,7 @@ import { execSync } from "node:child_process"
 const BLOG_DIR = path.join(process.cwd(), "content", "blog")
 
 const BANNED_WORDS = [
-  "delve", "tapestry", "realm", "robust", "seamless", "leverage", "leveraging",
+  "delve", "tapestry", "realm", "robust", "seamless",
   "utilize", "utilizing", "elevate", "unlock", "harness", "streamline",
   "game-changer", "game changer", "revolutionize", "revolutionizing",
   "cutting-edge", "state-of-the-art", "transformative", "holistic", "synergy",
@@ -32,6 +32,13 @@ const BANNED_WORDS = [
 ]
 
 const BANNED_PATTERNS = [
+  // "leverage" is banned as a VERB and as consultant-speak, not as the plain
+  // English noun: "the leverage is on your side" in a contract post is the
+  // right word, and banning it outright produced false positives that would
+  // have been fixed by making the prose worse.
+  [/\bleverag(?:ing|ed|es)\b/i, "\"leverage\" used as a verb"],
+  [/\bleverage\s+(?:the|our|your|their|its|this|that|a|an)\b/i, "\"leverage\" used as a verb"],
+  [/\b(?:high|higher|highest)-leverage\b/i, "\"high-leverage\" (consultant-speak)"],
   [/\bit'?s not just [^.]{2,60}[—-] it'?s\b/i, "negative parallelism (\"it's not just X — it's Y\")"],
   [/\bwhether you'?re an? [^,]{2,40}, /i, "\"Whether you're a X, ...\" opener"],
   [/^#\s/m, "H1 in body (the page renders the title already)"],

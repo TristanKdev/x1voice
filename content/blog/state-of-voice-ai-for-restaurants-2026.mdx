@@ -44,7 +44,7 @@ One of the quieter but more important shifts is the rise of the platform layer, 
 
 This matters even if you never touch it directly, because it changed the economics of the whole space. It got dramatically easier to stand up a basic voice agent, which is why the market filled with options, from restaurant specialists to general receptionists like **Goodcall** and **Numa**, reservation tools like **Slang.ai** and **Popmenu**, enterprise platforms like **PolyAI**, and phone-ordering specialists like **ConverseNow**, **Kea**, **VOICEplug**, **Bite Buddy**, and **Loman**.
 
-The flip side: easy to start is not the same as easy to make reliable. A weekend prototype on a platform and a system that writes correct tickets into Toast during a Friday rush are separated by an enormous amount of unglamorous engineering, including [latency](/blog/sub-second-latency-voice-ai-restaurants), [interruption handling](/blog/interruption-handling-endpointing-voice-agents), and POS depth. That gap is exactly why "should we build our own" almost always resolves to "no" for an operator without a real engineering team.
+The flip side: easy to start is not the same as easy to make reliable. A weekend prototype on a platform and a system that writes correct tickets into Toast during a Friday rush are separated by an enormous amount of unglamorous engineering, including [latency, interruption handling, and POS depth](/blog/sub-second-latency-voice-ai-restaurants). That gap is exactly why "should we build our own" almost always resolves to "no" for an operator without a real engineering team.
 
 ## What this actually looks like on a Friday shift
 
@@ -58,7 +58,7 @@ That mix is the honest 2026 product: a system that absorbs the repetitive volume
 
 The category's persistent weak point in 2026 is still menu mapping, not speech. Modern recognition handles a noisy dining room and an accent better than it did two years ago. What still breaks is the gap between what a caller says and what your POS calls the same thing.
 
-A customer asks for "the usual chicken sandwich, spicy." Your POS has "Nashville Hot Chix" and a required modifier group with four heat levels. If nobody has taught the agent that bridge, the call ends in a clarification loop or, worse, a confidently wrong ticket. Most of what looks like an AI failure in a first-week transcript review is a naming gap you can close in a few minutes, which is why [menu naming for voice clarity](/blog/menu-naming-for-voice-clarity) is the single highest-leverage prep step before a launch.
+A customer asks for "the usual chicken sandwich, spicy." Your POS has "Nashville Hot Chix" and a required modifier group with four heat levels. If nobody has taught the agent that bridge, the call ends in a clarification loop or, worse, a confidently wrong ticket. Most of what looks like an AI failure in a first-week transcript review is a naming gap you can close in a few minutes, which is why [menu naming for voice clarity](/blog/menu-naming-for-voice-clarity) is the prep step that pays back most before a launch.
 
 The second failure mode is 86'd items. If your agent sells something the kitchen ran out of two hours ago, you have a refund and an angry caller. Ask any vendor how their [86 sync](/blog/voice-ai-pos-86-sync-failure-modes) behaves when the POS connection drops, and specifically whether the agent keeps selling from a stale cache.
 
