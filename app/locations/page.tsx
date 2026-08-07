@@ -9,9 +9,9 @@ import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
 export const metadata = buildMetadata({
-  title: "Locations We Serve",
+  title: "Cities and Regions We Serve",
   description:
-    "Restaurants using X1 Voice across the US, plus how multi-location and franchise rollouts work.",
+    "Restaurants running X1 Voice across US cities and metros, what local setup involves, and how multi-location and franchise rollouts are handled store by store.",
   path: "/locations",
 })
 

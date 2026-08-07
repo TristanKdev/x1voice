@@ -17,17 +17,29 @@ const isDev = process.env.NODE_ENV === "development"
 
 const CSP = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://app.cal.com${isDev ? " 'unsafe-eval'" : ""}`,
+  // googletagmanager.com serves both gtm.js and, for tags configured in the
+  // container, gtag.js. googleadservices/doubleclick are here because a Google
+  // Ads conversion tag added in the GTM UI loads from them — without the entry
+  // the tag is CSP-blocked at runtime with no build-time signal, which reads to
+  // whoever configured it as "the tag just doesn't fire".
+  //
+  // ANY OTHER VENDOR TAG (Meta, LinkedIn, TikTok, Hotjar...) added in GTM needs
+  // its origin added here first. That is the deliberate trade for not running
+  // an open script-src.
+  `script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.googleadservices.com https://*.doubleclick.net https://app.cal.com${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: https:",
   "font-src 'self' data:",
-  // googletagmanager.com appears in connect-src as well as script-src: GTM
-  // fetches container config over XHR, and GA4's regional collect endpoints
-  // are the *.google-analytics.com / *.analytics.google.com wildcards.
-  "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://app.cal.com",
-  // googletagmanager.com in frame-src is the GTM <noscript> iframe; the
-  // tagassistant origin is what GTM Preview mode loads the debug pane from.
-  "frame-src https://app.cal.com https://www.googletagmanager.com https://tagassistant.google.com",
+  // Both the bare host and the wildcard: a CSP host wildcard matches
+  // subdomains only, so `*.analytics.google.com` never covers
+  // `analytics.google.com` itself. stats.g.doubleclick.net is GA4 with Google
+  // Signals enabled.
+  "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://stats.g.doubleclick.net https://app.cal.com",
+  // 'self' is listed explicitly: frame-src is declared, so it does not inherit
+  // default-src, and a future same-origin iframe would otherwise break.
+  // googletagmanager.com is the GTM <noscript> iframe; tagassistant is GTM
+  // Preview mode's debug pane.
+  "frame-src 'self' https://app.cal.com https://www.googletagmanager.com https://tagassistant.google.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",

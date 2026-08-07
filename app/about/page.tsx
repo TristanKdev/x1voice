@@ -6,9 +6,9 @@ import { CtaSection } from "@/components/blocks/cta-section"
 import { Card } from "@/components/ui/card"
 
 export const metadata = buildMetadata({
-  title: "About",
+  title: "About X1 Voice",
   description:
-    "Why we built X1 Voice: too many restaurant phone calls go unanswered, and every one of them is a lost order.",
+    "Why we built an AI phone agent for restaurants: too many calls go unanswered during the rush, and every missed call is an order that went somewhere else.",
   path: "/about",
 })
 

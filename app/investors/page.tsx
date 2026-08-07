@@ -13,9 +13,9 @@ import { Card } from "@/components/ui/card"
 import { CONTACT } from "@/data/site"
 
 export const metadata = buildMetadata({
-  title: "Investors",
+  title: "Investor Relations",
   description:
-    "Investor relations for X1 Voice. Private equity and venture capital inquiries: investors@x1voice.com.",
+    "Investor relations for X1 Voice, the AI phone agent for restaurants. Private equity and venture capital inquiries go to investors@x1voice.com.",
   path: "/investors",
 })
 

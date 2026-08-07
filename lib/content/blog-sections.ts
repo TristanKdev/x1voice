@@ -102,7 +102,8 @@ const SECTION_RULES = [
     id: "buying",
     blurb: "Choosing a vendor, and the questions that separate them.",
     keywords: [
-      "-vs-", "alternatives", "evaluating", "contract", "onboarding", "pilot",
+      "-vs-", "alternatives", "evaluating", "evaluation", "contract",
+      "onboarding", "pilot", "objections", "references", "criteria",
       "switching", "buyers", "what-to-ask", "vendor", "objections",
       "demo-what-to-test", "msa", "sla", "offboarding", "proof-of-concept",
       "buying", "budget-approval", "overview", "building-vs-buying",
@@ -130,10 +131,24 @@ export type Group = {
   posts: BlogPost[]
 }
 
+/**
+ * Keywords match on TOKEN boundaries, not raw substrings. Plain `includes`
+ * made `"86"` match any slug containing those digits and `"qa"` match the
+ * letters inside an unrelated word, and it silently mis-filed posts whose
+ * slug happened to contain a keyword as a fragment. A keyword containing a
+ * hyphen is matched as a phrase against the hyphen-joined slug; a bare
+ * keyword must equal a whole token.
+ */
+function matchesKeyword(slug: string, keyword: string): boolean {
+  const k = keyword.replace(/^-|-$/g, "")
+  if (k.includes("-")) return slug.includes(k)
+  return slug.split("-").includes(k)
+}
+
 export function sectionForSlug(slug: string) {
   for (const rule of SECTION_RULES) {
     if ("match" in rule && rule.match(slug)) return rule
-    if ("keywords" in rule && rule.keywords.some((k) => slug.includes(k))) {
+    if ("keywords" in rule && rule.keywords.some((k) => matchesKeyword(slug, k))) {
       return rule
     }
   }

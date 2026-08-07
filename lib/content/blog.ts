@@ -34,7 +34,16 @@ export function getAllBlogPosts(): BlogPost[] {
       const { data, content } = matter(raw)
       return { ...(data as BlogFrontmatter), slug, content }
     })
-    .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
+    // Newest first, slug as the tiebreak. The old comparator never returned 0,
+    // so for the 91 posts sharing a publishedAt the order depended on readdir
+    // and compare(a,b) === compare(b,a) — and post ordering now decides which
+    // posts get sitewide internal links, so it has to be total and stable.
+    .sort((a, b) => {
+      if (a.publishedAt !== b.publishedAt) {
+        return a.publishedAt < b.publishedAt ? 1 : -1
+      }
+      return a.slug < b.slug ? -1 : a.slug > b.slug ? 1 : 0
+    })
   return cache
 }
 

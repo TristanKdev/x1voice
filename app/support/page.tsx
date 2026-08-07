@@ -8,9 +8,9 @@ import { Card } from "@/components/ui/card"
 import { CONTACT, DEMO_LINE } from "@/data/site"
 
 export const metadata = buildMetadata({
-  title: "Support",
+  title: "Support and Setup Help",
   description:
-    "Get help with X1 Voice. Email support, FAQs, and a live demo line you can call any time.",
+    "Get help with setup, menu sync, POS connections, and call routing. Email support, answers to common questions, and a live demo line you can call any time.",
   path: "/support",
 })
 

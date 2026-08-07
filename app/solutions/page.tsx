@@ -8,9 +8,9 @@ import { Breadcrumbs } from "@/components/blocks/breadcrumbs"
 import { Card } from "@/components/ui/card"
 
 export const metadata = buildMetadata({
-  title: "Solutions by Restaurant Type",
+  title: "Voice AI by Restaurant Type",
   description:
-    "How X1 Voice adapts to pizza, fast casual, fine dining, ghost kitchens, and every other restaurant type.",
+    "How the phone agent adapts to pizzerias, fast casual, fine dining, ghost kitchens, and more: the menu quirks, call patterns, and rules that differ by format.",
   path: "/solutions",
 })
 

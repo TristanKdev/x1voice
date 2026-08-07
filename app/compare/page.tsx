@@ -9,9 +9,9 @@ import { Card } from "@/components/ui/card"
 import { VoiceComparison } from "@/components/blocks/voice-comparison"
 
 export const metadata = buildMetadata({
-  title: "Compare X1 Voice",
+  title: "Compare Restaurant Phone Answering Options",
   description:
-    "Sourced, feature-by-feature comparisons between X1 Voice and other ways to handle restaurant phone calls.",
+    "Feature-by-feature comparisons between X1 Voice and the other ways restaurants handle calls: answering services, IVR phone trees, extra staff, and rival voice agents.",
   path: "/compare",
 })
 

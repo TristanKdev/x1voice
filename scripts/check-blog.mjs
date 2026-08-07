@@ -41,13 +41,40 @@ const BANNED_PATTERNS = [
   [/\bensure that\b/i, "\"ensure that\""],
 ]
 
+/**
+ * Valid non-blog link targets. The static list is the hand-written pages; the
+ * dynamic prefixes are read out of data/*.ts so that linking to a real
+ * commercial page — /solutions/pizza-restaurants, /compare/slang-ai — is not
+ * reported as a dead link. The first version hard-coded three integrations and
+ * nothing else, which quietly discouraged links to the pages that convert.
+ */
 const STATIC_PATHS = new Set([
-  "/", "/pricing", "/features", "/integrations", "/integrations/square",
-  "/integrations/clover", "/integrations/ordercounter", "/solutions",
+  "/", "/pricing", "/features", "/integrations", "/solutions",
   "/compare", "/locations", "/languages", "/support", "/support/integrations",
   "/contact", "/blog", "/about", "/privacy", "/terms", "/resellers",
   "/partners", "/investors", "/request-feature",
 ])
+
+function slugsFrom(file) {
+  const p = path.join(process.cwd(), "data", file)
+  if (!fs.existsSync(p)) return []
+  return [...fs.readFileSync(p, "utf8").matchAll(/slug:\s*"([a-z0-9-]+)"/g)].map((m) => m[1])
+}
+for (const [file, prefix] of [
+  ["solutions.ts", "/solutions"],
+  ["compare.ts", "/compare"],
+  ["integrations.ts", "/integrations"],
+  ["locations.ts", "/locations"],
+]) {
+  for (const slug of slugsFrom(file)) STATIC_PATHS.add(`${prefix}/${slug}`)
+}
+
+const TOPIC_IDS = [
+  ...fs
+    .readFileSync(path.join(process.cwd(), "lib", "content", "blog-sections.ts"), "utf8")
+    .matchAll(/id:\s*"([a-z0-9-]+)"/g),
+].map((m) => m[1])
+for (const id of TOPIC_IDS) STATIC_PATHS.add(`/blog/topics/${id}`)
 
 function parseFrontmatter(raw, file) {
   const m = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/)
@@ -76,9 +103,32 @@ function parseFrontmatter(raw, file) {
   return { fm, body }
 }
 
+/**
+ * `--new` means "posts this branch touched": untracked files PLUS files
+ * changed against origin/main. The first version looked only at untracked
+ * files, so the moment you committed, `--new` checked zero posts and exited 0
+ * — a green check that checked nothing.
+ */
+function changedPosts() {
+  const out = new Set()
+  const run = (cmd) => {
+    try {
+      return execSync(cmd, { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] })
+    } catch {
+      return ""
+    }
+  }
+  for (const line of run("git ls-files --others --exclude-standard content/blog").split("\n")) {
+    if (line.trim()) out.add(path.basename(line.trim()))
+  }
+  for (const line of run("git diff --name-only origin/main -- content/blog").split("\n")) {
+    if (line.trim()) out.add(path.basename(line.trim()))
+  }
+  return [...out].filter((f) => f.endsWith(".mdx") && fs.existsSync(path.join(BLOG_DIR, f)))
+}
+
 const files = process.argv.includes("--new")
-  ? execSync("git ls-files --others --exclude-standard content/blog", { encoding: "utf8" })
-      .split("\n").filter(Boolean).map((p) => path.basename(p))
+  ? changedPosts()
   : fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".mdx"))
 
 const allSlugs = new Set(
@@ -90,9 +140,10 @@ const allSlugs = new Set(
  * WARN while the batch is in flight and an ERROR once every planned post has
  * landed — which is exactly what --strict turns on.
  */
+const TOPICS_TSV = path.join(process.cwd(), "scripts", "blog-topics-300.tsv")
 const plannedSlugs = new Set(
-  fs.existsSync("scripts/blog-topics-300.tsv")
-    ? fs.readFileSync("scripts/blog-topics-300.tsv", "utf8")
+  fs.existsSync(TOPICS_TSV)
+    ? fs.readFileSync(TOPICS_TSV, "utf8")
         .split("\n").filter(Boolean).map((l) => l.split("\t")[0])
     : []
 )
@@ -140,10 +191,21 @@ for (const file of files.sort()) {
   if (words < 950) report("ERROR", slug, `body ${words} words (<950)`)
   else if (words > 1900) report("WARN", slug, `body ${words} words (>1900)`)
 
-  const haystack = `${fm.title} ${fm.description} ${body}`.toLowerCase()
+  // FAQ answers are included deliberately: they feed FAQPage JSON-LD and are
+  // the text most likely to be quoted verbatim by an assistant, yet the first
+  // version of this check looked only at the body and missed them entirely.
+  const faqText = fm.faqs.map((f) => `${f.question} ${f.answer}`).join(" ")
+  const haystack = `${fm.title} ${fm.description} ${body} ${faqText}`.toLowerCase()
   for (const word of BANNED_WORDS) {
-    const re = new RegExp(`\\b${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i")
-    if (re.test(haystack)) report("ERROR", slug, `banned phrase: "${word}"`)
+    const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+    // Match common inflections too: the list said "unlock" and let "unlocks"
+    // through, which made it look enforced while it was not. Multi-word
+    // phrases stay exact.
+    const pattern = /\s/.test(word)
+      ? `\\b${escaped}\\b`
+      : `\\b${escaped}(?:s|es|d|ed|ing)?\\b`
+    if (new RegExp(pattern, "i").test(haystack))
+      report("ERROR", slug, `banned phrase: "${word}"`)
   }
   for (const [re, label] of BANNED_PATTERNS) {
     if (re.test(body)) report("ERROR", slug, `banned construction: ${label}`)

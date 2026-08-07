@@ -38,6 +38,7 @@ export async function generateMetadata({
     title: `${section.section} — restaurant phone ordering`,
     description: `${section.blurb} ${count} articles on ${section.section.toLowerCase()} for restaurant phone ordering and voice AI.`,
     path: `/blog/topics/${topic}`,
+    exactTitle: true,
   })
 }
 

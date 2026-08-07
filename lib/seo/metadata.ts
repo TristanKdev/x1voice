@@ -6,6 +6,14 @@ export type PageMeta = {
   description: string
   /** Exact no-trailing-slash path, e.g. "/pricing" — must match the string used in lib/seo/routes.ts. */
   path: string
+  /**
+   * Render the title exactly as given, without the layout's
+   * ` — X1 Voice` template. Use it wherever the title is already long and
+   * self-describing (articles, topic hubs): the suffix costs 11 characters of
+   * a ~60-character SERP title and Google renders the site name separately
+   * anyway.
+   */
+  exactTitle?: boolean
   ogImage?: string
   noIndex?: boolean
 }
@@ -25,12 +33,13 @@ export function buildMetadata({
   path,
   ogImage,
   noIndex,
+  exactTitle,
 }: PageMeta): Metadata {
   const url = `${SITE_URL}${path}`
   const image = ogImage ?? DEFAULT_OG_IMAGE
 
   return {
-    title,
+    title: exactTitle ? { absolute: title } : title,
     description,
     alternates: { canonical: url },
     openGraph: {

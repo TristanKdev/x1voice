@@ -33,9 +33,12 @@ export function Resellers() {
             <span className="inline-flex items-center rounded-full border border-band-border bg-white/5 px-3 py-1 text-xs font-semibold">
               Resellers, ISOs and agencies
             </span>
-            <h2 className="font-display mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
+            {/* The page's only H1 — /resellers had none, which left the
+                page with no top-level heading for either crawlers or screen
+                readers. */}
+            <h1 className="font-display mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
               Sell X1 Voice to your restaurants
-            </h2>
+            </h1>
             <p className="mt-4 max-w-lg text-band-muted">
               If you already sell to restaurants, POS, payments, delivery,
               marketing, this drops into your book. Partner terms, white-glove

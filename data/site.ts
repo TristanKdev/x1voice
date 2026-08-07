@@ -5,6 +5,15 @@ export const SITE_URL =
 
 export const SITE_NAME = "X1 Voice"
 
+/**
+ * Date the hand-written marketing pages were last reviewed — the <lastmod>
+ * the sitemap reports for them. Maintained by hand rather than read from file
+ * mtime, because git does not preserve mtimes and CI checkouts would stamp
+ * every page with the build time, which is the "lastmod changes every build"
+ * signal crawlers learn to ignore. Bump it when you revise those pages.
+ */
+export const PAGES_REVIEWED_AT = "2026-08-06"
+
 export const SITE_TAGLINE =
   "The phone agent that picks up when your staff can't."
 
@@ -162,19 +171,21 @@ export const REVIEWS: Review[] = [
 ]
 
 /**
- * Google Tag Manager container. GA4 is configured as a tag *inside* this
- * container, so the site ships one script and the measurement ID lives in
- * GTM rather than in the bundle. `NEXT_PUBLIC_GTM_ID` overrides it for
- * staging containers; set it to an empty string to disable tagging entirely
- * (useful for preview deploys you don't want in the reporting).
+ * Google Tag Manager container.
+ *
+ * Gated on the site actually being production. `NEXT_PUBLIC_*` is inlined at
+ * build time, so a preview or branch build that inherits the default would
+ * otherwise tag straight into the production container and pollute the
+ * reporting with staging traffic. Set NEXT_PUBLIC_GTM_ID explicitly to tag a
+ * non-production build (a staging container), or leave it unset to ship no
+ * tagging at all.
  */
-export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-NSB54DMQ"
+const PRODUCTION_URL = "https://x1voice.com"
 
-/**
- * Optional direct GA4 tag. Leave unset in normal operation — GTM already
- * loads GA4. Set it only if you need gtag.js without a container, and if you
- * do, remove the GA4 tag from GTM first or every hit is counted twice.
- */
+export const GTM_ID =
+  process.env.NEXT_PUBLIC_GTM_ID ??
+  (SITE_URL === PRODUCTION_URL ? "GTM-NSB54DMQ" : "")
+
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 
 export const CAL_LINK = process.env.NEXT_PUBLIC_CAL_LINK ?? "x1voice/demo"

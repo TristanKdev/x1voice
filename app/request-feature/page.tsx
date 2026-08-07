@@ -10,7 +10,7 @@ import { Card } from "@/components/ui/card"
 export const metadata = buildMetadata({
   title: "Request a feature or integration",
   description:
-    "Tell the X1 Voice team what would make the product better for your restaurant, a feature, or a POS/platform integration you don't see yet. We build from operator feedback.",
+    "Tell us what would make the product better for your restaurant: a missing feature, or a POS or delivery platform you need connected. We build from operator requests.",
   path: "/request-feature",
 })
 

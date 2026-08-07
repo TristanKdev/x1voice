@@ -9,13 +9,20 @@ import { Breadcrumbs } from "@/components/blocks/breadcrumbs"
 import { Card } from "@/components/ui/card"
 
 export const metadata = buildMetadata({
-  title: "Blog",
+  title: "Restaurant Phone Ordering Blog",
   description:
-    "Practical, sourced articles on AI phone ordering, POS integration, and restaurant call handling.",
+    "450 articles for restaurant owners on AI phone answering, POS integration, call handling, compliance, and the economics of every call you miss.",
   path: "/blog",
 })
 
 const LATEST_COUNT = 6
+
+/**
+ * How many posts each section previews on the index. Rendering all 450 put a
+ * 579 KB HTML document on the site's most-linked page; the topic hubs carry
+ * the full list, so the index only has to show enough to orient a reader.
+ */
+const PREVIEW_PER_SECTION = 8
 
 export default function BlogIndexPage() {
   const posts = getAllBlogPosts()
@@ -95,7 +102,7 @@ export default function BlogIndexPage() {
                     {group.blurb}
                   </p>
                   <ul className="mt-6 divide-y border-t">
-                    {group.posts.map((p) => (
+                    {group.posts.slice(0, PREVIEW_PER_SECTION).map((p) => (
                       <li key={p.slug}>
                         <Link
                           href={`/blog/${p.slug}`}
@@ -111,6 +118,14 @@ export default function BlogIndexPage() {
                       </li>
                     ))}
                   </ul>
+                  {group.posts.length > PREVIEW_PER_SECTION ? (
+                    <Link
+                      href={`/blog/topics/${group.id}`}
+                      className="mt-4 inline-flex text-sm text-brand hover:underline"
+                    >
+                      All {group.posts.length} {group.section.toLowerCase()} articles
+                    </Link>
+                  ) : null}
                 </div>
               ))}
             </div>

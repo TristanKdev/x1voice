@@ -12,9 +12,9 @@ import { CtaSection } from "@/components/blocks/cta-section"
 import { Card } from "@/components/ui/card"
 
 export const metadata = buildMetadata({
-  title: "Features",
+  title: "Features: What the AI Phone Agent Does",
   description:
-    "What X1 Voice actually does: 24/7 call answering, order-taking with modifiers and substitutions, phone payment collection, POS sync, after-hours coverage, and reporting.",
+    "Round-the-clock call answering, orders with modifiers and substitutions, card payments by phone, POS sync, and per-call reporting. What the agent actually does.",
   path: "/features",
 })
 

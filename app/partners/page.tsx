@@ -20,7 +20,7 @@ import { CONTACT } from "@/data/site"
 export const metadata = buildMetadata({
   title: "Partner with X1 Voice",
   description:
-    "Why partner with X1 Voice: recurring revenue on a product restaurants keep, transparent pricing you can quote, fast white-glove onboarding, and a demo that sells itself over the phone.",
+    "Recurring revenue on a product restaurants keep, pricing you can quote without a call, white-glove onboarding, and a demo that sells itself over the phone.",
   path: "/partners",
 })
 

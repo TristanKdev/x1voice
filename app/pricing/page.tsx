@@ -10,7 +10,7 @@ import { CtaSection } from "@/components/blocks/cta-section"
 import { PRICING_TIERS, PRICING_COMPARISON_ROWS } from "@/data/pricing"
 
 export const metadata = buildMetadata({
-  title: "Pricing",
+  title: "AI Phone Ordering Pricing for Restaurants",
   description:
     "Pricing that scales with your call volume, with no setup fees or long-term contract. See the full feature-by-feature breakdown of every plan.",
   path: "/pricing",

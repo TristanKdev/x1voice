@@ -21,13 +21,22 @@ function escapeXml(value: string): string {
   return value.replace(/[&<>"']/g, (c) => XML_ESCAPES[c])
 }
 
-/** Sitemap dates must be W3C datetime. Accepts "YYYY-MM-DD" or an ISO string. */
+/**
+ * Sitemap dates must be W3C datetime. Accepts "YYYY-MM-DD" or an ISO string
+ * and THROWS on anything else — returning the raw string would ship an
+ * invalid <lastmod> from one bad frontmatter date and Google would silently
+ * discard the date (or the URL) with no signal on our side. A build failure
+ * naming the value is the cheaper outcome.
+ */
 function toW3CDate(value: string): string {
   if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value
   const parsed = new Date(value)
-  return Number.isNaN(parsed.getTime())
-    ? value
-    : parsed.toISOString().replace(/\.\d{3}Z$/, "+00:00")
+  if (Number.isNaN(parsed.getTime())) {
+    throw new Error(
+      `sitemap: "${value}" is not a valid date. Use YYYY-MM-DD or an ISO datetime.`
+    )
+  }
+  return parsed.toISOString().replace(/\.\d{3}Z$/, "+00:00")
 }
 
 export type UrlEntry = {
@@ -48,8 +57,18 @@ export function routeToUrlEntry(route: SiteRoute): UrlEntry {
   }
 }
 
+/**
+ * Absolute, percent-encoded <loc>. Slugs are ASCII today, but a slug with a
+ * space or a non-ASCII character would otherwise emit a URL the sitemap spec
+ * rejects — and it would validate as well-formed XML, so nothing would catch it.
+ */
 function absolute(url: string): string {
-  return url.startsWith("http") ? url : `${SITE_URL}${url}`
+  const full = url.startsWith("http") ? url : `${SITE_URL}${url}`
+  try {
+    return new URL(full).toString()
+  } catch {
+    return encodeURI(full)
+  }
 }
 
 export function buildUrlSet(entries: UrlEntry[]): string {

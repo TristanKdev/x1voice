@@ -5,7 +5,8 @@ import { CONTACT, SITE_NAME } from "@/data/site"
 
 export const metadata = buildMetadata({
   title: "Privacy Policy",
-  description: `How ${SITE_NAME} collects, uses, and protects your data.`,
+  description:
+    "How X1 Voice collects, uses, stores, and protects data from restaurant phone calls, including call recordings, transcripts, caller details, and payment information.",
   path: "/privacy",
 })
 
@@ -68,9 +69,31 @@ export default function PrivacyPage() {
 
         <h2>Cookies and analytics</h2>
         <p>
-          This site uses Google Analytics to understand aggregate traffic
-          patterns. You can opt out using your browser&rsquo;s cookie
-          settings or a browser extension.
+          This site loads Google Tag Manager, which in turn loads Google
+          Analytics 4. We use it to understand aggregate traffic patterns:
+          which pages are read, which links are clicked, and whether a visit
+          ended in a contact form submission or a tap on our demo number.
+        </p>
+        <p>
+          What that involves: analytics cookies set by Google, your IP address
+          (truncated by Google before storage), your approximate location, the
+          pages you view on this site, and the referring site or search that
+          brought you here. We do not send names, email addresses, or phone
+          numbers you type into our forms to any analytics tool.
+        </p>
+        <p>
+          Because tags are managed through a container, the exact set can
+          change over time; advertising tags, if we add any, would be listed
+          here before they run. You can opt out with your browser&rsquo;s
+          cookie settings, a tracking-blocker extension, or Google&rsquo;s own
+          opt-out add-on. Blocking analytics does not affect any part of this
+          site&rsquo;s functionality.
+        </p>
+        <p>
+          This section describes the marketing website only. Data from calls
+          your restaurant&rsquo;s customers place to an X1 Voice number is
+          governed by the sections above and is never sent to an analytics or
+          advertising vendor.
         </p>
 
         <h2>Data retention</h2>

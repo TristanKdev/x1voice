@@ -5,7 +5,8 @@ import { CONTACT, SITE_NAME } from "@/data/site"
 
 export const metadata = buildMetadata({
   title: "Terms of Service",
-  description: `The terms that govern use of ${SITE_NAME}.`,
+  description:
+    "The terms governing use of X1 Voice: service scope, acceptable use, billing and cancellation, uptime commitments, data handling, and limits of liability.",
   path: "/terms",
 })
 

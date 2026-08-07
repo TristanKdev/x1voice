@@ -1,5 +1,14 @@
 import type { Faq } from "./solutions"
 
+/**
+ * Date this file's content was last reviewed. This is the <lastmod> the sitemap
+ * reports for these pages. It is a hand-maintained date on purpose: file mtime is
+ * the checkout time in CI (git does not preserve mtimes), which would republish
+ * every page as "modified" on every deploy and teach crawlers to ignore our
+ * lastmod entirely. Update it when you change the content below.
+ */
+export const INTEGRATIONS_REVIEWED_AT = "2026-08-06"
+
 export type IntegrationPage = {
   slug: string
   partnerName: string

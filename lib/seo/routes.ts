@@ -1,7 +1,7 @@
-import fs from "node:fs"
-import path from "node:path"
-
 import { getAllSolutions } from "@/lib/content/solutions"
+import { PAGES_REVIEWED_AT } from "@/data/site"
+import { SOLUTIONS_REVIEWED_AT } from "@/data/solutions"
+import { INTEGRATIONS_REVIEWED_AT } from "@/data/integrations"
 import { getAllComparePages } from "@/lib/content/compare"
 import { getAllIntegrations } from "@/lib/content/integrations"
 import { getAllLocations } from "@/lib/content/locations"
@@ -226,31 +226,6 @@ const STATIC_ROUTES: SiteRoute[] = [
  * actually-servable route set are provably the same set.
  */
 
-/**
- * `lastmod` for a hand-written page = the mtime of the file that renders it.
- * Google ignores a lastmod that changes on every build, so this deliberately
- * does NOT fall back to `new Date()` — a page whose source file can't be
- * located simply ships without a lastmod, which is the honest answer.
- */
-/** mtime of a data file, used as lastmod for content that carries no date field. */
-function dataFileLastModified(file: string): string | undefined {
-  try {
-    return fs.statSync(path.join(process.cwd(), "data", file)).mtime.toISOString()
-  } catch {
-    return undefined
-  }
-}
-
-function staticRouteLastModified(routePath: string): string | undefined {
-  const segment = routePath === "/" ? "" : routePath
-  const file = path.join(process.cwd(), "app", segment, "page.tsx")
-  try {
-    return fs.statSync(file).mtime.toISOString()
-  } catch {
-    return undefined
-  }
-}
-
 export function getAllRoutes(): SiteRoute[] {
   const solutionRoutes: SiteRoute[] = getAllSolutions().map((s) => ({
     path: `/solutions/${s.slug}`,
@@ -260,7 +235,7 @@ export function getAllRoutes(): SiteRoute[] {
     section: "solutions",
     changeFrequency: "monthly",
     priority: 0.7,
-    lastModified: dataFileLastModified("solutions.ts"),
+    lastModified: SOLUTIONS_REVIEWED_AT,
   }))
 
   const compareRoutes: SiteRoute[] = getAllComparePages().map((c) => ({
@@ -282,7 +257,7 @@ export function getAllRoutes(): SiteRoute[] {
     section: "integrations",
     changeFrequency: "monthly",
     priority: 0.6,
-    lastModified: dataFileLastModified("integrations.ts"),
+    lastModified: INTEGRATIONS_REVIEWED_AT,
   }))
 
   const locationRoutes: SiteRoute[] = getAllLocations().map((l) => ({
@@ -327,7 +302,7 @@ export function getAllRoutes(): SiteRoute[] {
 
   const staticRoutes: SiteRoute[] = STATIC_ROUTES.map((r) => ({
     ...r,
-    lastModified: r.lastModified ?? staticRouteLastModified(r.path),
+    lastModified: r.lastModified ?? PAGES_REVIEWED_AT,
   }))
 
   return [
@@ -351,9 +326,11 @@ export function getRoutesBySection(section: SiteSection): SiteRoute[] {
  * sitemap index reports for that section's file.
  */
 export function sectionLastModified(section: SiteSection): string | undefined {
+  // Compare on the date part only: entries mix "YYYY-MM-DD" with full ISO
+  // datetimes, and a lexicographic sort over both is not a date comparison.
   const dates = getRoutesBySection(section)
     .map((r) => r.lastModified)
     .filter((d): d is string => Boolean(d))
-    .sort()
+    .sort((a, b) => (a.slice(0, 10) < b.slice(0, 10) ? -1 : 1))
   return dates.at(-1)
 }
