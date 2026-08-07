@@ -2,43 +2,68 @@
 title: "AI Phone Ordering for NCR Aloha: How the Integration Works"
 description: "How X1 Voice takes restaurant phone orders and sends them into NCR Aloha as clean tickets, with payment on the call. What to check before you buy."
 publishedAt: "2026-04-21"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Does X1 Voice work with NCR Aloha?"
-    answer: "Yes. X1 Voice reads your live NCR Aloha menu and sends completed phone orders into NCR Aloha as normal tickets, through our Deliverect integration. Nobody re-keys the order."
+    answer: "Yes. X1 Voice reads your live NCR Aloha menu and sends completed phone orders into NCR Aloha as normal tickets, through our Deliverect integration. Nobody re-keys the order. The ticket arrives itemized, modified and priced against your own menu, and your kitchen works it the same way it works an in-person or online order."
   - question: "Can it take payment for NCR Aloha phone orders?"
-    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in your reporting."
+    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in your reporting. Nobody on the floor handles a card number. You can also keep pay-at-pickup for small tickets and require payment on the call only for delivery or for orders over a threshold you set."
   - question: "How long does NCR Aloha setup take?"
-    answer: "Usually minutes. You connect your account, import the menu, set hours and rules, test with a live call, and go live, often the same day."
+    answer: "Connecting the account takes minutes, and most single locations go live within 24 hours. The variable is not the connection, it is your menu database. Aloha estates often carry nested modifier chains and daypart price levels built up over years, and the work worth doing before launch is making sure those read sensibly when spoken aloud rather than tapped on a terminal."
+  - question: "How do menu changes in Aloha reach the phone agent?"
+    answer: "Changes flow from your Aloha menu configuration through the connection, so the agent quotes the same items and prices your terminals do. Because Aloha estates commonly publish menu updates centrally on a schedule, ask during your trial exactly when a price change you make today becomes live on the phone. Test it with one real item rather than accepting a general answer."
+  - question: "Does it handle Aloha's dayparts and price levels?"
+    answer: "Yes, provided the daypart structure is set up in your menu configuration. Lunch pricing on a lunch call, dinner pricing after the switch. This is the single most useful thing to verify on a demo call: order the same item twice across a daypart boundary and confirm the price the agent quotes matches the price the terminal would ring."
 ---
 
 Phone orders are still a real slice of revenue for most restaurants, and if you run NCR Aloha, the only question that matters about a voice agent is simple: does the order end up in NCR Aloha correctly? A great-sounding voice that drops a modifier or sends the kitchen the wrong ticket is worse than a missed call.
 
-Here's how X1 Voice works with NCR Aloha, and what to check before you buy.
+Here's how X1 Voice works with NCR Aloha, where these deployments get complicated, and what to check before you buy.
 
 ## The order has to land in NCR Aloha, cleanly
 
 X1 Voice connects to NCR Aloha through our Deliverect integration. It reads your live menu, prices each phone order against it, and routes the finished ticket into NCR Aloha so it lands the same way an in-person or online order would. Nobody re-keys anything. The value is in the round trip: [reading the live menu and firing a correctly-modified ticket](/blog/why-pos-integration-depth-matters-more-than-voice-quality), not just sounding human on the call.
 
-The one thing to test with any vendor, NCR Aloha or otherwise, is a deliberately awkward order — "no onions, sub fries, add a drink, apply the coupon" — and confirm it arrives in the POS right, not just that the voice repeated it back.
+The one thing to test with any vendor, NCR Aloha or otherwise, is a deliberately awkward order. Say "no onions, sub fries, add a drink, apply the coupon" and confirm it arrives in the POS right, not just that the voice repeated it back. Reading an order back correctly and writing it correctly are separate jobs, and only one of them is visible at the pass.
+
+## Why Aloha sites are different from a small-format POS
+
+Aloha tends to sit under restaurants that have been open a while, often across several locations, with a menu database that reflects every decision made since the site opened.
+
+That has two practical consequences. The first is nesting. Aloha modifier chains can run several layers deep, which is entirely manageable on a terminal where the next screen appears automatically, and much harder to say out loud. A build that takes three taps might be four spoken questions if nobody has thought about the order they should be asked in. The second is centralization. Menu changes in a multi-unit Aloha estate are usually published from a central configuration rather than edited store by store, so the question of when a change reaches the phone has a real answer that varies by how your estate is set up. Ask for it specifically.
+
+Neither of these is a reason not to do it. Both are reasons to spend an hour on the menu before you go live rather than discovering it on a Friday.
+
+## What it looks like on a real shift
+
+At 6:45 on a weeknight in a table-service Aloha room, the phone is a competing demand on a host who is also seating a wait list. The call gets answered, but it gets answered fast and half-attentively, and the takeout order gets written on the back of a seating chart.
+
+With the connection running, that call is answered on the first ring by something that is not also holding two menus. The ticket fires to the same printer the host would have sent it to. The host keeps working the door. That's the whole change, and it is worth more on the nights the wait list is long, which are the nights the phone rings most.
+
+The failure mode worth naming: if you route every ambiguous call to a person, you have added a step rather than removed one. Decide up front which calls should always reach a human, and make that list short and deliberate. [Human handoff and failover](/blog/human-handoff-failover-voice-ai) covers how to draw that line without either extreme.
 
 ## Payments and reporting
 
 Callers can pay by card on the phone for pickup and delivery. That payment reconciles alongside your other tender types, so your end-of-day numbers stay in one place. Staff never read a card number out loud or write one down.
 
-## Setup
+Comps and promotions are worth a specific conversation. Aloha rooms often carry promo codes and employee discounts that were designed for a manager to apply at a terminal, with judgment attached. Decide before launch which of those a phone caller can invoke and which require a person, because the default of "the agent can apply anything in the menu" is rarely what an operator actually wants. A short allow list is the right shape here.
+
+Most multi-unit operators end up requiring payment on the call for delivery and for anything above a set ticket size, and leaving smaller pickup orders as pay-at-counter. That keeps no-shows off the line cook's time without adding friction to a $14 order. The handling details are in [collecting payment over the phone safely](/blog/collecting-payment-over-the-phone-safely).
+
+## Setup, and the part that takes real time
 
 Connecting NCR Aloha takes minutes, not a six-week project: link your account, import the menu, set your hours and any phone-only rules, run a test call, and go live. Most single-location restaurants are live the same day, and our team can handle white-glove setup if you'd rather.
 
-If you run more than NCR Aloha across locations, that's fine too — X1 Voice reaches [80+ POS systems](/integrations), directly or through Deliverect, so a mixed estate isn't a blocker.
+The time goes into the menu audit and the rules list. Which items have names only a terminal could love. Which modifier chains need a shorter spoken path. What the agent quotes for a pickup window at 7pm versus 3pm. What it does with a reservation request in a room that takes reservations elsewhere. The [onboarding checklist](/blog/ai-phone-onboarding-checklist-restaurants) is the list we work through with new sites, and it applies whether you have one Aloha store or thirty.
 
-You can read more about NCR Aloha on their [official site](https://www.ncr.com).
+If you run more than NCR Aloha across locations, that's fine too. X1 Voice reaches [80+ POS systems](/integrations), directly or through Deliverect, so a mixed estate isn't a blocker, and reporting rolls up across them.
 
-## Where restaurant operators discuss this
+## The numbers to check in the first two weeks
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+Pull four things out of your own reporting rather than a vendor slide.
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+Answered-call rate against the same weekdays before you switched. Order accuracy, sampled by checking twenty real phone tickets against their recordings. Average phone ticket, segmented by channel. And the count of tickets that reached Aloha but needed a manager correction before firing, which is the number that tells you whether the menu audit went deep enough. That last figure should fall to near zero within two weeks, and when it doesn't, the cause is usually one modifier chain rather than a general problem. The [accuracy measurement method](/blog/order-accuracy-measurement-method) explains how to sample so the number is honest.
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+## The decision rule
+
+Run one full week and compare two counts: calls that were answered, and phone tickets that reached the kitchen without a human retyping or correcting them. If both sit close to your total inbound phone volume, the integration is doing its job and the remaining questions are about cost and call policy. If either lags, you now have a named list of menu items to fix, which is a smaller and cheaper problem than it looks like from the outside.

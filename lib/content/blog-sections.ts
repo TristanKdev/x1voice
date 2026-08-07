@@ -113,7 +113,7 @@ const SECTION_RULES = [
   {
     section: "How it works",
     id: "how-it-works",
-    blurb: "The mechanics, in plain terms.",
+    blurb: "How a call becomes a ticket, explained in plain terms.",
     keywords: ["how-", "what-", "can-", "does-", "why-", "feature-", "glossary"],
   },
 ] as const

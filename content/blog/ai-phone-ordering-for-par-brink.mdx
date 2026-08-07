@@ -1,44 +1,71 @@
 ---
 title: "AI Phone Ordering for PAR Brink: How the Integration Works"
-description: "How X1 Voice takes restaurant phone orders and sends them into PAR Brink as clean tickets, with payment on the call. What to check before you buy."
+description: "How X1 Voice writes phone orders into PAR Brink as clean tickets, what the Deliverect hop changes for multi-unit brands, and the tests to run before rollout."
 publishedAt: "2026-06-23"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Does X1 Voice work with PAR Brink?"
-    answer: "Yes. X1 Voice reads your live PAR Brink menu and sends completed phone orders into PAR Brink as normal tickets, through our Deliverect integration. Nobody re-keys the order."
+    answer: "Yes, through our Deliverect integration. X1 Voice reads your published Brink menu, prices each phone call against it, and writes the finished order back as a normal ticket, so nobody at the counter re-keys anything. The one prerequisite is that the store's menu is published to Deliverect, which is usually already true if the brand pushes to delivery marketplaces."
   - question: "Can it take payment for PAR Brink phone orders?"
-    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in your reporting."
-  - question: "How long does PAR Brink setup take?"
-    answer: "Usually minutes. You connect your account, import the menu, set hours and rules, test with a live call, and go live, often the same day."
+    answer: "Yes. Callers pay by card during the call for pickup and delivery, and the payment reconciles alongside your other tender types in reporting. Nobody on your team hears a card number or writes one on a ticket. If your brand prefers phone orders to settle at pickup, you can configure that instead and the agent will not ask for payment."
+  - question: "How long does setup take on a Brink store?"
+    answer: "Under 24 hours per store once the menu is published to Deliverect. The connection and rule configuration are quick. What takes real attention is reviewing how item names and modifier groups came across and fixing the ones that read like button labels rather than like something a person would say out loud on a call."
+  - question: "Can each store have its own hours, prices and rules?"
+    answer: "Yes. Hours, delivery minimums, phone-only rules and escalation behavior are set per location, and prices come across as whatever is published for that store. A franchisee with different pricing and a later close runs the same agent under different settings, which matters on any estate where stores are not identical."
+  - question: "Does this compete with the drive-thru for kitchen capacity?"
+    answer: "It can, and that is worth planning rather than discovering. A phone agent that never misses a call will raise phone volume, and those tickets hit the same line as the drive-thru during the same peak. Decide in advance whether phone orders route to a separate prep window or a longer quoted time, because capacity, not the agent, becomes the constraint."
 ---
 
-Phone orders are still a real slice of revenue for most restaurants, and if you run PAR Brink, the only question that matters about a voice agent is simple: does the order end up in PAR Brink correctly? A great-sounding voice that drops a modifier or sends the kitchen the wrong ticket is worse than a missed call.
+If you run PAR Brink, the question that decides whether a voice agent earns its keep is narrow: does a completed phone order arrive in Brink as a ticket the line can work from, priced the way the register would have priced it? The voice is the part everyone demos and the least important part of the purchase. A convincing voice that fires a wrong modifier costs more than an unanswered ring, because now you make the food twice and you have annoyed an existing customer.
 
-Here's how X1 Voice works with PAR Brink, and what to check before you buy.
+X1 Voice reaches Brink through Deliverect. Your published items, prices and modifier groups come across, the agent prices each call against them, and the finished order is written back as a normal order. Nobody re-types anything at the counter.
 
-## The order has to land in PAR Brink, cleanly
+On a Brink estate that detail matters more than it would for a single independent, because Brink stores are usually part of a brand with shared menu governance and very tight peak-hour capacity.
 
-X1 Voice connects to PAR Brink through our Deliverect integration. It reads your live menu, prices each phone order against it, and routes the finished ticket into PAR Brink so it lands the same way an in-person or online order would. Nobody re-keys anything. The value is in the round trip: [reading the live menu and firing a correctly-modified ticket](/blog/why-pos-integration-depth-matters-more-than-voice-quality), not just sounding human on the call.
+## What the Deliverect hop changes
 
-The one thing to test with any vendor, PAR Brink or otherwise, is a deliberately awkward order — "no onions, sub fries, add a drink, apply the coupon" — and confirm it arrives in the POS right, not just that the voice repeated it back.
+Three consequences, all of them practical.
 
-## Payments and reporting
+The store's menu has to be published to Deliverect before the agent can read it. If the brand already pushes to delivery marketplaces, this exists and setup is short. If it doesn't, publishing is the real first task and it belongs to whoever owns menu configuration, not to a store manager.
 
-Callers can pay by card on the phone for pickup and delivery. That payment reconciles alongside your other tender types, so your end-of-day numbers stay in one place. Staff never read a card number out loud or write one down.
+Menu changes propagate on a sync rather than the instant you save them. Price updates are fine on that cadence. A sold-out item on a Saturday night is not, so settle the 86 path before you rely on the agent to tell callers what is unavailable. [Voice AI and POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes) covers what actually breaks and what to ask a vendor about it.
 
-## Setup
+Item and modifier names arrive as configured. QSR menus are full of names built for a fixed button grid: abbreviations, size prefixes, internal codes for LTO items. The agent inherits them and will read them aloud. That is the most common reason a technically working agent sounds wrong on day one, and it is a naming fix rather than a software problem.
 
-Connecting PAR Brink takes minutes, not a six-week project: link your account, import the menu, set your hours and any phone-only rules, run a test call, and go live. Most single-location restaurants are live the same day, and our team can handle white-glove setup if you'd rather.
+## The peak-hour question specific to a QSR
 
-If you run more than PAR Brink across locations, that's fine too — X1 Voice reaches [80+ POS systems](/integrations), directly or through Deliverect, so a mixed estate isn't a blocker.
+Most operators evaluate a phone agent as a labor question. On a high-volume Brink store it is at least as much a capacity question.
 
-You can read more about PAR Brink on their [official site](https://partech.com).
+Today, some share of your phone calls go unanswered during the lunch and dinner peaks. Nobody logs those, which is why they feel smaller than they are; redo the arithmetic in [the real cost of a missed restaurant phone call](/blog/the-real-cost-of-a-missed-restaurant-phone-call) with your own ticket average and see what the number looks like.
 
-## Where restaurant operators discuss this
+Turn on an agent and those calls get answered. That is the point, and it also means more tickets hitting the same line during the same fifteen minutes that the drive-thru is stacked. If your kitchen is already at its ceiling at 12:20, the agent does not create capacity, it converts a lost call into a longer wait for everyone.
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+The fix is a policy decision made in advance, not a surprise in week two. Quote a longer pickup time during peak, cap phone orders per interval, or route phone tickets to a separate prep position. Any of those work. Discovering the problem through complaints does not.
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+## The failure mode nobody demos
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+Modifier trees built for a trained crew member.
+
+A required modifier group with a default that only makes sense with a human at the screen, a size implemented as three separate items, a combo that assumes the operator taps things in a fixed order. None of that hurts when someone who has worked the station for six months is ringing it in. An agent follows the structure literally, so it will either refuse a combination that is obviously fine or fire a ticket that validates and is wrong at the pass.
+
+The correction is structural. [Simplifying modifier trees](/blog/simplifying-modifier-trees) covers the shapes that break. On a branded estate this is good news, because the fix happens once centrally and every store inherits it.
+
+Ask the vendor to take a deliberately awkward order on your real menu: substitution, a hold, an add-on, a combo, and a promo code, all in one call. Then walk to the printer. Do not accept the agent reading the order back correctly as proof of anything. The repeat-back and the injected ticket are different systems, and only one reaches the kitchen. That distinction is the whole argument in [why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality).
+
+## Roll it out one store at a time
+
+Even though the configuration would let you flip fifty stores at once, don't.
+
+Pick one store with real phone volume and a manager who will report problems rather than quietly turn it off. Run three weeks. Read a weekly sample of transcripts instead of watching a summary screen, and keep a running list of every phrase the agent handled badly. Nearly every entry will be naming or modifier structure, and nearly every fix applies estate-wide.
+
+Then pick a second store that is deliberately unlike the first, ideally with a different daypart mix. The problems that appear at store two are the ones that would have embarrassed you at scale. [Designing a voice AI pilot](/blog/designing-a-voice-ai-pilot) sets out what to agree on before you start so the pilot ends in a decision.
+
+## The four numbers to check after a month
+
+Answered-call rate, which should sit near 100 percent and is the reason you bought it. Order accuracy, measured by reading a sample of phone tickets against the transcripts rather than trusting a dashboard, following the [order accuracy measurement method](/blog/order-accuracy-measurement-method). Escalation reasons, split into "by design" and "by defect," where only the defect bucket is a work list. And phone revenue per store against the same weeks last year.
+
+That last number is the honest one. If answered calls climbed and phone revenue did not, the agent absorbed calls staff were already answering. That is real labor value and a different business case than incremental sales, and on a multi-unit brand the difference is what gets the rollout funded or shelved.
+
+Setup runs under 24 hours per store once the menu is published, and plans start at $250 per month per location, which you can size against your own volume on the [pricing page](/pricing). If your portfolio mixes Brink with other systems, that is ordinary: X1 Voice connects directly to Square, Clover and OrderCounter and reaches the rest of the [supported POS list](/integrations) through Deliverect, so one configuration covers a mixed estate.
+
+Start with one store and one hard order. If five test calls produce five tickets you would have been glad to see a new crew member ring in, the integration is doing its job. If three do, the gap is almost certainly in your item names and modifier groups, and that is worth fixing whatever you decide about voice.

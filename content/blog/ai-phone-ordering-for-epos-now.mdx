@@ -2,43 +2,74 @@
 title: "AI Phone Ordering for Epos Now: How the Integration Works"
 description: "How X1 Voice takes restaurant phone orders and sends them into Epos Now as clean tickets, with payment on the call. What to check before you buy."
 publishedAt: "2026-05-05"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Does X1 Voice work with Epos Now?"
-    answer: "Yes. X1 Voice reads your live Epos Now menu and sends completed phone orders into Epos Now as normal tickets, through our Deliverect integration. Nobody re-keys the order."
+    answer: "Yes. X1 Voice reads your live Epos Now menu and sends completed phone orders into Epos Now as normal tickets, through our Deliverect integration. Nobody re-keys the order. The ticket arrives itemized and priced against your own product list, so your kitchen handles a phone order exactly the way it handles a till or online order."
   - question: "Can it take payment for Epos Now phone orders?"
-    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in your reporting."
+    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in your reporting. Nobody on the floor touches a card number. You can also leave small pickup orders as pay-on-collection and require payment on the call only for delivery or larger tickets."
   - question: "How long does Epos Now setup take?"
-    answer: "Usually minutes. You connect your account, import the menu, set hours and rules, test with a live call, and go live, often the same day."
+    answer: "Connecting the account takes minutes, and most single sites are live within 24 hours. The connection is the fast part. The work worth doing first is reviewing your product list for names and variants that were written to be tapped on a till rather than spoken by a caller, because that is what determines whether the first week goes smoothly."
+  - question: "What happens when I mark an item out of stock in Epos Now?"
+    answer: "The agent stops offering it once the change reaches the connection and suggests something else rather than accepting an order the kitchen cannot fill. During your trial, mark one real item unavailable and call in for it a minute later. The lag between the back-office change and the next call is a number you should know rather than assume."
+  - question: "Does it work if I run more than one till or more than one site?"
+    answer: "Yes. The connection is made at the account and product-catalog level rather than to a specific till, so a phone order appears wherever your team already works tickets. Multi-site operators can keep per-location menus and hours, and reporting rolls up across sites so you can compare phone volume between them."
 ---
 
 Phone orders are still a real slice of revenue for most restaurants, and if you run Epos Now, the only question that matters about a voice agent is simple: does the order end up in Epos Now correctly? A great-sounding voice that drops a modifier or sends the kitchen the wrong ticket is worse than a missed call.
 
-Here's how X1 Voice works with Epos Now, and what to check before you buy.
+Here's how X1 Voice works with Epos Now, where these setups get bumpy, and what to check before you buy.
 
 ## The order has to land in Epos Now, cleanly
 
 X1 Voice connects to Epos Now through our Deliverect integration. It reads your live menu, prices each phone order against it, and routes the finished ticket into Epos Now so it lands the same way an in-person or online order would. Nobody re-keys anything. The value is in the round trip: [reading the live menu and firing a correctly-modified ticket](/blog/why-pos-integration-depth-matters-more-than-voice-quality), not just sounding human on the call.
 
-The one thing to test with any vendor, Epos Now or otherwise, is a deliberately awkward order — "no onions, sub fries, add a drink, apply the coupon" — and confirm it arrives in the POS right, not just that the voice repeated it back.
+The one thing to test with any vendor, Epos Now or otherwise, is a deliberately awkward order. Try "no onions, sub fries, add a drink, apply the coupon" and confirm it arrives in the POS right, not just that the voice repeated it back. Reading an order back and writing it down correctly are two different jobs, and only one of them shows up at the pass.
+
+## What changes on a real shift
+
+The visible change isn't the call. It's what stops happening after the call.
+
+Right now a phone order at 7pm costs you a person for ninety seconds of talking and another thirty of typing at the till, and both of those happen while someone is standing at the counter waiting. With the connection running, the ticket is already in Epos Now before the caller has hung up, and the person who used to walk to the till stays where they were. On a night with forty phone orders, that is close to an hour of counter time that was previously spent transcribing.
+
+The quieter benefit is that the ticket text is your own. It came out of your product list, not from someone's handwriting, so the kitchen reads the same words it reads on every other order.
+
+## Where Epos Now setups actually break
+
+Rarely at the connection. Usually in the product list.
+
+Epos Now catalogs grow by addition. Someone adds a product for a special, it never gets archived, and two years later the list has three versions of the same burger at three prices. On a till that's an annoyance because staff know which button to press. On a phone call it's genuinely ambiguous, because the caller says "cheeseburger" and there are three of them.
+
+Variants are the second trap. If your sizes or options are built as separate products rather than as variants of one, the agent has to treat them as separate items, and the spoken order gets longer than it needs to be. Worth checking before launch:
+
+- Archive products that are no longer sold, rather than leaving them inactive but present.
+- Give each item a name a caller would actually say, keeping the till abbreviation as an alias.
+- Collapse near-duplicate products into variants where your setup allows it.
+
+More on the naming half of that in [menu naming for voice clarity](/blog/menu-naming-for-voice-clarity), and on the option-handling half in [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers). A clean product list makes this a same-day project. A messy one makes the cleanup the project, and it was overdue anyway.
 
 ## Payments and reporting
 
-Callers can pay by card on the phone for pickup and delivery. That payment reconciles alongside your other tender types, so your end-of-day numbers stay in one place. Staff never read a card number out loud or write one down.
+Callers can pay by card on the phone for pickup and delivery. That payment reconciles alongside your other tender types, so your end-of-day numbers stay in one place. Staff never read a card number out loud or write one down, which removes the notepad by the phone that was always the weak point.
 
-## Setup
+You can mix the policies. Most operators end up taking payment on the call for delivery and for anything over a set amount, and leaving small collection orders as pay-on-arrival, because that is where no-shows actually cost kitchen time. How the card data is handled is covered in [collecting payment over the phone safely](/blog/collecting-payment-over-the-phone-safely).
+
+## Setup, and what actually takes the time
 
 Connecting Epos Now takes minutes, not a six-week project: link your account, import the menu, set your hours and any phone-only rules, run a test call, and go live. Most single-location restaurants are live the same day, and our team can handle white-glove setup if you'd rather.
 
-If you run more than Epos Now across locations, that's fine too — X1 Voice reaches [80+ POS systems](/integrations), directly or through Deliverect, so a mixed estate isn't a blocker.
+The slower part is the decision list, and none of it is technical. Which calls always reach a person. Whether you quote a real pickup window or a flat time. What happens to a caller asking about a booking. What the agent does at 30 minutes to close. Ten minutes of thought here saves an awkward first week. The [onboarding checklist](/blog/ai-phone-onboarding-checklist-restaurants) is the version we work through with new sites.
 
-You can read more about Epos Now on their [official site](https://www.eposnow.com).
+If you run more than Epos Now across locations, that's fine too. X1 Voice reaches [80+ POS systems](/integrations), directly or through Deliverect, so a mixed estate isn't a blocker.
 
-## Where restaurant operators discuss this
+## The numbers to check in your first two weeks
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+Four, all from your own reporting rather than a vendor dashboard.
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+Answered-call rate against the same weekdays before the switch. Order accuracy, measured by pulling twenty phone tickets and checking them against their recordings instead of trusting a percentage. Average phone ticket, segmented by channel so you're reading the phone specifically. And the number of tickets that landed in Epos Now but needed a correction before they fired, which tells you whether the product-list cleanup went deep enough.
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+That fourth number should approach zero inside a fortnight. When it doesn't, the cause is nearly always one or two named products, and fixing them is a ten-minute job once you know which. [The accuracy measurement method](/blog/order-accuracy-measurement-method) explains how to sample tickets so the figure means something.
+
+## The decision rule
+
+Run one full week, then compare two counts: calls answered, and phone tickets that reached the kitchen with nobody retyping or correcting them. If both sit close to your total inbound phone volume, the integration is doing its job and the remaining questions are about pricing and call policy rather than about Epos Now. If either lags, you have a specific, named list of products to fix, and you can decide whether to keep going with real evidence instead of a hunch.

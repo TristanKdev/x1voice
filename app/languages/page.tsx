@@ -5,7 +5,7 @@ import { CtaSection } from "@/components/blocks/cta-section"
 import { LANGUAGES } from "@/data/languages"
 
 export const metadata = buildMetadata({
-  title: "Languages",
+  title: "Languages the Phone Agent Answers In",
   description:
     "X1 Voice answers restaurant calls in the caller's language, English, Spanish, and many more, while the ticket stays in the format your kitchen reads.",
   path: "/languages",

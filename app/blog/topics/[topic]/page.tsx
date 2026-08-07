@@ -13,6 +13,31 @@ import { CtaSection } from "@/components/blocks/cta-section"
 export const dynamicParams = false
 
 /**
+ * Section blurbs run 30–66 characters, so a fixed description template lands
+ * anywhere between 109 and 178. These tails are tried longest-first and the
+ * first one that fits inside 160 wins, which puts every hub in the 140–160
+ * band without hand-writing eleven descriptions that would then drift.
+ */
+const TOPIC_DESC_TAILS = [
+  " Written for restaurant owners and GMs, with no invented statistics.",
+  " Written for owners and GMs, not for search engines.",
+  " Practical, operator-first, no fluff.",
+  " For owners and GMs.",
+]
+
+function buildTopicDescription(
+  count: number,
+  section: string,
+  blurb: string
+): string {
+  const head = `${count} articles on ${section.toLowerCase()} for restaurant operators. ${blurb}`
+  for (const tail of TOPIC_DESC_TAILS) {
+    if (head.length + tail.length <= 160) return head + tail
+  }
+  return head
+}
+
+/**
  * One indexable page per blog section. Before these existed the sections were
  * anchors on /blog, which meant a topic cluster had no URL of its own to rank
  * or to be cited by an assistant, and every post in a 450-post blog was two
@@ -36,7 +61,11 @@ export async function generateMetadata({
   const count = postsInSection(getAllBlogPosts(), topic).length
   return buildMetadata({
     title: `${section.section} — restaurant phone ordering`,
-    description: `${section.blurb} ${count} articles on ${section.section.toLowerCase()} for restaurant phone ordering and voice AI.`,
+    // Composed rather than concatenated blindly: section blurbs run 30–66
+    // characters, so a fixed template lands anywhere from 102 to 178. This
+    // builds the sentence and then only adds the tail if there is room, which
+    // keeps every hub inside the 140–160 band.
+    description: buildTopicDescription(count, section.section, section.blurb),
     path: `/blog/topics/${topic}`,
     exactTitle: true,
   })

@@ -1,44 +1,79 @@
 ---
 title: "AI Phone Ordering for Square: How the Integration Works"
-description: "How X1 Voice takes restaurant phone orders and sends them into Square as clean tickets, with payment on the call. What to check before you buy."
+description: "X1 Voice connects to Square directly, reads your item library, takes card payment on the call, and writes phone orders in as normal tickets. What to test first."
 publishedAt: "2026-01-14"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Does X1 Voice work with Square?"
-    answer: "Yes. X1 Voice reads your live Square menu and sends completed phone orders into Square as normal tickets, connecting directly. Nobody re-keys the order."
+    answer: "Yes, and the connection is direct rather than through middleware. X1 Voice reads your live Square item library with its variations and modifier sets, prices the call the way your register would price it, and writes the finished order into Square as a normal ticket. Nobody re-keys anything, and the ticket routes to whatever printer or display your other orders already use."
   - question: "Can it take payment for Square phone orders?"
-    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in your reporting."
+    answer: "Yes. Callers pay by card during the call for pickup and delivery, and the payment reconciles alongside your other tender types in Square reporting. Your staff never hear a card number or write one down, which closes the most common way card data escapes a restaurant counter. You can still allow pay-on-pickup if that is how your regulars prefer to do it."
   - question: "How long does Square setup take?"
-    answer: "Usually minutes. You connect your account, import the menu, set hours and rules, test with a live call, and go live, often the same day."
+    answer: "Usually under 24 hours. You authorize the Square connection, import the item library, set hours and any phone-only rules, place test calls, and forward the line. The connection itself takes minutes. The real work is deciding which items belong on a phone menu and how the agent should handle the odd requests your staff field every week."
+  - question: "Will phone orders show up separately in Square reporting?"
+    answer: "Yes. Orders from the voice agent carry their own source, so you can compare phone volume, average ticket, and item mix against in-person and online sales without exporting anything. Track that split from the first week, because it is the only honest way to tell whether the agent is adding orders or simply relabeling ones you were already getting."
+  - question: "What happens if an item sells out mid-shift?"
+    answer: "It depends on how your menu sync is configured, so test it before you rely on it. Mark an item unavailable in Square, wait, then call and try to order it. Whatever the gap turns out to be is the window in which a caller can buy something you cannot make, and that number should inform which specials you put on the phone at all."
 ---
 
-Phone orders are still a real slice of revenue for most restaurants, and if you run Square, the only question that matters about a voice agent is simple: does the order end up in Square correctly? A great-sounding voice that drops a modifier or sends the kitchen the wrong ticket is worse than a missed call.
+If you run Square, the question that decides whether a voice agent earns its keep is narrow: does the order arrive in Square correctly, priced the way your register prices it? Everything else, the voice quality especially, is downstream of that. A ticket with a dropped modifier costs you food, a remake, and a customer, which is strictly worse than a call that went unanswered.
 
-Here's how X1 Voice works with Square, and what to check before you buy.
+Here is how the connection works, where it tends to go wrong, and the specific things to test.
 
-## The order has to land in Square, cleanly
+## The connection is direct, and that matters
 
-X1 Voice connects to Square directly. It reads your live Square menu, prices every phone order the way your register already prices it, and drops the finished ticket back into Square as a normal order. Nobody re-keys anything. The value is in the round trip: [reading the live menu and firing a correctly-modified ticket](/blog/why-pos-integration-depth-matters-more-than-voice-quality), not just sounding human on the call.
+X1 Voice talks to Square directly rather than through a middleware layer. It pulls your item library, including variations and modifier sets, holds the conversation against that data, and writes the completed order back into Square as an order object your staff sees exactly like any other.
 
-The one thing to test with any vendor, Square or otherwise, is a deliberately awkward order — "no onions, sub fries, add a drink, apply the coupon" — and confirm it arrives in the POS right, not just that the voice repeated it back.
+Directness buys you two things. Fewer moving parts between the caller and the ticket, and fewer places for a menu change to get stuck in transit. It also means the price the caller hears is the price in your item library, not a copy of it that someone updated last March.
 
-## Payments and reporting
+That round trip is the actual product. A voice model that sounds warm but hands your staff a transcript to key in has moved work rather than removed it, which is the point made at length in [why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality).
 
-Callers can pay by card on the phone for pickup and delivery. That payment reconciles alongside your other tender types, so your end-of-day numbers stay in one place. Staff never read a card number out loud or write one down.
+## Where the ticket goes once it lands
 
-## Setup
+Worth deciding before you go live, because a correct order in the wrong place is still a problem.
 
-Connecting Square takes minutes, not a six-week project: link your account, import the menu, set your hours and any phone-only rules, run a test call, and go live. Most single-location restaurants are live the same day, and our team can handle white-glove setup if you'd rather.
+If you run Square KDS, phone orders appear as tickets on the display with the rest of your volume, and you can choose whether they land in the same queue as counter orders or their own. If you print, they print. Either way the question to answer with your kitchen manager is timing, not routing: a phone order placed at 6:15 for a 6:45 pickup should not fire the moment it arrives during a rush. [Square KDS and phone orders](/blog/square-kds-phone-orders) goes through how operators usually set that up.
 
-If you run more than Square across locations, that's fine too — X1 Voice reaches [80+ POS systems](/integrations), directly or through Deliverect, so a mixed estate isn't a blocker.
+## What a busy Saturday actually looks like
 
-You can read more about Square on their [official site](https://squareup.com).
+The change is not silence. It is the end of triage.
 
-## Where restaurant operators discuss this
+Picture 6:30 on a Saturday. Two people at the counter, one card reader thinking about it, and the phone going. Today somebody picks up mid-transaction, says "can you hold," and loses either the caller or the guest in front of them. Two more calls come in while that is happening and hear ringing.
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+With the agent answering, all three calls get picked up on the first or second ring. The two orders write into Square with pickup times. The third caller, who wanted to know whether you have a gluten-free option, gets whatever answer you configured, and if you never configured one, that call escalates to the counter, which is one interruption instead of three.
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+Settle the handoff policy before go-live, because it is the part operators skip and then regret. Complaints, large catering inquiries, and anyone who asks twice for a person should reach a person, and the agent should give up gracefully rather than looping through one more clarification. Write those rules down, test them by calling in angry, and check that the escalation actually rings somewhere a human will hear it during a rush.
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+Do the arithmetic on your own shift. Calls per shift multiplied by your real average handle time is the number of counter minutes you get back, and it is usually smaller and more useful than the figure on a vendor slide.
+
+## The failure mode: menu drift
+
+Everything matches on day one because you just imported it. Then the item library moves and the phone menu does not follow.
+
+The three drifts that bite hardest are a seasonal item added in Square with a name no caller would say out loud, a price change that lands on the register before anyone thinks about the phone, and a sold-out item on a Saturday night that the agent happily keeps selling. None of these throw an error. They surface as an angry pickup or a reconciliation gap at close.
+
+The fix is a rule, not a feature. Whoever owns the Square item library owns the phone menu, and any menu change gets a test call the same week. If you sell fast-moving daily items, read [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) and set the phone menu conservatively until you have measured your own sync lag.
+
+## Payment on the call
+
+Callers can pay by card while they are on the phone for pickup and delivery, and the payment reconciles with your other Square tender types, so close does not grow a new manual step.
+
+The part operators underrate: nobody on your staff ever handles a card number. No digits repeated across a counter, no numbers written on a ticket that sits by the register until close. That whole exposure path disappears, and [collecting payment over the phone safely](/blog/collecting-payment-over-the-phone-safely) covers what changes in practice.
+
+## The four numbers to watch in month one
+
+Answered-call rate moves first and is the reason you bought this. Order accuracy matters most, and you measure it by pulling twenty phone tickets and checking them against the transcripts rather than trusting a summary screen. Escalation reasons are your work list, sorted into handoffs that were correct by design and handoffs that were a defect you can fix. Average phone ticket tells you whether the agent's prompts do anything, and it is the number most easily flattered by a small sample.
+
+One comparison worth making early, since you already run Square: how phone orders behave against your online ones. They usually differ in ticket size and item mix, and [Square Online versus phone orders](/blog/square-online-vs-phone-orders) explains why treating them as one channel hides the interesting part.
+
+## Setup, honestly
+
+Authorizing the connection takes minutes. Being ready to go live takes a day.
+
+You connect Square, import the item library, set hours and any phone-only rules, run test calls including one deliberately awkward order, then forward your number. Most single locations are live inside 24 hours, and our team will do the menu pass if you would rather not. Plans start at $250 per month, and the [Square integration page](/integrations/square) has the current detail.
+
+## The five-minute test
+
+Before you sign with anyone, call the demo line and place the worst order your kitchen sees. No onions, sub fries, add a drink, apply the promo, change the size halfway through. Then look at what came out in Square.
+
+If the ticket is right, everything after that is configuration you can tune. If the voice read your order back beautifully and the ticket is wrong, no onboarding call will fix it, and you found out in five minutes rather than after a season of remakes.

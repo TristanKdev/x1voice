@@ -1,44 +1,77 @@
 ---
 title: "AI Phone Ordering for Toast: How the Integration Works"
-description: "How X1 Voice takes restaurant phone orders and sends them into Toast as clean tickets, with payment on the call. What to check before you buy."
+description: "How X1 Voice reads a live Toast menu, takes payment on the call, and writes a phone order into Toast as a normal ticket, plus what to test before you buy."
 publishedAt: "2026-01-28"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Does X1 Voice work with Toast?"
-    answer: "Yes. X1 Voice reads your live Toast menu and sends completed phone orders into Toast as normal tickets, through our Deliverect integration. Nobody re-keys the order."
+    answer: "Yes, through our Deliverect integration. X1 Voice reads your live Toast menu, prices the call against it, and sends the completed order into Toast as a normal ticket that fires to the kitchen the same way an online order does. Nobody re-keys anything. Deliverect is the same path most third-party ordering already takes into Toast, so the ticket shape is familiar to your staff."
   - question: "Can it take payment for Toast phone orders?"
-    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in your reporting."
+    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in reporting. Staff never hear a card number, write one down, or key one into a terminal, which removes the most common way card data leaks out of a restaurant. Cash on pickup stays available if you want it."
   - question: "How long does Toast setup take?"
-    answer: "Usually minutes. You connect your account, import the menu, set hours and rules, test with a live call, and go live, often the same day."
+    answer: "Usually under 24 hours, and often the same day. You connect the account, import the menu, set hours and any phone-only rules, place a test call, and forward your line. The slow part is almost never the connection. It is deciding which items you will actually sell by phone and how you want odd requests handled."
+  - question: "What happens when an item runs out mid-shift?"
+    answer: "That depends on how your menu sync is configured, which is the first thing to test. Ask how often availability refreshes and whether an 86 in Toast reaches the agent before the next caller does. Until you have confirmed the timing with a real call, treat fast-moving items and daily specials as things to remove from the phone menu manually."
+  - question: "Can I tell phone orders apart from other orders in reporting?"
+    answer: "Yes. Orders arriving through the voice agent carry their own source, so you can compare phone volume, average ticket, and item mix against dine-in and online without exporting anything. That comparison is the honest way to judge whether the system is paying for itself, because phone tickets and app tickets rarely behave the same."
 ---
 
-Phone orders are still a real slice of revenue for most restaurants, and if you run Toast, the only question that matters about a voice agent is simple: does the order end up in Toast correctly? A great-sounding voice that drops a modifier or sends the kitchen the wrong ticket is worse than a missed call.
+If you run Toast, one question decides whether a voice agent is worth anything to you: does the order land in Toast correctly? A pleasant voice that drops a modifier and sends the line the wrong ticket is worse than a call that rang out, because now you have paid for food and a remake instead of nothing.
 
-Here's how X1 Voice works with Toast, and what to check before you buy.
+Here is what the connection actually does, where it breaks, and what to test before you sign.
 
-## The order has to land in Toast, cleanly
+## What the connection actually does
 
-X1 Voice connects to Toast through our Deliverect integration. It reads your live menu, prices each phone order against it, and routes the finished ticket into Toast so it lands the same way an in-person or online order would. Nobody re-keys anything. The value is in the round trip: [reading the live menu and firing a correctly-modified ticket](/blog/why-pos-integration-depth-matters-more-than-voice-quality), not just sounding human on the call.
+X1 Voice reaches Toast through Deliverect, the same middleware layer a lot of restaurants already use to pull third-party orders into their POS. The agent pulls your live Toast menu, including modifier groups and prices, holds the conversation against that menu, and writes the finished order back as a ticket.
 
-The one thing to test with any vendor, Toast or otherwise, is a deliberately awkward order — "no onions, sub fries, add a drink, apply the coupon" — and confirm it arrives in the POS right, not just that the voice repeated it back.
+The round trip is the whole point. A voice model that sounds human but hands you a text message with an order in it has not saved anyone any work, because someone still has to key it in during a rush. The value sits in [reading the live menu and firing a correctly-modified ticket](/blog/why-pos-integration-depth-matters-more-than-voice-quality), which is a data problem, not a speech problem.
 
-## Payments and reporting
+Toast menus tend to be deep. Nested modifier groups, required choices, forced sizes, upsell prompts attached to specific items. That depth is good for the register and hard for a voice conversation, because a caller does not know your modifier tree exists. Before you go live, it is worth reading through [Toast modifier mapping for voice](/blog/toast-menu-modifiers-voice-mapping) and deciding which branches a caller should ever be asked about out loud.
 
-Callers can pay by card on the phone for pickup and delivery. That payment reconciles alongside your other tender types, so your end-of-day numbers stay in one place. Staff never read a card number out loud or write one down.
+## What a Friday night looks like with it on
 
-## Setup
+The change is not that the phone stops ringing. It is that the phone stops interrupting.
 
-Connecting Toast takes minutes, not a six-week project: link your account, import the menu, set your hours and any phone-only rules, run a test call, and go live. Most single-location restaurants are live the same day, and our team can handle white-glove setup if you'd rather.
+At 6:40 on a Friday, your host is seating a four-top with a line behind them. Three calls come in over about ninety seconds. Two are pickup orders, one is someone asking whether you are still doing the fish special. Without an agent, the host answers one of those, puts a guest on hold to do it, and the other two callers hear ringing and try the place down the street.
 
-If you run more than Toast across locations, that's fine too — X1 Voice reaches [80+ POS systems](/integrations), directly or through Deliverect, so a mixed estate isn't a blocker.
+With the agent running, all three get answered on the first or second ring. The two orders land in Toast as tickets with pickup times. The special question gets an answer from whatever you configured, and if you did not configure one, that call escalates to the host, who now has one interruption instead of three.
 
-You can read more about Toast on their [official site](https://pos.toasttab.com).
+One thing to decide before go-live is who the agent hands off to and when. Complaints, large catering inquiries, and regulars who want a person should reach a person, and that is a policy you set rather than a limitation you discover. [Human handoff and failover](/blog/human-handoff-failover-voice-ai) covers how to write those rules so the agent does not argue with a caller who has asked twice for a manager.
 
-## Where restaurant operators discuss this
+The staffing effect is real but modest and worth doing honestly. Roughly, take your phone calls per shift, multiply by average handle time, and you get minutes returned to the floor. Do that arithmetic with your own numbers rather than a vendor's, and use your real average handle time, not the one you wish you had.
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+## The failure mode nobody warns you about
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+Menu drift.
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+The connection works on day one because you just imported the menu and everything matched. Then six weeks pass. The kitchen 86s the short rib every Saturday by 8pm. Marketing adds a limited-time sandwich in Toast but nobody checks whether the agent can hear the word for it. A price goes up two dollars on the register and the phone quote stays where it was.
+
+None of those show up as an error. They show up as a caller arriving to pick up something the kitchen cannot make, or a fifteen-cent tax discrepancy at close that nobody wants to chase. The fix is procedural, not technical. Whoever owns the Toast menu owns the phone menu, and menu changes get a test call the same week. The specific ways sync goes wrong are catalogued in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes), and it is short reading before you commit.
+
+## Payment on the call
+
+Callers can pay by card during the call for pickup and delivery, and the payment reconciles with your other tender types, so end-of-day close does not sprout a new pile to reconcile by hand.
+
+The quieter benefit is that nobody on your staff ever hears a card number. The classic restaurant exposure is a host repeating digits back across a counter, or writing them on a ticket that sits by the register until close. That path disappears. If your processor or franchisor asks about scope, [collecting payment over the phone safely](/blog/collecting-payment-over-the-phone-safely) covers what actually changes.
+
+## The numbers to check in the first month
+
+Four, in this order.
+
+Answered-call rate is the first, because it is the only number that moves immediately and it is the reason you bought this. Order accuracy is the one that matters most, and you measure it by pulling twenty phone tickets and checking them against transcripts, not by trusting a dashboard. Escalation reasons tell you what to fix, sorted into handoffs that were correct by design and handoffs that were a defect. Average phone ticket tells you whether the agent's prompts are doing anything, and it is the number most likely to be flattered by a small sample.
+
+If accuracy is holding above your own pre-agent baseline and answered-call rate went from something like 70 percent to near 100, the system is working. If accuracy slipped, stop and fix the menu before you look at anything else.
+
+## Setup, realistically
+
+Connecting the account is minutes. Being ready to go live is a day.
+
+You link Toast through Deliverect, import the menu, set hours and any phone-only rules, run test calls including one deliberately awkward order, and then forward your line. Most single locations are live within 24 hours. If you would rather not do the menu pass yourself, our team handles it.
+
+A mixed estate is not a blocker. X1 Voice connects directly to Square, Clover and OrderCounter, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect, so locations on different systems can run the same phone experience. The full list is on the [integrations page](/integrations), and plans start at $250 per month.
+
+## The test that decides it
+
+Before you buy anything, from us or anyone, call the demo line and place the worst order your kitchen sees. No onions, sub fries, add a drink, apply the promo, and change your mind about the size halfway through. Then look at the ticket that came out the other end.
+
+If the ticket is right, the rest is configuration. If the voice repeated your order back perfectly and the ticket is wrong, no amount of setup help will fix that, and you have learned it in five minutes instead of five months.

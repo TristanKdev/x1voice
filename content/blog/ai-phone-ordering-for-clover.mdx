@@ -2,43 +2,74 @@
 title: "AI Phone Ordering for Clover: How the Integration Works"
 description: "How X1 Voice takes restaurant phone orders and sends them into Clover as clean tickets, with payment on the call. What to check before you buy."
 publishedAt: "2026-02-11"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Does X1 Voice work with Clover?"
-    answer: "Yes. X1 Voice reads your live Clover menu and sends completed phone orders into Clover as normal tickets through our Deliverect connection. Nobody re-keys the order."
+    answer: "Yes. X1 Voice reads your live Clover menu and sends completed phone orders into Clover as normal tickets through our Deliverect connection. Nobody re-keys the order. Items, modifier groups and current prices come out of your Clover catalog, so a phone order is priced the same way your register prices it and lands in the same ticket queue your kitchen already watches."
   - question: "Can it take payment for Clover phone orders?"
-    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in your reporting."
+    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in your reporting. Staff never read a card number aloud or write one on a pad. Pay-at-pickup still works if you prefer it, and you can allow one, the other, or both depending on order type."
   - question: "How long does Clover setup take?"
-    answer: "Usually minutes. You connect your account, import the menu, set hours and rules, test with a live call, and go live, often the same day."
+    answer: "Usually minutes to import, and typically under 24 hours to go live. You connect your account, review the catalog that pulled in, set hours and any phone-only rules, run a test call, then turn on forwarding. The part that takes real time is not the connection, it is reading through your modifier groups and fixing the ones that were never written to be spoken aloud."
+  - question: "What happens when I 86 an item on the Clover register?"
+    answer: "The agent stops offering it on calls once the change reaches the connection, and suggests an alternative instead of taking an order the kitchen cannot fill. Confirm the timing during your trial by 86ing a real item and calling in for it a minute later. The gap between the tap on the register and the agent's next call is the number worth knowing."
+  - question: "Does it work with Clover Station, Mini and Flex?"
+    answer: "Yes. The connection is made at the account and catalog level rather than to a specific device, so a phone order appears wherever your team already works tickets. If your expo screen lives on a Station and your runners carry a Flex, both see the same order. Kitchen printing follows whatever routing rules you already set in Clover."
 ---
 
 Phone orders are still a real slice of revenue for most restaurants, and if you run Clover, the only question that matters about a voice agent is simple: does the order end up in Clover correctly? A great-sounding voice that drops a modifier or sends the kitchen the wrong ticket is worse than a missed call.
 
-Here's how X1 Voice works with Clover, and what to check before you buy.
+Here's how X1 Voice works with Clover, where these setups actually go wrong, and what to check before you buy.
 
 ## The order has to land in Clover, cleanly
 
 X1 Voice connects to Clover through Deliverect. It reads your live Clover menu, prices every phone order the way your register already prices it, and drops the finished ticket back into Clover as a normal order. Nobody re-keys anything. The value is in the round trip: [reading the live menu and firing a correctly-modified ticket](/blog/why-pos-integration-depth-matters-more-than-voice-quality), not just sounding human on the call.
 
-The one thing to test with any vendor, Clover or otherwise, is a deliberately awkward order — "no onions, sub fries, add a drink, apply the coupon" — and confirm it arrives in the POS right, not just that the voice repeated it back.
+The one thing to test with any vendor, Clover or otherwise, is a deliberately awkward order. Try "no onions, sub fries, add a drink, apply the coupon" and confirm it arrives in the POS right, not just that the voice repeated it back. Repeating the order correctly and writing the order correctly are two different jobs, and only one of them shows up at the pass.
+
+## What it looks like on a Friday at 7:15
+
+The practical difference is not on the call, it's at the expo window twenty minutes later.
+
+Today, a phone order at peak goes like this: someone leaves the register, takes the call on a cordless handset, writes on a pad, then walks back and re-keys it into Clover between walk-in customers. Two transcription steps, both done while someone is being asked a question. With the connection running, the ticket prints itself while the caller is still on the line, and the person who used to take the phone stays at the counter.
+
+The second change is quieter. Your Clover ticket now carries the same modifier text your kitchen already reads, because it came out of your own catalog rather than from a note. That matters more than the labor saving on nights when the difference between a remake and a clean plate is one word.
+
+## Where Clover setups actually break
+
+Almost never at the connection. Nearly always in the catalog.
+
+Clover catalogs get built by whoever set the store up, and item names are written to be tapped, not spoken. A button labeled "LG 2TOP" is unambiguous on a screen and useless on a phone call. Modifier groups are the other common trouble spot: a group with a required minimum of one that nobody ever notices on the register becomes a question the agent has to ask every single caller, and it will, until you fix the group.
+
+Three things worth auditing before you go live, and each takes a few minutes:
+
+- Item names a caller would say out loud, with the register abbreviation kept as an alias rather than as the name.
+- Modifier groups with a required selection that should really be optional, or a default that was never set.
+- Duplicate items left over from an old menu, still active in the catalog, still priced from two seasons ago.
+
+We go deeper on the naming half of this in [menu naming for voice clarity](/blog/menu-naming-for-voice-clarity), and on the modifier half in [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers). If your catalog is clean, setup is genuinely a same-day job. If it has five years of accumulated buttons in it, the catalog cleanup is the project, and it would have been worth doing anyway.
 
 ## Payments and reporting
 
-Callers can pay by card on the phone for pickup and delivery. That payment reconciles alongside your other tender types, so your end-of-day numbers stay in one place. Staff never read a card number out loud or write one down.
+Callers can pay by card on the phone for pickup and delivery. That payment reconciles alongside your other tender types, so your end-of-day numbers stay in one place. Staff never read a card number out loud or write one down, which removes the pad of paper by the phone that was always the weakest link in the room.
 
-## Setup
+You can also keep pay-at-pickup for phone orders and use card-on-call only for delivery, or the reverse. Most operators land on taking payment up front for delivery and anything over a set dollar amount, because those are the tickets that hurt when nobody shows. The [phone payment safety walkthrough](/blog/collecting-payment-over-the-phone-safely) covers how the card data is handled and what it means for your own scope.
 
-Connecting Clover takes minutes, not a six-week project: link your account, import the menu, set your hours and any phone-only rules, run a test call, and go live. Most single-location restaurants are live the same day, and our team can handle white-glove setup if you'd rather.
+## Setup, and what actually takes the time
 
-If you run more than Clover across locations, that's fine too — X1 Voice reaches [80+ POS systems](/integrations), directly or through Deliverect, so a mixed estate isn't a blocker.
+Connecting Clover takes minutes: link your account, import the catalog, set your hours and any phone-only rules, run a test call, and go live. Most single-location restaurants are live the same day, and our team can handle white-glove setup if you'd rather.
 
-You can read more about Clover on their [official site](https://www.clover.com).
+What takes longer than people expect is the decision list, not the wiring. Which calls should always reach a person. Whether phone orders get a pickup window quote or a flat "20 minutes." What the agent says when someone asks for the manager. None of that is technical, and all of it is worth ten minutes of thought before the first live call rather than after the first awkward one. The [onboarding checklist](/blog/ai-phone-onboarding-checklist-restaurants) is the version of this list we hand to new locations.
 
-## Where restaurant operators discuss this
+If you run more than Clover across locations, that's fine too. X1 Voice reaches [80+ POS systems](/integrations), directly or through Deliverect, so a mixed estate isn't a blocker.
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+## The numbers to check in your first two weeks
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+Four, and all of them come out of your own reporting rather than a vendor dashboard.
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+Answered-call rate, compared against the same weekdays before you switched. Order accuracy, measured by pulling twenty phone tickets and checking them against the recordings rather than by trusting a percentage. Average phone ticket, segmented by channel so you're reading the phone specifically. And the count of orders that reached Clover but needed a staff correction before they fired, which is the one number that tells you whether your catalog cleanup was thorough enough.
+
+That last one should trend toward zero in the first fortnight. If it doesn't, the fix is almost always a specific item or modifier group, and it's cheap to fix once you know which one. The [accuracy measurement method](/blog/order-accuracy-measurement-method) explains how to sample tickets so the number means something.
+
+## The decision rule
+
+Run a week with the connection live and count two things: phone calls answered, and phone tickets that reached the kitchen without anyone retyping them. If those two numbers are both close to your total inbound volume, the integration is doing its job and the remaining questions are about pricing and call handling, not about Clover. If either one lags, the cause is in your catalog, and you can see exactly which items are responsible before you decide whether to keep going. Details on the connection itself are on the [Clover integration page](/integrations/clover).

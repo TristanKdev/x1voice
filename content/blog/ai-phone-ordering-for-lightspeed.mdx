@@ -1,44 +1,73 @@
 ---
 title: "AI Phone Ordering for Lightspeed: How the Integration Works"
-description: "How X1 Voice takes restaurant phone orders and sends them into Lightspeed as clean tickets, with payment on the call. What to check before you buy."
+description: "How X1 Voice takes phone orders and writes them into Lightspeed as clean tickets, what the Deliverect hop changes, and the tests to run before you buy."
 publishedAt: "2026-02-25"
+updatedAt: "2026-08-06"
 faqs:
   - question: "Does X1 Voice work with Lightspeed?"
-    answer: "Yes. X1 Voice reads your live Lightspeed menu and sends completed phone orders into Lightspeed as normal tickets, through our Deliverect integration. Nobody re-keys the order."
+    answer: "Yes, through our Deliverect integration. X1 Voice reads your live Lightspeed menu, prices each call against it, and writes the finished order back into Lightspeed as a normal ticket, so nobody re-keys anything at the counter. Because the connection runs through Deliverect rather than directly, your Lightspeed menu has to be published to Deliverect first, which is part of setup rather than an ongoing chore."
   - question: "Can it take payment for Lightspeed phone orders?"
-    answer: "Yes. Callers can pay by card on the phone for pickup and delivery, and the payment reconciles alongside your other tender types in your reporting."
+    answer: "Yes. Callers can pay by card during the call for pickup and delivery, and the payment reconciles alongside your other tender types in reporting. Staff never hear a card number, write one on a ticket, or type one into a terminal. If you would rather keep phone orders as pay-at-pickup, you can configure that instead and the agent will simply not ask."
   - question: "How long does Lightspeed setup take?"
-    answer: "Usually minutes. You connect your account, import the menu, set hours and rules, test with a live call, and go live, often the same day."
+    answer: "Typically under 24 hours once your Lightspeed menu is published to Deliverect. You connect the account, review how items and modifier groups came across, set hours and any phone-only rules, run test calls against your real menu, then forward the line. The step that takes actual attention is reviewing the imported modifiers, not the connection itself."
+  - question: "What happens when a caller asks for something the agent can't handle?"
+    answer: "It hands off. You set the rules: complaints, catering over a dollar threshold, anything the agent has asked about twice without getting a confident answer. The call transfers to a staff phone during open hours, or takes a message with a transcript outside them. A vendor that claims no call ever needs a human is describing a system that will argue with your customers."
+  - question: "Will phone orders show up separately in my Lightspeed reporting?"
+    answer: "They arrive tagged as their own order source, so you can separate phone revenue from dine-in and online in your reports. That separation matters more than it sounds: without it you cannot tell whether the agent is adding tickets or just moving orders that would have arrived anyway, which is the first number to check after a month of running it."
 ---
 
-Phone orders are still a real slice of revenue for most restaurants, and if you run Lightspeed, the only question that matters about a voice agent is simple: does the order end up in Lightspeed correctly? A great-sounding voice that drops a modifier or sends the kitchen the wrong ticket is worse than a missed call.
+If you run Lightspeed, one question decides whether a voice agent is worth buying: does a finished phone order land in Lightspeed as a correct ticket? Everything else is a demo detail. A pleasant voice that drops the "no onions" costs you more than a call that rang out unanswered, because now you have paid for the food twice and annoyed someone who was already a customer.
 
-Here's how X1 Voice works with Lightspeed, and what to check before you buy.
+X1 Voice reaches Lightspeed through Deliverect. Your items, prices and modifier structure come across, the agent prices each call against them, and the completed order is written back as an order Lightspeed handles like any other. Nobody re-types anything at the counter.
 
-## The order has to land in Lightspeed, cleanly
+That routing detail is worth understanding rather than skipping past, because it shapes both what the setup asks of you and where the system will occasionally frustrate you.
 
-X1 Voice connects to Lightspeed through our Deliverect integration. It reads your live menu, prices each phone order against it, and routes the finished ticket into Lightspeed so it lands the same way an in-person or online order would. Nobody re-keys anything. The value is in the round trip: [reading the live menu and firing a correctly-modified ticket](/blog/why-pos-integration-depth-matters-more-than-voice-quality), not just sounding human on the call.
+## What the Deliverect hop actually changes
 
-The one thing to test with any vendor, Lightspeed or otherwise, is a deliberately awkward order — "no onions, sub fries, add a drink, apply the coupon" — and confirm it arrives in the POS right, not just that the voice repeated it back.
+A direct integration talks to the POS. A channel integration talks to a middleware layer that talks to the POS. Practically, three things follow from that.
 
-## Payments and reporting
+Your menu has to exist in Deliverect before the agent can read it. If you already push Lightspeed to delivery marketplaces, this is done and setup is short. If you don't, publishing the menu is the real first task, and it is the step most likely to add a day.
 
-Callers can pay by card on the phone for pickup and delivery. That payment reconciles alongside your other tender types, so your end-of-day numbers stay in one place. Staff never read a card number out loud or write one down.
+Menu changes propagate on a sync, not instantly. Change a price in Lightspeed at 4pm and the agent picks it up on the next sync rather than on the next ring. For a price change that's fine. For an 86'd item on a Saturday night it matters, which is why you want to know how your vendor handles [86ing and menu sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes) before you rely on the agent to tell callers what's sold out.
 
-## Setup
+Modifier names come across as whatever they are called in Lightspeed. If your build screen says "MOD - NO ONI", the agent inherits that, and it will read it aloud unless someone maps it to something a person would say. This is the single most common reason a well-built agent sounds wrong on its first day of calls.
 
-Connecting Lightspeed takes minutes, not a six-week project: link your account, import the menu, set your hours and any phone-only rules, run a test call, and go live. Most single-location restaurants are live the same day, and our team can handle white-glove setup if you'd rather.
+## The Friday night version of this
 
-If you run more than Lightspeed across locations, that's fine too — X1 Voice reaches [80+ POS systems](/integrations), directly or through Deliverect, so a mixed estate isn't a blocker.
+Here is what the integration looks like on a real shift rather than in a slide.
 
-You can read more about Lightspeed on their [official site](https://www.lightspeedhq.com).
+It's 6:40pm. Two people are on the line, one of them has a question about the gluten-free crust, and the counter is three deep. The agent answers on the second ring, takes a pickup order with a substitution, charges the card, and the ticket prints at expo with the modifier attached. Nobody at the counter looked up.
 
-## Where restaurant operators discuss this
+At the same time, a caller asks whether you cater a party of forty for Sunday. The agent doesn't try. It takes the name, the number, the headcount and the date, transfers if a manager is on, and leaves a transcript if not. That is the correct behavior, and it is the behavior worth checking in a demo — see [human handoff and failover](/blog/human-handoff-failover-voice-ai) for how to write those rules.
 
-These questions come up constantly in operator communities. If you want unfiltered opinions before you buy, the restaurant subreddits are a good place to read real experiences:
+The value shows up in the calls you never knew you were losing. Most operators underestimate their own miss rate because the phone ringing out during a rush leaves no record; the arithmetic in [the real cost of a missed call](/blog/the-real-cost-of-a-missed-restaurant-phone-call) is worth redoing with your own ticket average before you decide the problem is small.
 
-- [r/restaurateur](https://www.reddit.com/r/restaurateur/) — owners and managers on day-to-day operations
-- [r/KitchenConfidential](https://www.reddit.com/r/KitchenConfidential/) — front- and back-of-house reality
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/) — pricing, tools, and vendor experiences
+## The failure mode nobody demos
 
-We link these because the honest way to evaluate a phone system is to hear from people running the floor, not just a vendor page. When you're ready, the fastest test is to [call our demo line](/#see-it) and order like a customer would.
+Modifier tree mismatch, and it is worth being blunt about it.
+
+Lightspeed menus grow organically. Somebody adds a "half and half" option under one pizza but not the other. Somebody builds sizes as separate items rather than as a size group. A required modifier group has a default that only makes sense if a human is standing at the screen. None of that hurts you when a trained employee is ringing it in, because the employee knows what the buttons mean.
+
+An agent doesn't. It follows the structure. So it will either refuse a combination that is obviously fine, or fire a ticket that is technically valid and wrong in the kitchen.
+
+The fix is not clever prompting. It's cleaning the structure, and it's a one-time job of a couple of hours for most menus. [Simplifying modifier trees](/blog/simplifying-modifier-trees) covers the specific patterns that break, and it's the work that separates an agent that runs quietly from one you turn off after a week.
+
+Ask any vendor to take a deliberately awkward order on your real menu: "large, half pepperoni half plain, no onions on the second half, sub fries, add a Diet Coke, and use the coupon." Then walk to the printer. Do not accept the voice repeating it back correctly as proof. The repeat-back and the ticket are two different systems, and only one of them feeds the kitchen.
+
+## The numbers to check after a month
+
+Four, and they take about twenty minutes to pull.
+
+Answered-call rate, which should approach 100 percent and is the whole point. Order accuracy, measured by actually reading a sample of phone tickets against the transcripts rather than trusting a dashboard, using something like the [order accuracy measurement method](/blog/order-accuracy-measurement-method). Escalation reasons, sorted into "by design" and "by defect," where the defect bucket is your work list. And phone revenue as a share of total, compared against the same month before you turned it on.
+
+If answered calls went up and phone revenue did not, the agent is taking calls that were already being answered. That's still worth something in labor terms, but it changes the payback math, and you should know which case you are in rather than assuming.
+
+## What setup actually costs you in time
+
+Connecting the account is minutes. Reviewing what came across is not, and that's where the real day goes.
+
+Plan on someone sitting down with the imported menu once, reading the item names aloud, and fixing the ones that sound like database fields. Set your hours, your delivery zones if you deliver, and any phone-only rules such as a minimum for delivery. Then place five or six test calls yourself, ordering the way your regulars actually talk rather than the way the menu is written. Most single locations are live well inside a day, and plans start at $250 a month, which you can check against your own call volume on the [pricing page](/pricing).
+
+If you run Lightspeed at some locations and something else at others, that isn't a blocker. X1 Voice connects directly to Square, Clover and OrderCounter and reaches the rest of the [supported POS list](/integrations) through Deliverect, so a mixed estate runs on one agent configuration.
+
+The decision rule is narrow. Run the awkward-order test on your own menu, walk to the printer, and count how many of five calls produced a ticket you would have been happy to see a new employee ring in. If it's five, the integration is doing its job. If it's three, the problem is almost always your modifier structure rather than the voice, and that is fixable before you sign anything.
