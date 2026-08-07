@@ -68,15 +68,15 @@ export default function BlogIndexPage() {
             <ul className="flex flex-wrap gap-2">
               {groups.map((g) => (
                 <li key={g.id}>
-                  <a
-                    href={`#${g.id}`}
+                  <Link
+                    href={`/blog/topics/${g.id}`}
                     className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm transition-colors hover:border-brand/40"
                   >
                     {g.section}
                     <span className="text-xs text-muted-foreground">
                       {g.posts.length}
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -86,7 +86,11 @@ export default function BlogIndexPage() {
             <div className="space-y-16">
               {groups.map((group) => (
                 <div key={group.id} id={group.id} className="scroll-mt-24">
-                  <h2 className="text-xl font-medium">{group.section}</h2>
+                  <h2 className="text-xl font-medium">
+                    <Link href={`/blog/topics/${group.id}`} className="hover:text-brand">
+                      {group.section}
+                    </Link>
+                  </h2>
                   <p className="mt-1 text-sm text-muted-foreground">
                     {group.blurb}
                   </p>

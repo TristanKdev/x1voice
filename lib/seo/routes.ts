@@ -6,6 +6,7 @@ import { getAllComparePages } from "@/lib/content/compare"
 import { getAllIntegrations } from "@/lib/content/integrations"
 import { getAllLocations } from "@/lib/content/locations"
 import { getAllBlogPosts } from "@/lib/content/blog"
+import { ALL_SECTIONS, postsInSection } from "@/lib/content/blog-sections"
 
 /**
  * Sitemap sections. Each one is served as its own XML file under
@@ -295,7 +296,25 @@ export function getAllRoutes(): SiteRoute[] {
     lastModified: l.updatedAt,
   }))
 
-  const blogRoutes: SiteRoute[] = getAllBlogPosts().map((p) => ({
+  const posts = getAllBlogPosts()
+
+  // Topic hubs live in the blog sitemap next to the posts they collect, so a
+  // crawler sees the cluster and its index in one file.
+  const topicRoutes: SiteRoute[] = ALL_SECTIONS.filter(
+    (s) => postsInSection(posts, s.id).length > 0
+  ).map((s) => ({
+    path: `/blog/topics/${s.id}`,
+    title: s.section,
+    description: s.blurb,
+    index: true,
+    section: "blog",
+    changeFrequency: "weekly",
+    priority: 0.6,
+    lastModified: postsInSection(posts, s.id)[0]?.updatedAt ??
+      postsInSection(posts, s.id)[0]?.publishedAt,
+  }))
+
+  const blogRoutes: SiteRoute[] = posts.map((p) => ({
     path: `/blog/${p.slug}`,
     title: p.title,
     description: p.description,
@@ -317,6 +336,7 @@ export function getAllRoutes(): SiteRoute[] {
     ...compareRoutes,
     ...integrationRoutes,
     ...locationRoutes,
+    ...topicRoutes,
     ...blogRoutes,
   ]
 }

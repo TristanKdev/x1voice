@@ -160,3 +160,47 @@ export function groupPosts(posts: BlogPost[]): Group[] {
     .filter((g): g is Group => Boolean(g))
 }
 
+
+/** Every section, index order, whether or not it currently has posts. */
+export const ALL_SECTIONS = [
+  ...SECTION_RULES.map((r) => ({
+    id: r.id,
+    section: r.section,
+    blurb: r.blurb,
+  })),
+  FALLBACK_SECTION,
+] as const
+
+export function sectionById(id: string) {
+  return ALL_SECTIONS.find((s) => s.id === id)
+}
+
+/** Posts in one section, newest first — the same order the index renders. */
+export function postsInSection(posts: BlogPost[], id: string): BlogPost[] {
+  return posts.filter((p) => sectionForSlug(p.slug).id === id)
+}
+
+/**
+ * Related posts, chosen by ROTATION rather than by recency.
+ *
+ * Taking the newest N in the section would point every post at the same few
+ * articles, which pools inbound links on a handful of pages and leaves the
+ * rest reachable only from the index. Starting at the current post's own
+ * position and wrapping gives every post in a section exactly `count`
+ * inbound links from its siblings, deterministically — same input, same
+ * output, so the static build stays reproducible.
+ */
+export function relatedPosts(
+  posts: BlogPost[],
+  slug: string,
+  count = 4
+): BlogPost[] {
+  const section = postsInSection(posts, sectionForSlug(slug).id)
+  const index = section.findIndex((p) => p.slug === slug)
+  if (index === -1 || section.length < 2) return []
+  const out: BlogPost[] = []
+  for (let i = 1; i <= Math.min(count, section.length - 1); i++) {
+    out.push(section[(index + i) % section.length])
+  }
+  return out
+}

@@ -3,6 +3,7 @@ import type {
   WebSite,
   BreadcrumbList,
   FAQPage,
+  CollectionPage,
   Article,
   Service,
   WithContext,
@@ -118,5 +119,37 @@ export function buildServiceJsonLd(service: {
     url: `${SITE_URL}${service.path}`,
     provider: { "@id": ORG_ID },
     ...(service.areaServed ? { areaServed: service.areaServed } : {}),
+  }
+}
+
+/**
+ * Topic hub pages. The ItemList is what lets a crawler (and an assistant)
+ * see the cluster as a set rather than as one page with many links.
+ */
+export function buildCollectionPageJsonLd(page: {
+  name: string
+  description: string
+  path: string
+  items: { name: string; path: string }[]
+}): WithContext<CollectionPage> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${SITE_URL}${page.path}#collection`,
+    name: page.name,
+    description: page.description,
+    url: `${SITE_URL}${page.path}`,
+    isPartOf: { "@id": WEBSITE_ID },
+    inLanguage: "en-US",
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: page.items.length,
+      itemListElement: page.items.map((item, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: item.name,
+        url: `${SITE_URL}${item.path}`,
+      })),
+    },
   }
 }
