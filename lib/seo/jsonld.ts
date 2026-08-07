@@ -8,7 +8,7 @@ import type {
   Service,
   WithContext,
 } from "schema-dts"
-import { ORG, SITE_NAME, SITE_URL } from "@/data/site"
+import { ORG, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/data/site"
 
 const ORG_ID = `${SITE_URL}/#organization`
 const WEBSITE_ID = `${SITE_URL}/#website`
@@ -24,8 +24,20 @@ export function buildOrganizationJsonLd(): WithContext<Organization> {
     "@type": "Organization",
     "@id": ORG_ID,
     name: SITE_NAME,
+    alternateName: ORG.alternateName,
+    // What the company does, in one sentence a model can quote when asked
+    // "what is X1 Voice". Without it the entity is a name with a logo.
+    description: SITE_DESCRIPTION,
     url: ORG.url,
     logo: ORG.logo,
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      telephone: ORG.contactPoint.telephone,
+      email: ORG.contactPoint.email,
+      areaServed: "US",
+      availableLanguage: ["English", "Spanish"],
+    },
     ...(ORG.sameAs.length ? { sameAs: ORG.sameAs } : {}),
   }
 }

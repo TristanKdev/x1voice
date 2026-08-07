@@ -22,9 +22,30 @@ export const SITE_DESCRIPTION =
 
 export const ORG = {
   name: SITE_NAME,
+  /**
+   * The spellings people actually type. Search engines and assistants treat
+   * these as the same entity only if we say so — "x1voice" as one word and
+   * "X1 Voice AI" are the two most common variants in the wild, and without
+   * alternateName they read as unrelated strings.
+   */
+  alternateName: ["X1Voice", "X1 Voice AI", "X1 AI Voice", "x1voice.com"],
   url: SITE_URL,
   logo: `${SITE_URL}/logo.svg`,
+  /**
+   * Profiles that prove the entity is real. THIS IS THE SINGLE BIGGEST GAP in
+   * the site's brand-search position: an Organization with no sameAs has
+   * nothing corroborating it, which is why a knowledge panel does not appear
+   * and why a competitor can outrank you on your own name.
+   *
+   * Add every profile that exists and is publicly viewable — LinkedIn company
+   * page, X/Twitter, YouTube, Crunchbase, G2, Capterra, Product Hunt, GitHub.
+   * Only list URLs that resolve; a dead sameAs is worse than an absent one.
+   */
   sameAs: [] as string[],
+  contactPoint: {
+    telephone: "+1-555-010-1010",
+    email: "sales@x1voice.com",
+  },
 }
 
 export const CONTACT = {
@@ -203,6 +224,14 @@ export const DEMO_LINE = {
 }
 
 export const HOME_FAQS: { question: string; answer: string }[] = [
+  {
+    // First FAQ on purpose: this is the answer a search engine or assistant
+    // quotes for the brand query "what is X1 Voice", and it names the spelling
+    // variants people type so the entity resolves to one company.
+    question: "What is X1 Voice?",
+    answer:
+      "X1 Voice (also written X1Voice, and sometimes searched as X1 Voice AI) is an AI phone agent built for restaurants. It answers the restaurant's phone, takes pickup and delivery orders with modifiers and substitutions, takes card payments over the phone, answers questions about hours, allergens and order status, and hands the caller to a person when the situation needs one. Completed orders are written into the restaurant's POS as tickets, not left as messages for staff to re-key. Plans start at $250/month.",
+  },
   {
     question: "What can X1 Voice handle on a call?",
     answer:
