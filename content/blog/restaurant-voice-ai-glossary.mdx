@@ -19,7 +19,7 @@ If you only learn four, learn containment rate, integration depth, endpointing, 
 
 ## Terms about how the conversation works
 
-**ASR (Automatic Speech Recognition)**, sometimes called speech-to-text. Turning the caller's audio into words. This is where accent, background noise, and audio quality do their damage, and it's the first place errors enter. See [accent and speech recognition accuracy](/blog/voice-ai-accent-speech-recognition-accuracy).
+**ASR (Automatic Speech Recognition)**, sometimes called speech-to-text. Turning the caller's audio into words. This is where accent, background noise, and audio quality do their damage, and it's the first place errors enter.
 
 **TTS (Text-to-Speech)**, or speech synthesis. Turning the system's response back into audio. Quality here is largely commoditized now, which is why we'd tell you not to weight voice naturalness heavily when comparing serious vendors.
 
@@ -31,7 +31,7 @@ If you only learn four, learn containment rate, integration depth, endpointing, 
 
 **Turn-taking.** The overall rhythm of who speaks when. Endpointing and barge-in together produce it.
 
-**Latency.** The delay between the caller finishing and the system responding. The single most noticeable quality signal on a call, and the one operators react to without being able to name. See [sub-second latency](/blog/sub-second-latency-voice-ai-restaurants).
+**Latency.** The delay between the caller finishing and the system responding. The single most noticeable quality signal on a call, and the one operators react to without being able to name.
 
 **Streaming.** Processing audio continuously as it arrives rather than waiting for a complete utterance. It's how low latency is achieved.
 
@@ -43,11 +43,11 @@ If you only learn four, learn containment rate, integration depth, endpointing, 
 
 **Integration depth.** How thoroughly the voice system connects to your POS. Shallow means it creates an order; deep means it maps every modifier, applies correct pricing, and routes to the right station. This varies enormously between vendors and matters more than almost anything else — [why POS integration depth matters](/blog/why-pos-integration-depth-matters-more-than-voice-quality).
 
-**One-way vs. two-way sync.** One-way pulls your menu into the voice system. Two-way also writes the finished order back into the POS as a real ticket. You almost certainly need both, and "menu sync" on a feature list sometimes means only the first. See [menu sync deep dive](/blog/menu-sync-deep-dive-voice-ai).
+**One-way vs. two-way sync.** One-way pulls your menu into the voice system. Two-way also writes the finished order back into the POS as a real ticket. You almost certainly need both, and "menu sync" on a feature list sometimes means only the first.
 
 **Polling vs. push.** Polling means the voice system checks your POS for changes on a schedule; push means the POS notifies it immediately. Push is faster, and the difference is exactly how long you can sell an item you've 86'd.
 
-**86 / 86'ing.** Restaurant shorthand for an item being unavailable. In this context, how quickly that state reaches the phone agent. See [real-time 86ing](/blog/real-time-86ing-menu-sync).
+**86 / 86'ing.** Restaurant shorthand for an item being unavailable. In this context, how quickly that state reaches the phone agent.
 
 **Modifier mapping.** Connecting how a customer talks ("no onions," "extra cheese") to the specific modifier records in your POS. Unglamorous and the source of most wrong tickets.
 
@@ -57,7 +57,7 @@ If you only learn four, learn containment rate, integration depth, endpointing, 
 
 ## Terms about measurement
 
-**Containment rate.** The share of calls the system handles end to end without a human. The headline metric, and the most commonly misread one, because it improves when a system stops transferring frustrated callers. Read it with escalation reasons. Full treatment in [what is call containment](/blog/what-is-call-containment) and [measuring call containment rate](/blog/measuring-call-containment-rate).
+**Containment rate.** The share of calls the system handles end to end without a human. The headline metric, and the most commonly misread one, because it improves when a system stops transferring frustrated callers. Read it with escalation reasons. Full treatment in [what is call containment](/blog/what-is-call-containment).
 
 **Escalation rate.** The share of calls handed to a human. The inverse of containment, roughly, and more useful when broken down by reason.
 
@@ -67,37 +67,35 @@ If you only learn four, learn containment rate, integration depth, endpointing, 
 
 **AHT (Average Handle Time).** How long a call takes. Borrowed from call centers, where shorter is better. In a restaurant it's more ambiguous — a longer call that captures a large catering order is a good call.
 
-**Order accuracy.** The share of orders that land in the POS correctly. The metric that matters most and the hardest to measure without checking tickets by hand. Ask any vendor quoting a number how it's measured and on what mix of calls. See [improving phone order accuracy](/blog/improving-phone-order-accuracy).
-
-More on the full metric set in [voice AI metrics and KPIs](/blog/voice-ai-metrics-kpis-restaurants).
+**Order accuracy.** The share of orders that land in the POS correctly. The metric that matters most and the hardest to measure without checking tickets by hand. Ask any vendor quoting a number how it's measured and on what mix of calls.
 
 ## Terms about telephony
 
 **SIP / VoIP.** The protocols that carry phone calls over the internet rather than traditional phone lines. Mostly invisible to you.
 
-**Porting.** Moving your phone number from one provider to another. Slow, regulated, and hard to reverse mid-process, which is why we suggest forwarding first. See the [porting guide](/blog/phone-number-porting-guide-restaurants).
+**Porting.** Moving your phone number from one provider to another. Slow, regulated, and hard to reverse mid-process, which is why we suggest forwarding first.
 
 **Call forwarding.** Pointing your existing number at another system without moving it. Reversible in minutes, which makes it the right tool for a trial.
 
-**Hunt group.** A configuration where a call rings several phones in sequence or at once. The traditional answer to phone coverage, compared in [multi-line hunt groups vs. voice AI](/blog/multi-line-hunt-groups-vs-voice-ai).
+**Hunt group.** A configuration where a call rings several phones in sequence or at once. The traditional answer to phone coverage.
 
-**IVR.** The press-one-for-hours phone tree. What voice AI is generally replacing — [voice AI vs. IVR phone trees](/blog/voice-ai-vs-ivr-phone-trees-restaurants).
+**IVR.** The press-one-for-hours phone tree. What voice AI is generally replacing.
 
 **Concurrency.** How many calls the system can handle simultaneously. The structural advantage over a person, who handles one.
 
 **DTMF.** The tones produced when a caller presses keypad buttons. Still used for some payment and menu flows.
 
-**Branded calling / CNAM.** How your restaurant's name displays on a caller's phone. Related: the "Spam Likely" problem, covered in [fixing Spam Likely caller ID](/blog/fixing-spam-likely-caller-id-restaurant).
+**Branded calling / CNAM.** How your restaurant's name displays on a caller's phone. Related: the "Spam Likely" problem, which is an ongoing carrier-registration concern rather than a one-time setup step.
 
 ## Terms about payments and data
 
-**Tokenization.** Replacing a card number with a reference that can charge the card but isn't the card. The single most important thing to confirm about phone payments — [tokenization explained](/blog/phone-payment-tokenization-explained).
+**Tokenization.** Replacing a card number with a reference that can charge the card but isn't the card. The single most important thing to confirm about phone payments — see [tokenization explained](/blog/phone-payment-tokenization-explained).
 
-**PCI DSS.** The card industry's security standard. What matters to you is which SAQ level applies given how your vendor handles cards. See [PCI compliance](/blog/pci-compliance-restaurant-phone-payments).
+**PCI DSS.** The card industry's security standard. What matters to you is which SAQ level applies given how your vendor handles cards.
 
-**Card-not-present.** A transaction where the physical card isn't swiped, which describes every phone payment and carries different chargeback exposure — [call fraud and chargebacks](/blog/voice-ai-restaurant-call-fraud-chargebacks).
+**Card-not-present.** A transaction where the physical card isn't swiped, which describes every phone payment and carries different chargeback exposure.
 
-**Subprocessor.** A third party your vendor uses to deliver the service: telephony carrier, speech provider, cloud host. Normal to have; reasonable to ask for the list. See [data ownership and privacy](/blog/voice-ai-data-ownership-privacy).
+**Subprocessor.** A third party your vendor uses to deliver the service: telephony carrier, speech provider, cloud host. Normal to have; reasonable to ask for the list.
 
 **Retention period.** How long recordings and transcripts are kept. Shorter is generally safer for you.
 

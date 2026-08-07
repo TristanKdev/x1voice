@@ -49,7 +49,7 @@ Taking an order is the easy half. Getting it into your POS as a correct, structu
 
 POS APIs vary enormously in quality and access. Some are well documented and open; some require a partner agreement; some don't expose order creation at all. Modifier structures are idiosyncratic, and mapping a caller's "no onions, extra cheese" to the specific modifier IDs in your system is per-POS work.
 
-Then availability. The agent needs to know what's 86'd right now, which means either polling your POS or receiving push notifications, plus a decision about what to do when that sync is stale. All of it is covered in menu sync deep dive, and none of it is generic — it's rebuilt per POS.
+Then availability. The agent needs to know what's 86'd right now, which means either polling your POS or receiving push notifications, plus a decision about what to do when that sync is stale. None of it is generic; it's rebuilt per POS.
 
 ## The maintenance nobody budgets for
 
