@@ -1,0 +1,84 @@
+---
+title: "Which uptime credits are real and which are theater"
+description: "A service credit that returns five percent of a monthly fee after a lost Friday is not a penalty. Here is how to read an SLA and what to ask for instead."
+publishedAt: "2026-07-23"
+faqs:
+  - question: "What does 99.9 percent uptime actually allow?"
+    answer: "Roughly 43 minutes of downtime in a 30-day month, or about 8.8 hours across a year. 99.5 percent allows about 3.6 hours a month. The percentage sounds precise, but the number that matters is when those minutes land. Forty-three minutes at 4am costs you nothing and forty-three minutes at 7pm on a Friday costs you a service period."
+  - question: "Are service credits worth negotiating?"
+    answer: "The credit percentage is usually not worth the argument, because no realistic credit covers a lost dinner rush. What is worth negotiating is the definition of downtime, the exclusion list, and whether repeated misses give you a termination right. An exit clause after two or three consecutive months of missed targets is a stronger remedy than any discount."
+  - question: "What exclusions should I look for in a voice AI SLA?"
+    answer: "Scheduled maintenance windows, carrier and telephony provider failures, POS provider outages, third-party integration failures, and force majeure. In a phone product those categories cover a large share of the ways your line actually stops working, so an uptime number that excludes all of them is measuring something narrower than the service you bought."
+  - question: "Do I even need an SLA for a small restaurant?"
+    answer: "You need a failover plan more than you need an SLA. A written commitment that calls forward to your landline or a staff mobile within seconds of a failure protects revenue; a credit schedule only refunds a fraction of a fee. Ask about failover behavior first, then read the credit section to understand what the vendor is willing to stand behind."
+---
+
+Ninety-nine point nine percent uptime allows about 43 minutes of downtime in a 30-day month. Ninety-nine point five allows roughly three and a half hours. Both look reassuring on a slide, and neither tells you the thing you need to know, which is when those minutes happen.
+
+Forty-three minutes at four in the morning is nothing. Forty-three minutes starting at 6:45 on a Friday is your entire takeout push. The percentage treats those identically, and so does almost every service credit schedule written to go with it.
+
+## Do the credit arithmetic once and you will stop caring about the percentage
+
+Take a plan at $250 a month, which is where ours starts. A typical credit tier gives back five percent of the monthly fee for missing the uptime target, ten percent for a worse miss, maybe twenty-five percent at the extreme. Five percent of $250 is $12.50.
+
+Now price the outage. A restaurant taking 40 calls during a Friday dinner rush at a $30 average ticket has roughly $1,200 moving through the phone in that window. Lose half of it and the credit covers about two percent of the damage.
+
+This is not a scandal. It is how commercial software contracts work everywhere, and no vendor is going to underwrite your lost sales. The point is to stop treating the credit schedule as protection and start reading it as what it is: a signal about how confident the vendor is, and a lever for something more useful.
+
+## The exclusions do more work than the number
+
+Skip the percentage and go straight to the list of things that do not count as downtime. In a voice product, that list usually includes:
+
+- Scheduled maintenance, sometimes with a window defined so loosely that any weeknight qualifies
+- Failures at the telephony carrier or upstream voice provider
+- Outages at your POS or at the integration middleware between it and the vendor
+- Anything caused by your internet connection, your hardware, or your configuration
+- Force majeure, defined broadly
+
+Read that list against how your phone actually fails. If the carrier layer is excluded, the vendor has committed to the uptime of a server you never interact with. The measured thing and the thing you bought are different services.
+
+Ask two questions here. What is the maintenance window, in specific hours, and does it ever fall inside our service periods? And when the failure is at the carrier or the POS, who calls whom, and what does the vendor do while it is happening? The second question matters more, because a vendor with a real answer has thought about the failure mode even though the contract excuses them from it.
+
+## How downtime gets measured is the other half
+
+An uptime commitment means nothing without a definition of "down," and the definitions vary more than the percentages do.
+
+Some vendors count only total service unavailability, meaning the platform is off. Under that definition an agent that answers every call and fails to transcribe any of them is up. So is one that answers and cannot reach your POS, so orders stop landing in the kitchen while calls keep getting taken. Both of those are outages in your restaurant and neither trips the meter.
+
+Push for a definition that includes failure to answer inbound calls and failure to deliver orders to the POS. If the vendor will not write that in, at least learn where their monitoring sits, and ask whether you get notified of an incident or have to discover it when a customer calls to ask where their food is.
+
+Also check who reports. Many agreements require the customer to submit a credit claim within a short window, often thirty days, with documentation. A credit you have to detect, document, and request is a credit most operators never collect.
+
+## The remedy that is actually worth negotiating
+
+Money back is the weak remedy. The strong one is the door.
+
+Ask for a termination right that triggers on repeated failure: two consecutive months below target, or three in any rolling six, and you can leave without penalty and without paying out the rest of the term. It costs the vendor nothing if their service works, which makes it an easy ask and a revealing one. A vendor who resists a repeated-failure exit is telling you something about their own confidence.
+
+Pair it with the term itself. A month-to-month agreement is its own service level, because your remedy for bad performance is to stop paying in thirty days. Long terms are where credit schedules start to matter, and where you should spend your negotiating attention. The rest of the sections worth arguing over are in [reading a voice AI agreement](/blog/reading-a-voice-ai-msa).
+
+## Failover is the clause that protects revenue
+
+Here is the part most operators should care about more than any of the above. When the voice system fails, what happens to a caller dialing your number?
+
+There are three answers, and only one of them is acceptable:
+
+- The call forwards automatically to your restaurant line or a designated mobile within a few seconds, and the caller hears a ring
+- The call reaches a recorded message telling them to call back later, which loses the order but at least does not leave them hanging
+- The call fails, rings out, or lands in silence, and the caller assumes you are closed
+
+Get the failover behavior in writing, and then test it. Ask the vendor to simulate a failure during a slow afternoon and call the number yourself. A vendor who cannot demonstrate failover on request has not built it, whatever the document says. The related question of what happens when the failure is on your side, not theirs, is covered in [internet outage phone failover](/blog/internet-outage-phone-failover).
+
+Automatic forwarding turns a platform outage into a busy staff member, which is the situation you were in before you bought anything. That is a fully acceptable floor.
+
+## What good looks like without any legal language
+
+A vendor who takes availability seriously will do a few things you can observe before signing. They will have a public or on-request status history rather than only a marketing claim. They will notify you of incidents rather than waiting for you to notice. They will tell you what happened afterward in plain terms, including when the cause was on their end.
+
+They will also be specific about maintenance rather than reserving the whole night. And they will have an opinion about your failover configuration during onboarding, because a vendor who has run phones for restaurants knows that outages get judged by what the caller heard.
+
+## What to actually do with the SLA section
+
+Read it in this order: exclusions, definition of downtime, claim process, then percentage. If the exclusions swallow the carrier and the POS, the number is decorative and you should evaluate the vendor on their incident history and failover instead. The [uptime and SLA fundamentals](/blog/voice-ai-slas-uptime-restaurants) post covers the terminology if the section reads as unfamiliar.
+
+Then run one test before you sign anything longer than a month. Ask the vendor what happens to a caller during a full platform outage, get the answer in writing, and have them demonstrate it on a live line. Whatever the credit schedule says, that demonstration is the only part of the availability conversation that shows up in your sales, and a caller who reached a ringing phone during an outage is a caller you did not lose. The invisible version of that loss is the one operators consistently underprice, which is the argument in [the real cost of a missed call](/blog/the-real-cost-of-a-missed-restaurant-phone-call).

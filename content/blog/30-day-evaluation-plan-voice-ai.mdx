@@ -1,0 +1,86 @@
+---
+title: "A 30-day plan for evaluating a restaurant voice agent"
+description: "Four weeks of specific work, with named owners and the numbers you record each week, so the evaluation ends in a decision rather than a hunch."
+publishedAt: "2026-07-19"
+faqs:
+  - question: "How long should a voice AI evaluation run?"
+    answer: "Thirty days is usually right for a single restaurant, and the reason is menu drift rather than statistics. You need enough time to hit at least one slow week and one busy one, plus a holiday or a special if you have one coming. Shorter than three weeks and you are mostly measuring setup problems. Longer than six and people stop paying attention."
+  - question: "What should I measure before turning the agent on?"
+    answer: "Inbound call count by hour, missed and abandoned calls in the same hours, average phone ticket from your POS, staff minutes spent on the phone per shift, and whatever the phone costs you today. Collect all five for a full week including the weekend. Without a baseline you will end the month with an opinion instead of a comparison."
+  - question: "Who should own the evaluation inside the restaurant?"
+    answer: "Split it. A general manager owns daily transcript review and menu corrections, a shift lead owns the edge-case testing, and the owner owns the decision rule and the spend comparison. One person owning all of it is the most common way an evaluation dies, because transcript review is the first thing dropped when a shift gets busy."
+  - question: "Should I change the configuration during the evaluation?"
+    answer: "Yes in the first two weeks, no in the last week. Early corrections to menu names, modifiers, and hours are the point of the trial, and refusing to make them produces a number that reflects your setup rather than the product. Freeze everything for the final seven days so the numbers you compare against baseline come from a stable system."
+  - question: "What happens if the numbers land in the middle?"
+    answer: "Extend by two weeks rather than deciding on a soft result, and pick one specific thing to fix during those weeks. A middling month usually traces to one identifiable problem, most often a menu the agent still gets wrong or an escalation rule set too tight. Write down which number would have to move, and by how much, before you restart the clock."
+---
+
+Thirty days is long enough to know whether a voice agent works on your phone. It's only long enough if you decide, before anything is turned on, which numbers you'll look at and who will look at them. Most evaluations that end badly ended badly in week one, quietly, because nobody wrote down a baseline and by week four there was nothing to compare against.
+
+What follows is a calendar. Move the dates to fit your week. Keep the sequence.
+
+## What to record in the week before anything is turned on
+
+You can't evaluate a phone system against a memory of how the phone used to go. Spend the week before go-live collecting five things and put them somewhere a manager can update in four minutes a day.
+
+- Inbound call count by hour for a full week including the weekend, pulled from your carrier or phone provider rather than estimated from memory.
+- Missed and abandoned calls over those same hours, using the counting method in [how many calls does your restaurant miss](/blog/how-many-calls-does-your-restaurant-miss).
+- Average phone ticket from your POS, separated out from walk-in and online tickets, because mixing them hides the number you care about.
+- Minutes per shift your staff spends on the phone, timed on two real shifts by someone holding a stopwatch rather than guessed at in a meeting.
+- What the phone costs you right now, whether that's an answering service invoice, an overflow line, or the labor hours you're planning to move somewhere else.
+
+That last line is the one your owner will reach for at the end. Every other number is interesting. That one decides.
+
+## Days 1 through 7 belong to the menu, not the metrics
+
+Setup is typically under 24 hours, so the agent will be answering early in the week. Do not start scoring it. The first seven days are a correction period.
+
+Your menu is full of things the agent hasn't heard yet. The regulars who order "the usual big one" mean your 18-inch. Your staff calls the chopped salad "the chop." Someone will ask for extra sauce on the side in a way your modifier list doesn't have a slot for. All of that is normal and all of it is fixable in the first week, which is exactly what the first week is for.
+
+Assign a GM to read every transcript daily and log corrections. Ten minutes a day, not a project. The work is described in more detail in [training a voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu), and it front-loads: by day five the correction list should be visibly shorter than it was on day two. If it isn't shrinking, that's your first real signal, and it's worth raising with the vendor before week two rather than after.
+
+## Days 8 through 14 are when you listen to calls
+
+Now you score. Pull a sample of twenty calls across different dayparts, not the twenty most recent, and read each transcript against three questions.
+
+Did the order land in the POS correctly, checked against the ticket rather than against a dashboard? Did the caller get an answer to whatever they actually asked? And would you have been comfortable if the owner of the restaurant next door had been listening?
+
+Twenty calls is small, and it's enough to find the pattern. If four of twenty have the wrong modifiers, you don't need a bigger sample, you need a fix. Log each miss with the call time so the vendor can pull the audio.
+
+Keep the correction loop running this week. You're still allowed to change things.
+
+## Days 15 through 21 test the ugly calls
+
+Ordinary orders are the easy part. The third week is for deliberately calling in the things that break systems, from a phone that isn't in the building, with someone who isn't the GM.
+
+- A caller who changes their mind twice mid-order and then removes an item.
+- A caller asking for something you're 86'd on tonight, to see whether the agent knows or invents an answer.
+- An address outside your delivery zone, plus one right on the boundary.
+- A caller who is angry about a previous order and wants a person immediately.
+- A caller speaking Spanish, or whatever second language your neighborhood actually uses.
+
+Handling for most of these is a policy decision rather than a technical one, and the ones that should reach a human are covered in [human handoff and failover](/blog/human-handoff-failover-voice-ai). What you're testing is whether the agent knows the difference between a call it should finish and a call it should pass along. Both categories of failure cost you: an agent that transfers everything is an expensive phone tree, and an agent that transfers nothing will eventually tell an angry customer something you'd never have said.
+
+## Days 22 through 30 are for the numbers only
+
+Freeze the configuration. No menu edits, no prompt changes, no new escalation rules unless something is actively broken. Nine days of a stable system.
+
+Then pull the same five baseline numbers over the same days of the week. Missed calls should be near zero, which is the easiest win and the least interesting one. Average phone ticket is the number that surprises people, in both directions. Staff phone minutes should be down enough that a manager can name what they did instead.
+
+Compare the monthly cost against the line you wrote down in week zero. Plans start at $250 a month, so the arithmetic is usually short: how many recovered orders at your average phone ticket cover that, and did you recover more than that many.
+
+## Who owns what, and why one person can't own all of it
+
+The GM owns transcript review and menu corrections. That's the job that gets dropped first when a Friday goes sideways, so it needs to be someone's named responsibility rather than a general expectation.
+
+A shift lead owns the week-three edge-case calls, because they know which calls actually go wrong.
+
+The owner owns the decision rule and the money comparison, and does not do transcript review. Owners who read transcripts start optimizing for how the agent sounds instead of what it does.
+
+If you're running more than one location, the ownership question gets more complicated and involves people who never touch the phone. That's a different problem, laid out in [who signs and who blocks in a multi-unit buying decision](/blog/buying-committee-multi-unit).
+
+## The decision rule you write down on day zero
+
+Before the agent answers a single call, write one sentence and put a date on it: on day 30, we keep this if missed calls during our two busiest hours are under X and order accuracy on a 20-call sample is at least Y, and we don't if they aren't.
+
+Pick X and Y from your baseline, not from a vendor's benchmark. Then hold yourself to it. A rule written in advance is the only defense against the two ways this decision usually goes wrong, which are talking yourself into a system because the setup was a lot of work, and talking yourself out of one because a single call went badly and you happened to hear it. If you want the sharper version of this, [pilot exit criteria](/blog/pilot-exit-criteria-voice-ai) covers what an exit rule looks like when it has teeth, and [pricing](/pricing) tells you what the number on the other side of the comparison is.

@@ -1,0 +1,78 @@
+---
+title: "Olo and phone ordering inside a large restaurant brand"
+description: "Olo is a brand-level ordering platform, not a store-level tool. What that changes about adding a phone channel, and who actually makes the decision."
+publishedAt: "2026-06-01"
+faqs:
+  - question: "What is Olo?"
+    answer: "A digital ordering and delivery platform built for multi-unit restaurant brands, typically ones counting locations in the hundreds or thousands. It covers direct ordering on a brand's own site and app, injection of third-party marketplace orders into the POS, and dispatch of deliveries to courier networks. It is contracted at the brand level, not by individual franchisees."
+  - question: "Can a single franchisee add a phone channel to an Olo brand?"
+    answer: "Usually not unilaterally. Brands running Olo generally control which digital channels touch the POS and the brand menu, and a franchise agreement will normally require approval for anything that writes orders or represents the brand to customers. Ask your franchise business consultant before you evaluate vendors, not after."
+  - question: "Does X1 Voice integrate with Olo?"
+    answer: "X1 Voice connects directly to Square, Clover and OrderCounter, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect. Olo is not on that list. For an Olo brand the practical path is a corporate-level conversation about certification, not a store-level install."
+  - question: "Does Olo Dispatch already solve delivery for phone orders?"
+    answer: "It solves the courier half. Dispatch routes a delivery to a courier network and handles the handoff, so a brand already using it does not need a separate delivery arrangement for orders that come in by phone. What it does not do is take the order, so the phone-channel question remains open regardless."
+  - question: "We are a three-location group. Should we be looking at Olo?"
+    answer: "Almost certainly not. Olo is priced and built for brands with the scale to justify enterprise contracting and a dedicated digital team. A three-location group is better served by a POS with a solid direct integration path, and the same money spent on menu hygiene and a working phone channel will return more."
+---
+
+Olo is built for brands that count locations in the hundreds. That single fact determines almost everything about how a phone-ordering conversation goes inside one of those brands, and it's why the answer to "can we integrate with Olo" is rarely a technical one.
+
+## A brand-level system, not a store-level one
+
+The middleware most independents encounter is installed at a store. Someone at the location signs up, connects the POS, and orders start arriving. Olo does not work that way. It's contracted centrally, configured against brand standards, and the store is a node in it rather than a customer of it.
+
+Practically, that means the menu is not yours. Item names, prices, modifier structures and availability rules are set by the brand, distributed outward, and the location operates inside them. A general manager who wants a phone agent to describe an item differently is asking for a brand change, not a configuration change.
+
+## What the pieces do
+
+Olo's direct ordering handles the brand's own site and app, the channel the brand most wants to grow because it's the one where the customer relationship stays theirs.
+
+Its marketplace injection piece takes orders placed on third-party delivery apps and writes them into the POS, so a store isn't re-keying off tablets. Same job every middleware does, at brand scale.
+
+Dispatch handles the delivery leg, routing an order the brand owns to a courier network rather than to a marketplace. And there's a payments layer for the digital channels.
+
+None of those pieces take a phone call. That's worth stating plainly, because the assumption inside big brands is often that the digital platform already covers everything digital, and the phone quietly remains the one channel with no automation and no reporting attached to it.
+
+### Dispatch does answer half the question
+
+One thing works in the brand's favor. If Dispatch is already running, the delivery half of a phone order is solved before anyone asks. An order taken by phone that the brand owns can go out through the same courier arrangement as an order placed in the app, with the same tracking and the same economics.
+
+That removes a whole category of objection. What's left is narrow: who takes the call, and how does the resulting order reach the same place an app order reaches. Far easier to pilot than "should we change how we do delivery."
+
+## Why a franchisee can't just add a phone channel
+
+If you operate three stores of a brand on Olo and you're tired of missing calls at dinner, your instinct is to solve it yourself. Check the agreement first.
+
+Anything that answers your phone in the brand's name, quotes the brand's prices, and writes orders into the brand's POS is a brand-representation question and a data question at once. Most franchise agreements cover both, and most brands running an enterprise ordering platform have a defined process for approving a new channel. Going around it tends to end with the integration being switched off after you've already trained your staff on it.
+
+The productive move is to bring it to your franchise business consultant as a measured problem rather than a vendor request. Count your missed calls for two weeks using the method in [how many calls does your restaurant miss](/blog/how-many-calls-does-your-restaurant-miss) and present that number. A brand that sees the same pattern across two hundred stores has a reason to run a pilot; a brand that sees one operator with a preference does not.
+
+## The certification question is the integration question
+
+When a brand does engage, the technical conversation is short and the governance conversation is long.
+
+Enterprise platforms admit new partners through certification, not through an open API key. What gets discussed is what customer data the voice vendor holds, where it's stored, how long it's retained, what happens at contract end, and who is liable when an order lands wrong. Those questions decide whether an integration happens far more often than anything about audio quality. The list a brand's team will work through looks a lot like [the voice AI security questionnaire](/blog/voice-ai-security-questionnaire), and the retention side is covered in [voice AI data ownership and privacy](/blog/voice-ai-data-ownership-privacy).
+
+Expect the timeline to be measured in quarters. That's not a criticism of anyone. It's what buying at that scale looks like.
+
+## What the phone is doing while all this gets built
+
+Worth saying plainly, because it's the part that gets lost in a governance conversation: the calls keep coming during the two quarters it takes to certify anything.
+
+Large brands tend to have a worse phone situation than independents, not a better one. Volume is higher, staff turnover is higher, and the phone is nobody's assigned job at a store where every role has a defined station. Calls get answered by whoever is free, put on hold, or left to ring while a line forms at the counter. In drive-thru formats it's worse still, because the phone competes with a headset that is already someone's whole job.
+
+None of that is visible in a brand's reporting, because an unanswered call generates no record anywhere. A brand can have accurate figures for every digital channel and no idea at all what the phone is costing it. Measuring that first is what turns a vendor conversation into a business case.
+
+## What a pilot looks like at this scale
+
+Small, instrumented, and boring. A handful of stores in one market, one language to start, and a fixed measurement window with the numbers agreed in advance. Answered-call rate, order accuracy checked by reading actual tickets, and escalation reasons broken into by-design and by-failure. The structure is in [designing a voice AI pilot](/blog/designing-a-voice-ai-pilot), and the metric definitions should be written down and agreed before the first store goes live.
+
+What a brand pilot needs that an independent's doesn't is a control group. Matched stores, same daypart, no phone automation. Without it, any result gets attributed to the season, and the program stalls in a meeting.
+
+## If you're a small group looking at Olo
+
+Don't. The platform is built and priced for a scale you don't have, and adopting enterprise middleware early buys complexity rather than capability.
+
+A three or five location group gets more from a POS with a real direct integration and a clean menu than from any brand-scale platform. That's the whole argument in [why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality), and the multi-unit version of the rollout is in [the voice AI franchise rollout playbook](/blog/voice-ai-franchise-rollout-playbook).
+
+If you're inside an Olo brand and the phone is your worst channel, the useful next step is not a demo. It's two weeks of call data and a conversation with the person at corporate whose job includes digital channels.

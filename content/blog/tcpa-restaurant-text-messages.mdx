@@ -1,0 +1,74 @@
+---
+title: "TCPA rules for restaurant order and marketing texts"
+description: "The customer called you, so you can text them anything. That belief is wrong, and the gap between an order confirmation and a promo text is where the risk sits."
+publishedAt: "2026-03-07"
+faqs:
+  - question: "Does the TCPA apply to order confirmation texts?"
+    answer: "Yes, but confirmations tied to an order the customer just placed sit in the easiest category. A customer who gives you their mobile number so you can text them about that order has given consent for messages about that order. The rules tighten sharply the moment the message is about something they did not ask for."
+  - question: "Can I text a customer a promotion because they ordered from us?"
+    answer: "Not on the strength of the order alone. Marketing messages sent with automated systems require prior express written consent, which means a clear disclosure that they will receive marketing texts, agreement that is not a condition of purchase, and a record of it. An order does not supply any of that on its own."
+  - question: "What are the penalties under the TCPA?"
+    answer: "The statute allows a private suit for damages per message, with a higher amount available for willful or knowing violations, and there is no cap on the number of messages in a class action. That structure is why TCPA exposure is not proportional to the size of your restaurant. It is proportional to how many numbers are in your list."
+  - question: "Does a customer have to text STOP to opt out?"
+    answer: "No. Current FCC rules require honoring a revocation made by any reasonable means, and within a short window rather than whenever the next campaign runs. A customer who tells your voice agent on the phone to stop texting them has revoked consent, so your system needs a way to record that and act on it."
+  - question: "Do these rules apply if a person sends the text manually?"
+    answer: "The analysis differs, since much of the TCPA turns on automated dialing and prerecorded messages, and manual sending from a personal phone occupies different ground. It is a bad plan to rely on that. Any texting that runs at restaurant volume is automated in practice, and building a compliance model around a loophole means rebuilding it the moment you scale."
+---
+
+The most common belief among operators who start texting customers is that a customer who called the restaurant and gave a phone number has agreed to hear from the restaurant. It sounds reasonable. It is not how the Telephone Consumer Protection Act works, and the distance between what feels fair and what the statute permits is exactly where restaurants get sued.
+
+The statute treats two messages very differently even when they go to the same number from the same system on the same day. "Your order is ready for pickup at 6:15" and "Wing Tuesday, 20 percent off with code WING" are not the same act, and the consent that supports the first does not support the second.
+
+## The line that matters is the message, not the customer
+
+Everything downstream follows from one distinction. A message about a transaction the customer initiated is informational. A message intended to sell them something is marketing. Both are regulated, and marketing is regulated much harder.
+
+Informational messages tied to an order need the customer's prior express consent, and giving you a mobile number for the specific purpose of receiving updates about that order is generally understood to supply it, provided you told them that is what the number is for. Order-ready notices, delivery driver updates, and a pickup reminder are the textbook cases, and they are the messages worth sending. The mechanics are in [SMS order confirmations from a voice agent](/blog/sms-order-confirmations-voice-ai) and [restaurant order status text updates](/blog/restaurant-order-status-text-updates).
+
+Marketing messages sent by automated means need prior express *written* consent. That is a defined thing with specific components, not a synonym for "they seemed fine with it."
+
+### What written consent has to contain
+
+- A clear disclosure that the person will receive marketing or promotional text messages from you, identified by name
+- An affirmative agreement from the person, not a pre-checked box and not silence
+- A statement that agreeing is not a condition of buying anything
+- A record of when and how the agreement was given, kept somewhere you can retrieve it years later
+- Standard message and data rates language, and a working opt-out path
+
+Notice that the last item is the only one most restaurants have. A footer that says "reply STOP to unsubscribe" does not create consent. It manages consent you already had.
+
+## Where restaurants actually get into trouble
+
+Almost never with the order confirmation. Reliably with what happens to the list afterward.
+
+An operator collects a few thousand mobile numbers over a year of takeout orders. Business is soft in February. Someone exports the numbers and sends a promotion. Every recipient who never agreed to marketing texts is a potential claim, the statute supplies per-message damages without requiring anyone to show they were harmed, and the fact that they were real customers who genuinely liked the restaurant does not enter into it.
+
+The second failure is subtler and more common with automated phone systems. A customer says on the phone, "stop sending me those texts." The agent handles the order correctly and nobody records the revocation, because the revocation arrived on a different channel from the one that sends the messages. Two weeks later the campaign runs again. Current rules require honoring an opt-out communicated by any reasonable means, and a spoken instruction to your phone agent is reasonable by any ordinary reading. If your voice system cannot write an opt-out back to your messaging list, you have a gap that will eventually be a message.
+
+The third is scope creep in the confirmation itself. A pickup-ready text that also mentions your new brunch menu has become a marketing message. Keep the transactional message transactional.
+
+## Why the math is worse than it looks
+
+TCPA exposure does not scale with the size of your restaurant. It scales with the length of your list, and those are different numbers.
+
+The statute allows a private suit with damages set per message, with a higher figure available where the violation was willful or knowing. There is no requirement to show anyone lost money, and no cap on how many recipients can join. A single promotional send to eight thousand numbers with no documented marketing consent is not one problem. It is potentially eight thousand of them, each carrying its own statutory amount, brought as one action by a firm that does this for a living.
+
+That structure is why the plaintiffs' bar pays attention to restaurant text programs at all. A restaurant is a small target with a large list, and the list is the part that matters. It is also why "we're too small for anyone to bother" is the wrong instinct here in a way it usually is not.
+
+The corollary is more useful than the warning. Because the exposure comes from list size, keeping the marketing list small and genuinely opted-in is a risk control and a marketing improvement at the same time. Two thousand people who asked for your specials will outperform eight thousand who did not, on every metric you care about, while carrying a quarter of the downside.
+
+## Building this so it holds
+
+The version that survives contact with a busy Friday is boring and mostly structural.
+
+Separate the two lists at the data layer, not by intention. Numbers collected for order updates live in one place, numbers with documented marketing consent live in another, and nothing moves between them except by an explicit opt-in event that you log with a timestamp and a source. If the only thing preventing a promotional blast to the transactional list is someone remembering, it will happen.
+
+Capture consent at the moment the customer is actually engaged, which for a phone-ordering restaurant is on the call itself. That has to be done carefully to count, and it is worth reading [capturing SMS opt-in consent on a phone call](/blog/sms-opt-in-consent-restaurants) before you write the script your agent will use ten thousand times.
+
+Make revocation channel-agnostic. STOP replies, a request to a staff member, a note in the POS, and an instruction spoken to the voice agent should all land in the same suppression list, and that list should be checked at send time rather than at list-build time.
+
+Keep the records. The defense in almost every TCPA dispute is documentary: here is when this person consented, here is the exact language they saw or heard, here is the recording. A consent you cannot produce is functionally a consent you never got, which is one of the more practical arguments for keeping call recordings on the calls where opt-in happens.
+
+And register your traffic properly with the carriers before any of this matters operationally, because unregistered application-to-person messaging gets filtered whether or not it is lawful. That is a separate track, walked through in [A2P 10DLC registration for restaurants](/blog/a2p-10dlc-registration-restaurants).
+
+One test tells you where you stand. Pick a number in your marketing list at random and try to produce the record of when that person agreed to receive promotions, what they were told, and through what channel. If you cannot do it in five minutes for a number you chose at random, the list is not one you should be sending to.

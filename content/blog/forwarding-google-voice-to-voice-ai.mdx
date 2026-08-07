@@ -1,0 +1,70 @@
+---
+title: "Forwarding a Google Voice number to an AI phone agent"
+description: "Google Voice works as a restaurant main line until it doesn't. What breaks, how to route it to a voice agent, and when to port the number off instead."
+publishedAt: "2026-02-17"
+faqs:
+  - question: "Can a Google Voice number forward to an AI phone agent?"
+    answer: "Yes. Google Voice lets you add a forwarding destination, and a voice agent's assigned number works as one. The setup takes a few minutes. The part that trips people up is call screening, which sits between the caller and the forward and will confuse an automated answerer unless you turn it off first."
+  - question: "Why does my Google Voice call get answered by silence?"
+    answer: "Almost always call screening. Google Voice can prompt the answering party to say a name or press a key before it connects the caller, and an AI agent has no way to respond to that prompt. The caller hears ringing, then nothing useful. Disable screening on the forwarding destination and the call connects normally."
+  - question: "Should a restaurant use Google Voice as its main line at all?"
+    answer: "For a single small operation with light call volume, it can work for a while. It becomes a liability once the number is on your Google Business Profile, your menus, and your delivery listings, because a personal-tier account has no support path and no service commitment. At that point the number matters more than the platform holding it."
+  - question: "Can I move my Google Voice number to a real business phone service?"
+    answer: "Usually yes. Google Voice numbers can generally be ported out, though the process differs between the free personal tier and the Workspace version, and there may be a release step and a small fee. Start the port before you change anything else, since a number in the middle of a port should not be reconfigured."
+  - question: "Does forwarding add delay to the call?"
+    answer: "A forward adds a ring cycle. The caller hears Google Voice ring first, then the destination picks up, so the answer feels a beat slower than a direct line. It's rarely enough for a caller to notice or hang up over, but it's real, and it's one more reason to port the number directly onto the answering platform eventually."
+---
+
+A pizza shop in a strip mall runs its main line on a Google Voice number the owner set up years ago on a personal Gmail account. It rings his cell, his wife's cell, and the counter cordless. It works. Then he signs up for a voice agent, points the forward at it, and the next fifty callers hear a ring, a pause, and dead air.
+
+That's call screening doing exactly what it was designed to do, and it's the single most common reason a Google Voice forward to an automated answerer appears broken on day one.
+
+## What breaks and why
+
+Google Voice sits between the caller and whatever devices you've listed as forwarding destinations. Before it bridges the two, it can play a prompt to the answering party asking who's calling or asking for a keypress to accept. A human hears that prompt and responds. Software does not. The agent picks up, hears a Google prompt instead of a customer, and the call never bridges.
+
+The fix is to turn screening off for that destination. It lives in the Google Voice settings under call options, and it is per-account rather than per-number in the personal tier, so switch it off and then re-test with a call from a phone that has never called your restaurant before.
+
+The second thing that breaks is voicemail. Google Voice has its own voicemail and it will happily grab a call the moment the forwarding destination doesn't answer fast enough. If your voice agent answers on the second ring and Google Voice's voicemail timer is short, you can end up in a race where some calls land in a Google voicemail box nobody checks. Push the Google Voice ring duration to its maximum and disable its voicemail greeting so the agent is the only thing that answers.
+
+Third, do not leave the old destinations in the forwarding list once the agent is live. A number that rings the agent and the owner's cell simultaneously means both answer, the caller talks to whoever wins, and your order records develop holes. If you want a person in the loop, do it with an escalation rule inside the agent rather than with parallel ringing. That distinction is the whole subject of [simultaneous ring versus AI answering](/blog/simultaneous-ring-vs-ai-answering).
+
+## The actual setup, in order
+
+Do it in this sequence, on a slow afternoon, not during a Friday rush.
+
+1. Turn off call screening in Google Voice.
+2. Add the agent's number as a forwarding destination and verify it with the code Google sends.
+3. Remove every other forwarding destination.
+4. Set the ring duration to the longest available option and disable Google Voice voicemail.
+5. Call from an outside line and place a real order end to end. Then call again and ask for a human, to confirm the escalation path.
+
+The verification step in item two is worth flagging, because Google sends a numeric code to the destination number and expects someone to enter it. Your voice agent isn't going to read that code back to you. Ask your provider to pull the verification code from the call log, or have them enable a temporary passthrough. Every reasonable provider has done this before. Setup on our side typically finishes inside 24 hours, and this is one of the two or three steps that actually needs a human on both ends.
+
+## Why the personal tier is a bad long-term home for your main number
+
+Free Google Voice is a consumer product. That's not a knock on it. It's just a description of the support you get when something goes wrong at 6:40 on a Friday.
+
+There's no phone number to call. There's no account manager. If the account gets locked because someone forgot the recovery email, the number your delivery listings and your Google Business Profile point at is unreachable, and so is your restaurant. Personal-tier numbers can also be reclaimed after long periods of inactivity, which is not a risk for an active restaurant but is a real risk for a second location you opened and haven't launched yet.
+
+Emergency calling behavior on internet-based numbers also differs from a traditional line, and it's worth confirming what happens if a staff member dials 911 from whatever device that number lives on. That's a life-safety question, not a telecom-preferences question.
+
+None of this means rip it out tomorrow. It means the number is the asset and the platform is not, and you should know how to move the number.
+
+## Porting the number off, and when to bother
+
+Porting means moving the number itself to a different carrier, so it stops living at Google and starts living wherever you actually answer calls. Once ported, there's no forward, no screening, no double voicemail, and no extra ring cycle.
+
+The mechanics differ between the free tier and the Workspace version, and there's typically a release step with a small fee on the consumer side. The general process is the same as any port: you give the receiving carrier your account details exactly as Google has them, they submit the request, and the number moves. [Porting your restaurant's phone number](/blog/phone-number-porting-guide-restaurants) covers the paperwork and the failure modes.
+
+Bother with it when the number is on printed menus, on your storefront, on your Google Business Profile, and on third-party listings. At that point the cost of the number being unreachable for a day is much larger than the cost of a port. Don't bother if you're still testing whether a voice agent fits your operation at all. Forward first, port once you've decided.
+
+## What to test before you trust it
+
+Forwarding is invisible until it fails, so build a habit of checking it.
+
+Call your published number once a week from a phone that isn't yours, at a time when you're busy. Listen for how long it rings before the agent speaks. Place an order and confirm it lands in your POS with the right modifiers. Then hang up mid-sentence on the next call and confirm that shows up in your logs as an abandon rather than as a completed order.
+
+Watch your caller ID too. Forwarded calls sometimes present the Google Voice number rather than the customer's, which breaks callback and can make your outbound returns look like spam. If your returns start getting flagged, [fixing a spam-likely label on your restaurant's caller ID](/blog/fixing-spam-likely-caller-id-restaurant) is where to start.
+
+If a week of that goes clean, the forward is fine and you can stop thinking about it. If any of it is inconsistent, the forward is the first suspect, not the agent. A layer of consumer software between your customer and your kitchen is a layer you eventually want gone.

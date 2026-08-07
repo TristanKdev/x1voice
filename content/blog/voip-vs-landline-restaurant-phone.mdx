@@ -1,0 +1,84 @@
+---
+title: "VoIP vs. landline for your restaurant's phone line"
+description: "Copper keeps working when the power dies, and that is most of what it still has. What actually changes when a restaurant moves its phone over to VoIP."
+publishedAt: "2026-02-21"
+faqs:
+  - question: "Does a VoIP phone keep working in a power outage?"
+    answer: "Not by itself. VoIP depends on your router, your switch, and your internet circuit, and all three go dark with the building. A small battery backup on the router and modem keeps the line alive for an hour or two, and a cellular failover on the account keeps it alive longer. A copper landline draws power from the phone company and rings regardless."
+  - question: "Is a copper landline more reliable than VoIP for a restaurant?"
+    answer: "For raw dial tone during a blackout, yes. For everything else, no. Copper gives you one call at a time, no call data, no routing rules, and increasingly expensive maintenance on a network the carriers are retiring. A business VoIP line with a battery backup and cellular failover is more reliable in the ways that actually cost you orders."
+  - question: "Can I keep my phone number when I move off a landline?"
+    answer: "Almost always. Number portability covers moving a working number from a copper line to a VoIP provider, and the number is yours rather than the carrier's. Do not disconnect the old line first. Port it while it is still active, because a disconnected number can be released and then it is genuinely gone."
+  - question: "Do I need VoIP before I can add AI phone answering?"
+    answer: "No. An answering system can sit behind a copper line through call forwarding, which is how many restaurants start. Forwarding adds a few seconds of ring before the handoff and gives you less control over routing. Porting the number outright removes that delay, but it is a second step rather than a prerequisite."
+  - question: "How much internet does a restaurant phone line need?"
+    answer: "Very little bandwidth, roughly 100 kbps per simultaneous call, so capacity is rarely the problem. Consistency is. A circuit that drops packets during the dinner rush because the POS, the music, and the guest wifi are all competing will produce choppy calls even at high advertised speeds. Put voice traffic on its own priority rule."
+---
+
+The power went out on a Friday at 6:40. Registers dead, hood off, dining room lit by phone flashlights. The phone at the host stand still worked, because it was a copper pair drawing current from the central office rather than from the building.
+
+That is the one genuine advantage copper still has, and it is worth roughly what your kitchen can produce during a blackout. Which is nothing. The rest of the comparison is not close.
+
+## What each one actually is
+
+A landline, in the old sense, is a physical copper pair running from the phone company's switch to a jack in your building. The phone company powers it. One pair carries one call, so a second caller gets a busy signal unless you pay for a second pair and a hunt group.
+
+VoIP turns the call into data and sends it over your internet connection. The handset can be a desk phone, a soft app, or nothing at all if the calls are being answered by software. Lines are a billing concept rather than a physical thing, so the question of how many callers you can take at once becomes a setting.
+
+Most restaurants running "a landline" today are actually on something in between: a copper-fed line at the demarc, or a carrier-supplied box converting a fiber drop back into an analog jack so the old phones keep working. Worth finding out which one you have before you plan anything, because it changes the port.
+
+## The outage question, answered honestly
+
+This is the argument every copper holdout makes, and it deserves a straight answer rather than a dismissal.
+
+Copper survives a power cut. VoIP does not, unless you plan for it. A restaurant that loses power keeps a working phone on copper and loses the phone entirely on an unprotected VoIP setup.
+
+The fix costs less than one month of the copper line. A small uninterruptible power supply on the modem, router, and switch buys you an hour or two of runtime, which covers the overwhelming majority of outages. Above that, most business VoIP accounts let you set a failover destination, so if the circuit stops responding the calls roll to a mobile number automatically. Callers never learn anything happened.
+
+The version that people forget: during a real outage, your POS is down, your card processing is down, and your kitchen equipment is down. A ringing phone you cannot take orders on is not a business continuity plan. The realistic ask is that the line stays reachable long enough to tell people you are closed, and battery plus failover does that.
+
+## What copper actually costs you now
+
+Pricing varies by carrier and region, but the direction is consistent: analog business lines have gotten expensive, because the carriers are retiring the network underneath them and are not motivated to keep it cheap. It is common to pay more for one analog line than for a full VoIP account with several concurrent calls.
+
+Then there are the costs that never show up as a line item.
+
+- One call at a time means every caller after the first hears a busy signal, and a busy signal produces no record, so you cannot even count what you lost. Our walkthrough of [how many calls your restaurant misses](/blog/how-many-calls-does-your-restaurant-miss) covers how to measure that when the phone system will not tell you.
+- No call logs beyond a bill, which means no answer rate, no peak-hour picture, and no way to tell whether the phone is a problem worth spending money on.
+- No routing. Every call rings the same handset, so the host stand absorbs vendor calls, wrong numbers, and hour questions during a seating rush.
+- Adding a second or third line means physical work and a hunt group, and [multi-line hunt groups](/blog/multi-line-hunt-groups-vs-voice-ai) still only move the ringing around rather than answering anything.
+- Repairs on a retiring network get slower every year, and a dead copper pair at 5pm on a Friday is somebody else's dispatch queue.
+
+## What VoIP costs you, including the parts nobody quotes
+
+The monthly bill is the easy part and usually the smaller number. Budget for the rest.
+
+You need a circuit you trust. Not fast, but consistent. Voice is unusually sensitive to jitter and packet loss and unusually indifferent to bandwidth. A single call uses about as much data as a music stream. What ruins it is the guest wifi, the tablet ordering, the card terminal, and the backup job all fighting over the same pipe with no traffic priority. Ask whoever manages your network to put voice in its own queue, and treat that as part of the install rather than an optimization.
+
+You need a plan for the handsets. If people still answer with a physical phone, someone has to place them, power them, and label them. Power over Ethernet from the switch is the clean version; a wall wart per phone is the version that gets unplugged by a porter.
+
+And you need to register your address. Which leads to the part restaurants get wrong.
+
+## The 911 rules that apply to a restaurant phone system
+
+Two federal rules cover multi-line telephone systems, and a restaurant with more than a single phone generally has one.
+
+Kari's Law requires that a person can dial 911 directly, with no prefix. If your system needs a 9 first, that is a problem to fix before it ever matters. RAY BAUM'S Act requires that a dispatchable location, meaning the street address and enough detail to find you inside it, is delivered with the call.
+
+For copper, the address is baked into the line record and you never think about it. For VoIP, the address is a field somebody types, and it is wrong more often than you would expect, usually because the account was set up with the owner's home address or a prior location. Check it during install, and check it again after any move. A dispatcher reading the wrong address during a kitchen fire is the failure mode.
+
+## What to do about your number
+
+Your number is the asset. The line is not.
+
+Port it, do not replace it. It is printed on your menus, sitting in Google, saved in a few thousand phones, and attached to years of reviews. Porting moves it from the copper carrier to the new provider while it stays in service. The sequence matters: never disconnect the old line first, because a released number can be reassigned and there is no undo. The full sequence is in our [phone number porting guide](/blog/phone-number-porting-guide-restaurants).
+
+Expect the port to take a few business days, and expect the carrier to reject the first request over a mismatched address or account name. That is routine, not a sign of trouble.
+
+## The order to do this in
+
+Move in this order and nothing breaks. Confirm what you actually have at the demarc. Fix the network first, including voice priority and a battery on the router. Order the VoIP service and test it on a temporary number for a week, calling from a cell phone at 7pm on a Saturday rather than at 10am on a Tuesday. Only then submit the port, with the old line still active. Verify the 911 address the day it cuts over.
+
+Once the number is on a VoIP account, the questions that were previously impossible become configuration: what happens to the third simultaneous caller, what happens after close, what happens when nobody picks up in four rings. That last one is where most of the recoverable money is, and it is the reason [ringing three phones at once](/blog/simultaneous-ring-vs-ai-answering) tends to disappoint operators who expected it to solve the problem.
+
+If you are keeping copper purely for the blackout argument, price a battery backup and a failover rule and compare that to twelve months of the analog line. The math usually ends the debate in about ten minutes.

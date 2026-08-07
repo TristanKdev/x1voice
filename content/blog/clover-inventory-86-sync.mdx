@@ -1,0 +1,80 @@
+---
+title: "Keeping Clover item availability and the phone agent in sync"
+description: "An agent that sells a sold-out item is worse than a missed call. How Clover stock tracking maps to phone ordering, and what to do if you have never used it."
+publishedAt: "2026-05-23"
+faqs:
+  - question: "Does Clover automatically tell the phone agent when something is 86'd?"
+    answer: "Only if the item's availability is actually being changed in Clover. If your kitchen 86s an item by shouting it across the line and nobody touches the POS, there is nothing for the integration to read. The sync is only as good as the habit of marking it, which for most restaurants is the real project."
+  - question: "Do I have to turn on full inventory counting in Clover?"
+    answer: "No, and for most restaurants full quantity tracking is more overhead than it is worth. What you need is a way to mark an item unavailable and have that stick until someone turns it back on. Counting every portion of salmon is a different and much larger commitment that few kitchens sustain past the first month."
+  - question: "How fast does an 86 reach the agent?"
+    answer: "Typically within a minute or two of the change landing in Clover, which is fast enough that the practical delay is human. The gap that hurts is the twenty minutes between the kitchen running out and someone marking it, not the seconds between Clover and the agent. Shorten the first gap and the second stops mattering."
+  - question: "What should the agent say when an item is unavailable?"
+    answer: "State it plainly and offer the nearest substitute in the same breath, because a caller told only that something is out will often just end the call. Configure the substitution per item rather than letting it improvise, so the suggestion is one your kitchen actually wants to sell more of that night."
+  - question: "What happens if an item runs out mid-call?"
+    answer: "The agent works from availability at the moment it builds the order, so an item that runs out during the conversation can still get through. This is unavoidable in any ordering channel and the fix is procedural: whoever pulls the ticket catches it and calls the customer back, the same as with an online order."
+---
+
+The gap that costs you money is not between Clover and the voice agent. It is the twenty minutes between the kitchen running out of the short rib and somebody remembering to mark it.
+
+Sync latency between a POS and a phone agent is a solved problem measured in seconds. The 86 problem is a floor-discipline problem wearing a technology costume, and any vendor who tells you their integration fixes it is selling you something that does not exist.
+
+## What Clover gives you to work with
+
+Clover has item-level availability controls and optional quantity tracking. The availability control is the useful one for this purpose: an item can be marked so it stops being sellable, and that state is readable through the API the integration uses.
+
+Quantity tracking is the heavier option. It decrements a count as items sell and hides the item at zero. It is genuinely good for a bakery with forty croissants and genuinely painful for a kitchen where portions vary and prep happens twice a day. Most full-service restaurants that switch it on abandon it inside two months.
+
+Pick availability toggling unless you have a real reason to count. It is one tap, it survives the shift, and it is the thing your integration reads.
+
+## Why an available-but-out item is worse than a busy signal
+
+A missed call costs you one order. An order taken for something you cannot make costs you the order plus a phone call plus a refund plus a customer who now tells people your phone system is broken.
+
+That asymmetry should drive your configuration. When in doubt, the agent should be conservative about what it sells. An item that is frequently out and slow to be marked is a candidate for being removed from the phone menu entirely, or for being handled as a callback rather than a completed order.
+
+The same logic appears in [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync), and the ways it goes wrong are catalogued in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes).
+
+## The habit that makes the sync worth having
+
+Someone has to touch Clover when something runs out. That is the whole intervention.
+
+The version that works in most kitchens: the person who discovers the shortage tells expo, and expo marks it before the next ticket. Not the manager when they get a minute. Not at the end of service. The person standing closest to a device, immediately.
+
+Make it a named responsibility on the prep list and check it during your first week. If you audit at close and find three items that were out for two hours and never marked, the problem is not your integration and it will not be fixed by a different vendor.
+
+Restaurants that already run a tight 86 board have almost no work to do here. Restaurants that have never used the POS for availability are taking on a genuine operational change, and it is fair to say so before you buy anything.
+
+If your line genuinely will not touch a device mid-service, there is a workable middle path: keep the whiteboard, and have whoever runs expo transfer it to Clover at two fixed points, say the top of the rush and again an hour in. It is worse than marking things immediately and it is far better than nothing, because it caps your exposure at about an hour instead of a whole shift. Pick the compromise you will actually perform rather than the ideal you will abandon in week two.
+
+## Prep-based limits and the items worth capping
+
+Some items are not binary. You have twenty portions of the special and you would like the phone to sell some of them without selling all of them to one caller at 5:15.
+
+This is where a quantity limit earns its cost, applied narrowly. Count the special. Count the whole fish. Count the party-size tray that takes forty minutes. Leave the burger alone. A handful of counted items is sustainable; a counted menu is not.
+
+If you cap an item, cap it below your actual portion count. The phone is one of several channels selling that item, and the walk-in customer standing in front of you should not lose to a caller who is forty minutes away.
+
+## What the agent should say, and what it should not
+
+An item being unavailable is a moment where a badly configured agent loses the whole order. "I'm sorry, that item is not available" and then silence is an invitation to hang up.
+
+Configure a substitution per item, chosen by you rather than inferred. If the pork belly bao is out, the agent offers the chicken bao by name, in the same sentence. If nothing is comparable, the agent should say what is selling well that night. The point is that the caller always has somewhere to go.
+
+Do not let the agent apologize at length or explain why. Callers do not want the story. One sentence, one alternative, keep moving. The tone questions here are the same as in [upselling without being pushy](/blog/upselling-without-being-pushy-ai), which is really about not wasting a caller's time.
+
+## Bringing items back is where sync quietly fails
+
+Everyone remembers to 86 something. Far fewer restaurants remember to un-86 it.
+
+The pattern is familiar: the fish goes off at 8:40 Saturday, gets marked, and is still marked at noon Tuesday. The phone agent has been declining to sell it for three days and nobody knows, because a declined item generates no complaint and no report line.
+
+Build the reset into opening. Whoever opens checks the unavailable list in Clover and clears anything that came in with the delivery. It takes thirty seconds and it is the single most common invisible revenue loss in this whole workflow. Add it to your opening checklist in writing.
+
+## Auditing it once, properly
+
+Do this in your third week, not your first, so the habits have had a chance to form.
+
+Pick a busy service. Have a manager write down, on paper, every item that ran out and the time it ran out. At close, compare that list against Clover's availability history and against the phone agent's transcripts. You are looking for two things: items that were out and still being sold on the phone, and items marked out that were actually available.
+
+If both lists are short, you are done, and a quarterly repeat is enough. If either list is long, the fix is procedural and specific, and you now know exactly which station and which shift to talk to. That audit takes one manager one night and it is worth more than any amount of vendor dashboard reading. The wider setup context is in [AI phone ordering for Clover](/blog/ai-phone-ordering-for-clover) and [menu sync for voice AI](/blog/menu-sync-deep-dive-voice-ai).

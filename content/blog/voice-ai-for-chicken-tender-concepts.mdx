@@ -1,0 +1,70 @@
+---
+title: "Voice AI for chicken tender concepts and sauce menus"
+description: "Tender shops sell a short menu with a long sauce list. How voice ordering handles sauce trees, family packs, and a phone line that competes with the drive-thru."
+publishedAt: "2026-02-09"
+faqs:
+  - question: "How does a voice agent handle a caller who wants four different sauces?"
+    answer: "It takes them one at a time and reads the list back before sending the ticket. Sauce is the highest-volume modifier in a tender shop and also the most error-prone, because callers use nicknames. The fix is mapping every nickname your customers actually say to the one POS modifier, then confirming the count out loud so the caller catches a miss before the kitchen does."
+  - question: "Can it upsell extra sauce or a drink without being annoying?"
+    answer: "It can, if you cap it at one prompt per call. Sauce upcharges and drink attachment are the two offers with real take rates in a tender shop, and both work better as a specific question than a generic one. Asking whether they want to add a large sauce for a dollar converts. Asking whether they'd like anything else does not."
+  - question: "We have a drive-thru. Does phone ordering still matter?"
+    answer: "Usually yes, and for a reason owners underrate: family packs and large orders come by phone precisely because the caller does not want to hold up the drive-thru line. Those are your highest tickets. If your drive-thru is busy enough that nobody can reach the phone, the two channels are actively competing for the same headset and the phone loses every time."
+  - question: "What happens when we run out of a sauce mid-shift?"
+    answer: "That depends entirely on whether your POS availability flows to the agent. If your team 86s the sauce in the POS and the integration reads it, the agent stops offering it within minutes. If availability lives on a whiteboard by the fryer, the agent will keep selling it until someone updates the menu. Decide which of those you are running before you go live."
+  - question: "Do tender orders take longer on the phone than in person?"
+    answer: "They tend to run longer, because sauce selection is a conversation and a family pack multiplies it. That's an argument for taking those calls off your counter rather than an argument against phone ordering. A voice agent has no line building behind it, so a four-minute sauce discussion costs you nothing while the same call at the register costs you three customers."
+---
+
+A tender concept sells maybe nine things and forty combinations of them. That inversion is the whole operational story: the menu is short enough to memorize and the modifier tree is long enough that new hires get it wrong for a month.
+
+Which means phone orders in a tender shop fail differently than they do elsewhere. Nobody mishears "three-piece combo." They mishear which sauce, how many, and whether the ranch was supposed to be extra.
+
+## Sauce is not a modifier, it's the product
+
+Treat sauce like a garnish in your configuration and everything downstream breaks. In a tender concept, the sauce choice is most of what the customer is deciding, it carries a real upcharge, and it is the single most common source of a remake.
+
+The mapping problem is specific. Your POS says "Signature Sauce." Your customers say the sauce, house sauce, the pink one, the one that comes with it, and whatever nickname a local review popularized. A voice agent that only recognizes the menu spelling will punt those calls to a human or, worse, guess. Building an alias list is unglamorous work and it is the difference between an agent that handles 90 percent of tender calls and one that handles 60.
+
+Do the same for counts. "Two ranch" and "extra ranch" are different tickets and different money. The agent should confirm the number back, not just the name. [How voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers) walks through the general shape of this, and the alias problem is nearly identical to the one in [wing shops](/blog/voice-ai-for-wing-shops), where flavor names carry the same ambiguity.
+
+## Family packs are where the accuracy risk concentrates
+
+A 24-piece family pack with four sides, six sauces, and a gallon of tea is a $60 to $80 ticket in most markets, and it takes real conversational work to get right. It is also the order most likely to arrive by phone at 5:40 on a weeknight, when your fryers are full and your counter has a line.
+
+The failure mode is quantity drift. Caller says twenty-four pieces, then adds "and make two of the sides mac," then changes a sauce, and somewhere in there the ticket ends up with three sides instead of four. A person taking that order while watching the fry timer will make that mistake regularly. An agent that reads back the complete order before submitting will not, provided you require the readback.
+
+Insist on it. Some vendors treat order confirmation as optional because it adds fifteen seconds to average handle time. On a $70 ticket, fifteen seconds is the cheapest insurance you will ever buy. The measurement side of this sits in [improving phone order accuracy](/blog/improving-phone-order-accuracy).
+
+There's a second family-pack detail worth configuring: the sauce count that comes included. Most tender concepts include one sauce per so many pieces and charge for the rest. Callers do not know that rule and will happily list eight sauces on a 24-piece without realizing four of them cost extra. An agent that silently adds the upcharge produces an argument at pickup. An agent that says the number out loud, then asks whether to add the rest, produces a bigger ticket and no argument. Decide which behavior you want before someone else decides it for you.
+
+## The drive-thru is quietly eating your phone coverage
+
+Here is the part that gets missed in tender concepts specifically. If you run a drive-thru, your headset and your phone are usually staffed by overlapping people, and the drive-thru always wins. It has a timer on it, a customer physically present, and in most systems a number your area manager looks at.
+
+So the phone rings out during exactly the hours when your highest-value calls arrive. Not because anyone decided that, but because the drive-thru board is measured and the phone is not.
+
+The honest way to see this is to pull your call log for a Friday between 5 and 7 and compare answered to offered. Most operators are surprised. If the miss rate is meaningful, you are not choosing between a drive-thru and a phone channel, you are letting one silently cannibalize the other. [Drive-thru versus phone ordering](/blog/drive-thru-vs-phone-ordering-voice-ai) covers how the two channels differ in what they capture.
+
+Taking phone orders off the headset does not slow the drive-thru down. It stops the drive-thru from slowing the phone down.
+
+## Where the upsell actually lands
+
+Tender shops have two upsells with genuine take rates and a lot of others that do not work.
+
+Extra sauce converts because the customer already knows they want more sauce and the upcharge is small enough not to require a decision. Drinks convert because most people ordering tenders have not thought about the drink yet. Everything else, including desserts and side upgrades, converts at rates low enough that offering them makes the call longer without making it worth more.
+
+So cap the agent at one offer, make it specific, and pick the one that fits the order. A three-piece with no drink gets the drink question. A family pack gets the sauce question. A caller who already added a drink gets neither, and appreciates it.
+
+The tone rule matters as much as the selection. An agent that asks once and moves on reads as helpful. An agent that asks twice reads as a machine trying to hit a number, and callers notice faster on the phone than they do at a kiosk. There is more on calibrating this in [upselling without being pushy](/blog/upselling-without-being-pushy-ai).
+
+## What to check before you turn it on
+
+Three things, in order of how often they cause trouble.
+
+First, whether sauce availability actually syncs. Tender concepts run out of one sauce more often than they run out of tenders, and an agent selling a sauce you 86'd two hours ago creates a phone call you have to make. If your team marks items unavailable in the POS, confirm the integration reads it. If your team marks them on a whiteboard, fix that first. [Real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) is the reference.
+
+Second, whether your pickup quote reflects fryer capacity. Tenders have a cook time you cannot compress. Quoting twelve minutes during a rush that is running twenty-two produces a lobby full of people watching a fry basket.
+
+Third, whether the agent hands off correctly on the calls that need a person: complaints, orders above a threshold you set, and anyone asking about a catering-scale order for a team or a church group.
+
+Run this test in your second week live. Pull ten family-pack tickets that came through the phone and compare what the caller said, in the transcript, to what printed in the kitchen. If ten out of ten match, you have a working system and the sauce aliases are done. If two don't, you almost certainly have a naming gap rather than a technology problem, and it is a twenty-minute fix.

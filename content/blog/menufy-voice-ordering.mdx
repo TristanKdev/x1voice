@@ -1,0 +1,71 @@
+---
+title: "Menufy sites and phone orders: reconciling two streams"
+description: "Menufy orders and phone orders arrive on separate rails and rarely meet before close. What breaks at reconciliation and how to get one set of numbers."
+publishedAt: "2026-06-04"
+faqs:
+  - question: "Does X1 Voice integrate with Menufy?"
+    answer: "Not directly. X1 Voice writes phone orders into Square, Clover and OrderCounter directly, and into Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect. If Menufy handles your online ordering and one of those systems is your register, phone orders land in the register and Menufy orders continue arriving the way they do now."
+  - question: "Why don't my Menufy totals match my POS totals?"
+    answer: "Usually because the two systems count different things at different moments. Online platforms typically report on order placement time and gross value before adjustments, while a register reports on close time after voids, comps and refunds. A gap of a few percent is normally a definitional difference. A gap that grows week over week is a process problem."
+  - question: "Should online orders be keyed into the POS manually?"
+    answer: "It is common and it is a real cost. Keying takes thirty to ninety seconds per ticket and introduces the same error rate any manual entry does. Whether it is worth automating depends on volume: at fifteen online orders a night it is a nuisance, at eighty it is a job. Count your tickets before deciding."
+  - question: "What is the single biggest reconciliation mistake?"
+    answer: "Comparing an online platform's gross sales to a POS net sales figure and treating the difference as missing money. They are different measurements. Define one canonical number, usually net sales at close from your register, and make every other report explain its variance from that rather than competing with it."
+  - question: "How do phone orders make reconciliation harder?"
+    answer: "They generally do not, if they land in the register the same way a counter order does. Phone orders become a reconciliation problem when they are written on a paper pad, keyed later, or handled by a system that stores them somewhere other than the POS. The rule is that every channel writes into one place before the drawer closes."
+---
+
+Most operators looking at online ordering assume the hard part is taking the order. It is not. Taking the order is the part every platform on the market does competently. The hard part is counting the order at eleven o'clock at night, when your Menufy report says one thing, your register says another, and the difference is somewhere between a definitional quirk and a real missing ticket.
+
+That gap is where phone orders usually get blamed, and usually unfairly.
+
+## Where the two streams actually diverge
+
+Menufy runs your ordering website and sends orders through its own path, commonly to a tablet or a dedicated printer in the shop. Your register runs the counter, the drawer, and the close-out. Those are two independent records of what your restaurant sold that night, and they were never designed to agree.
+
+They diverge in three places. Timing: the platform stamps an order when the customer submits it, the register stamps it when it rings in, and an order placed at 9:58 and keyed at 10:04 lands on different days in different reports if your business day rolls at ten. Definitions: platform reports usually show gross order value, while a register close shows net after voids, comps, discounts and refunds. And adjustment handling: a customer who calls back to cancel is handled in your register, but the online platform may still count the original.
+
+None of this is malfunction. It is two systems answering slightly different questions. The mistake is treating the difference as theft or as a bug and going looking for a culprit at midnight.
+
+## Pick one canonical number and make everything explain itself against it
+
+The fix is boring and it works. Choose the number that is your truth. For nearly every independent restaurant that should be net sales at close from the register, because that is the number tied to your drawer, your tax filing and your payment settlement.
+
+Every other report is then a supporting document that has to explain its variance from that figure. Menufy's report is not competing with your register, it is telling you what portion of the register's number arrived through the website. Framed that way, a three percent gap is a question with an answer rather than an accusation.
+
+### The variance log that ends the argument
+
+For two weeks, write down the daily difference between your online platform's order count and the count of online-origin tickets in your register. Two columns and a date. If the difference is a steady small number, you have a definitional gap and you can stop looking. If it swings, the swing days will tell you what happened, and it is almost always one of a short list of causes:
+
+- A ticket that printed but was never keyed into the register during a rush.
+- A cancellation handled on one side and not the other.
+- An order placed either side of your business-day rollover.
+- A refund issued through the payment processor rather than through either system.
+
+Four causes covers the overwhelming majority of these. Once you know which one you have, the fix is a process change, not a software purchase.
+
+## What manual keying actually costs
+
+If your Menufy tickets are keyed into the register by hand, put a number on it before you decide whether that is fine. Time three tickets with a stopwatch. Most land between thirty and ninety seconds depending on modifier complexity. At forty online orders a night and sixty seconds each, that is forty minutes of somebody's shift, every night, spent typing instead of expediting.
+
+It also has an error rate, because manual re-entry always does. A wrong modifier keyed at the register produces a wrong ticket in the kitchen, and the customer's complaint arrives on the phone, which is a second cost on the same mistake. The methods in [improving phone order accuracy](/blog/improving-phone-order-accuracy) apply directly to re-keying, because it is the same failure: a human transcribing an order under time pressure.
+
+Whether that adds up to a project depends entirely on your volume. Be skeptical of anyone who tells you it always does.
+
+## Where phone orders fit into all this
+
+A phone order is only a reconciliation problem when it lives somewhere other than the register. An order taken on a headset and rung in immediately is indistinguishable from a counter order by the time you close. An order written on a pad during a rush and keyed twenty minutes later is a variance line waiting to happen.
+
+So the requirement for a voice agent is the same requirement you should have for your own staff: the order goes into the register when it is taken, not later. X1 Voice writes into Square, Clover and OrderCounter directly, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink, Micros and others through Deliverect, which means phone orders join the same canonical number everything else is measured against. [Why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality) is largely an argument about this.
+
+There is a second reason this matters that has nothing to do with counting. An order that exists in the register is an order your reporting can see, which means phone volume stops being a guess. You find out what share of revenue arrives by phone, at what hours, at what average ticket, and whether that ticket is higher or lower than your website's. Most operators who look at this for the first time are surprised in one direction or the other, and either surprise is worth having.
+
+Menufy orders keep arriving the way they always have. Nothing about answering the phone differently changes your website's path. The two remain separate streams, and that is acceptable as long as one of them is the stream you count.
+
+## The menu problem you inherit either way
+
+Running an online ordering site alongside a register already means maintaining a menu twice. Adding any third channel makes that worse unless the third channel reads the register's menu rather than keeping its own copy.
+
+This is the specific question to ask any voice vendor: does the agent read my live menu and availability from the POS, or does it hold a separate copy someone has to update? A separate copy is how you end up selling a soup you 86'd at seven. The mechanics are in [menu sync](/blog/menu-sync-deep-dive-voice-ai) and the failure modes in [real-time 86ing](/blog/real-time-86ing-menu-sync).
+
+Tonight, pull your Menufy order count and your register's online-origin ticket count for the same business day and write both numbers on a sticky note. Do that for ten days. If the two columns track each other with a stable offset, your reconciliation is fine and you can stop thinking about it. If they wander, you have a specific process leak and ten dated data points telling you where it is, which is considerably more useful than a suspicion.

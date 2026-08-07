@@ -1,0 +1,72 @@
+---
+title: "Revel and voice ordering: routing phone orders correctly"
+description: "Revel estates carry enterprise menu structures that punish sloppy phone setup. How orders route, which establishment they land in, and what to fix first."
+publishedAt: "2026-05-26"
+faqs:
+  - question: "Does a voice agent work with Revel?"
+    answer: "Yes, through Deliverect rather than a direct connection. The agent takes the call, builds the order against your imported Revel menu, and passes it through as an incoming order for the right establishment. The setup work is mostly about menu structure and routing rules rather than about the connection itself."
+  - question: "What is different about Revel compared with a small-restaurant POS?"
+    answer: "Revel is usually configured as a multi-establishment estate with shared product catalogs and per-location overrides. That structure is good for consistency and awkward for phone ordering, because a caller does not know which establishment they are reaching. Routing rules have to resolve that before the order is built, not after."
+  - question: "How do phone orders route to the right Revel location?"
+    answer: "By the phone number the caller dialed, in almost every case. Each location keeps its own number, and each number maps to one establishment. Group numbers that ring a hunt group across locations are the setup most likely to send an order to the wrong kitchen, so avoid them for ordering lines."
+  - question: "Can a corporate menu and a local menu coexist?"
+    answer: "Yes, and this is the normal Revel pattern. The shared catalog defines items and the location overrides define price and availability. The agent needs the resolved per-location version, not the corporate template, or callers will be quoted the wrong price and offered items the store does not carry."
+  - question: "How long does a Revel rollout take?"
+    answer: "A single location is typically live within a day once the menu is verified. A multi-location estate takes longer, not because of the technology but because of the decisions: which locations pilot, who owns menu changes, and how per-store overrides are handled. Plan those before the first store goes live."
+---
+
+Revel restaurants lose phone orders in a specific way that single-location operators never see: the order is taken correctly and lands at the wrong store.
+
+That failure has nothing to do with speech recognition. It comes from how Revel estates are usually built, with a shared product catalog at the top and per-establishment overrides underneath, and from phone numbers that were set up years ago by someone who no longer works there.
+
+## How the order reaches Revel
+
+X1 Voice connects to Revel through Deliverect. The agent handles the conversation, prices the order against an imported copy of the menu for a specific establishment, and passes the completed order through as an incoming ticket. Revel treats it the way it treats any external order.
+
+The word doing the work in that paragraph is "specific." The agent is bound to one establishment at configuration time. It doesn't decide at the end of the call which kitchen should make the food. So the routing question is answered before the caller says a word, by which phone number they dialed.
+
+That's a simpler model than most operators expect, and it's also why the phone system, not the POS, is where multi-location Revel setups go wrong.
+
+## Phone numbers are your routing table
+
+If each of your locations has its own published number and each number points at one establishment, routing is solved and you can stop thinking about it.
+
+Problems start with the arrangements that grew organically. A single marketing number that rings a hunt group across three stores. A downtown location whose old number forwards to the new location, which forwards to the catering line. A number that a delivery marketplace published years ago and still sends calls to.
+
+Each of those has to resolve to exactly one establishment before an ordering agent goes live on it. A hunt group in particular is incompatible with phone ordering: the caller reaches whichever store answers first, orders food, and drives to the store they meant to call. Keep hunt groups for general inquiries if you like them, and give every ordering line a dedicated number tied to a dedicated store. The routing patterns are laid out in [after-hours call routing setup](/blog/after-hours-call-routing-setup), and the same logic applies during business hours.
+
+### What to do with the corporate number
+
+Most estates have one number that customers treat as the company's number. It usually can't be retired, and it shouldn't take orders.
+
+Point it at an agent that answers, asks which location the caller wants, and transfers. That agent doesn't need a menu at all. It needs your location list, your hours, and a clean transfer. Trying to make one agent both identify a location and take an order for it produces a longer call and a higher chance of the wrong kitchen making food. Keep the two jobs separate.
+
+## The catalog versus what the store actually sells
+
+Revel's shared catalog is what makes a fifteen-store estate manageable, and it is exactly the thing that misleads a phone agent.
+
+The catalog says the restaurant sells a chicken sandwich for a certain price. The Fifth Street store overrides that price. The airport store doesn't carry it at all. The suburban store carries it but only after 11am. A cashier never encounters this ambiguity because the terminal in front of them has already resolved it. The agent needs the same resolved view, per establishment, or it will quote corporate prices at a location that charges more and offer items that store has never made.
+
+So the menu verification step for Revel is a per-location step, not a one-time corporate step. Pull up the resolved menu for the store, hand it to whoever manages that store, and ask them to mark anything that's wrong. General managers find these errors in minutes because they hear about them from guests. Corporate almost never finds them, because the template looks correct.
+
+The related question is who owns changes after launch. If your GMs can already change prices in Revel, phone pricing follows automatically and you're in good shape. If price changes go through a corporate queue with a two-week turnaround, your phone agent will quote stale prices for two weeks, and that's worth deciding about now. [Per-store overrides for menu and hours](/blog/per-store-overrides-menu-hours) works through the ownership model in more detail.
+
+## Hours, dayparts, and the store that closes early
+
+Enterprise menus carry daypart rules, and Revel estates often carry per-location hour exceptions that live in someone's head rather than in the system.
+
+The store next to the stadium closes at 9 except on event nights. The mall location follows mall hours and the mall changed them in November. The downtown store stopped doing breakfast in March and nobody updated the catalog.
+
+An agent will happily take a breakfast order at a store that stopped serving breakfast, because the daypart says breakfast exists. Before launch, sit with each GM and confirm three things: what time the phone should stop taking orders, what the last-order cutoff is relative to close, and which items genuinely disappear at a daypart boundary. That conversation surfaces more errors than any amount of testing. [Multi-menu daypart switching](/blog/multi-menu-daypart-switching) covers the mechanics once the facts are straight, and [holiday hours overrides](/blog/holiday-hours-overrides-voice-ai) covers the exceptions that arrive four times a year.
+
+## Rolling out across an estate
+
+Don't launch fifteen stores at once. Not because the technology can't handle it, but because you will learn things in the first two weeks that change how you configure the rest.
+
+Pick two locations that are genuinely different from each other. A high-volume store with a simple menu and a lower-volume store with a complicated one is a better pair than two similar stores, because the problems you find will generalize. Run them for two weeks, read the escalated calls, fix the menu issues that surface, and then roll the corrected configuration outward.
+
+The pilot is also where you find out whether your GMs will use the thing. A store manager who ignores 86ing in the POS will have an agent selling items the kitchen doesn't have, and that's a management problem no vendor can fix for you. [The franchise rollout playbook](/blog/voice-ai-franchise-rollout-playbook) has the sequencing for larger estates.
+
+There's one more decision worth making before the pilot: who reads the transcripts. In an estate, this defaults to nobody, because corporate assumes the stores are watching and the stores assume corporate is. Name a person, give them twenty escalated calls a week, and have them send fixes to whoever owns the menu. Without that loop the configuration you launch with is the configuration you keep, errors included.
+
+One test tells you whether your routing is sound: call every published number your restaurant owns, from an outside line, and write down where each one lands. Most estates discover at least one number that goes somewhere nobody expected.

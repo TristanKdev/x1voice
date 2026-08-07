@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 
+import { track } from "@/lib/analytics"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -48,6 +49,7 @@ export function FeatureRequestForm() {
         body: JSON.stringify(values),
       })
       if (!res.ok) throw new Error("Request failed")
+      track("feature_request_submit", { page_path: window.location.pathname })
       setStatus("success")
       reset()
     } catch {

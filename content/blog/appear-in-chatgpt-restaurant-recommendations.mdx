@@ -1,0 +1,92 @@
+---
+title: "How to appear in ChatGPT restaurant recommendations"
+description: "Assistants recommend restaurants by reading pages other people wrote about you. Here is what that means for your site, your listings and your menu."
+publishedAt: "2026-03-20"
+faqs:
+  - question: "Can I submit my restaurant to ChatGPT or pay to be recommended?"
+    answer: "No. There is no submission form and no advertising slot that places a restaurant into a recommendation. Assistants assemble answers from web results and their training data, so the only lever available is being well described on pages that get retrieved. Anyone selling guaranteed placement in an assistant answer is selling something they cannot deliver."
+  - question: "Does my own website even matter, or is it all third-party listings?"
+    answer: "Both, and they do different jobs. Third-party pages, directories, local guides and review sites are what usually get retrieved for a broad query like best tacos near me. Your own site is what confirms details once a specific restaurant is named, which is where hours, address and menu accuracy decide whether the assistant describes you correctly."
+  - question: "Do I need to write blog posts to show up in AI answers?"
+    answer: "Not for recommendation queries. What matters more is that basic facts about your restaurant appear in plain text on pages a crawler can read: cuisine, neighborhood, price range, hours, whether you take reservations, whether you deliver. Most restaurants lose here because their site is an image-heavy one-pager with the menu in a PDF."
+  - question: "How do I check whether an assistant describes my restaurant correctly?"
+    answer: "Ask it, in the phrasings a customer would use, and read the answer for errors rather than for whether you appeared. Wrong hours, a closed location still listed, or a menu item you dropped two years ago are all fixable at the source. Do this once a quarter and treat it as a listings audit."
+  - question: "Does an AI phone line help my restaurant show up in AI search?"
+    answer: "No, and it is worth being clear about that. Answering the phone with software has no effect on how an assistant retrieves or ranks information about you. The two are related only in that both are ways customers reach you without a person on either end, and both fail the same way when your published hours are wrong."
+---
+
+Most operators think of this as an advertising problem. Find the placement, buy the slot, appear in the answer when someone asks an assistant where to eat. That option does not exist, and understanding why explains almost everything about what does work.
+
+An assistant answering "where should I get pizza in Bushwick tonight" does not have a restaurant database it maintains. It runs a search, retrieves pages, reads them, and writes a paragraph. The restaurants that end up in the paragraph are the ones described clearly on the pages that came back. Your influence over that is entirely upstream, in what those pages say about you.
+
+## The retrieval step is where you win or lose
+
+Break the answer into two stages, because the fixes are different for each.
+
+First the assistant retrieves. It issues one or several searches, pulls a handful of pages, and those pages are the raw material. If nothing describing your restaurant is in that set, nothing else you do matters. Second, it summarizes what it retrieved into a recommendation, and at that point the question is whether the pages describe you in a way that matches what the person asked for.
+
+So a query like "best tacos near me" is won by pages that already say who has good tacos in that neighborhood, which are usually not your pages. Local guides, review sites, city blogs, Reddit threads, and directory listings do that work. A query like "does Mario's on Grand take reservations" is answered from your own site, if your own site says so in text.
+
+Two different problems. Most restaurants are weak at both, and the second one is cheap to fix this week.
+
+## Your site is a fact sheet before it is a brand
+
+The single most common failure is a beautiful site that a crawler reads as almost nothing. Full-screen video, a menu as a PDF or a JPEG, hours rendered inside an image, address in the footer as part of a graphic.
+
+A human reads that fine. A retrieval system reads a page with four words on it.
+
+What needs to exist as selectable text on a page:
+
+- Your cuisine, in the words customers use, not your positioning language. "Neapolitan pizza and pasta" beats "seasonal Italian-inspired plates."
+- The neighborhood name and the city, written out, because people search by neighborhood and an address alone does not always resolve to one.
+- Hours per day, including which days you are closed, matching what your listings say.
+- Whether you do takeout, delivery, reservations, walk-ins, catering, and large parties, each stated in a sentence.
+- Your menu as text on a page, with item names and prices, not as a link to a downloadable file.
+
+The menu one is the most work and the most valuable. A [text menu page](/blog/menu-page-seo-restaurants) is what lets an assistant answer "do they have gluten-free pasta" without guessing, and guessing is where wrong answers about your restaurant come from.
+
+## Structured data helps, and it is not the main event
+
+Adding schema markup makes your facts machine-readable in a standard format, which reduces the chance a system misreads your hours or your price range. It is worth doing, it takes an afternoon or a plugin, and it is the kind of thing that pays off quietly. The [LocalBusiness and Restaurant markup](/blog/localbusiness-schema-restaurants) covers the fields that matter.
+
+What it will not do is get you recommended. Markup describes a page that already exists; it does not create a reason for anyone to retrieve that page. Operators who add schema and see nothing change have usually skipped the harder part.
+
+## The pages other people wrote are the ones that get retrieved
+
+For recommendation queries, third-party coverage does most of the work, and this is the uncomfortable part because you control it least.
+
+What helps, roughly in order: being listed accurately everywhere that maintains restaurant listings, having reviews with actual text in them rather than bare star ratings, appearing in local roundups and neighborhood guides, and being mentioned in the kind of forum threads where people ask locals for recommendations. None of that is a growth hack. It is the same work that mattered for search before assistants existed, which is why [showing up in AI search](/blog/how-restaurants-show-up-in-ai-search) reads a lot like ordinary local marketing with a different justification.
+
+Where restaurants genuinely lose ground is inconsistency. Your name spelled three ways, an old suite number, a phone number from a previous point-of-sale system, a location you closed in 2023 still live on two directories. Every inconsistency is a chance for a system to describe you wrong or to fail to connect a mention to you at all. Cleaning that up is boring and it is the highest-return thing on this page. The mechanics are in [citations and directory listings](/blog/citations-directories-restaurants).
+
+Do not buy links, do not pay for fake reviews, and do not commission a hundred thin pages about your neighborhood. Those tactics were bad before and they are worse now, because a summarizer that finds contradictory low-quality pages about you tends to just leave you out.
+
+## Ask the assistant about yourself, then fix what it gets wrong
+
+The useful audit is not "did I appear." It is "what does it think I am."
+
+Run five prompts, once a quarter, and read the answers as a listings report:
+
+- Tell me about [your restaurant] in [your city].
+- What are the hours for [your restaurant]?
+- Does [your restaurant] deliver, and what area?
+- What kind of food does [your restaurant] serve and what is it known for?
+- Best [your cuisine] in [your neighborhood].
+
+The first four will surface concrete errors with a fixable source: a wrong closing time on some directory, a menu description from a menu you retired, an old phone number. Chase each error back to the page it came from and correct it there. The fifth tells you whether you are in the conversation at all for your category, which is a slower problem.
+
+Expect the answers to differ between assistants and to change between runs. That variability is normal and is a reason to fix underlying facts rather than to chase a specific output.
+
+## What this has to do with your phone, which is less than vendors imply
+
+Some of the pitch around voice AI blurs into this topic, so it is worth separating.
+
+An automated phone line does not affect retrieval. It does not create pages, it does not influence rankings, and no assistant knows or cares how your calls are answered. If someone tells you their phone product improves your AI search visibility, ask them by what mechanism, and watch what happens.
+
+The one real connection is that both fail on the same underlying problem. When your hours are wrong in your listings, an assistant tells people you are open and a customer arrives at a locked door. When your hours are wrong in your phone system's configuration, the line tells a caller the same thing. One source of truth for hours, menu and delivery area, pushed everywhere, fixes both. That is also most of what [answer engine optimization for restaurants](/blog/what-is-answer-engine-optimization-restaurants) amounts to in practice.
+
+## Where to spend the next two weeks
+
+Put your menu on a page as text. Write four sentences on your homepage saying what you serve, where you are, when you are open, and how to order. Fix your name, address and phone across every listing you can find. Then ask an assistant about your restaurant and see what it still gets wrong.
+
+If you do only the first of those, you will have done more than most restaurants in your city. The gap here is not sophistication, it is that almost nobody has bothered to write down in plain text the things a customer would want to know.

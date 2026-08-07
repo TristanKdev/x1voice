@@ -1,0 +1,82 @@
+---
+title: "What Deliverect does for phone orders, and where delay lives"
+description: "Deliverect translates orders into your POS and pushes your menu outward. What that means for phone ordering, where the lag sits, and how to set it up."
+publishedAt: "2026-05-30"
+faqs:
+  - question: "What does Deliverect actually do?"
+    answer: "It moves orders from a channel into your POS and pushes your menu from a central place out to those channels. It does not take orders itself and it does not talk to customers. Think of it as a translator that speaks both your POS's format and the format of every ordering source connected to it, so each source doesn't need its own custom build."
+  - question: "Does routing phone orders through Deliverect slow down the call?"
+    answer: "No. The conversation and the ticket delivery are separate clocks. A caller talks to the voice agent in real time; the finished order is handed to Deliverect afterward and injected into the POS. Any middleware lag shows up as seconds between the caller hanging up and the ticket printing, not as pauses during the conversation."
+  - question: "Do I need Deliverect if I run Square or Clover?"
+    answer: "Not for X1 Voice. Square, Clover and OrderCounter are direct connections, so adding middleware there gives you an extra hop and an extra bill without buying anything. Deliverect matters if your POS is Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink or Micros, which is how X1 Voice reaches those systems."
+  - question: "What breaks most often after a Deliverect setup goes live?"
+    answer: "Menu drift. Someone changes a price or adds an item in the POS and the change never reaches the middleware menu, or an item gets 86'd on the line and nothing tells the phone channel. Nearly every complaint that starts with 'the phone agent sold something we don't have' traces back to two menus that stopped agreeing."
+  - question: "How long does a Deliverect connection take to set up?"
+    answer: "The technical connection is fast. The menu work is not. Mapping items and modifiers so that a phone order lands as a ticket your kitchen can read without interpretation is the part that takes real hours, and it takes longer if your POS menu has accumulated years of duplicated or dead items."
+---
+
+Deliverect is a translator. It does not take orders, it does not own your customers, and it never speaks to anyone. It takes an order that originated somewhere else and writes it into your POS in the format your POS expects, and it pushes a copy of your menu outward to the channels that need one.
+
+Holding it that narrowly in your head is what keeps you from blaming the wrong system at 7:40 on a Friday when a ticket doesn't print.
+
+## What it sits between
+
+On one side are order sources. Delivery marketplaces, your own ordering site, kiosks, and, relevant here, a voice agent answering your phone. On the other side is your POS and whatever prints or displays tickets on the line.
+
+Without something in the middle, each source needs its own direct build against each POS. That's a lot of separate engineering, and it's the reason small ordering channels historically arrived as a tablet on your counter instead of tickets in your POS. Middleware collapses that into one connection per POS and one per channel.
+
+For X1 Voice this is exactly why the [integrations list](/integrations) splits the way it does. Square, Clover and OrderCounter are direct. Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros are reached through Deliverect. Same phone agent, same conversation, different path for the last few feet.
+
+## Two clocks, and only one of them is on the call
+
+Operators hear "middleware" and assume it adds a pause while the caller waits. It doesn't, because the two things happen at different times.
+
+Conversation latency is the gap between a caller finishing a sentence and the agent starting its reply. That's a voice-pipeline problem, it's measured in milliseconds, and middleware plays no part in it. We go through it in [sub-second latency for restaurant voice AI](/blog/sub-second-latency-voice-ai-restaurants).
+
+Injection latency is the gap between the order being confirmed and the ticket appearing in your POS. That one is real, it's usually seconds, and it can stretch during a heavy hour.
+
+That second number matters for one practical reason: your quote. If you told the caller fifteen minutes and the ticket lands forty seconds later, nothing changed. If your kitchen times everything from ticket print and injection is running two minutes behind during your rush, every quote you give is quietly two minutes optimistic.
+
+So measure it. Place a test order, start a stopwatch when the agent confirms, stop it when the ticket prints. Do it once at 2 p.m. and once at 7:15 p.m. If those two numbers are far apart, build the difference into your quoting rather than pretending it isn't there.
+
+## The menu is the whole job
+
+Order injection is plumbing. It either works or it obviously doesn't, and when it doesn't, you find out immediately. The menu is where the slow, expensive problems live, because a menu error looks fine until a customer is standing at your counter.
+
+Deliverect holds a menu that the connected channels read. Your POS holds a menu your staff reads. Every setup starts with those two in agreement and every setup drifts apart later. Modifier structure is where drift does the most damage: which modifiers are required, which are optional, which carry an upcharge, and which apply only to certain sizes. A phone agent that has been handed a flat modifier list will happily accept combinations your kitchen has no way to make. The [menu sync deep dive](/blog/menu-sync-deep-dive-voice-ai) covers what good structure looks like and how to check yours.
+
+## Setting it up in the order that hurts least
+
+The technical connection is the easy part and usually the fastest. The sequence below is what keeps the rest from turning into three weeks of small fires.
+
+- Clean the POS menu first, before anything is connected. Delete dead items, collapse duplicates, and fix the modifier groups you have been working around for two years. Everything downstream inherits whatever mess you leave here.
+- Map a small, high-volume slice first, ten or fifteen items that make up most of your ticket count, and run real orders through them before touching the long tail.
+- Decide who owns the menu, by name. One person, one system of record. Two people editing menus in two places is the single most reliable way to sell something you can't make.
+- Print every test ticket and hand it to whoever actually works that station. If a cook has to interpret the ticket, the mapping is wrong, no matter how correct it looks in a dashboard.
+- Write down what happens when the connection drops. Where do orders go, who gets told, and does the phone agent stop taking orders or keep taking them. Answer this before it happens, not during.
+
+## What breaks after go-live
+
+Three things, in roughly this order of frequency.
+
+Items get 86'd on the line and nothing propagates. This is the failure your customers notice fastest, and it's worth reading [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) before you assume your setup handles it.
+
+Prices change in the POS and the channel menu keeps the old ones. Usually caught by a manager staring at a variance, weeks later.
+
+New items get added to the POS and never reach the phone channel, so the agent tells callers you don't have the thing you're actively promoting. Add "update the ordering channels" to whatever checklist you already use for menu changes and this one disappears.
+
+## What it looks like across several locations
+
+The single-store case is simple enough that the middleware question is nearly academic. The multi-unit case is where the shape of the platform starts to matter, because you're no longer maintaining a menu, you're maintaining a policy about menus.
+
+Two patterns work. One central menu published to every store, with a small set of store-level overrides for price zones and items a particular kitchen genuinely can't make. Or fully independent store menus, which is honest for a group of unrelated concepts and unmanageable for a group of the same concept.
+
+What doesn't work is the middle: a central menu that store managers are quietly allowed to edit. Six months in, no two locations agree, nobody knows which version is correct, and every phone order at store four is a coin flip. Pick a model, write it down, and give exactly one person the ability to break the rule.
+
+## When Deliverect is the wrong answer
+
+If you're a single location on Square, Clover or OrderCounter, adding middleware buys you a hop, a bill, and another system to blame. Take the direct connection.
+
+If you're a multi-unit group on one of the POS platforms Deliverect reaches, or you're already running marketplace orders through it and want the phone channel in the same place, the case is straightforward. That's the setup covered in [Deliverect for multi-location voice agents](/blog/deliverect-voice-agent-multi-location-restaurants).
+
+Here's the test. Ask what a new ordering channel costs you to add six months from now. If the answer is "another tablet and another menu to maintain by hand," middleware is worth what it costs. If the answer is "nothing, it plugs into the POS directly," you don't need it, and the depth of that direct connection matters far more than any middleware feature list. That argument is in [why POS integration depth beats voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality).

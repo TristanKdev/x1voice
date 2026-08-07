@@ -1,0 +1,80 @@
+---
+title: "A UTM Convention That Survives Three Agencies"
+description: "Forty spellings of Facebook in one GA4 property is a naming problem, not an analytics problem. A tagging convention any restaurant can hold to across vendors."
+publishedAt: "2026-06-23"
+faqs:
+  - question: "What is the right way to structure UTM parameters for a restaurant?"
+    answer: "Source is the platform, medium is the type of traffic, and campaign is what you were promoting plus when. Keep everything lowercase, use hyphens instead of spaces, and never put a person's name or an agency's internal job code in any field. Consistency across the five fields matters more than the specific words you choose."
+  - question: "Are UTM parameters case-sensitive?"
+    answer: "Yes, and this is the single most common cause of split reporting. Facebook, facebook, and FaceBook are three different sources in GA4 and their numbers never combine. Force every tag to lowercase at the point it is created, and add a filter or transformation in GA4 as a backstop for anything that slips through."
+  - question: "Should I tag my email newsletter and printed materials?"
+    answer: "Tag email and any QR code that points at a URL, since both cost nothing to tag and are otherwise reported as direct traffic. For printed materials, use a short vanity URL that redirects to a tagged destination rather than printing raw parameters, because nobody types a 90-character URL off a table tent."
+  - question: "Who should own the UTM convention if an agency runs my ads?"
+    answer: "You should, and it should live in a document you control rather than in the agency's account. Agencies change, and the convention is what makes this year's numbers comparable to last year's. Put adherence to your convention in the scope of work so a new vendor inherits a rule rather than inventing one."
+  - question: "Does UTM tagging help with phone orders?"
+    answer: "Indirectly but meaningfully. Tags identify the session that preceded a call, so a caller who arrived from a tagged campaign and then tapped your number can be connected to that campaign. Without consistent tags the session exists but cannot be grouped with anything, which makes the phone side of your reporting unusable."
+---
+
+You open the GA4 property you inherited and the source list has facebook, Facebook, FB, fb-ads, facebook.com, and IG_Story_March. Six rows that are one channel. Nothing in that property can be summed, and three years of history is unrecoverable.
+
+Nobody did anything wrong, exactly. Three agencies each brought their own habits, a former manager tagged the newsletter by hand, and the parameters were never written down anywhere. The fix is not an analytics fix. It is a naming rule, enforced in a contract.
+
+## The failure you are preventing
+
+UTM parameters are five strings appended to a link that tell your analytics where a visitor came from. They are free-text, which means nothing validates them and every misspelling becomes a permanent new row.
+
+The damage compounds in a specific way. You cannot answer "what did we spend per order on social last year" if social is spread across six spellings, and you cannot fix it retroactively because the raw values are already recorded. Six months of inconsistent tagging costs you the ability to compare anything against anything for as long as that data matters.
+
+For a restaurant, the practical consequence is worse than for most businesses, because your campaigns are short. A Mother's Day promotion runs eleven days. If those eleven days are tagged three ways, the campaign has no number at all.
+
+## The five fields, and what goes in each
+
+- `utm_source` is the platform, and only the platform: `google`, `facebook`, `instagram`, `yelp`, `mailchimp`, `doordash`. One word, no punctuation beyond a hyphen, and the same word forever
+- `utm_medium` is the type of traffic and should come from a closed list you never extend casually: `cpc`, `paid-social`, `email`, `organic-social`, `referral`, `qr`, `print`
+- `utm_campaign` is what you were promoting and when, in a fixed shape like `mothers-day-2026` or `catering-launch-q3-2026`, so campaigns sort chronologically in a report
+- `utm_content` distinguishes creative variants inside one campaign: `carousel-a`, `story-b`, `header-link`. This is where agencies want to put internal job codes, and where you should not let them
+- `utm_term` is for paid search keywords and is otherwise left empty rather than filled with something clever
+
+The specific vocabulary matters far less than the fact that it is fixed. A convention you dislike but follow beats a better one you drift from.
+
+## Lowercase, always, with no exceptions
+
+GA4 treats `Facebook` and `facebook` as separate sources. So does nearly every analytics tool. This is the rule that gets broken most often and causes the most damage per violation.
+
+Make it mechanical rather than a matter of discipline. Build tags with a spreadsheet or a link builder that lowercases automatically, never by typing parameters into a browser bar. Then add a lowercase transformation in GA4 as a second line of defense, since the person tagging a link at 11pm before a holiday push is not going to remember the rule.
+
+Same for spaces. A space becomes `%20` and produces a source called `paid%20social` that looks broken in every report, because it is. Hyphens only.
+
+## Where restaurants go wrong specifically
+
+Four patterns, and they are consistent across operators.
+
+Third-party marketplace links get tagged as if they were owned channels, which mixes commission-bearing orders into the same bucket as direct ones. Tag them, but with a medium that keeps them separable, because the two have completely different economics.
+
+QR codes go untagged. A code on a table tent, a delivery bag, or a receipt pointing at an untagged URL reports as direct traffic, and direct is where measurement goes to disappear. Tagging a QR code costs one minute at design time and is irrecoverable afterward.
+
+Campaign names encode the wrong thing. `spring-promo` tells you nothing in eighteen months. Include the offer and the year.
+
+And the location field gets skipped entirely by multi-unit operators, who then cannot tell which restaurant a campaign filled. Put the location in the campaign name or in `utm_content`, pick one, and never mix the two.
+
+The point of all this precision is that it becomes the join key for everything else. Consistent source and medium values are what let a phone order be traced back to the session that preceded it, which is the mechanic described in [tracking phone orders in GA4](/blog/tracking-phone-orders-in-ga4). Without them the session data exists and cannot be grouped, and the phone channel stays invisible for a reason that has nothing to do with phones. The same values feed the split described in [attribution between phone and online orders](/blog/attribution-phone-vs-online-orders) and the per-channel math in [customer acquisition cost for phone orders](/blog/customer-acquisition-cost-phone-orders).
+
+## What not to put in a tag
+
+Two things, and both show up in restaurant properties regularly.
+
+Nothing personal. A tagged link is copied, pasted, forwarded, and indexed, and anything in the parameters travels with it. A customer's email address in a `utm_content` field, which happens when someone builds email links by mail-merging the wrong column, is a privacy problem that will outlive the campaign by years.
+
+And nothing that changes meaning over time. `spring-menu` is a different menu every year. `new-location` stops being new. `agency-b` becomes meaningless the day you switch agencies, and it will be sitting in your reports for the rest of the property's life. Date-stamp anything seasonal and describe the offer rather than the moment.
+
+There is a third habit worth naming, which is tagging internal links. If a link from your own menu page to your own ordering page carries UTM parameters, it starts a new session and wipes the original source, so a customer who arrived from a paid ad is recorded as arriving from your own site. Tag inbound links only. This one quietly destroys more attribution than any spelling error.
+
+## Writing it down so it outlives you
+
+The convention needs to exist as a document, in your drive, owned by you.
+
+One page. The five fields, the allowed values for source and medium, the campaign name pattern with two examples, and the lowercase rule stated flatly. Attach a link-builder spreadsheet where someone fills four cells and gets a tagged URL back.
+
+Then put one sentence in every agency scope of work: campaign tagging follows the client's UTM convention, document attached, and non-conforming tags are corrected at the vendor's cost. That sentence is what makes the convention survive a vendor change, which is the only test that matters. Anything else lives in the head of whoever set it up, and that person leaves.
+
+Run a check once a quarter. Open your source and medium report, sort by name rather than volume, and look for near-duplicates sitting next to each other. Ten minutes, four times a year, and the property stays usable for as long as you own the restaurant. If you find drift, fix the tags going forward and note the date, because a documented break in a series is far more useful than a series you quietly stopped trusting. The wider reporting picture that all of this feeds is in [the restaurant phone analytics guide](/blog/restaurant-phone-analytics-guide).

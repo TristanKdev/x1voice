@@ -1,0 +1,78 @@
+---
+title: "How many answered calls actually become orders?"
+description: "Phone order conversion rate is easy to calculate and easy to misread. Here is the definition worth using, the traps in it, and what moves the number."
+publishedAt: "2026-06-10"
+faqs:
+  - question: "What is phone order conversion rate?"
+    answer: "The share of answered calls that end in a placed order. Sixty orders from a hundred answered calls is 60 percent. The definition only becomes useful once you separate calls that could have become orders from calls that never could, such as a vendor delivery or a job applicant, because mixing them makes the rate meaningless."
+  - question: "What is a good phone order conversion rate for a restaurant?"
+    answer: "It depends entirely on your call mix, so a benchmark from another restaurant tells you almost nothing. A takeout counter where nearly every call is an order attempt should sit far higher than a full-service room fielding reservation questions and directions. Track your own number over time and investigate the movements rather than chasing a target."
+  - question: "Why did my conversion rate drop after I improved call answering?"
+    answer: "Because you started answering the calls you used to miss, and those calls include the low-intent ones. Answering more calls raises order count while lowering conversion rate. The rate falling alongside rising orders is a good outcome that looks like a bad one on a dashboard."
+  - question: "What actually moves conversion on the phone?"
+    answer: "Answering promptly, knowing what is available, quoting an honest wait time, and not putting people on hold. Most lost conversions are not persuasion failures. They are a caller who was told an item was out after four minutes of ordering, or who was quoted 75 minutes and decided to eat somewhere closer."
+  - question: "Should I chase a higher conversion rate?"
+    answer: "Optimize order count and answered-call rate instead, and use conversion as a diagnostic that tells you where calls are dying. A system that drives conversion up by pressuring callers or by hiding a long wait time will post better numbers and produce worse Fridays. Read the rate next to your abandonment and your remake counts."
+---
+
+Sixty orders out of a hundred answered calls is a conversion rate of 60 percent. The calculation takes ten seconds. Interpreting it correctly takes considerably longer, and getting it wrong sends operators chasing a number that moves for reasons that have nothing to do with performance.
+
+The rate is worth tracking anyway. It is one of the few phone metrics that points directly at a fixable operational problem when it moves in an unexpected direction.
+
+## Define the denominator before you calculate anything
+
+Answered calls includes traffic that was never going to produce an order. Your linen vendor. A job applicant. Someone asking whether you are the place with the parking lot. A wrong number.
+
+If those sit in your denominator, your conversion rate is partly a measure of how much junk traffic you get, which is not what you want to know. Pull a sample of fifty calls, categorize them, and figure out roughly what share of your answered calls are order-capable. Then either restrict the denominator to those or, if you cannot classify reliably, at least know the proportion so you understand what your rate is actually made of.
+
+The other definitional question is what counts as an order. A caller who books catering for next Saturday converted, but not today. A caller who asks you to hold a table did not place an order at all and should probably sit outside this metric entirely. Write down your definitions once and stop changing them, because a rate compared against itself under two definitions tells you nothing.
+
+## The trap that catches most operators
+
+Conversion rate and answered-call rate move against each other, and this catches nearly everyone the first time.
+
+When you are missing half your calls, the ones that get through skew toward persistent callers with high intent. Someone determined to order from you specifically will let it ring, call back, and try again. Your conversion rate on those calls looks excellent.
+
+Then you fix coverage. Now the casual callers get through too, the ones asking about hours, the ones deciding between three places. Order count rises. Conversion rate falls. The dashboard says you got worse and the register says you got better.
+
+Always read the rate next to raw order count and answered-call rate. Any of those three alone will mislead you, which is the same problem described in [what is call containment](/blog/what-is-call-containment) and the reason the broader metric set exists in [voice AI metrics and KPIs](/blog/voice-ai-metrics-kpis-restaurants).
+
+## Where calls actually die
+
+Read transcripts or listen to recordings. Do not theorize about this, because the real causes are consistently more boring than the theorized ones.
+
+The common patterns are a caller told after several minutes of ordering that the item is unavailable, a caller quoted a wait time long enough to change their plan, a caller put on hold and lost, and a caller who could not get a straight answer to a delivery-area question. Persuasion is almost never the issue. Information and speed are.
+
+Each of those has a specific fix. Live availability handles the first, which is what [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) covers. Honest quoting handles the second, and it is better to lose the order at minute one than at minute five. Hold is usually a coverage problem rather than a script problem.
+
+## The wait-time question deserves its own answer
+
+Quoting shorter than reality raises conversion this hour and costs you the customer next month. It also generates the angry callback that consumes another five minutes of somebody's shift.
+
+The correct move is to quote what the kitchen can actually do, and to have whoever answers the phone know the current quote rather than guess it. If your quote is a guess made by a host who has not looked at the line in twenty minutes, your conversion number is measuring the quality of that guess. Throttling and capacity signaling are covered in [order throttling and kitchen capacity](/blog/order-throttling-kitchen-capacity-phone).
+
+## Hold time is the quiet killer
+
+A caller on hold is a caller who has not converted and is deciding. Every restaurant underestimates how long they leave people there, because the person who parked the call is busy and time passes differently when you are working.
+
+There is also a second cost to hold that the conversion number never captures. The person who parked the call has to remember it, and the ones they forget become an angry callback or a bad review rather than a clean loss.
+
+If you have a phone system that logs hold duration, pull it for your peak hour. If you do not, have someone time it manually for one shift. The number is usually longer than anyone would guess, and it explains a chunk of your unconverted calls without any further analysis. What happens to callers who never got answered at all is a separate and larger problem, measured in [abandoned call rate](/blog/abandoned-call-rate-restaurants).
+
+## What automation does to the number
+
+Software answering the phone changes conversion in both directions at once, and vendors will only tell you about one of them.
+
+Upward: no hold, no ring-out, consistent availability information, and a wait quote pulled from the actual system rather than from a guess. Consistency alone moves the number, since a caller who reaches an unhurried voice that knows the menu behaves differently than one who reaches a host mid-seating.
+
+Downward: your denominator grows with lower-intent calls that used to go unanswered, and some callers genuinely prefer a person and will hang up. Both effects are real and both belong in whatever you compare before and after.
+
+So compare order counts, not conversion rates, when you evaluate a change. Conversion is for diagnosing, not for scoring. Average ticket belongs in the same before-and-after, since the two together determine revenue, and that is treated in [average ticket and upselling on phone orders](/blog/ai-phone-ordering-average-ticket-upsell).
+
+## Running it monthly without kidding yourself
+
+Calculate the rate once a month against a stable definition. When it moves more than a few points, do not adjust anything until you have read twenty transcripts from the period.
+
+Most months the explanation will be structural: a new item, a seasonal shift in call mix, a change in your quoted wait times, a delivery zone question that keeps recurring. Those are worth acting on. A rate that drifts a couple of points with no visible cause is noise, and treating noise as signal is how operators end up rewriting a phone script that was fine.
+
+Pull your last full month, split answered calls into order-capable and everything else, and calculate the rate on the order-capable subset. If you have never done that separation before, the number you get will not match whatever you assumed, and the gap between the two is the first thing worth explaining.

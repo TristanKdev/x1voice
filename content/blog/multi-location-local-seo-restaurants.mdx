@@ -1,0 +1,70 @@
+---
+title: "Location pages, locators, and duplicate content traps"
+description: "Multi-unit restaurants lose local search to their own store locator. What a location page needs, what to never copy between them, and how to test it."
+publishedAt: "2026-04-05"
+faqs:
+  - question: "Does every restaurant location need its own page?"
+    answer: "Yes, if the location has its own address and phone number. A store locator that loads addresses into a map with no crawlable page per store gives search engines nothing to rank for that neighborhood. One page per location, at a stable URL, with the address and phone as text, is the baseline before any other local work matters."
+  - question: "Is duplicating text across location pages a penalty?"
+    answer: "Not a penalty in the punitive sense, but it wastes the pages. Twelve pages with the same three paragraphs and a swapped city name look like one page to a search engine and read as filler to a person. The fix is not spinning synonyms, it is putting genuinely different information on each page: hours, parking, the manager, what that kitchen does differently."
+  - question: "Should each location have its own phone number?"
+    answer: "For local search, yes. The number on the page should match the number on that location's Google Business Profile and every directory listing, and it should be a local number rather than a shared corporate line. Where calls actually route after they connect is a separate decision you can make however you want."
+  - question: "How do I handle a location that just opened or just closed?"
+    answer: "For a new location, publish the page before opening with the opening date stated plainly, since people search for it early. For a closed one, do not delete the page and leave a 404. Redirect it to the nearest open location or keep a short page saying it closed and where to go instead, because inbound links and old listings will keep sending traffic for months."
+  - question: "What breaks first as a group grows past ten locations?"
+    answer: "Consistency. Hours get updated in the POS but not on the page, a manager changes a Google listing directly, a delivery platform carries an old address. The failure is never dramatic, it is a slow drift that ends with three different sets of hours for the same store. Groups that stay clean assign one owner per data field, not per location."
+---
+
+A twelve-unit group in Phoenix ranks first for its brand name and nowhere for "pizza near me" in eight of the twelve neighborhoods it operates in. The website has a store locator with a map, a dropdown, and twelve pins. Clicking a pin opens a panel with the address. There is no page.
+
+That is the most common multi-location failure, and it is entirely fixable. A map widget is a convenience for people who already found you. It is not a page a search engine can rank for the neighborhood around that store, because for practical purposes there is nothing there.
+
+## One page per location, at a stable URL
+
+Each restaurant gets its own URL, with the address, the phone number, and the hours as text in the HTML rather than injected by a script after load. The URL should include something human-readable, and it should not change when you redesign.
+
+The reason to insist on stability is that this page will accumulate links and citations for years. Directory listings, local news mentions, a neighborhood association, somebody's blog post about the best wings in the county. Every one of those points at a URL. Change the URL structure in a redesign and you either set up redirects for all of them or you throw the value away, and in practice nobody sets up all the redirects.
+
+Your locator can stay. It should just link to those pages rather than replace them, and it should link with real anchors rather than JavaScript handlers.
+
+## What makes two location pages different
+
+The trap is templating. Somebody writes three good paragraphs about the restaurant, then replicates them across twelve pages with the city name swapped. Those pages are near-identical, and a search engine treats them roughly as one, which means eleven of them do nothing.
+
+Real differentiation is not harder, it is just more work. Each store has its own hours, and they are rarely identical. Each has its own parking situation, which is genuinely the most-asked question at most locations. Each has its own patio, or does not. Each sits near landmarks people use to describe where they are going. Some kitchens have equipment others do not, so the menu differs slightly. Some locations deliver and some do not, with different radiuses.
+
+There is also the neighborhood itself. A page for your Scottsdale store can reasonably say it is two blocks from a specific park, that the lot fills after seven on weekends, and that the light rail stop is a five-minute walk. None of that is keyword stuffing. It is the information a person standing nearby actually needs, and it happens to be the information that makes the page distinguishable from your other eleven.
+
+Write two or three paragraphs per page about that specific restaurant, and the pages stop being copies. The manager or GM at each store can usually produce the raw material in ten minutes if you ask a direct question: what do people call you and ask about most.
+
+The other thing to put on the page is what the phone is for. If the location takes catering orders, says so, and gives the number. Catering searches are neighborhood-specific and the buyer wants a local number, not a corporate contact form.
+
+## Consistency across the places you do not control
+
+Your page is one of a dozen places your address and phone number appear. The others are Google Business Profile, Apple Maps, Yelp, Bing Places, the delivery platforms, and whatever directories picked you up years ago.
+
+When those disagree, the disagreement is a signal that you might not be one clearly-identified business at one clearly-identified address, and local rankings suffer for it. The most common cause is not carelessness at the start, it is drift: a manager updates hours in one place, corporate updates them in another, nobody updates the third. Suite numbers get dropped. A location moves two doors down and half the listings never learn.
+
+Auditing this is unglamorous and it works. [NAP consistency for restaurants](/blog/nap-consistency-restaurants) covers what to check and in what order, and [Google Business Profile phone optimization](/blog/google-business-profile-phone-optimization) covers the single field that most affects whether calls reach the right store.
+
+## Markup, so a machine knows these are separate restaurants
+
+Each location page should carry structured data identifying it as a business at that address with that phone and those hours. Without it, you are relying on a parser inferring from your layout that the phone number in the footer belongs to a different store than the one in the header.
+
+For a group, the useful part is the relationship: each location marked as a branch of the parent brand, so the pages reinforce the brand entity rather than competing as unrelated businesses. The mechanics are in [LocalBusiness schema for restaurants](/blog/localbusiness-schema-restaurants), and the broader brand-identity question in [entity SEO for a restaurant brand](/blog/entity-seo-restaurant-brand).
+
+## Phone numbers, and the decision people get backwards
+
+Each location needs a distinct local number displayed everywhere that location appears. That is a local search requirement and also a customer expectation.
+
+What confuses operators is that this feels incompatible with centralizing how calls get handled. It is not. The published number and the routing behind it are separate layers. Each store keeps its own number, and where those calls land, whether at the host stand, a central team, or an agent that answers with that location's menu and hours, is a decision you make independently and can change without touching a single listing.
+
+That separation is what makes consolidation practical for a growing group. [Call routing across locations](/blog/call-routing-across-locations) works through the arrangements, and [per-store overrides for menu and hours](/blog/per-store-overrides-menu-hours) covers the part groups most often get wrong, which is treating twelve restaurants as one configuration.
+
+## Testing it without guessing
+
+Rankings tools report averages that hide the thing you care about, which is whether a person standing three blocks from your Tempe store finds your Tempe store. Averages across a metro will look fine while one neighborhood is invisible.
+
+Check it the direct way. Have someone physically near each location search the two or three phrases that matter for your category and note what comes up. Do that for every store, once a quarter. It takes an afternoon and it finds problems no dashboard surfaces, usually a listing with an old address or a page nobody noticed was returning an error.
+
+Then do the same for the phone. Call each published number from outside and see who answers, how fast, and whether the person on the other end knows which location they are representing. A group with clean listings and a phone that rings twelve times has moved the problem rather than solved it, and unlike a ranking drop, nobody reports it.

@@ -1,0 +1,76 @@
+---
+title: "Cut your modifier tree down to what people order"
+description: "Most restaurant modifier trees carry options nobody has picked in a year. Pruning them makes phone orders faster and tickets more accurate, for staff too."
+publishedAt: "2026-04-29"
+faqs:
+  - question: "How do I know which modifiers to remove?"
+    answer: "Pull twelve months of item-level sales and sort modifier selections by count. Options with near-zero selections across a full year are candidates for removal. Check seasonality before cutting, since a summer-only option can look dead in a January export, and confirm with the kitchen that the option is not a required build step."
+  - question: "Does a smaller modifier tree really make phone orders faster?"
+    answer: "Yes, because every required choice adds a question to the call. An item with four required modifier groups takes at least four exchanges to order, and each exchange is a chance for a misheard answer. Reducing required groups to the ones that genuinely change the plate shortens calls and lowers error rates."
+  - question: "What is the difference between a required and an optional modifier?"
+    answer: "A required modifier is one the kitchen cannot proceed without, such as protein choice or cook temperature. An optional one is a preference the item has a sensible default for. Most trees mark far more groups required than the kitchen actually needs, which forces callers to answer questions that have an obvious default."
+  - question: "Should defaults be set for every modifier group?"
+    answer: "For every group where a clear house standard exists, yes. A default lets the order proceed without a question and still allows a caller to change it. The exception is anything with a safety or cost consequence, such as an allergy substitution or a premium upcharge, which should always be stated explicitly."
+  - question: "Will simplifying modifiers break my existing online ordering?"
+    answer: "It can, so sequence the work carefully. Modifier changes usually propagate to every channel fed by the same POS menu, including online ordering and delivery marketplaces. Make changes on a slow day, verify each affected channel afterward, and keep a record of what changed so a problem is easy to trace."
+---
+
+Most restaurant modifier trees contain options that have not been selected in a year. Not rarely selected, selected zero times, sitting in a required group that every caller and every cashier has to walk past on the way to an order.
+
+The tree grew that way honestly. Someone added an option for a guest request in 2022, a vendor's onboarding template contributed thirty defaults, a seasonal item left its modifiers behind when it left the menu. Nobody removes anything, because removal feels risky and addition feels free.
+
+## Every required group is a question on the call
+
+The cost is easiest to see on the phone. An item with four required modifier groups cannot be ordered in fewer than four exchanges, no matter how efficient the person or the system taking the order. Ask, answer, confirm, next.
+
+Four exchanges is roughly forty seconds. Multiply by an order of three items and you have a call that runs past three minutes, which is long enough that callers start finishing the agent's sentences and answering the wrong question. Every extra exchange is another opportunity for a misheard answer to land on a ticket.
+
+The same tax applies at the counter and in the drive-through, which is why this is not a voice AI problem. Automation just makes it legible, because a transcript shows you exactly how many questions the order took.
+
+## Pull the data before touching anything
+
+The pruning decision should be made from a report, not from memory.
+
+Export twelve months of item-level sales with modifier detail from your POS. Sort by selection count within each modifier group. What you are looking for is the long tail: options with a handful of selections or none across a full year of service.
+
+Twelve months matters because seasonality lies to you. A summer-only option looks dead in a January export and gets cut, and then June arrives and nobody can order it. Take the full year.
+
+Two checks before anything comes out. Ask the kitchen whether the option is actually a required build step rather than a customer choice, because some trees encode preparation instructions as modifiers and removing one changes what leaves the line. And check whether the option carries a price, since a rarely-selected upcharge can still be the thing that makes a particular item profitable.
+
+## Required versus optional is where most of the win is
+
+Reclassification usually beats deletion. The typical menu marks far more groups required than the kitchen needs, and each unnecessary required group is a mandatory question with an obvious answer.
+
+If ninety percent of orders for an item take the same option, that option is a default, not a question. Set it, let the order proceed without asking, and let the caller change it if they want something else. The order takes one fewer exchange and the ticket is identical for the overwhelming majority of guests.
+
+The exceptions are worth naming. Anything with a safety consequence stays explicit, so allergy substitutions and cook temperature are always asked. Anything with a meaningful upcharge stays explicit, because a caller who is surprised by a price at the window disputes the order. Everything else can carry a default.
+
+### What this looks like on one item
+
+Take a burger with four required groups: temperature, cheese, bun, and side. Temperature stays required, since it has a safety and quality consequence and there is no defensible house default. Cheese has a house standard and becomes a default with a stated option to change. Bun is required only if you actually stock more than one and guests care; if ninety-five percent take the standard, it becomes a default. Side stays required, because it materially changes the plate and the price.
+
+Four questions become two. On a three-item order, that is six exchanges saved and about a minute off the call.
+
+## Depth is worse than width
+
+A flat group with eight options is easier to handle than three nested groups with three options each, both for a caller and for a system parsing the answer.
+
+Nesting forces a sequence. The caller has to answer the first question before the second one makes sense, and if they volunteer the third answer early, a rigid flow either discards it or asks again. Flat structures accept information in any order, which matches how people actually order out loud. That is the same principle that makes an open middle work in a phone flow, covered in [call scripts versus natural conversation](/blog/call-scripts-vs-natural-conversation).
+
+Where nesting is unavoidable, such as a pizza where size determines available topping counts, keep it to one level. Two levels of nesting on a phone order is where callers lose the thread. The general handling of these structures is in [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers).
+
+## Name the options so they survive a phone line
+
+A pruned tree with ambiguous option names has traded one problem for another. "Regular" and "Original" in the same group are indistinguishable out loud. So are "Mild" and "Wild" if you have both. Sizes named "Large" and "X-Large" collapse into each other on a compressed line more often than you would expect.
+
+The same collision test applies here as to item names, and the method is in [renaming menu items for phone clarity](/blog/menu-naming-for-voice-clarity). Say the two option names aloud to someone who cannot see the screen. If they ask which one you said, rename one of them.
+
+## Sequence the change so nothing breaks
+
+Modifier changes propagate. The same POS menu usually feeds your online ordering, your delivery marketplace listings, and your kiosk, so a change made for the phone lands everywhere at once.
+
+Do the work on a slow day, not before a weekend. Make one group's changes at a time and verify each affected channel before moving to the next. Keep a written record of what changed and when, because the problem you find three days later is much cheaper to trace if you can look up which group moved.
+
+Then re-verify the phone side specifically, since availability and modifier state are the two things most likely to drift after a menu edit. The failure modes there are worth knowing in advance, and [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) covers them.
+
+Here is the test worth running before you start. Time yourself ordering your three most popular items out loud, answering every required question. If any single item takes more than about fifteen seconds of questions, that item's tree is where the pruning pays for itself first, and the same minute you save on the phone is a minute you save at every other counter in the building. The accuracy side of that arithmetic is in [improving phone order accuracy](/blog/improving-phone-order-accuracy).

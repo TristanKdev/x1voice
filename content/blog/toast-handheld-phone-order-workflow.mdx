@@ -1,0 +1,76 @@
+---
+title: "Where phone orders land in a Toast handheld workflow"
+description: "Toast handhelds keep servers on the floor, and a phone order arrives on a different path entirely. Here is where the ticket shows up and who has to look at it."
+publishedAt: "2026-05-21"
+faqs:
+  - question: "Does a voice order appear on the Toast Go handheld?"
+    answer: "Usually not as a table check. Orders injected through Deliverect land as takeout or delivery orders in the Toast orders view and on whatever printer or KDS your takeout orders already fire to. A server carrying a handheld sees dine-in checks they opened; the phone ticket lives on the expo side. Confirm the exact routing during setup rather than assuming."
+  - question: "Do I need a second terminal for phone orders if my servers use handhelds?"
+    answer: "No. The order arrives in Toast through the integration, so no one has to key it anywhere. What you do need is a screen or printer at the pickup station where someone will actually see it, because a ticket nobody looks at is the same as a missed order regardless of how it got there."
+  - question: "Can I route phone orders to a specific Toast revenue center?"
+    answer: "In most configurations yes, and you should. Sending voice orders to the same revenue center as your other takeout keeps reporting clean and makes the numbers comparable month to month. Decide this before launch, because changing it later splits your sales history into two buckets that do not add up cleanly."
+  - question: "What happens on the handheld if the kitchen is slammed?"
+    answer: "Nothing automatic, which is why order pacing has to be configured on the voice side. The agent can quote longer pickup times or stop accepting orders during a set window, but Toast will not tell it the kitchen is behind. Set a maximum orders-per-fifteen-minutes rule and revisit it after a few busy nights."
+  - question: "Does this work with Toast's own online ordering?"
+    answer: "They coexist. Phone orders arrive through the integration and Toast Online Ordering arrives through Toast, and both end up in the same orders list. The thing to check is that both surfaces read the same item availability, because two ordering channels with independently maintained menus eventually disagree."
+---
+
+Friday, 7:40. Your server has a handheld in her apron, she is four tables deep in a section that just sat all at once, and the phone at the host stand rings for the third time in ten minutes. Nobody picks it up. That call was a $46 pickup order and you will never know it existed.
+
+Toast handhelds solve the first half of that problem well. Servers stay on the floor, orders fire the moment they are taken, and nobody walks to a terminal. What handhelds do not do is answer the phone, and the workflow question operators actually ask is: if a voice agent takes that call, where does the ticket come out?
+
+## The handheld and the phone ticket are on different rails
+
+A handheld is a terminal in a server's hand. It opens a check against a table, fires courses, and closes out. Every check on it belongs to a guest sitting in the room.
+
+A phone order has no table. It arrives at X1 Voice, gets built into a structured order, and is injected into Toast through [Deliverect](/blog/deliverect-setup-guide-restaurants) as a takeout or delivery order. From Toast's point of view it looks like any other off-premise ticket. It shows up in the orders view, prints or fires wherever your existing takeout tickets go, and carries a customer name and pickup time.
+
+So the honest answer is that the handheld mostly does not enter into it. Your servers keep doing what they were doing. The change happens at the expo window and the pickup counter, which is where phone tickets already land today when a host writes one down.
+
+That is a feature rather than a limitation. The last thing you want during a seating rush is a phone order buzzing on a server's handheld while she is describing the special.
+
+## What the integration actually does before Toast sees the order
+
+Toast reaches X1 Voice through Deliverect rather than a direct connection, which matters for two practical reasons.
+
+First, item mapping is explicit. Every menu item and modifier the agent can sell has to be mapped to a Toast item through the middleware. That mapping is where accuracy is won or lost, and it is worth an hour of your attention at setup. The details are in [Toast AI phone ordering integration](/blog/toast-ai-phone-ordering-integration).
+
+Second, there is a hop in the middle. An order passes from the voice layer to Deliverect to Toast, and each hop has its own status. When something goes wrong, the useful question is which hop it stopped at. Ask your vendor to show you where failed injections surface before you go live, not after your first one.
+
+The delay from a caller saying "that's everything" to a ticket printing is typically seconds, not minutes. It is not instantaneous, and on a very busy night you may notice it. It is still faster than a host writing an order on a pad and keying it in when she gets a free moment.
+
+## The routing decision you have to make on day one
+
+Toast lets you separate orders by revenue center, dining option, and order source. Voice orders can be tagged so you can see them apart from everything else, or blended into your general takeout bucket.
+
+Tag them separately for the first sixty days. You want to be able to pull a report that answers "what did the phone actually produce" without doing arithmetic in a spreadsheet. Average ticket, item mix, time of day, and refund rate on voice orders versus counter orders are all things you will want to know, and none of them are recoverable if the orders are indistinguishable.
+
+After sixty days, decide whether to keep the split. Some operators fold them in once the channel is boring and proven. Others keep the tag permanently because it makes staffing decisions easier.
+
+## Where a person still touches the ticket
+
+Automation on the phone does not remove the human from the pickup counter, and pretending otherwise is how rollouts go badly. Someone still has to:
+
+- Read the ticket, see the name and the quoted pickup time, and put the bag where the customer will find it
+- Handle the caller who shows up early and wants to know if it is ready
+- Catch the order that arrived with a modifier the kitchen thinks is odd, before it gets made wrong
+- Answer the phone for the calls that get escalated on purpose, like a complaint or a fifty-person catering inquiry
+- Mark the order picked up so your reporting means something
+
+That is a smaller job than answering every call, and it is not zero. The staffing change is usually that one person's phone duty turns into occasional counter duty, not that a position disappears. If your pitch to your GM is that this eliminates a role, the rollout will disappoint them.
+
+## Pacing, because Toast will not do it for you
+
+The integration writes orders in. It does not read your kitchen's state and slow down when the line is buried. If forty covers just sat and the fryer is full, the phone agent has no idea.
+
+So pacing has to be a rule you set on the voice side: a cap on orders per fifteen-minute window, a longer quoted pickup time during defined hours, or both. Start conservative. It is easier to loosen a cap after two good weeks than to apologize to eleven customers whose food was twenty minutes late on a Saturday. The reasoning behind the numbers is in [order throttling and kitchen capacity](/blog/order-throttling-kitchen-capacity-phone).
+
+Revisit the cap seasonally. The number that fit in February will be wrong in June.
+
+## A test to run before you trust it
+
+Place four orders yourself, from a phone that is not the restaurant's, at four different times: mid-afternoon dead hour, the front of dinner service, peak, and fifteen minutes before close.
+
+For each one, watch the whole path. Did the ticket appear in Toast, and how fast? Did it print or fire where somebody would actually see it? Was the modifier right, including the annoying one on your most-customized item? Did the quoted time match what the kitchen could really do at that moment? Did the near-close order get refused or accepted, and which did you want?
+
+If all four land clean, you have a working channel. If the peak-hour one landed slowly or the near-close one was accepted when your kitchen was already breaking down, you have a configuration problem, not a product problem, and it takes minutes to fix. Do this test again after any menu change, because a new item is the most common reason a previously clean integration starts dropping things. Toast users comparing options more broadly should start with [AI phone ordering for Toast](/blog/ai-phone-ordering-for-toast) and the [integrations overview](/integrations).

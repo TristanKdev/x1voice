@@ -1,0 +1,76 @@
+---
+title: "The DPA clauses that matter for a voice AI vendor"
+description: "A voice vendor holds recordings, transcripts and customer phone numbers. Here are the data processing agreement terms to read closely before you sign one."
+publishedAt: "2026-03-18"
+faqs:
+  - question: "Do I actually need a DPA with a voice AI vendor?"
+    answer: "Yes, if the vendor stores recordings, transcripts, or customer contact details on your behalf, which every voice ordering system does. The DPA is the document that says what they may do with that data and what happens to it when you leave. Without one you have a service contract and no written limit on secondary use."
+  - question: "What is the difference between a controller and a processor here?"
+    answer: "You are the controller because you decide why the caller data is collected. The vendor is the processor because they handle it on your instructions. That split matters practically: a processor may only use the data for the services you bought, so a vendor that reclassifies itself as a controller for some purposes has given itself permission to do more with your callers than you agreed to."
+  - question: "Can a vendor train its models on my call recordings?"
+    answer: "Only if your agreement allows it. Model training is a secondary use, and it belongs in a clause of its own rather than buried in a general improvement-of-services line. Ask whether training is on by default, whether it can be turned off per account, and whether anything derived from your calls survives after you cancel."
+  - question: "How long should a vendor keep call recordings?"
+    answer: "Long enough to resolve an order dispute and no longer, which for most restaurants is somewhere between thirty and ninety days. Set the number yourself rather than accepting an indefinite default. A retention period you chose is easier to defend than one the vendor picked, and shorter retention shrinks what a breach could expose."
+  - question: "What should the deletion clause say?"
+    answer: "It should give you a deadline in days, cover backups explicitly, and produce written confirmation when deletion is done. A clause that promises deletion within a commercially reasonable period is not a commitment. Ask what happens to data held by the vendor's own subprocessors, since that is where copies usually persist."
+---
+
+A voice vendor sends over two documents. The master services agreement is the one you read, because it has the price in it. The data processing agreement is the exhibit at the back, in smaller type, and it is the one that decides what a company you have never met can do with recordings of your customers' voices, their phone numbers, and their address history.
+
+Most operators sign both without opening the second. That is usually fine, right up until it isn't, and the moment it stops being fine is either a breach notification or the day you try to switch vendors.
+
+## What the vendor is actually holding
+
+Be concrete about the data before reading any clause. A voice ordering system that answers your phone accumulates the audio of each call, a text transcript of that audio, the caller's phone number, the items they ordered, and often a delivery address. Over a year of ordinary volume that is a searchable record of who eats what and where they live.
+
+None of it is exotic. All of it is the kind of thing that shows up in a breach notification letter, and the phone number plus address combination is exactly what state privacy statutes were written about. The [ownership and privacy questions](/blog/voice-ai-data-ownership-privacy) sit upstream of the contract language, and it is worth being clear on those before you start marking up a document.
+
+## Controller and processor, and why the label is not decorative
+
+The DPA will name you the controller and the vendor the processor. That is not boilerplate. It is the whole structure of the agreement.
+
+Controller means you decide why the data exists. Processor means the vendor handles it only on your instructions, for the services you bought, and for nothing else. Every meaningful restriction in the document hangs off that distinction.
+
+So read for the place where the vendor quietly becomes a controller. It usually appears as a sentence saying the vendor acts as a controller with respect to service analytics, product improvement, or aggregated insights. Once a vendor is a controller for a purpose, your instructions stop governing it, and they are free to do what their own privacy policy permits. Sometimes that carve-out is narrow and reasonable. Sometimes it is wide enough to drive a data licensing business through. Ask which purposes it covers and get the answer in the document rather than in an email.
+
+## The model training clause
+
+This is the clause that did not exist in DPAs five years ago and is now the one worth the most attention.
+
+Ask directly: do you train models on customer call audio or transcripts, and is that on by default? A vendor should be able to answer in one sentence. If the answer involves several sentences about anonymization, keep asking, because anonymized speech is a harder claim than it sounds. Voices are identifying, and a transcript stripped of names still contains the address someone read out loud.
+
+If training is permitted, three things belong in writing. What is trained on, whether you can disable it for your account, and what happens to a model that has already learned from your data when you cancel. That last one rarely has a clean answer. A model does not un-learn, and a vendor who says otherwise is either confused or telling you what you want to hear. The realistic ask is that training stops on termination and that no new derived artifacts are created from your data after that date.
+
+For a single-location operator this may genuinely not matter to you. Decide that on purpose rather than by not reading.
+
+## Subprocessors, and the list that is never in the contract
+
+Your vendor does not do everything itself. Speech recognition, telephony, transcription, and hosting are usually separate companies, and each one touches your call data.
+
+The DPA should require the vendor to keep a current subprocessor list, make it available to you, and give you notice before adding a new one. Thirty days is a common notice period. What matters more than the number is whether you get to object, and what happens if you do. Many agreements let you object and then offer termination as your only remedy, which is honest if unsatisfying. At least know that is the deal.
+
+The practical reason to care: when you ask where your data physically sits, the answer is usually a subprocessor's answer, not your vendor's. Same for the answer to how quickly it can be deleted.
+
+## Retention and deletion, written as numbers
+
+Two clauses, and both should contain digits.
+
+Retention should say how long recordings and transcripts are kept. Pick a period tied to something real. Most restaurants need a recording long enough to settle a dispute about an order, which is days to weeks, not years. Sixty days covers almost every argument you will ever have with a customer about what they ordered. Longer retention gives you very little and gives an attacker considerably more, and it interacts with [call recording consent rules](/blog/call-recording-consent-laws-restaurants) in ways that get more complicated the longer the tape sits around. A written [retention policy](/blog/call-recording-retention-policy) is the artifact both the DPA and your own staff should point at.
+
+Deletion should say how many days after termination the data is gone, whether backups are included, and whether you get written confirmation. Watch for the word "backups" being absent, because that is where copies live for months after the primary store is wiped. A clause that says deletion happens within a commercially reasonable timeframe has committed to nothing.
+
+While you are in that section, check what you can take with you. Transcripts and call logs are yours in principle, but principle without an export format is a shrug. Ask what the export looks like and whether it costs anything, which is the same question as [what you get back when you leave](/blog/data-portability-when-you-leave).
+
+## Breach notice, and the clock that actually starts
+
+Every DPA has a security incident clause. Most of them say the vendor will notify you without undue delay. That phrase is doing a lot of work and none of it for you.
+
+Push for a number of hours and a definition of when the clock starts. Notification within seventy-two hours of the vendor becoming aware is a normal ask. Then read what the notice must contain: what data was involved, how many of your records, what the vendor is doing about it. A notification that tells you an incident occurred without telling you whether your callers were in it leaves you unable to meet your own obligations to those callers.
+
+Also check who pays for the notification. If your customers must be told, that is postage, staff time, and possibly a credit monitoring offer. Most DPAs leave that on you.
+
+## What to do with this before you sign
+
+Print the DPA and mark five things: the controller carve-out, the training clause, the subprocessor notice period, the retention number, and the breach notification window. If any of the five is missing or is stated as an adjective rather than a number, that is your redline list. Vendors negotiate these more often than operators expect, particularly the retention period, which usually costs them nothing to change.
+
+Then ask for the same answers in the [security questionnaire](/blog/voice-ai-security-questionnaire) and see whether the two documents agree. When a sales answer and a contract clause disagree, the contract is what you bought.

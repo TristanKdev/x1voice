@@ -1,0 +1,68 @@
+---
+title: "Who pays when a voice agent gets an order wrong"
+description: "An AI phone agent will occasionally mishear an order. Here is how liability, refunds and your existing insurance policies actually handle the fallout."
+publishedAt: "2026-03-20"
+faqs:
+  - question: "Is my vendor liable if their voice agent takes an order incorrectly?"
+    answer: "Almost never in the way operators expect. Software contracts typically cap the vendor's liability at a few months of fees and exclude consequential damages, so a mistaken order is your cost to eat. Read the limitation of liability section before assuming otherwise, because that clause, not the marketing, defines who carries the risk."
+  - question: "Does my general liability policy cover a wrong order?"
+    answer: "General liability covers bodily injury and property damage, so it responds to someone getting sick, not to a remade sandwich. A comped meal is an operating expense, not a claim. The place a wrong order becomes an insurance question is when it involves an allergen and someone is harmed, which your existing food-related coverage addresses the same way it always has."
+  - question: "Should a voice agent take allergy information at all?"
+    answer: "It can record what a caller says, but it should not be your allergen control. The safe configuration passes any allergy mention to a human before the order is confirmed, because the consequences of a misheard word are different in kind from a wrong soda. Decide this deliberately and write it into your escalation rules."
+  - question: "How do I prove what a caller actually said?"
+    answer: "The recording and transcript, which is one practical advantage of an automated line over a rushed employee. Disputes about who said what get resolved in about ninety seconds instead of becoming a standoff. Keep recordings long enough to settle the argument, and make sure a shift manager knows how to pull one without calling the vendor."
+  - question: "What error rate should I expect before this becomes a real cost?"
+    answer: "Measure your own rather than accepting a benchmark. Pull a week of orders, compare tickets to transcripts, and count the ones that were wrong. Then compare that number to your staff's error rate on the same menu, which almost nobody has ever measured. The comparison usually matters more than the absolute figure."
+---
+
+A caller orders a large pepperoni with no onions. The ticket prints with onions. Twenty minutes later someone is on the phone, annoyed, and you are remaking a pizza and probably comping it. Total cost to you: eleven dollars of food, a driver trip, and a customer who is now slightly less likely to call again.
+
+That happens with human order takers every week and nobody calls a lawyer. It happens with a voice agent and operators immediately want to know who is responsible. The honest answer is that you are, in the same way you already were, and the more useful question is which errors are ordinary operating cost and which ones are actually an insurance event.
+
+## The contract already answered this, and you probably have not read it
+
+Start with the vendor agreement, because it settles the question before any insurance discussion begins.
+
+Software contracts almost universally contain a limitation of liability clause capping the vendor's exposure at something like the fees you paid over the prior three or twelve months, plus an exclusion for consequential and indirect damages. Lost profits, reputational harm, and the cost of the food you remade all sit inside that exclusion. So a vendor whose agent misheard "no onions" owes you, at most, some portion of your subscription, and realistically owes you nothing because a single error is not a service failure under any reasonable service level term.
+
+That is not sharp practice, it is how every piece of software you run is sold, including your POS. Your card processor's agreement is written the same way. The point is not to be outraged about it but to stop imagining there is a party standing behind your orders who is not you.
+
+What you can reasonably negotiate is service credits tied to uptime and to a measurable accuracy floor, which is a different lever than liability. A vendor who will not put any accuracy commitment in writing is telling you something.
+
+### What to actually look for in the agreement
+
+Three sentences matter. The liability cap and its number. The exclusion list, specifically whether it swallows lost revenue. And the indemnity, which usually protects you against third-party intellectual property claims and against data breaches, and usually does not protect you against a wrong sandwich. If you are reading that section anyway, the [data handling terms](/blog/voice-ai-data-ownership-privacy) live nearby and are worth ten more minutes.
+
+## Most order errors are not an insurance question at all
+
+Insurance responds to defined categories of loss. A remade order is not one of them.
+
+General liability covers bodily injury and property damage to third parties. A comped entree is neither. Your deductible is almost certainly larger than the comp, and filing claims for operational costs is how restaurants end up non-renewed. Property, business interruption, and equipment coverage are similarly irrelevant to an order taken wrong.
+
+So the ordinary case, the wrong modifier, the missing side, the drink that was supposed to be diet, belongs in your comp and waste line. It always did. If a voice agent moves that line, you will see it in your P&L within a month, and that is the correct place to be watching. Track it against a baseline you took before launch, using something like the [order accuracy measurement method](/blog/order-accuracy-measurement-method), and treat the number as an operating metric rather than a legal one.
+
+The scenario that does reach insurance is the one every operator already knows about, and it has nothing to do with automation being new.
+
+## Allergens are a different category and deserve a different rule
+
+If a caller says they have a shellfish allergy and the order goes out with shellfish, you are in the territory your general liability policy was written for, and the fact that a machine took the order does not change your exposure. You served the food. You are the one with the duty.
+
+Which is why the correct configuration is not "make the agent very good at allergies." It is to take allergen handling out of the automated path entirely.
+
+The practical version: any mention of an allergy, an intolerance, or a severe dietary restriction triggers a transfer to a person before the order is confirmed. That costs you a handful of transfers a week and removes the single scenario where a transcription error turns into someone in an emergency room. It is also easier to explain to your insurer, your staff, and a jury than any argument about model accuracy.
+
+Some vendors will tell you their system handles allergens reliably. It may well. Configure the transfer anyway. The asymmetry between the cost of the transfer and the cost of the bad outcome is not close, and this is a place where being conservative costs almost nothing.
+
+Tell your insurance broker you are running an automated phone line. Not because it will change your premium, and it probably will not, but because a broker who learns about it after a claim is a broker who starts asking whether you disclosed a material change. One email now.
+
+## The part where automation actually helps you
+
+Here is the argument for the other side, and it is stronger than most operators expect: a voice agent produces evidence, and your staff does not.
+
+When a customer insists they ordered no onions and your employee insists they did not say that, you have two memories and no record, and you comp the food because arguing with a customer costs more than a pizza. Every restaurant makes that trade a dozen times a month. With a recorded line you pull the audio, listen to fifteen seconds, and know. Sometimes the customer is right and you comp with a clear conscience. Sometimes they are wrong and you can say so kindly, or comp anyway and know it was a courtesy rather than a mistake.
+
+That changes the economics of disputes more than it changes the error rate. It also gives you a real training loop, since a wrong order with a transcript attached tells you exactly which word was misheard and whether it was a menu naming problem or a genuine recognition failure. That is the loop described in [improving phone order accuracy](/blog/improving-phone-order-accuracy), and it is the reason error rates on a configured line tend to fall over the first few months while a human team's rate stays roughly flat forever.
+
+Make sure a shift manager can pull a recording without a support ticket. A dispute resolution advantage you can only access in three business days is not an advantage. And make sure the people fielding the callback know the flow, which is most of what [handling refund and complaint calls](/blog/handling-refund-complaint-calls) covers.
+
+Before you launch, write down two rules and give them to your managers: what gets comped without asking, and what gets escalated to you. Then set the allergen transfer. Those three decisions cover essentially every version of this that will ever happen to you, and none of them require a lawyer.

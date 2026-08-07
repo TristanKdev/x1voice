@@ -1,0 +1,72 @@
+---
+title: "Voice AI for empanada shops: dozens, flavors, and trays"
+description: "Empanada orders are arithmetic on the phone. Here's how a voice agent handles mixed dozens, sold-out flavors, and trays without pulling staff off the line."
+publishedAt: "2026-01-14"
+faqs:
+  - question: "Can a voice agent handle a mixed dozen?"
+    answer: "It can, provided the vendor built quantity math into the ordering flow rather than treating each flavor as a separate line item. The agent has to track a running count, tell the caller when the mix is short or over, and confirm the total before it writes the ticket. Ask to hear a recording of exactly that call before you sign anything."
+  - question: "What happens if a flavor runs out mid-shift?"
+    answer: "That depends entirely on whether your POS knows. If your staff marks the item unavailable and the agent reads that state live, callers get offered something else during the call. If availability only updates overnight, the agent will keep selling a flavor you ran out of at noon, and you will be making apology calls at four."
+  - question: "Do most empanada shops get enough calls to justify this?"
+    answer: "Some do and plenty do not. A shop doing walk-up counter business with a dozen calls a week will not see the money back. The math works when the phone is a real order channel, especially weekend tray orders and standing office accounts, and when calls go unanswered during your own rush."
+  - question: "Will it take orders in Spanish?"
+    answer: "Yes, and for many empanada shops that is the point rather than a bonus. A caller who reaches an English-only prompt and hangs up never shows up in any report you look at. A bilingual agent takes the same order in either language and writes one ticket in whatever language your kitchen reads."
+  - question: "Can it collect a deposit for a large tray order?"
+    answer: "Payment handling varies by setup and by what your POS supports. The more common pattern for large orders is that the agent captures the order and the pickup window, then routes the deposit conversation to a person or a payment link. Decide your own dollar threshold for that handoff before launch instead of after the first dispute."
+---
+
+It is 11:40 on a Saturday. A caller wants two dozen: six beef, six chicken, four spinach, four ham and cheese, and then asks what else you have because she needs four more to round it out. Your counter person is holding a fryer basket, there are five people in line, and the second line starts ringing.
+
+That call is worth eighty dollars and takes four minutes to take correctly. Most shops take it badly or not at all.
+
+## The order is arithmetic, not a list
+
+An empanada order is not a sandwich order. The caller is buying a quantity and then deciding how to fill it, which means the count and the contents get decided in a different order than they get spoken. People say "two dozen" first and then improvise the mix, change their mind halfway, and expect whoever is writing it down to keep a running total.
+
+A voice agent worth paying for does that math out loud. It tracks the running count, tells the caller she is four short of two dozen, and reads the whole mix back with a total before it writes anything into the POS. An agent that treats each flavor as an unrelated line item will happily record twenty-two empanadas against a two-dozen price and hand your kitchen a ticket that does not add up.
+
+This is the single thing to test in a demo. Ask the vendor to play a recording of a mixed-dozen order where the caller changes her mind mid-count. If they cannot produce one, the flow was not built for you.
+
+Pricing per dozen versus per unit is the other half. If your menu prices a dozen below twelve singles, the agent needs to apply the dozen price when the count crosses over, and it needs to say so, because a caller who ordered eleven and hears that twelve is cheaper usually buys twelve.
+
+## Sold-out flavors are the failure that loses the customer
+
+You run out of spinach at one o'clock most Saturdays. Everyone who works there knows it. The question is whether your phone knows it.
+
+If your staff marks the item unavailable in the POS and the agent reads that state during the call, the caller hears it in the moment and picks something else. That is a normal, forgettable interaction. If availability is stale, the agent sells spinach at 1:20, the ticket prints, and someone has to call back and negotiate. You have now spent more labor on the apology than you saved on the order, and the caller remembers.
+
+Live availability is a configuration question, not a feature checkbox, and it is worth being blunt about how often it is set up badly. The specifics are in [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync), and the ways it breaks are in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes). If a vendor cannot tell you how fast an 86 propagates to the phone, assume it does not.
+
+## What a tray order needs captured before the call ends
+
+Party trays are where the money is and where the phone fails you. The order itself is easy. Everything around it is what gets forgotten:
+
+- The pickup window, not the pickup time, because a caller who says "around four" means something different than four o'clock and your kitchen needs the real answer
+- Whether the tray goes out hot, cold for reheating, or frozen, since that decides when production starts
+- The count per flavor written the way your kitchen counts, not the way the caller said it
+- A callback number that was read back and confirmed, which is the one field people mumble
+- Whether a deposit applies, at what dollar figure, and who is collecting it
+
+Set your own threshold for what counts as a large order and what happens above it. Plenty of shops route anything over a certain size to a person on purpose. That is a reasonable policy and the agent should follow it. The reasoning behind that line is in [voice AI for large catering orders](/blog/voice-ai-large-catering-orders) and the qualification side is in [catering lead qualification](/blog/catering-lead-qualification-ai).
+
+## The Spanish call you are already losing
+
+For a lot of empanada shops, a real share of inbound calls are in Spanish, and a real share of those calls end when the caller hits an English greeting.
+
+You never see those. They are not a missed call in any report, they are a hangup at four seconds, and if you have never listened to your own call logs you would not know they exist. A bilingual agent answers in either language, takes the order the same way, and writes one ticket your kitchen can read. Details on how that works are in [bilingual Spanish phone ordering](/blog/bilingual-spanish-ai-phone-ordering).
+
+Do not treat this as a marketing bullet. It is either how a meaningful part of your business calls you or it is not, and you can find out this week by pulling a day of call recordings.
+
+## Where this is not worth it
+
+If you take fifteen calls a week and answer most of them, do not buy this. Plans start at $250 a month, and fifteen calls a week does not get that back no matter how the pitch is framed. Fix your voicemail greeting and move on.
+
+It also will not help if your menu lives on a whiteboard. An agent reads your POS. If the POS menu is six months stale and the actual menu changes with what the kitchen felt like making, you will spend your first month cleaning up item names and modifiers, and you should know that going in rather than discovering it in week two. The cleanup is not hard, it is just work, and it is described in the [onboarding checklist](/blog/ai-phone-onboarding-checklist-restaurants).
+
+X1 Voice connects directly to [Square](/integrations/square), Clover, and OrderCounter, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect. Setup is typically under 24 hours once your menu is in order, which is the part that actually takes time.
+
+## The test to run in your first week
+
+Call your own number four times during your Saturday rush from a phone nobody recognizes. Order a mixed dozen and change your mind twice. Order a flavor you know is 86'd. Order in Spanish if that is a language your customers use. Ask a question the menu does not answer, like whether the beef is spicy.
+
+Then pull the four tickets and compare them to what you said. If the count is right, the 86 was caught, and the escalation happened where you expected, the thing works. If the count is wrong, nothing else matters yet, and the way to measure that properly is in [improving phone order accuracy](/blog/improving-phone-order-accuracy).

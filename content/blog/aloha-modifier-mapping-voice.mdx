@@ -1,0 +1,87 @@
+---
+title: "Aloha modifier mapping: where voice orders go wrong"
+description: "Aloha modifier structures were built for a keyboard-driven terminal. What that means for phone orders, and the mapping mistakes that reach the kitchen."
+publishedAt: "2026-05-29"
+faqs:
+  - question: "How do Aloha modifiers reach a voice agent?"
+    answer: "The menu, including modifier groups and their rules, is imported through Deliverect and the agent works from that copy. Groups that are required stay required and groups with forced quantities keep those quantities. The agent inherits your structure rather than inventing its own, which is why the structure is worth reviewing before launch."
+  - question: "Why do required modifier groups cause long phone calls?"
+    answer: "Because every required group becomes a question the caller has to answer out loud. Your staff resolve many of these silently with a default they have used for years. The agent cannot, unless you set that default explicitly. A burger with three required groups turns a fifteen-second order into a minute of interrogation."
+  - question: "What is the most common Aloha mapping error?"
+    answer: "Modifiers that exist in more than one group with slightly different names or prices, usually because the menu was extended over several years. The agent picks one, and it may carry a different price or route to a different kitchen printer than the one your staff would have used. Deduplicating fixes it permanently."
+  - question: "Do removals like no onion map cleanly?"
+    answer: "Usually yes, if a negative modifier exists in the group. Where restaurants get into trouble is when removals were handled by staff typing free text at the terminal. That habit does not translate, because there is no keyboard on a phone call. Every removal a caller might reasonably ask for needs a real modifier behind it."
+  - question: "How do I verify the mapping is right?"
+    answer: "Place deliberately awkward test orders and read the printed kitchen tickets rather than trusting the agent's read-back. The read-back reflects what the agent understood. The ticket reflects what the kitchen will make. Comparing the two is the only check that catches a modifier that mapped to the wrong group."
+---
+
+A caller asks for a bacon cheeseburger, medium, no tomato, add avocado, with the sweet potato fries instead of regular. Your counter staff enter that in about eight keystrokes because they've done it four hundred times. The chit prints correctly and the line makes it correctly.
+
+Now the same order arrives through a voice agent working from your imported Aloha menu. Whether that chit prints correctly comes down to how your modifier groups were built, and Aloha menus in long-running restaurants tend to have been built in layers by different people.
+
+## What the agent inherits
+
+X1 Voice reaches Aloha through Deliverect. The menu import brings across items, modifier groups, and the rules attached to them: which groups are required, how many selections are forced, which modifiers carry a price, and how they're nested under items.
+
+The agent doesn't reinterpret any of that. Required stays required. A group forcing exactly two selections still forces two. A modifier priced at a dollar still adds a dollar.
+
+That fidelity is what you want, and it also means every structural oddity in your Aloha menu becomes a conversational oddity on the phone. The place to fix a phone problem is usually the POS.
+
+## Required groups become questions
+
+This is the single biggest difference between the terminal and the phone.
+
+At the terminal, a required group is a screen that appears and gets resolved in a tap, often with the same choice every time because your staff know what the guest meant. On a call, that group becomes a spoken question, and the caller answers it out loud, and the call gets longer.
+
+Count your required groups on your top ten items. A burger with a temperature group, a side group, and a cheese group produces three questions before the caller can add anything else. A caller who wanted a burger and a Coke is now ninety seconds into a phone call, and long calls are where callers hang up.
+
+### Setting defaults is the fix
+
+For each required group, ask what your staff pick when the guest doesn't specify. That answer is your default, and it usually exists whether or not anyone wrote it down.
+
+Set it so the agent applies it silently and only asks when the caller signals a preference. You keep the ticket complete and the call short. Where there's genuinely no default, because temperature on a steak really does have to be asked, keep the question and accept the time.
+
+Where a group is marked required in Aloha but your staff routinely bypass it, that's a menu correction rather than a phone one. [Simplifying modifier trees](/blog/simplifying-modifier-trees) works through the restructuring, and [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers) covers what the conversation looks like afterward.
+
+## Duplicate modifiers pick their own price
+
+Aloha menus that have grown for years accumulate the same modifier in several groups. "Add bacon" exists under burgers, and again under sandwiches with a different price, and again under salads because someone built that group separately in 2019.
+
+Your staff never notice, because they're inside an item and only see that item's group. The agent, matching a caller's words to a modifier, may land on a version with a different price or one that routes to a different printer.
+
+The symptoms are subtle. A phone ticket where the total is off by fifty cents. A bacon addition that never reaches the grill because it printed to the salad station. Both look like agent errors and neither is.
+
+Search your modifier list for repeated names, decide on one canonical version per addition, and align the prices. It's an afternoon of work in a mature Aloha menu and it removes a whole category of complaints.
+
+## Removals only work if they exist
+
+Callers remove things constantly. No onion, no mayo, sauce on the side, light cheese.
+
+If your Aloha groups include real negative modifiers for these, they map fine and the chit reads the way your kitchen expects. If your staff have been handling removals by typing free text at the terminal, there's nothing for the agent to map to, and the request either gets dropped or arrives as a note the line may not read.
+
+Before launch, list the removals you actually hear. It's a short list at most restaurants, usually under fifteen across the whole menu: onion, tomato, pickle, mayo, cheese, sauce, ice, and a handful of item-specific ones. Confirm each exists as a modifier in the relevant groups. Add the missing ones.
+
+The items worth checking first:
+
+- Your five highest-volume items, since most removal requests concentrate there.
+- Anything with a sauce or dressing, because "on the side" is the most requested modification in most kitchens.
+- Any item involving raw onion, which draws more removals than everything else combined.
+- Drinks, where "no ice" is common and often has no modifier behind it.
+
+## Free text is not a plan
+
+Some restaurants handle a large share of special requests as typed notes at the terminal. That works because a person reads the note and the kitchen trusts it.
+
+It doesn't survive the move to the phone. A voice agent can capture a note, but a note that arrives on every third ticket is a note your line will start ignoring during a rush, and then you have a quiet accuracy problem rather than a loud one.
+
+Treat a heavy free-text habit as a signal that the modifier structure is incomplete. Convert the ten most common notes into real modifiers in Aloha. Keep free text for the genuine one-off, which is what it's good at. The accuracy consequences are worked through in [improving phone order accuracy](/blog/improving-phone-order-accuracy).
+
+## Verify by reading chits, not read-backs
+
+The agent's confirmation at the end of the call tells you what the agent understood. That's useful and it's not the test.
+
+Place four or five deliberately awkward test orders. One with two additions and a removal. One with a substitution. One where you change your mind halfway through. One with a modifier that exists in multiple groups. Then walk to the kitchen printer and read what came out.
+
+Compare the chit to what you said, line by line, including price. A modifier that mapped to the wrong group will read plausibly in the agent's read-back and print wrong. That's exactly the failure you're hunting, and it's invisible from anywhere except the printer. [Order accuracy measurement](/blog/order-accuracy-measurement-method) covers turning this into an ongoing sample rather than a one-time check.
+
+If you only do one thing before going live on Aloha, count the required modifier groups on your top ten sellers and set a default for every one where your staff already have a habit. That change alone shortens calls more than anything else on this list.

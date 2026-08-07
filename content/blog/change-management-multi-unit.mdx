@@ -1,0 +1,78 @@
+---
+title: "Getting fifty GMs to run the same phone process"
+description: "A phone rollout across dozens of stores fails in the gap between the corporate email and what each GM actually does on Tuesday. Here is how to close it."
+publishedAt: "2026-08-03"
+faqs:
+  - question: "Why do multi-unit phone rollouts drift store to store?"
+    answer: "Because the default at each store is whatever the GM already does, and a corporate announcement does not overwrite a habit. If nobody checks store 22's escalation settings in week three, store 22 keeps the settings that felt comfortable in week one. Drift is not defiance, it is the absence of a follow-up loop."
+  - question: "Should every location have identical voice agent settings?"
+    answer: "No. Hours, delivery zones, local menu items, and which phone the escalations ring are legitimately different per store. What should be identical is the escalation policy, the greeting structure, and the definition of a handled call. Standardize the rules, let the parameters vary, and write down which is which before launch."
+  - question: "How do you handle a GM who refuses to use the system?"
+    answer: "Find out what they are protecting before you push. Most refusal traces to a specific bad call they can describe, a regular customer they think will be annoyed, or a fear that the report will make their store look worse. Two of those are fixable configuration problems and one is a reporting problem. A compliance conversation solves none of them."
+  - question: "How long does adoption take across fifty stores?"
+    answer: "Plan on four to six weeks per wave, not per store. The install is fast, often under a day, but the behavior change around escalations and transcript review takes about a month of weekly contact to stick. Rolling ten stores at a time with real follow-up beats rolling fifty at once and following up with none."
+  - question: "Who should own phone process adoption in a multi-unit group?"
+    answer: "The district or area manager, not the corporate project lead. Adoption is enforced by whoever already walks into the store and asks about numbers. If the only person asking about phone performance is someone the GM meets on a quarterly video call, the phone process will rank below every other thing on the GM's list."
+---
+
+Store 14 routes every catering question to the GM's personal cell, because that is what the GM asked for in the kickoff call. Store 22 turned handoffs off entirely after one confusing transfer during a Friday rush. Store 31 never verified the menu, so the agent has been quoting a wing price that changed in March. Corporate sent the same rollout email to all three.
+
+Six weeks in, the group's report shows one system and three completely different phone operations. That gap between the announcement and the Tuesday behavior is where multi-unit phone projects actually fail, and almost none of the fix is technical.
+
+## The rollout email is not the rollout
+
+A GM's day is a queue of things that are on fire, sorted by who asked most recently. A corporate email announcing a phone system arrives at the bottom of that queue and stays there unless something moves it up.
+
+This is not resistance. It is triage working correctly. The GM has a callout at 4pm, a walk-in inspection risk, and a cooler running warm. A change to how the phone answers is, to them, a thing that already got solved by someone else.
+
+So the rollout has to arrive as a specific ask with a specific owner and a date, at the store level, from someone the GM talks to weekly. Everything else in this post is downstream of that one point. If the district manager is not carrying the phone process into the store, the phone process will not get carried.
+
+## What the GM is actually worried about
+
+Ask directly and you get useful answers. In practice the worries cluster into a small set.
+
+They think a regular is going to get an agent and complain to them personally. They think the system will take an order wrong and the guest will blame the store, not corporate. They think the report is going to show their store below the others for reasons outside their control. And a few of them, quietly, are worried that a phone that answers itself is the first step in cutting a position they fought to keep.
+
+Every one of those is answerable, and most are answerable with a configuration change rather than a speech. The regular gets a fast path to a human. The accuracy worry gets addressed by sampling tickets in week one together, which is also how you find real menu errors. The report worry is legitimate and is a reporting design problem, which is its own subject in [reporting rollups across locations](/blog/reporting-rollups-multi-location). The staffing worry deserves a straight answer from someone with the authority to give one, not a reassurance from a project manager.
+
+What does not work is treating any of these as an objection to overcome. A GM who has been sold to rather than answered will comply on paper and revert in week five.
+
+## Standardize the rules, not the parameters
+
+The most common mistake is trying to make fifty stores identical, which fails because the stores genuinely are not. The second most common is letting each store configure everything, which is how you get three phone operations under one logo.
+
+Split the configuration explicitly before the first store goes live. Some settings are group policy and nobody changes them without approval. Some are store parameters and the GM owns them outright. Write the split down and hand it to every GM with the login.
+
+- Group policy: what triggers a transfer to a human, how a complaint is handled, what the agent says when it does not know something, and what counts as a completed order for reporting.
+- Store parameters: hours including holiday variations, delivery radius, which handset or cell the escalations ring, local specials, and the pickup instructions that depend on your actual parking lot.
+- Group policy: the greeting structure, so a caller who uses two of your stores hears the same shape of conversation.
+- Store parameters: pacing and any local pronunciation the agent needs for street names and neighborhood references.
+- Group policy: who reviews transcripts and how often, because the review cadence is the thing that decays first.
+
+The line between the two lists is more important than where exactly you draw it. A GM who knows which knobs are theirs will use them. A GM who is unsure will either change nothing or change everything.
+
+## The escalation policy is the whole negotiation
+
+If you only align one thing across fifty stores, align what happens when the agent hands off.
+
+Handoff rules are where GMs quietly diverge, because handoffs land on their staff. A store that routes every ambiguous call to the host stand has effectively opted out, and its numbers will look like a system failure when it is a policy choice. A store that suppresses handoffs entirely will post a great containment number and generate angry callbacks. The mechanics of that tradeoff sit in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+Decide as a group: complaints go to a person, catering above some ticket size goes to a person, an explicit request for a human goes to a person immediately, and everything else the agent completes. Then check in month two whether stores are still running it, because this is the setting that drifts fastest.
+
+## Four weeks of contact, then it holds
+
+Adoption follows a predictable shape. Week one is fine because someone is watching. Week two is fine because the novelty holds. Week three is when the store reverts to habit, and week four is when either a district manager notices or nobody does.
+
+Build the follow-up into the rollout schedule rather than promising it. Ten stores per wave, a named district manager per wave, a fifteen-minute call in week three that asks three questions: what did the agent get wrong, what did you change, and what did a guest say. Those three questions surface almost everything, and they are answerable by a GM standing in a kitchen.
+
+Waves also give you something a big-bang launch cannot: the fixes you find in wave one are already applied when wave two starts. The [franchise rollout playbook](/blog/voice-ai-franchise-rollout-playbook) covers the sequencing in more detail, and the pressure that shows up when stores are independently owned is a different problem again.
+
+## How non-adoption shows up in the numbers
+
+You can spot a store that has quietly opted out before anyone tells you, and it rarely looks like an outright failure.
+
+The tell is a store whose escalation rate is far above the group and whose escalation reasons are undifferentiated. That is a store routing everything to a human, which means the phone is still being answered by whoever is closest to it. Second tell: a store with almost no configuration changes since launch, which usually means nobody is reading transcripts and the menu errors from week one are still live. Third: a store whose call volume dropped after launch, which sometimes means callers stopped calling.
+
+None of these are visible in a containment average. They show up when you break the group down by store and read the outliers, which is the actual point of a [multi-location metric set](/blog/voice-ai-metrics-kpis-restaurants).
+
+Pick your three most skeptical GMs and put them in wave one on purpose. If the process survives them, the rest of the group is a scheduling exercise. If it does not, you found out at three stores instead of fifty, and the thing they broke is the thing you needed to fix anyway.

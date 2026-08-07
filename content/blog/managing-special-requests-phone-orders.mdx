@@ -1,0 +1,77 @@
+---
+title: "Which special requests to take, and how to refuse the rest"
+description: "Saying yes to every phone modification costs you tickets, accuracy and speed. A three-tier rule for what you take, what you charge for, and what you refuse."
+publishedAt: "2026-04-14"
+faqs:
+  - question: "Should a restaurant accept all special requests on phone orders?"
+    answer: "No. Accepting every modification slows the line, breaks ticket accuracy, and quietly transfers cost to the kitchen without any of it showing up in your numbers. Sort requests into three tiers: things the kitchen does routinely, things it can do for a charge, and things it will not do. Publish the third tier so staff can say no in one sentence."
+  - question: "How do I say no to a customer's request without losing the order?"
+    answer: "Give the refusal and an alternative in the same breath, and never explain at length. Saying the kitchen cannot split that dish during dinner service, but two orders of the smaller size gets close, keeps most of those orders. Apologizing repeatedly or hedging invites negotiation and turns a fifteen-second answer into a three-minute call."
+  - question: "Should I charge for modifications?"
+    answer: "Charge when the request consumes real product or a separate pan, and say the charge out loud on the call before the caller commits. Extra protein, a second sauce, or a gluten-free base have a cost you can name. Free modifications that cost the kitchen nothing should stay free, because charging for them reads as nickel-and-diming and generates more complaints than revenue."
+  - question: "Do special requests actually hurt order accuracy?"
+    answer: "Yes, and the damage is concentrated in requests spoken as free text rather than entered as a modifier. A note reading no onions on the second one only works if the line reads it, understands which one, and remembers at plating. Requests that map to a POS modifier button are far more reliable than requests that arrive as a sentence."
+  - question: "Can an automated phone agent handle special requests?"
+    answer: "It handles mapped modifiers well and open-ended requests poorly, which is the same split that exists for human staff. An agent that knows your modifier list can take no pickles or dressing on the side accurately every time. An unusual request outside its list should be escalated to a person rather than guessed at, and you should confirm the vendor does exactly that."
+---
+
+Every special request you accept is a decision to spend kitchen time you did not price. Most restaurants make that decision hundreds of times a week without noticing, because each individual request is small and refusing feels rude.
+
+The aggregate is not small. A dinner service with forty modified tickets is a slower service, a less accurate one, and a more stressed line, and none of that appears anywhere in your reporting. So the question is not whether to be accommodating. It is which accommodations you have actually decided to make.
+
+## Sort every request into three tiers before you need them
+
+The reason phone staff struggle with modifications is that they are being asked to price and approve a custom product in eight seconds while a caller waits. Nobody is good at that. Given no framework, people default to yes, which is why the kitchen ends up absorbing everything.
+
+Three tiers cover almost all of it.
+
+**Tier one is routine.** Dressing on the side, no onions, extra crispy, sauce light, well done. These map to buttons your kitchen already reads and cost nothing. Take them without hesitation and without asking anyone.
+
+**Tier two costs something.** Extra protein, a second sauce cup, a gluten-free base, substituting a premium side. Real product or a separate pan is involved. These are fine to accept, at a stated price, said out loud before the caller commits rather than discovered on the receipt.
+
+**Tier three is no.** Off-menu dishes, splitting a plate into two during dinner service, half-and-half preparations your line cannot execute, modifications that make an item something you have never made. Write this list down. A refusal that exists on paper takes one sentence; a refusal someone is inventing takes three minutes and sounds apologetic.
+
+### The tier three list is the one that saves you
+
+Most operators have tier one and tier two informally right. Tier three is where the damage happens, because nobody wants to be the person who said no, so the request travels to the kitchen and gets refused there, after the ticket is in, with the customer already gone.
+
+Write out the ten requests you get most often that your kitchen genuinely should not do. Put the sentence to say next to each one. That document takes twenty minutes and eliminates the majority of the friction.
+
+## How to refuse in one sentence
+
+The mechanics of saying no matter more than the policy behind it.
+
+Lead with the alternative, not the apology. "We can't split entrees during dinner, but the appetizer portion of that is a good size for sharing" is a sentence that keeps orders. "I'm so sorry, we normally could but the kitchen is really slammed and it's kind of a difficult thing to do right now" is an invitation to negotiate, and half of those callers will push.
+
+Do not explain the reason at length. A short reason is credible; a long one sounds like it might be flexible.
+
+And never say "let me check" unless you are going to check. Putting a caller on hold to walk to the kitchen during a rush costs you the two calls ringing behind them, and the answer was already on your tier list.
+
+## Free-text requests are where accuracy dies
+
+There is a meaningful difference between a request that becomes a modifier and a request that becomes a note.
+
+A modifier is structured. It prints in a known place, it is attached to the specific item, and the line reads it the same way every time. A note is a sentence that has to be read, interpreted, and remembered until plating. "No onions on the second one" is unambiguous to the person who typed it and genuinely ambiguous on a ticket with three burgers.
+
+- Requests that match an existing modifier button should always be entered as that modifier, never typed into the note field because it was faster.
+- Requests that recur more than a few times a week deserve their own modifier, and adding one is usually a ten-minute job in your POS.
+- Notes should be reserved for things that truly have no structure, and should name the item explicitly rather than using "the second one" or "one of them."
+- Anything safety-relevant belongs in your allergen workflow rather than in a note field, for reasons covered in [allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions).
+
+That last one is not a style preference. Notes get missed, and a missed note about pickles is a remake while a missed note about shellfish is something else entirely.
+
+## What automation does well here, and where it should give up
+
+An automated phone agent takes tier one requests better than a rushed human does, for an unglamorous reason: it enters them as structured modifiers every time, because that is the only thing it can do. It cannot get lazy at 7:40 and type a sentence into the notes field. The [modifier handling mechanics](/blog/how-voice-ai-handles-menu-modifiers) are worth understanding before you assume this is trivial.
+
+Tier two works if the pricing is configured. The agent quotes the upcharge on the call, which is more consistent than staff who sometimes mention it and sometimes do not.
+
+Tier three is where you need to check what a vendor actually does. The correct behavior for an off-list request is to say the kitchen does not do that, offer the alternative if one is mapped, and hand the call to a person if the caller pushes. The wrong behavior is confidently accepting something the kitchen will refuse, which is a failure mode worth probing directly during an evaluation. [Edge case handling](/blog/how-ai-handles-restaurant-edge-cases) is the thing to test hardest, since the ordinary cases work in every demo.
+
+Ask a vendor to show you a transcript of a caller asking for something impossible. How the system fails on that call tells you more than the ten calls where everything went right.
+
+## The number that tells you if this is working
+
+Pull a week of tickets and count what share carried a modification, then count what share of your remakes and refunds carried one.
+
+If modified tickets are twelve percent of orders and sixty percent of your remakes, the problem is not that customers ask for too much. It is that your requests are arriving as prose instead of structure, and the fix is in your POS rather than in your phone script. If modification volume itself is climbing season over season, someone has stopped saying no, and the tier three list has quietly become advisory. Both of those are worth knowing before your line cook tells you in a less pleasant way. Substitutions follow the same discipline, which is laid out in [substitution rules for 86'd items](/blog/out-of-stock-substitutions-phone), and the accuracy measurement itself is in [improving phone order accuracy](/blog/improving-phone-order-accuracy).

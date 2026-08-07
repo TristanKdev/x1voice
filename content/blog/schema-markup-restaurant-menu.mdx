@@ -1,0 +1,90 @@
+---
+title: "Menu Schema Markup That Is Actually Worth the Effort"
+description: "Full item-level menu schema is a maintenance burden most restaurants abandon. Which parts of the markup earn their keep, and which ones you can skip."
+publishedAt: "2026-03-25"
+faqs:
+  - question: "Does menu schema markup help my restaurant show up in search?"
+    answer: "The hasMenu link on your Restaurant markup helps, because it tells search engines and assistants which page carries your menu. Full item-level markup of every dish has a much weaker track record and no guaranteed rich result. Do the link first, and treat exhaustive item markup as optional work you take on only if you can keep it current."
+  - question: "What is the difference between hasMenu and Menu markup?"
+    answer: "hasMenu is a property on your Restaurant entity pointing at the URL of your menu page, and it takes one line. Menu, MenuSection, and MenuItem are separate types describing the menu's actual contents, section by section and dish by dish. The first is cheap and useful. The second is a data-maintenance commitment."
+  - question: "Do I have to mark up every menu item?"
+    answer: "No, and most restaurants should not try. A markup file listing eighty items goes stale the first time the kitchen changes a price, and stale structured data is worse than none because it looks authoritative. If you mark up items at all, cover a stable core menu and leave specials, seasonal dishes, and anything the chef rotates out of it."
+  - question: "Will menu schema get me a rich result in Google?"
+    answer: "There is no documented rich result guaranteed by menu item markup, and any agency promising one should be asked to show you a live example in your market. The benefit is legibility rather than a visual treatment: correctly marked-up prices and dietary flags are easier for any system to state confidently, including AI assistants that never render a search result at all."
+  - question: "Is schema markup worth it if my menu is a PDF?"
+    answer: "Fix the PDF first. Structured data describing a page whose actual content is an image of text gives a machine a label with nothing behind it. An HTML menu page with item names, descriptions, and prices as real text does more on its own than any markup added on top of a PDF, and it is the prerequisite for the markup being true."
+---
+
+Most restaurant menu schema gets written once, by an agency, during a website build, and is wrong within four months. The kitchen raises a price, drops a dish, or changes a description, and nobody updates a JSON block buried in the page template because nobody remembers it is there.
+
+That is the actual failure mode, and it should shape how much of this you take on. The value of structured data comes entirely from it being true. A markup file confidently declaring a price you stopped charging last spring is worse than an empty page, because it presents an out-of-date number in the exact format machines trust most.
+
+So the question is not whether to do menu schema. It is which parts survive contact with a working kitchen.
+
+## The one line that does most of the work
+
+Your restaurant should have a Restaurant entity in JSON-LD describing the business itself. On that entity, one property called hasMenu points at the URL of your menu page.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Salvo's Pizza",
+  "servesCuisine": "Neapolitan pizza",
+  "hasMenu": "https://example.com/menu",
+  "acceptsReservations": "False",
+  "telephone": "+15555550142"
+}
+```
+
+That is roughly ninety percent of the practical benefit for maybe two percent of the effort. It resolves the ambiguity that causes the most trouble, which is a machine not knowing which of your eleven pages is the menu. Sites routinely have a menu page, a catering page, a PDF, and an ordering page from a third party, and without the pointer, a crawler picks by guesswork.
+
+The rest of that entity, the address, the hours, the phone number, belongs to the broader business markup covered in [Restaurant and LocalBusiness structured data](/blog/localbusiness-schema-restaurants). Get that right before touching anything menu-specific.
+
+## Where full item markup stops paying
+
+The schema vocabulary supports describing a menu in complete detail: Menu contains MenuSection, each section contains MenuItem, each item carries a name, description, price, currency, and dietary restriction flags.
+
+It is well designed. It is also a second copy of your menu, living in your page markup, with no connection to the system where prices actually change. Every price increase now requires two edits, and the second one is invisible, so it does not happen.
+
+If you have a menu that genuinely does not move, a fixed core of thirty items with prices that change once a year, item markup is defensible and not much work. If your menu is seasonal, or your specials rotate weekly, or your prices move with cheese and beef costs, marking up individual items creates an obligation you will not meet. Skipping it is the honest choice, not the lazy one.
+
+The middle path is to mark up the stable core and omit everything else. A Menu with three sections covering the dishes that have been on the board for years, and no attempt to represent the rotating specials. Partial and accurate beats complete and stale.
+
+## The one item-level field with an obvious payoff
+
+Dietary flags. The suitableForDiet property attaches values like GlutenFreeDiet or VeganDiet to an item, and unlike price, it almost never changes once set.
+
+That matters because dietary questions are among the most common things people ask an assistant about a restaurant, and among the most consequential to get wrong. A person with celiac disease asking whether you have a gluten-free option is making a decision with real stakes, and a machine that has to infer the answer from review text will sometimes infer wrong.
+
+Marking the four or five items that carry a stable dietary attribute is an afternoon of work that does not need revisiting. It is the highest ratio of value to maintenance anywhere in menu markup, and it is routinely skipped in favor of exhaustively marking up prices that will be wrong by summer.
+
+## Structured data does not fix an unreadable menu
+
+This is the sequencing error that wastes the most money. An agency adds JSON-LD to a page whose visible content is a PDF embed or an exported image, and reports the markup as complete.
+
+A machine now has a label saying "this is a menu" attached to a page containing no readable menu. The markup is technically valid and practically useless. What a crawler needs is the item names, descriptions, and prices present as text in the HTML, which is the argument made in full in [menu page SEO for restaurants](/blog/menu-page-seo-restaurants).
+
+Order of operations: menu as HTML text, then hasMenu, then dietary flags, then item-level markup if and only if the menu is stable enough to maintain. Anyone proposing to start at the end is selling deliverables rather than results.
+
+## The generated-markup shortcut, and its catch
+
+Some online ordering platforms and website builders generate menu structured data from the menu already stored in their system. When that is on offer, take it, because it solves the maintenance problem outright. The markup regenerates when the menu changes, and the second copy stops being a second copy.
+
+The catch is that it only reflects what lives in that platform. If your ordering platform carries a trimmed version of your menu, the markup describes the trimmed version, and a machine now believes your dining room menu is eleven items long. Compare the generated output against your printed menu once before trusting it.
+
+Ask your vendor directly whether they emit menu markup and where it comes from. It is a question with a short answer, and it decides whether the rest of this page is work you have to do by hand.
+
+## Validate it, then set a reminder
+
+Google publishes a rich results test and schema.org has its own validator. Run the page through one after any change. Both will catch malformed JSON and unrecognized properties, neither will tell you a price is wrong, which is the error that actually matters.
+
+Only you can catch that, so the maintenance habit is what to build. Every time prices change, whoever updates the menu page checks whether structured data carries prices too. If that person is not going to remember, that is your answer about whether to mark up prices at all.
+
+The same reasoning applies to [FAQ schema on restaurant pages](/blog/faq-schema-restaurant-pages), where the failure mode is an answer about delivery hours that stopped being true when you changed your closing time.
+
+## How to tell whether any of it worked
+
+Do not measure this by whether the markup validates. Measure it by asking assistants what a specific dish costs and whether you have a gluten-free option, then checking their answers against your actual menu.
+
+If they answer correctly and specifically, your menu is legible, and it is worth checking again after your next price change to see whether the correctness held. If they hedge or quote an aggregator, the markup is not the problem and adding more of it will not help. That distinction, between a legibility problem and a source problem, is the one worth carrying into every other piece of [answer engine optimization](/blog/what-is-answer-engine-optimization-restaurants) work you take on.

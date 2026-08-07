@@ -1,0 +1,70 @@
+---
+title: "Voice AI for farm stands with seasonal hours and CSA pickups"
+description: "Farm stands get asked the same four questions all day, and the answers change weekly. What a phone agent handles well, and when it is the wrong purchase."
+publishedAt: "2026-02-07"
+faqs:
+  - question: "What do farm stand callers actually ask?"
+    answer: "Overwhelmingly the same four things: whether you are open today, what is ready to pick right now, whether the CSA share can be picked up late, and where to park or how to find the entrance. All four are answerable from a short list you control, which is why this is a good fit for automation even at low call volume."
+  - question: "How does the agent know we closed for rain?"
+    answer: "Someone has to tell it, and the update has to be fast. Look for a system where a manager can change the open status from a phone in under a minute, without calling support. If changing today's hours requires a support ticket or a laptop, it will not get done on the morning it matters, and callers will be told you are open."
+  - question: "Can it handle CSA member pickups?"
+    answer: "It can confirm pickup windows, take a message about a missed share, and tell a member what is in this week's box if you load that. What it should not do without integration is look up an individual member's account. Keep it to information anyone in the CSA can hear, and route account-specific questions to a person."
+  - question: "Is a seasonal business worth a monthly subscription?"
+    answer: "Only if the season carries enough volume to cover twelve months, or if the plan can pause. Ask directly whether you can suspend service in the off months and what that costs. A stand that runs hard from June to October and closes for winter should not pay full price in February, and any vendor unwilling to discuss that is telling you something."
+  - question: "When is a voice agent the wrong choice for a farm stand?"
+    answer: "When your call volume is genuinely small and your answers change hourly. A stand taking eight calls a week is better served by a well-recorded voicemail greeting updated each morning, which costs nothing. Automation earns its keep when the same questions arrive dozens of times a day and interrupt someone who should be working the register."
+---
+
+It rains hard Friday night. Saturday morning the lower field is standing water and you decide by seven that the stand is not opening. By nine, four people have driven out anyway and the phone has rung eleven times, mostly from people who would have stayed home if anyone had picked up.
+
+That is the farm stand version of a missed call, and it is worse than a restaurant's version. A restaurant loses an order. You lose the order and you generate an irritated customer who spent forty minutes in the car, and irritated customers at a farm stand are neighbors.
+
+## The four questions, and why they are a good automation target
+
+The call mix at a farm stand is unusually narrow. Almost everything is one of four questions: are you open, what is ready, when can I pick up my share, and how do I find you.
+
+That narrowness is what makes automation work here even at modest volume. You are not trying to teach a system a hundred menu items with modifiers. You are trying to get four answers stated correctly and updated frequently. The setup is a morning's work rather than a project.
+
+It also means the value shows up in a place that is hard to put on a spreadsheet. Nobody is losing a $200 catering order. What you are recovering is the twenty times a day someone at the register stops mid-transaction to say "yes, we have corn, no, the peaches are another two weeks." Twenty interruptions during a Saturday rush is a slower line and a shorter fuse. The general shape of that argument sits in [answering FAQs about hours and parking](/blog/voice-ai-answering-faqs-hours-parking).
+
+## Availability changes weekly, and the update has to be trivial
+
+The thing that will decide whether this works for you is not the voice. It is how fast you can change what the agent says.
+
+Your list of what is ready moves every week from June onward, sometimes twice a week. Strawberries end. Corn starts. The tomatoes come in heavy for eleven days and then taper. If updating the agent means emailing a vendor, or opening a laptop in an office you are never in during the season, the list will go stale by the third week and the phone will start telling people you have blueberries in September.
+
+So the requirement is blunt: a manager standing in a field with a phone should be able to change today's status and this week's list in under a minute. Ask to see that done during a demo, on a phone, not on a laptop. If the demo is a desktop dashboard, ask what the phone version looks like, and if there is not one, that is a real problem for your use case specifically.
+
+Weather closures are the sharpest version. A stand that closes at eleven for a storm needs the phone to say so by 11:05, not the next morning. [Closing early and weather messaging](/blog/closing-early-weather-messaging) walks through how to set those overrides, and the same override mechanism handles holidays, which is covered in [holiday hours overrides](/blog/holiday-hours-overrides-voice-ai).
+
+## What to load before you turn it on
+
+The setup list for a farm stand is short and concrete. Write these out before your first call with anyone:
+
+- Today's open status and the current week's hours, with a way to override both from a phone in seconds.
+- This week's list of what is ready, what is coming in the next two weeks, and what has finished for the season, since "when will the peaches be in" is asked constantly and is answerable.
+- CSA pickup windows, the location of the pickup shed, and what happens if a member misses their day.
+- Directions in words, including the landmark people actually use, plus whether the road is passable in a low car and where large vehicles should park.
+- The one or two things you sell out of by mid-morning most weekends, phrased as a warning rather than a promise.
+
+That last one is worth doing deliberately. If the sweet corn is gone by ten every Saturday, having the phone say "corn usually sells out by mid-morning, so come early" is better information than a bare yes, and it moves traffic into a window you can handle.
+
+The seasonal turnover of that whole list is the ongoing maintenance, and it is the part people underestimate. Put it on the same weekly rhythm as your farmers market prep, in the same fifteen minutes, or it will not happen. [Seasonal menu updates for a voice agent](/blog/seasonal-menu-updates-voice-agent) treats this as the recurring task it is.
+
+## CSA pickups, and the line to not cross
+
+Members call. They call to ask when pickup closes, whether they can send a neighbor, and whether they can grab last week's share they forgot. Those are all answerable generically and belong in the agent.
+
+What does not belong, unless you have real integration, is anything about a specific person's account. An agent guessing whether Sarah paid for a half share or a full share is producing confident answers about data it does not have, which is worse than no answer. Route account questions to a person or to a callback, and keep the phone agent on information any member could hear from a sign at the shed.
+
+Message capture is the underrated part here. A member calling at 8:40 at night to say they cannot make Saturday pickup is a call that currently goes to voicemail and gets heard Monday. An agent that takes the name, the share, and the request, and puts it somewhere you look before Saturday, solves an ordinary weekly annoyance. That is a small thing. Farm stand operations are made of small things.
+
+## When to not buy this
+
+Plenty of farm stands should not, and the honest test is volume against effort.
+
+If you take eight or ten calls a week, the right answer is a voicemail greeting you re-record every morning with today's status and this week's list. It takes ninety seconds, it costs nothing, and it answers three of the four questions. Do that instead and revisit in two seasons.
+
+If you take forty or fifty calls a day in high season and the register person is fielding all of them, the arithmetic changes, but it still has to survive the seasonal question. Plans start at $250 a month, and a stand open five months a year is paying roughly $3,000 annually for five months of use unless the plan can pause. Ask about that before anything else, and get the answer in writing. [Pricing](/pricing) has the plan details, and the general framework for running this calculation is in [is AI phone answering worth it for a small restaurant](/blog/is-ai-phone-answering-worth-it-small-restaurant).
+
+Here is the test to run this season regardless of what you buy. For two Saturdays, keep a sheet by the register and mark every phone interruption with a single letter for which of the four questions it was. If the sheet comes back with sixty marks and fifty-two are open-hours and what-is-ready, you have a problem worth automating and you now know exactly what to load. If it comes back with nine marks, put the sheet away and re-record your voicemail.

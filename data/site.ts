@@ -161,6 +161,22 @@ export const REVIEWS: Review[] = [
   { initials: "YC", role: "Customer", verified: false, quote: "Honestly forgot it wasn't a person until I saw the transcript." },
 ]
 
+/**
+ * Google Tag Manager container. GA4 is configured as a tag *inside* this
+ * container, so the site ships one script and the measurement ID lives in
+ * GTM rather than in the bundle. `NEXT_PUBLIC_GTM_ID` overrides it for
+ * staging containers; set it to an empty string to disable tagging entirely
+ * (useful for preview deploys you don't want in the reporting).
+ */
+export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-NSB54DMQ"
+
+/**
+ * Optional direct GA4 tag. Leave unset in normal operation — GTM already
+ * loads GA4. Set it only if you need gtag.js without a container, and if you
+ * do, remove the GA4 tag from GTM first or every hit is counted twice.
+ */
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID
+
 export const CAL_LINK = process.env.NEXT_PUBLIC_CAL_LINK ?? "x1voice/demo"
 
 /**

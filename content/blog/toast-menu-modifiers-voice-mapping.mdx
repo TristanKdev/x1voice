@@ -1,0 +1,68 @@
+---
+title: "Mapping Toast modifiers so the agent quotes the right price"
+description: "Most phone-order pricing errors are modifier mapping errors, not speech errors. How Toast modifier groups translate to a voice agent, and where they break."
+publishedAt: "2026-05-22"
+faqs:
+  - question: "Why did the agent quote a price that does not match the Toast ticket?"
+    answer: "Almost always because a modifier carries a price in Toast that was not mapped into the voice menu, or was mapped to the wrong option within a group. The agent quotes from its own menu copy; Toast prices from its own. When the two disagree, the caller hears one number and the receipt shows another."
+  - question: "Do Toast modifier groups transfer automatically to a voice agent?"
+    answer: "The structure imports, but the naming and the spoken aliases do not take care of themselves. A group called MOD-CHZ-01 imports fine and is useless in conversation. Someone has to decide what a caller would actually say for each option and attach those phrasings, which is manual work measured in hours, not days."
+  - question: "What about nested or conditional modifier groups?"
+    answer: "They are the hardest part. A modifier that only becomes available after another selection has to be represented as a conditional path in the voice flow, and deep nesting produces long, tiring phone conversations. If a group is three levels deep, that is usually a sign the menu itself needs flattening for the phone channel."
+  - question: "Should required modifiers be handled differently on the phone?"
+    answer: "Yes. A required choice with a clear default should have that default configured so the agent only asks when the caller has not already answered. Asking every required question on every item turns a four-item order into a two-minute interrogation, and callers hang up on interrogations."
+  - question: "How often do I need to re-check the mapping?"
+    answer: "After every menu change, and it takes ten minutes if you do it right away. New items and repriced modifiers are the single most common cause of a previously accurate integration starting to quote wrong. Build the check into whoever updates the Toast menu, rather than into a monthly review that nobody performs."
+---
+
+Pricing complaints on phone orders are usually not caused by the agent mishearing anyone. They are caused by a modifier that costs $1.50 in Toast and $0 in the voice menu, or an option mapped to the wrong choice inside a group with four similar names.
+
+The speech part of voice ordering has gotten reliable enough that it is rarely the culprit. The mapping part is where the money leaks, and it is entirely under your control.
+
+## What a Toast modifier group is, from the phone's side
+
+In Toast, a modifier group is a set of options attached to an item, with rules about how many can be picked and whether a pick is required. Cheese choice on a burger. Protein on a bowl. Size on a drink. Some options carry a price, some are free, some are only allowed with certain items.
+
+A voice agent has to hold the same structure, plus one thing Toast never needed: what a human being says out loud to select each option. Toast is fine with a button labeled `ADD-BAC-2X`. A caller says "extra bacon," or "double bacon," or "a lot of bacon," or "make it bacon bacon." All four have to resolve to the same option, at the same price.
+
+That gap is the actual work. The structure imports through Deliverect. The vocabulary does not.
+
+## The three failure modes, in the order you will hit them
+
+The first is the unpriced modifier. Someone adds a $2 upcharge for a premium protein in Toast and the voice menu still has it at zero. The agent quotes $14, the receipt says $16, the customer arrives annoyed, and your counter staff eat the difference to make it go away. This is the most common one and the most expensive one, because it repeats silently until someone notices.
+
+The second is the wrong option inside the right group. A group with "no onions," "onions on the side," and "extra onions" is easy for a mapping to get subtly wrong, and the error only surfaces at the pass when the cook reads the ticket. It does not show up in your reporting at all. You find it by reading tickets.
+
+The third is the modifier that exists in the voice menu and no longer exists in Toast. The order gets built, the injection fails or strips the modifier, and either the ticket arrives incomplete or it does not arrive. This one at least announces itself.
+
+## Naming, and why your internal shorthand does not survive contact with a caller
+
+Kitchen-facing names are abbreviations built for people who already know the menu. `SM CHZ FR`, `PROT-CHK`, `SUB-GF`. They are efficient on a ticket and meaningless in a conversation.
+
+Every option a caller can select needs a spoken name and a list of plausible alternates. "Gluten-free bun" also needs "gluten free," "GF," "no gluten," and probably "celiac." "Half and half" on a pizza needs to be understood as a topping arrangement rather than a dairy product. Regional habits count: in some markets a caller asks for a "large" and in others for a "party size," and if only one is mapped the other becomes an escalation.
+
+This is a one-time hour per menu section, refreshed when things change. It is also the single highest-return hour in the whole setup, because it converts escalations into completed orders. The general version of this problem is covered in [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers) and in [training a voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu).
+
+## Depth is a phone problem before it is a mapping problem
+
+Toast will happily let you build a modifier tree four levels deep. Choose a base, then a protein, then a preparation, then a sauce, then a sauce intensity. On a tablet with a guest tapping through it, that is fine. On a phone call it is a hostage situation.
+
+Read one of your deepest items out loud as a conversation. If getting through a single item takes more than about four exchanges, the caller will start answering ahead of the questions, interrupting, or guessing. Some of that the agent can handle. Past a certain depth, none of it goes well.
+
+The fix is usually to flatten for the phone channel specifically. Keep the full tree for in-house and online ordering, and expose a shorter path on the phone with sensible defaults, letting the caller override only if they volunteer something. You are not dumbing down the menu; you are matching the interface to what a conversation can carry. Most operators find one or two items are the whole problem, and simplifying just those fixes it.
+
+## Required choices need defaults, or every order becomes an interview
+
+Toast marks some modifier groups as required. That rule exists so a ticket never reaches the kitchen ambiguous, and it is correct in the dining room.
+
+On the phone, a required choice with no default means the agent must ask, every time, even when the answer is obvious to everyone involved. A caller ordering a well-known combo does not want to be asked which side comes with it if ninety percent of people take the fries.
+
+Set the default to the most-ordered option, and configure the agent to state it rather than ask: "that comes with fries, or I can switch it." One sentence, no dead air, and the caller who wants the substitution says so. Order times drop noticeably. So does abandonment mid-order, which is worth watching in your [phone analytics](/blog/restaurant-phone-analytics-guide).
+
+## Keeping it accurate after launch
+
+The mapping is not a project that ends. It is a small habit attached to whoever edits the Toast menu.
+
+The rule that works: any time an item is added, renamed, or repriced in Toast, the person who did it places one test call ordering that item with its most common modifier, and checks the quoted price against the ticket. Ten minutes. If it matches, done. If it does not, it gets fixed while the change is fresh in someone's head rather than three weeks later when a customer complains.
+
+Once a quarter, pull twenty voice tickets and compare each quoted total to the closed check. Any mismatch is a mapping defect with a specific address. That comparison is the only reliable way to find the unpriced-modifier problem, because nothing in your reporting will flag it for you. If it turns up more than one or two hits in twenty, the menu is changing faster than the mapping is being maintained, and the habit above is not actually happening. See also [improving phone order accuracy](/blog/improving-phone-order-accuracy) and [AI phone ordering for Toast](/blog/ai-phone-ordering-for-toast).

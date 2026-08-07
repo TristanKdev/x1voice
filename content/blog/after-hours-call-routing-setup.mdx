@@ -1,0 +1,82 @@
+---
+title: "Designing the after-hours path for restaurant calls"
+description: "The call that arrives after close is one of about four things, each needing a different destination. How to build a closed-hours path that isn't just voicemail."
+publishedAt: "2026-02-25"
+faqs:
+  - question: "Should a restaurant answer calls after closing?"
+    answer: "Answering is usually better than voicemail, because most after-hours callers are trying to buy something tomorrow. The exception is a caller who wants food tonight and can't have it. Even that call is worth answering, since a clear closing time and an offer to order ahead keeps the customer instead of sending them to search again."
+  - question: "What should happen to a call at 2 a.m.?"
+    answer: "It should be answered by something that knows you're closed, states your next open time, and can either take an order for tomorrow or capture a callback. A ringing line with no answer teaches the caller nothing. A voicemail box that nobody empties until Tuesday is worse than nothing for anything time-sensitive."
+  - question: "How do I keep emergency calls from getting stuck in the after-hours system?"
+    answer: "Give the people who might need you at 3 a.m. a different number that bypasses the main line entirely. Alarm companies, landlords, refrigeration techs, and your own managers should never route through the same path as customer calls. Publish the main number everywhere and hand out the direct number to about six people."
+  - question: "Does after-hours answering need to sound different from daytime?"
+    answer: "The greeting should differ because the situation differs. A closed-hours greeting that opens with the next open time answers the most common question before the caller asks it. The voice and the rest of the handling can stay the same, and keeping it the same is less work to maintain than two separate configurations."
+  - question: "What breaks most often in an after-hours setup?"
+    answer: "Hours drift. The configuration is built once against the hours you had that month, then a season changes, a day gets added, or a holiday lands, and the system keeps announcing the old schedule. Put a recurring calendar reminder on checking closed-hours behavior, and check it after every hours change rather than quarterly."
+---
+
+It's 11:40 on a Saturday night. The kitchen closed at eleven, your last cook is breaking down the line, and the phone rings.
+
+That call is one of about four things. Someone who wants food right now and hasn't checked your hours. Someone asking whether you're open tomorrow and when. A catering inquiry from a person who works days and only gets around to this kind of errand at night. Or your alarm company, your landlord, or a manager who can't get the safe closed.
+
+Most restaurants send all four to the same place: a few rings, then a mailbox that someone empties on Tuesday. The alarm call makes that obviously wrong. The other three are wrong in ways nobody notices, because a caller who hangs up on a voicemail greeting doesn't leave a trace.
+
+## What each of those four calls actually wants
+
+The person who wants food tonight is the only one you genuinely can't help, and even that call has a good outcome available. Told plainly that the kitchen closed at eleven and that you open at 11 a.m., they now know something they didn't. Offered the chance to place an order for pickup at noon tomorrow, a decent share of them will take it. The bad outcome is silence, because silence sends them straight back to searching.
+
+The hours question is the easiest call in the building and the one voicemail handles worst. It needs eight seconds and an accurate answer.
+
+The catering inquiry is the expensive one. Someone planning a fifty-person lunch is often doing that planning at 10 p.m. after their kids are asleep. If the first three places they call go to voicemail and the fourth answers, the fourth gets a quote request. That's a four-figure order decided by who picked up. We go further into that dynamic in [catering lead qualification](/blog/catering-lead-qualification-ai).
+
+The emergency call needs a human, immediately, and needs to skip everything else in the path.
+
+## Why ring-then-voicemail loses the ones that matter
+
+Voicemail has a specific failure pattern. Callers with a low-stakes question hang up rather than leave a message, so you never learn the question was asked. Callers with a high-stakes need leave a message, which sits until morning, by which point the person has usually solved their problem elsewhere.
+
+So the mailbox fills with the calls you can no longer act on and stays empty of the ones that would have been easy. Owners read that empty mailbox as proof that after-hours volume is low. It isn't proof of anything except that people don't like talking to machines that can't respond.
+
+There's a second cost. A voicemail greeting recorded eighteen months ago tends to state hours that changed since. Callers act on it. Then they show up to a locked door and blame you, correctly.
+
+## Building the closed-hours path
+
+Start by writing down, on paper, what should happen at each hour of each day. Not what your phone system currently does. What should happen.
+
+For most independent restaurants the answer is three states. Open, where calls are answered and orders go to the kitchen. Closed but taking tomorrow's business, where calls are answered, the greeting leads with the next open time, and orders are accepted for the next service. And hard closed, which for most restaurants is a very small window in the middle of the night and can be handled the same way as the second state.
+
+The distinction that matters is between closed and unavailable. A restaurant that's closed can still sell. An answered call at midnight that books a 12:30 pickup for tomorrow is revenue you'd otherwise have donated to whoever answers their phone at midnight. That's the core argument in [24/7 phone answering after hours](/blog/24-7-restaurant-phone-answering-after-hours).
+
+If you're running an agent on the line, the closed-hours configuration is mostly three settings: the greeting text, whether order-ahead is enabled and for what window, and what the agent says to someone who wants food tonight. Get the third one blunt. "Our kitchen is closed for the night. We open at eleven tomorrow morning" beats any softening.
+
+## The emergency line, and who actually answers it
+
+Every restaurant needs a path that bypasses the main number entirely, and almost none of them document it.
+
+Give a direct mobile number to the short list of people who might legitimately need you overnight: your alarm monitoring company, your landlord or property manager, your refrigeration and HVAC vendors, your GM and closing managers, and whoever holds the keys. That list is usually five or six entries. It does not include customers, vendors calling about invoices, or anyone who found your number on Google.
+
+Keep it out of your public listings. The moment it appears on a website it starts receiving robocalls, and a number that rings a manager at 3 a.m. gets silenced within a week of that happening. If your main line is already drowning in junk, [blocking spam and robocalls](/blog/blocking-spam-robocalls-restaurant-line) is the prerequisite.
+
+Then decide what your answering system does if someone claiming an emergency reaches the main line anyway. The honest answer for most restaurants is: take the message, mark it urgent, and text it to the manager on call. That's a real handoff policy, not a fallback, and it belongs in the same document as the rest of your escalation rules. [Human handoff and failover](/blog/human-handoff-failover-voice-ai) covers how to write those.
+
+## The days your hours are wrong
+
+Closed-hours routing breaks on exceptions, not on ordinary Tuesdays.
+
+Thanksgiving. The Monday you close for a private buyout. The week you change to summer hours. The day the walk-in dies and you close at eight. Each of these makes your configured schedule a lie, and the system will keep announcing the lie confidently until someone changes it.
+
+Build the habit of changing hours in one place. If your hours live in your POS, your phone system, your Google Business Profile, and your website independently, they will disagree, and the phone is the one customers act on fastest. [Holiday hours and overrides](/blog/holiday-hours-overrides-voice-ai) walks through the exception cases specifically.
+
+## What to test before you trust it
+
+Call your own number from your cell phone at each of these moments, and listen to the whole thing rather than hanging up once you hear the greeting:
+
+- Fifteen minutes after your posted close, when a real customer is most likely to try
+- The middle of the night, to confirm nothing loops or drops
+- An hour before you open, when the hours question spikes
+- On a day you're closed entirely, which usually reveals a schedule that only knows about weekly patterns
+- Immediately after any hours change, because that's when the configuration is most likely stale
+
+Then do the thing most operators skip: try to place an order for tomorrow while you're closed, and check whether it actually arrives in the POS at the right time. A closed-hours path that answers politely and drops the order is a worse outcome than voicemail, because the caller believes they have food coming.
+
+Run that test the week after you set it up, and again the week after your next hours change. If both pass, your after-hours path is doing something. If you can't get through the order-ahead test cleanly, fix that before you worry about greeting wording.

@@ -1,0 +1,72 @@
+---
+title: "Vapi, Retell and the 20 percent they leave to you"
+description: "Voice agent platforms remove most of the plumbing behind a phone bot. The remaining work is the restaurant-specific part, and it is the part that fails."
+publishedAt: "2026-07-04"
+faqs:
+  - question: "What do voice agent platforms like Vapi and Retell actually give you?"
+    answer: "They handle the developer-facing plumbing: connecting a phone number, running speech recognition and synthesis, managing turn-taking and interruptions, calling your functions mid-conversation, and storing transcripts. That removes most of the code you would otherwise write to get a working phone agent. What they do not include is anything specific to how a restaurant takes an order."
+  - question: "Can these platforms write orders into my POS?"
+    answer: "Not by themselves. They give you a hook to call your own code during a conversation, and the code behind that hook is what you have to write and maintain. Mapping spoken items to POS menu IDs, resolving modifier groups, applying pricing, and handling a POS that times out mid-order are all yours to build."
+  - question: "How much engineering time does the remaining work take?"
+    answer: "Expect weeks rather than days for a first location, and then ongoing hours every week. The initial build is the menu mapping and POS write path. The recurring load is menu changes, transcript review to catch wrong orders, and handling the edge cases real callers produce that no test script covers."
+  - question: "Is a platform build cheaper than a restaurant voice vendor?"
+    answer: "On usage fees, usually. On total cost, usually not for a small operator, because the engineering time dominates. Price the developer hours honestly against a subscription. Around a dozen locations with an in-house team already on payroll, the arithmetic starts to favor building."
+---
+
+Roughly eighty percent of the work in a phone ordering agent is generic, and platforms like Vapi and Retell have made that eighty percent close to free. Connect a number, pick a voice, write a prompt, define a few functions, and you have an agent answering calls. That is a genuine change from a few years ago and it is not marketing.
+
+The remaining twenty percent is the part that decides whether food comes out correctly. It is also the part these platforms deliberately do not cover, because it is different for every restaurant and every point of sale.
+
+## What the platforms genuinely handle
+
+The category is best understood as infrastructure for developers rather than a product for operators. What you get is real:
+
+- Telephony wiring, so a real phone number reaches your agent without you signing a carrier contract
+- Speech recognition, synthesis, and the turn-taking logic that lets a caller interrupt without the agent talking over them
+- A function-calling hook that lets the model reach your code mid-conversation to look something up or submit something
+- Transcripts, recordings, and basic call analytics you can read afterward
+- Some form of test rig so you can replay scenarios against changes
+
+If you were building on raw model APIs, that list is several weeks of work you now skip. Nobody serious argues otherwise. The confusion starts when an operator sees a demo built on one of these platforms and concludes the product is finished.
+
+## The twenty percent is the restaurant
+
+Everything a platform hands you stops at the edge of your business. The functions exist; what they do is yours to write.
+
+### Menu mapping is harder than it reads
+
+Your POS has a menu structure with item IDs, modifier groups, required and optional selections, price levels, and rules about which combinations are legal. A caller says "large pepperoni, light sauce, and can you do half mushroom." Turning that sentence into a valid ticket means resolving an item, a size, a modifier that may or may not exist as a real option, and a half-and-half construction that some POS systems model as one item and others as two.
+
+Now do that for four hundred menu items with names that sound alike over a phone. Then do it again when the kitchen renames three of them. This is the work, and it is the same work described in [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers), except you are the one doing it.
+
+Availability is a second layer. A platform has no idea an item is 86'd. Someone has to build the sync, decide how stale is too stale, and choose what the agent says when it finds out mid-order. We catalogue the ways that goes wrong in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes), and the sync design itself in [menu sync](/blog/menu-sync-deep-dive-voice-ai).
+
+### The failure paths nobody prototypes
+
+Test scripts are polite. Real callers are not. The cases that take the most engineering time are:
+
+- The caller changes their mind three items into an order and expects the previous state gone
+- The POS returns an error or times out after the agent has already confirmed the order out loud
+- The caller wants something the agent cannot do, and the handoff to a person has to carry the partial order with it
+- Background noise, a speakerphone in a car, or an accent the recognizer handles poorly on the first pass
+- A caller who asks a question the menu does not answer, like whether the fryer is shared
+
+Each one has a right answer and a default. The default is usually the agent confidently doing something wrong. Deciding the handoff policy is a real design exercise, not a config flag, which is why [human handoff and failover](/blog/human-handoff-failover-voice-ai) is worth reading whether you build or buy.
+
+## What the ongoing load looks like
+
+The build ends. The operations do not.
+
+Someone has to read transcripts against tickets on a regular schedule, because an order error does not report itself. It appears as a remake at the pass, hours later, with no obvious connection to the phone. Measuring accuracy properly means sampling calls and checking them by hand, the method in [improving phone order accuracy](/blog/improving-phone-order-accuracy). No dashboard substitutes for it.
+
+Someone has to update menu mappings whenever the kitchen changes something, which for most restaurants is more often than they think. Someone has to handle platform-side changes, since model versions and voice models shift on the provider's schedule and behavior can move without a deploy on your end. And someone has to be reachable during service, because the hour that matters is Friday at seven and not Tuesday at ten.
+
+That person is a real cost. Price it. A developer at four hours a week, indefinitely, across a handful of locations is not a rounding error next to a subscription. Our own plans start at $250 per month per location, which gives you an honest number to compare against instead of comparing platform usage fees to a subscription and declaring victory.
+
+## Who should build on one of these anyway
+
+There is a legitimate case and it is not rare. If you already employ engineers, if your ordering flow has something no vendor supports, or if you are building a product for other restaurants rather than for yourself, a platform is the right foundation. You will move faster than starting from raw model APIs and you will own the behavior end to end.
+
+If you run restaurants and your technical capacity is one capable person with other responsibilities, the platform will get you a demo in a week and a maintenance obligation forever. That is a bad trade unless the volume justifies it. The full comparison, including where the crossover sits, is in [building versus buying](/blog/building-vs-buying-restaurant-voice-ai), and the version built directly on model APIs is in [building your own realtime agent](/blog/openai-realtime-diy-voice-agent-restaurants).
+
+Before you commit either way, write down what your agent should do when a caller orders an item that went 86 four minutes ago mid-conversation. If your answer is a specific sentence the agent says and a specific thing it does to the ticket, you are ready to build. If it is "we'll handle that later," you have just described the twenty percent.

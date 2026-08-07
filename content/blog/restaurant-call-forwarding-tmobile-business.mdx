@@ -1,0 +1,80 @@
+---
+title: "Forwarding a T-Mobile business line to a voice agent"
+description: "Plenty of restaurants run the store number on a T-Mobile cell line. How to forward it properly, which conditional codes to use, and what voicemail does to them."
+publishedAt: "2026-02-16"
+faqs:
+  - question: "How do I forward a T-Mobile business line?"
+    answer: "Open the dialer and enter star star 21 star, then the ten-digit destination, then the pound sign, and press call. You should see a confirmation from the network. To cancel, dial pound pound 21 pound and press call. These are standard GSM feature codes rather than anything specific to a phone model, so they work the same on iPhone and Android."
+  - question: "Can I forward only the calls I do not answer?"
+    answer: "Yes, and it is usually the better setting for a cell line. The no-answer code takes your destination number plus a ring delay in seconds, so you can make it fire after ten seconds instead of the default twenty. There are separate codes for calls arriving while you are already talking and for when the phone has no signal. Setting all three covers every way a call currently gets lost."
+  - question: "Why does my forwarding go to voicemail instead?"
+    answer: "Because voicemail is itself a conditional forward. Your carrier sets the busy, no-answer, and unreachable conditions to point at the voicemail platform by default, and setting your own rule replaces that. If calls still reach voicemail, one of the three conditions was never overwritten. Clear all conditional forwarding with the reset code, then set the three you want."
+  - question: "Is a cell phone a reasonable restaurant phone number?"
+    answer: "It works and it costs you orders. The line goes wherever the phone goes, which is sometimes the walk-in, sometimes a pocket during a rush, and sometimes home with whoever closed. It also cannot ring in two places at once, so a second caller during dinner hears voicemail. Forwarding to something that always answers fixes the symptom without changing the number."
+---
+
+A restaurant number living on a cell phone in someone's apron pocket is a worse arrangement than most owners admit, and it's extremely common. The phone goes in the walk-in. It goes home with the closer. It can only take one call at a time, so the second caller during your Friday rush hears voicemail and orders from someone else.
+
+Forwarding is the cheap fix. You keep the number, you change nothing your customers see, and the calls land somewhere that always picks up. It takes about ninety seconds on a T-Mobile line.
+
+## The codes that actually work
+
+T-Mobile uses standard GSM feature codes, which means you type them into the phone's dialer and press call, exactly as if you were dialing a number. There's no menu to find and no app that has to cooperate.
+
+For all calls, dial `**21*5550100100#` using your real destination number, and press call. The network sends back a confirmation. To cancel, dial `##21#` and press call.
+
+For unanswered calls only, dial `**61*5550100100*11*20#`. The `11` is the code that marks the next value as a ring timer, and the `20` is twenty seconds. Shorten that. Twenty seconds is four or five rings, which is a long time to a caller who's hungry and has three other options open. Ten or fifteen seconds is a better trade.
+
+For calls that arrive while the line is busy, `**67*5550100100#`. For calls that arrive when the phone is off, dead, or somewhere without signal, `**62*5550100100#`.
+
+To wipe every conditional rule and start clean, `##004#`. To wipe everything including forward-all, `##002#`.
+
+## Voicemail is already using these slots
+
+This is the part that confuses people and it explains almost every "the codes didn't work" report.
+
+Your carrier voicemail isn't a separate system that catches calls at the end. It's a conditional forward. When you set up the line, the busy, no-answer, and unreachable conditions were all pointed at the voicemail platform. When you dial `**61*` with your own destination, you are overwriting one of those three.
+
+Which means if you only set the no-answer rule and leave the other two alone, calls that arrive during another call, or while the phone is off, still go to voicemail. And a voicemail box on a restaurant number is worse than a busy signal, because the caller genuinely believes they've placed an order for tomorrow at noon.
+
+Set all three. Then test all three, which takes about four minutes and is described at the end of this post.
+
+## Which one to use
+
+Forward-all is the right setting once you trust what's on the other end. Every call goes to the agent, the agent takes the order and writes it into the POS, and the calls that need a person get transferred to whatever number you nominate. Your staff stop carrying the phone.
+
+Conditional forwarding is the setting for your first week. The phone still rings in the restaurant, and only the calls nobody grabs move on. It's slower for the caller and it's the honest way to run a trial, because you can compare what your staff handled against what the agent handled on the same day.
+
+The one arrangement I'd avoid is forwarding to a second cell phone belonging to a manager. It feels like coverage and it isn't, because the second phone has all the same problems as the first plus one more person to blame when a call is missed.
+
+## What the phone being off actually costs
+
+Run the numbers on your own operation rather than trusting anyone's estimate. Take a normal Friday, count the calls that reached voicemail or rang out, and multiply by your average takeout ticket. Even at a modest miss rate, a $30 average ticket and a handful of lost calls a night adds up to real money over a month, and none of it appears in your POS as a loss. That invisibility is the whole problem, and it's laid out in [the real cost of a missed call](/blog/the-real-cost-of-a-missed-restaurant-phone-call).
+
+The other cost is subtler. A cell number as the store line makes texting order confirmations awkward, makes your listing data messier across the delivery apps, and ties your business identity to a device someone can walk out with when they quit. None of that is urgent. All of it eventually matters.
+
+## Things specific to a cell line that catch people
+
+A few behaviors here have nothing to do with forwarding and everything to do with the fact that the line is a phone in a building rather than a circuit in a closet.
+
+Wi-Fi calling changes which conditions fire. If the store phone is on the restaurant's Wi-Fi with cellular signal switched off, a call that would have been unreachable may instead ring normally and then hit your no-answer rule, or vice versa. Test with the phone in the state it actually lives in, which for most kitchens means bad signal and connected Wi-Fi.
+
+Do Not Disturb is not a busy condition. On most handsets it silences the ring while the network still considers the call answered-eligible, so it runs out the no-answer timer instead of forwarding immediately. If staff use DND to stop the phone buzzing during service, expect a delay on every one of those calls.
+
+An eSIM transfer to a new handset can drop your forwarding rules entirely. So can a SIM swap, a factory reset, or handing the phone to a new manager who sets it up fresh. Any time the physical device changes, re-dial the codes and re-test. This is the single most common way a working setup quietly stops working, and it's silent, because nothing about the phone looks different.
+
+Finally, check whether your plan treats a forwarded leg as a billable outbound call. On most current T-Mobile business plans with unlimited talk it doesn't, but if you're on an older or pooled plan, a busy month of forwarded calls can surface as usage you didn't expect.
+
+## Forwarding now, moving the number later
+
+Forwarding leaves the number on your T-Mobile account. You can reverse it with one code. That reversibility is exactly why it's the right first step, and why nobody should be pushing you to port a number before you've run a real dinner service on the new setup.
+
+After a month, porting becomes a reasonable conversation, and the mechanics of doing it without dropping calls are in [porting a restaurant phone number](/blog/phone-number-porting-guide-restaurants). Either way, what determines whether this was worth doing is whether the orders land in your POS correctly, not whether the voice sounds good, which is the argument in [POS integration depth](/blog/why-pos-integration-depth-matters-more-than-voice-quality). Setup on our end typically finishes inside 24 hours from a live forward, and plans start at $250 a month on [pricing](/pricing).
+
+## Four calls from the parking lot
+
+Set your rules, then hand the store phone to someone and go outside with your personal cell.
+
+Call the store number and let it ring out. Call it again while the store phone is deliberately on another call. Turn the store phone off completely and call a third time. Then call once more and stay silent for thirty seconds after something answers.
+
+Every one of those four should reach the same place. If any of them reaches voicemail, that condition wasn't overwritten and you should clear everything with `##004#` and set the three rules again. If the silent call did something strange, fix that before Friday, because that's the path taken by every bad connection and every caller who put the phone down to ask the table what they wanted.

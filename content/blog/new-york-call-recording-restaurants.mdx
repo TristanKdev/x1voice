@@ -1,0 +1,77 @@
+---
+title: "New York call recording rules for restaurant phones"
+description: "New York needs one party's consent to record a call, but the caller on the other end may be sitting in a state that needs two. Here's how to handle that."
+publishedAt: "2026-03-06"
+faqs:
+  - question: "Is New York a one-party consent state for call recording?"
+    answer: "Yes. Under New York's eavesdropping statute, a call can be recorded if at least one party to the conversation consents, and the restaurant answering the phone counts as that party. No announcement to the caller is required by New York law alone. The complication is that the caller may be in a state with a stricter rule."
+  - question: "Do I need to announce that calls are recorded?"
+    answer: "New York does not require it. Most restaurants should do it anyway, because a meaningful share of inbound calls originate outside the state and a few of those states require every party to agree. A single line of disclosure at the top of the greeting removes the question entirely and costs you about two seconds."
+  - question: "Which law applies when the caller is in another state?"
+    answer: "There is no clean answer, which is why the practical advice is to follow the stricter rule. Courts have reached different conclusions about interstate calls, and a restaurant is not the party that wants to test the question. Announcing the recording satisfies both New York and every all-party state at once."
+  - question: "Does an AI voice agent change the analysis?"
+    answer: "Not for consent purposes. A recording is a recording whether a person or a system made it, and the restaurant is still a party to the call. What does change is volume: an agent that answers every call produces far more stored audio than a staffed phone ever did, which makes retention and access policy the more pressing question."
+  - question: "How long should we keep restaurant call recordings?"
+    answer: "Keep them long enough to settle order disputes and review accuracy, which for most operators is somewhere between 30 and 90 days. Longer retention creates more material to secure, more to produce if someone asks for it, and no additional operational benefit once a ticket is closed and paid."
+---
+
+A customer in Greenwich dials your Manhattan number on a Friday afternoon to book a private dinner. Your voice agent answers, records the call, and writes the booking into the POS. Nobody announced anything. Connecticut requires all parties to a call to consent to recording. New York requires one.
+
+Which rule governs that call is a question a restaurant owner should never have to answer, and the good news is that you can arrange never to answer it.
+
+## Where New York itself lands
+
+New York's eavesdropping law makes it a felony to record a conversation you are not part of. If you are part of it, you may record it. A restaurant answering its own business line is a party to every call that comes in, so under New York law alone, recording inbound calls is permitted and no notice to the caller is required.
+
+That is the entire New York analysis. It is one of the simpler states, and it is why a lot of operators here have recorded calls for years without thinking about it. The general framework across all fifty states is laid out in [call recording consent laws for restaurants](/blog/call-recording-consent-laws-restaurants), and the one-party rule is the simpler half of it.
+
+## The call that starts somewhere else
+
+Here is where a New York restaurant differs from a restaurant in, say, Kansas. Your calls come from everywhere.
+
+A Manhattan or Westchester line takes calls from Connecticut and New Jersey constantly. Both of those states are stricter than New York on this point. A hotel concierge in California books a table for a client. A caller in Philadelphia orders a pizza to a hotel room three blocks from your door. Pennsylvania is an all-party state too.
+
+Courts have not settled cleanly on which state's law governs an interstate call, and the reasoning varies by jurisdiction and by which party is suing. What matters operationally is that the ambiguity exists, the downside is a statutory-damages claim rather than a small fine, and the cost of eliminating the ambiguity is one sentence in your greeting. The list of states with the stricter standard is in [two-party consent states and call recording](/blog/two-party-consent-states-call-recording), and California specifically in [California call recording rules for restaurants](/blog/california-call-recording-restaurants).
+
+## What disclosure sounds like on a restaurant line
+
+The version that works is short and lands before the caller starts talking:
+
+"Thanks for calling Marino's. This call may be recorded. What can I get started for you?"
+
+Two things about that. It comes first, before any exchange of information, because consent obtained after the useful part of the conversation is not consent to the recording of that part. And it does not need a legal paragraph attached. Callers who object will say so, and your handoff path should send them to a person on a line that is not recording, which is a configuration question worth raising with any vendor before signing.
+
+Some operators worry that the disclosure changes how callers behave. In practice it does not, because everyone has heard it a hundred times from their bank and their airline. What does change caller behavior is a long automated preamble before anyone can order, which is a separate problem and a worse one.
+
+Two variations get proposed and neither is worth adopting. The first is a beep tone instead of words, borrowed from old call center practice. A tone communicates nothing to a caller who has never been told what it means, and it makes the greeting sound like a machine before your agent has said a word. The second is putting the disclosure at the end, on the theory that it interrupts less. It does interrupt less, and it also arrives after the caller has already given you a name, a phone number, and an address, which is the material the disclosure was supposed to cover.
+
+Keep it first, keep it to one clause, and stop thinking about it.
+
+## Recording and disclosing are different questions
+
+Whether you may record and whether you must say a system is not human are two separate rules, and they are moving at different speeds. Consent law is old and stable. Disclosure rules aimed specifically at automated voice agents are newer, vary by state, and are still being written in several legislatures.
+
+Treat them as separate line items. Get the recording disclosure right today because the law is settled, and track the AI disclosure question on its own timeline. We keep that thread in [AI disclosure laws for voice agents](/blog/ai-disclosure-laws-voice-agents).
+
+## The volume problem nobody plans for
+
+Before voice AI, a New York restaurant that recorded calls usually recorded a fraction of them, on a system nobody checked. An agent that answers every call records every call, with a transcript attached, held by a vendor.
+
+That is a genuine improvement for accuracy review and dispute resolution. It also means you now hold a searchable archive of thousands of conversations containing names, phone numbers, addresses, and occasionally payment details. Four questions are worth settling before that archive gets large:
+
+- How long recordings and transcripts are kept, and whether that period is something you set or something the vendor sets for you
+- Who at the vendor can play back a recording, and whether that access is logged
+- Whether the audio is used to train models, and whether you can decline
+- What happens to the archive if you cancel, including whether you can export it and how quickly it is deleted
+
+Those are contract terms, not settings. The retention piece is worked through in [call recording retention policy](/blog/call-recording-retention-policy), and the ownership piece in [voice AI data ownership and privacy](/blog/voice-ai-data-ownership-privacy).
+
+## A default that holds up
+
+For a restaurant operating in New York, the workable posture is simple and does not require a lawyer to implement, though it is worth having one look at it if you are running multiple locations across state lines.
+
+Announce the recording in the first line of every greeting. Keep a non-recorded path available for callers who object. Set retention to the shortest window that still lets you settle a disputed order, and write that window into the vendor agreement rather than leaving it at whatever the default is. Do not store card numbers in audio at all, which is a payment architecture question before it is a privacy one.
+
+None of this is legal advice, and a restaurant group with locations in several states should have counsel look at the specific set. But the reason the advice is short is that the strictest common denominator is cheap to meet. You are not choosing between compliance and a good caller experience. You are choosing between one extra sentence and a question you would rather not have to argue.
+
+If your current setup records calls with no announcement, the fix takes about five minutes and applies to every call from tomorrow forward. The recordings already sitting on the server are the harder conversation, and the right move there is usually to set a retention window and let the old material age out rather than to keep it indefinitely because deleting felt like an admission.

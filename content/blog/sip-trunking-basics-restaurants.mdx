@@ -1,0 +1,78 @@
+---
+title: "SIP trunking for restaurants: what it is and who needs one"
+description: "A SIP trunk carries your phone calls over your internet connection. Most restaurants don't need to buy one directly, and here's how to tell if yours does."
+publishedAt: "2026-02-20"
+faqs:
+  - question: "What is a SIP trunk in plain terms?"
+    answer: "A virtual phone line that runs over your internet connection instead of over copper. It connects your phone system to a carrier, carries a set number of simultaneous calls, and delivers your phone numbers to you. If you have an on-site phone system with physical extensions, a SIP trunk is what feeds it dial tone."
+  - question: "Does my restaurant need to buy a SIP trunk?"
+    answer: "Probably not. A trunk is something you buy when you own the phone system and need to connect it to the outside world. Most restaurants use a hosted phone service or point their number straight at an answering platform, and in both cases the trunking happens on the provider's side and never appears on your invoice."
+  - question: "How many channels does a restaurant need?"
+    answer: "Count your simultaneous calls at your busiest fifteen minutes, not your daily total. A small takeout shop may peak at two or three at once. Buy for the peak plus one, because the call that gets a busy signal is the one that arrives during your rush, which is exactly when you can least afford to lose it."
+  - question: "What happens to SIP calls when the internet goes out?"
+    answer: "They fail, unless failover is configured in advance. Any carrier worth using lets you set a destination that receives calls when the trunk is unreachable, usually a cell number. Set it up during onboarding rather than during an outage, and test it once a quarter by unplugging the router on a slow afternoon."
+  - question: "Does an AI phone agent require a SIP trunk?"
+    answer: "No. The agent lives on the provider's infrastructure and receives calls at a number they assign, so you either forward your existing number to it or port the number over. If you already run a SIP-based phone system, your trunk keeps doing its job for your extensions while the ordering number routes to the agent."
+---
+
+A SIP trunk is a phone line that travels over your internet connection instead of over a copper pair from the street. That's the whole concept. Everything else about it is configuration detail, and most of that detail belongs to whoever sells you phone service rather than to you.
+
+The reason the term shows up in restaurant conversations at all is that a phone vendor said it during a sales call, and it sounded like something the buyer was supposed to already understand. Usually the honest answer is that the restaurant doesn't need to think about trunks at all.
+
+## What the pieces are
+
+SIP is the protocol that sets up and tears down a call. A trunk is a bundle of channels sold to you as one connection, and a channel is one simultaneous call. A ten-channel trunk means ten people can be on the phone with your restaurant at the same moment; the eleventh gets a busy signal or overflow routing, depending on what you configured.
+
+The trunk plugs into a phone system you own, either an IP-PBX sitting in your office or a software equivalent. If your phones are analog, an adapter converts between them and the trunk. Your phone numbers, sometimes called DIDs, get pointed at the trunk by the carrier.
+
+That's the architecture. Notice how much of it assumes you own a phone system. That assumption is the fork in the road.
+
+## Who actually buys a trunk
+
+Three situations make sense.
+
+You have an existing on-premise phone system with real hardware, it works, it's paid for, and you're replacing an old analog or PRI circuit with something cheaper. A trunk lets you keep the system and change what feeds it.
+
+You're a multi-unit group running one phone platform across locations, with an IT person or a managed provider who administers it. At that scale the per-channel economics and central control are worth the complexity.
+
+You have an unusual requirement that hosted service can't meet, like a specific integration with legacy equipment that nobody makes anymore.
+
+If you're a single restaurant with a cordless handset at the host stand and a phone in the office, none of the above describes you. Buying a trunk means becoming responsible for the system it feeds, and that is a job. Hosted service, where the provider owns all of that and hands you a working phone, is the right default. So is pointing your number directly at an answering platform, which skips the phone system entirely for your ordering line.
+
+## What goes wrong, in the order it goes wrong
+
+Bad audio is first and most common. Voice over an internet connection is sensitive to jitter and packet loss in a way that file downloads aren't, so a connection that streams video fine can still produce calls that sound like a bad drive-thru. The usual culprits are a consumer-grade router, an overloaded connection shared with a tablet POS and guest wifi, and no traffic prioritization. Fix that before blaming the carrier.
+
+Second is running out of channels during your rush. This is the failure operators never see, because a busy signal produces no log entry on your side. If you sized a trunk for your average and your Friday peak is triple that, you're turning away calls at the exact hour they're worth the most.
+
+Third is emergency calling. Internet-based lines carry a registered service address so that a 911 call reaches the right dispatcher with the right location. That address has to be correct and has to be updated if you move or add a suite number. This is a life-safety item, not a checkbox, and it's worth confirming in writing with whoever provides your service.
+
+Fourth is caller ID name. Your outbound calls display whatever name is registered against the number, and on a new trunk that field is often blank or wrong for a while. [Registering your caller ID name](/blog/cnam-caller-id-name-registration) covers how that database works and why your callbacks to customers might be showing up as something unhelpful.
+
+Fifth is the outage question. Copper lines historically kept working when the power went out. An internet-based line does not, so failover routing to a cell number is the substitute, and it has to be configured before you need it. The tradeoff in full is in [VoIP versus a landline for a restaurant phone](/blog/voip-vs-landline-restaurant-phone).
+
+### Sizing, if you do need to buy channels
+
+Don't count calls per day. Count concurrency during your busiest fifteen minutes:
+
+- Stand at the host stand on your busiest night with a notepad, or pull a concurrency report from your current provider if they have one
+- Record the highest number of calls in progress at the same moment
+- Add one channel for headroom, and one more if you take catering calls that run long
+- Confirm whether the carrier meters minutes separately from channels, and what happens on channel eleven
+- Ask specifically whether overflow goes to a busy signal, to voicemail, or to a failover number, because those are very different customer experiences
+
+Five minutes of counting beats a vendor's estimate every time.
+
+## Where an AI phone agent sits in this
+
+It sits outside the trunk. The agent runs on the provider's infrastructure and is reachable at a number they assign, so your two options are forwarding your published number to it or porting that number over entirely. Neither requires you to own a trunk, and neither disturbs one you already have.
+
+If you do run a SIP-based system, the sensible arrangement is to leave it doing what it does well, which is extensions, the office line, and the back room, while the published ordering number goes straight to the agent. That removes a dependency rather than adding one, because a forwarded call fails whenever the layer in front of it fails. [Porting a restaurant phone number](/blog/phone-number-porting-guide-restaurants) covers what that move involves, and [after-hours call routing](/blog/after-hours-call-routing-setup) covers the schedule work that follows.
+
+Restaurants running Square, Clover, or OrderCounter connect the agent to the POS directly, and most other systems connect through Deliverect, which has nothing to do with your phone plumbing. The [integrations page](/integrations) lists what connects where.
+
+## The question to ask your phone vendor
+
+If a vendor is quoting you a trunk, ask what problem it solves that hosted service wouldn't. If the answer is about cost per line, ask what you'd be taking on in administration and who fixes it at seven on a Saturday. If the answer is that you already own equipment worth keeping, that's a real reason and the conversation is worth having.
+
+And if you're buying phone service mainly because your calls go unanswered during the rush, note that a trunk does not answer a single call. It carries them. Whether anyone picks up is a separate purchase and a separate decision, and it's the one that shows up in your sales.

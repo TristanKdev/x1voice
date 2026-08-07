@@ -1,0 +1,79 @@
+---
+title: "California privacy law and restaurant call recordings"
+description: "A call recording is personal information under California law. Most single restaurants sit below the coverage thresholds, and growing groups cross them quietly."
+publishedAt: "2026-03-09"
+faqs:
+  - question: "Does the CCPA apply to my restaurant?"
+    answer: "Only if you meet one of three thresholds: annual gross revenue above the statutory amount, buying or selling or sharing the personal information of a large number of California consumers, or earning at least half your revenue from selling or sharing personal information. A single-location restaurant almost never meets any of them. A growing multi-unit group can meet the first."
+  - question: "Are call recordings personal information under California law?"
+    answer: "Yes. The statute's definition of personal information explicitly includes audio and electronic information, and a recording of a customer giving a name, phone number, and delivery address is personal information several times over. The transcript is too. That holds regardless of whether your restaurant is currently large enough to be covered."
+  - question: "What is a notice at collection and where does it go for phone calls?"
+    answer: "It is a disclosure of what categories of personal information you collect and why, given at or before the point of collection. On a phone line, the workable version is a short greeting line stating that the call is recorded, plus a fuller description on your website's privacy page that the greeting can point people to."
+  - question: "Do I have to delete a call recording if a customer asks?"
+    answer: "A covered business generally has to honor a verified deletion request, with exceptions for things like completing a transaction or complying with a legal obligation. The practical difficulty is finding the recordings, so ask your vendor whether audio and transcripts can be located and deleted by phone number before you need to do it under a deadline."
+  - question: "Does a voiceprint count as sensitive personal information?"
+    answer: "Biometric information processed to identify a person is treated as sensitive under California law, which carries additional obligations. This is a strong reason to confirm your voice vendor does no speaker identification at all. Transcribing what a caller said is ordinary personal information. Building a template of how their voice sounds is a different category with a different burden."
+---
+
+Most single-location restaurants are not covered by California's privacy law, and the operators who worry hardest about it are usually the ones who do not have to. The statute reaches businesses above a revenue threshold, businesses handling personal information at large scale, or businesses that make their money selling data. A ninety-seat neighborhood restaurant clears none of those.
+
+That is worth saying plainly because the compliance industry has a financial interest in blurring it. What is also worth saying is the part that catches people: a restaurant group in growth mode crosses the revenue threshold at a fairly ordinary size, and it crosses it in the middle of a year, without anyone sending a notice.
+
+## What the thresholds actually are
+
+Three tests, and meeting any one brings you in. Annual gross revenue above the statutory amount, which is adjusted periodically and sits in the tens of millions. Buying, selling, or sharing the personal information of a hundred thousand or more California consumers or households in a year. Or deriving half or more of annual revenue from selling or sharing personal information.
+
+For restaurants, the first test is the only realistic one. The second sounds reachable when you consider how many people call a busy operation in a year, and it usually is not, because it counts buying, selling, and sharing rather than merely collecting. The third describes a business you would know you were in.
+
+So the honest answer for most readers is that this post is a planning document rather than an obligation. If you run five locations and revenue is climbing, it becomes an obligation at a predictable point, and it is far cheaper to build the habits before then.
+
+## A recording is personal information, several times over
+
+Set coverage aside for a moment, because the underlying classification does not depend on it.
+
+California's definition of personal information includes audio and electronic information, and it is written to reach information that is capable of being associated with a person or household. A recording of a customer saying their name, reading a phone number, and giving an apartment number with a gate code is personal information on four counts, in a format that is also biometric-adjacent and searchable.
+
+The transcript inherits all of it. So does the order history keyed to the phone number. An operator who thinks of their privacy exposure as "the email list" is understating it by an order of magnitude once a voice system is answering every call.
+
+## Notice at collection, on a phone line
+
+Covered businesses have to tell people what categories of personal information are being collected and for what purpose, at or before collection. On a website that is a banner and a policy page. On a phone line, there is no screen.
+
+The version that works is layered. The greeting carries a short spoken disclosure, the same sentence that handles your recording consent obligations, described in [California call recording rules for restaurants](/blog/california-call-recording-restaurants). Your website carries the full description: that you record calls, what you collect from them, why you keep them, how long, and who processes them. The spoken line can reference the site for anyone who asks.
+
+Do not try to read a privacy policy over the phone. Nobody has ever listened to one, and a thirty-second preamble before someone can order a sandwich does more damage to your business than the disclosure prevents.
+
+## The rights you have to be able to service
+
+If you are covered, California consumers can ask what you have collected about them, ask you to delete it, ask you to correct it, and opt out of sale or sharing. The rights are not the hard part. Retrieval is.
+
+Ask your vendor whether these four operations are possible before you need them:
+
+- Locate every recording and transcript associated with a given phone number, across whatever retention window you keep
+- Export that material in a readable form on a deadline measured in weeks, not whenever engineering has time
+- Delete it, including from backups and any derived transcript store, and confirm the deletion in writing
+- Confirm whether that audio has been used to train models, and what happens to the trained artifact if the source is deleted
+
+That last one is where honest vendors get uncomfortable and where you learn the most. A model trained on your customers' voices is not something a deletion request can meaningfully reach, which is exactly why the training question belongs in the contract rather than in a support ticket. It is the same argument made in [voice AI data ownership and privacy](/blog/voice-ai-data-ownership-privacy).
+
+## Your vendor is a service provider, or they aren't
+
+California draws a hard line between a service provider processing data on your instructions and a third party doing its own thing with it. The line is drawn by contract, and the contract has to actually say the right things: that the vendor processes only for the specified purposes, will not sell or share the information, will not combine it with data from other sources except in permitted ways, and will pass the same terms to its subprocessors.
+
+If your voice vendor's agreement does not contain those commitments, then in a strict reading you may be disclosing personal information to a third party, which drags in a different and worse set of obligations. Get the data processing terms in front of you before signature. What to look for is in [a data processing agreement with a voice vendor](/blog/data-processing-agreement-voice-vendor).
+
+Also read the subprocessor list. Voice systems are usually built on top of a speech provider and a telephony provider, and your customers' audio touches all of them.
+
+## The one feature to rule out entirely
+
+Biometric information used to identify a person is treated as sensitive personal information in California, and it is regulated harder still in Illinois, where the consequences are severe enough to warrant a separate discussion in [Illinois voice privacy law](/blog/illinois-voice-privacy-restaurants).
+
+You do not need it. Recognizing a returning caller by their phone number gives you the same experience with none of the classification problem. Confirm in writing that no speaker identification, voiceprint, or speaker embedding is created or stored anywhere in the stack, and this whole category of exposure disappears from your risk register.
+
+## What to do at your current size
+
+If you are one or two locations, do three cheap things and stop. Announce recording in the greeting. Set a retention window short enough that you are not sitting on years of audio, using the reasoning in [call recording retention policy](/blog/call-recording-retention-policy). Confirm no voiceprints.
+
+If you are a group approaching the revenue threshold, the work is different in kind rather than degree, and it should start about a year before you cross. Write the privacy page. Get the vendor terms right. Build the retrieval and deletion path and test it once on a real phone number so you know how long it takes. And put a calendar reminder on the revenue check, because the threshold does not announce itself and being twelve months late to it is much worse than being six months early.
+
+This is not legal advice and California-specific obligations shift as regulations get updated, so a group at that scale should have counsel review the actual posture rather than a checklist. The reason to start early is that every item above is a two-hour task when nobody is asking, and a crisis when somebody is.

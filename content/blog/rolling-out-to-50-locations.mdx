@@ -1,0 +1,82 @@
+---
+title: "A staged rollout plan for voice AI across fifty locations"
+description: "Four stores, then twelve, then the rest, with a written go/no-go gate between waves. How to sequence a fifty-location voice rollout without a group-wide mess."
+publishedAt: "2026-08-02"
+faqs:
+  - question: "How long should a fifty-location voice AI rollout take?"
+    answer: "Plan on ten to fourteen weeks from first store live to last, with most of that spent in the first two waves. Setup for an individual store is typically under 24 hours, so the calendar is not driven by configuration time. It is driven by how long you wait between waves to see whether anything is wrong."
+  - question: "How many stores should be in the first wave?"
+    answer: "Three to five, chosen for variety rather than for being easy. Include your highest call volume location, one store with a menu that differs from the standard, and one with a manager who will tell you the truth when something is broken. A first wave of cooperative low-volume stores teaches you almost nothing."
+  - question: "What should the go/no-go gate between waves measure?"
+    answer: "Order accuracy checked against actual tickets, the reasons calls escalated to staff, and whether store managers made any unplanned workarounds. Accuracy is the number that decides it. Escalation reasons tell you what to fix before the next wave, and the workarounds tell you where your configuration does not match how the store really operates."
+  - question: "Can you skip the pilot if the vendor already works with similar restaurants?"
+    answer: "No, because the thing being tested is your menu and your operations, not the vendor's technology. A platform that performs well for another group will still stumble on your abbreviations, your modifier structure, and the way your stores handle a large order. The pilot is short precisely because it is testing configuration rather than capability."
+  - question: "Who should own the rollout inside the company?"
+    answer: "One named person with authority over both operations and the vendor relationship, not a committee and not the IT function alone. Rollouts stall when the person collecting store feedback cannot approve a configuration change. Give that person a weekly slot with the vendor and the ability to hold a wave without asking permission."
+---
+
+Four stores, then twelve, then the remaining thirty-four. That shape, with a written gate between each wave, is the difference between a rollout that finishes in three months and one that gets suspended in week five after a bad Saturday at a busy location.
+
+Setting up an individual store is not the hard part. Configuration for a location is typically done inside 24 hours. The calendar is long because you are deliberately waiting between waves to find out what is wrong while it is still cheap to fix.
+
+## Why turning on all fifty is the expensive option
+
+Every group that has done this at once has the same story. Something in the configuration was wrong in a way that only appears at volume, it appeared at every store simultaneously, and the fix took four days during which fifty general managers formed a permanent opinion about the system.
+
+The failures are rarely dramatic. A modifier that maps to the wrong POS item. Hours that do not account for a store with a different Sunday close. A menu abbreviation your staff understand and the agent does not. Any one of them is a twenty-minute correction when you find it at four stores. At fifty it is a support queue, and worse, it is a credibility problem that follows the project for the rest of the year.
+
+Staff trust is the resource you are actually protecting. A manager who watched the phone work correctly from day one will report a small issue calmly. A manager who spent a weekend fighting it will route the phone to a cell number and stop telling you anything.
+
+## Wave one: four stores, four weeks
+
+Pick for variety, not for ease. The temptation is to start with cooperative low-volume stores because the risk feels lower, and that choice wastes the entire wave. Nothing surfaces at forty calls a day.
+
+The set that teaches you the most:
+
+- Your highest call volume location, because throughput problems only appear under load.
+- A store whose menu differs from the group standard, since regional items are where mapping breaks.
+- A store in a market with a meaningful second language, if you have one, which tests [multi-language menu support](/blog/multi-language-menu-support) before it matters at scale.
+- A store whose GM will tell you plainly when something is wrong rather than managing around it.
+
+Four weeks is the right length because you need at least two full weekend peaks and one week where something unusual happens. Run it as an actual pilot with written criteria rather than an open-ended trial, which is the argument in [designing a voice AI pilot](/blog/designing-a-voice-ai-pilot).
+
+During the wave, somebody at corporate reads transcripts. Not a dashboard, transcripts, a sample of maybe thirty calls a week including every escalation. This is the only part of the process people skip, and it is where nearly all the useful findings come from.
+
+## The gate that decides wave two
+
+Write the criteria before wave one starts. Criteria invented after you have seen the data are criteria fitted to the data.
+
+The number that decides it is order accuracy, measured by pulling tickets and comparing them against the call, not by trusting a vendor report. If orders are landing correctly, everything else is a tuning problem. If they are not, no other metric matters and the wave does not advance.
+
+Alongside it, two things that are not numbers. First, the escalation reasons: sort them into calls that should reach a person by design and calls the agent failed to handle, and fix the second category before proceeding. Second, ask each pilot GM what workaround they invented. There is always one, and it points at a mismatch between your configuration and how the store actually runs. A manager who started answering the phone manually during the dinner rush has told you something a report never will. [Pilot exit criteria](/blog/pilot-exit-criteria-voice-ai) goes through how to write these so they hold.
+
+Hold the gate honestly. A rollout that advances on a failed gate because a launch date was announced internally is how groups end up rolling back at thirty stores.
+
+## Wave two tests your process, not the product
+
+Twelve stores, three weeks. By now the technology question is largely answered and what you are testing is whether your own organization can do this fifty times.
+
+Specifically: can a store go live without corporate doing the configuration by hand. Can a district manager answer a store's question without escalating it. Does the training material work when delivered by someone other than the person who wrote it.
+
+Wave two is also when access control stops being theoretical. Twelve stores means enough people touching settings that shared logins become a real problem, and the roles you set up now are the ones you will live with. Build them before the stores go live rather than retrofitting at forty, which is covered in [access control across a multi-store account](/blog/sso-user-permissions-voice-platform).
+
+Watch for the things that only appear when the count grows:
+
+- Menu updates made centrally that do not reach every store, which is the mechanism described in [menu sync](/blog/menu-sync-deep-dive-voice-ai).
+- Stores with genuinely different hours, holiday schedules, or delivery boundaries that the standard template flattens.
+- Reporting that was readable for four stores and becomes unusable at twelve without rollups. See [reporting rollups across locations](/blog/reporting-rollups-multi-location).
+- Support requests routing to corporate instead of the vendor, which quietly turns one person into a help desk.
+
+## The remaining stores go in batches, not all at once
+
+Eight to ten locations a week, grouped by region so a district manager is dealing with their own stores in one stretch rather than a store here and a store there over a month.
+
+Keep the gate, even though it gets lighter. After each batch, check accuracy at the new stores and confirm nothing regressed at the earlier ones. The regression check matters more than people expect, because a menu change made in week nine can affect stores that have been running fine since week two.
+
+Announce each batch to its stores a week ahead with a specific date and a named contact. The single most common complaint from store-level staff in a multi-unit rollout is not about the technology, it is that the phone started behaving differently and nobody told them. That gap is most of what [change management across a multi-unit group](/blog/change-management-multi-unit) is actually about, and it costs nothing to close.
+
+## The one thing to decide before you start
+
+Name the person who can hold a wave. Not a committee, not a steering meeting that convenes on Thursdays. One person who talks to stores, talks to the vendor, and has the authority to say the next twelve stores are not going live this week.
+
+Rollouts do not fail because the gates were wrong. They fail because a gate came back red, the person who saw it had no standing to stop anything, and twelve more stores went live on schedule into a problem that was already known. If you cannot name that person today, that is the first thing to fix, ahead of any configuration work.

@@ -1,0 +1,81 @@
+---
+title: "Standardizing phone ops across a roll-up portfolio"
+description: "In a restaurant roll-up the phone is the last unstandardized channel. How to inventory it across an acquired portfolio, sequence it, and underwrite it honestly."
+publishedAt: "2026-07-29"
+faqs:
+  - question: "Why does the phone get standardized last in a roll-up?"
+    answer: "Because it has no system of record. POS, payroll, purchasing and accounting all produce data that appears in diligence, so they get consolidated first. Inbound calls leave almost no trace outside carrier records nobody pulls, which means the channel is invisible during the deal and stays invisible until someone deliberately goes looking for it."
+  - question: "What does a phone inventory across an acquired portfolio involve?"
+    answer: "Three things per location: who the carrier is and what the contract term looks like, what phone numbers exist and who controls the account, and ninety days of call detail records showing volume and answer status by hour. The number ownership question is the one that bites, because a number registered to a former owner's personal account is a real transition risk."
+  - question: "Should a portfolio standardize on one voice AI vendor across different brands?"
+    answer: "Usually yes for contracting and reporting, but expect per-brand configuration rather than one shared setup. Different concepts have different menus, escalation rules and call mixes, so what you are standardizing is the vendor, the metric definitions and the reporting rollup, not the script. Forcing one configuration across unlike concepts produces bad calls in the name of consistency."
+  - question: "How does phone data change an EBITDA story?"
+    answer: "It usually shows up as recovered revenue rather than cost savings, which is the harder number to underwrite. Unanswered calls are lost tickets, and the recovery is real but it is an estimate until you have before-and-after data at a live location. Treat pilot results as the evidence and be conservative with the extrapolation across concepts with different call mixes."
+  - question: "What is the most common mistake operators make here?"
+    answer: "Rolling out portfolio-wide on a schedule instead of by measured need. Locations vary enormously in call volume and miss rate, and a uniform rollout spends the same money at a store losing forty calls a night and a store losing four. Rank by unanswered calls at peak first, then sequence, and be willing to exclude low-volume sites entirely."
+---
+
+The assumption going into most restaurant roll-ups is that the phone is a solved problem. Every location answers its phone somehow, it has been answering it for years, and there is no line item that suggests otherwise. So the integration plan covers POS, payroll, purchasing, accounting and marketing, and the phone appears nowhere.
+
+Then somebody calls twenty locations at 6:40 on a Thursday and gets voicemail at seven of them.
+
+The phone is not solved. It is unmeasured, which is a different condition and a more expensive one, because unmeasured channels do not show up in diligence and therefore do not show up in the value creation plan either.
+
+## Why this channel survives consolidation untouched
+
+Every other back-of-house function produces a record that lands in a system somebody consolidates. Sales flow through the POS. Labor flows through payroll. Invoices flow through AP. When you buy a fifteen-unit group, those systems are the first thing you map, because they are where the numbers live.
+
+Inbound calls produce a record too, but it lives in carrier call detail records, and nobody pulls those during a deal. There is no dashboard, no monthly report, and no line on the P&L that says "orders we did not take because the phone rang out." A location can lose a meaningful share of its off-premise demand for years and the loss will never appear anywhere a buyer looks.
+
+That invisibility is why the phone tends to be the largest unaddressed operational variance in a portfolio at close, and also why it is one of the cheaper things to fix relative to what it returns.
+
+## The inventory that has to happen first
+
+Before any vendor conversation, collect the following for every location. This is a week of work for one person and it is the foundation of everything after.
+
+- Carrier, account owner, contract term and renewal date, per site
+- Every phone number in use, including the ones printed on menus and delivery-app listings that route somewhere nobody has checked
+- Ninety days of call detail records showing inbound volume and answer status by hour and by day of week
+- Who currently answers, by daypart, and whether an answering service is in the mix and what it costs
+- Any existing IVR, hunt group or forwarding rule, and who set it up
+
+The number ownership question deserves particular attention in an acquisition. Restaurant phone numbers are frequently registered to a former owner personally, or to an account whose credentials left with a manager two years ago. Discovering that during a cutover is a bad day. Discovering it during the inventory is a form to file.
+
+The call detail records are the substantive part. They give you unanswered call counts per location per hour, which is the only honest basis for sequencing anything. A [phone operations audit across multiple units](/blog/phone-ops-audit-multi-unit) walks through what to extract and how to read it.
+
+## What the numbers usually look like
+
+Expect variance that is wider than your other operational metrics.
+
+In most portfolios a handful of locations account for the majority of the recoverable revenue. They are the high-volume off-premise sites with a hard dinner peak, and their unanswered call counts between five and eight are the number that carries the whole business case. The middle of the distribution loses a steady handful of calls a day, which is real money at a $30 ticket but not dramatic. And there are always a few sites, usually mall or office-park locations, where the phone barely rings and nothing you do to it will matter.
+
+Do the arithmetic per location rather than per portfolio. A portfolio average is a number that describes none of your restaurants and will lead you to spend the same money at a site losing forty calls a night as at one losing four.
+
+## Standardize the vendor, not the configuration
+
+There is a real temptation, holding several concepts, to build one setup and push it everywhere. Resist the configuration half of that.
+
+What genuinely should be standard across the portfolio: the vendor and contract, the metric definitions, the reporting rollup, the escalation policy structure, and the POS integration approach. Standard definitions are what let you compare a pizza concept and a fast-casual concept on the same page without the comparison being nonsense. [Reporting rollups for multi-location groups](/blog/reporting-rollups-multi-location) covers how to build that view.
+
+What should be per concept: the greeting, the menu structure, the upsell language, the escalation rules, and the call-mix expectations. A fine-dining room in the portfolio should be transferring far more calls to a person than a wings concept, and a shared containment target across both would punish the room for doing the right thing. That trap is worked through in [what containment actually measures](/blog/measuring-call-containment-rate).
+
+On the integration side, portfolios almost always land on mixed POS estates. Direct integrations exist for Square, Clover and OrderCounter, and Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros are reachable through Deliverect. Map your estate against that before you build a rollout schedule, because integration path affects sequencing more than geography does. [Multi-location deployments through Deliverect](/blog/deliverect-voice-agent-multi-location-restaurants) covers how that works in practice.
+
+## Sequencing, and the diligence gate
+
+Roll out to your three worst locations by unanswered calls at peak. Sixty days later you have before-and-after answered-call rate and order accuracy at real sites in your own portfolio, which is the only evidence that survives an investment committee.
+
+Then extrapolate carefully. The recovered revenue at a high-volume pizza location does not translate to a full-service concept with a different call mix, and an aggressive portfolio-wide extrapolation from one good pilot is the kind of number that gets challenged and then discredits the whole program. Underwrite conservatively and let the actual results run ahead of the model.
+
+Two things also belong in the plan before scale-up:
+
+- A security and data review, since call recordings and customer phone numbers are personal data across multiple entities and jurisdictions, covered in [enterprise security review for voice AI](/blog/enterprise-security-review-voice-ai) and [data ownership and privacy](/blog/voice-ai-data-ownership-privacy)
+- A named owner for the channel at the portfolio level, because a program nobody owns stops getting reviewed by month four and quietly decays
+
+## What this looks like at the portfolio level
+
+The outcome worth aiming for is modest and specific: one metric definition for answered calls, one place to see it by location and daypart, and one person who reads the escalated transcripts monthly and turns them into fixes.
+
+That is enough to make the phone a managed channel instead of an assumption. It also produces something the previous owners never had, which is a comparable operating metric that reveals which locations are actually short-staffed at peak. The phone data tends to expose that faster than a field visit does.
+
+Pull ninety days of call records for your five largest locations this month and count the unanswered calls between five and eight. Whatever that number is, it has been true for every month you have owned them.

@@ -1,0 +1,78 @@
+---
+title: "How to measure phone order accuracy without a QA team"
+description: "A repeatable way to check whether phone orders land correctly: thirty tickets a week, a printed sheet, and no software beyond what you already pay for."
+publishedAt: "2026-06-13"
+faqs:
+  - question: "What counts as an inaccurate phone order?"
+    answer: "Any difference between what the caller asked for and what the kitchen was told to make, including a missing modifier, a wrong size, a wrong quantity, a missing allergy note, and a wrong pickup time. Grade against the recording or the caller's words, not against what the food turned out to be, or you will be measuring the kitchen instead of the phone."
+  - question: "How many orders do I need to check?"
+    answer: "Thirty a week is enough to see a real change in a month, and it takes under an hour. Sampling fewer than about twenty makes normal week-to-week variation look like a trend. Sampling several hundred is a better estimate but nobody sustains it, and a method you abandon in three weeks measures nothing at all."
+  - question: "Should I measure accuracy per order or per line item?"
+    answer: "Per order, with a per-item error count recorded alongside. Per-order accuracy is the number that matches what the customer experiences, since one wrong item makes the whole order wrong to them. The per-item count tells you whether your errors are isolated slips or a systematic problem with one part of the menu."
+  - question: "Can I use my POS reports instead of listening to calls?"
+    answer: "No. A POS report shows what was entered, which is exactly the thing you are trying to check. Accuracy requires a second source for what the caller actually said, which means a recording, a live listen, or a callback. Comparing the POS to itself will show you a perfect score every time."
+  - question: "Do I need permission to record calls for this?"
+    answer: "Recording rules vary by state and some require every party to consent, so check your own before recording anything. If recording is impractical, a manager listening live and marking a sheet produces a usable sample without any recording at all. The legal ground is different in every state and worth reading before you start."
+---
+
+A caller orders a large pepperoni with light sauce and no onions, plus a Caesar with dressing on the side. The ticket prints as a large pepperoni, no modifiers, and a Caesar. The kitchen makes exactly what the ticket says. The food is wrong, the customer is annoyed, and nothing in your POS reports will ever tell you that happened.
+
+That gap is what order accuracy measurement closes. It is the one phone metric worth optimizing directly, and it is the only one that requires you to compare two sources rather than read one. You cannot get it from a dashboard, because every dashboard you own is built from the same record you are trying to check.
+
+## The method, in one paragraph
+
+Pick thirty phone orders a week at random. For each one, listen to the call or have a manager listen live, and compare what the caller asked for against what went into the POS. Mark the order correct or incorrect, and if incorrect, write down what kind of error it was. Total the sheet at the end of the week. That is the entire program, it takes under an hour, and it is more reliable than any vendor-supplied accuracy figure because you scored it yourself.
+
+## Getting the sample right
+
+Random matters more than large. The temptation is to check the orders you happen to remember or the ones a customer complained about, and both of those are biased toward errors in ways that make the number worthless as a trend.
+
+The cheapest way to randomize: pick a fixed offset and take every Nth phone order from the period's list. If you do sixty phone orders in a dinner service and want ten from it, take every sixth. Do that across two lunches, two dinners, and one weekend service, and you have thirty spread across the times your phone behaves differently.
+
+Cover your peak deliberately. Accuracy at 2pm on a Tuesday tells you almost nothing, because that is not when things go wrong. If half your sample is not from your busiest ninety minutes, your number will be better than your restaurant.
+
+### What to write on the sheet
+
+Keep it to five columns and it will actually get filled in.
+
+- Order number and time, so you can find the call again if someone disputes the score.
+- Correct or incorrect, judged on the whole order rather than the item.
+- Error type, from a short fixed list you do not expand mid-month.
+- Number of wrong items, which separates one bad line from a wholly mangled order.
+- Whether the order was read back to the caller before the call ended.
+
+That last column is the one that pays for the exercise. Read-back is the single strongest predictor of a correct ticket in most restaurants, and having it on the sheet turns a vague suspicion into a comparison you can run at the end of the month.
+
+## What to count as an error
+
+Define this before you score anything, because a definition that shifts mid-month produces a trend that is really just you changing your mind.
+
+Grade the ticket against what the caller said, not against what came out of the kitchen. If the phone captured the order correctly and expo packed it wrong, that is a real problem and it is not this one. Mixing them means your phone metric moves whenever your packing station has a bad week.
+
+The error types worth separating:
+
+- Missing or wrong modifier, which is by far the most common and clusters on a handful of items.
+- Wrong size or quantity, usually from a caller who changed their mind mid-sentence.
+- Missing allergy or dietary note, which you should track separately from other modifiers because the consequence is different.
+- Wrong pickup or delivery time, which generates a second call and a cold order.
+- Wrong item entirely, which is rarer than operators expect and usually points at two menu items that sound alike.
+
+The distribution across those five will surprise you, and it is the reason to record the type rather than just the count. Two months of "we had eleven errors" tells you nothing. Two months of "nine of eleven errors were modifiers on the same four items" tells you exactly what to change, which is usually the names and option structure of those four items. That work is described in [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers) and applies just as well to a human taking orders on paper.
+
+## Doing it when calls are not recorded
+
+Recording is convenient and is not required. Some states require consent from every party on the call, and the rules are specific enough that you should read yours before you turn anything on. The ground is covered in [call recording consent laws for restaurants](/blog/call-recording-consent-laws-restaurants).
+
+Without recordings, a manager listens live to a scheduled block, say twenty minutes at the front of a dinner rush, and marks the sheet as calls come in. You lose the ability to re-check a disputed score and you gain a manager who is now paying close attention to how the phone is being answered, which tends to improve things on its own for a week or two. Rotate who does it so you are not measuring one person's habits.
+
+If you run a voice agent, transcripts replace the listening and the whole exercise gets faster, though you still compare the transcript to the POS ticket rather than trusting any accuracy figure the vendor reports. How to pull and sample those is in [transcript sampling for QA](/blog/transcript-sampling-qa).
+
+## Reading the number after a month
+
+Four weeks of thirty gives you a hundred and twenty scored orders, which is enough to see a real shift and not enough to chase a single bad week. Look at three things: the overall rate, the error-type mix, and the read-back column.
+
+If your accuracy is materially lower on orders without a read-back, you have found a free fix and it costs fifteen seconds a call. That is the most common finding and it is worth checking before you consider spending money on anything.
+
+If the error mix is dominated by one or two menu items, rename them or restructure their options. If it is spread evenly across everything, the problem is the conditions rather than the menu, which usually means the phone is being answered by someone doing three other things at once during peak. That is a staffing question, and it is the argument for taking the phone off the host stand entirely rather than for training harder.
+
+Run this for two months before you change your phone setup, then run it unchanged for two months after. A vendor's accuracy claim measured by the vendor is not evidence about your restaurant. A hundred and twenty tickets you scored yourself, before and after, is. Bring that sheet to any [voice AI demo](/blog/voice-ai-demo-what-to-test) and score the demo calls with it, and the conversation changes character quickly.

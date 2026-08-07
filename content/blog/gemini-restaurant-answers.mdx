@@ -1,0 +1,72 @@
+---
+title: "What Gemini Pulls From to Answer Restaurant Questions"
+description: "Gemini leans on Google's own local data long before it reads your site. Here is the order it seems to work in, and the three things you can actually fix."
+publishedAt: "2026-03-23"
+faqs:
+  - question: "Where does Gemini get information about my restaurant?"
+    answer: "Primarily from Google's own local data: your Business Profile, your Maps listing, and the reviews attached to it. Your website fills in what the listing does not carry, such as menu detail, catering minimums, or delivery boundaries. Third-party directory pages surface mainly when they contradict the listing, which is how a five-year-old phone number ends up in an answer."
+  - question: "Can I get Gemini to recommend my restaurant specifically?"
+    answer: "No, and any vendor selling that is selling something they cannot deliver. What you can control is whether the facts Gemini repeats about you are correct and complete. Recommendation itself comes out of review volume, sentiment, and proximity to the person asking, none of which respond to a settings change on your end."
+  - question: "Does Gemini read a PDF menu?"
+    answer: "Badly, and often not at all. A PDF built in a design tool is usually a picture of text as far as any crawler is concerned, so prices, items, and modifiers never enter the index. If a model has to guess at your menu, it will guess from review text and old aggregator pages. An HTML menu page fixes this more reliably than anything else on the list."
+  - question: "How do I check what Gemini says about my restaurant?"
+    answer: "Ask it the questions your customers ask, from a phone that is not signed into your business account. Hours today, do you deliver to a nearby neighborhood, is there a gluten-free option, what is the phone number. Write down every wrong answer and trace each one back to the source that carries it. That list is the whole work plan."
+  - question: "Does answering my phone affect how Gemini sees me?"
+    answer: "Not directly, but it decides what happens after the answer. Gemini hands people a phone number more often than it hands them a link, so a correct listing that routes to a ringing phone converts worse than a slightly thinner listing that gets picked up. Visibility work and call handling are the same funnel measured at two points."
+---
+
+A regular opens Gemini on an Android phone at 6:40 on a Friday and types something like: is Salvo's doing takeout tonight, and how late are they open. The answer comes back in one paragraph, with a phone number, and the person never sees your website.
+
+That interaction is worth understanding in detail, because almost everything that determined the content of that paragraph was decided weeks earlier, in places most operators never check.
+
+## The order things seem to get pulled in
+
+Nobody outside Google can state the retrieval order with certainty, and anyone who claims a precise ranking formula is guessing. What is observable, by asking the same questions repeatedly and watching what comes back, is a rough priority.
+
+Google's own local data comes first. Hours, address, phone number, price band, and the attributes on your Business Profile get repeated nearly verbatim. Reviews come next, and they matter more than operators expect, because they are the only source that describes what the food is like in a way a model can quote.
+
+Your website comes third, and mostly for things the listing cannot hold: the actual menu, catering rules, delivery radius, private dining, allergen policy. Then third-party pages, which is where the trouble is. A delivery aggregator page with a menu from two price increases ago is still a page, and it still gets read.
+
+The practical read on this: your Business Profile is the surface that moves the most for the least effort, and your website is where the detailed answers live or fail to. Most restaurants spend their effort in the reverse order, rebuilding a homepage while the listing still carries a phone number from two owners ago.
+
+One more observation worth having, because it saves arguments. The same question asked twice, ten minutes apart, on two different phones, can produce different answers. Location, account history, and whatever the model retrieved that second all move the output. So a single bad answer is not proof of a broken source, and a single good one is not proof that anything is fixed. Ask each question a few times over a couple of days before concluding anything.
+
+## Your Business Profile does more work than your homepage
+
+If your hours are wrong on your Business Profile, they are wrong in the answer, and no amount of correct information on your site will override them. The same goes for the phone number, which is the single field most likely to be stale, because it survives an ownership change, a phone system swap, or a move to a new number without anyone noticing.
+
+Special hours are the version of this that bites hardest. Holiday hours, a Monday closure, an early close for a private event: if you do not enter them, the listing reports your standard hours, and Gemini reports the listing. You then get a call from someone standing at your locked door. The mechanics of keeping that field honest are covered in [Google Business Profile phone optimization](/blog/google-business-profile-phone-optimization).
+
+Attributes are underused. Curbside pickup, delivery, outdoor seating, reservations accepted: these are structured fields, which means they are the easiest things in your whole online presence for a model to state confidently. Filling them in takes a few minutes and removes a whole class of wrong answers.
+
+## Where your website still decides the answer
+
+Ask Gemini whether a restaurant has a vegetarian entree under twenty dollars and you have left the range of what any listing can answer. Now it needs your menu.
+
+This is the point where most restaurants lose. The menu exists as a PDF, or as an image someone exported from a design file, or on a third-party ordering page with prices that no longer match the ones in the POS. A crawler reads none of that usefully. What it can read is an HTML page with item names, descriptions, and prices as actual text, which is the argument made at length in [menu page SEO for restaurants](/blog/menu-page-seo-restaurants).
+
+The same logic applies to every question that has a specific answer: delivery zone, catering minimum, corkage, whether the patio is heated, parking. If the answer lives only in the head of whoever works the phone, it cannot appear in a generated response. Writing it down on a page is the entire intervention.
+
+## When the answer is wrong, find the source, not the model
+
+Operators tend to treat a bad AI answer as a problem with the AI. It almost never is. It is a problem with a source, and the source is usually findable in under an hour.
+
+Wrong hours: check Business Profile special hours first, then your site's footer, then Yelp, then any aggregator you have ever signed up with. Wrong phone number: same sweep, and pay attention to old tracking numbers from a marketing campaign you cancelled. Wrong prices: almost always an aggregator menu or a cached PDF. Claims you never made about the food: review text, and you are not going to fix that one, so let it go.
+
+The habit worth building is treating each wrong answer as a citation you have to trace. That discipline is the core of what [answer engine optimization for restaurants](/blog/what-is-answer-engine-optimization-restaurants) actually consists of, once the vocabulary is stripped away.
+
+## The part where visibility hands off to your phone
+
+Gemini answers local dining questions with a phone number attached far more often than it hands over a link. On a phone, that number is a tap.
+
+Which means the payoff for all of this arrives as a ringing phone during service, and the visibility work is worth exactly as much as your ability to pick up. A restaurant that fixes its listing, publishes a clean menu page, and then misses a third of its calls at 7pm has moved the loss from one place to another. The same tension appears in [how restaurants show up in AI search](/blog/how-restaurants-show-up-in-ai-search), and it is the reason we are unenthusiastic about visibility projects sold in isolation.
+
+If you want to know whether this applies to you, look at what your call volume does on a Friday between 6 and 8, and what share of it goes unanswered.
+
+## A check you can run before your next shift
+
+Take a phone that is not signed into any account associated with your business. Ask five questions in plain language: what time do you close tonight, do you deliver to whatever neighborhood is two miles away, do you have anything gluten-free, how much is a large pie, what is your phone number.
+
+Write down every answer that is wrong or missing. Next to each one, write where you think it came from. Then fix the sources in order of how many answers each one poisons, which almost always puts the Business Profile at the top and your website second.
+
+Redo the same five questions a month later. If the wrong answers came back, the source you fixed was not the source being read.

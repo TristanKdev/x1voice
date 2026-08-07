@@ -1,0 +1,82 @@
+---
+title: "STIR/SHAKEN attestation, explained for restaurants"
+description: "Why your callbacks get flagged even though you are a real business. What the A, B, and C attestation levels mean and which one your carrier is signing you at."
+publishedAt: "2026-02-23"
+faqs:
+  - question: "What is STIR/SHAKEN?"
+    answer: "It is the caller ID authentication framework US carriers use on IP voice networks. The carrier placing a call attaches a signed token asserting how confident it is that the caller has the right to use that number. The carrier receiving the call checks the signature. It was built to make spoofed robocalls harder, not to rank businesses."
+  - question: "What do attestation levels A, B, and C mean?"
+    answer: "A means the originating carrier knows the customer and has confirmed they are authorized to use the calling number. B means it knows the customer but cannot confirm the number is theirs. C means it only knows where the call entered its network, typically a gateway or a wholesale handoff. A is the level you want on every outbound call."
+  - question: "How do I find out what attestation my calls get?"
+    answer: "Ask your phone provider directly, in those words: what attestation level are my outbound calls signed at, and if it is not A, what do you need from me. They can answer from their own records. A provider that cannot tell you, or that answers with a sales pitch instead of a letter, is telling you something about how the number is routed."
+  - question: "Can a restaurant register with STIR/SHAKEN itself?"
+    answer: "No, and nobody should sell you that. Only voice service providers participate in the framework and hold the certificates. Your part is making sure your carrier has verified your ownership of the number you dial out with, so it can sign at full attestation. Everything else happens inside the carrier network."
+  - question: "Does full attestation guarantee my calls will not be labeled spam?"
+    answer: "No. Attestation is one input to the analytics engines that apply Spam Likely warnings, and calling patterns matter too. A number that dials many strangers in a short window can be flagged despite a clean signature. Full attestation removes the easiest reason to distrust you, which is different from a guarantee."
+---
+
+Say you make forty outbound calls in a week, mostly about substitutions, delivery problems, and catering headcounts. Eleven go unanswered. You are a real restaurant calling real customers who have your food in their hands, and a third of them are declining you.
+
+Some of that is people not answering unknown numbers. A meaningful chunk of it is a system that decided, before the phone rang, that your call was probably not trustworthy. That system is STIR/SHAKEN, and its verdict about you is one letter long.
+
+## What the framework is actually doing
+
+The problem it was built for is spoofing. For most of the phone network's life, the number a call claimed to be from was an unverified assertion. Anyone could put any number in that field, which is why fraud calls appeared to come from your own area code, your bank, or the IRS.
+
+STIR/SHAKEN closes that by making the originating carrier sign the call. When a call leaves your provider's network, the provider attaches a cryptographically signed token stating what it knows about the caller. The receiving carrier checks that signature before delivering the call.
+
+None of this is about whether you are a good business. It is about whether the number in the caller ID field is one you are entitled to use. The framework has no opinion about your food.
+
+## The three letters
+
+The signature carries one of three attestation levels, and the difference between them is entirely about how much the originating carrier can vouch for.
+
+Full attestation, A, means the carrier has a direct relationship with you and has verified that you are authorized to use the number you are calling from. It knows who you are and it knows the number is yours.
+
+Partial attestation, B, means the carrier knows who you are but cannot confirm the calling number belongs to you. This is common when a business uses one provider for service and dials out displaying a number owned by another provider, or when the number was never properly verified during setup.
+
+Gateway attestation, C, means the carrier knows only where the call entered its network. It cannot identify the caller at all. Calls arriving from an international gateway or an anonymous wholesale handoff land here, alongside a great deal of genuine fraud.
+
+There is also the case where no signature exists at all, which happens when a call traverses older non-IP segments of the network. Legacy copper paths cannot carry the token, so a call can lose its authentication in transit even if it started out signed properly. That is one of the quieter arguments in the [copper versus VoIP](/blog/voip-vs-landline-restaurant-phone) decision, and it almost never comes up in a sales conversation.
+
+## How a real restaurant ends up at B
+
+Nobody sets out to be partially attested. It happens through ordinary account arrangements.
+
+The most common route is a mismatch between who owns the number and who carries the call. You port your main number to one provider, then set up a separate service for outbound dialing, or an ordering platform, or a call system, and configure it to display your main number. That is a legitimate thing to want. But the carrier placing that call cannot confirm that the number belongs to you, because it does not hold the number, so it signs at B.
+
+The second route is incomplete setup. The provider does hold your number and could sign at A, but the account was never fully verified: the business name on file does not match, the address is a previous location, the ownership record was never confirmed after a port. The information needed to vouch for you exists in a filing cabinet, not in the system.
+
+The third is routing through wholesale carriers you cannot see. The call leaves your provider and passes through intermediaries, and somewhere along the way it is handed off in a way that downgrades or strips the signature.
+
+All three are fixable, and all three require a conversation with the provider rather than anything you can configure yourself.
+
+## The conversation to have with your provider
+
+Ask it plainly: what attestation level are my outbound calls signed at, and if it is not A, what specifically do you need from me to get there.
+
+That question has a factual answer, and a competent provider produces it in one exchange. What you are listening for is whether they answer with a letter or with a product. Some providers respond by offering a paid reputation or branded calling add-on, which is a different thing solving a different problem. Get the letter first.
+
+If the answer is B because your outbound service does not own the number, the usual fixes are consolidating so one provider holds and carries the number, or having your provider set up a delegate certificate arrangement that lets the outbound service sign on your behalf. Both are normal requests. Neither costs much.
+
+If the answer is that they do not know, that itself is the finding.
+
+## What this does not do
+
+Full attestation is not immunity. It is a clean record, not a shield.
+
+Spam labels come from analytics engines run by the terminating carriers and their partners. Those engines take attestation as one input among several. They also weigh how many distinct numbers you dial in a short period, how often those calls are answered, how quickly they are hung up on, and whether anyone has reported the number. A restaurant calling forty customers in a day about a delivery outage can look, in pattern terms, uncomfortably like a campaign.
+
+So a flagged number usually needs both halves addressed: the signature underneath, and the reputation on top. The remediation path for the second half is in [fixing a Spam Likely label](/blog/fixing-spam-likely-caller-id-restaurant), and the display-name layer that determines what the customer actually reads on screen is separate again, covered in [caller ID name registration](/blog/cnam-caller-id-name-registration) and [branded calling](/blog/restaurant-caller-id-branded-calling).
+
+It is also worth knowing what none of this obliges you to do. The compliance machinery around robocalls applies to voice service providers, and a restaurant is a customer of one rather than one, which is the point of [the robocall mitigation database](/blog/robocall-mitigation-database-restaurants).
+
+## Why this got harder for restaurants specifically
+
+Restaurants place a shape of call the network is suspicious of by default. Short duration, unfamiliar recipients, bursts during a rush, from a number that mostly receives rather than dials. That profile has more in common with an outbound campaign than with a person calling their sister, and the scoring systems do not know your intent.
+
+The counterweight is answered calls. Nothing improves a number's standing faster than people picking up and staying on the line, which is one more reason the display name and the attestation level compound rather than substitute.
+
+There is also a defensive side to this that has nothing to do with your outbound calls: the same authentication machinery is what your inbound line uses to sort out fraud aimed at you, which is where [blocking spam robocalls on the restaurant line](/blog/blocking-spam-robocalls-restaurant-line) picks up.
+
+Start here. Send your provider one email with one question, asking for the attestation level on your outbound calls in writing. If the answer comes back as anything other than A, you have found a specific, fixable reason a share of your callbacks are being declined, and it costs a phone call rather than a subscription.

@@ -1,0 +1,69 @@
+---
+title: "Heat wave delivery surges and the driver math"
+description: "A three-day heat wave moves demand indoors and thins out your driver pool at the same time. What that does to your phone, and how to quote times you can hit."
+publishedAt: "2026-05-18"
+faqs:
+  - question: "Why does delivery volume jump during a heat wave?"
+    answer: "People stop going out. The same trip that felt fine at 78 degrees feels like work at 99, so households that would have walked over or driven in order delivery instead. It shows up strongest in the late afternoon and early evening, and it compounds across consecutive hot days as people stop wanting to cook in a hot kitchen."
+  - question: "Why do delivery times get worse specifically in extreme heat?"
+    answer: "Driver supply thins at the same moment demand rises. Fewer people want to work a bike or a car without good air conditioning in triple-digit heat, and the ones working take longer per run. So you get more orders chasing fewer drivers, which is why quoted times that were accurate in May are badly wrong in a July heat wave."
+  - question: "Should I turn off delivery during extreme heat?"
+    answer: "Sometimes, and it is a legitimate choice rather than a failure. If your driver pool has collapsed and your quoted times have gone past an hour, taking delivery down for a few hours protects the pickup business and your reviews. What is worse than pausing is accepting orders you cannot move and letting customers discover the delay themselves."
+  - question: "What should my phone say during a heat wave surge?"
+    answer: "The current delivery quote, updated as conditions change, and the pickup alternative stated plainly. Most callers will accept a long wait if they hear it before they order, and a meaningful share will switch to pickup rather than wait. The damage comes from a quote given at the start of the call that nobody has updated since lunch."
+  - question: "Can a voice agent handle a weather-driven surge?"
+    answer: "It handles the volume without a queue forming, which is the immediate problem, and it gives every caller the same current quote rather than whatever the last person heard. It cannot create drivers. If the constraint is capacity rather than call handling, the agent's real job is throttling and honest quoting, not taking more orders."
+---
+
+Run the arithmetic before the forecast does it for you. A restaurant doing 40 delivery orders on an ordinary Tuesday, seeing a 30 percent lift across three consecutive days above 95 degrees, is looking at roughly 36 extra orders it did not plan drivers for. Meanwhile the driver pool that covered 40 comfortably has thinned, because nobody wants to run a car with weak air conditioning for six hours in that heat.
+
+More orders, fewer drivers. That is the whole problem, and it is not a phone problem until it becomes one.
+
+## The demand curve is not the one you expect
+
+Heat wave delivery does not spike at dinner the way a snowstorm does. It builds through the afternoon, because the decision people are making is "I am not turning on my oven" rather than "I cannot leave the house." The 3 p.m. to 5 p.m. window gets unusually busy, which is often the window you have staffed thinnest.
+
+It also compounds. Day one of a heat wave looks like a normal warm day. Day three is when households have run out of cold things in the fridge and stopped wanting to cook entirely. If you are forecasting off day one, you will under-plan day three. The pattern is the mirror image of the one in [snow day delivery surge calls](/blog/snow-day-delivery-surge-calls), where the spike is sharper and shorter.
+
+## Driver supply is the binding constraint, not your kitchen
+
+Most operators discover during their first bad heat wave that the kitchen was never the bottleneck. Food goes out on time. The tickets stack up on the pass waiting for someone to carry them.
+
+If you run your own drivers, expect call-outs and shorter shifts. If you rely on a third-party courier network, expect longer assignment times and more unassigned orders sitting in a queue, and expect the courier calls that come with them. Handling those is its own workflow, described in [handling driver calls from DoorDash](/blog/handling-driver-calls-doordash).
+
+Either way, your delivery radius is effectively smaller than it was in April. A run that took 14 minutes in mild weather takes 22 when the driver is idling in traffic with the air conditioning fighting to keep up, and takes longer still when they stop for water. Your zone rules were set against normal conditions, and this is one of the few situations where temporarily tightening them is correct rather than defensive. The mechanics are in [delivery zone rules for phone orders](/blog/delivery-zone-rules-phone-orders).
+
+## The phone becomes the pressure valve
+
+Here is what happens on the line during a real surge, in order:
+
+- Volume rises across the whole afternoon, so calls start arriving during the window when you have one person on the floor and nobody free to answer.
+- Quoted times go stale within about half an hour, and the person answering keeps repeating the number they were told at the start of their shift.
+- Customers who were quoted 45 minutes and waited 80 call back, which adds a second wave of calls that produce no revenue at all.
+- The staff member handling all of this is also the one expediting, so accuracy on new orders drops right when order volume is highest.
+
+That fourth item is the expensive one. A wrong order during a heat wave surge does not just cost the remake, it costs a driver run you did not have a driver for.
+
+## Quote times you can actually hit
+
+The single highest-value thing you can do during a weather surge is stop quoting optimistically. A caller told 75 minutes who receives food in 70 is satisfied. A caller told 40 who receives food in 70 is writing a review.
+
+That means the quote has to be a live number rather than a policy number. Someone has to own updating it, ideally on a fixed cadence during the surge, and every channel taking orders has to be reading the same value. If the phone says 45 and your online ordering page says 90, the phone is the one generating the complaints. The reasoning behind moving quotes dynamically is in [quoting delivery ETA](/blog/quoting-delivery-eta).
+
+Say the pickup option out loud, every time, once the delivery quote passes about 50 minutes. A real share of callers will take a 15-minute pickup over a 70-minute delivery if someone tells them the difference exists. Nobody volunteers that information when they are trying to get off the phone.
+
+## Throttling is not the same as turning delivery off
+
+There is a middle setting between accepting everything and going dark, and most operators do not use it because their systems do not make it easy.
+
+Throttling means capping how many delivery orders you accept per fifteen-minute block, so the queue stays inside a time you can honor. Callers get told the next available delivery window rather than a false ETA. It preserves the business, keeps quotes accurate, and protects the pickup customers who are standing in front of you. How that works against actual kitchen and driver capacity is covered in [order throttling and kitchen capacity](/blog/order-throttling-kitchen-capacity-phone).
+
+If you cannot throttle, pausing delivery for two hours during the worst of it is the honest second choice. Taking orders you have no way to move is the option that costs the most, and it is the one most restaurants default to because it feels like the only one that does not turn away money.
+
+## Where a voice agent helps and where it does not
+
+It answers every call during a surge, which removes the queue and the abandoned calls. It gives every caller the identical current quote, which removes the drift between what one person said and what another said. It captures orders while your one available staff member is expediting, and it takes the "where is my food" calls off the pass entirely if it can read order status. That is real relief and it arrives on the worst days.
+
+What it does not do is produce drivers. If your constraint is delivery capacity, an agent that cheerfully accepts 60 orders you cannot move has made things worse, not better. The value only lands if the throttling and quoting rules are configured against your actual capacity, and if someone updates the current wait as the afternoon goes.
+
+Before the next hot stretch, pick the number that triggers your surge posture. A forecast high, or a delivery queue depth, or a quoted time crossing a threshold. Write down what changes when it hits: the quote, the radius, the throttle cap, and whether pickup gets promoted on every call. A heat wave gives you three days of warning. Nothing else in this business does.

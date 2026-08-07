@@ -1,0 +1,89 @@
+---
+title: "Voice AI for breweries and taprooms: the calls you keep missing"
+description: "Taproom phones ring about food trucks, growler rules, and private events. What a voice agent handles well, what needs weekly upkeep, and what to hand off."
+publishedAt: "2026-01-20"
+faqs:
+  - question: "Do taprooms actually get enough calls to justify this?"
+    answer: "Many do, and the volume hides because most of it is questions rather than orders. Food truck schedules, growler policy, dog and kid policy, parking, and whether you are open on a holiday add up fast, and none of it shows in your POS. Count rings for one weekend before deciding either way."
+  - question: "Can the agent tell callers which food truck is here tonight?"
+    answer: "Yes, but someone has to keep it current. Truck schedules live in a text thread or a spreadsheet, not in your POS, so this is a manual weekly update the same as posting it to social. Most taprooms handle it with a Monday entry for the week ahead plus a rule for what the agent says when a truck cancels."
+  - question: "Will it take an order for beer to go?"
+    answer: "It can capture the order, and whether it should depends on your state's rules for alcohol sales and on how you handle age verification at pickup. Some operators let the agent take crowler and can orders as a hold with ID checked at the counter. Confirm your own rules with counsel before configuring anything that touches alcohol."
+  - question: "What should a private event inquiry do?"
+    answer: "It should collect the details and reach a human. Party size, date, whether they want the full space or a section, food plans, and a callback number are all worth capturing on the first call, but the yes or no is a booking decision with real money attached. Treat that transfer as the system working correctly."
+  - question: "How much upkeep does this need after launch?"
+    answer: "Roughly ten to fifteen minutes a week for a taproom, mostly food truck schedules and any change to tap list policy or hours. Menus that live in your POS update themselves. Anything that lives only in a group chat or on a chalkboard will drift, and drift is where callers get told something that stopped being true."
+---
+
+The common assumption about taprooms is that the phone barely rings. You don't do delivery, you don't do takeout in any real volume, and most people just show up.
+
+Then you count. Most taprooms take somewhere between fifteen and sixty calls a week, and almost none of it appears in the POS, because almost none of it is an order. It's questions, and questions are the volume that pulls a bartender away from a full bar without ever showing up in a report.
+
+## The call mix is unusual
+
+A restaurant's phone is mostly orders. A taproom's phone is mostly logistics.
+
+Is the food truck here tonight and what kind. Are you dog friendly. Can I bring my kids. Do you fill growlers from other breweries. Is the lot free after six. Do you have the hazy on tap right now. Are you open on the holiday Monday.
+
+That's a different problem than order-taking, and it's an easier one. Nearly all of it has a fixed answer that someone at your brewery already knows. The work is making the answer available at 7:40 on a Saturday without a person walking away from the taps. That case is made in more detail in [answering FAQs about hours and parking](/blog/voice-ai-answering-faqs-hours-parking).
+
+## Food truck schedules are the one thing that needs weekly hands
+
+No system knows which truck is parked outside tonight. That information lives in a text thread with the truck owner and, if you're organized, a shared calendar.
+
+So it's a manual update, the same as posting it to social. The realistic version is a Monday entry covering the week, plus a decision about what the agent says when a truck cancels at 4 p.m. "We usually have a truck Friday and Saturday, check our page for tonight" is an honest answer. Silence is not, and neither is confidently naming a truck that bailed.
+
+If your truck partners are unreliable, write the fallback line first. The trucks' own phone problem is a different one, covered in [voice AI for food trucks](/blog/voice-ai-for-food-trucks).
+
+The related question you'll get is whether outside food is allowed when there's no truck. That answer never changes, so it should be configured once and said the same way every time, including the part about whether delivery to the taproom is fine.
+
+## Growler and crowler rules need to be said the same way every time
+
+Every taproom has policy here and every taproom's staff explains it slightly differently.
+
+Whether you fill outside growlers. Whether you sanitize. What the exchange price is versus the fill price. Whether crowlers are sealed on site. What you'll do with a growler that shows up dirty.
+
+None of that is complicated. It's just annoying to answer for the ninth time on a Saturday, and inconsistent answers cause the argument at the counter later. Write the policy as five sentences, configure it, and it gets said identically every time.
+
+### Alcohol rules are yours to confirm, not the vendor's
+
+If you want the agent to take beer-to-go orders, stop and check your state's rules first. Off-premise sales, hours, ID requirements at pickup, and what can be sold to whom vary enough that no vendor's default configuration is a legal opinion.
+
+A workable pattern for many operators is to let the agent capture the order as a hold and check ID at the counter, keeping the actual sale in person. Confirm that with your own counsel before turning it on. This is the one area where moving fast is a bad idea.
+
+## Private events are worth a person
+
+The single most valuable call you get is somebody asking about buying out the back room for forty people in March.
+
+Let the agent capture the details, then hand it to a human:
+
+- The date, the headcount, and whether they want the full space or a section
+- Whether they need food, and whether they plan to bring in a truck or caterer
+- Whether they want dedicated taps or a bar tab structure
+- A name and a callback number that a person will actually use within the day
+
+Then transfer or take a message with all of that already collected, which is a much better starting point than the voicemail you get today. The qualification pattern is the same one described in [catering lead qualification](/blog/catering-lead-qualification-ai), and the routing mechanics are in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+Don't let a vendor talk you into automating the yes. Booking a buyout is a judgment call about your calendar, your staffing, and whether you want that particular group.
+
+## Hours change more than you think
+
+Taprooms close early for private events, open late for a release, shift hours seasonally, and shut down entirely for a holiday somebody forgot to post about.
+
+An agent reading stale hours is worse than no agent, because a confident wrong answer sends someone to a locked door. Set up your override process on day one and use it. [Holiday hours and overrides](/blog/holiday-hours-overrides-voice-ai) covers how that should work and what to check.
+
+The same applies to your tap list. If your POS holds the current list, the agent can read it. If your tap list lives on a chalkboard and gets into the POS on Thursdays when someone remembers, callers will be told about a beer that blew Tuesday. That's the same drift you get whenever a menu lives in two places and only one of them is the system of record.
+
+## What this doesn't solve
+
+It won't fix a taproom where the actual issue is that nobody wants to work Sundays. It won't make a bad tap list better. And if you genuinely take four calls a week, don't spend money on this. A small brewery with almost no inbound volume has better places to put $250 a month, and plans starting there are listed on the [pricing page](/pricing).
+
+It also won't handle the person who calls to ask a detailed question about your fermentation schedule. Route brewery-nerd calls to a human or they'll end up frustrated, and those callers are often your best customers.
+
+And it won't decide whether a beer release warrants extra staffing. Release-day call volume can be several times a normal Saturday, all of it asking the same two questions about line times and per-person limits. The agent can answer both, which helps, but the crowd still shows up and someone still has to pour.
+
+## A weekend worth counting
+
+Put a sheet by the register Friday through Sunday. One line per ring: answered or not, and one word for the topic.
+
+If more than half the topics are logistics questions, that's the volume you're paying bartenders to handle mid-service, and it's the part that comes off cleanly. If a chunk of rings went unanswered, some of those were people deciding where to go tonight, and you'll never see them in a report. Setup is typically under 24 hours once your hours and policies are written down, so the slow part is the writing, not the software.

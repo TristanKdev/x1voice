@@ -1,0 +1,66 @@
+---
+title: "Illinois voice privacy law and restaurant phone AI"
+description: "Illinois treats a voiceprint as biometric data with real per-person damages. That is why serious voice vendors refuse to identify callers by voice at all."
+publishedAt: "2026-03-06"
+faqs:
+  - question: "Does BIPA apply to restaurant call recordings?"
+    answer: "Only if the recording is used to create a voiceprint that identifies a specific person. Illinois law covers biometric identifiers, and a voiceprint is one of them. Recording audio and converting it to text is not the same thing, because a transcript captures what was said rather than a template of who said it."
+  - question: "What is the difference between speech recognition and voice identification?"
+    answer: "Speech recognition turns sound into words. Voice identification builds a mathematical template of a speaker's voice and matches new audio against it to say who is talking. The first is what a phone ordering agent needs. The second is what Illinois regulates, and almost no restaurant use case requires it."
+  - question: "Can I still record calls at an Illinois restaurant?"
+    answer: "Generally yes, with disclosure. Illinois takes a stricter view of recording private conversations than most states, so the safe practice is to announce the recording at the start of every call and give objecting callers a path to a person on a line that is not recording. That approach also satisfies every other state."
+  - question: "What should I ask a voice AI vendor about Illinois?"
+    answer: "Ask one direct question: do you create, store, or match voiceprints or any speaker-recognition template, for any purpose including fraud detection or model tuning? A vendor should be able to answer no in writing. If the answer is yes or conditional, you need written consent from callers before the feature runs, which is not practical on an inbound restaurant line."
+  - question: "How do I recognize returning callers without using voice biometrics?"
+    answer: "Use the phone number. Caller ID already tells your system who is calling in the overwhelming majority of cases, and matching a number against your order history gives you the returning-customer experience with none of the biometric exposure. It is the boring answer and it is the right one."
+---
+
+Illinois is the one state where the wrong voice AI feature can cost you more than the entire contract. Not because recording calls is banned, but because Illinois treats a voiceprint as biometric data on the same footing as a fingerprint, attaches statutory damages to each affected person, and lets those people sue directly without showing they were harmed.
+
+That combination has produced years of litigation against companies that never thought of themselves as biometrics businesses. A restaurant should understand exactly where the line sits, because the line is narrower and clearer than the noise around it suggests.
+
+## What the statute actually covers
+
+The Illinois Biometric Information Privacy Act lists the identifiers it protects, and a voiceprint is on the list alongside fingerprints, iris scans, and face geometry. If a private entity collects one, it needs to inform the person in writing that a biometric identifier is being collected, state the purpose and retention period, and get a written release before collection. It also has to publish a retention and destruction schedule.
+
+The damages provision is what drives the risk. The statute sets amounts per violation, higher for intentional or reckless conduct than for negligent conduct, and the Illinois legislature revisited how those violations accumulate in 2024 after courts read the original text to allow per-scan accrual. The current text is worth having counsel read if you are anywhere near this. The practical takeaway does not change with the details: this is a per-person exposure with a private right of action, and it does not require anyone to prove a loss.
+
+Now the important part. A recording of someone ordering a large pepperoni is not a voiceprint. A transcript of that call is not a voiceprint. What triggers the statute is a template built from voice characteristics and used to identify or authenticate a specific individual.
+
+## Why the vendors that know what they are doing avoid it
+
+Speaker identification is technically available. It is also close to useless for a restaurant phone line, and it drags a whole compliance regime along behind it.
+
+Think about what it would buy you. The system would recognize a regular by the sound of their voice and greet them by name. That is a nice moment. You can get the same moment from caller ID, which your phone system already receives, matched against the order history you already have. No biometric template, no written release, no retention schedule, no statutory damages.
+
+So a vendor offering voice-based caller recognition is taking on a large legal surface to deliver a feature that a lookup on a phone number delivers just as well. The vendors who have thought about it seriously do not build it, and the ones that do build it are usually selling into industries where authentication genuinely matters, like banking, where the consent machinery is already in place. X1 Voice does not create or match voiceprints. Returning-caller behavior is driven by the calling number, which is also how the loyalty tie-in described in [voice AI and loyalty programs](/blog/voice-ai-and-loyalty-programs) works.
+
+## Recording is a separate question, and Illinois is strict there too
+
+Do not let the biometric analysis distract from the ordinary one. Illinois has historically been among the more restrictive states on recording private conversations, and while a call to a business phone line is a weaker candidate for a privacy expectation than a personal conversation, an Illinois restaurant is not the operator who should be finding out where that boundary is.
+
+Announce the recording in the first line of the greeting, before anything useful is exchanged. Keep a route to a person on an unrecorded line for anyone who objects. That posture is described in more detail in [call recording consent laws for restaurants](/blog/call-recording-consent-laws-restaurants), and the broader map of strict states in [two-party consent states and call recording](/blog/two-party-consent-states-call-recording).
+
+## The question to put in writing
+
+Every vendor conversation about Illinois should collapse to one sentence, asked in email so you have the answer on paper.
+
+Do you create, store, derive, or match any voiceprint, speaker embedding, speaker-recognition template, or other voice-based identifier of a caller, for any purpose, including fraud prevention, quality scoring, or model improvement?
+
+Watch how the answer is shaped. "We do not use biometrics" is marketing. "We do not perform speaker identification or store speaker embeddings; our pipeline converts audio to text and retains audio for a configurable window" is an answer you can hold someone to. Push the same specificity into the contract, alongside retention and deletion terms, which is the work covered in [a data processing agreement with a voice vendor](/blog/data-processing-agreement-voice-vendor) and in [evaluating voice AI vendors](/blog/evaluating-voice-ai-vendors-restaurants).
+
+There is a second-order version of the question that operators skip. Vendors often sit on top of other vendors for speech recognition and telephony. Ask whether any subprocessor performs speaker recognition, and ask for the subprocessor list. A no from your vendor that is silent about its suppliers is a partial answer.
+
+Two adjacent features are worth naming so nobody agrees to them by accident. Some platforms offer voice-based fraud scoring, which flags a caller whose voice resembles one associated with prior chargebacks. That is speaker recognition wearing a different label. Others offer to distinguish repeat callers from new ones for analytics purposes without naming anyone. Ask how it works. If the mechanism is a stored voice template, the fact that nobody attaches a name to it is not obviously enough, because the statute reaches identifiers used to identify a person rather than only those paired with a name in your database.
+
+Neither feature earns a restaurant anything. Chargeback risk on a takeout order is small and manageable with card tokenization, and repeat-caller analytics come free with the calling number. Decline both.
+
+## What an Illinois operator should actually do this week
+
+Three things, and none of them require a project.
+
+Confirm in writing that your voice vendor does no speaker identification, and that the same is true of anyone in their supply chain. Confirm your greeting announces recording before the caller says anything substantive. Confirm you know how long audio is retained, where it lives, and whether it is used for training, which is the ownership question worked through in [voice AI data ownership and privacy](/blog/voice-ai-data-ownership-privacy).
+
+If all three come back clean, Illinois stops being a special case for you and becomes an ordinary recording-disclosure state. If any come back cloudy, that is worth resolving before the system takes another thousand calls, because the exposure scales with the number of people who called, not with the number of months you ran it.
+
+This is not legal advice, and an Illinois restaurant group should have counsel review the actual vendor terms rather than a blog post. But most operators discover the review takes twenty minutes, because the honest answer to the only question that matters is usually a flat no.

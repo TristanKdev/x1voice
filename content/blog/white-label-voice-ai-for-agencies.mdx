@@ -1,0 +1,72 @@
+---
+title: "What reselling voice AI to restaurant clients actually pays"
+description: "White-label voice AI looks like easy recurring revenue for an agency. The spread is real, and the support load is the part most resellers price wrong."
+publishedAt: "2026-07-06"
+faqs:
+  - question: "What does white-label voice AI mean for an agency?"
+    answer: "You sell the phone agent under your own brand, bill the client directly, and pay the vendor a wholesale rate per location. The vendor runs the speech stack and the POS connections; you own the client relationship, the configuration, and the first support call. How much of that configuration work you do versus the vendor does is the single biggest variable in whether the arrangement is profitable."
+  - question: "How much margin is there in reselling a phone agent?"
+    answer: "It depends entirely on the wholesale rate you negotiate against what your market will pay, and you should model it per location per month rather than as a percentage. Do the arithmetic with your own support hours included at a real hourly cost. A spread that looks healthy on a spreadsheet gets thin fast if each client generates two hours of your time a month."
+  - question: "Who handles support when a client's phone agent gets an order wrong?"
+    answer: "The client calls you, regardless of what your contract says. That is the operational reality of putting your logo on someone else's product, and it is why the vendor's escalation path and response time matter more than the price. Settle in writing who touches menu corrections, who has POS access, and how fast a broken integration gets looked at."
+  - question: "Which restaurant clients are worth signing for phone AI?"
+    answer: "Ones with real inbound call volume and a menu that does not change weekly. A takeout-heavy pizza shop, a deli, or a small multi-location group with steady orders will run quietly for months. A chef-driven room with a menu that turns over every few days will need constant reconfiguration, and that work lands on you, not the vendor."
+  - question: "Should an agency build its own voice agent instead of reselling?"
+    answer: "Almost certainly not, unless voice is the whole company. The hard parts are speech recognition under kitchen noise, live menu and availability sync with the POS, and telephony reliability at dinner rush. Each of those is a full engineering effort with ongoing maintenance, and none of it is visible to the client, who only notices when it breaks."
+---
+
+Reselling a phone agent is a reasonable agency business and a poor side project. The difference between the two is whether you priced the support hours before you signed the first client.
+
+The recurring revenue is genuinely attractive. A restaurant that has its phone answered correctly for six months does not churn casually, and the monthly line item is small enough that it survives budget reviews that kill ad retainers. What surprises agencies is where the work sits after the sale.
+
+## What you are actually reselling
+
+Under a white-label arrangement you put your brand on the product, bill the client yourself, and pay the vendor a wholesale rate per location. The vendor keeps the parts nobody sees: the speech models, the telephony, and the connections into the point of sale. You keep the client.
+
+The line that matters is configuration. Somebody has to load the menu with its real modifier structure, set hours and holiday exceptions, write the escalation rules, decide what happens to a caller who asks for a refund, and test the whole thing against a live POS before it takes a real order. That work is a few hours per location the first time and much less after. If the vendor does it, your margin is safe and your control is limited. If you do it, you keep more of the spread and you own every mistake in it. Neither is wrong. Pretending the work is not there is what sinks reseller programs.
+
+Ask which model you are buying before you talk about price. Our [onboarding checklist](/blog/ai-phone-onboarding-checklist-restaurants) is a fair inventory of what setup involves, and it doubles as a scoping document for your own team.
+
+## The margin math, done honestly
+
+Do this per location per month, not as a percentage.
+
+Start with what the market pays. Plans on this site start at $250 a month, which anchors what a small independent will expect to see on an invoice. Suppose you negotiate a wholesale rate below that and sell at $450. Your spread is the difference, call it $150. Ten locations is $1,500 a month of recurring gross margin, which is a real number for a small shop.
+
+Now subtract your time. Onboarding a location honestly takes three to five hours across menu entry, testing, and the first week of adjustments. At a loaded internal cost of $60 an hour that is $180 to $300 of setup, so your first month on that client is negative and month two is where you start earning. Then assume ongoing support of one to two hours a month for menu changes, a new seasonal item, an owner who wants the greeting reworded. At the same rate that is $60 to $120 against a $150 spread.
+
+That is the whole business in one paragraph. On steady clients the ongoing hours drop toward zero and the margin is excellent. On unsteady clients the hours never drop and you are running a break-even help desk with your logo on it. Which kind of client you sign matters more than which rate you negotiate.
+
+Charge a setup fee. Three hundred to five hundred dollars, stated plainly as configuration and testing, moves your payback to day one and filters out the prospects who were never going to be worth the onboarding. Agencies that skip this because it feels like friction usually discover the friction was doing useful work. The [pricing model comparison](/blog/ai-phone-answering-pricing-models) is worth reading before you set yours, because per-minute vendor billing behind a flat client price is how resellers get squeezed on a busy Friday.
+
+## Where the support hours actually go
+
+Not where you expect. Very little of it is technical.
+
+The largest category is menu drift. An owner adds a special, renames a sandwich, kills a size, and nobody tells you until a caller tries to order the thing and the agent says it does not exist. This is why a menu that changes weekly is a different product to support than one that changes quarterly.
+
+The second category is owner anxiety in the first two weeks. They will call you after listening to one transcript where the agent misheard a modifier, and they will want to know whether the whole thing is broken. The answer is usually that one item needs a pronunciation variant added, which takes four minutes, but the conversation around it takes thirty. Front-load this: hand the client a page during onboarding explaining that early corrections are normal, expected, and cheap, and that the accuracy curve flattens fast. Half your support load is expectation management done late.
+
+The third is escalation policy. Clients rarely think through what should reach a person until a caller with a complaint gets handled by software and they hear about it. Settle that during setup rather than after, using the reasoning in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+Genuine technical failures, a POS connection dropping or an integration going stale, are rarer and are the vendor's problem. What you need from the vendor is not a promise that it will not happen. It is a named escalation path and a response time you can quote to your client without checking first.
+
+## Which clients to sign and which to walk away from
+
+Sign the takeout counters, the pizza shops, the delis, the wing places, the Chinese restaurants doing forty phone orders a night. Sign small multi-location groups where one owner makes decisions for four stores, because your onboarding cost amortizes across all four and the relationship is one conversation instead of four. That structure is covered in [voice AI for multi-location groups](/blog/voice-ai-multi-location-franchise-groups).
+
+Walk away from restaurants with almost no call volume. A place taking six calls a week does not have a problem worth $450 a month, and selling it anyway produces a client who cancels in four months and tells people the product did not work. Walk away from chef-driven rooms with a menu that turns over constantly, unless the client is paying for the reconfiguration time explicitly. And be careful with clients whose real complaint is staffing chaos rather than phone volume, because a phone agent fixes one of those and not the other.
+
+Being willing to say no to a prospect is most of what separates a reseller practice with 90 percent retention from one at 60.
+
+## What to settle with the vendor before you sign a client
+
+Four things, in writing. Who owns the client relationship if you stop reselling. Whether your wholesale rate is fixed for a term or moves with volume. What the support escalation path and response window actually are. And whether you can see call transcripts and reporting for your clients directly, because you cannot support what you cannot look at.
+
+Read the vendor's own terms with the same suspicion you would apply on a client's behalf. The traps in [contract terms to avoid](/blog/voice-ai-contract-terms-to-avoid) apply to you more sharply than to an operator, since you are signing them across your whole book at once.
+
+## The test before you build a practice around it
+
+Take two clients, not ten. Run them for ninety days and keep a simple time log of every minute you spend on each after setup, including the phone calls that felt like nothing.
+
+At the end, divide your total hours by two and multiply by your real hourly cost. If that number is comfortably under your monthly spread, you have a business and you should go sell it hard. If it is close to your spread, your problem is either client selection or how much configuration you handed to the vendor, and both are fixable before you scale. If it is above your spread, stop, because ten of these will not fix what two could not. Anyone weighing that decision can start by looking at the [current plans](/pricing) and working backward from what their market will actually pay.

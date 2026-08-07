@@ -1,0 +1,74 @@
+---
+title: "What sentiment scoring on restaurant calls is good for"
+description: "Sentiment scoring on phone calls measures wording, not satisfaction. Where the score is genuinely useful in a restaurant, and four places it will mislead you."
+publishedAt: "2026-06-15"
+faqs:
+  - question: "What does sentiment analysis do on a phone call?"
+    answer: "It assigns a positive, neutral, or negative score to a call based on the language used, and sometimes on tone of voice. It is a classifier reading words, not a measurement of how the customer felt. The two correlate loosely enough that the score works as a filter and poorly enough that it fails as a scoreboard."
+  - question: "Is call sentiment scoring accurate?"
+    answer: "Accurate at the extremes and unreliable in the middle. A caller who swears is flagged negative and a caller who says thank you three times is flagged positive, and both are usually right. The large neutral band in between contains most restaurant calls and most of the interesting ones, and the score adds little there."
+  - question: "What is sentiment scoring actually good for in a restaurant?"
+    answer: "Finding calls to listen to. Filtering a week of calls down to the twenty most negative gives a manager a starting point that beats random sampling for catching complaints and confusion. Used as a queue for human review it earns its keep; used as a monthly number to report it mostly generates noise."
+  - question: "Why does a positive sentiment score not mean a happy customer?"
+    answer: "Because polite language and satisfaction are different things. A caller who is disappointed but well-mannered scores positive, and a brisk regular who orders in six words scores neutral despite being your best customer. Sentiment reads the wording of the call, and plenty of unhappy people stay polite right up until they stop calling."
+  - question: "Should I set a sentiment target for my phone?"
+    answer: "No. Targets on a sentiment score reward calls that sound pleasant rather than calls that resolve, and a system optimized toward the score will get chattier and more agreeable without getting better. Set targets on order accuracy and repeat-call rate, and use sentiment only to decide which calls a person should hear."
+---
+
+Sentiment analysis does not measure whether your customer was happy. It measures whether the words in the call were the kind of words unhappy people tend to use, which is a related thing and not the same thing, and the gap between those two is where every bad decision made with this metric comes from.
+
+That is not an argument against having it. A sentiment score is genuinely useful for one job. It is just not the job it gets assigned, which is going into a monthly report as a number that is supposed to go up.
+
+## What the score is doing under the hood
+
+A classifier reads the transcript, sometimes with tone-of-voice features layered on, and outputs a label or a number. Positive language, apologies, raised volume, interruptions, and certain phrases push it one way or the other.
+
+It is quite good at the tails. A caller who says the order was cold and this is the second time will be flagged negative, and should be. A caller who thanks the agent twice and says they will see you at seven will be flagged positive, and that is fine too.
+
+The middle is where restaurants live. Most phone calls to a restaurant are transactional, brief, and emotionally flat. A caller reads out three items, confirms an address, and hangs up. The classifier calls that neutral, which is technically correct and tells you nothing about whether the call was any good.
+
+So the distribution you get is a large neutral mass, a small positive tail, and a small negative tail. The only part carrying information is the negative tail, and that is the part worth building a workflow around.
+
+## The one job it does well
+
+Sentiment is a filter, not a metric. Its value is that it turns "listen to some calls" into "listen to these twenty calls."
+
+A manager with forty minutes a week and a thousand calls to choose from cannot pick well. Sorted by sentiment, the twenty most negative calls are far more likely to contain a complaint, a confused caller, or an interaction that went wrong than twenty picked at random. That is a real improvement on random sampling and it costs nothing once you have the score.
+
+Use it that way, as one of the deliberate slices in a review program rather than as the whole program. The sampling structure that this fits into is in [transcript sampling for QA](/blog/transcript-sampling-qa), where negative-sentiment calls sit alongside short calls and escalated calls as the targeted portion of the week's reading.
+
+Sentiment is also a decent trigger for immediate action rather than weekly review. A call flagged strongly negative in the moment can page a manager while the caller is still reachable. Catching a complaint within the hour is worth considerably more than catching it in a Friday report, and this is the one place where the score belongs in an automated workflow. What to do next is a policy question covered in [handling refund and complaint calls](/blog/handling-refund-complaint-calls).
+
+## The four ways it will mislead you
+
+Politeness is not satisfaction. A caller who is genuinely unhappy but well brought up will say "no, that's fine, thank you" and score positive on the way to never calling you again. This is the most common failure and it is systematic rather than random, because the customers most likely to quit quietly are exactly the ones least likely to produce negative language.
+
+Brevity is not neutrality. Your best regular orders in eight words with no pleasantries and hangs up. Scored neutral, indistinguishable from a caller who was baffled and gave up. Any restaurant with a lot of repeat business will have a neutral band stuffed with its most valuable calls.
+
+Complaints score negative even when handled perfectly. A caller who rings furious about a missing item and hangs up satisfied after a manager fixes it will usually still be flagged negative, because most of the call contained angry words. If you use sentiment as a scoreboard, the shift that handled complaints best gets the worst score. That inversion alone should disqualify it as a performance measure.
+
+Accents, speech patterns, and non-native English shift the score. Classifiers are trained on particular distributions of speech, and callers who talk in ways underrepresented in that training get scored less reliably. In a restaurant with a diverse customer base, a sentiment average that varies by neighborhood may be telling you about the classifier rather than about your customers. This sits next to the broader accuracy issue described in [accents and speech recognition accuracy](/blog/voice-ai-accent-speech-recognition-accuracy).
+
+## Why a sentiment target makes things worse
+
+Set a target on sentiment and you will get calls that score better. That is not a joke about metrics, it is a straightforward consequence of what the score rewards.
+
+Language that scores positive is warm, apologetic, and abundant. A phone script tuned toward it becomes longer and more effusive, which lengthens calls, delays orders, and irritates the transactional callers who make up most of your volume. If a voice agent's configuration is being adjusted toward a sentiment goal, the same thing happens faster and more consistently.
+
+Meanwhile the outcomes you care about, whether the order was right and whether the caller had to call back, are untouched by any of it. Those are the numbers that deserve targets, and the case for them is in [first call resolution for restaurants](/blog/first-call-resolution-restaurants) and in the wider set at [voice AI metrics and KPIs](/blog/voice-ai-metrics-kpis-restaurants).
+
+## What to ask a vendor who reports it
+
+Three questions get you most of the way.
+
+Ask what the score is computed from, specifically whether it uses audio features or only the transcript. Text-only scoring misses a caller who says agreeable words in a flat, irritated voice, which is a large share of quiet dissatisfaction.
+
+Ask whether you can filter and listen to the calls behind the score rather than only see the aggregate. A sentiment number you cannot drill into is a number you cannot act on, and the drilling is the entire value.
+
+Ask how complaint calls are treated. If a successfully resolved complaint scores the same as an unresolved one, the metric cannot distinguish good service recovery from bad, and you should not let it near a staff review.
+
+## Where to put it in your week
+
+Treat the sentiment score as a queue and nothing else. Once a week, pull the fifteen or twenty lowest-scoring calls, listen to or read them, and add whatever you find to the same running list of defects your other reviews feed. Do not report the average anywhere. Do not compare it across locations. Do not put it in a shift report.
+
+If you want to know whether callers are happy, the more direct instruments are cheaper anyway: a monthly set of [mystery calls](/blog/mystery-calling-qa-program) scored by a person, and a count of how many callers ring back inside the same service period. Both measure something real. Sentiment measures how the words sounded, and the useful thing to do with that is decide which recordings deserve a human ear.

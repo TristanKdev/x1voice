@@ -1,0 +1,66 @@
+---
+title: "The clauses in a voice AI contract worth arguing over"
+description: "Most of a vendor agreement is boilerplate you will never think about again. Five sections decide what happens when the relationship goes badly."
+publishedAt: "2026-07-23"
+faqs:
+  - question: "Do I need a lawyer to sign a voice AI agreement?"
+    answer: "For a month-to-month agreement at a few hundred dollars, probably not, as long as you have read the term and termination sections yourself. For a multi-year commitment, a multi-location rollout, or anything with a personal guarantee, have counsel look at it. The cost of an hour of review is small next to a thirty-six month term you cannot exit."
+  - question: "Which clause causes the most trouble later?"
+    answer: "Auto-renewal paired with a narrow cancellation window. A one-year term that renews automatically unless you give written notice sixty days before the anniversary is easy to miss, and missing it commits you to another full year. Put the notice date in your calendar the day you sign, not the month you want to leave."
+  - question: "Who owns the call recordings and transcripts?"
+    answer: "Read the agreement rather than assuming. Many vendor contracts grant the vendor a broad license to use call data for model training and product improvement, which is a different thing from owning it. You want your customer data returned in a usable format on request, and you want any training license limited or removable if that matters to you."
+  - question: "Is the order form or the master agreement the controlling document?"
+    answer: "Whichever one the order-of-precedence clause names, and that clause is usually buried near the end. Salespeople make commitments on the order form or in email that the master agreement then overrides. If something was promised verbally and matters to you, get it written into the order form and confirm the order form wins on conflict."
+---
+
+The parts of a vendor agreement that will actually affect you fit on about two pages. The rest is standard commercial language that exists so lawyers have something to point at, and reading it line by line is a poor use of a Tuesday.
+
+What follows is the short list: the sections where voice AI agreements differ meaningfully from each other, where the money is, and where an operator who signed without reading finds themselves stuck. This is not legal advice, and for anything past a simple monthly subscription you should have counsel read the document. It is a guide to which pages to hand them.
+
+## Term, renewal, and the notice window
+
+Start at the back and find the term. Three numbers matter: how long the initial term runs, whether it renews automatically, and how many days of written notice cancellation requires.
+
+An annual term with automatic renewal and a sixty-day notice window means your real decision point is ten months after signing, not twelve. Miss it and you own another year. This is the single most common way restaurants end up paying for software they stopped using, and it is entirely avoidable by putting the notice deadline in a calendar the day the contract is signed.
+
+Push for month to month if you can get it, especially on a first deployment. A vendor confident in their product will offer it, sometimes at a modest premium over the annual rate, and that premium is cheap insurance during the period when you are still finding out whether the thing works in your restaurant. If the vendor will only sell an annual term, ask for a termination-for-convenience right after ninety days. Plenty of them will agree and few of them advertise it.
+
+Watch for the renewal price. Some agreements renew at "then-current list pricing," which is a blank check. A cap on the annual increase, even a generous one, turns an open question into a known cost.
+
+## What you are actually buying, and what happens when it changes
+
+Find the description of the service. It is often shorter and vaguer than you expect, and it defines the vendor's only enforceable obligation.
+
+If the reason you are signing is that the agent writes orders directly into your POS, the agreement should say which POS and that orders are written to it. A service description that says the vendor provides "conversational voice services" does not obligate anyone to keep your integration working when your POS ships an update. This matters more than it sounds, because integration depth is where these products differ most and where they break most.
+
+Then look for a unilateral modification clause, usually phrased as the vendor's right to modify the service at any time. Nearly every SaaS agreement has one and you are unlikely to get it struck. What you can sometimes get is a carve-out: material reductions in functionality give you a termination right without penalty. That converts a clause you cannot remove into an exit you can use.
+
+Pricing changes deserve the same treatment. A clause allowing price changes on thirty days notice is normal. A clause allowing it mid-term with no exit is not.
+
+## Your data, their training set
+
+Two separate questions live here and contracts routinely blur them.
+
+The first is ownership. Your call recordings, transcripts, order history, and customer phone numbers should be yours, with the vendor holding a license to process them in order to run the service. Most reputable agreements say this. If yours says the vendor owns the data, that is worth a conversation before anything else in the document.
+
+The second is the license grant, and this is where the real variation sits. Many agreements give the vendor broad rights to use your call data to train and improve their models, including after you leave, and including in aggregated form that benefits their other customers. Whether that bothers you is a business judgment. What you should not do is sign it without knowing it is there. The specifics of [who owns voice data and what they can do with it](/blog/voice-ai-data-ownership-privacy) are worth reading before you negotiate this section, and if you handle customer data at any scale, a separate [data processing agreement](/blog/data-processing-agreement-voice-vendor) should sit alongside the main contract.
+
+Then find the return-and-deletion language. On termination, you want your data back in a machine-readable format within a defined window, and you want deletion certified after that. An agreement that is silent on export leaves you negotiating for your own call history at the worst possible moment, which is the whole subject of [getting your data out when you leave](/blog/data-portability-when-you-leave).
+
+## Liability caps, indemnity, and who eats a bad order
+
+The limitation of liability section will cap the vendor's exposure at something like twelve months of fees, and exclude consequential damages entirely. That is standard and you will not change it. Read it anyway so you know the ceiling.
+
+The part worth attention is what happens when the agent creates a problem in the physical world. If the system takes an order with an allergen modifier dropped, or gives a caller wrong information about ingredients, the contract almost certainly places that responsibility on you. That is not unreasonable, since you control the kitchen and the menu data, but it should inform how you configure escalation. Allergy calls going to a person is an operational decision the contract quietly makes for you.
+
+Look for the indemnity direction too. The vendor should indemnify you against third-party claims that their technology infringes someone's IP. If the only indemnity in the agreement runs from you to them, that is asymmetric enough to raise.
+
+## Service levels, and whether the remedy is worth anything
+
+Most voice AI agreements include an uptime commitment and a service credit schedule. Credits are frequently structured so that a full day of downtime during your Friday dinner rush returns a few percent of one month's fee, which does not resemble what the outage cost you.
+
+Read the exclusions before the percentages. Scheduled maintenance, carrier failures, POS provider outages, and force majeure typically come out of the calculation, and in a voice product those cover a large share of the ways your phone actually stops working. A ninety-nine point nine percent commitment that excludes the telephony carrier is a commitment about a server you do not care about. We go through which [service credits mean something and which are decoration](/blog/sla-penalties-that-matter) separately, because it is the section most likely to look protective and do nothing.
+
+Also check whether repeated failures give you a termination right. A credit schedule that never escalates to an exit means a vendor can miss the target every month, pay you in discounts, and keep the account.
+
+Before you sign, do one exercise. Write down the three things that would make you want out of this agreement in month four. Then find the clause that governs each one. If any of the three has no clause, that is your negotiation list, and it is a short enough conversation to have with a salesperson before the paperwork moves. Any term a vendor promised in a meeting but will not write into the [order form](/contact) was not a term.

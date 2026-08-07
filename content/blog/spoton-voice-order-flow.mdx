@@ -1,0 +1,74 @@
+---
+title: "SpotOn phone orders: order flow and menu mapping"
+description: "How a phone order reaches SpotOn, where the menu mapping usually breaks, and the specific test orders to run before you trust the ticket that prints."
+publishedAt: "2026-05-25"
+faqs:
+  - question: "How does a phone order reach SpotOn?"
+    answer: "The voice agent takes the order, prices it against your imported menu, and passes the finished ticket into SpotOn through Deliverect, where it lands like any other incoming order. Nobody keys it in a second time. The practical consequence is that anything the agent got wrong arrives in SpotOn already wrong, so the mapping matters more than the voice."
+  - question: "Does the agent see my live SpotOn menu?"
+    answer: "It works from an imported copy of your SpotOn menu, refreshed on a schedule rather than read fresh on every call. Price changes and new items show up after a sync. If you add a special at 4pm and want the phone to sell it that night, push the sync rather than assuming it happened."
+  - question: "What breaks most often in SpotOn mapping?"
+    answer: "Modifier groups. A group that a cashier navigates visually on a screen has to be walked through in speech, and groups built as one long flat list of twenty options are painful to ask about out loud. Restructuring those groups in SpotOn before launch fixes more phone problems than any change to the agent."
+  - question: "How do I test whether the mapping is right?"
+    answer: "Place four calls yourself before you go live: a plain single item, an item with two modifiers and one removal, an item you sell under a nickname, and something you are out of. Then walk to the SpotOn terminal and read the tickets. Comparing the printed ticket to what you said is the only test that counts."
+  - question: "Can callers pay by card on a SpotOn phone order?"
+    answer: "Yes, for pickup and delivery, and the payment reconciles alongside your other tender types in reporting. Staff never write down or repeat a card number. Some operators still prefer pay-at-pickup for regulars, and running both is fine as long as the rule is consistent enough that your counter staff can explain it."
+---
+
+It's 6:40 on a Friday. A caller wants the smash burger, no onion, sub the side salad, plus a kids' grilled cheese. Ninety seconds later a ticket prints at the SpotOn terminal. Either it says exactly that, or your expo starts a conversation with the kitchen that costs more time than answering the call would have.
+
+Everything interesting about running a voice agent on SpotOn happens in the gap between what the caller said and what that ticket says. The voice quality is the part you notice first and the part that matters least.
+
+## Where the order actually goes
+
+X1 Voice reaches SpotOn through Deliverect. The agent takes the conversation, prices the order against an imported copy of your menu, and hands the finished order to Deliverect, which drops it into SpotOn as an incoming ticket. From SpotOn's side it behaves like any other order arriving from outside the building.
+
+Two things follow from that path. First, no one re-keys anything, which removes the most common source of phone order errors in a busy restaurant. Second, there's no human checkpoint between the agent's understanding and the kitchen's copy. A mis-mapped modifier doesn't get caught by a cashier who knows better. It prints.
+
+That's the trade, and it's a good one, but only if you spend an hour on the menu before launch instead of after the first bad Saturday.
+
+## The menu the agent reads is not the menu your guests see
+
+Your SpotOn menu was built to be tapped. Categories exist because they fit on a screen. Items are named so a cashier who already knows the menu can find them fast. Modifier groups are laid out for thumbs.
+
+The agent gets that same structure and has to conduct it as a conversation. "SIDE-SUB-2" means nothing spoken aloud. A group of twenty-two sauce options is a screen a cashier scans in a second and a question that takes forty seconds to ask.
+
+So the import is not the finish line. Read your menu once as though you were reading it to a stranger over the phone, and you'll find the problems in about fifteen minutes. The general version of this work is in [training a voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu), and it applies to every POS, but SpotOn menus in particular tend to carry a lot of internal shorthand because they were built by whoever set up the terminals.
+
+## Names that work on a screen and fail out loud
+
+The specific patterns worth hunting for:
+
+- Abbreviations a cashier expands automatically: "Chz Brgr Dlx", "SM Fry", "Combo #3". Give each one a spoken name that matches what a customer would say.
+- Items that exist twice under slightly different names because someone added a duplicate during a promotion. The agent will pick one, and it may not be the one your kitchen expects.
+- Nicknames your regulars use that appear nowhere in SpotOn. If half your callers ask for "the usual chicken thing," that phrase needs to resolve to something.
+- Numbers embedded in names, which callers say inconsistently. "Number 4" and "the four" and "combo four" should all land in the same place.
+- Items you no longer sell but never deleted, still sitting in a category the agent can reach.
+
+Fix those in SpotOn rather than in the agent's configuration. A change in the POS keeps every channel consistent, and you avoid maintaining a private translation table that nobody remembers exists eighteen months from now. More on naming choices in [menu naming for voice clarity](/blog/menu-naming-for-voice-clarity).
+
+## Modifier groups are where it usually breaks
+
+Most SpotOn menus have at least one modifier group that was never designed to be spoken. The flat list of twenty toppings. The required group that isn't actually required in practice because the cashier always skips it. The nested chain where choosing a size changes which sauces appear.
+
+Required groups are the sharpest problem. If SpotOn marks a group as required, the agent has to resolve it before the order can be built, which means asking the caller a question your cashiers have been silently answering with a default for years. On the phone that shows up as an interrogation: three questions to buy a soda.
+
+The fix is usually in SpotOn, not in the voice layer. Set the default your staff already uses, mark the group optional where the business reality is optional, and split any group with more than about eight choices into a shorter primary list plus an "anything else" path. [Simplifying modifier trees](/blog/simplifying-modifier-trees) covers the restructuring in more depth, and [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers) covers what the agent does with them once they're sane.
+
+## The four calls to make before you go live
+
+Testing a voice agent by listening to it talk tells you almost nothing. Testing it by reading tickets tells you everything.
+
+Call your own number four times and place four specific orders. A plain single item, so you can confirm the boring path works. An item with two modifiers and one removal, which is where mapping errors surface. An item using whatever nickname your regulars actually say. And something you're out of, to see whether the agent knows.
+
+Then walk to the terminal and read the four tickets against what you said. Not the confirmation the agent read back to you, which reflects what it thinks it heard, but the printed ticket, which reflects what the kitchen will make. Those two can disagree, and the disagreement is the entire point of the exercise. There's a fuller version of this in [what to test in a voice AI demo](/blog/voice-ai-demo-what-to-test).
+
+## Availability lags, and you should plan for it
+
+The agent works from a synced copy of your menu rather than querying SpotOn live on every call. Syncs happen on a schedule. That's fine for prices and item lists, which change slowly, and less fine for 86ing, which happens at 7:15 on a Saturday when the kitchen runs out of salmon.
+
+Decide now who marks an item unavailable and where. If your kitchen 86es verbally and nobody touches the POS, the phone will keep selling salmon regardless of which system you're on. If your staff already marks items out in SpotOn, the phone will follow after the next sync. The failure patterns are catalogued in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes).
+
+For most SpotOn restaurants the practical answer is a short list of items that sell out regularly, a habit of marking them in SpotOn the moment the kitchen calls it, and an accepted window of a few minutes where a caller might still order one. That window is a business decision, not a technical defect, and it's worth naming out loud so nobody is surprised by it.
+
+If you want a single indicator of whether the mapping is holding, count remakes on phone orders for two weeks. If that number is flat against your pre-launch baseline, the tickets are landing right and you can stop reading tickets every night.

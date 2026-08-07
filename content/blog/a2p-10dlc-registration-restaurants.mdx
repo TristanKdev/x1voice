@@ -1,0 +1,76 @@
+---
+title: "A2P 10DLC registration for restaurant text messages"
+description: "Two registrations stand between your restaurant and text messages that arrive. Here is what carriers ask for, why filings get rejected, and how to pass."
+publishedAt: "2026-03-08"
+faqs:
+  - question: "What is A2P 10DLC?"
+    answer: "It is the framework US carriers use to permit application-to-person text messaging from ordinary ten-digit local numbers. Businesses register a brand and one or more campaigns describing what they will send and how people opted in. Unregistered traffic from a normal phone number gets filtered or blocked, regardless of whether the messages are lawful."
+  - question: "Does a single restaurant need to register?"
+    answer: "Yes, if anything automated sends texts from your number, which includes order confirmations from a phone ordering system. There is a lower-volume path for sole proprietors without an EIN, but any restaurant operating as an LLC or corporation should register as a standard brand using its EIN and legal name."
+  - question: "How long does registration take?"
+    answer: "Brand registration is often same-day when the details match IRS records. Campaign approval usually takes a few business days and is where delays happen, because carriers review the sample messages and the opt-in description. A rejected campaign can be corrected and resubmitted, so the practical timeline is one to two weeks if the first filing has problems."
+  - question: "Why did my campaign get rejected?"
+    answer: "Almost always a mismatch. The legal business name does not match the EIN on file, the sample messages describe a use case different from the one selected, or the opt-in method described in the filing cannot be found on the website. Carriers are checking whether your story is consistent, not whether your restaurant is legitimate."
+  - question: "What does 10DLC registration cost?"
+    answer: "There is a one-time brand vetting charge and a recurring monthly fee per campaign, both passed through from the carriers by your messaging provider. For a single restaurant running one confirmation campaign this is a small line item rather than a budget item. Ask your provider for the current numbers, since carrier pricing changes."
+---
+
+Two registrations stand between your restaurant and a text message that reliably lands on a customer's phone. One describes your business. One describes what you intend to send. Skip either and your order confirmations get filtered by the carriers, silently, with no bounce and no error your staff will ever see.
+
+This is separate from whether the messages are legal. You can have flawless consent, perfect opt-out handling, and a lawyer's blessing, and still have half your pickup notifications vanish because nobody registered a campaign. Carriers filter first and ask questions never.
+
+## What the carriers are actually doing
+
+Ten-digit local numbers were never designed for business messaging at volume. When businesses started sending from them anyway, the carriers ended up carrying a large amount of traffic they could not attribute to anyone, which made spam enforcement close to impossible.
+
+The response was the A2P 10DLC framework. If an application sends texts from a ten-digit number, the sender registers a brand and a campaign through their messaging provider, and that information goes into a central registry the carriers query. Registered traffic gets delivered at a throughput tied to a trust score. Unregistered traffic gets throttled hard or dropped.
+
+For a restaurant, the practical consequence is that "the texts sometimes don't arrive" is usually not a bug in your ordering system. It is a filtering decision made upstream.
+
+## Brand registration is a paperwork exercise
+
+The brand record is your business identity: legal entity name, EIN, registered address, entity type, website, and a contact.
+
+The single most common failure here is the legal name. Not the name on your sign, not the name on your menu. The name on the IRS record attached to that EIN, character for character, including the LLC or Inc. If your restaurant operates as "Bella's Kitchen" but the entity is "Rossi Hospitality Group LLC," the registration goes under Rossi Hospitality Group LLC. A mismatch fails vetting and drops your trust score, which reduces how fast you can send even after you fix it.
+
+Restaurants without an EIN, typically single-owner operations filing on a personal return, can register through a sole proprietor path. It works, and it comes with meaningfully lower throughput and daily volume caps. If you have an EIN, use it.
+
+## Campaign registration is where the review happens
+
+The campaign describes the messages themselves. You pick a use case, supply sample messages, and describe how people opt in and opt out. Carriers read this. A human or a reviewing system compares what you wrote against your website and against the samples.
+
+Five things belong in a restaurant campaign filing, and getting them consistent with each other is most of the work:
+
+- A use case that matches reality, usually a customer care or account notification category for order confirmations rather than a marketing category
+- Sample messages written exactly as they will send, including your restaurant name and the opt-out instruction, not placeholders like "Hi {name}, your order is ready"
+- An opt-in description that names the specific place and moment consent is captured, such as a spoken agreement during a phone order or a checkbox on your online ordering page
+- A link to a page on your own website where that opt-in is visible, along with a privacy policy and terms
+- Opt-out handling described plainly, including that STOP is honored and that requests received by other means are honored too
+
+That fourth item catches more restaurants than any other. Consent collected entirely over the phone is legitimate, and carriers still want to see supporting language somewhere public. A short section on your site describing your text program, what it sends, and how to stop it is usually enough, and it takes an hour to write.
+
+## Why filings get rejected
+
+Rejections are almost never about your restaurant being suspicious. They are about internal inconsistency.
+
+A campaign selected as "marketing" with sample messages that are all order confirmations gets rejected. A campaign claiming website opt-in with no visible form gets rejected. A brand whose website does not mention the business name in the filing gets rejected. Sample messages with no opt-out language get rejected.
+
+Fix the mismatch, resubmit, move on. What you should not do is pick a broader use case "to be safe." Registering a marketing campaign when you only send confirmations invites a stricter review and puts your transactional traffic under rules it does not need to satisfy. Register what you send. If you later start sending promotions, that is a second campaign with its own consent requirements, which is a legal question before it is a registry question and one covered in [TCPA rules for restaurant texts](/blog/tcpa-restaurant-text-messages).
+
+## Throughput, and why it rarely bites a restaurant
+
+Registered brands get a trust score, and the score drives how many messages per second you can push to each carrier plus a daily ceiling.
+
+For a restaurant sending one confirmation per order, this is almost never a constraint. You are sending a few hundred messages a day at most, spread across service. Where it does bite is a promotional blast to a large list at 4pm on a Friday, which is exactly the kind of send that hits a throughput ceiling and trickles out over hours. If that is your plan, raise it with your provider before you build it.
+
+## Who files this for you
+
+If your phone ordering system sends the texts, the vendor is generally the one submitting the registration on your behalf, because they hold the messaging provider relationship. You still supply the entity details and you still own the accuracy of them.
+
+Ask three questions during onboarding. Who submits the brand and campaign, what exactly do you need from me, and how will I be told if a campaign is rejected. That last one matters, because a rejection that sits in a vendor's queue looks identical from your side to messages that are simply not being read. The messages themselves are worth getting right too, which is the subject of [SMS order confirmations from a voice agent](/blog/sms-order-confirmations-voice-ai) and [restaurant order status text updates](/blog/restaurant-order-status-text-updates).
+
+## The check that tells you it worked
+
+A week after go-live, place an order from a personal phone on a carrier you do not normally test with, and time how long the confirmation takes to arrive. Then do it again on a different carrier. Consistent arrival within a few seconds across two carriers means registration is doing its job.
+
+If one carrier is slow or silent while another is instant, that is a filtering signal, not a coincidence, and it is worth reporting to your provider with the timestamps before you assume customers are ignoring you. The same discipline applies to how your calls present themselves, which is the topic of [CNAM caller ID name registration](/blog/cnam-caller-id-name-registration).

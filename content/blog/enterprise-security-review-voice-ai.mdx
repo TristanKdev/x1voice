@@ -1,0 +1,88 @@
+---
+title: "What a corporate security review asks a restaurant vendor"
+description: "Winning a hospital or campus contract means passing someone else's security review. Here is what procurement asks about your phone system and what stalls it."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "Why would a security review cover the restaurant phone system?"
+    answer: "Because the phone system records customer conversations, stores contact details, and in some setups touches card numbers. Procurement teams inventory every system that holds data belonging to people at their site. A voice agent that answers calls and writes orders into a POS qualifies, even though nobody thinks of it as software until the questionnaire arrives."
+  - question: "Does a voice AI vendor need SOC 2 to pass?"
+    answer: "Often yes for hospitals, universities, and large corporate accounts, and often no for a hotel group or a stadium operator. Ask the reviewer which certification is a hard requirement versus a scoring preference before you spend weeks chasing one. Some reviewers will accept a completed questionnaire plus a signed data agreement in place of a report."
+  - question: "What is the fastest way to stall a security review?"
+    answer: "Answering a card-data question loosely. If your phone system takes payment over the call, that pulls the whole system into PCI scope and the review stops until someone documents how the numbers are handled. The clean answer is that the agent never captures card data, and it needs to be true and demonstrable."
+  - question: "Who fills out the questionnaire, the operator or the vendor?"
+    answer: "Both, in sequence. You answer the questions about your own staff, devices, and physical site. Your vendor answers everything about how their platform stores, encrypts, and shares data. Send the vendor the sheet early rather than paraphrasing their documentation, because a wrong answer written in good faith still reads as a misrepresentation later."
+  - question: "How long does one of these usually take?"
+    answer: "Two to eight weeks in practice, and most of that is waiting rather than working. The delay comes from routing questions to a vendor who answers slowly, or from discovering mid-review that a document like a data processing agreement does not exist yet. Collecting the standard artifacts before you bid removes most of the calendar time."
+---
+
+Your group signs a contract to run food service inside a hospital, a university, or a corporate campus. Six weeks later a spreadsheet lands from a procurement office you have never spoken to. A hundred and forty rows, asking about subprocessors, encryption at rest, breach notification windows, and background checks. It is addressed to you, and most of the answers belong to your vendors.
+
+The phone system is almost always one of those vendors, and it usually surprises people. An operator who has thought hard about their POS and their payroll platform has rarely considered that the thing answering calls is a piece of software holding customer data on someone else's servers.
+
+## Why the phone ends up on the list
+
+Reviewers work from an inventory. They ask what systems will hold data about people at their site, and anything that stores, transmits, or processes that data goes on the sheet regardless of how minor it seems operationally.
+
+A voice agent qualifies on three counts. It captures audio of a conversation. It stores names, phone numbers, and delivery addresses. It connects to a POS, which means there is an integration path between the outside world and a system that has your sales history in it. None of that is unusual or alarming, but it is exactly what a security reviewer is paid to catalogue.
+
+The reviewers who care most are hospitals, universities, defense-adjacent employers, and any account where the parent company has been through a breach in the last few years. Hotel groups and stadium operators tend to run lighter reviews. Ask early which kind you are dealing with, because the work differs by a factor of five.
+
+## The questions that decide the outcome
+
+Most of a 140-row questionnaire is boilerplate that any competent vendor clears. A handful of rows actually determine whether you pass.
+
+Where is the data stored, and in which country. Reviewers with any international exposure want a specific region, not "the cloud."
+
+Who are the subprocessors. Every voice platform runs on somebody else's speech recognition and telephony. That list needs to be written down and current, and the reviewer will compare it against their own approved-vendor list.
+
+How long is audio retained, and can it be deleted on request. This is where a vague answer costs you weeks. The correct shape of an answer is a number of days, a stated deletion process, and who can trigger it.
+
+Is card data ever captured. Covered below, because it is the single most common place these reviews stop.
+
+What happens on a breach, and within how many hours are you notified. Reviewers are usually checking that a contractual number exists at all.
+
+Who at the vendor can access recordings of calls made to your restaurant. This one gets asked more than operators expect, and it is a fair question. Access control on the vendor side, and on your own side, is the subject of [SSO and user permissions on a voice platform](/blog/sso-user-permissions-voice-platform).
+
+## Card data is where deals stall
+
+If your phone system takes payment during the call, everything changes. Card numbers spoken aloud into a system that records audio pulls that system into PCI scope, and the review will halt until someone produces documentation about how the numbers are captured, masked, and stored.
+
+The clean answer is that the agent never handles card data at all. Orders are taken and sent to the POS; payment happens at pickup, at delivery, or through a payment link the customer completes themselves on a page the voice system never sees. That answer takes a stalled review and unsticks it in a single email, and it is the reason we would talk an operator out of over-the-phone card capture even where a reviewer never asks. The detail sits in [PCI compliance for restaurant phone payments](/blog/pci-compliance-restaurant-phone-payments).
+
+Say it precisely, though. "We do not store card data" is a weaker claim than "the agent does not capture card data," and a reviewer who has read a few hundred of these will notice the difference and come back with a follow-up.
+
+## What a SOC 2 report is actually worth here
+
+Operators hear SOC 2 and assume it is a pass/fail gate. Sometimes it is. More often it is a scoring line, and the reviewer will accept a completed questionnaire plus a signed data processing agreement in its place.
+
+Find out which before you build your plan around it. Ask the reviewer directly: is a SOC 2 Type II report a hard requirement for this contract, or does a security questionnaire response satisfy it? The answer determines whether you can bid at all with your current vendor, and it takes one email.
+
+Also read what the report covers. A SOC 2 scoped to a vendor's billing infrastructure says nothing about how their call audio is handled. Scope is written on the front of the report, and almost nobody looks.
+
+## The artifacts to have before you bid
+
+Assemble these once and reuse them. Almost every review asks for the same set, and the gap between a two-week review and a two-month one is usually whether these already exist.
+
+- A completed standard security questionnaire from your voice vendor, dated within the last year and covering data location, subprocessors, encryption, and retention.
+- A signed data processing agreement naming who controls the data and who processes it, which is worth having independently of any review. See [data processing agreements with a voice vendor](/blog/data-processing-agreement-voice-vendor).
+- A written retention and deletion policy for call audio, with an actual number of days in it.
+- Your call recording notice language, and which states your locations sit in, since consent rules differ. [Call recording consent laws](/blog/call-recording-consent-laws-restaurants) covers the split.
+- A one-page architecture summary showing what connects to what, including the POS integration path.
+
+The architecture page is the one operators skip and reviewers appreciate most. It answers ten questions at once and it prevents the reviewer from guessing, which is where wrong assumptions get written into a finding.
+
+## Answering as the operator, not as the vendor
+
+Do not paraphrase your vendor's documentation into the spreadsheet. Send them the sheet and have them answer their own rows.
+
+Two reasons. The first is accuracy: a well-meaning guess about encryption at rest is still a misrepresentation if it turns out wrong, and it will be your signature on the document. The second is speed. A vendor who has answered forty of these will fill in their rows in a day, and the ones who take three weeks are telling you something about what support looks like after you sign. How a vendor handles this exact request is a useful question to put to their references, which is part of the broader work in [evaluating voice AI vendors](/blog/evaluating-voice-ai-vendors-restaurants) and the detailed [security questionnaire walkthrough](/blog/voice-ai-security-questionnaire).
+
+Your own rows are the ones about your staff and your site. Who has admin access to the phone platform. Whether managers share a login. How access is removed when a GM leaves. Those are yours, and the honest answer for a lot of restaurant groups is uncomfortable, which is a reason to fix it before someone asks in writing.
+
+## Running the review on your timeline
+
+The pattern that works is boring. Ask the reviewer for the questionnaire before the contract is signed rather than after. Forward the vendor rows the same day you receive them. Give the reviewer the architecture page and the data agreement unprompted, in the first reply, because unprompted artifacts shorten the follow-up cycle more than careful answers do.
+
+Then track it as a work item with a name attached, not as an email thread. These reviews stall in the gap between two organizations, where each side believes the other owes the next reply.
+
+If you are bidding on institutional accounts at all, treat the security packet as standing sales collateral. You will be asked for the same six documents by every hospital and every university you approach, and the group that has them ready answers in two days while a competitor spends a month assembling theirs. That gap decides contracts more often than the food does, and it costs one afternoon to close.

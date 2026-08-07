@@ -102,7 +102,15 @@ export function PricingTable() {
                 className="mt-6 rounded-full"
                 variant={tier.highlighted ? "default" : "outline"}
                 nativeButton={false}
-                render={<Link href={tier.ctaHref}>{tier.ctaLabel}</Link>}
+                render={
+                  <Link
+                    href={tier.ctaHref}
+                    data-track="pricing_plan_click"
+                    data-track-plan-name={tier.name}
+                  >
+                    {tier.ctaLabel}
+                  </Link>
+                }
               />
             </Card>
           )

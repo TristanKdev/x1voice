@@ -1,0 +1,82 @@
+---
+title: "Regional pricing and menu differences on one brand line"
+description: "Same brand, same item, three different prices and one store that doesn't carry it. What a voice agent needs to know before it quotes a total to a caller."
+publishedAt: "2026-07-31"
+faqs:
+  - question: "Can one voice agent handle stores with different prices?"
+    answer: "Yes, as long as prices are read per store from that store's POS rather than from a shared brand menu. The agent should never hold a price of its own. It quotes what the location's own item record says, which means a price change made in the store's POS is live on the phone without anyone updating a script."
+  - question: "What happens if a caller asks about an item their store doesn't carry?"
+    answer: "The agent should say plainly that the location doesn't have it and offer the closest thing that store does carry. Silence or a vague answer produces a caller who shows up expecting an item that was never on that menu. Naming the substitute in the same breath keeps the order moving instead of ending the call."
+  - question: "Should regional menu differences be managed centrally or per store?"
+    answer: "Both, in layers. Brand-wide items, naming, and standards belong at the corporate level so a franchisee can't quietly rename a core product. Availability, price, and local-only items belong to the store, because those are the fields a manager has to change on short notice. Trouble comes from putting a fast-moving field in the slow layer."
+  - question: "How do regional item names affect phone orders?"
+    answer: "They matter more on the phone than anywhere else, because a caller says a name out loud and expects to be understood. If a market calls the same sandwich something different, the agent needs both names mapped to the same item for that store, along with the local pronunciation. Menu naming is a recognition problem before it's a branding one."
+  - question: "Do regional price differences cause problems with delivery apps?"
+    answer: "They can, since app menus are often built once and updated less often than the POS. If your phone quotes the store's live price and an app quotes a stale one, callers who compare will find the gap and ask about it. The fix is treating the POS as the single source and pushing outward from it rather than maintaining each channel by hand."
+---
+
+Three stores in one brand, one item, three prices. The downtown location charges 13.95 for the chicken sandwich because the rent is what it is. The suburban store is at 11.95. The airport unit is at 16.50 and doesn't carry the side salad at all, because the commissary that supplies it stops at the terminal loading dock and salads don't survive the trip.
+
+None of that is unusual. Any brand past a handful of units has price bands, market-specific items, and at least one location where something everybody else sells is not available. The question is what your phone does with that, because a phone that quotes a brand-level price is quoting a number that is wrong at two of those three stores.
+
+## The wrong fix is a menu that averages
+
+The instinct is to simplify. Pick a middle price, publish one menu, and let the register sort it out at pickup.
+
+This fails in a way that costs more than the price difference. A caller told 11.95 who is charged 13.95 at the counter has a small argument with a seventeen-year-old cashier who did nothing wrong and cannot fix it. That's a refund, a bad review, or both, over two dollars. The same call at the airport store is a four-dollar gap and a customer who feels overcharged rather than informed.
+
+The other version of the same mistake is telling callers a price "starting at" a number. It's technically defensible and it reads as evasive. People ordering lunch want a total.
+
+## Price belongs to the store, not to the agent
+
+The structural fix is that the voice agent should never hold a price at all. It should hold a pointer.
+
+When a caller at the airport store asks what the chicken sandwich costs, the answer comes out of that location's own item record in its POS. Not a script, not a spreadsheet somebody exports monthly, not a brand menu with regional overrides bolted on. The store's live record, read at the moment of the call.
+
+This has a useful side effect. When a franchisee raises a price on Tuesday morning, the phone is correct on Tuesday morning, without a ticket to anyone. Any system that requires a separate menu update to stay accurate will eventually drift, because the update is somebody's fourth priority. [Menu sync mechanics](/blog/menu-sync-deep-dive-voice-ai) covers what that connection actually has to do.
+
+The same logic runs through availability. If the airport store's salad is not in its POS as an active item, the agent should not be offering it, and it certainly should not be offering it and then taking an order for it. [Real-time 86ing](/blog/real-time-86ing-menu-sync) is the same plumbing applied to the day-to-day version of that problem.
+
+## Which fields live where
+
+The workable arrangement is layered, and the layers split cleanly along one line: how often does this field change, and who is allowed to change it.
+
+Corporate holds the things that would break the brand if a store changed them:
+
+- The canonical item list and item identity, so the same product means the same thing in every market's reporting.
+- Item names and required naming standards, including any market-specific alternate names that are officially sanctioned.
+- Allergen and ingredient statements, which are a legal exposure rather than a marketing choice.
+- Escalation and complaint policy, since a franchisee inventing their own refund rules on the phone is a problem that surfaces later.
+
+The store holds the things a manager has to be able to change before lunch:
+
+- Price, including any local promotional pricing.
+- Availability, both permanent (this unit doesn't carry it) and temporary (we're out).
+- Hours, closures, and delivery zone.
+- Local-only items that exist in one market and nowhere else.
+
+If price sits in the corporate layer, price changes take a week and the phone is wrong for a week. If allergen text sits in the store layer, you will eventually find out that one location edited it.
+
+## Local items and local names
+
+Market-specific items are easier than they look. They're just items that exist in one store's catalog and not the others', which the layering above already handles.
+
+Names are harder, and specifically harder on the phone than in any other channel. A caller looking at a website reads the name. A caller on the phone says it, in a local accent, sometimes in the version their family has used for a decade rather than the version on the menu board.
+
+So the agent needs alternates mapped per store. If a market genuinely calls the item something else, both names point at the same POS item at that location. If a name is hard to say, the agent needs to recognize the ways people actually say it, not just the spelling. This is ordinary configuration work, and it's the difference between an order that completes and a caller repeating themselves three times before giving up. [Training the agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu) goes through how those alternates get built.
+
+One thing to resist: letting each store invent names freely. A franchisee renaming a core product because they like their version better makes your reporting incoherent and makes brand-level marketing land on a menu that doesn't match. Alternates should be additions to a canonical name, not replacements for it.
+
+## The store has to be identified before anything is quoted
+
+All of this depends on knowing which location you're pricing for, which puts routing upstream of menu. An agent that takes half an order and then discovers the caller wanted the airport store has to reprice everything already said.
+
+Establish the location first, from the number dialed or the delivery address, and then load that store's menu and prices for the rest of the conversation. The [routing side of this](/blog/call-routing-across-locations) is worth getting right before the pricing side, because pricing correctly for the wrong store is not an improvement.
+
+For groups rolling this out across markets, the sequencing usually goes: confirm each store's POS menu is actually accurate, then connect, then test by calling. Auditing the menu first is the step people skip, and skipping it means the phone faithfully repeats whatever was wrong in the POS. The [franchise rollout sequence](/blog/voice-ai-franchise-rollout-playbook) covers the order of operations for a group.
+
+## What to check
+
+Take one item you sell everywhere and pull its price from three stores in different markets. Then call each store and ask what it costs.
+
+If any of the three answers doesn't match its own POS, the phone is not reading from the store. Fix that before you worry about anything else on the call, because every other improvement sits on top of a number that has to be right.

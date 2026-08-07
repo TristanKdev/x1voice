@@ -1,0 +1,74 @@
+---
+title: "Getting a caller to the right store without an IVR maze"
+description: "Asking a caller to press 1 for Northside is a bad answer to a question they should never have been asked. How multi-location phone routing should actually work."
+publishedAt: "2026-07-30"
+faqs:
+  - question: "Should each location have its own phone number?"
+    answer: "Yes, keep the local numbers. They carry years of listings, reviews, and printed material, and a caller who dials one has already told you which store they want. A brand-level number is a useful addition for people who search the brand rather than the store, but replacing local numbers with a single line throws away routing information you were getting for free."
+  - question: "What's wrong with a press-one-for-location phone menu?"
+    answer: "It asks the caller to solve a problem they lack the information to solve. People know their store as the one on Oak Street or the one by the mall, not as option three. A menu of six locations also takes longer to listen to than most callers will tolerate, and the ones ordering food are the least patient of all."
+  - question: "How should a call to the wrong location be handled?"
+    answer: "Take the order at the store the caller wanted, if you can identify it, rather than transferring. A transfer costs the caller a second wait and often a second explanation of what they want. If the system can write the order into the correct store's ticket stream directly, the caller never needs to know they dialed the wrong number."
+  - question: "Does routing by address work for delivery calls?"
+    answer: "It's the most reliable signal you have for delivery, since the delivery address determines which store can actually serve it. Ask for the address early, match it against zone boundaries, and assign the store from that. Asking a delivery caller to choose a location first inverts the logic and produces orders assigned to stores that don't cover the address."
+  - question: "Can a voice agent handle routing for locations with different hours?"
+    answer: "Yes, provided each location's hours are configured separately rather than inherited from a brand default. The routing and the hours have to be evaluated together, because a caller routed to a store that closed an hour ago has been routed correctly and served badly. The agent should offer the nearest open alternative instead."
+---
+
+A phone menu that asks a caller to choose a location is a bad answer to a question the caller should never have been asked. They know your restaurant as the one on Oak Street, or the one near the high school. They do not know it as option four, and by the time the recording gets to option four, a meaningful share of them are gone.
+
+Multi-location phone routing gets treated as a menu design problem. It is really a question of how much you can figure out without asking, and how quickly you can act on what you figured out.
+
+## Start from what the call already tells you
+
+A caller who dialed the Oak Street number wants Oak Street. That's not an inference, it's the strongest signal you will ever get, and it arrives before anyone says a word.
+
+This is the argument for keeping local numbers per location rather than consolidating everything behind one brand line. Those numbers sit in map listings, on receipts, in delivery app profiles, on the side of a van somebody painted in 2019. Each one is a pre-sorted call. Replace them all with a single number and you have volunteered to sort by hand what the phone system was sorting for you.
+
+The brand-level number is still worth having, for people who search the brand instead of the store. But it should be the secondary path, handling the callers who genuinely haven't picked a location, not the primary path handling everyone.
+
+## Why the location menu fails specifically
+
+Listening is slow. Reading a list of six neighborhoods takes twenty-five seconds if the recording is brisk, and the caller cannot skim it the way they'd skim a webpage. They have to hold six options in their head and match one to a place they think of by a landmark you didn't mention.
+
+Then the mismatch: your menu says "Westgate" because that's what the lease says. The customer calls it "the one in the shopping center by the Target." Those don't line up, so they guess, and a guess produces a call at the wrong store which now has to be undone.
+
+And the timing is backwards. The menu runs before you know anything about the call. A person asking whether you're open until nine, a person ordering delivery to an address, and a person calling about a lost credit card all get the same twenty-five seconds of neighborhoods, even though only one of them needs to pick a store at all. The same structural complaint applies to [hunt groups and rollover lines](/blog/multi-line-hunt-groups-vs-voice-ai), which solve for the line being busy rather than for the caller being in the right place.
+
+### The caller who dialed a store on purpose and got it wrong
+
+Occasionally someone dials Oak Street and describes an address Oak Street doesn't deliver to, or asks about a menu item only the Westgate store carries. The signal from the number they dialed is now contradicted by the signal from what they're saying.
+
+Trust what they're saying. The number they dialed reflects what they had saved in their phone two years ago. The address they just recited reflects where they want food tonight. Handle it quietly, without announcing that they called the wrong place, and take the order for the store that can fill it.
+
+## Routing on what the caller wants, not on what they picked
+
+The better structure answers the call immediately, in a normal voice, and works out the destination from the conversation.
+
+For delivery, the address decides it. Ask for the address early rather than late, match it against your zone boundaries, and assign the store from that. This is the only routing signal that can't be wrong, because a store either covers an address or it doesn't. Getting it backwards, letting a caller pick a location and then discovering the address falls outside its zone, means unwinding a five-minute conversation.
+
+For pickup, the caller usually has a preference already and will say it plainly if you ask an open question instead of reading a list. "Which location are you picking up from?" gets a useful answer from someone who knows, and gets "whichever one is closest to downtown" from someone who doesn't, which is also useful.
+
+For questions about hours, parking, or whether you take reservations, often no routing is needed at all. Answer it and let the call end. Forcing a location choice in order to answer a question about closing time is work you created for both of you.
+
+For catering and volume orders, the destination is frequently not a store at all, which is a separate routing problem covered in [central kitchen order routing](/blog/central-kitchen-order-routing).
+
+## Transfers cost more than they look like they cost
+
+The instinct when a call lands in the wrong place is to transfer it. It feels like the polite fix. From the caller's side it's a second hold, a second greeting, and a second recital of what they want, and a noticeable share of people hang up during it.
+
+If the routing decision resolves to a different store, the better outcome is that the order gets written into that store's ticket stream directly, with no transfer at all. The caller finishes the one conversation they started. The receiving store sees a normal order arrive.
+
+Reserve actual transfers for the cases where a person genuinely has to be involved: a complaint, a refund, a large event, a caller who asks for a manager. Those should reach a human quickly and with context, which is a policy decision worth setting deliberately rather than by default. [Human handoff rules](/blog/human-handoff-failover-voice-ai) go through how to draw that line.
+
+## Hours and coverage have to be evaluated with the route
+
+Routing a caller correctly to a store that closed forty minutes ago is a correct route and a failed call. The two have to resolve together.
+
+Each location needs its own hours, its own delivery zone, and its own temporary closures, rather than inheriting a brand default that someone updates once a quarter. When a caller reaches a closed store, the useful response names the nearest location still open and offers to place the order there. When every nearby store is closed, say so and offer tomorrow rather than taking an order nobody will make. Groups running this across many units usually end up managing it as configuration per store, which is most of what [multi-location deployments](/blog/voice-ai-multi-location-franchise-groups) actually involve.
+
+## What to check this week
+
+Pull your call logs for one busy evening and count how many calls to each location ended without an order. Then call your own brand number and time how long it takes, from the first ring, until you could have said the first item you wanted to eat.
+
+If that number is over fifteen seconds, the routing is being paid for by your callers. Some of them are paying it at a competitor instead.

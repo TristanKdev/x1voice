@@ -1,0 +1,80 @@
+---
+title: "Simultaneous ring vs. answering on the first ring"
+description: "Ringing three phones at once feels like coverage and behaves like shared inattention. What ring-all actually fixes, what it breaks, and where it belongs."
+publishedAt: "2026-02-24"
+faqs:
+  - question: "What is simultaneous ring?"
+    answer: "A phone system setting that rings several devices at the same time on an incoming call, with the first one picked up winning. Restaurants typically point it at the host stand, the back office, and a manager's mobile. It spreads the ringing across the building rather than adding capacity, so a second caller still waits."
+  - question: "Why does simultaneous ring send calls to voicemail so fast?"
+    answer: "Because a mobile phone in the ring group answers with its own voicemail after about twenty to thirty seconds, and the system treats that as the call being answered. The other phones stop ringing mid-service and the caller lands in a personal mailbox nobody checks. Shortening the ring timeout below the mobile's voicemail delay is the standard fix."
+  - question: "Does simultaneous ring let me take more calls at once?"
+    answer: "No. It changes which devices ring, not how many concurrent calls the line supports. If your service allows one call at a time, the second caller still gets a busy signal while five phones ring for the first. Concurrency is a property of the phone service, and adding devices to a ring group does nothing about it."
+  - question: "Is simultaneous ring better than a hunt group?"
+    answer: "They fail in different ways. A hunt group rings phones in sequence, so each hop adds delay and callers hang up during the handoffs. Ring-all removes the delay but creates the assumption that someone else is getting it. Both depend on a person being free to answer, which is the thing that is missing during a rush."
+  - question: "Should I keep simultaneous ring if I add an AI phone agent?"
+    answer: "Yes, but move it. It works poorly as the primary answering method and works well as the escalation path underneath one. The agent takes every call immediately, and when a caller needs a person, the transfer rings the manager's mobile and the office at once. Ring-all as a backstop is a sensible design."
+---
+
+Friday, 7:15pm. The phone rings at the host stand, in the back office, and in the manager's pocket, all at once. The host is walking a party of six to a table and hears it. The manager is arm-deep in the walk-in and feels it. Nobody moves, because three phones ringing sounds like somebody else's problem.
+
+Twenty-two seconds later it stops. Everyone assumes it got answered. What actually happened is that the manager's mobile sent it to a personal voicemail box that gets checked on Tuesdays.
+
+## What ring-all is and what it is not
+
+Simultaneous ring, ring-all, or blast ringing rings every device in a group at the same time and gives the call to whoever picks up first. It is a routing rule, and a genuinely useful one in the right place.
+
+What it does not do is add capacity. This is the misconception that costs the most, because it feels like coverage. If your phone service supports one concurrent call, adding four devices to the ring group changes nothing about the second caller, who still hears a busy signal while all four phones ring for the first one. Concurrency lives in the phone service, not in the routing, and that distinction is one of the practical differences in [copper versus VoIP service](/blog/voip-vs-landline-restaurant-phone).
+
+It is also not the same as a hunt group, which rings phones in sequence. Hunt groups trade the diffusion problem for a delay problem: each hop adds ten or fifteen seconds, and callers abandon during the handoffs. The comparison between those two and what replaces them is in [multi-line hunt groups versus voice AI](/blog/multi-line-hunt-groups-vs-voice-ai).
+
+## The failure that costs you the most calls
+
+The voicemail race is the specific mechanic worth understanding, because it is invisible from the inside and it eats calls all night.
+
+When a mobile phone is in a ring group, that phone has its own voicemail with its own timeout, usually around twenty to thirty seconds. If nobody in the restaurant answers within that window, the mobile's voicemail picks up. As far as the phone system is concerned, a device answered the call. Every other phone in the group stops ringing immediately.
+
+So the host stand, which was ringing while the host finished seating a table and was about to be free, goes quiet at second twenty-four. The caller is now talking to a recording that says "you've reached Danny, leave a message." Danny is the general manager. The caller wanted to order two large pies.
+
+The fix is mechanical: set the group's ring timeout below the shortest voicemail delay of any device in it, usually to fifteen or eighteen seconds, and make sure the call lands somewhere deliberate when that timer expires. Most restaurants running ring-all with a mobile in the group have never checked this, and it is worth checking today regardless of anything else you do.
+
+## Diffusion of responsibility is not a training problem
+
+The second failure is human, and it does not respond to a staff meeting.
+
+One ringing phone in one place creates one owner. Three ringing phones create a shared assumption. This is well understood in any setting where responsibility is spread across a group, and it does not depend on your team being unmotivated. The host genuinely believes the office got it. The office genuinely believes the host, who is standing right next to a phone, got it.
+
+Managers respond to this by naming a primary answerer, which quietly turns ring-all back into a single phone with three extra sources of noise. Then the primary answerer gets pulled into a guest conversation and the whole arrangement is exactly where it started.
+
+The noise is not incidental either. A phone ringing in the dining room during service is a small, repeated intrusion on the guests sitting next to it, and a phone ringing at the host stand pulls a person away from people physically standing in front of them. That trade is described in [reducing host stand phone interruptions](/blog/reduce-host-stand-phone-interruptions), and it gets worse with every device you add to the group.
+
+## What it exposes on personal phones
+
+Putting a manager's mobile in the ring group is the most common version of this setup and carries two costs operators usually accept without pricing them.
+
+The first is that the restaurant's call record now has a hole in it. Calls answered on a personal device produce no log you can review, no recording, no timestamp in your system. When you later try to figure out whether a catering inquiry ever got a callback, the trail ends at somebody's phone.
+
+The second is that the manager's personal number is now part of your operation. If they call a customer back from that phone, the customer has it. When that manager leaves, the customers who saved the number still have it. Restaurants discover this months later when a regular is texting a former employee about a Saturday reservation.
+
+Neither is a reason to never do it. Both are reasons not to make it your default answering path.
+
+## Where ring-all is genuinely the right tool
+
+Say the useful part plainly, because there is one.
+
+Ring-all is a good escalation destination. When a call has already been answered, and the situation actually requires a person, ringing several devices at once is exactly right: the caller is not sitting through hop after hop, and whoever is free grabs it. The diffusion problem mostly evaporates because the ring now means something specific rather than being background noise every eleven minutes.
+
+It is also the right tool for a genuinely small operation. A two-person coffee counter with fifteen calls a day does not need a routing architecture. Ring both phones and get on with it. There is no honest case for spending money on a phone problem that produces four missed calls a week, and we would rather say that than sell against it.
+
+And it is a reasonable failover for the hours when your primary answering path is unavailable, which is a design question rather than an afterthought, covered in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+## The comparison that actually decides it
+
+Both approaches are answers to one question: what happens in the four seconds after your phone starts ringing during a rush.
+
+Ring-all answers it with availability. If a person is free, the call gets answered fast. If nobody is free, which describes 6pm to 8pm on a Friday at most restaurants, it gets answered by whichever voicemail box wins the race. The system's performance is exactly equal to your staff's spare capacity at that moment, and spare capacity at peak is the thing you do not have.
+
+An agent that answers on the first ring answers it with certainty. Every call is picked up, including the fourth and fifth simultaneous one, and including the ones at 2am covered in [after-hours answering](/blog/24-7-restaurant-phone-answering-after-hours). Callers who need a person still get one, but the transfer happens after someone has already greeted them, which is a categorically different experience from ringing into a void.
+
+The reason this matters more than it looks is that unanswered calls leave no evidence. A walked table is visible; a caller who gave up at ring four is not, which is the argument in [the real cost of a missed call](/blog/the-real-cost-of-a-missed-restaurant-phone-call).
+
+Run this test tonight. Between 6:30 and 8:00, have someone call the restaurant from a number nobody recognizes, four times, and write down what happened each time: answered by whom, at what ring, or landed where. Four data points from your actual peak will tell you more about your ring group than any configuration screen will.

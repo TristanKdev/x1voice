@@ -1,0 +1,78 @@
+---
+title: "Voice AI for tapas restaurants and the small-plate count problem"
+description: "Tapas calls are half reservation, half order, and the plate count per person is where they go wrong. What a voice agent gets right, and where to hand off."
+publishedAt: "2026-01-18"
+faqs:
+  - question: "Can a voice agent handle a call that is both a reservation and an order?"
+    answer: "It depends on how your systems are wired. Reservations and orders are separate flows that often live in separate software, and a single call touching both means the agent has to write to two places or hand one part to a person. Ask a vendor to demo that exact call rather than the clean order-only version, because it is your most common call type."
+  - question: "How does it decide how many plates a party of six should order?"
+    answer: "It shouldn't decide, it should ask and then suggest a range you defined. Set a per-person plate count you actually believe, have the agent state it as a suggestion, and let the caller adjust. An agent inventing a number is worse than a server guessing, because nobody at your restaurant reviewed the guess before the ticket printed."
+  - question: "Will guests be annoyed that a machine answered?"
+    answer: "Some will, and the fix is a fast, obvious route to a human rather than pretending otherwise. Most callers care more about being answered in two rings than about who answered. The complaints cluster around agents that loop, refuse transfers, or mishandle a special occasion, which are configuration choices you control."
+  - question: "Does this work if my menu changes weekly?"
+    answer: "Yes, as long as the changes go into your POS. The agent reads the same menu data your registers read, so a new plate added properly on Tuesday is sellable on the phone Tuesday. Menus maintained on a chalkboard and nowhere else will drift, and the agent will keep offering last week's dish."
+  - question: "What should never reach the voice agent?"
+    answer: "Private events, buyouts, large-party wine questions, and complaints. Those calls are worth real money or real goodwill and they benefit from a person who can negotiate. Route them to a human by rule, and treat every one of those transfers as the system working correctly rather than as a failure to contain."
+---
+
+The hardest call a tapas restaurant takes isn't the order. It's the call that starts as a reservation for Friday, becomes a question about whether eight plates is enough for four people, and ends with someone asking if you can hold two bottles of the Albariño.
+
+One caller, three systems, and whoever picked up is standing at a host stand during service.
+
+## Two businesses on one phone line
+
+Most small-plate rooms run a real reservation book and a real takeout channel at the same time, and the phone serves both. That's different from a pizza counter, where nearly every call is an order and the flow is identical each time.
+
+The practical consequence is that a voice agent for a tapas room needs a clear rule for which half of a call it owns. Taking an order and writing it into the POS is one integration. Booking a table is another, and it usually lives in different software. A call that does both has to either write to two places or split between the agent and a person.
+
+Ask about this directly in a demo. The distinction between the two flows is covered in [reservations versus ordering](/blog/voice-ai-reservations-vs-ordering), and the same question applies to whatever table system you run. A vendor who only demos the clean order-only call is showing you your least common call.
+
+## The plate count is the question you get asked most
+
+"We're six people, how much should we order?"
+
+Your servers answer this fifty times a week and they answer it with judgment. They know the party sounds like they're drinking, they know the pulpo is heavy, they know the table turns at 9. A voice agent has none of that.
+
+What it can do is state a range you decided on. Three plates per person for a normal dinner, four if they want to linger, and say plainly that it's a starting point. Then take the order and let the caller adjust.
+
+What it must not do is invent a number. An agent that improvises a plate count is guessing on your behalf about food cost and guest satisfaction at the same time, and nobody at your restaurant reviewed the guess.
+
+### Write the number down before setup
+
+This sounds trivial and it's the part operators skip. Sit down with your chef and agree on the per-person count you'd tell a friend. Write it as a sentence. That sentence goes into the agent's configuration and it's also the sentence your new servers should be using, which means the setup work improves your floor training whether or not you buy anything.
+
+## Plate names are where accuracy leaks
+
+Patatas bravas, gambas al ajillo, pan con tomate. Callers will say all of those, and they will also say "the potatoes," "the garlic shrimp," and "the tomato bread." Some will say the Spanish name with an accent the system has never heard, and some will read it phonetically off your website.
+
+Every one of those has to land on the same POS item. Building that alias list for your top thirty plates is the actual setup work, and it's described in more detail in [training a voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu). Accent handling varies by vendor and by dish, and the way to find out where yours breaks is to test it rather than read a spec.
+
+Modifiers are lighter here than in most formats. Small plates arrive mostly as they're written, which makes tapas an easier menu for a voice system than a build-your-own sandwich counter. Fewer branches in the modifier tree means fewer places for a call to go sideways.
+
+The exception is allergens. A room built on shared plates gets asked about shellfish, gluten, and nuts more than most formats, because the whole table is eating off the same dishes and one person's restriction shapes the entire order. Decide early whether the agent answers those questions from a fixed list or routes them to a person. Both are defensible. Improvising is not, and [handling allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions) covers the tradeoff.
+
+## Wine questions belong to a person
+
+A caller asking which Rioja pairs with the lamb is not a call to automate. Neither is the one asking whether you can put together something for a table of fourteen on a Saturday.
+
+Those calls are worth money and they need someone who can say yes to an unusual request. Build the routing rule so they reach a human quickly, and stop treating a transfer as a failure. A high containment rate that comes from an agent refusing to hand off is worse for you than a lower one that routes the right calls to a person. The mechanics of doing it cleanly are in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+Decide your handoff list before you turn anything on. Private events, buyouts, complaints, anything involving a deposit. Four categories is usually enough.
+
+## What the phone is actually costing you now
+
+Run the count for one Friday. How many calls came in between 6 and 9, how many were answered, and how many rang out while your host was walking a table to the back.
+
+The number is usually higher than operators expect, and the reason it stays hidden is that a caller who gives up doesn't leave a trace anywhere in your POS. That's the argument in [the real cost of a missed call](/blog/the-real-cost-of-a-missed-restaurant-phone-call), and a tally sheet by the phone is enough to measure it.
+
+Then do the arithmetic yourself. If your average takeout ticket is $70 and you're losing four calls a Friday, that's a few hundred dollars a week in orders that went to the place down the street, before you count the reservation you never got to book. Plans start at $250 a month, listed on the [pricing page](/pricing), so the math either works quickly or it doesn't work at all.
+
+## The version of this that fails
+
+An agent that tries to own the reservation conversation without touching your book. It'll take a request, promise nothing, and leave a message someone has to act on an hour later, which is worse than voicemail because the guest thinks they're booked.
+
+An agent nobody tests after week one. Menus change, the alias list goes stale, and the failure shows up as an item the caller wanted and the agent couldn't find.
+
+An agent configured to never transfer, because someone was chasing a containment percentage.
+
+If you're evaluating this, the single most useful thing you can do is call your own restaurant on a Friday at 7:15 and see what happens. Then call the vendor's demo line and place the messiest real order you've taken this month, half in Spanish plate names, with a party size question in the middle. Whatever it does with that call is what it will do with yours.

@@ -1,0 +1,79 @@
+---
+title: "Why phone customers repeat differently than app customers"
+description: "A caller who orders twice a week for six years is a different asset than an app user with three restaurants saved. Here is how to measure the difference."
+publishedAt: "2026-06-09"
+faqs:
+  - question: "Do phone customers have higher lifetime value than app customers?"
+    answer: "Often yes, though the reason is structural rather than magical. A phone customer orders from you directly at full price and their relationship is with your restaurant. A marketplace customer is shopping a list where you appear beside competitors, and every one of their orders carries a commission. The same person is worth more to you on the phone than in the app."
+  - question: "How do I calculate lifetime value for a phone customer?"
+    answer: "Multiply average ticket by orders per year by the number of years the customer stays active, then multiply by your contribution margin. Get the inputs by grouping a few years of POS orders by phone number. Use the median rather than the mean, since a handful of catering customers will otherwise distort the figure badly."
+  - question: "Why do phone customers stay longer?"
+    answer: "Mostly because calling is a habit tied to your specific restaurant rather than a browsing session across many. Someone who has your number saved is not comparing you against four other places every time they get hungry. That habit is fragile in one specific way: a few unanswered calls and it breaks."
+  - question: "What breaks a phone customer's habit?"
+    answer: "Unanswered calls, long holds, and orders that arrive wrong. A regular who calls three Fridays in a row and gets ringing will find somewhere else, and they rarely tell you why. Because there is no cancellation event, the loss appears in your numbers as gradual softness rather than as churn you can point at."
+  - question: "Should I try to move phone customers to my app?"
+    answer: "Only if your app genuinely serves them better. Pushing a customer off a channel that works for them and onto one you prefer often costs frequency, particularly with older regulars and with large or complicated orders. Offer the alternative, keep the phone reliable, and let people order the way they want."
+---
+
+There is a customer at nearly every established restaurant who has been calling the same number twice a week since before the current POS was installed. They order roughly the same thing, they tip the same way, and if you added up what they have spent it is a number that would justify a lot of operational attention.
+
+Nobody at the restaurant knows that number, because nobody has ever grouped the orders by phone number. That calculation is worth an afternoon, and it changes how you feel about the phone ringing out at 6:30.
+
+## The arithmetic, done plainly
+
+Lifetime value is average ticket, times orders per year, times years active, times contribution margin.
+
+If a regular orders a $38 ticket twice a month for four years, that is $3,648 in revenue. At a 25 percent contribution margin after food and direct labor, roughly $900 of margin from one relationship. Run it with your own margin.
+
+Now get the real inputs rather than my invented ones. Export two or three years of orders from your POS with the phone number attached. Group by number. For each group compute the number of orders, the average ticket, and the span between first and last order. Then take medians across all groups, not means. A single catering customer will otherwise pull your average into a number that describes nobody.
+
+If your POS does not attach phone numbers to phone orders, that is the actual first project, and it pays for itself in several other ways as well.
+
+Two adjustments make the output more honest. Cap the years-active figure at the age of your data, since a customer who has ordered steadily for the full three years you can see has a lifespan you cannot measure yet and should not extrapolate. And treat a customer as lapsed only after a gap longer than their own normal interval, because someone who orders quarterly has not churned at month four.
+
+## The comparison that changes the picture
+
+The same person is worth different amounts to you depending on how they order, and the gap compounds.
+
+Consider two customers who each order forty times a year at the same ticket. The phone customer pays you the full ticket, minus a few minutes of labor per order. The marketplace customer pays the platform, who forwards you the ticket minus commission, on every single order.
+
+- The phone customer's cost to serve is roughly flat per order and independent of ticket size.
+- The marketplace customer's cost to serve scales with revenue and never declines with loyalty.
+- The phone customer's contact details are yours, so you can reach them for a closure, a holiday menu, or a catering pitch.
+- The marketplace customer's relationship belongs to the platform, and they will be shown your competitors next week whether you perform well or not.
+
+Over four years the difference is not a rounding error. The order-by-order version of this is worked through in [voice AI versus delivery app commissions](/blog/voice-ai-vs-delivery-app-commissions), and the acquisition-side framing is in [phone orders as an acquisition channel](/blog/customer-acquisition-cost-phone-orders).
+
+This is not an argument against being on the platforms. It is an argument for knowing which of your customers you would fight hardest to keep on the direct channel, and the answer is your highest-frequency ones.
+
+## Why the habit is stronger and more brittle at once
+
+Calling is a saved contact and a routine. It survives redesigns, app updates, and the promotional carousel on someone's phone. A customer who calls you is not running a comparison every time, which is why frequency tends to hold steady for years.
+
+The brittleness sits in a single place. The habit assumes you answer.
+
+Three Fridays of ringing out and a regular quietly moves. There is no unsubscribe, no cancelled account, no notification. Your monthly revenue softens by an amount you attribute to weather or the economy. The specific mechanism is described in [the real cost of a missed restaurant phone call](/blog/the-real-cost-of-a-missed-restaurant-phone-call), and the loss is far larger than one ticket because the relationship goes with it.
+
+That is what makes phone coverage a retention question rather than a service question. You are not protecting a $38 order. You are protecting whatever is left of a four-year relationship.
+
+Order accuracy works the same way and is worth checking with the same lens. A regular tolerates one wrong order and reconsiders after the second, and the reconsideration is silent. If your remake log shows the same phone numbers appearing more than once, you are watching relationships end in slow motion, and the fixes are in [improving phone order accuracy](/blog/improving-phone-order-accuracy).
+
+## Segment before you act
+
+Once you have the per-number grouping, sort it. You will typically find a small group of numbers that account for a disproportionate share of phone revenue, a long tail of one-time callers, and a middle band.
+
+The high-frequency group is worth specific handling. Know their names, know their usual, and make sure whatever answers the phone recognizes them rather than treating every call as a first contact. Whether an automated system can hold that relationship without annoying people is a fair question and gets its own treatment in [regulars and AI phone answering](/blog/regulars-and-ai-phone-answering).
+
+The one-time callers are worth a different question: did they not come back because they did not like the food, or because the second call did not get answered? You cannot distinguish those without knowing your miss rate, which is the measurement in [how many calls does your restaurant miss](/blog/how-many-calls-does-your-restaurant-miss).
+
+## What the number justifies
+
+Put the median phone-customer lifetime margin next to your monthly cost of covering the phone.
+
+If the median relationship is worth several hundred dollars of margin, then losing three of them a month to unanswered calls costs more than any coverage option on the market, including hiring a person. If your phone customers are mostly one-time and low-ticket, the math is weaker and you should say so out loud rather than buy something on principle.
+
+The reason this calculation is worth doing rather than assuming is that the answer genuinely differs by restaurant. A catering-heavy operation and a late-night wing counter will get very different numbers from the same spreadsheet.
+
+It also gives you a defensible way to think about spending on the phone at all. A cost that looks large against a single ticket looks small against a median relationship, and that reframing is the entire argument. Run it against your own margin before you accept anyone else's version of it, including this one.
+
+Export the orders, group by number, and find your median relationship value. Then look at your busiest hour and ask how many of those relationships are currently hearing a ring tone. That comparison is the whole decision, and it does not require anyone's marketing material to make.

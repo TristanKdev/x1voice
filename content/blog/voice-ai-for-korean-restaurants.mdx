@@ -1,0 +1,70 @@
+---
+title: "Voice AI for Korean Restaurants: Banchan, Spice, and KBBQ"
+description: "Korean menus break voice agents in specific places: banchan, spice levels, grill party orders, and Korean-speaking callers. What to configure before launch."
+publishedAt: "2026-01-05"
+faqs:
+  - question: "Can a voice agent take a Korean BBQ party order?"
+    answer: "Yes, if the party packages are built as real POS items with a headcount attached rather than as a note typed by whoever answers. The agent asks how many people, reads back the meat selections and the per-person price, and writes a ticket the grill station can read. Where it struggles is a caller improvising a custom combination that has no item behind it."
+  - question: "Will it understand callers speaking Korean?"
+    answer: "Speech recognition handles Korean and Korean-accented English reasonably well on common phrases, and much less well on item names it has never seen written down. The fix is loading your actual menu spellings and the romanizations your customers use, then testing with real callers rather than with someone reading a script."
+  - question: "How does it handle banchan requests?"
+    answer: "Only as well as your menu models banchan. If side dishes are included and not itemized, the agent should say so plainly and move on. If refills or extra kimchi are sold, they need to exist as orderable items with prices. A request the POS has no slot for becomes a note, and notes get missed at the pass."
+  - question: "What about spice level on a stew or a soup?"
+    answer: "Treat it as a required modifier with a small, fixed set of options that match what your kitchen actually cooks. Two or three levels that the line can execute consistently beat a five-point scale nobody follows. The agent should ask once, confirm once, and print the level on the ticket in the same place every time."
+  - question: "Is this worth it for a small Korean restaurant?"
+    answer: "It depends on how many calls ring out during your dinner rush. Count the missed calls for one week during your busiest two hours. If the number is a handful, fix your phone routing first. If you are losing ten or more calls a night at a $45 average ticket, the arithmetic gets obvious fast."
+---
+
+It's 6:40 on a Friday. Every grill in the room is going, the ventilation is loud enough that your host is half-shouting, and the phone rings with a party of eight asking whether they can order the pork set for pickup, whether the banchan comes with it, and how spicy the sundubu is. Whoever picks up is standing between a waiting table and a caller, and one of them is going to get a worse answer.
+
+That call is the one worth designing for. Korean menus put more decisions into a single phone order than most formats, and the places a voice agent falls over are specific enough to name.
+
+## Banchan is a menu-structure problem before it's a voice problem
+
+Almost every Korean restaurant handles side dishes differently, and almost none of them handle it the way the POS was set up to handle it. Some include banchan with any entree. Some include it with dine-in only. Some sell extra kimchi or extra japchae as a line item. Some give refills freely at the table and charge for them on a takeout order, which is completely reasonable and completely invisible to anyone who hasn't worked there.
+
+A voice agent inherits whatever your POS says. If banchan exists nowhere as an item, the agent has nothing to sell and nothing to confirm, and a caller asking "does that come with sides?" gets whatever generic answer someone wrote into an FAQ field. If banchan exists as five separate items with prices, the agent can take the order correctly and your ticket comes out right.
+
+So the first hour of setup is not about voice at all. It's you deciding, out loud, what banchan means on a takeout order, and then making the POS say that. The same discipline applies to any modifier that lives mostly in staff heads, which is the argument in [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers).
+
+## Spice levels need to be a short list your line can actually cook
+
+Callers ask about heat on sundubu, kimchi jjigae, buldak, tteokbokki, and about half of them have a strong opinion. The temptation is to offer a fine-grained scale so the agent sounds accommodating.
+
+Don't. A five-point scale that your kitchen executes as "some gochugaru or a lot of gochugaru" produces two failures at once: the caller gets something other than what they asked for, and you lose the ability to tell whether the agent got it right. Pick two or three levels that correspond to a real difference in the pot, make the modifier required on the dishes where it matters, and have the agent read it back in the confirmation.
+
+Required is the operative word. Optional spice modifiers get skipped, and a skipped level means the line defaults to whatever they default to, and the customer who wanted mild calls back.
+
+## Party orders are quantity math, not conversation
+
+The KBBQ set order is where the money is and where notes-in-a-box goes wrong. A caller says eight people, wants two orders of galbi, one of samgyeopsal, and asks if that's enough. Your staff answers that question from experience. An agent answers it from configuration.
+
+The way to make that work is to build your party packages as real items with a headcount and a fixed composition, priced per person or per set, the way you'd ring them in yourself. Then the agent can ask headcount, offer the set that matches, confirm the meats, and total it. When a caller wants something off-package, that's a legitimate escalation to a person, and it should be configured as one rather than fudged.
+
+The failure mode to avoid is the agent cheerfully accepting "eight people, mix of stuff" and writing a note. Nobody at the grill station can cook a note. Set your escalation rules so that a party above a threshold you choose, or any request that doesn't map to an item, goes to a human. That threshold conversation is the same one in [voice AI for large catering orders](/blog/voice-ai-large-catering-orders).
+
+## Korean-speaking callers and the words nobody spelled out
+
+Recognition on Korean and on Korean-accented English is decent for ordinary conversation and unreliable for item names the system has never been shown. That's the whole story. A caller saying "yukgaejang" clearly will still get mangled if your menu has it as "spicy beef soup" and nothing else.
+
+The fix is unglamorous. Load your menu with the spellings your customers actually say, including romanizations and the shorthand regulars use. If half your callers say "bibimbap" and a quarter say "bibimbop" and some say "the rice bowl," all three need to reach the same item. Then test with people who order from you, not with a script. What this looks like in practice is covered in [voice AI accent and speech recognition accuracy](/blog/voice-ai-accent-speech-recognition-accuracy) and, for the language-switching side, [multilingual AI phone ordering](/blog/multilingual-ai-phone-ordering-restaurants).
+
+One warning. If you run a genuinely bilingual line today, where a Korean-speaking caller expects a Korean-speaking human and gets one, an agent that handles Korean adequately is a downgrade for your best customers even if it's an upgrade on average. Decide deliberately whether Korean-language calls route straight to a person during staffed hours.
+
+## What breaks first, in the order it breaks
+
+Sold-out items break first. If galbi runs out at eight and the agent is still selling it at nine, you're making refund calls. Your 86 list has to reach the agent the same way it reaches your online ordering, which is the point of [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync).
+
+Then hours. Korean rooms often run a late-night menu or close the kitchen before the dining room, and an agent quoting a pickup time you can't hit is worse than a ringing phone.
+
+Then pickup timing during peak. If your kitchen is thirty-five minutes deep at 7:15 and the agent is quoting twenty, every one of those callers arrives early and stands in your entry. Quote from something real, not from a fixed number typed in during setup.
+
+## When this is the wrong purchase
+
+If you're a small room doing mostly dine-in with eight or ten calls a night, most of them asking about parking and hours, buy nothing. Fix your voicemail greeting and put your hours on your Google listing.
+
+If your phone rings constantly but the calls are reservation-shaped rather than order-shaped, the value is different and smaller, and you should read [voice AI reservations versus ordering](/blog/voice-ai-reservations-vs-ordering) before spending anything.
+
+And if your menu genuinely lives in your staff's heads, with prices that flex and combinations that get improvised nightly, the setup work is larger than a vendor will tell you. That work is worth doing anyway, but do it with your eyes open.
+
+Here's the test. For one week, have whoever closes write down two numbers: calls that rang out unanswered between six and eight, and orders where the customer got something different from what they asked for. If the first number is above ten a night and the second one has anything to do with the phone, you have a phone problem worth money. If both are near zero, you don't, and no amount of good configuration will create a return that isn't there.

@@ -1,0 +1,70 @@
+---
+title: "Delivery platform support calls and where they should go"
+description: "Driver, dispatcher and platform-support calls all land on your order line. Sorting them by who is calling and what they can decide keeps the phone moving."
+publishedAt: "2026-04-17"
+faqs:
+  - question: "Who is actually calling when a delivery platform phones the restaurant?"
+    answer: "Usually one of three people: a courier standing outside asking about an order, a platform support agent working a customer's complaint, or the customer themselves calling the restaurant instead of the app. They need completely different handling, and the phone number they call from rarely tells you which one it is, so the first question has to sort them."
+  - question: "Should a voice agent handle courier calls?"
+    answer: "Yes, for the common ones. A driver asking whether order 4417 is ready, where to park, or which door to use is a lookup question with a factual answer, and an agent that reads live order status can answer it faster than a manager crossing the kitchen. Anything involving a canceled order or a payment adjustment should go to a person."
+  - question: "Can a platform support agent get a refund approved over the phone?"
+    answer: "They can ask, and on most platforms the refund happens regardless of what you say. What the call is really doing is recording your side for the dispute record. That is why these calls belong with a manager who can check the ticket and the kitchen video, not with whoever is closest to the phone."
+  - question: "What about someone calling to say they are from platform support and asking for account details?"
+    answer: "Treat it as fraud until proven otherwise. Real platform support does not need your card number, your merchant portal password, or a code texted to your phone. Hang up and call the platform back through the number in your merchant dashboard. Staff should be told this outright rather than left to judge it during a rush."
+  - question: "Does answering courier calls faster actually change anything?"
+    answer: "It shortens the driver's wait, which is the part of the delivery clock the platform attributes to you. A courier who stands at the counter unacknowledged for four minutes while your host is on hold with someone else costs you late-delivery marks and, over time, ranking in the app. The effect is small per order and steady across a month."
+---
+
+It is 7:40 on a Friday. The phone rings and it is a courier who has been standing at your side door for three minutes asking whether order 4417 is ready. You put him on hold. The phone rings again and it is a support agent from a delivery platform asking about a missing side of ranch on an order that left your kitchen ninety minutes ago. Neither of these is a new order, and both of them just took your host away from the six people waiting to be seated.
+
+Third-party platforms generate a category of phone traffic that most operators never budgeted for. The orders arrive through a tablet or an integration, so the phone was supposed to stay quiet. It does not. Once you are doing meaningful volume through delivery apps, a real share of your inbound calls are about orders you have already made.
+
+## Three callers, one phone number
+
+The calls look identical on your caller ID and require completely different responses.
+
+The courier is outside right now. He wants a status, a door, a parking spot, or a bag he thinks you forgot. His question is almost always answerable from a screen, and every second he waits is counted against your prep time in the platform's metrics.
+
+The platform support agent is on a queue somewhere, working a customer complaint. They want you to confirm what went into the bag, or tell you an order was canceled after you cooked it. They are building a record. Whatever they are asking for has money attached, and the person who answers should be someone allowed to make that call.
+
+The customer is the third one, and the most confused. They ordered through an app, something went wrong, and they looked up your number because you are the name on the bag. You did not take their payment and you cannot see their account. What you can do is remake the food, which is often what they actually want. That conversation is close enough to a direct complaint that the same rules apply, covered in [handling refund and complaint calls](/blog/handling-refund-complaint-calls).
+
+## Sort by what the caller can decide
+
+The useful sorting question is not "who is this" but "what does this call authorize." Status questions authorize nothing and can go to anyone or anything that can read the order. Money questions authorize a payout and should reach one of a small number of named people.
+
+A voice agent handles the first group well. Order status, prep time, which entrance, whether the bag is on the shelf, whether the drinks are in it: all lookups, all answerable in under fifteen seconds if the agent is reading live order data rather than guessing. This is the same plumbing that drives [order status text updates](/blog/restaurant-order-status-text-updates), pointed at a different audience.
+
+The second group needs a person, immediately and without a menu tree in front of it. Set the escalation rule explicitly so the agent does not attempt a resolution it has no standing to give. The mechanics of doing that cleanly are in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+## What a courier call should sound like
+
+Short. The driver identifies the order, the agent confirms status and tells him where to stand. If the order is not ready, the agent gives an actual number of minutes rather than "soon," because the driver is deciding whether to wait or to unassign.
+
+The details worth pre-loading, because they come up constantly:
+
+- Which door couriers use, in plain terms a stranger can follow at night, including whether it is the one with the dumpster or the one with the awning
+- Where the pickup shelf sits and whether bags are stapled, so a driver stops asking staff to confirm
+- Whether the restaurant hands over drinks separately, which is the single most common source of "missing item" complaints
+- What to do when the app shows an order the kitchen does not have, which is a real failure mode and needs a person
+- Parking that will not get a car ticketed during dinner service
+
+Most of these are questions a manager answers thirty times a week from memory. Written into the agent's knowledge, they get answered without anyone leaving the line.
+
+## The calls you should be suspicious of
+
+Someone claiming to be from platform support, asking for a merchant portal login, a card number, or a verification code that just arrived by text, is running a scam. This has been a persistent pattern across restaurant phone lines and it works because it arrives during a rush and sounds official.
+
+The rule is easy to state and should be stated: nobody from any platform ever needs a code from your phone. If a call goes that direction, hang up and dial the support number in your merchant dashboard. A voice agent helps here almost by accident, since it will not read a code to a caller who asks for one. The wider set of phone-based fraud patterns is in [call fraud and chargebacks](/blog/voice-ai-restaurant-call-fraud-chargebacks).
+
+## Why this traffic gets ignored in vendor demos
+
+Demos are built around order taking, because that is the flow with obvious revenue attached. Support traffic looks like overhead. It is overhead, and it is also a meaningful slice of your calls if delivery is a real channel for you, and it lands during exactly the hours you can least afford an interruption at the host stand. That trade is the argument in [reducing host stand phone interruptions](/blog/reduce-host-stand-phone-interruptions).
+
+When you evaluate a system, ask what happens on a call that is not an order. Ask whether the agent can look up an existing order by number. Ask whether it can tell a driver the order is not ready yet without inventing a time. A system that only knows how to open a new ticket will forward every one of these calls to a person, which leaves you exactly where you started.
+
+## The test to run this week
+
+Pull your call log for last Friday and Saturday between six and nine. Count how many calls were new orders and how many were about orders that already existed. If the second number is above one in six, your phone is partly a support desk and you should staff or automate it as one.
+
+Then decide, on paper, which of those calls a person has to take. Write the list down and hand it to the shift lead. Whether the sorting is done by an agent or by a host with a script, the calls that move money should reach a manager and the calls that only need a fact should never have reached a human at all. Consolidating platform order flow, discussed in [consolidating third-party delivery phone orders](/blog/consolidating-third-party-delivery-phone-orders), takes care of the volume; sorting the support traffic is what takes care of the interruptions.

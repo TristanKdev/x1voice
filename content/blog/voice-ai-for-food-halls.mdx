@@ -1,0 +1,88 @@
+---
+title: "Voice AI for food halls: one number, a dozen kitchens"
+description: "A food hall's phone belongs to the building and the orders belong to the stalls. How to route calls to the right vendor without inventing a problem for tenants."
+publishedAt: "2026-01-28"
+faqs:
+  - question: "Can one voice agent take orders for multiple food hall vendors?"
+    answer: "Yes, if each vendor's order lands in that vendor's own system. The routing is the easy part; the integration is where it succeeds or fails. A hall where most stalls run the same common point-of-sale is straightforward. A hall with eight different systems, some of them off-brand, will need per-vendor decisions and some tenants will end up out of scope."
+  - question: "What happens when a caller wants food from two different stalls?"
+    answer: "It becomes two tickets with two ready times, and somebody has to reconcile them. Unless your hall has a central pickup counter or runners, don't build this. Tell the caller plainly which counters to pick up from and when, or route them to one vendor and let them handle the second on arrival. A promised single handoff that doesn't exist creates a complaint every time."
+  - question: "Who should pay for it, the hall or the vendors?"
+    answer: "Whoever owns the published number usually should. If the hall advertises one main line, the hall is the one fielding the calls and the hall benefits from answering them, so it makes sense as a building amenity with vendors opting in for order taking. Splitting the cost per stall creates a maintenance problem, because the vendors who opt out still get calls."
+  - question: "How do you keep menus current across a dozen tenants?"
+    answer: "By naming one person responsible and refusing to launch without them. Food hall menus change constantly, vendors rotate, and specials appear on a chalkboard nobody tells the phone system about. If menu updates flow automatically from each vendor's point-of-sale, the problem is mostly solved. Where they don't, assume a stale menu within a month and plan a weekly check."
+  - question: "Do hall-level questions belong in the same agent?"
+    answer: "They're the strongest reason to have one. Hours, parking, seating, whether there's a bar, whether you can book the mezzanine: those calls arrive constantly, belong to nobody in particular, and currently get answered by whichever stall picks up. Handling them centrally is a real improvement even at a hall where no vendor wants phone ordering."
+---
+
+A food hall's phone number belongs to the building. The orders belong to the stalls. That mismatch is the entire problem, and no amount of call routing fixes it if the tickets can't land where the food gets made.
+
+Start there rather than with the agent, because the routing question is genuinely easy and the integration question is the one that decides whether this works at your hall.
+
+## The caller does not know your vendors' names
+
+Every food hall publishes a directory nobody reads. Callers ask for "the taco place," "the one with the birria," "the Thai stall," or, most often, they describe what they want to eat and expect you to sort it out.
+
+Routing that starts by asking which vendor the caller wants produces wrong transfers and long calls. Routing that starts with what they want to eat lands correctly most of the time, because cuisine is the thing the caller actually holds in their head. Build the vendor list with the informal names attached: what the sign says, what the neighborhood calls it, what the previous tenant in that stall was called, because people will still ask for it six months later.
+
+This is the same routing logic that applies to [multi-outlet casino properties](/blog/voice-ai-for-casino-restaurants), where callers also describe a meal rather than a restaurant.
+
+## Every order has to land in the vendor's own system
+
+Here is the part that kills food hall projects.
+
+Stall 4 runs one point-of-sale. Stall 7 runs another. Stall 9 runs a tablet the owner bought two years ago that talks to nothing. An agent that takes an order and emails it to the vendor has not automated anything; it has added a step and a new way to lose a ticket during a rush.
+
+Direct integrations exist for the common systems, and halls skew toward those because vendors starting a stall usually pick something cheap and standard. If most of your tenants are on one of them, the work is real but bounded. [Phone ordering into Square](/blog/ai-phone-ordering-for-square) covers what a direct connection does, and for the tenants running something else, [reaching other systems through Deliverect](/blog/deliverect-voice-agent-multi-location-restaurants) is the path that usually applies.
+
+Do the survey before you commit to anything. Two questions per tenant:
+
+- What system do you ring orders into, and does it accept orders from outside sources today?
+- Who updates your menu in it, and when did they last do it?
+
+The second question tells you more than the first. A vendor whose in-system menu is nine months out of date is not going to maintain a phone menu either, and their stall should launch later or not at all.
+
+## Cross-stall orders are a trap
+
+A caller wants a bowl from one stall and a drink from another. Technically the agent can place both. Operationally you have created two tickets, two ready times, and one confused person standing in a hall wondering where to go.
+
+Unless your building has a central pickup counter with a runner, do not build this. Say what's true instead: the food is ready at counter 4 in about twelve minutes, the drink at counter 9. Callers accept that fine when it's stated up front and are annoyed by it when they discover it on arrival.
+
+If you do have central pickup, then the sequencing question becomes the real work. Food from two kitchens with different ticket times has to be timed to arrive together or the first item sits. That's an operations problem your runners solve, not a phone problem, and the phone system's only job is to be honest about the quote. Quoting pickup times accurately is harder than it looks in any multi-kitchen setup.
+
+## Hall-level calls are the easiest win in the building
+
+Even at a hall where not a single vendor wants phone ordering, there's a case for answering the main line.
+
+The questions that currently get answered by whichever stall is least busy: hours, which vendors are open today, parking and validation, whether there's seating, whether the bar serves the whole hall, whether you can book the space for a party, whether there's a bathroom on the ground floor. None of them belong to a tenant. All of them interrupt one.
+
+Handling those centrally costs the vendors nothing and gives them back a few interruptions per shift. It's also the version of this that a skeptical tenant council will agree to, which matters if you're the one proposing it. The mechanics are the same as [answering hours and parking questions](/blog/voice-ai-answering-faqs-hours-parking) at any single restaurant, just with a vendor directory attached.
+
+Private event inquiries deserve a specific rule. Those are the hall's revenue, they're worth real money, and they should be captured with details and handed to a person rather than answered.
+
+## Menus go stale here faster than anywhere else
+
+A food hall menu is not a stable document. Vendors run specials off a chalkboard, sell out of the thing everyone calls for by 1 p.m., swap items weekly, and occasionally leave the hall with two weeks' notice.
+
+If each vendor's menu syncs from their point-of-sale, most of this handles itself, including items marked unavailable during service. That mechanism matters more here than in a standalone restaurant, and it's worth understanding how it behaves when a stall sells out mid-rush, which is the subject of [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync).
+
+Where a vendor's menu has to be maintained by hand, assign the name of a person and a day of the week. Not a role, a name. Halls that skip this end up with an agent confidently selling a dish that left with the previous tenant.
+
+Two things to check weekly, and they take about ten minutes:
+
+- Call the line and order the item each stall sold out of yesterday, to see whether availability is actually flowing through.
+- Ask for one vendor that left and one that just opened, and confirm the agent handles both correctly.
+
+## Who pays, and what the vendors will say
+
+The tenants' first assumption will be that this is a cost being pushed onto them, and their second will be that it's a way for the hall to sit between them and their customers. Both concerns are reasonable and both are worth answering directly.
+
+The cleanest structure is the hall paying for the line it publishes and the hall-level questions, with order taking as something vendors opt into per stall. That way a tenant who wants nothing to do with it still benefits from the wayfinding calls being absorbed, and nobody is billed for a service they refused. Plans start at $250 a month, and our [pricing page](/pricing) has the current structure, so the per-stall version of the conversation is a small number rather than an abstract one.
+
+The thing to avoid promising is that this will raise any individual vendor's sales. It might, for the stalls that get called for by name. For a stall nobody calls about, it does nothing, and saying so early buys you credibility for the stalls where it does work.
+
+## Where to start
+
+Pick the three vendors with the highest phone volume and the same point-of-sale, and run only those for a month, alongside hall-level questions for everyone. Log every call the agent transferred and read what the caller actually wanted.
+
+If the transfers are mostly people asking for stalls that aren't live yet, you have a demand signal and an expansion order. If they're mostly people who couldn't be understood or whose item didn't exist, fix that before adding a single tenant. A hall that launches all fourteen stalls at once will spend its first month debugging in front of its tenants, which is the worst possible audience for it.

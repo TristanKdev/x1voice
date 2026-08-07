@@ -1,0 +1,70 @@
+---
+title: "Which complaints an agent settles and which need a human"
+description: "Sorting complaint calls by severity is the wrong instinct. Sort by what the call authorizes and what the agent can actually know, then write the rule down."
+publishedAt: "2026-04-19"
+faqs:
+  - question: "What is a complaint escalation matrix?"
+    answer: "A written rule that says, for each type of complaint, who is allowed to resolve it and what they are allowed to give. It exists so the answer does not depend on who picked up the phone or how tired they were. The useful version fits on one page and names dollar amounts, not feelings."
+  - question: "Should a voice agent ever resolve a complaint on its own?"
+    answer: "Yes, for small, bounded, reversible ones where the facts are already in your system. A missing side on a twenty-dollar order, credited or remade, is a rule an agent can execute consistently. Anything involving illness, a legal threat, a repeat complainer, or an amount above your written ceiling should reach a person on the same call."
+  - question: "Which complaints must always go to a human immediately?"
+    answer: "Any report of illness or an allergic reaction, any mention of a lawyer or a health department, anything involving a staff member's conduct, and anything where the caller has already asked for a person. These carry legal or reputational weight that no automated resolution should touch, and the handoff should happen without the caller repeating themselves."
+  - question: "Doesn't escalating more calls make containment look worse?"
+    answer: "It does, and that is fine. Containment measures how many calls a system absorbed, not how many it should have absorbed. An escalation that your matrix says should happen is the system working. Track escalations by reason so the by-design ones stay separate from the ones caused by an agent that could not understand something."
+  - question: "How do I know the matrix is working?"
+    answer: "Sample transcripts monthly and check two things: whether any call was resolved outside the rule, and whether any call was escalated that the rule covered. The first is a policy leak and costs money. The second is friction you can remove. Both are visible in fifteen minutes of reading and invisible in a dashboard."
+---
+
+The usual instinct is to sort complaints by how bad they are. Small problems get handled on the phone, big problems get a manager. That sounds right and it produces a system that fails in both directions, because severity is not what determines whether a call can be closed.
+
+What determines it is authority and knowability. Can the person or system answering the call give away what the caller is asking for, and do they have the facts in front of them? A caller reporting that their forty-dollar family meal arrived cold is severe and completely knowable: the ticket exists, the delivery time is stamped, the remedy is written in your policy. A caller vaguely unhappy about a server's tone is mild and unknowable, involves an employee, and needs a manager. Severity got that backwards.
+
+## Sort by what the call authorizes
+
+Three questions decide where a complaint goes, in this order.
+
+Does resolving it move money, and how much? Under your written ceiling, it is a rule. Above it, it is a decision.
+
+Is the resolution reversible? A remade pizza is reversible in the sense that if it turns out the caller was lying, you are out nine dollars of food. A refund to a card is not, and a refund to a card on an order you cannot find is how phone fraud gets paid.
+
+Are the facts in the system? If the complaint refers to an order you can pull up, with a timestamp and a line-item list, the call is a lookup plus a rule. If it refers to something that happened in your dining room, or to a person, or to how the caller feels, there is nothing to look up and a human has to listen.
+
+Any complaint that clears all three goes in the automated bucket. Anything that fails one goes to a person. That is the whole logic, and it is more defensible than a severity scale because you can point at the reason for each routing decision.
+
+## The four buckets in practice
+
+Most restaurants end up with four groups, and the boundaries between them are dollar amounts and categories rather than judgment calls.
+
+- Resolve on the call, no approval: a missing item, a missing side, a wrong modifier, or a cold order under your ceiling, remade or credited against a ticket that exists in the system.
+- Resolve on the call, logged for review: the same complaints from a phone number that has complained before, which get the same remedy once and a flag so a manager sees the pattern the next morning.
+- Warm handoff to a manager during the call: anything above the ceiling, anything about a staff member, anything where the caller is asking for something your policy does not name, and anything where the caller has asked for a person.
+- Immediate handoff, no attempt at resolution: reported illness, an allergic reaction, a mention of a lawyer or the health department, or a threat to post about it. These get a manager and a written record within the hour.
+
+The fourth bucket is the one people get wrong. There is a temptation to have the phone system apologize and offer something before transferring, on the theory that it softens the call. It does the opposite. An offer made before anyone has heard the facts reads as an admission, and it is the last thing you want in the record on a call about illness. The agent's only job in that bucket is to get a person on the line quickly and stop talking. Allergen conversations generally, including the ones that come up before an order rather than after, are handled in [allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions).
+
+## What has to be written down for any of this to work
+
+A matrix that says "small issues" and "serious issues" is not a matrix. It is a mood. The version that survives a Friday night names things.
+
+Write the ceiling as a dollar figure. Twenty-five, thirty, forty, whatever matches your average ticket. Write the frequency limit as a number of times per phone number per number of days. Write the list of trigger words that force an immediate handoff, and write them as literal words, because that is what a system can match on and what a new host can memorize.
+
+Write who "a manager" is by shift, with a phone number, so the handoff has somewhere to go at 9:40 on a Sunday. A matrix with no reachable human at the end of it collapses to whatever the person on the phone decides, which is what you were trying to fix.
+
+And write the sentence the agent or the host says at the handoff, so the caller does not tell the story twice. Context carried across a transfer is the difference between a complaint that ends and one that escalates on its own, which is most of the argument in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+Two things that do not belong in the matrix at all:
+
+- Anything requiring the caller's card number to be read back or re-entered by a person, which creates a payment-security exposure you do not need on a complaint call.
+- Anything that depends on the person answering knowing the caller, because that knowledge disappears the moment that person is off shift.
+
+## Reading the matrix back once a month
+
+Pull twenty complaint transcripts, half from the automated bucket and half from escalations. You are looking for two failures, and they point in opposite directions.
+
+A call resolved outside the rule is a leak. Someone comped a ninety-dollar catering order because the caller was persistent, or an agent credited an order it could not actually find. That is money and it will repeat until the rule is enforced or changed.
+
+A call escalated that the rule already covered is friction. It means the trigger list is too broad, or the agent could not parse a menu item and bailed out of a call it should have closed. That is a fixable defect and usually a cheap one. Sorting escalations into by-design and by-failure is the same discipline described in [what call containment actually measures](/blog/what-is-call-containment).
+
+Then check the flagged repeats. The same phone number complaining three times in six weeks is either a genuinely unlucky regular or someone working you, and you cannot tell which without looking at whether the complaints name the same item.
+
+Start by writing your ceiling as a number today, before you evaluate a single system. Every other decision about complaint handling, including whether to automate any of it, depends on knowing what a call is allowed to give away. The mechanics of turning that ceiling into an executable rule are in [a refund policy phone agents can execute](/blog/refund-policy-phone-orders), and what you learn from tracking the outcomes is in [tracking comps and remakes back to their cause](/blog/comping-remakes-tracking).

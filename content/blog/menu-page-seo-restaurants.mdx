@@ -1,0 +1,68 @@
+---
+title: "Why a PDF menu is a dead end for restaurant SEO"
+description: "A PDF menu costs you search traffic and gives assistants nothing to quote. Here is what an HTML menu page should publish instead, section by section."
+publishedAt: "2026-04-04"
+faqs:
+  - question: "Can Google read a PDF menu at all?"
+    answer: "Yes, Google can index PDFs and extract text from them when the text is real text rather than an image. The problem is not indexability, it is everything around it: no controllable title, no meta description, slow mobile loading, no structured data, no internal links, and a document that reflows badly on a phone. An HTML page beats it on all of those."
+  - question: "Should I put prices on my menu page?"
+    answer: "Publish them. Hidden prices push people to call or leave, and price is one of the two things every searcher wants before deciding. The real objection is maintenance, and that is solvable by having one source of truth. If you cannot keep prices current, publishing a stale price is worse than publishing none, so fix the update process first."
+  - question: "Do I need one page per menu or one page for everything?"
+    answer: "Split by menu when the menus are genuinely different meals with different audiences, like brunch, dinner, and catering. Do not split by category into a page for appetizers and a page for entrees, because those pages are thin and compete with each other. A single dinner page with clear section headings usually outperforms six fragments."
+  - question: "What about the menu on my third-party delivery listings?"
+    answer: "Treat it as a separate surface with its own prices and its own drift. Your own menu page is the one you control and the one assistants are most likely to cite for your brand. Keep the item names identical across both so nobody has to guess whether your Nashville Hot Chicken Sandwich and your Hot Chicken Sando are the same thing."
+  - question: "How often does a menu page need updating?"
+    answer: "Every time the menu changes, which for most restaurants means a handful of edits a quarter plus whatever seasonal work you do. The trap is the page nobody owns. Assign it to a person, tie it to the same moment you update the POS, and check the page against a printed menu once a quarter to catch drift nobody noticed."
+---
+
+A PDF menu is a file, not a page. When someone searches for gluten-free pasta near them, or asks an assistant what you serve, the thing that gets read is a page: headings, item names, descriptions, prices sitting in HTML that a crawler can pull apart. A PDF is a container that has to be downloaded, parsed, and guessed at.
+
+That argument is old. What changed is the cost. Assistants answering "what's on the menu at Rocco's" quote text they can read and attribute. A scanned menu, or a designer's export with the item names flattened into vector outlines, hands them a picture of words and nothing else.
+
+## What actually happens to a PDF menu
+
+Google can index PDFs, and has been able to for years, so calling them invisible overstates it. What is true is that a PDF is a worse version of a page in nearly every way that matters to a restaurant.
+
+You do not control the title well. There is no meta description. It loads slowly on a phone, which is where almost all menu traffic comes from. It pinch-zooms instead of reflowing. It carries no structured data. It usually links nowhere else on your site, so whatever ranking value it accumulates dead-ends. And when it is a scan or a flattened export, there is no extractable text at all.
+
+Then there is the version problem, which is the one that actually bites operators. The PDF that ranks is `menu-final-v3.pdf`, uploaded fourteen months ago, still sitting at a URL somebody linked from a listing site. It has a dish you stopped making and a price you have raised twice since. You cannot even tell it is happening, because nobody complains about a menu page, they just show up expecting the old price.
+
+## The page you should be publishing instead
+
+An HTML menu page with each item as text, grouped under headings that match how a person would ask. Not "Section 2" but "Sandwiches" and "Wood-fired pizza." Item name, one line of description in the words a customer would use, price.
+
+The description line does more work than people expect. "Slow-braised pork shoulder, pickled red onion, cotija, corn tortillas" contains the words somebody actually types. Your internal name for the dish does not. If your menu says "The El Jefe" and nothing else, you have published a page that ranks for nothing and answers no question.
+
+The same principle applies on the phone, which is why the naming decisions overlap. A dish name that a search engine cannot categorize is usually the same dish name a caller mumbles and a voice agent mishears, and the fix is identical in both places. That overlap is worked through in [menu naming for voice clarity](/blog/menu-naming-for-voice-clarity).
+
+## Structured data, and where it stops helping
+
+Adding menu markup lets you state explicitly what a section is, what an item is, and what it costs, instead of hoping a parser infers it from your layout. It is cheap to add once and it makes your page machine-readable in a way visual design never will.
+
+It is not a ranking trick. Marking up a page that has no content, or content nobody wants, does nothing. Think of it as labeling rather than promotion. The details of what properties to use and where they go are in [restaurant menu schema markup](/blog/schema-markup-restaurant-menu), and the broader question of how any of this reaches an assistant answer is in [how restaurants show up in AI search](/blog/how-restaurants-show-up-in-ai-search).
+
+## Prices, allergens, and the things people are actually looking for
+
+Two questions drive most menu page visits: what do you have, and what does it cost. A page that answers the first and hides the second sends people to a third-party app where the prices are marked up and the order is worth less to you.
+
+Publish prices. If your prices differ between your own channels and delivery apps, that is a deliberate decision with its own consequences, covered in [menu price parity across third-party platforms](/blog/menu-price-parity-third-party). What you should not do is publish nothing because keeping the numbers current feels like a chore.
+
+Allergen and dietary information is the other high-intent lookup, and it is worth being specific rather than decorative. A vegetarian icon on eleven items is less useful than a sentence saying which items can be made vegan, which cannot, and whether you have a dedicated fryer. People with a real dietary constraint read carefully and remember which restaurant gave them a straight answer. They also call to double-check, which is a call your staff has to field and a question an agent has to answer correctly. [How voice AI handles allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions) covers the phone half of that.
+
+## How many menu pages you actually need
+
+Split by meal, not by category. Brunch, dinner, and catering are different menus for different decisions, and each can carry its own page with its own headings and its own reason to exist.
+
+Do not build a page per category. Appetizers, salads, entrees, and desserts as four separate URLs produces four thin pages that compete with each other and rank for nothing. One dinner page with clear section headings is the stronger structure almost every time.
+
+Catering is the exception worth taking seriously, because the buyer is different, the decision is bigger, and the page needs different information: minimums, lead time, delivery radius, whether you do setup. Those inquiries also arrive by phone more often than anything else on your menu, which is a reason to make the page answer as much as possible before the call.
+
+## The maintenance problem, which is the real problem
+
+Most bad menu pages started out accurate. They rot because updating them is somebody's fourth priority during a shift.
+
+The fix is boring and it works: one person owns the page, and updating it happens at the same moment as updating the POS, not later. If your menu lives in your point of sale and also on your website and also on two delivery platforms, you have four copies drifting apart at different rates. Anything that reduces that count is worth more than another round of keyword work.
+
+Once a quarter, print your menu page and read it next to the physical menu. You will find something wrong. Everyone does.
+
+Here is the test. Pull up your menu on your own phone, on cellular, not office wifi. Time how long until you can read an item name. If it takes more than a couple of seconds, or if you have to zoom, the page is not doing its job and no amount of markup will fix that. Start there, then worry about the rest.

@@ -1,0 +1,84 @@
+---
+title: "Diagnosing choppy call audio, in order of likelihood"
+description: "Robotic, clipped, or delayed phone audio has a short list of causes. Work through them in the order they actually occur instead of calling your provider first."
+publishedAt: "2026-02-28"
+faqs:
+  - question: "What causes choppy audio on a restaurant phone?"
+    answer: "Most often it's network congestion inside the building, where voice packets queue behind camera uploads, cloud backups, or guest Wi-Fi traffic. Less often it's a bad cable or a wireless handset. Provider-side problems exist but are the least common cause, which is why they're the wrong place to start troubleshooting."
+  - question: "What's the difference between jitter and packet loss?"
+    answer: "Jitter is packets arriving at uneven intervals; packet loss is packets not arriving at all. Jitter sounds like stuttering or a warbling, underwater quality. Loss sounds like syllables and short words disappearing cleanly out of otherwise normal speech. They have different fixes, so identifying which one you have saves real time."
+  - question: "How much packet loss is acceptable on a voice call?"
+    answer: "Under 1 percent is generally imperceptible on a voice call. Between 1 and 3 percent, callers start noticing dropped words. Above 3 percent, conversation becomes difficult and people begin repeating themselves. Jitter should sit under about 30 milliseconds, and one-way delay under about 150 milliseconds, for a call that feels natural."
+  - question: "Why do my calls only sound bad during dinner?"
+    answer: "Because that's when everything else on your network is busiest, not because there are more calls. Camera systems, POS syncing, staff phones, and guest Wi-Fi all peak in the same window. Voice packets end up queued behind that traffic, which produces delay and jitter exactly when you can least afford it."
+  - question: "When should I call my internet provider about call quality?"
+    answer: "After you've tested from a wired device with everything else on the network quiet and still see loss or jitter. Bring specific numbers and timestamps from a voice quality test rather than a description of the symptom. A provider given 'the phones sound bad' will run a speed test, see capacity, and close the ticket."
+---
+
+A caller at 6:40 on a Friday says "I can't hear you, you're breaking up." You can hear them fine. By nine the problem is gone, and when you call your provider on Monday they run a test, see plenty of bandwidth, and tell you everything looks normal.
+
+That pattern is specific enough to diagnose. Audio problems that appear at a predictable time of day and vanish outside it are almost never your internet connection being too small. They're contention inside your building, and there's an order to work through that saves you a week of guessing.
+
+## Name the symptom first
+
+The three main faults sound different from each other, and identifying which one you have narrows the cause immediately.
+
+### Words disappearing
+
+Whole syllables or short words vanish out of speech that's otherwise clear. "Can I get the [gap] with fries" where the gap is silence rather than distortion. That's packet loss. Data never arrived, and the receiving device has nothing to play, so it plays nothing.
+
+### Stuttering or underwater audio
+
+Speech that warbles, repeats fractions of a word, or sounds like it's coming through a fan. That's jitter. The packets arrived, but at uneven intervals, and the buffer meant to smooth them out ran empty and refilled.
+
+### Talking over each other
+
+Audio is clear, but neither party can tell when the other has stopped. You both start, both stop, both start again. That's latency, and it's a different problem entirely with a different set of causes. On a call handled by an agent it also produces a specific artifact: the agent interrupting, or waiting too long, because its endpointing logic is working from delayed audio. [Interruption handling and endpointing](/blog/interruption-handling-endpointing-voice-agents) covers what that should sound like when it's healthy.
+
+Write down which of the three you have before touching anything. Operators who skip this step usually spend the week fixing the wrong layer.
+
+## Start inside the building, because that's where it usually is
+
+In rough order of how often each turns out to be the cause:
+
+- Upload saturation from cameras, cloud backups, POS syncing, or uncapped guest Wi-Fi, which is far and away the most common and matches the dinner-only pattern exactly
+- A handset on Wi-Fi instead of a cable, in a building full of metal, microwaves, and competing devices
+- A marginal ethernet cable or a bad port, which produces intermittent errors that mimic a provider problem
+- No traffic prioritization configured on the router, so voice queues behind everything else the moment the connection fills
+- Actual congestion or a fault on the provider's side, which is real but the least likely of the five
+
+The test that separates the first four from the fifth takes twenty minutes. Late morning, when the restaurant is quiet, run a hosted voice quality test from a wired computer. Note the jitter, loss, and latency figures. Then run it again at 6:40 on a Friday. If the morning numbers are clean and the Friday numbers aren't, the problem is contention in your building and your provider has nothing to fix.
+
+Use a voice quality test rather than a speed test for this. A speed test measures capacity, which is not your constraint. The relationship between the two is laid out in [what your restaurant phone network needs](/blog/restaurant-phone-network-requirements).
+
+## Fixes, cheapest first
+
+Unplug things and retest. Genuinely. Disconnect the camera recorder for ten minutes during a bad window and see whether calls clear up. It's crude and it identifies the culprit faster than any amount of reading dashboards.
+
+Cap guest Wi-Fi. If guests share your connection with no per-device limit, one person backing up a phone can degrade every call in the building. A cap in the range of 5 to 10 megabits down and 2 up per device is generous for a guest and harmless to you.
+
+Move any wireless handset to a cable. If a port exists, use it. This one fix resolves a large share of jitter complaints in restaurants, and it costs a cable.
+
+Turn on traffic prioritization. Most business routers have it under a name like QoS or traffic shaping. Mark voice as highest priority and cap the bulk traffic. Skipping this leaves your voice packets competing on equal terms with a camera upload, and the camera always wins because it sends more.
+
+Schedule the backups. Camera footage uploads and cloud backups rarely need to run at 7 p.m. Push them to 3 a.m. and a class of problem disappears permanently.
+
+Replace the suspect cable. If one extension is consistently worse than the others in the same building, the cable or the port is the first suspect, not the phone.
+
+## When it isn't the network at all
+
+Two other things produce complaints that arrive labeled as call quality.
+
+Room noise. If callers hear your restaurant more than they hear the person speaking, that's a microphone and placement problem, and no amount of network work touches it. A handset at a host stand six feet from a hood vent will sound bad on a perfect connection. That's the territory covered in [noisy restaurant environments](/blog/voice-ai-noisy-restaurant-environments).
+
+Codec and transcoding. Calls that pass through several systems can get re-encoded at each hop, and each pass costs a little fidelity. This shows up as audio that's consistently muffled rather than intermittently broken. Consistency is the tell: network problems come and go, encoding problems sound the same at 3 a.m. as at 7 p.m.
+
+If a caller says the voice sounds robotic rather than broken, that's usually neither of these and worth separating from a quality fault entirely. [Does AI phone answering sound robotic](/blog/does-ai-phone-answering-sound-robotic) deals with that question on its own terms.
+
+## Taking it to your provider properly
+
+If your quiet-hours wired test still shows loss above 1 percent or jitter above 30 milliseconds, with everything else on the network shut down, the problem is upstream and you have a case.
+
+Open the ticket with numbers. Test results, timestamps, the fact that it was wired, the fact that local traffic was quiet, and how the numbers differ between times of day. Ask specifically about loss and jitter on your circuit rather than about speed, because a provider handed a vague complaint will run a throughput test, see capacity, and close the ticket in an hour.
+
+The one thing worth deciding before any of this: if your calls are answered in the cloud rather than on hardware in your building, your network never touches that audio, and every step above applies only to your staff handsets. Settle which world the bad call lived in first. It cuts the list in half.

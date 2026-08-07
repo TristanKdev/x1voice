@@ -1,0 +1,68 @@
+---
+title: "Easter brunch reservations: the phone is the bottleneck"
+description: "Easter brunch sells out on seating times, not on food. Here is how the call volume actually behaves that morning and what to decide before the phone starts."
+publishedAt: "2026-05-17"
+faqs:
+  - question: "When do Easter brunch calls actually spike?"
+    answer: "Two distinct spikes. The first is the two weeks before, when people book, and it lands mostly on weekday mid-mornings. The second is Easter morning itself, roughly 9 to 11 a.m., and it is almost entirely people confirming a time, asking about parking, or trying to add a seat. The second spike is the one that hurts, because your host is seating a full room while it happens."
+  - question: "Can a voice agent take Easter brunch reservations?"
+    answer: "It can take a reservation if it is connected to your booking system and knows your seating grid. Where it earns more is the layer underneath: the confirm-my-time calls, the party-size changes, the hours questions, and the callers who want to know if you take walk-ins. Those are the majority of the volume and none of them need a person."
+  - question: "Should I set a different phone policy for Easter than a normal Sunday?"
+    answer: "Yes. Easter runs on fixed seating times rather than an open-ended flow, so the answers your phone gives have to change with it. Set the seating times, the last seating, the deposit rule for large parties, and the walk-in policy before the week starts, and load them into whatever answers your line so nobody is improvising during service."
+  - question: "What is the most common Easter phone mistake?"
+    answer: "Quoting a seating time that the book cannot actually hold. It happens when a person answering the phone under pressure reads an availability that is thirty minutes stale, and it surfaces as a family of eight standing in your lobby with a confirmation you cannot honor. The fix is one source of truth for availability, not better staff instructions."
+  - question: "Do I need to take deposits for Easter brunch?"
+    answer: "For large parties, usually yes, because Easter no-shows cost more than a normal Sunday. A held table for ten at your single busiest seating is a real loss when it walks. If you do take deposits, decide the threshold and the amount before booking opens and put it in the answer your phone gives, rather than deciding party by party."
+---
+
+It is 9:40 on Easter morning. Your first seating is halfway through, the second is stacked in the lobby, and the phone has rung eleven times in twenty minutes. Nine of those calls are somebody asking whether their reservation is at 11:00 or 11:30. Your host is holding a stack of menus with a phone against their shoulder.
+
+That is the actual shape of Easter. The food was planned in February. The staffing was set in March. The thing that breaks on the day is the phone, and it breaks in a way that is almost entirely predictable a month out.
+
+## The volume is two separate events
+
+Easter phone traffic is not one curve. It is two, and they need different answers.
+
+The booking spike runs for about two weeks beforehand and skews to weekday mornings, when someone at a desk decides they are hosting the family this year. These calls are long. They involve party size, whether the grandmother needs a chair without arms, whether the buffet has anything a nine-year-old will eat, and whether you can seat fourteen. They are the calls where you want a person, or at least a system that captures enough detail that a person can finish the job later.
+
+The day-of spike is short, dense, and mostly trivial. Confirmations. Running-late notices. Where do we park. Can we add two. Do you still have availability at 1:00. Individually each one takes ninety seconds. Twenty of them during your second seating is half an hour of your host's attention, taken from the exact place it is worth the most. We wrote about the same dynamic in [reducing host stand phone interruptions](/blog/reduce-host-stand-phone-interruptions), and Easter is that problem concentrated into four hours.
+
+## Fixed seating times change what your phone has to know
+
+Most restaurants run Easter on set seatings rather than a rolling book. That is the right call operationally, and it changes the phone conversation completely.
+
+On a normal Sunday, "what time can you seat us" has a soft answer. On Easter it has a hard one, and the hard answer is only useful if it is current. A seating grid that was accurate at 8 a.m. is fiction by 11. If your phone is quoting availability from anywhere other than the live book, you will double-seat something.
+
+The related trap is the last seating. Every year somebody calls at 1:45 asking if you are still serving brunch, and gets a cheerful yes from whoever picked up, and arrives at 2:20 for a kitchen that is breaking down. Decide the last seating, decide the grace period, and make that a single stated answer rather than a judgment call made under pressure by whoever is closest to the handset.
+
+## Large parties are where the money and the risk both sit
+
+An Easter table for twelve is worth several ordinary covers. It is also the reservation most likely to change party size twice, arrive incomplete, or not show at all.
+
+If you take deposits, set the rule before booking opens: the party-size threshold, the amount, and what happens if they shrink from twelve to eight. Then make sure the phone gives that answer consistently, because a deposit policy that one person explains and another waives is not a policy. The mechanics of taking that payment safely are covered in [collecting payment over the phone safely](/blog/collecting-payment-over-the-phone-safely), and the booking side in [large party reservations by phone](/blog/large-party-reservations-by-phone).
+
+Be honest with yourself about whether you actually enforce it. A deposit policy you announce and never charge against is worse than none, because it costs you bookings and protects nothing.
+
+## What a voice agent is genuinely good at here, and what it is not
+
+A voice agent handles the day-of spike well. Confirmations, hours, parking, party-size changes within your rules, and the caller who just wants to know if there is any chance of a table at 1:00 are all bounded questions with correct answers, and there are a lot of them on Easter morning. Taking that off your host is the whole win.
+
+It handles the two-week booking window less cleanly, and you should expect that. A call that involves a specific request, a dietary conversation, and a negotiation over seating a party of fourteen across two tables is a human conversation. Route it to one. The system's job there is to catch the call, get the basics, and hand off with context rather than dumping the caller into a fresh conversation. The escalation design is in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+Where operators get disappointed is expecting the agent to solve booking-window complexity. Where they get real value is the four hours on the day itself, which is also the four hours nobody staffs a phone for.
+
+## What to lock down before the week starts
+
+Your Easter answers are different from your normal answers, and they need to be loaded in advance rather than patched mid-service. Seating times and last seating. Whether you are running your regular menu at all, or a prix fixe only. Kids pricing. Whether you take walk-ins and under what conditions. Whether the bar is seating separately. Whether you are open for dinner afterward.
+
+Every one of those is a question you will be asked forty times, and every one has a correct answer that does not require a manager. The mechanism for swapping in date-specific answers without rebuilding your whole configuration is the same one described in [holiday hours overrides](/blog/holiday-hours-overrides-voice-ai). Brunch-format specifics sit in [voice AI for breakfast and brunch spots](/blog/voice-ai-for-breakfast-brunch-spots).
+
+Do this in the week before, not the night before. The failure mode with holiday configuration is not that it is hard, it is that it gets done at 11 p.m. on Saturday by someone who is guessing about the last seating.
+
+One more item that gets forgotten every year: what your line says on Easter Monday. Plenty of restaurants close the day after a holiday service, and plenty of callers do not know that. If your hours revert automatically and your closure does not, you will spend Monday sending people to a locked door.
+
+## The test worth running
+
+Next Easter, have someone stand near the host stand from 10:00 to 12:00 with a tally sheet and mark every call in one of two columns: needed a person, or did not. Do not analyze it during service. Just count.
+
+Most operators who run that count find the second column is somewhere around three quarters of the total, and that the first column contains maybe four calls that genuinely mattered. That ratio is the entire argument, and it is your own number rather than anyone's claim. If it holds for you, the question stops being whether to automate the Easter phone and becomes which of those four calls you want your host free to take properly.

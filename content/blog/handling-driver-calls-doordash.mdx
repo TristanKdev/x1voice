@@ -1,0 +1,78 @@
+---
+title: "Keeping courier calls off your main restaurant line"
+description: "Drivers calling to ask if an order is ready tie up the same line customers order on. How to route those calls elsewhere and cut the volume at the source."
+publishedAt: "2026-04-16"
+faqs:
+  - question: "Why do delivery drivers call the restaurant so often?"
+    answer: "Because the platform told them an order would be ready and it is not, or because they cannot find the pickup door, or because the app gave them a name that does not match your ticket. Nearly all courier calls trace back to a prep-time estimate or a pickup instruction that was wrong. Fix those two things and the call volume falls sharply."
+  - question: "Should courier calls go to the same phone number as customers?"
+    answer: "No. A driver call is short, operational, and answerable by whoever is at the pickup counter, while a customer call is revenue. Putting them on the same line means a driver asking about ticket 4412 blocks someone trying to place a hundred-dollar order. A separate number, or a routed menu path, keeps the two apart."
+  - question: "How do I reduce the number of driver calls?"
+    answer: "Set honest prep times in each delivery platform, put clear pickup instructions in the store profile, and stage finished orders where a driver can identify them without asking. Most courier calls are a question that a visible shelf label or an accurate ready-time would have answered. The call is a symptom of a missing instruction."
+  - question: "Can an automated phone system handle driver calls?"
+    answer: "It can handle the common ones well. Confirming whether an order is ready, giving pickup instructions, and telling a driver which door to use are structured questions with structured answers. What it should not do is spend three minutes trying to resolve a mismatched order number, which should go to the counter fast so the driver is not standing there."
+  - question: "Is it worth giving couriers a separate phone number?"
+    answer: "It is worth it once courier calls are a noticeable share of your volume, which for most delivery-heavy operations happens quickly. A second number costs very little and lets you route those calls to the expo area instead of the front counter. Put the number in your platform store profiles so drivers actually use it."
+---
+
+Count your inbound calls during a Friday dinner rush and sort them by what the caller wanted. In a delivery-heavy operation, a surprising share of them are couriers, and almost every one is a variation of the same question: is order 4412 ready.
+
+That call takes ninety seconds. It arrives on the same line a customer would use to place a forty-dollar order, and while it is happening, that customer is hearing a busy signal. You are paying full price for a call that generates no revenue and that mostly should not have happened.
+
+## What drivers are actually calling about
+
+Three questions cover the overwhelming majority.
+
+Is it ready. The platform quoted a prep time, the driver arrived on that estimate, and the order is not up. This is the most common call by a wide margin and it is nearly always caused by a prep-time setting that does not match your kitchen at peak.
+
+Where do I go. Your pickup door is not the front door, or it is around back, or the app dropped a pin on the wrong side of a shopping center. The driver is standing in a parking lot looking at a building.
+
+Which one is mine. The order is on the shelf, but the name on the app does not match the name on the bag, or there are five bags and no labels facing out. This one is entirely a staging problem.
+
+None of these are difficult questions. All three are expensive, because they arrive at the worst possible moment on the wrong line.
+
+## Fix the prep times before you fix the routing
+
+Routing courier calls somewhere else is worth doing, but it treats the volume rather than the cause. The cause is usually a number in each platform's merchant portal.
+
+If you set prep time to fifteen minutes because that is what it was when you opened, and dinner service actually runs twenty-eight, every driver dispatched between 6:30 and 8:30 arrives thirteen minutes early. They wait, get restless, and call from your parking lot. Some of them cancel, which produces a second problem, and the ones who wait are blocking your pickup counter while they do.
+
+Measure your actual ready time by daypart and set the platform prep time to match it, including the queue rather than just the cook. This is the same arithmetic as [quoting a delivery ETA](/blog/quoting-delivery-eta), and it is worth doing once properly for every platform you are on, because each keeps its own setting and they drift independently.
+
+An honest prep time feels like it costs you something. It does not. The alternative is a driver standing in your kitchen doorway for twelve minutes, which costs more.
+
+## Staging is a labeling problem, not a space problem
+
+The "which one is mine" call disappears the moment a driver can identify a bag without talking to anyone.
+
+Print the ticket so the platform's customer name is the largest thing on the label, because that is the only string the driver's app shows them. Face the labels outward on the shelf. Separate the courier shelf from the customer pickup shelf so a driver is not reading through fifteen bags to find one. If your platform names differ from what your POS prints, fix the print template rather than expecting drivers to translate.
+
+This is unglamorous and it removes an entire category of interruption. The same logic applies to your customer-facing side, and the parallel workflow is in [curbside pickup flow](/blog/curbside-pickup-phone-flow).
+
+## Give couriers somewhere else to call
+
+Once the avoidable calls are gone, the remaining ones still should not land on your ordering line.
+
+The cheapest version is a second number, routed to a handset near expo rather than the front counter. Put it in the store profile of every delivery platform you use, in whatever field they show to drivers. Cost is small, and the person who can actually answer the question is now the person receiving the call.
+
+The next version is a routed path on your existing number, where a caller identifying as a driver reaches the back of house directly. That works if the routing is one step and immediate. A phone tree that makes a driver press three buttons while standing in your lot will simply be ignored, and they will press zero. The tradeoffs between adding lines and adding routing are covered in [hunt groups versus a voice agent](/blog/multi-line-hunt-groups-vs-voice-ai).
+
+The version to avoid is telling drivers to call the same number and hoping staff triage it. Triage happens at the moment you are least able to do it.
+
+## Where an automated line is genuinely good at this
+
+Courier calls are close to the ideal case for automation, which is not something worth saying about every call type.
+
+The questions are narrow, the answers are structured, and the caller has no emotional investment in talking to a human. A driver asking whether 4412 is ready wants a yes or a number of minutes, delivered in eight seconds, so they can decide whether to wait or take another run. An automated line that reads ticket status and answers immediately is better service to that driver than a person who has to walk to expo and look.
+
+Pickup instructions are the same. Which door, which shelf, where to park, all fixed answers that never change and that a system delivers identically every time.
+
+The place to draw the line is anything ambiguous. A mismatched order number, a missing order, or a driver who has been sent to the wrong location needs a person, quickly, because the driver is standing there with a timer running and every minute of automated clarification makes it worse. Configure that escalation to be fast and forgiving rather than making the system try three times first.
+
+## What this is worth knowing about your own line
+
+Pull a week of call records and tag every inbound call by type. Most restaurants have never done this and are surprised by the result.
+
+If courier calls are a meaningful share of your peak-hour volume, you now have a number to put against a second line, which is cheap. If nearly all of them are ready-time questions, your prep settings are the fix and routing is secondary. If they cluster on one platform, that platform's estimate is the outlier and you can correct it this afternoon. The tagging method itself is in [restaurant phone analytics](/blog/restaurant-phone-analytics-guide).
+
+There is a broader version of this question worth sitting with once the calls are handled, which is what those orders cost you at all. Courier volume that arrives through a platform carries a commission, and the same order taken directly on your own line does not. That comparison is laid out in [voice AI versus delivery app commissions](/blog/voice-ai-vs-delivery-app-commissions), and it usually reframes how much a busy pickup counter is actually earning.

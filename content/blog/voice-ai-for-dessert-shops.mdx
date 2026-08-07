@@ -1,0 +1,76 @@
+---
+title: "Voice AI for dessert shops: cakes, windows, deposits"
+description: "Custom cake calls are too involved for a phone agent to close, and not too involved for one to qualify, schedule, and hand off. Here is where the line sits."
+publishedAt: "2026-01-16"
+faqs:
+  - question: "Should a voice agent take a custom cake order?"
+    answer: "It should take the front half and hand off the rest. A cake order involves design, writing, allergens, and a price that depends on decisions the caller has not made yet. The agent's job is to capture the date, size, flavor, occasion, and callback number, then route to a person. Trying to close the whole thing on the first call produces wrong tickets."
+  - question: "Can it enforce our lead times?"
+    answer: "Yes, and this is one of the clearer wins. Lead-time rules are exactly the kind of policy a phone agent applies identically every time, unlike a tired employee on a Saturday. Configure the rule per product category, since a sheet cake and a tiered cake rarely share a deadline, and decide up front whether anyone is allowed to override it."
+  - question: "How does it handle deposits?"
+    answer: "Most shops have the agent state the deposit policy and collect the order details, then route the actual payment to a person or a payment link. Taking card numbers by voice raises handling questions worth reading about before you turn it on. Whatever you choose, say the deposit amount out loud during the call so it is never a surprise at pickup."
+  - question: "What about pickup windows on holidays?"
+    answer: "Holiday windows have to be configured as their own schedule, not as an exception to your normal hours. Mother's Day and the days before Christmas will produce more cake calls than the rest of the month combined, and a system running your ordinary rules will overbook a window your decorators cannot fill. Set the caps before the season, not during it."
+  - question: "Is a dessert shop's call volume high enough for this?"
+    answer: "Volume alone is the wrong measure here, because dessert calls are long rather than frequent. A shop taking twenty calls a day can lose more hours to the phone than a pizza place taking sixty, since every cake conversation runs several minutes. Count minutes on the phone during your busiest weekend, not calls."
+---
+
+Most owners assume a custom cake call is too involved to hand to a phone agent. That assumption is half right, and the half that is wrong is the expensive one.
+
+Closing a cake order on the phone is genuinely hard. Qualifying one is not, and qualification is where the calls are being lost. A caller who wants a birthday cake for Saturday and reaches a voicemail on Thursday afternoon has already started dialing the next shop by the time the beep finishes.
+
+## What a cake call actually contains
+
+Sit with one for a minute. The caller wants a cake, but they have not decided the size, they are not sure about the flavor, they want writing on it and have not settled the wording, someone in the party has a nut allergy, and they are asking what it costs before any of that is fixed.
+
+A person handles this by asking questions in an order that narrows the price. An agent can ask the same questions and record the same answers. What it cannot do is quote a price on a design that does not exist yet, and it should not pretend otherwise.
+
+## The split that works
+
+Let the agent take the date, the pickup window, the size, the base flavor, the occasion, the allergen flags, and a confirmed callback number. Then have it say a person will call back within a stated period to finish the design and the price.
+
+That call is now captured. The customer has been answered by something that knew your lead times and your calendar, and your decorator calls back at a moment of their choosing instead of being pulled off a piping bag. The handoff logic is worth configuring deliberately rather than accepting a default, and the reasoning is in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+The same shape applies to any order where the price depends on a conversation, which is why this looks a lot like [catering lead qualification](/blog/catering-lead-qualification-ai).
+
+## Lead times are a policy, and policies are what these systems are good at
+
+Your rule might be 48 hours for a standard round, 72 for anything tiered, a week for a sculpted cake, and nothing at all in the four days before Mother's Day. Everyone who works there knows the rule and half of them bend it, usually for a caller who sounded upset.
+
+An agent applies it the same way every time. It will tell a caller on Thursday that Saturday is not available for a tiered cake, offer Sunday, and never negotiate. That consistency is worth more than it sounds, because the cost of a bent lead time is not the cake, it is the decorator staying until eleven and everything behind it slipping.
+
+Configure the rule per category. A sheet cake and a three-tier do not share a deadline, and a single global lead time will either block orders you could have taken or accept ones you cannot make. Decide separately whether a human is allowed to override, and who.
+
+## Pickup windows, not pickup times
+
+A caller who says "Saturday afternoon" has told you nothing your production schedule can use.
+
+Windows solve this. Offer a set of blocks, cap each block at a number your decorators can finish, and let the agent book against those caps. When a block fills, it is gone, and the caller picks another one during the call rather than finding out at pickup that the cake is not ready.
+
+The caps are the hard part and you have to set them yourself. Nobody else knows how many cakes your team finishes in an hour on a Saturday morning. Start low, watch two weekends, adjust. The general version of quoting rules is in [quoting accurate pickup times](/blog/quoting-accurate-pickup-times), and the capacity math is in [order throttling and kitchen capacity](/blog/order-throttling-kitchen-capacity-phone).
+
+## Say the deposit out loud
+
+Dessert shops lose money on no-show custom orders more than almost any other format, because the product cannot be resold. A name cake for a party that never happens is waste, not inventory.
+
+Whatever your deposit policy is, the agent should state it during the call, in dollars, before the order is treated as booked. A caller who hears "there is a fifty dollar deposit on custom cakes, and someone will call you shortly to take it" is not surprised later, and the shops that skip this step spend real time arguing at the counter.
+
+Collecting the deposit is a separate decision. Many shops route payment to a person or a payment link rather than taking card details by voice, and the handling questions around that are covered in [collecting payment over the phone safely](/blog/collecting-payment-over-the-phone-safely) and in [deposits for large catering orders](/blog/deposits-for-large-catering). Read those before you switch anything on, not after.
+
+## Holidays are their own configuration
+
+Mother's Day, Valentine's Day, and the week before Christmas will generate more cake calls than the rest of that month put together, and your normal rules will fail during all three.
+
+Treat each as a separate schedule with its own lead times, its own pickup blocks, and its own caps, set before the season starts. A system running your ordinary Tuesday configuration into Mother's Day weekend will book past your capacity by Friday morning, and unwinding that is a day of apology calls. The mechanics are in [holiday hours and overrides](/blog/holiday-hours-overrides-voice-ai) and the broader seasonal pattern is in the [holiday rush playbook](/blog/holiday-rush-phone-ordering-playbook).
+
+Allergen questions spike in the same weeks, because a party has more people in it than a walk-in purchase. Decide what the agent is permitted to say. The safe configuration is that it reads your stated ingredient information and routes anything beyond that to a person, and the reasoning is in [allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions).
+
+## Count minutes, not calls
+
+The usual way to size this decision is to count inbound calls, and for a dessert shop that measure is misleading.
+
+Cake calls are long. A shop taking twenty calls a day can burn more staff time on the phone than a pizza counter taking sixty, because each conversation runs several minutes and lands on whoever is decorating. So count minutes during your busiest weekend instead, and count how many of those minutes came out of production rather than out of a slow moment.
+
+X1 Voice connects directly to [Square](/integrations/square), Clover and OrderCounter, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect. Plans start at $250 a month and setup is typically under 24 hours, though for a shop with a custom-order flow the configuration decisions above take longer than the connection does. The closely related version of this problem is in [voice AI for bakeries](/blog/voice-ai-for-bakeries).
+
+If your Saturday phone minutes are coming out of decorating hours, and if you have ever discovered a booked cake nobody could make, the fix is a booking policy your phone can enforce. The agent is how you enforce it, and the policy is still yours to write.

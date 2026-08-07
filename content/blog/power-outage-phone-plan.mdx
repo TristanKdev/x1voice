@@ -1,0 +1,77 @@
+---
+title: "What answers your restaurant phone when the power is out"
+description: "A dark building usually means a dead phone, and callers read a dead phone as a closed restaurant. What actually answers depends on choices you make now."
+publishedAt: "2026-05-03"
+faqs:
+  - question: "Does a cloud voice agent still answer during a power outage at the restaurant?"
+    answer: "It answers if the call reaches it, which depends on where your number terminates. A number that rings equipment inside the building dies with the building. A number routed to a hosted service is answered off-site, so the outage at your address does not affect whether someone picks up."
+  - question: "Should the phone take orders during a power outage?"
+    answer: "No. Your kitchen is not cooking and your POS is down, so any order taken is an order you cancel later. The job during an outage is messaging, not capture. Tell callers you are closed, give a realistic reopening estimate, and stop there."
+  - question: "What should the outage greeting actually say?"
+    answer: "That you are closed due to a power outage, and when you expect to reopen or when you will next update. Naming the cause matters because callers treat an unexplained closure as a sign the restaurant is in trouble. An estimate, even a vague one, stops people from calling back every twenty minutes."
+  - question: "Can I change the greeting if the restaurant has no power?"
+    answer: "Yes, if the change is made in a hosted system rather than on equipment in the building. A manager can set an outage greeting from their own phone on cell data, standing in the parking lot. If your greeting lives on a physical answering machine, the outage has already taken that option away."
+  - question: "How long should an outage message stay up?"
+    answer: "Until you are genuinely serving again, not until the lights come back. Power restoration is the start of a recovery process that includes checking walk-in temperatures, rebooting the POS, and getting the line back up. Reopening the phone before the kitchen is ready produces orders you cannot fill during the hour you are least able to handle problems."
+---
+
+Transformer blows at 5:40 on a Thursday. The building goes dark, the POS screens go black, the walk-in stops running, and every ticket in the queue stops moving. Somebody grabs a flashlight and starts triaging the food.
+
+Nobody thinks about the phone for at least forty minutes, and by then two things have happened. Around thirty people have called and gotten either endless ringing or a fast busy signal. And each of them has drawn their own conclusion about what that means.
+
+## Callers read silence as something worse than a closure
+
+This is the part operators underestimate. A phone that rings out does not communicate "temporary power issue." It communicates ambiguity, and people fill ambiguity with the least generous explanation available.
+
+Some assume you are closed for the night, which is roughly correct and costs you only that order. Some assume you went out of business, which is a real thing that happens to restaurants and a real thing customers guess at. A few assume you are open and just not answering, which is the version that produces a bad review about ignoring the phone.
+
+You cannot cook during an outage and there is nothing to be done about that. What you can control is which of those three stories your callers walk away with, and it costs almost nothing to control it.
+
+## Where your number terminates decides everything
+
+The entire question of what answers during an outage comes down to one piece of plumbing: does the call have to arrive at your building to be answered?
+
+A traditional line terminating in equipment on your wall dies when the wall loses power. So does a VoIP setup running through an on-premise box, since that box needs power and internet, and an outage usually takes both. Battery backup buys you an hour or two on the equipment and does nothing about the internet if the outage is neighborhood-wide.
+
+A number routed to a hosted service is answered somewhere else entirely. The call never touches your building. X1 Voice runs off-site, so a power failure at your address has no bearing on whether the phone gets picked up, and the [uptime and SLA question](/blog/voice-ai-slas-uptime-restaurants) becomes about the service rather than about your electrical panel.
+
+That difference is worth understanding before you need it, because it is not something you can change during an outage. Rerouting a number takes carrier action and hours at minimum. Either the routing was already right, or it was not. If you are unsure which describes you, the mechanics are in the [number porting guide](/blog/phone-number-porting-guide-restaurants).
+
+## Do not take orders. Take the pressure off instead.
+
+There is a temptation, once you know the phone still answers, to keep capturing orders during the outage. Resist it completely.
+
+Your kitchen is not cooking. Your POS is dark, so nothing written during the outage lands anywhere it can be retrieved cleanly, which is its own problem covered in [POS outage order capture](/blog/pos-outage-order-capture). Any order you accept is an order you cancel in an hour, and a canceled order is worse for the customer than a clear no was.
+
+What the phone should do instead is absorb the call volume that would otherwise become thirty voicemails and forty callbacks. That volume is real, it lands during the exact hour your managers are dealing with a walk-in full of thawing product, and every call answered by a machine is a call nobody has to take.
+
+## What the outage greeting needs to contain
+
+Short, specific, and honest. Four elements and nothing else:
+
+- The fact that you are closed, said in the first sentence, so callers who only need that can hang up.
+- The cause, named plainly as a power outage, because an explained closure reads as temporary and an unexplained one reads as ominous.
+- A time, even a rough one. "We expect to be back tomorrow at eleven" or "we will know more by nine tonight" both work. A closure with no horizon generates repeat calls.
+- Where to check for updates, if you actually post updates somewhere. Skip this line if nobody is going to post anything.
+
+Leave out apologies longer than a few words, leave out the full menu, and leave out an invitation to order tomorrow unless you are confident about tomorrow. Same reasoning as any [early closure message](/blog/closing-early-weather-messaging): a promise you cancel costs more than a plain no.
+
+## The plan is three decisions, made in advance
+
+None of this is difficult. It is only difficult at 5:40 on Thursday with a flashlight in your teeth, which is why it gets decided beforehand or not at all.
+
+First, decide who changes the greeting. It should be the manager on duty, working from their own cell phone, without needing anyone's approval. If the change requires reaching an owner who might be on a plane, the plan does not work. Confirm that person has done it once on a normal day, so their first attempt is not during an emergency.
+
+Second, decide what the greeting says, and write it down somewhere reachable from a phone. A manager improvising an outage message under stress produces something rambling. A manager reading a prepared line produces something clean in twenty seconds.
+
+Third, decide what "reopened" means. This is the one people get wrong in the other direction. Power coming back is not the same as being ready to serve. You still have to verify walk-in and freezer temperatures, discard whatever crossed the line, reboot the POS and confirm it synced, and get the line back to temperature. That is often ninety minutes after the lights come on.
+
+If the phone reopens the moment power returns, you take orders during the exact window when the kitchen is least able to produce them. Reopen the phone when the kitchen says it is ready, not when the utility says the grid is.
+
+## The thing to actually do this week
+
+Find out where your number terminates. Call whoever provides your phone service and ask one question: if the building loses power, does an inbound call still get answered somewhere.
+
+If the answer is no, you have identified a real single point of failure, and it is one of the cheaper ones to fix. If the answer is yes, then the remaining work is writing a two-sentence greeting and telling one manager where to change it. That is a fifteen-minute task that pays for itself the first time a transformer goes, and transformers go.
+
+Power is only one of the two utilities that can strand your phone. The other failure, and the failover order it needs, is in [internet outage phone failover](/blog/internet-outage-phone-failover).

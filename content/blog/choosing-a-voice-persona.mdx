@@ -1,0 +1,76 @@
+---
+title: "Choosing a voice for your restaurant phone agent"
+description: "The voice sample you like in a quiet office is not the one that survives a noisy car at dinner rush. The criteria that actually decide this, in order."
+publishedAt: "2026-07-16"
+faqs:
+  - question: "What is the most important criterion when choosing a voice?"
+    answer: "Intelligibility under bad conditions. Most of your callers are in a car, a hallway, or a loud room, on a cell connection that drops parts of words. A voice that is pleasant in a quiet office and mushy on a compressed phone line will cost you repeated questions on every call, and repetition is what makes callers hang up."
+  - question: "Does the gender of the voice affect anything measurable?"
+    answer: "Not in any way an individual restaurant can reliably detect. Your call volume is too small to separate a voice effect from normal week-to-week variation. Pick based on clarity and pace, and treat any vendor claiming a specific lift from one gender over another as making a claim they cannot support with your data."
+  - question: "Should the voice match the accent of my customers?"
+    answer: "Broadly, yes, in the sense that a strongly regional voice in the wrong region is distracting. A neutral voice for your country is the safe default. What matters much more is the recognition side: whether the system understands your callers' accents, which is a separate capability from how the agent sounds."
+  - question: "How do I test a voice before committing?"
+    answer: "Call it from a cell phone in a car with the windows down, from a parking lot, and from inside your own dining room at peak. Order the two most complicated things on your menu. If you have to repeat yourself or lean in to hear a price, the voice fails regardless of how it sounded on the demo page."
+  - question: "Can the voice be changed later?"
+    answer: "Usually yes, and it is a low-risk change to make. Ask before you sign, since it tells you something about how configurable the rest of the system is. If a vendor treats a voice swap as a project rather than a setting, expect the same friction on menu and hours changes."
+---
+
+The voice you pick in a quiet office at two in the afternoon is not the voice your customers hear. They hear it through a cell connection, in a car with road noise, or standing in a hallway at work, compressed down to a narrow slice of the audio spectrum by a phone network that was designed in the 1960s.
+
+That gap is why voice selection goes wrong. Operators audition samples on a laptop with good speakers, pick the one with the nicest tone, and never find out that its low, breathy quality turns to mud on an actual call.
+
+Everything below is ordered by how much it affects whether a caller gets their order right.
+
+## Intelligibility on a bad line beats warmth
+
+Phone audio strips out most of what makes a voice sound rich. What survives is the middle of the range: consonants, articulation, pitch variation. A voice with crisp consonants and a slightly higher placement will come through a car speaker intact. A deep, warm, close-mic voice will not.
+
+The practical consequence is repetition. When a caller misses the price or the pickup time, they ask again. Two repeats on a call adds fifteen seconds and a small amount of irritation, and on a busy Friday it adds up to callers who abandon before finishing.
+
+Test this properly. Take whatever demo the vendor gives you and listen to it from a cell phone on speaker, in a car, with the engine running. That is the real condition. If you can hear the difference between "fifteen" and "fifty" without concentrating, the voice passes. If you cannot, no amount of pleasantness compensates.
+
+## Pace, and whether it can be interrupted
+
+The second criterion is how fast it talks and what happens when a caller talks over it.
+
+Speed is a real trade. Faster feels efficient and gets an order taken in less time, and past a point it becomes hard to follow, particularly for older callers and for anyone confirming a long order. Slower is easier to follow and starts to feel patronizing. There is a band in the middle that most people accept, and it sits slightly slower than natural conversation because the caller is often doing something else.
+
+Interruption handling matters more than pace and gets tested less. Real callers talk over the greeting. They say "yeah, pickup" three words into a sentence. A system that has to finish its line before it will listen makes every caller wait through information they already have, and by the third call your regulars are actively annoyed. Ask directly whether the system supports being interrupted mid-sentence, and then test it by doing exactly that.
+
+## What the agent does with numbers and addresses
+
+This is where a voice either holds up or falls apart, and almost nobody checks it during selection.
+
+Prices, phone numbers, street addresses, and pickup times are the parts of a call where a mistake actually costs you. Listen specifically to how the voice reads a total like $47.83, a ten-digit phone number, and a street address with a number and a direction in it. Does it group the digits sensibly. Does it slow down. Does it say "forty-seven eighty-three" or spell out every part.
+
+Do the same for your hardest menu items. Every menu has three or four items that are difficult to say: an Italian name, an item with a modifier stack, something with a number in it. Have the demo read those. A voice that stumbles on your bestseller is disqualified no matter how it handles everything else.
+
+## Recognition is a different capability from speech
+
+The voice you hear and the system's ability to understand your callers are separate parts of the product, and vendors demo the first one because it is the impressive one.
+
+Understanding is where restaurant deployments actually fail. Background noise on the caller's end, regional accents, non-native English speakers, a kid ordering for the family, someone reading off a text message. If a meaningful share of your customers are not native English speakers, this is the question that decides whether the deployment works at all, and it has nothing to do with which voice you selected. We go through it in [accents and speech recognition accuracy](/blog/voice-ai-accent-speech-recognition-accuracy).
+
+If you serve a bilingual neighborhood, the related decision is whether the agent switches languages and how it decides to. That is covered in [bilingual Spanish phone ordering](/blog/bilingual-spanish-ai-phone-ordering) and in what X1 Voice supports across [languages](/languages).
+
+## Gender, accent, and the things people argue about
+
+Two questions come up in every selection conversation and neither one deserves the airtime it gets.
+
+Gender first. There is no reliable answer at the scale of a single restaurant. You would need a large volume of calls, randomized assignment, and a clean outcome metric to detect a difference, and even then the effect would likely be smaller than your week-to-week variation. Any vendor telling you one converts better is telling you something they cannot demonstrate on your data. Pick the clearer voice.
+
+Accent second. A strongly regional voice in the wrong region is distracting, and that is about the extent of it. A neutral voice for your market is the safe default, and it is what most systems ship. If your concept is regionally specific and you want that reflected, the constraint is that the voice still has to pass the intelligibility test above, and heavily accented voices often do not on compressed audio.
+
+What does deserve attention is consistency with the rest of your phone presence: your greeting, your hold message if you have one, and the words the agent uses. Those are the choices covered in [brand voice consistency](/blog/brand-voice-consistency-ai), and they carry the identity that people incorrectly attribute to the voice itself.
+
+## How to actually run the selection
+
+Give yourself thirty minutes and a phone. Not a laptop.
+
+Have the vendor set up each candidate voice on a test line with your real menu loaded. Call each one three times: once from a quiet room, once from a car, once from inside your restaurant during service with the kitchen audible behind you. Each time, place the same order, one simple and one deliberately complicated, and ask one non-order question with a number in the answer.
+
+Then hand the phone to two people who did not make the shortlist and watch their faces. Someone on your staff who works the floor, and if you can, a regular customer. You are not asking them which they prefer. You are asking whether anything about the call made them stop and think about the system instead of the food.
+
+If you are going to test more formally after launch, the greeting is a better thing to experiment with than the voice, because it changes more and is easier to measure. That method is in [A/B testing greetings](/blog/ab-testing-greetings-voice-ai).
+
+One last thing worth confirming before you sign anything: ask how long it takes to change the voice after go-live. The answer tells you less about voices than about the vendor. A system where a voice swap is a setting is usually a system where your hours and menu are settings too. A system where it is a support ticket and a two-week queue will be the same story the first time you add a seasonal item.

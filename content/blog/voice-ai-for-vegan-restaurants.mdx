@@ -1,0 +1,62 @@
+---
+title: "Voice AI for vegan restaurants: the ingredient questions"
+description: "An all-vegan menu draws more ingredient calls, not fewer. What to load into a voice agent so it answers honey, sugar, and fryer questions without guessing."
+publishedAt: "2026-02-01"
+faqs:
+  - question: "Does an all-vegan menu mean fewer dietary questions on the phone?"
+    answer: "No, it usually means more. Callers who choose a vegan restaurant are the ones most likely to interrogate ingredients, and the questions get more specific rather than less: honey in a dressing, sugar processing, shared fryer oil, whether the wine is fined with animal products. The volume shifts from what is vegan to how vegan."
+  - question: "Can a voice agent answer ingredient questions accurately?"
+    answer: "Only for the ingredients you have actually loaded. An agent reading a per-item ingredient list gives correct answers all day; an agent working from item names alone will infer and eventually be wrong. Treat the ingredient data as the real setup work, and assume anything you did not write down will be answered badly or not at all."
+  - question: "What should the agent say when someone mentions a severe allergy?"
+    answer: "It should stop selling and get a human on the line. A soy or nut allergy at a restaurant using both heavily is a medical question about your kitchen's actual practice, and an automated system has no way to assess whether a specific dish is safe today. Configure allergy mentions as an immediate escalation trigger, not as another question to answer."
+  - question: "How do we handle callers ordering for a mixed group?"
+    answer: "Expect the caller to be the omnivore, not the vegan. They are ordering for someone else, often do not know the menu, and ask comparison questions like which dish is closest to a regular sandwich. Loading a few plain-language item descriptions written for people unfamiliar with plant-based cooking resolves most of those calls without a transfer."
+  - question: "Should the agent say a dish is gluten-free?"
+    answer: "Say what is true and no more. There is a real difference between a dish made without gluten ingredients and one prepared in a way that is safe for someone with celiac disease, and most kitchens can only claim the first. Write the answer to state the ingredient fact and offer a person for anything involving cross-contact."
+---
+
+The usual assumption is that an all-vegan restaurant fields fewer ingredient calls, because there is no meat or dairy to ask about. Every operator who has actually worked the phone at one knows the opposite.
+
+People who seek out a vegan kitchen are the same people who read labels. The questions do not go away, they get narrower. Is there honey in the dressing. Is the sugar bone-char processed. Does the seitan share a fryer with the tempura. Is the wine fined with isinglass. A caller at a burger place asks whether you have a veggie option; a caller at your place asks what happens to the oil between batches.
+
+## Why the call mix looks the way it does
+
+Sit with the phone for a shift and the pattern separates into two distinct groups of callers, and they need different answers.
+
+The first group is checking your standards. They already eat plant-based and they want to know how strict your kitchen is. Honey is the most common single question, followed by shared equipment, then sugar, then wine and beer. These are not hostile questions and they are not hard to answer, but they are answered wrong constantly by whoever happens to grab the phone during a rush. A line cook guessing about the fining agents in a house wine is a bad outcome even when the guess turns out right, because the caller can tell it was a guess.
+
+The second group is ordering for somebody else. This caller is not vegan, does not know your menu, and is trying to bring dinner home to a partner or pick up lunch for a coworker. Their questions sound naive and are actually harder to answer well. What is closest to a normal chicken sandwich. Does the cheese taste like cheese. Will my kid eat any of this. Answering that group well is a menu-description problem, not an ingredient problem.
+
+A voice agent can carry both groups if you load for both, and will handle neither if you only upload item names and prices. The general point about [ingredient and dietary questions](/blog/voice-ai-allergen-dietary-questions) applies with more force here, because your callers ask more of them per order than almost any other format.
+
+## The ingredient data is the actual setup work
+
+Most of the time people spend configuring a voice agent goes into hours, delivery zones, and modifier trees. At a vegan restaurant the highest-value hour is the one you spend writing down what is in things.
+
+Here is what to load before you go live:
+
+- A per-item ingredient statement for every dish, written the way you would answer it out loud, including the things people ask about specifically rather than the full recipe
+- A standing answer for honey, refined sugar, palm oil, and any other ingredient your regulars raise, so the answer is identical no matter which item it comes up on
+- The equipment reality: which items share a fryer, which share a grill surface, and what your kitchen does and does not do between batches
+- A plain-language description of each item written for someone who has never eaten plant-based food, in ordinary words rather than menu copy
+- Your beverage list with whatever you actually know about the wine and beer, and an explicit "we would have to check" answer for what you do not
+
+That last item matters more than the rest. An agent that says it does not know and offers to have someone call back is doing its job. An agent that fills the gap is the failure mode you are trying to avoid, and it is the one thing you should test hard in a demo by asking about a dish that does not exist. The mechanics of loading this kind of detail are in [training a voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu), and modifier handling for build-your-own items is covered in [how modifiers get mapped](/blog/how-voice-ai-handles-menu-modifiers).
+
+## Where the agent should stop and get a person
+
+Being blunt about this is more useful than being reassuring. There are calls a voice agent should not attempt at a vegan restaurant, and the boundary is not the same as the vegan-versus-not boundary.
+
+Dietary preference is answerable from data. Someone avoiding honey wants a fact about a recipe, and the consequence of a wrong answer is a disappointed customer. Allergy is different. A caller with a severe soy or nut allergy is asking whether your kitchen, on this specific shift, can produce a dish that will not hurt them. That depends on what got prepped where this morning, which is not in any configuration file. Vegan kitchens run heavy on soy, nuts, and wheat gluten, so this comes up far more often than it does at a steakhouse.
+
+Configure the word allergy, and its common phrasings, as an immediate escalation. The agent should acknowledge, stop taking the order, and put a manager on. If nobody is available, it takes a number and says a person will call back rather than proceeding. The same reasoning drives the handoff rules for a [gluten-free kitchen](/blog/voice-ai-for-gluten-free-restaurants), where cross-contact rather than ingredients is the entire question, and it is worth understanding the [liability side of allergen answers on the phone](/blog/allergen-liability-phone-orders) before you decide how much latitude to give any automated system.
+
+The second stop condition is the caller who wants to argue about what counts as vegan. It happens. Somebody has a strong opinion about your honey policy or your use of a shared oven and wants to discuss it. That is a conversation for a person, and letting an agent take it is how you get a screenshot on social media.
+
+## The group order is where the revenue is
+
+Lunch orders for offices and shared dinners for households make up a larger share of vegan takeout than most operators track, and they are the calls most damaged by a busy line. Three sandwiches, four different modification requests, one caller reading off a text thread.
+
+Those calls take six or seven minutes with a person and they do not get shorter. What changes with an agent is that they no longer block your counter during a rush, and the caller can take as long as they need reading their list without anyone sighing at them. The order lands in the POS with the modifiers attached rather than in handwriting on a ticket. Group-order handling is close to identical at a [salad shop](/blog/voice-ai-for-salad-shops), and the same lesson applies: the win is not speed, it is that a long call stops costing you the counter.
+
+Pick your five most-asked ingredient questions, call your own line during a Friday rush, and ask them one at a time. Write down which answers your staff got right, which were guesses, and how long each call took. That sheet tells you both whether you need an agent and, more usefully, exactly what to load into one.

@@ -1,0 +1,79 @@
+---
+title: "What a phone order actually costs you to take"
+description: "Most operators treat phone orders as free because no commission line appears on the statement. Here is how to price the labor, the errors, and the losses."
+publishedAt: "2026-06-08"
+faqs:
+  - question: "How do I calculate cost per phone order?"
+    answer: "Add the labor minutes spent on the phone during a period, price them at your fully loaded hourly rate, add the cost of order errors and remakes attributable to the phone, then divide by the number of phone orders in that period. Include the calls that produced no order, since answering them costs the same as answering the ones that did."
+  - question: "Is a phone order cheaper than a third-party delivery order?"
+    answer: "Almost always yes, and usually by a wide margin. A delivery marketplace commission is a percentage of the whole ticket, while a phone order costs you a few minutes of labor regardless of ticket size. The gap widens as ticket size grows, which is why large and catering orders are worth protecting on the phone specifically."
+  - question: "Should unanswered calls count in cost per order?"
+    answer: "They do not belong in the cost figure, but they belong in the same conversation. An unanswered call has no cost and no revenue, which makes your cost per order look better while your revenue gets worse. Track cost per order and answered-call rate together or the first number will quietly mislead you."
+  - question: "Does automating the phone lower cost per order?"
+    answer: "It changes the shape of the cost from variable to fixed. A flat monthly fee divided by a growing order count falls as volume rises, where labor cost per order stays roughly flat. That makes automation cheaper per order above some volume threshold and more expensive below it, so the honest answer depends on your call counts."
+  - question: "What is a reasonable cost per phone order?"
+    answer: "There is no benchmark worth chasing, because handle time and wage rates vary too much between a pizza counter and a fine-dining room. Compare your own number against your commission rate on third-party orders and against your online ordering cost per order. Those two comparisons tell you more than any industry figure."
+---
+
+Phone orders are not free. They feel free because nothing on your statement says otherwise, and because the labor was already on the schedule. That is an accounting artifact, not an economic fact, and it leads operators to defend a channel they have never priced and to dismiss one they have.
+
+Here is how to work out what a phone order actually costs, and what to do with the answer.
+
+## The labor line is most of it
+
+Start with the same measurement that drives everything else about the phone: talk minutes.
+
+Take one representative week. Count phone orders and, separately, count total calls answered. Multiply total answered calls by your measured average handle time. Handle time is pickup to hang-up plus the entry work afterward, which people consistently forget to include.
+
+Say 300 calls answered in a week, at 2.8 minutes each, is 840 minutes, or 14 hours of labor. At a fully loaded rate of, say, $20 an hour, that is $280 of labor. If 200 of those 300 calls became orders, your labor cost per phone order is $1.40.
+
+Notice what happened there. The 100 calls that asked about hours, parking, or whether you have gluten-free buns cost real money and produced no order, and they are correctly loaded onto the orders that did happen. That is why cost per order is higher than people expect, and it is also why cheap fixes to the non-order calls matter. Getting the routine questions off your staff is what [answering the hours-and-parking calls](/blog/voice-ai-answering-faqs-hours-parking) is about.
+
+### The part where the labor is not incremental
+
+An objection worth taking seriously: if the host was scheduled anyway, the phone did not add cost.
+
+That is true only if the host had nothing else to do. During the 6:30 rush they do, and the phone displaces work with its own value: seating faster, running food, handling the party at the door. The right price for those minutes is not zero, it is whatever the displaced work was worth, and that is usually more than the wage.
+
+If you want a conservative number, price the phone minutes at wage during slow periods and at wage plus the value of the displaced task during peaks. If you want a simple number, price everything at fully loaded wage and accept that you are understating peak cost.
+
+## The costs that never show up as labor
+
+Beyond minutes, three things belong in the figure.
+
+Order errors. A phone order taken across a noisy line during a rush gets the wrong modifier some fraction of the time, and each one costs food, labor to remake, and often a comp. You can measure this: count remakes attributable to phone orders over a month and price them at your food cost plus a few minutes of line labor. Most operators have never separated phone remakes from counter remakes, and the split is usually lopsided.
+
+Hold-and-hang-up losses. Not a cost per se, but it is the reason your denominator is smaller than it should be. Covered separately in [abandoned call rate](/blog/abandoned-call-rate-restaurants).
+
+Payment handling. If you take card numbers verbally, you are carrying compliance exposure that has a real cost even in years when nothing happens, and the handling rules are stricter than most restaurants realize.
+
+Add those to labor, divide by phone orders, and you have a defensible number.
+
+One category deliberately left out: the phone bill itself. A few dozen dollars a month spread across hundreds of orders is a rounding error, and including it invites an argument about pennies while the labor line goes unexamined. Leave it out and say so, rather than letting a small precise number distract from a large approximate one.
+
+## The comparison that actually matters
+
+A cost per order in isolation means nothing. It becomes useful the moment you put it beside your other channels at the same average ticket.
+
+- A third-party marketplace order costs you a commission percentage of the entire ticket, so a $60 order costs several times what a $30 order costs, for identical work on your end. The full comparison sits in [voice AI versus delivery app commissions](/blog/voice-ai-vs-delivery-app-commissions).
+- An online ordering order costs a small per-order fee or a flat platform charge, plus payment processing, and almost no labor.
+- A phone order costs a few minutes of labor, which is roughly constant regardless of ticket size, plus your error rate.
+- A phone order that you never answered costs nothing and earns nothing, which is the worst position on the list even though it looks best on a cost report.
+
+The structural point is that phone cost is per-minute and commission cost is per-dollar. That means the phone gets relatively cheaper as tickets get larger, which is exactly backwards from how most operators talk about it. Your $200 catering order is the one you most want arriving by phone. Your $14 single sandwich is the one you least mind losing to a platform fee.
+
+## What automation does to the shape of the number
+
+Software that answers the phone replaces a variable cost with a fixed one, and that changes the arithmetic rather than simply reducing it.
+
+At [$250 a month](/pricing) and 200 phone orders, you are at $1.25 per order. At 600 phone orders, the same fee is roughly 42 cents. At 60 orders a month, it is over $4, which is probably worse than the host you already employ. Anyone who tells you the software is cheaper per order without asking your volume is not doing the arithmetic. The threshold question is treated honestly in [is AI phone answering worth it for a small restaurant](/blog/is-ai-phone-answering-worth-it-small-restaurant).
+
+The second effect is on the denominator. If unanswered calls become answered calls, order count rises, and the fixed fee spreads over more orders while the revenue side improves. That is where most of the actual return comes from, not from the labor saved. The full model is in [the ROI calculator walkthrough](/blog/ai-phone-ordering-roi-calculator).
+
+## Run it once, then run it at peak
+
+Do the calculation for a whole week first, because it is easy and gives you a baseline. Then do it again for your single busiest hour, using peak wages and peak displaced-work value.
+
+The two numbers will be far apart, and the gap is the actual finding. Phone orders during a Tuesday afternoon are close to free. Phone orders at 6:30 on Friday are the most expensive orders in your restaurant, taken by your most stretched employee, with your highest error rate, on the tickets you can least afford to lose.
+
+If your peak cost per phone order comes out higher than your commission rate on a marketplace order of the same size, you have learned something uncomfortable and useful, and the fix is a coverage decision rather than a pricing one.

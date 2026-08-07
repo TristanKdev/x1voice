@@ -1,0 +1,85 @@
+---
+title: "Shared menus with per-store overrides that don't drift"
+description: "How to run one master menu across every location while letting individual stores change price, hours, and availability without the two versions quietly diverging."
+publishedAt: "2026-07-27"
+faqs:
+  - question: "What should a single store be allowed to change on its own?"
+    answer: "Price, operating hours, and item availability, plus any item that exists only at that address. Everything else belongs to the master menu. Letting a store edit item names, modifier structures, or the wording of upsells is where multi-location menus start diverging, because those changes are invisible in a price report and nobody notices them for months."
+  - question: "How does menu drift actually happen?"
+    answer: "A store sets a local override, then corporate updates the master, and the override silently blocks the update. The store keeps quoting the old price for as long as the override exists. Drift is rarely someone doing something wrong. It is an override that outlived the reason it was created and that nobody has a list of."
+  - question: "Should each location have its own voice agent configuration?"
+    answer: "No. One configuration with a per-store override layer is easier to maintain than fifteen separate configurations, because a fix applied once reaches every store. Separate configurations feel safer during rollout and become unmanageable around store six, when a menu change means fifteen edits and one of them gets missed."
+  - question: "How often should overrides be reviewed?"
+    answer: "Monthly, and it takes about twenty minutes. Pull the list of active overrides per store, look at when each was created and why, and delete the ones whose reason has expired. A seasonal price override from March should not still be running in September, and the only way you find it is by looking."
+---
+
+Store 4 raised its wing price by a dollar in March because its distributor cost moved. Corporate raised the price for the whole brand in June. In September, store 4's phone agent was still quoting the March number, because the local override sat on top of the master and quietly won every time.
+
+Nobody did anything wrong. The override worked exactly as designed. The problem is that it was created for a reason that stopped applying, and no one had a list of which stores had overrides on which items.
+
+That is what menu drift looks like in practice across a group. It isn't a sync failure or a bad integration. It's an accumulation of small, individually reasonable local exceptions that no one revisits.
+
+## What a store genuinely needs to control
+
+The list is shorter than most operators expect, and keeping it short is most of the work.
+
+Price is the obvious one. Rent, labor, and distributor costs are not the same in two markets, and a group that forces identical pricing across a metro area and a suburb is leaving money on the table in one of them.
+
+Hours are the second. A location inside a mall closes when the mall closes. A downtown store dies at 8pm on Sunday. These aren't exceptions to be argued about, they're facts of the address.
+
+Availability is the third, and it's the one that changes hourly rather than quarterly. When a store runs out of short rib at 7:40 on a Friday, that has to reach the phone agent immediately, which is a different mechanism from a menu edit. We go through that plumbing in [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync).
+
+Then there's the small tail: an item that exists at one address only. A breakfast burrito at the store near the highway. A local beer on tap at exactly one location.
+
+Everything else should belong to the master. Item names, modifier structures, how the agent describes a combo, what it offers as an upsell. Those are brand decisions, and once a store can edit them, two stores will describe the same sandwich differently and you will find out from a customer.
+
+## An override is not a copy
+
+The distinction matters more than it sounds.
+
+A copy means store 4 has its own menu. Change the master and store 4 is unaffected, forever, on every field. An override means store 4 inherits everything except the specific fields it has explicitly claimed. Change the master's description of an item and store 4 gets the new description; change the master's price and store 4 keeps its own, because price is the field it claimed.
+
+Copies feel safer during a rollout. They are the reason a fifteen-store group ends up with fifteen menus that agree on nothing by year two. Every menu change becomes fifteen edits, one of them gets missed, and the missed one is invisible until a customer calls it out.
+
+Inheritance with a narrow override layer is the structure that survives. The cost is that you have to know what has been overridden, which is a reporting problem rather than a design problem. The [menu sync deep dive](/blog/menu-sync-deep-dive-voice-ai) covers how the sync direction affects all of this.
+
+## The failure mode is the expired override
+
+Drift almost never comes from a store making a change it shouldn't have. It comes from a change that was correct in March and wrong in June.
+
+Seasonal pricing. A promotion that ran for six weeks. A temporary hours change during a construction project on the street outside. A price bump during a supply squeeze that resolved. Each one gets set with genuine intent, and none of them get removed, because removing something requires remembering it exists.
+
+So the single most useful thing you can build into your process is an override that carries an expiry date and a one-line reason. Not a comment buried in a ticket. A field on the override itself.
+
+If your platform can't do that, keep the list in a spreadsheet with four columns: store, item or field, reason, review date. It's unglamorous and it works, and it takes about twenty minutes a month to walk.
+
+## Hours drift differently from menu
+
+Menu overrides go stale slowly. Hours overrides go wrong loudly and immediately.
+
+If store 9's phone agent thinks the store closes at 10 and it actually closes at 9, you get people ordering food that will never be made. If the agent thinks it closes at 9 and it's open until 10, you lose the last hour of takeout every single night and never see the loss, because nobody reports a call they didn't make.
+
+Holiday hours are the sharpest version. One store closes Christmas Eve at 4, another does its biggest night of the year, and the brand-level default is wrong for both. That's a per-store field, set in advance, and it deserves a calendar reminder rather than a policy. The mechanics are in [holiday hours and overrides](/blog/holiday-hours-overrides-voice-ai).
+
+The rule that holds up: hours overrides should be set by the person who unlocks the door, not by someone at a corporate desk reading a spreadsheet. Menu and pricing overrides should require a second approval. Those two things want different permission levels, and most groups get it backwards.
+
+## Who can change what
+
+Decide this before the rollout, not after the first argument about it.
+
+- The general manager of a store can change that store's hours and mark items unavailable, immediately and without approval, because both are operational facts they observe firsthand.
+- A local price override requires the area manager to approve it and requires a reason and a review date, because price is where drift compounds quietly.
+- Item names, descriptions, modifier structures, and anything the agent says about the brand belong to one person at the group level and cannot be edited locally at all.
+- New store-only items go through the same path as a master menu addition, so they're at least documented somewhere other than one manager's memory.
+
+That structure is boring on purpose. The alternative is a permission model where everyone can change everything, which reads as trust and functions as chaos by the second year.
+
+## The audit that keeps it honest
+
+Once a month, pull every active override across every store into one view. Three questions per row: who set it, why, and is that reason still true.
+
+Most rows will be fine. You are hunting for the March promotion still running in September, the hours change from a road closure that ended, the price bump from a supplier you no longer use. In a fifteen-store group there are usually four or five of these, and they've each been quietly wrong for weeks.
+
+The second half of the audit is a phone call. Call three stores at random, ask the agent the price of two items, and check the answers against the master and the store's override list. Reading a configuration screen tells you what the system thinks. Calling tells you what a customer hears, and those are not always the same thing. Groups running this at scale should look at [multi-location and franchise group setups](/blog/voice-ai-multi-location-franchise-groups) and the [franchise rollout playbook](/blog/voice-ai-franchise-rollout-playbook) for how the permission structure fits a franchise agreement.
+
+If you can't produce that override list in under five minutes, you don't have an override system. You have fifteen menus that currently happen to agree, and the drift has already started.

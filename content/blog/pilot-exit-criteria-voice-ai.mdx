@@ -1,0 +1,76 @@
+---
+title: "Write down what kills your voice AI pilot before it starts"
+description: "Most voice AI pilots don't fail, they just never end. Set the kill criteria, the review date, and the decision owner before the agent takes its first call."
+publishedAt: "2026-07-20"
+faqs:
+  - question: "What are pilot exit criteria?"
+    answer: "They are the specific outcomes, written down before the pilot starts, that would make you keep the system or drop it. Good ones name a metric, a threshold, and a date. Without them, a pilot tends to drift for months while small fixes ship and nobody makes an actual decision about renewal."
+  - question: "How long should a voice AI pilot run?"
+    answer: "Long enough to cover your full operating cycle, which for most restaurants means four to six weeks. That gets you at least four weekends, a slow midweek stretch, and enough call volume to see edge cases. Anything under two weeks measures the novelty period rather than normal operation."
+  - question: "What should end a pilot early?"
+    answer: "Orders landing in the POS wrong at a rate your staff can't absorb, callers being trapped when they ask for a person, or the agent going down during a rush without a working fallback to your existing line. Those three are not tuning problems, they are structural, and waiting them out rarely helps."
+  - question: "Who should make the keep-or-kill decision?"
+    answer: "One named person, decided in advance, usually the owner or the GM who owns the phone. Committee decisions on a pilot tend to become non-decisions that default to renewal. The named owner reads the transcripts and the accuracy numbers, hears the objections, and makes the call on the scheduled date."
+  - question: "Should I tell the vendor my exit criteria?"
+    answer: "Yes, in writing, before the pilot starts. A vendor who can build to your thresholds is a better fit than one who wants the criteria left vague. It also means the fixes they prioritize during the pilot are aimed at the things that will decide the renewal rather than at whatever is easiest to demo."
+---
+
+Most voice AI pilots don't fail. They just never end.
+
+Six weeks becomes ten, ten becomes a quarter. Nobody can say whether the system worked, because nobody wrote down what working would look like. The vendor keeps shipping small fixes, you keep granting another two weeks, and eventually you renew out of fatigue or cancel out of irritation. Neither one is a decision.
+
+The fix takes about an hour and has to happen before the agent answers its first call. Write down what would make you keep it, what would make you kill it, when you check, and who decides.
+
+## Kill criteria are not the same as targets
+
+A target is what you hope for. A kill criterion is the floor you refuse to go below. They get confused constantly, and the confusion is what makes pilots drag.
+
+"Get order accuracy above 95 percent" is a target. It is also unfalsifiable in practice, because at week six you will be at 93 and someone will say the trend is good. A kill criterion is written so that it can only be answered yes or no: "If, in the final two weeks of the pilot, more than one order in twenty reaches the kitchen with an error my staff has to fix, we do not sign."
+
+Notice what that does. It fixes the measurement window to the end of the pilot rather than the whole thing, so early tuning doesn't count against the vendor. It defines the error in operational terms, something the kitchen had to correct, rather than as a dashboard number. And it removes the argument, because on the date in question you either cleared it or you didn't.
+
+Three or four criteria is the right number. More than that and you will find yourself negotiating with your own list.
+
+## The failures that should end a pilot early
+
+Three things are structural rather than tunable, and if you see them past the second week you should stop rather than extend.
+
+The first is order errors your staff cannot absorb. Menu mapping and modifier handling improve fast in the first two weeks and then plateau. If your team is still catching wrong orders at the pass in week four, the underlying integration is thin, and no amount of prompt adjustment fixes a shallow POS connection. That distinction is the whole argument in [why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality), and it's worth reading before you blame the voice.
+
+The second is callers who ask for a person and don't get one. Listen to ten transcripts where the caller said some version of "let me talk to someone." If the agent argued, looped, or restated the menu, that is a design choice by the vendor, not a bug you'll tune away. It also quietly inflates their containment number, which is why [call containment](/blog/what-is-call-containment) is a diagnostic rather than a target.
+
+The third is a failure mode with no floor under it. Ask what happened during any outage in the pilot window. If calls rang out rather than rolling to your existing line, the fallback isn't configured, and a vendor who let you run four weeks without one has told you something about how they operate.
+
+## The failures that should not end a pilot
+
+Two complaints come up in nearly every pilot and neither is grounds for killing it.
+
+Staff dislike is the first. Somebody on your team will say the agent sounds strange, or that callers hate it, or that it's taking their hours. Some of that is real feedback about the greeting or the pacing and should be fixed. Some of it is the ordinary response to a change nobody asked for. Sort the two by pulling actual calls rather than by taking the report at face value.
+
+A rough first ten days is the second. New menus get mispronounced. Regional item names confuse it. Your Tuesday special isn't in the system. This is the expected shape of onboarding, and it's why the measurement window belongs at the end of the pilot rather than across the whole thing. Judging week one is judging setup, not the product.
+
+## Pick the date and the person now
+
+Put a specific date on the calendar, ideally four to six weeks out, and put one name against it.
+
+Four to six weeks is not arbitrary. You want at least four weekends, one genuinely slow midweek stretch, and whatever your local rhythm is, a game day, a school break, a holiday. A two-week pilot measures the novelty period. A twelve-week pilot has stopped being a pilot.
+
+The name matters more than most operators expect. If the decision belongs to "us," it belongs to nobody, and the default outcome of nobody deciding is that the invoice keeps clearing. Pick the person who owns the phone, usually the owner in a single location or the GM in a larger room, and tell them the decision is theirs on that date. In a multi-unit group the [buying committee](/blog/buying-committee-multi-unit) is real and needs managing, but even then one person signs.
+
+## What to put in front of the vendor
+
+Send the criteria to the vendor before the pilot starts. Two things happen when you do.
+
+Their engineering attention points at what will actually decide the renewal instead of at whatever demos well. And you learn something from how they respond. A vendor who pushes back with a specific objection, say that your accuracy threshold should exclude caller-side errors like a customer changing their mind mid-order, is engaging honestly, and that's a reasonable amendment. A vendor who wants the criteria left soft is telling you they expect to miss them.
+
+Ask for the pilot terms in writing too. What it costs, whether it converts automatically, how much notice you need to give to stop, and who owns the call recordings and transcripts if you walk. That last one catches people out. The transcripts from your pilot are a record of your customers talking to you, and [data ownership](/blog/voice-ai-data-ownership-privacy) should be settled before you generate four weeks of it. Auto-converting pilots are common and worth arguing over, alongside the other clauses in [reading a voice AI MSA](/blog/reading-a-voice-ai-msa).
+
+## Making the call on the day
+
+On the date, sit down with three things: the accuracy number from the final two weeks, a sample of twenty transcripts you read yourself, and whatever your staff has to say.
+
+Read the transcripts before you look at the dashboard. Dashboards are built by the vendor and they frame the story. Twenty real conversations, chosen at random rather than handed to you, will tell you in fifteen minutes whether your customers are being served.
+
+Then answer each criterion yes or no, out loud, without adjusting the threshold you wrote six weeks ago. If you find yourself wanting to move one, that's the signal that the criterion was doing its job.
+
+The test that settles most of these: call your own restaurant during your busiest hour, order the most complicated thing on your menu with two substitutions, and then ask for a human. If that call goes cleanly, the pilot passed the part that matters. If it doesn't, no dashboard is going to talk you out of what you just heard.

@@ -1,0 +1,72 @@
+---
+title: "Phone reports that compare your stores fairly"
+description: "A store-by-store phone report ranks locations that aren't comparable. Fix the denominators and the call mix before anyone reads the leaderboard in a DM meeting."
+publishedAt: "2026-08-04"
+faqs:
+  - question: "Why do store rankings on phone metrics mislead?"
+    answer: "Because the metric usually varies with call mix rather than with store performance. A location taking mostly simple pickup orders will contain a higher share of calls than one fielding catering questions all day, with no difference in how well either store runs. Ranking those two against each other measures their neighborhoods, not their managers."
+  - question: "What should a multi-location phone report actually show?"
+    answer: "Answered-call rate and order accuracy per store, escalation reasons broken into by-design and by-failure, and each store's own trend against its own baseline. Group averages belong on the cover page and nowhere else. The useful view is a store against last month, plus a short list of outliers with a reason attached."
+  - question: "What denominator should phone metrics use?"
+    answer: "Calls offered during your stated open hours, excluding wrong numbers, vendors, and internal calls once you can identify them. Total inbound calls flatters or punishes stores based on how much junk traffic their number receives. Whatever you pick, write the definition on the report so nobody recalculates it differently next quarter."
+  - question: "How often should a multi-unit group review phone reports?"
+    answer: "Weekly at the district level while a rollout is in flight, monthly after it settles. Weekly reviews catch a store that reverted its escalation settings before the habit hardens. Monthly is enough once behavior is stable, as long as somebody still reads the outliers rather than only the group average."
+  - question: "Should phone metrics go into GM bonus calculations?"
+    answer: "Not until the report survives a year of scrutiny and the metric is one the GM controls. Answered-call rate is mostly controllable. Containment mostly is not, since it tracks call mix. Tie compensation to a metric a manager cannot move honestly and they will move it dishonestly, usually by changing what gets logged."
+---
+
+Fifty stores, one dashboard, one column sorted descending. The store at the bottom gets a phone call from the district manager, and the store at the top gets used as an example on the group call. Both of those conversations may be about nothing, because the column probably measures the neighborhood rather than the manager.
+
+This is the recurring failure of multi-unit phone reporting. The data is real, the arithmetic is correct, and the comparison is still unfair, because the stores were never running the same experiment.
+
+## The call mix problem is not a rounding error
+
+Two of your locations can differ by twenty points on containment while both run perfectly well.
+
+A suburban pickup-heavy store gets calls that are almost all the same shape: an order, a modifier or two, a pickup time. That store's agent will complete a very high share of them. A downtown location near an office park spends its day on catering inquiries, large-party questions, and callers who want to talk to a human about a special request. Those calls should reach a person. That store will post a much lower number and be doing its job.
+
+Put both on the same leaderboard and you have told your best downtown GM they are underperforming. Do it twice and they will start routing catering calls into the agent to move the number, which costs you real catering revenue to fix a reporting artifact.
+
+The general trap is covered in [what call containment actually measures](/blog/what-is-call-containment). The multi-unit version is worse, because a single-store operator reading their own number at least knows their own call mix. A district manager reading fifty rows does not.
+
+## Fix the denominator before anything else
+
+Most rollup disputes are denominator disputes wearing a costume.
+
+Decide what a call is. Inbound attempts during open hours is a defensible starting point. Then decide what you strip out: wrong numbers, vendor calls, delivery driver calls, calls from your own other locations, and the caller who dials twice in ninety seconds because the first attempt dropped. Those categories are not evenly distributed. A store with a phone number one digit off a nearby pharmacy carries a junk load nobody else has.
+
+Then decide what open hours means for a store that takes catering orders at 9am but does not serve until 11. Half the arguments about a store's answered-call rate turn out to be about whether 9:40am counts.
+
+Write the definitions on the report itself, in plain language, in a place people will read. The specific choices matter less than the fact that they are fixed and visible. A definition that lives in an analyst's head gets recalculated differently in eight months by a different analyst, and then the trend line moves for reasons unrelated to any store.
+
+## Compare each store to itself
+
+The single change that makes rollups useful: stop ranking stores against each other and start ranking each store against its own last month.
+
+A store improving its answered-call rate from 71 to 84 percent is a real result regardless of where it sits on the group list. A store sliding from 92 to 84 has a problem worth a phone call, even though it now sits above the improving store. The absolute column would have told you the opposite in both cases.
+
+This also fixes the political problem. GMs stop arguing about whether the comparison is fair, because there is no comparison, only their own history. That argument consumes a startling amount of district-manager time and produces nothing.
+
+There is a practical version for a report you already send. Add two columns next to whatever you have now: the same metric last month, and the difference. Then sort by the difference instead of the level. The rows that surface are the ones where something changed recently, which is the only category anybody can act on this week. A store that has been at 78 percent for two years is a structural conversation, not a Monday one.
+
+Keep group aggregates for one purpose: deciding whether a change you made at the group level did anything. If you rewrote the escalation policy in March, the group line tells you whether March mattered. It should not be the number anybody is measured on.
+
+## Escalations are the only column worth reading closely
+
+A rate tells you almost nothing. A reason tells you what to do this week.
+
+Break every handoff into two buckets. By design covers complaints, large catering, an explicit request for a person, and anything your policy says a human should own. By failure covers the agent not recognizing a menu item, not knowing hours for a holiday, or losing the thread on a modifier. The first bucket is your policy working. The second is a work list, usually short and usually cheap to clear.
+
+Now the multi-unit part. Sort stores by the size of the by-failure bucket, not by the total escalation rate. What surfaces is almost always a menu problem at one or two locations, not a systemic issue. A store whose by-failure count is triple the group's usually has a stale item list or a local specials board nobody synced.
+
+The pattern that should worry you is the opposite: a store with a near-zero escalation rate across the board. That store has probably suppressed handoffs, and its callers are being talked at rather than helped. It will sit at the top of a naive leaderboard. The way to catch it is described in [change management across a multi-unit group](/blog/change-management-multi-unit), and it is the reason a rate alone is not a report.
+
+## Accuracy needs sampling, not a dashboard number
+
+Order accuracy is the metric that actually deserves group-level attention, and it is the one no dashboard can produce honestly on its own. A system reporting on its own accuracy is grading its own work.
+
+The practical version at scale: each store pulls twenty phone tickets a month at random and checks them against the transcript. Wrong item, wrong modifier, wrong quantity, wrong time, wrong address. That is a twenty-minute job for a shift lead and it produces a number you can defend in a room. Roll those up and you have a group accuracy figure with a method behind it, which is more than most groups have. The mechanics are in [improving phone order accuracy](/blog/improving-phone-order-accuracy).
+
+Twenty tickets per store per month across fifty stores is a thousand checked orders, which is a genuinely useful sample and costs about seventeen hours of labor group-wide. Compare that to the cost of one remade catering order and the argument ends quickly.
+
+Before you send the next rollup, run one test on it. Take the store at the bottom of the sort and write one sentence explaining why it is there, using only what the report shows. If you cannot, the report is not ready to be read by anyone with authority over that store's GM. Broader metric definitions for groups running this at scale are in [voice AI metrics for restaurants](/blog/voice-ai-metrics-kpis-restaurants) and the group-level view in [multi-location and franchise operations](/blog/voice-ai-multi-location-franchise-groups).

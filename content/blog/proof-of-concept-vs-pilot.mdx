@@ -1,0 +1,72 @@
+---
+title: "A proof of concept and a pilot are not the same test"
+description: "One asks whether the technology can handle your menu at all. The other asks whether your restaurant should run it. Picking the wrong exercise wastes a month."
+publishedAt: "2026-07-25"
+faqs:
+  - question: "What is the difference between a proof of concept and a pilot for voice AI?"
+    answer: "A proof of concept tests whether the technology can handle your specific conditions at all, usually offline and in days. A pilot tests whether your restaurant should adopt it, using live customer calls over several weeks. The first answers a capability question, the second answers a business question, and they need different success criteria."
+  - question: "Do I need a proof of concept before a pilot?"
+    answer: "Only if you have a specific reason to doubt the technology will work for you, such as a very long menu, heavy accent variation in your customer base, an unusual POS, or an order flow with complicated modifiers. A single-location restaurant with a standard takeout menu can usually skip straight to a short pilot."
+  - question: "How long should a voice AI pilot run?"
+    answer: "Long enough to include at least two full weekends and one genuinely bad night, which in practice means three to four weeks. Shorter windows miss the conditions that actually break phone coverage: a rush that runs past capacity, an 86'd item mid-service, and a staffing gap. A two-week pilot mostly measures the honeymoon."
+  - question: "What should a proof of concept cost?"
+    answer: "Little or nothing beyond your own time. A capability test runs against a sandbox number and your menu, not your live line, so there is no reason to sign a term contract for it. If a vendor wants a paid multi-month commitment before showing you the agent handling your own menu items, that itself is the finding."
+  - question: "Who runs the pilot inside the restaurant?"
+    answer: "One named person who works service, usually a GM or a strong shift lead, plus an owner who reads the weekly numbers. Pilots fail most often from lack of an owner rather than lack of technology. Someone has to listen to sampled calls, log what went wrong, and get fixes back to the vendor within a day or two."
+---
+
+Operators use the two words interchangeably, and vendors are happy to let them, because the ambiguity means any positive result can be called a success. They are different exercises with different questions, different lengths, different costs, and different ways of failing.
+
+A proof of concept asks: can this technology handle my conditions at all? A pilot asks: should my restaurant run this? You can pass the first and fail the second easily. The reverse almost never happens, which is why running them in the wrong order wastes a month.
+
+## What a proof of concept is actually for
+
+It exists to kill an unknown fast. Something about your operation makes you doubt the technology will work, and you want that doubt resolved before you spend anyone's time on rollout planning.
+
+Real reasons to doubt: a menu with several hundred items and heavy modifier logic. A customer base where half the calls come in a language other than English, or in accents the vendor's demo never encountered. A POS that isn't on anyone's integration list. An order flow where half of the tickets involve pickup-time negotiation or split payment. Any of those is a legitimate reason to test capability before testing adoption.
+
+The test itself is small. The vendor loads your real menu, gives you a sandbox number that reaches nobody, and you spend two hours calling it with the hardest orders you can construct. You are not measuring customer satisfaction. You are measuring whether the thing can hear "no cilantro, extra hot, and can you make the second one gluten-free" and put it on a ticket correctly.
+
+It should take days, not weeks, and it should cost nothing beyond your time. A capability test doesn't touch a customer, so there's no reason it needs a signed term. What to throw at it is roughly the same list as [what to test in a voice AI demo](/blog/voice-ai-demo-what-to-test), run harder and against your own data rather than the vendor's.
+
+## What a pilot is actually for
+
+A pilot is live. Real customers call your real number, the agent answers, orders go to your real POS, and your kitchen makes the food. The question is no longer whether the technology works. It's whether your restaurant is better off with it running.
+
+That's a business question and it needs business answers: how many more calls got answered, whether order accuracy held, what happened to your staff's time during the rush, how many callers asked for a human and why, and whether anything reached the kitchen wrong badly enough to cost you a remake. None of that is observable in a sandbox.
+
+A pilot also surfaces the operational work that a proof of concept never touches. Who checks the escalated calls. What happens when the agent takes an order for an item that just ran out. Whether the host stand actually stops answering the phone, or keeps grabbing it out of habit. Those are the things that determine whether the system helps you, and they have nothing to do with the model.
+
+## Where the money and the time go
+
+The cost profile is the clearest tell that these are different exercises.
+
+A proof of concept costs you an afternoon and possibly a call with the vendor's implementation team. There is no reason for it to cost more than that, and a vendor requiring a paid multi-month commitment before they'll show the agent handling your actual menu items is telling you something. That's the finding. Write it down and move on.
+
+A pilot costs a real month of service and, more importantly, real management attention. Someone has to listen to sampled calls, note the failures, and get them back to the vendor while the memory is fresh. That person is usually a GM, and the hours are not free even though they don't appear on an invoice. Plans start at $250 a month, so the software line is rarely the expensive part of a pilot. The attention is. [Pricing models for AI phone answering](/blog/ai-phone-answering-pricing-models) covers how the billing side varies.
+
+## The failure that looks like success
+
+The most common bad outcome is a proof of concept dressed up as a pilot. The vendor points the agent at a sandbox number for three weeks, nobody calls it except the owner twice, everything works, and it gets written up as a successful trial. Nothing was learned. No customer ever spoke to it, no ticket ever hit a busy kitchen, and no shift lead ever had to decide whether to take the phone back mid-rush.
+
+The mirror image happens too. A restaurant skips the capability check, goes live on a 400-item menu with a POS the vendor has never integrated before, and spends three weeks in triage. The pilot ends inconclusively because the whole window went to fixing things a two-hour sandbox test would have exposed on day one.
+
+Neither of these produces a decision, which is what you were paying for.
+
+A third version is subtler. The pilot runs live and goes fine, but only on Tuesdays and Wednesdays, because the GM quietly took the phone back every Friday to avoid risk during the rush. The report says the agent handled 91 percent of calls. What it means is that the agent handled 91 percent of the easy calls, and the hard hour was never tested. Ask, before you read any pilot summary, whether the system was answering during every service or only some of them.
+
+## How to know which one you need
+
+Ask yourself one question: is there something specific about my restaurant that might break this?
+
+If you can name it — the menu length, the language mix, an unusual POS, a modifier structure nobody else has — run the proof of concept first, and make that specific thing the entire test. If you can't name anything, and you're a single location with a fairly ordinary takeout menu on Square, Clover, or OrderCounter, you don't need a capability test. You need to find out whether it helps your Friday night, and only live calls answer that. Go straight to a pilot. [Designing a voice AI pilot](/blog/designing-a-voice-ai-pilot) walks through structuring one.
+
+Multi-location groups are the case where doing both, in order, usually pays. The capability test runs once against the most complicated menu in the group. The pilot runs at one or two representative stores, not the flagship and not the problem child. The [franchise rollout playbook](/blog/voice-ai-franchise-rollout-playbook) covers picking those sites.
+
+## Write the exit criteria before either one starts
+
+Whichever exercise you run, decide in advance what result ends it. For a proof of concept, that's a short list of orders the agent must get right and a threshold you'll accept. For a pilot, it's a small set of numbers with targets attached, drawn from [voice AI metrics and KPIs](/blog/voice-ai-metrics-kpis-restaurants), plus the accuracy check that means actually reading tickets rather than trusting a dashboard.
+
+Criteria written afterward are not criteria. They're a description of whatever happened, and every trial passes them.
+
+If you're a week into an exercise and you can't say what result would make you stop, you're not running a test. You're running the product, without having decided to.

@@ -1,0 +1,80 @@
+---
+title: "Renaming menu items so phone callers get them right"
+description: "Two items that sound alike out loud get confused on the phone forever. A method for finding the collisions on your menu and fixing the names behind them."
+publishedAt: "2026-04-28"
+faqs:
+  - question: "Do I have to rename menu items to use a voice agent?"
+    answer: "No. Most menus work as they are, and the alias layer handles the rest by mapping what callers say to the item in your POS. Renaming is worth doing only where two items genuinely sound alike out loud, because those collisions cause wrong tickets for staff and automated systems equally."
+  - question: "What kinds of item names cause the most trouble on the phone?"
+    answer: "Names that differ by one short syllable, names that differ only by a number, and names where the distinguishing word comes last. 'Chicken Parm' and 'Chicken Parmigiana Sub' collide; so do 'Combo 6' and 'Combo 16'. Anything a person would have to ask about is a name a system will also mishandle."
+  - question: "Can I keep the printed menu name and use a different one for the phone?"
+    answer: "Usually yes. The POS item name and the spoken alias do not have to match, so a distinctive marketing name on the printed menu can map to a plainer spoken form. That keeps the branding intact while giving callers and the agent a name that survives a noisy phone line."
+  - question: "Should I remove foreign-language item names from my menu?"
+    answer: "No. Names in other languages are usually fine, because they are learned as fixed sounds rather than parsed word by word. The fix is to add the common mispronunciations and the English description as aliases so both forms land on the same item, not to strip character out of the menu."
+  - question: "How do I find which names are causing problems?"
+    answer: "Read transcripts of calls where the agent asked for clarification twice, and check your remake log for items that keep getting swapped. Both point at specific name pairs. That evidence is more reliable than guessing from the menu, because the collisions are often between items you would never think to compare."
+---
+
+A caller says "chicken parm." You have a Chicken Parm entree at $18 and a Chicken Parmigiana Sub at $12. Whoever is taking the call has to ask which one, every single time, and about one call in ten somebody guesses instead of asking.
+
+That is not a technology problem. It has been costing you remakes since before anyone put a voice agent on the line. What automation does is make the collision visible, because now it shows up as a clarification question in a transcript rather than as a shrug at the counter.
+
+## Names collide out loud in ways they do not on paper
+
+On a printed menu, item names sit in sections, with prices and descriptions next to them. A reader has context. On the phone there is none of that, just a few syllables through a compressed line, often with a dining room behind the caller.
+
+Three patterns cause almost all of the trouble. Items that differ by one short syllable, like "wrap" and "rap" in a name, or "grilled" and "chilled." Items that differ only by a number, where "Combo 6" and "Combo 16" are one dropped consonant apart. And items where the word that distinguishes them comes last, so the caller has already stopped listening by the time it arrives.
+
+Long names have a related problem. A caller will say the first two words and stop, and if two items share those first two words you are back to asking.
+
+## Aliases first, renaming second
+
+Before changing anything on the menu, understand that most of this is solved by the alias layer rather than by renaming. Your POS item is "Chicken Parmigiana Sub," and the agent maps "parm sub," "chicken parm sandwich," and "parm hero" to it. The customer-facing name never changes.
+
+That layer is where the ordinary work happens, and it is described in [training a voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu). Most menus need nothing more than a good alias list.
+
+Renaming is for the cases aliases cannot fix, which is specifically when two items compete for the same spoken form. If "chicken parm" is a plausible alias for both items, no alias list resolves it, because the ambiguity is real. Somebody has to ask, or one of the names has to change.
+
+## Finding the collisions without guessing
+
+The evidence is already in two places.
+
+The first is your clarification transcripts. Pull calls where the agent asked the caller to confirm which item they meant, and count by item pair. The pairs that repeat are your collision list, and it is usually shorter than expected, often three or four pairs on a menu of two hundred items.
+
+The second is your remake log, or whatever informal version of one you keep. Items that come back because the guest got the wrong thing are frequently name collisions rather than kitchen errors, and the pattern is easy to see once you sort by item.
+
+Read both before touching the menu. The pairs you would have guessed at from the printed page are often not the ones causing problems, and the ones causing problems are often items in different sections that you would never think to compare.
+
+## What a phone-safe name looks like
+
+The rule is that the distinguishing word should come early, be more than one syllable, and not be a number.
+
+- Put the difference at the front, so "Sub" becomes part of the name's opening rather than a trailing qualifier that gets lost.
+- Prefer a distinct word over a distinct number, because "Family Bundle" and "Party Bundle" survive a bad line in a way that "Bundle 2" and "Bundle 3" do not.
+- Keep the whole name to about four words, since callers truncate anything longer and you lose control of what they actually say.
+- Avoid pairs that differ only by a plural or a short vowel, which are the first things to disappear on a compressed phone line.
+- Say the name aloud to somebody in the kitchen without pointing at the menu, and if they ask which one you mean, the name is not done.
+
+That last test is the whole method compressed into one action, and it costs nothing.
+
+## Foreign-language names are usually fine
+
+There is a reflex to blame item names in other languages for phone confusion, and it is mostly wrong. A name like banh mi or pad see ew is learned as a fixed sound by the people who order it, and callers say it consistently. The variation is in pronunciation, not in which item they mean, and pronunciation variants are exactly what an alias list handles.
+
+What does help is mapping the common mispronunciations and the English description to the same item, so both "pad see ew" and "the wide noodle one" land in the right place. Menus that operate in more than one language have a further layer worth reading about in [multi-language menu support](/blog/multi-language-menu-support).
+
+Stripping character out of a menu to make it easier to say is a bad trade. You lose the thing that makes the restaurant itself, and you gain a marginal improvement that aliases would have given you anyway.
+
+## Numbers deserve their own paragraph
+
+Numbered menus are common in takeout, and they are genuinely useful for callers who already know what they want. The problem is the teens. Six and sixteen, seven and seventeen, three and thirteen: each pair is one weak syllable apart, and phone audio is exactly where weak syllables go to die.
+
+The workable fix is confirmation rather than renaming. When a numbered item in the teens is ordered, the readback states the number and the item name together, so a mismatch surfaces on the call rather than at the window. That is cheaper than renumbering a menu your regulars have memorized.
+
+## Do the naming pass before the modifier pass
+
+If you are cleaning up a menu for phone ordering, item names come first and modifiers come second, because a wrong item makes every downstream modifier irrelevant. Once the names are stable, the next round of gains is in cutting the option trees down, which is the subject of [simplifying modifier trees](/blog/simplifying-modifier-trees).
+
+Then keep the naming decisions somewhere they survive the next menu change. The failure pattern is that someone fixes a collision in April and a new item reintroduces it in September, because the reasoning lived in one person's head. Attach it to whatever process you already use for [menu sync](/blog/menu-sync-deep-dive-voice-ai) so the check happens when items change rather than when problems reappear.
+
+The test to run this week: pull ten clarification transcripts and write down every item pair the agent had to ask about. If the same pair appears three times, you have found a name worth changing, and you found it with evidence instead of opinion.

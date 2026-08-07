@@ -1,0 +1,69 @@
+---
+title: "The Duplex demo and what it did to caller expectations"
+description: "Google's 2018 Duplex demo set the public reference point for what an AI phone call sounds like. Four lessons from it still shape how your callers react."
+publishedAt: "2026-07-09"
+faqs:
+  - question: "What was Google Duplex?"
+    answer: "A Google system, shown publicly in 2018, that placed outbound phone calls on a user's behalf to book restaurant reservations and salon appointments. The demo was notable because the synthetic voice used filler sounds and pauses that made it hard to distinguish from a person, and because the businesses receiving those calls had not been told they were speaking to software."
+  - question: "Why was the Duplex demo controversial?"
+    answer: "Because the person answering the phone did not know they were talking to a machine. The reaction was fast enough that Google publicly committed to having the system identify itself at the start of calls. That episode set the default expectation that an automated caller discloses what it is, and it is why disclosure is now a starting assumption rather than a debate."
+  - question: "Does Duplex have anything to do with restaurant phone AI today?"
+    answer: "Only as a reference point, and it pointed the opposite direction. Duplex made outbound calls to restaurants on a consumer's behalf; the systems restaurants buy now answer inbound calls from customers. The technical overlap is real but the business is inverted, and the lessons that carried over are about caller expectations rather than architecture."
+  - question: "Should a restaurant's phone agent try to sound fully human?"
+    answer: "No, and the attempt tends to backfire. Callers who suspect they are being deceived get adversarial, and callers who are told plainly what they are talking to move straight to what they wanted. Aim for a voice that is natural to listen to, responds without awkward gaps, and says what it is. Naturalness and pretending to be a person are separate goals."
+  - question: "What did Duplex get right that still matters?"
+    answer: "Timing. It handled interruptions, hesitation, and the messy back-and-forth of a real phone call rather than waiting for clean turns, and that is still what separates a phone agent people tolerate from one they hang up on. Speech quality has become fairly ordinary since then. Conversational timing has not, and it remains the thing worth testing before you buy."
+---
+
+Most people remember the 2018 Duplex demo as the moment machine speech stopped sounding like a machine. The part worth your attention is what happened in the days after, because that reaction, not the voice quality, is what shapes how your callers behave on the phone today.
+
+For anyone who missed it: Google showed a system placing outbound calls to book a restaurant table and a hair appointment. The synthetic voice hesitated, said "mm-hmm," worked around a receptionist who misunderstood the question. The room applauded. Then a fairly large number of people pointed out that the person on the other end of the call had no idea they were talking to software, and the conversation turned within about 48 hours. Google committed to having the system announce itself.
+
+That sequence established three defaults that a restaurant buying a phone agent inherits, whether or not anyone involved remembers where they came from.
+
+## Disclosure stopped being an open question
+
+Before Duplex it was a live debate whether an automated caller should say so. After Duplex it stopped being one, at least as a matter of public expectation, and it has since become an actual legal requirement in some places.
+
+Operators sometimes ask whether their phone agent should just answer as the restaurant and let callers assume. It is an understandable instinct and it is the wrong call, for a practical reason more than an ethical one. Callers who suspect they are talking to a machine and have not been told get combative. They test it. They repeat themselves loudly, they say "representative" over and over, they treat the whole interaction as an obstacle. Callers who are told in the first sentence skip all of that and just say what they want, because the ambiguity was what they were fighting, not the software.
+
+The practical version is one short line at the top of the greeting that names the restaurant and says plainly that an automated assistant is taking orders, followed immediately by something useful. Not an apology, not a paragraph. Restaurants that test this generally find the caller reaction to disclosure is close to nothing, which surprises them.
+
+## The uncanny middle is worse than either end
+
+The demo also taught something about voice quality that the applause obscured.
+
+A voice that is obviously synthetic is fine. Callers adjust their speech, speak a bit more clearly, and get on with it. A voice that is genuinely indistinguishable from a person is also fine, in the narrow sense that nobody notices. The bad zone is in between, where the voice is good enough that a caller starts treating it as human and then hits a moment that breaks the illusion. That is where the reaction goes from mild to hostile, because the caller now feels they were being handled.
+
+This has a direct consequence for how you evaluate a vendor demo. A polished recording tells you very little. What you want to hear is the system in the moments where things go sideways: a caller who changes their mind mid-sentence, a background of kitchen noise, a person who says three things at once. Our post on [whether AI phone answering sounds robotic](/blog/does-ai-phone-answering-sound-robotic) goes through what to actually listen for.
+
+### Why the filler sounds worked
+
+Worth naming the specific trick, because it is misunderstood. The "um" and "mm-hmm" in the Duplex recordings were not decoration. They filled the gap while the system was still deciding what to say, which kept the caller from concluding that the line had gone dead.
+
+That is a timing solution dressed up as a personality feature. The modern equivalent is just being fast enough not to need it, which is why response latency is a specification worth asking about rather than a detail. A response that arrives inside the window a person expects reads as attentive. One that arrives half a second late reads as broken, regardless of how good the voice is. The mechanics are in [sub-second latency for voice agents](/blog/sub-second-latency-voice-ai-restaurants).
+
+## The direction of the call was the real story
+
+Here is the part most retrospectives skip. Duplex called restaurants. It was a consumer product that pointed a machine at your host stand.
+
+That never became widespread, and the market went the other way: restaurants now buy systems that answer their own inbound calls. But the experience of receiving that demo call is a useful thing for an operator to sit with, because it is the closest available preview of how your own callers experience your agent.
+
+The receptionist in the recording was not confused by the voice. She was confused by a caller who did not respond to the thing she actually asked. That is the failure mode that matters, and it is not a speech problem. It is a question-answering problem, and it shows up in your restaurant as an agent that cannot say whether you have outdoor seating, whether the kitchen closes before the bar, or whether the lunch menu runs on Saturday. Handling of those questions is covered in [answering hours and parking questions](/blog/voice-ai-answering-faqs-hours-parking).
+
+## Four things the episode still tells you to check
+
+If you are evaluating a phone agent now, the Duplex era compresses into a short test list:
+
+- Say the disclosure line out loud in your own restaurant's voice, and time it. If it takes more than three seconds you will lose impatient callers before they hear a menu.
+- Interrupt the agent mid-sentence during the demo and see what happens. Real callers do this constantly, and it is the single most revealing thing you can do in ten seconds. The behavior to look for is described in [interruption handling and endpointing](/blog/interruption-handling-endpointing-voice-agents).
+- Ask an off-script question that a regular would ask. Not a menu item, something like whether you take a reservation for nine on a Friday.
+- Check how the agent behaves when it does not know. A clean handoff to a person is a good answer; a confident wrong answer is the outcome that costs you the customer.
+
+## Where this leaves you
+
+The Duplex demo is often cited as the moment voice AI became viable, and that framing puts the emphasis in the wrong place. Speech synthesis got good and then it got ordinary; every vendor has a pleasant voice now, and picking on voice quality alone is picking on the part that has been solved for years.
+
+What did not get solved by the demo, and still separates products, is whether the system knows your business well enough to answer a real question, whether it can be interrupted without falling apart, and whether it hands off cleanly when it is out of its depth. Those are the same three things the receptionist in that 2018 recording was implicitly testing.
+
+So when a vendor plays you a recording, thank them and then ask to call the number yourself. Talk over it. Change your order halfway through. Ask something that is not on the menu. If it holds up under that and it tells the caller what it is in the first breath, the voice quality is the least interesting thing about it. If it does not, no amount of naturalness will keep your callers from doing what people have done with automated phones since long before 2018, which is press zero and ask for a person. Where that handoff should land is a policy decision, not a technical one, and it is worth setting before you go live rather than after. The related metric to watch once you are running is covered in [call containment](/blog/what-is-call-containment).

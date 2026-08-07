@@ -1,0 +1,54 @@
+---
+title: "Can a phone order trigger Toast-managed delivery?"
+description: "Toast dispatches couriers for orders on your own channels. Whether a phone order qualifies depends on how it lands in Toast, and that is a testable question."
+publishedAt: "2026-06-05"
+faqs:
+  - question: "Does a phone order automatically dispatch a Toast delivery driver?"
+    answer: "Only if the order arrives in Toast flagged as delivery with a valid address, and only if your account is configured to dispatch that order type. An order created through an integration can satisfy those conditions, but it is not guaranteed by the integration existing. Place one real test order to your own address and watch what happens before you rely on it."
+  - question: "How does X1 Voice connect to Toast?"
+    answer: "Through Deliverect, which is also how X1 Voice reaches Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros. Square, Clover and OrderCounter connect directly. The practical difference is that an order passing through a middle layer carries whatever order attributes that layer maps, so delivery flags and address fields are the ones worth verifying first."
+  - question: "What breaks most often with delivery dispatch on phone orders?"
+    answer: "The address. A courier needs a deliverable address including apartment or suite detail, and a caller reciting an address out loud is the least structured input in the entire chain. Address confirmation, readback, and a hard stop when the address cannot be resolved matter more than any other part of the configuration."
+  - question: "Should I quote a delivery time on the phone?"
+    answer: "Quote a range, and make it come from something real rather than a fixed number in a script. A flat forty-five minute promise at seven on a Friday generates callbacks and refunds. If the quote cannot be driven by current kitchen and courier conditions, quote wide and beat it rather than quoting tight and missing."
+  - question: "Is dispatched delivery cheaper than a marketplace order?"
+    answer: "Usually, because you are paying a delivery fee rather than a full marketplace commission, and the customer relationship stays yours. Run the arithmetic on your own average ticket rather than on a general claim: take your per-delivery dispatch cost, compare it to your marketplace rate multiplied by your average ticket, and see which is larger at your numbers."
+---
+
+An integration that writes phone orders into Toast does not, by itself, get a driver to your door. Those are two separate things, and operators conflate them constantly, usually right up until the first Friday when a delivery order sits on the pass for twenty minutes with nobody coming to collect it.
+
+Toast can dispatch third-party couriers for delivery orders placed on your own channels. Whether an order created by a voice agent counts as one of those orders depends on how it lands in Toast and how your account is set up, and the only reliable way to find out is to place a real order and watch. That is not a satisfying answer, but it is a testable one, which is better than a confident answer that turns out to be wrong at dinner service.
+
+## What has to be true for dispatch to fire
+
+Work backwards from the courier. A courier gets assigned because a system somewhere decided there is a delivery order with a pickup location, a dropoff address, and a ready time. Every one of those three has to arrive intact.
+
+The order type is the first gate. An order written into Toast as a takeout ticket is not a delivery order no matter how much address data is attached to it. If the integration path maps your phone orders to the wrong order type, everything downstream is correct and nothing dispatches. This is the single most common cause of the empty-pass problem, and it is a configuration line, not a defect.
+
+The address is the second and it is the fragile one. Your POS needs a structured, deliverable address: street number, street, unit, city, postal code. What a caller gives you is a spoken sentence, frequently with the apartment number attached as an afterthought, sometimes with a landmark instead of a number. Any system taking that order, human or otherwise, has to convert speech into a resolvable address and confirm it back. When the resolution fails, the correct behavior is to stop and escalate rather than to push a half-address through and let a courier work it out in the parking lot.
+
+The ready time is the third. A dispatch decision usually keys off when the food will be up. If your integration sends no ready time, or sends a default, the courier arrives either far too early and stands in your lobby or far too late and delivers something cold. Getting this right means the quote your agent gives the caller, the ready time on the ticket, and the dispatch trigger are all derived from the same estimate rather than three independent guesses. The mechanics of keeping that estimate honest under load sit in [order throttling against kitchen capacity](/blog/order-throttling-kitchen-capacity-phone).
+
+## The test that answers this in twenty minutes
+
+Do this on a slow afternoon, before you commit to anything, and do it with a real address you can walk to.
+
+Place a phone order through the agent the way a customer would, including the address, and stop watching the screen. Go look at Toast. Is there a ticket? What order type does it show? Is the address populated in the delivery fields or sitting in a notes blob? Is there a ready time? Then wait and see whether a courier is assigned, and how long that takes relative to when the ticket appeared.
+
+Whatever fails, fails visibly, and each failure has a specific owner. A missing ticket is an integration problem. A ticket with the wrong order type is a mapping problem. A populated ticket with the address in a notes field is a field-mapping problem and is the one most likely to be fixable in an afternoon. No dispatch at all with everything else correct is a Toast account configuration question, and worth taking to Toast directly rather than to your voice vendor.
+
+Then run it once more with a deliberately awkward address. An apartment with a unit letter, or a street name that sounds like another street name in your delivery area. That second test tells you more about your Friday night than the clean one did, because the clean address was never going to be the problem. The broader connection details for this path are covered in [Toast phone ordering integration](/blog/toast-ai-phone-ordering-integration), and the same test structure applies to any POS.
+
+## Where the dispatch model earns its keep, and where it does not
+
+The reason to care about any of this is margin. An order that arrives through a marketplace carries a commission against the full ticket. An order that arrives on your phone and is delivered by a dispatched courier carries a delivery fee against the same ticket. On most menus the second number is smaller, and the customer's phone number, address and order history stay in your system rather than in someone else's.
+
+That advantage is real and it is also conditional. It requires that your delivery zone is drawn tightly enough that dispatch costs stay predictable, which is its own exercise and is covered in [delivery zone rules for phone orders](/blog/delivery-zone-rules-phone-orders). It requires that you actually answer the phone during the hours delivery demand arrives, which is the constraint most restaurants fail on rather than any of the technical ones. And it requires that the customer gets told what is happening, because a dispatched delivery with no status update produces a "where is my food" call at minute thirty-five that consumes exactly the staff attention you were trying to protect. Text confirmations, described in [order status texts](/blog/restaurant-order-status-text-updates), remove most of those calls.
+
+The comparison against marketplace economics is worth doing with your own numbers rather than accepting a general claim, and [voice AI versus delivery app commissions](/blog/voice-ai-vs-delivery-app-commissions) lays out the arithmetic. On a $28 average ticket the two models can be close enough that convenience decides it. On a $60 catering-adjacent ticket they usually are not close at all.
+
+## What to do before you turn any of this on
+
+Confirm three things in writing, in this order. First, that your Toast account is enabled for managed delivery on the order type your phone orders will carry. Second, that the integration path maps address fields into the delivery address, not into an order note. Third, that a failed address resolution escalates to a human rather than submitting.
+
+Then place the test order. If your setup already runs phone orders into Toast and you have never watched one dispatch end to end, you do not currently know whether it works. You know it has not visibly broken yet, which is a different claim, and the difference tends to reveal itself on the busiest night of the quarter rather than on a Tuesday.

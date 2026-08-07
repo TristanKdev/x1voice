@@ -1,0 +1,74 @@
+---
+title: "Card-not-present fraud red flags on a restaurant phone"
+description: "A phone order paid by a card nobody swiped is a card-not-present sale, and the restaurant carries the loss. The patterns, and the checks that stop most of them."
+publishedAt: "2026-04-21"
+faqs:
+  - question: "Who pays when a phone order turns out to be a stolen card?"
+    answer: "The restaurant, in nearly every case. A card read over the phone is a card-not-present transaction, which means the merchant carries liability for the chargeback rather than the issuer. You lose the food, the labor, the processing fee, and often a chargeback fee on top. That is the whole reason phone payment deserves rules that counter service does not need."
+  - question: "What is the most common phone fraud pattern?"
+    answer: "An unusually large order, placed for delivery or pickup within the hour, paid with a card read aloud, with pressure to hurry and some reason the caller cannot be reached at the number on file. The size is the point, because the operation only pays off if the ticket is big. Small orders are rarely worth anyone's effort."
+  - question: "Does asking for the billing zip code help?"
+    answer: "It helps against a card number stolen without the cardholder's address, which is a large share of them, and it costs you five seconds. It does nothing against a full profile bought together. Treat address verification as one filter among several rather than as a decision, and never as a reason to skip a callback on a large first-time order."
+  - question: "Can a voice agent be tricked more easily than a person?"
+    answer: "It depends on what the agent is allowed to do. An agent that follows a written rule on order size, address matching, and callback verification is harder to pressure than a nineteen-year-old host during a rush, because social pressure does not work on it. An agent with no rules and the ability to accept any card is easier, which is a configuration question rather than a technology one."
+  - question: "Is refusing suspicious orders worth the lost business?"
+    answer: "Usually yes, on the arithmetic. A four-hundred-dollar fraudulent order costs you the food, the labor, and a chargeback fee, so declining several legitimate large orders still comes out ahead of accepting one bad one. The cost is not zero, which is why the rule should be a callback rather than a refusal wherever a callback is possible."
+---
+
+A card number read to you over the phone is a card-not-present transaction. If it turns out to be stolen, the chargeback lands on you, not on the bank, and you have already given away the food. That single fact is why the phone deserves rules that your counter does not, and why "we've never had a problem" is a statement about luck rather than about controls.
+
+The good news is that the operations aimed at restaurants are not sophisticated. They follow a small number of recognizable shapes, they aim at the same targets, and most of them fall apart against a callback.
+
+## The shape of the standard attempt
+
+It is a large order. Four hundred dollars of catering trays, or two hundred in wings, called in for pickup or delivery in an hour or two. Small orders are not worth the trouble, so size is almost always the first signal.
+
+The caller is friendly, hurried, and has a story about why the timing is tight. An office lunch that got moved up. A team that just landed. The urgency is functional: it exists to compress the window in which anyone stops and checks something.
+
+The card is read aloud, sometimes several cards if the first declines. A caller who works through three cards in one conversation is telling you something. Legitimate customers occasionally have one card decline. They do not usually have a stack.
+
+And then some detail creates distance between the card and the food. Delivery to an address that is not the billing address. A request to leave it outside. Someone else picking up. A callback number that is a mobile the caller answers rather than the office they claim to be at.
+
+## The specific things worth stopping for
+
+- A first-time caller placing an order well above your typical ticket, paying by card over the phone, for same-day fulfillment
+- A billing zip code that does not match, or a caller who does not know the billing address on the card they are holding
+- Delivery to a location the caller cannot confirm details about, or a request to hand the order to someone waiting outside rather than at a door
+- Multiple card attempts in one call, or an offer to split the total across cards for no stated reason
+- Pressure applied when anyone suggests calling back, which is the single most reliable signal on the list
+
+None of these is proof on its own. Two of them together on a four-hundred-dollar ticket is a callback, every time.
+
+## The variants that skip the food entirely
+
+A second family of calls is not trying to buy anything. Someone claims to be from your payment processor, your delivery platform, or your own corporate office, and asks a staff member for a merchant portal login, a card number on file, or a verification code that just arrived by text.
+
+These work because they arrive mid-rush and sound official. The defense is a sentence every employee should know: nobody legitimate ever asks you to read back a code from your phone. Not the processor, not the platform, not the POS vendor. If the call goes there, hang up and call back on the number in your own dashboard.
+
+The gift card version is the same trick wearing a different hat. A caller claiming to be the owner asks a manager to buy gift cards, or to activate cards and read the numbers, always urgently and always with a reason they cannot be reached directly. Gift cards are the payout because they move instantly and cannot be recalled, which is also why [gift card sales by phone](/blog/gift-cards-by-phone-restaurants) need their own rules.
+
+## What actually reduces the loss
+
+Verification by callback is the strongest single control and it is free. On a large first-time card order, take the order, tell the caller you will confirm in a few minutes, then call the number on file for the card or the business rather than the number they gave you. Fraudulent orders die at this step, usually by the caller simply not answering.
+
+Address verification catches the subset where a number was stolen without the cardholder's details. It costs five seconds and should be routine on any card taken by phone.
+
+A size threshold is the other half. Pick a dollar figure, above which a card order requires either a callback or in-person payment, and write it down like any other policy number. Most operators can set this at two or three times their average phone ticket without touching legitimate business at all. For genuine catering, the qualification conversation covers this anyway, which is part of why [large catering orders](/blog/voice-ai-large-catering-orders) route differently from ordinary phone orders.
+
+Not storing card numbers is the control that limits the damage of everything else. If nobody in the building ever writes a number down or types it into a note, the exposure ends with the transaction. What that requires operationally is covered in [collecting payment over the phone safely](/blog/collecting-payment-over-the-phone-safely) and the handling requirements in [PCI compliance for restaurant phone payments](/blog/pci-compliance-restaurant-phone-payments).
+
+## Where an automated agent changes the picture
+
+The honest version is that it depends entirely on configuration, and the effect runs in both directions.
+
+An agent follows the size threshold every time, including at 8:15 on a Friday when a manager would have waved it through to get off the phone. It does not respond to urgency, flattery, or a caller who says they know the owner. Social engineering is aimed at humans and it does not land. That is a real advantage and it is the part vendors undersell.
+
+The other direction is that an agent taking payment with no rules configured will process anything it is handed, quickly and repeatedly, which makes a badly configured system a faster target than a slow one. Ask a vendor what happens on a four-hundred-dollar first-time card order. If the answer is that it processes normally, the threshold has not been built and you should ask for it before launch. Where the agent hands a suspicious order to a person is the same escalation plumbing as everything else, described in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+Also worth asking: is the card number ever spoken back, recorded, or written into a transcript. Tokenized capture avoids that entirely, and the difference is explained in [phone payment tokenization](/blog/phone-payment-tokenization-explained).
+
+## What this costs if you get it wrong
+
+Run the arithmetic once, with your own numbers. A four-hundred-dollar fraudulent catering order costs you roughly a third of that in food, an hour or two of kitchen labor during a service you were already staffing, the processing fee, and a chargeback fee from your processor. Call it two hundred out the door on a ticket that was never real.
+
+Against that, a callback policy might cost you the occasional legitimate customer who found the check annoying. Set your threshold, write the callback sentence your staff will actually say, and tell them plainly that nobody will ever be criticized for calling a large order back. The chargeback history that follows from all of this, including how the disputes themselves play out, is in [call fraud and chargebacks](/blog/voice-ai-restaurant-call-fraud-chargebacks).

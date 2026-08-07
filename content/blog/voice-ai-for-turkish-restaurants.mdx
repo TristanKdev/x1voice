@@ -1,0 +1,72 @@
+---
+title: "Voice AI for Turkish restaurants: where the menu breaks"
+description: "Turkish menus break speech recognition in predictable places. What to fix before a voice agent answers your phone, and how platter orders should be handled."
+publishedAt: "2026-02-12"
+faqs:
+  - question: "Can a voice agent take an order in Turkish?"
+    answer: "Yes, and the harder problem is the calls that are half Turkish and half English. A grandmother ordering for a family gathering will name the dishes in Turkish and give the pickup time in English, sometimes inside one sentence. Ask any vendor to demonstrate mid-sentence switching on a live call, not a language toggle at the start of the call."
+  - question: "Will it understand iskender, lahmacun, and adana?"
+    answer: "Only if someone teaches it. Out of the box, a speech model trained mostly on English will mangle Turkish dish names, and it will mangle them differently depending on whether the caller is a Turkish speaker or a regular who learned the word from your menu board. Both pronunciations have to be mapped to the same POS item during setup."
+  - question: "How should large platter and catering calls be handled?"
+    answer: "Route them to a person, or at minimum have the agent collect the details and hand off before quoting a price. A fourteen-person mixed grill order involves portioning decisions, bread counts, and kitchen timing that you should not automate on day one. Take the name, the headcount, the date, and the callback number, then call them back."
+  - question: "Does the agent need to know what is halal?"
+    answer: "It needs to answer the question accurately or say it does not know and offer a transfer. Guessing is worse than either. If your lamb and beef are halal certified and your chicken is not, that distinction has to be written into the agent's answers exactly as you would say it yourself, because a wrong answer on this costs you the customer permanently."
+---
+
+A woman calls at 4:40 on a Saturday. She wants two large Adana platters, one iskender, a family portion of lentil soup, and halfway through she switches into Turkish because her mother is standing behind her adding items. Whoever picks up that phone is holding three things at once: the food, the language, and the arithmetic of feeding fourteen people.
+
+That call is the reason a Turkish kitchen is harder to automate than a pizza counter, and also the reason it's worth doing. A pizza order has maybe forty possible shapes. Your Saturday afternoon has calls that a generic phone agent will get badly wrong unless someone sits down and teaches it your actual menu.
+
+## The items that break first
+
+Speech recognition fails on your menu in a pattern you can predict. It fails on the words that don't appear in English-language training data and don't sound like anything that does.
+
+Lahmacun is the classic. Callers say it four or five ways: the Turkish pronunciation, a flattened English version, "Turkish pizza," and a mumble that trails off because they've only ever pointed at it. Pide has the same problem with a worse consequence, because it collides with "peedah," "peda," and sometimes with your own bread item. Künefe, kısır, cacık, mercimek, sucuk, şiş, börek: every one of these needs a written list of the ways your customers actually say it, mapped to one POS item.
+
+The diacritics matter here in a way that catches people out. Your POS almost certainly stores the item as "Kunefe" or "Kanafeh" without the accents, because someone typed it in years ago on a keyboard that didn't have them. The voice agent has to know that the sound the caller made, the spelling in the POS, and the spelling on your printed menu are all the same dessert. That mapping is manual work during setup, and it's the difference between a system that works and one you turn off in week two. The general method is in [training a voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu).
+
+## Same dish, four names
+
+The bigger accuracy problem isn't pronunciation, it's synonyms.
+
+A döner is a gyro to half your customers and shawarma to another slice of them, and if you also sell a gyro as a separate item with different bread and different sauce, you have a genuine ambiguity that a human employee resolves by asking one question. The agent has to ask that same question. If it silently picks one, you will discover the error at the pass, and you will discover it repeatedly.
+
+Same with "the combo," "the platter," and "the plate," which in most Turkish menus mean three different price points. Same with "mixed grill," which might be your karışık ızgara for two or a single-portion item depending on how the menu was built. Write down every ambiguous phrase you hear on the phone in a normal week. That list is short, usually under fifteen entries, and it's the highest-value thing you will hand your vendor.
+
+## What Turkish-language calls actually sound like
+
+They are rarely fully in Turkish. The common shape is a caller who names dishes in Turkish, gives the time and the phone number in English, and switches back when they get to modifiers. Older callers do this more, and older callers place your bigger family orders.
+
+A system that asks the caller to choose a language at the start of the call handles this badly, because the caller doesn't fit in either bucket. What you want is a model that recognizes both languages inside the same conversation without a mode switch. That's the specific thing to test on a demo call, and it's covered more generally in [multilingual phone ordering](/blog/multilingual-ai-phone-ordering-restaurants). Our [language coverage](/languages) page lists what's supported.
+
+The other thing worth testing: numbers. Turkish speakers often give a phone number in Turkish digits even in an otherwise English sentence. If the agent drops or transposes a digit there, the order is unreachable and you find out when the food is cold.
+
+## Platter orders deserve a person
+
+Here is where I'd tell you to hold back on automation.
+
+A fourteen-person order isn't a big version of a small order. It's a conversation about how much rice, whether they want the lavash or the pide bread, whether the chicken and the lamb go on separate trays, and whether your kitchen can even do it at 6pm on a Saturday. The portioning judgment is yours and it's worth money.
+
+Have the agent take the call, get the name, the headcount, the date and time, and a callback number, and then get out of the way. You call back in ten minutes and close it properly. That's faster than what happens now, which is that the call rings out during service and the customer books someone else. The routing pattern is the same one described in [handling large catering orders](/blog/voice-ai-large-catering-orders), and it applies across the whole [Mediterranean category](/blog/voice-ai-for-mediterranean-restaurants).
+
+## Ramadan and the weeks that don't behave
+
+Your call volume is not flat across the year, and the spikes are not the ones a generic system expects.
+
+During Ramadan, iftar orders cluster into a narrow window that shifts by a few minutes every day, and the calls come in a wall about ninety minutes before sunset. A phone that can hold two callers at once will lose most of that wall. An agent that answers every line at once will not, which is the entire argument for it in that month. Set your hours and any special menus explicitly for those weeks rather than assuming the system will infer them.
+
+Eid, Kurban Bayramı, and graduation season have the same shape: a normal week of volume compressed into two days, mostly large orders, mostly by phone.
+
+## Questions that aren't about food
+
+A meaningful share of your calls never mention a dish. Are you halal. Do you have a private room. Is there parking. Are you open on the holiday. Do you do lamb for a naming ceremony.
+
+Answer these precisely or transfer. On halal in particular, write the answer the way you would say it out loud, including the qualifications: which proteins, which certifier if you name one, and what happens to that answer during catering. A vague or confident-but-wrong answer here loses a customer for good, and the same rule applies for [halal kitchens](/blog/voice-ai-for-halal-restaurants) generally.
+
+## Before you turn it on
+
+Do this test, and do it yourself rather than delegating it.
+
+Call your own number and place the order your mother-in-law would place. Use the Turkish names. Switch languages in the middle. Ask whether the lamb is halal. Order a platter for twelve. Give a phone number quickly. Then go look at what landed in the POS.
+
+If three of those five come back correct, you have a fixable system and a short list of corrections. If one comes back correct, the menu mapping wasn't done and no amount of tuning the voice will save it. That distinction is the whole decision, and it takes about six minutes to find out.

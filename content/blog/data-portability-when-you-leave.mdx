@@ -1,0 +1,70 @@
+---
+title: "Getting your data out of a voice AI vendor"
+description: "Call recordings, transcripts and menu configuration are assets you paid for. What a real export looks like, and why you should test it long before you cancel."
+publishedAt: "2026-07-24"
+faqs:
+  - question: "Do I own my call recordings?"
+    answer: "That depends entirely on what your contract says, and plenty of contracts are quiet about it. The safe assumption is that you own the recordings of calls to your own phone number and the vendor is processing them on your behalf, but you need that written down, along with a stated obligation to hand them over on request. Verbal assurance from a salesperson is not ownership."
+  - question: "What format should a data export come in?"
+    answer: "Audio as standard files (WAV or MP3) with a machine-readable index, transcripts as JSON or CSV with timestamps and call IDs, and menu configuration as structured data rather than a rendered document. A PDF report is not an export. If the only thing you can pull is a dashboard screenshot, treat that as no export at all."
+  - question: "Can a vendor charge me for an export?"
+    answer: "Some do, and a modest fee for pulling months of audio is not unreasonable given the storage and bandwidth involved. What is unreasonable is an unspecified fee decided after you give notice, which turns your own data into a bargaining chip held against you. Get the number, or a stated cap, into the agreement before you sign."
+  - question: "How long is my data kept after I cancel?"
+    answer: "Retention after termination should be a specific number of days, written into the contract, with a defined deletion at the end of it. Thirty days is a common and workable window. Watch for two failure modes: deletion so immediate that you lose access before you have finished exporting, and indefinite retention that leaves customer audio sitting somewhere you no longer have a relationship with."
+---
+
+The week you decide to leave a voice vendor is the worst possible time to discover what you can and cannot take with you. By then you have nothing to bargain with, a notice clock running, and a support queue that has no particular reason to move fast.
+
+Data portability is a boring thing to negotiate and an expensive thing to skip. It is also one of the few contract terms where the right answer is the same for every restaurant, regardless of size or format.
+
+## What you actually have sitting with the vendor
+
+Four separate things, and operators tend to think only about the first.
+
+Call recordings are the raw audio of conversations between your customers and the agent. Transcripts are the text version, usually with timestamps, call outcomes, and whatever tags the system applied. Order data is the record of what was ordered on each call, which may or may not duplicate what already landed in your POS. And menu configuration is everything you and the vendor built during setup: item names, the alternate pronunciations and nicknames the agent recognizes, modifier logic, upsell rules, hours, delivery zones, escalation policy, and the answers to your common questions.
+
+The last one is the least discussed and often the most valuable. If setup took your GM eleven hours of menu review and phrasing corrections, that eleven hours is embedded in a configuration file. Losing it means paying for it again with a new vendor, usually in the form of your own staff time rather than a line item.
+
+## The export vendors offer versus the one you need
+
+Most platforms have something they call an export. Frequently it is a CSV of call metadata, or a PDF summary report, or the ability to download recordings one at a time from a list view.
+
+None of that is portability. A per-call download button is technically an export and practically a wall, because nobody is clicking through 40,000 calls. What you need is a bulk mechanism: a single archive, an API you can page through, or a delivery to storage you control.
+
+Ask the specific question during evaluation. Not "can I export my data" — the answer is always yes. Ask: if I gave notice tomorrow, what exactly would arrive, in what format, how long would it take, and who does the work. A vendor with a real answer will describe a process. A vendor without one will describe an intention.
+
+## Recordings are the heavy part
+
+Audio is where portability gets genuinely difficult, because the volumes are large. A busy pizza shop takes hundreds of calls a week, and a year of that is a meaningful amount of storage to move.
+
+This is also where the answers get vague. Vendors that keep recordings in a proprietary player, or that transcode audio into a format only their system reads, have created a practical lock-in whether or not anyone intended it. So has a vendor whose retention policy quietly deletes anything older than 90 days, which some do for good privacy reasons and some do because storage costs money.
+
+Know your own retention window before you need it. If you are keeping recordings for dispute resolution or training, and the vendor keeps 90 days, then the archive you think you have does not exist. That intersects with the legal side too, since consent and retention rules vary by state — [call recording consent laws](/blog/call-recording-consent-laws-restaurants) and a written [retention policy](/blog/call-recording-retention-policy) are worth settling early rather than during an incident.
+
+## Menu configuration is the one nobody asks for
+
+Here is the practical asymmetry. Recordings are the thing operators worry about and rarely use after the fact. Menu configuration is the thing operators never think to ask for and would genuinely benefit from having.
+
+Ask whether you can export the agent's menu configuration as structured data. Some vendors will say yes without hesitation. Some will treat it as proprietary because the mapping logic is part of their product, which is a defensible position but one you should know about in advance.
+
+Even where the full configuration is proprietary, the inputs usually are not. Your item list, your alternate names and phonetic hints, your modifier rules, your FAQ answers, your escalation policy — those are your operational decisions, and you should be able to walk away with them in a spreadsheet. The [menu training work](/blog/how-to-train-ai-voice-agent-restaurant-menu) that produces those inputs is yours regardless of whose software consumed it.
+
+## Put it in the contract, not the support ticket
+
+Portability that lives in a salesperson's email is not portability. Four clauses, and they are short enough that a reasonable vendor will not fight them:
+
+An ownership statement saying the recordings, transcripts and order data belong to you and the vendor processes them on your behalf. An export obligation with a deadline, naming the formats and a bulk delivery method. A fee that is either zero or capped at a stated number. And a post-termination window during which the data stays accessible, followed by a defined deletion you can get confirmation of.
+
+If the agreement includes a data processing addendum, this is the natural place for most of it. [What belongs in a DPA](/blog/data-processing-agreement-voice-vendor) overlaps heavily with what belongs here. And the broader set of clauses to push back on sits in [contract terms to avoid](/blog/voice-ai-contract-terms-to-avoid).
+
+## Run the export while you are still happy
+
+This is the part almost nobody does, and it is the only thing on this page that produces certainty.
+
+Three months into the relationship, when things are going fine and the account team likes you, request a full export. Not a sample. The real thing, the way you would request it if you were leaving. Then open what arrives.
+
+You will learn three things quickly: how long it took, whether the files are usable without the vendor's software, and whether the menu configuration came along or quietly did not. Any gap you find at that point is a conversation. The same gap found during a migration is a problem you eat.
+
+Do it again annually, or after any platform change on the vendor's side. Exports break silently, and an export process that worked in March is not evidence about one in November.
+
+The rest of the leaving process — porting your number, overlapping the two systems, keeping calls answered during the cutover — is a separate exercise with its own sequencing, covered in [switching voice AI vendors](/blog/switching-voice-ai-vendors) and the [offboarding checklist](/blog/offboarding-checklist-voice-vendor). But none of it works if the data is stuck. Test the export first. Everything else is easier once you know you can leave.

@@ -1,0 +1,79 @@
+---
+title: "Voice AI for Ethiopian Restaurants: Platters and Injera"
+description: "Combination platters, injera counts, and fasting-season menus are where phone orders go wrong. What a voice agent needs configured before it answers your line."
+publishedAt: "2026-01-08"
+faqs:
+  - question: "How does a voice agent handle a combination platter for a group?"
+    answer: "It handles it well when the platter exists as a sized item with the wat selections attached as modifiers. The agent asks headcount, offers the matching platter size, confirms which stews are on it, and totals the order. It handles it badly when the platter is one button and the selections are typed into a note field."
+  - question: "Can it count injera correctly?"
+    answer: "Only if injera is a real line item with a quantity rather than something the kitchen adds by judgment. Decide how many rolls come with each platter size, make that explicit, and price extra injera as its own item. Then the agent can confirm a count out loud and the ticket prints a number the kitchen can pack against."
+  - question: "What about fasting-season orders?"
+    answer: "Vegan orders spike during fasting periods and the risk is a platter arriving with a meat stew on it. Build the fasting platter as its own item rather than as a modification of the standard one, and make sure the agent reads back that the whole order is vegan before confirming. Do not rely on a note."
+  - question: "Will it understand Amharic dish names?"
+    answer: "It depends entirely on what you load. Doro wat, kitfo, gomen, tibs, and shiro all need to reach the right POS item whether the caller says the Amharic name, the English description, or the spelling on your printed menu. Recognition of conversational Amharic is separate and worth testing with your own customers before launch."
+  - question: "Do most of my calls even need a person?"
+    answer: "Probably fewer than you think, but not zero. Large group platters, event catering, and anything with a delivery window should reach a human on purpose. The ordinary two-person dinner order and the hours question do not. Set the escalation rules deliberately instead of letting the agent decide by accident."
+---
+
+A caller wants dinner for six on a Saturday. They ask what comes on the large combination platter, whether they can swap the tibs for kitfo, how many injera come with it, and whether one of the platters can be all vegetarian because two people at the table are fasting.
+
+Your staff answer that in under a minute because they've answered it a thousand times. Every part of that answer lives in someone's head and none of it lives in your POS. That's the gap a voice agent runs into, and it's the same gap your online ordering has been quietly falling into for years.
+
+## The combination platter is the whole menu, and it's usually one button
+
+Look at how the large combination platter is set up in your POS right now. At most Ethiopian restaurants it's a single item with a price, and everything about what's actually on it is communicated verbally between the counter and the kitchen.
+
+That works when a person takes the order. It fails immediately with an agent, because the agent will confirm "one large combination platter" and print exactly that, and the kitchen will build whatever they usually build, and the caller who asked for extra doro wat and no shiro will get something else.
+
+Rebuilding it isn't complicated, but it requires a decision you may never have written down. How many stews on a small, a medium, a large. Which ones are choosable and which are always on. Whether a swap costs anything. Whether kitfo carries a supplement because the beef does. Write those rules on paper first, then build them as modifiers with quantities, then let the agent read them back.
+
+The general shape of this work is in [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers), and the reconciliation pass is the same one described in [menu sync deep dive](/blog/menu-sync-deep-dive-voice-ai).
+
+## Injera counts are the detail that generates callbacks
+
+Nothing on an Ethiopian takeout ticket causes more friction than injera. A platter for four leaves with enough for two, or a caller assumed extra rolls were included, or the kitchen packed generously on a night when they couldn't afford to.
+
+Make the count explicit. Decide how many rolls each platter size includes, put that number in the item description so the agent can state it, and sell extra injera as its own line item with a price. Then the agent can say "that comes with four, would you like extra" and the ticket prints a number the packer can count against.
+
+This is a two-hour fix that pays for itself in remakes and it has nothing to do with voice AI. Do it either way.
+
+## Fasting seasons change your menu and your call volume at the same time
+
+During Ethiopian Orthodox fasting periods, a large share of orders shift vegan, and the mistake that matters is a fasting customer receiving a platter with meat on it. That's not an inconvenience, it's a serious failure for that customer.
+
+Two rules make this reliable.
+
+First, build the fasting platter as a distinct item rather than as the standard platter with meat removed. A separate item cannot be half-modified. A modified item can, and eventually will be, when a note gets skipped at the pass.
+
+Second, have the agent read back the vegan constraint at confirmation as its own sentence, not buried in a list of items. A caller who hears "the whole order is vegetarian, is that right" will catch an error you would not have caught. The broader handling of dietary constraints on the phone is covered in [voice AI, allergens, and dietary questions](/blog/voice-ai-allergen-dietary-questions).
+
+Volume also shifts during these weeks. If fasting periods reliably produce a busier phone, that's the time to check your quoted pickup times rather than the time to discover they're stale.
+
+## Amharic names, English descriptions, and what customers actually say
+
+Your menu probably lists both the Amharic name and an English description. Your callers use whichever one they know, plus a few they invented. Some say "the lentil one." Some say the name with a pronunciation the system has never encountered.
+
+The fix is a list you can write from memory. For each item, every way a customer has ever asked for it. Doro wat and "chicken stew" and "the chicken with the egg" all point at the same button. Gomen and "the collard greens." Shiro and "the chickpea one." Load them all as alternates.
+
+Where to be genuinely skeptical is conversational Amharic. Recognition is workable and it is not the same as having an Amharic-speaking person on the line. If a meaningful share of your callers prefer Amharic and you currently have someone who takes those calls, route them to that person during staffed hours and use the agent for overflow and after-hours. That tradeoff is discussed in [multi-language menu support](/blog/multi-language-menu-support) and [multilingual AI phone ordering](/blog/multilingual-ai-phone-ordering-restaurants).
+
+## What to decide before anyone configures anything
+
+Four decisions, and they're yours rather than the vendor's:
+
+- The headcount or dollar threshold above which a group order goes to a person instead of being taken automatically
+- What each platter size includes, in stews and in injera, stated as numbers
+- Which items you will not sell for delivery because they don't travel, marked unavailable on that channel rather than hoped about
+- Whether Amharic-language calls route to a person during hours when one is available
+
+Make those four calls before launch and the rest of the setup is mechanical. Skip them and you'll be making them under pressure two weeks in, after a customer has already been affected. The escalation piece specifically is worth reading up on in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+## When you should not buy this
+
+If your room is small and mostly dine-in, with a phone that rings a dozen times a day about hours and directions, an agent is the wrong purchase. Put your hours on your listing, record a greeting that answers the three most common questions, and spend the money on the floor.
+
+If your menu genuinely varies by what the kitchen felt like making, with prices that adjust for regulars, the setup work is larger than any vendor's timeline implies. The vendor side is typically under 24 hours. Your side is a real afternoon of writing down rules you have never had to write down, and starting that work after launch rather than before is how rollouts go badly.
+
+And if your customers call specifically to talk to a particular person, protect that. Route to a human during staffed hours and let the agent take the overflow and the calls that come in after close. Starting narrow gives you the data to decide whether to go further, and costs you nothing if the answer is no.
+
+Whichever route you take, measure one thing for the first month: the share of phone orders that reach the kitchen without anyone needing to call the customer back for a clarification. Count it by hand. If that number isn't clearly better than what your staff produce on a busy Saturday, the configuration is wrong and the fix is almost always a rule you never wrote down.

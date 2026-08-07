@@ -1,0 +1,74 @@
+---
+title: "Voice AI for hospital cafés: shift changes and badge orders"
+description: "A hospital café takes four call rushes a day at shift change, plus visitor questions that aren't orders. What a voice agent handles, and what it must refuse."
+publishedAt: "2026-01-28"
+faqs:
+  - question: "Can a voice agent apply a staff badge discount?"
+    answer: "Only if it can verify the badge, which usually means it cannot. Employee pricing and payroll deduction live in a badge or HR system that a phone agent has no access to, so the safe pattern is to take the order at menu price and settle discounts at the counter where the badge is scanned. An agent that applies a discount on the caller's word will be wrong regularly."
+  - question: "What should happen when a caller asks about a patient's meal?"
+    answer: "It should transfer immediately, without attempting an answer. Patient nutrition is a clinical service run by a different department with access to diet orders, and a retail café agent has no business near it. Write the rule so that any mention of a room number, a patient, or a diet order routes to a person or to the nutrition services line."
+  - question: "Do visitor questions justify this on their own?"
+    answer: "In many hospitals, yes. A large share of café calls are people asking where it is, what floor, whether it's open on a Sunday, and whether they can bring a coffee upstairs. Those calls take a cashier away from a register during a rush and produce no revenue. Answering them automatically is the cheapest win in the building."
+  - question: "How does a voice agent handle four rushes instead of one?"
+    answer: "It takes calls concurrently, so the shape of the demand matters less than it does for a person. A hospital café gets short, sharp call spikes around shift change rather than one long dinner peak, and those spikes are exactly when the counter is busiest. Concurrency is the specific reason the pattern fits better here than in a restaurant with one nightly rush."
+  - question: "Does department catering belong in the same flow?"
+    answer: "Partly. An agent can capture the details of a meeting tray request, the headcount, the date, the department, and a callback number, which is most of the work. Pricing, delivery to a floor, and anything involving a cost center should route to whoever books catering, because those decisions depend on internal billing rules a phone agent shouldn't guess at."
+---
+
+Four times a day, a hospital café gets a call rush that lasts about twenty minutes. Roughly 6:30, 2:30, 6:30 again, and around 10:30 at night, tracking shift change. Those windows are also when the register line is longest, which means the phone rings hardest at the exact moment nobody can pick it up.
+
+That pattern is different from a restaurant's, and it changes the case for automating the line.
+
+## Four short spikes beat one long rush, for the wrong reason
+
+A takeout restaurant has one dinner peak. You can staff for it, badly, by having a manager hover near the phone from six to eight.
+
+A hospital café can't do that four times a day across three shifts, and the spikes are short enough that adding a person to cover them is obviously wasteful for the other twenty-two hours. So the calls go unanswered, and the caller, who is usually an employee of the same hospital, walks down and stands in the line instead. You didn't lose the sale. You lost the throughput, and you made a nurse with a thirty-minute break spend eleven of it queueing.
+
+A voice agent takes calls in parallel, so a spike doesn't queue. That's the whole mechanical advantage, and it fits this demand shape better than it fits a restaurant's. The arithmetic on covering peaks with people is worth doing honestly before you spend anything, and [peak-hour phone staffing math](/blog/peak-hour-staffing-math-phone) lays out the version of that calculation we'd use.
+
+## Most of the calls aren't orders
+
+Pull a day of call logs at any hospital café and a large share of what's there is a question with no transaction attached.
+
+Where is the café. What floor. Is it open on Sunday. Is it open right now. Do you have anything hot after nine. Can I bring a coffee up to a room. Is there a Starbucks in the building or is it just you. Do you take the meal card.
+
+Every one of those pulls a cashier off a register mid-rush to answer something that never changes. They're also the easiest calls in existence to hand to an agent, because the answers are static, they're already written on a sign somewhere, and getting them right requires nothing but keeping hours current. This is the least glamorous part of the category and it's usually the fastest payback. The pattern is the same as [answering hours and parking questions](/blog/voice-ai-answering-faqs-hours-parking), with a wayfinding layer specific to a building most callers find confusing.
+
+### Get the wayfinding answers from the people who give them now
+
+Don't write these from a floor plan. Ask the two cashiers who have answered the question a thousand times how they actually explain it, then use their words. "Take the main elevators to two and turn left at the chapel" is a better answer than anything derived from a map, and it's already been tested on a few thousand confused visitors.
+
+## Badge discounts are where this goes wrong
+
+Employee pricing is the most common request and the one an agent should not attempt to honor over the phone.
+
+Discounts, meal-plan balances, and payroll deduction sit in a badge or HR system. A phone agent has no line into it and no way to confirm that the caller is who they say they are. If you let it apply an employee rate on the caller's word, you will hand discounts to visitors, contractors, and vendors, and you'll find out about it in a monthly variance report rather than at the register.
+
+The workable pattern is to take the order at menu price, tell the caller the badge gets scanned at pickup, and settle it at the counter. That is one extra sentence in the call and it removes the entire category of problem. It also keeps you out of the harder question of taking payment over the phone at all, which carries its own handling requirements and is covered in [collecting payment over the phone safely](/blog/collecting-payment-over-the-phone-safely).
+
+If your café runs on a standard point-of-sale rather than a hospital-specific system, the order can land directly in the ticket queue and the discount is applied at settlement like any other. Our [integrations page](/integrations) covers which systems connect directly. If it runs on a food service platform tied to the hospital's badge system, ask hard whether an order can be written into it at all before you get further into the conversation.
+
+## Patient meals are not your calls
+
+This has to be an absolute rule and it should be tested before launch.
+
+People dial whatever number they find. A family member in a room who wants to know about their father's lunch will call the café, because the café number is on a menu card and the nutrition services extension isn't. That call involves a diet order, a clinical restriction, and a department with access to records. A retail café agent that tries to be helpful here is a liability, not a convenience.
+
+Write the transfer trigger broadly. A room number, the word patient, any mention of a diet order or a restriction, anything about a tray. All of it goes to a person immediately, with no attempt at a partial answer. Then call in and try to trick it, because a broad trigger is only useful if it actually fires.
+
+The same goes for anything a caller frames as a complaint about care, a billing question, or an attempt to reach a unit. Those arrive on food service lines constantly and the correct behavior is fast recognition and a clean transfer.
+
+## Department catering is the revenue nobody tracks
+
+Meeting trays, a breakfast spread for a department in-service, sandwich platters for a residency orientation. This business exists at every hospital, it's booked over the phone or by email, and it's usually handled by whoever happens to be around when the call comes in.
+
+An agent can do the first half of it well: capture headcount, date, time, department, delivery location, and a callback number, then hand it to whoever books catering with the details already written down. What it shouldn't do is quote a price or commit to a delivery to a floor, because both depend on internal billing rules and staffing that vary by day. The general shape of qualifying these calls without overpromising is in [taking catering orders by phone](/blog/ai-phone-answering-catering-orders).
+
+If your café also runs a coffee bar as its own concept, the ordering flow for that side has more in common with a standalone shop than with the cafeteria, and [voice AI for coffee shops](/blog/voice-ai-for-coffee-shops) is the closer reference.
+
+## The test worth running first
+
+Log every inbound call for one week with three columns: what time, what the caller wanted, and whether anyone answered. A clipboard by the register is enough.
+
+At the end of the week, sort the rows into orders, static questions, patient or clinical calls, and catering. If static questions and unanswered orders together make up most of the sheet, you have a phone problem with a cheap fix. If the sheet is mostly clinical calls that shouldn't be reaching you at all, your fix is a different phone number on the menu cards, and it costs nothing. Do that one first, then run the week again and see what's left.

@@ -1,0 +1,74 @@
+---
+title: "Access control when fifty managers share one voice platform"
+description: "Shared logins are the default in multi-unit restaurant groups and the hardest thing to defend in an audit. What roles a fifty-store voice account really needs."
+publishedAt: "2026-08-01"
+faqs:
+  - question: "What is the risk of one shared login across all stores?"
+    answer: "You lose the ability to say who changed something. When a store's hours are wrong on a Saturday or a menu item disappears, a shared account gives you a change with no name attached, so the conversation becomes an argument instead of a correction. The security exposure from a departed manager is real but secondary to that."
+  - question: "How many permission levels does a multi-unit group actually need?"
+    answer: "Three covers most groups: a corporate level that can change platform-wide settings and billing, an above-store level that sees a region and can edit its stores, and a store level that can adjust its own hours and mark items unavailable. Groups that build more than four levels usually end up granting exceptions that defeat the structure."
+  - question: "Is single sign-on worth it for a restaurant group?"
+    answer: "It is worth it once you are past roughly twenty-five locations or once you have real turnover in above-store roles. Below that, a disciplined named-account setup with a written offboarding step gets you most of the benefit. SSO's real value is that removing someone from your identity provider removes them everywhere at once."
+  - question: "Should store managers be able to change the voice agent's menu?"
+    answer: "They should be able to mark items unavailable and adjust their own hours, and they should not be able to edit menu structure, pricing, or escalation rules. That split matches how the rest of your systems already work. Availability is a live operational fact that only the store knows; pricing is a corporate decision that has to stay consistent."
+  - question: "What happens to access when a general manager leaves?"
+    answer: "Nothing automatic, unless you have set it up. A voice platform is rarely on the offboarding checklist because nobody thinks of it as a system with logins. Add it to the same list as email and the POS, and if the account uses a shared password, change the password the same day rather than at the next audit."
+---
+
+Most fifty-store restaurant groups run their voice platform on one login shared by everyone who might need it. The password is in a group chat somewhere, or taped inside a manager's binder, and it has not changed since the rollout.
+
+That arrangement fails in a specific and undramatic way. It is not that a former employee logs in and does damage, though that happens. It is that on a Saturday when store 31's hours are wrong and the phone told forty callers the restaurant was closed, you open the change log and it says the change was made by "admin." You now have a problem you cannot assign to anyone, which means you cannot fix the behavior that caused it.
+
+## The real cost is attribution, not intrusion
+
+Security reviewers frame shared credentials as a breach risk. Operators experience them as an accountability gap, and the operational version costs more money over a year.
+
+Every setting on a voice platform is something somebody can get wrong. Holiday hours entered on the wrong store. A delivery radius edited during a snowstorm and never put back. An item marked unavailable in March that nobody restored. Each of these is a small revenue leak, and each is trivially fixable if you can see who made the change and ask them what they were solving for.
+
+Without named accounts, every one of those becomes a group conversation where nobody remembers. You end up either locking the platform down so tightly that stores stop using it, or leaving it open and absorbing the errors. Both are worse than the boring answer, which is that everybody has their own login and the log has names in it.
+
+The audit exposure is real too, and it arrives later. Any institutional account you bid on will ask whether staff share credentials, and there is no good way to answer that question. It is one of the rows that comes up in [a corporate security review](/blog/enterprise-security-review-voice-ai), and unlike most of that questionnaire it is entirely within your control to fix before anyone asks.
+
+## The three levels a fifty-store account needs
+
+More structure than this tends to collapse. Groups that design seven permission tiers spend the next year granting exceptions until the tiers mean nothing.
+
+### Corporate
+
+Platform-wide settings, billing, the vendor relationship, escalation policy, and the ability to create and remove users. This should be a small number of people, and the number should be small enough that you can name them from memory.
+
+Corporate also owns anything that has to be consistent across the group. Menu structure and pricing belong here. If a store can change a price on the phone agent, your phone prices will diverge from your printed menu within a quarter, and you will find out from a customer.
+
+### Above-store
+
+A district or regional manager who can see their stores' call data and edit those stores' operational settings. This is the level most groups skip, and skipping it is why corporate ends up doing data entry for hours changes at eleven at night.
+
+Above-store access should be scoped to a region, not to the whole account. Not because you distrust the person, but because a scoped account cannot make a mistake outside its scope. Most access control is protection against typos, not malice.
+
+### Store
+
+The general manager at a location can see their own store's calls, mark items unavailable, and adjust their own hours. That is close to the whole list, and it maps to what a store already controls in your POS. Availability is the one thing only the store knows in real time, which is why it has to live at that level. That mechanism connects to [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync), and to how [per-store overrides for menu and hours](/blog/per-store-overrides-menu-hours) get configured in the first place.
+
+What a store should not have is the ability to change escalation rules or transfer numbers. Those are policy, they affect how your brand sounds, and a store solving a bad night by routing all calls to a cell phone is a decision you want to make deliberately.
+
+## What single sign-on actually buys
+
+SSO means your staff log in with the same corporate identity they use for email, and the voice platform trusts your identity provider rather than keeping its own passwords.
+
+The benefit that matters is removal. When someone leaves and you disable their corporate account, they lose the voice platform in the same action, without anyone remembering to do it. That is the entire argument, and for a group with real turnover in above-store roles it is enough on its own.
+
+The benefit people expect, and mostly do not get, is convenience. Store-level managers often are not in your identity provider at all, so you end up running SSO for corporate and named local accounts for stores. That hybrid is fine. It is what most groups this size actually run.
+
+SSO is not worth the setup effort below roughly twenty-five locations unless you already have an identity provider deployed and someone who administers it. Below that line, named accounts plus a written offboarding step gets you most of the protection at none of the cost. Be honest about which side of that line you are on rather than buying the enterprise-sounding option.
+
+One thing SSO does not do is decide permissions for you. Identity and authorization are separate. Your provider says who someone is; the voice platform still needs a role mapped to them, and the mapping is where the design work lives. If you turn on SSO and give everyone the default role, you have made login smoother and changed nothing about who can edit store 31.
+
+## Offboarding is the test of the whole system
+
+Here is the check that tells you whether any of this is real. Pick a manager who left in the last six months. Try their credentials on the voice platform. If they work, the structure is decorative.
+
+Do the same in reverse for a store that opened recently and ask who has access to it. Groups that grew fast usually find that the opening team still has edit rights on a store they have not visited since launch, and that the person now running it has been texting corporate for hours changes because nobody set up their account.
+
+Add the voice platform to the same offboarding list as email and the POS. It takes one line in a document. The reason it is not there already is that a system that answers the phone does not feel like software until you look at what it can change, and by then it has fifty stores of settings in it. If you are still planning your deployment, build the roles before the stores go live rather than after, which is one of the sequencing points in [rolling out to fifty locations](/blog/rolling-out-to-50-locations) and in the wider [multi-location and franchise setup](/blog/voice-ai-multi-location-franchise-groups). Who owns the data those accounts can see is a separate question, covered in [voice AI data ownership](/blog/voice-ai-data-ownership-privacy).
+
+Run the departed-manager test this week. It takes ten minutes and it will tell you more about your access control than any policy document you could write.

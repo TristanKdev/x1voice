@@ -1,0 +1,74 @@
+---
+title: "What to expect connecting Lightspeed through Deliverect"
+description: "Lightspeed reaches a voice agent through middleware rather than a direct link. What that adds to setup, what it costs you, and the questions to settle first."
+publishedAt: "2026-05-24"
+faqs:
+  - question: "Does X1 Voice connect to Lightspeed directly?"
+    answer: "No. Lightspeed is reached through Deliverect, the same middleware that carries Toast, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros. Square, Clover and OrderCounter are the direct connections. In daily use the difference is small; it shows up mainly in how you troubleshoot an order that did not arrive."
+  - question: "Do I need my own Deliverect account?"
+    answer: "Usually yes, and it is the item most likely to add time to your setup. If you already run Deliverect for delivery marketplaces, the voice channel is added to something that exists and configuration is quick. If you do not, that account has to be created and connected to Lightspeed before anything else can be tested."
+  - question: "Which Lightspeed product do I have?"
+    answer: "Lightspeed has sold several restaurant products over the years, some through acquisitions, and the connection details differ between them. Find the exact product name in your back office before your setup call. Arriving with just 'we use Lightspeed' is the most common reason a thirty-minute call becomes two."
+  - question: "How long does setup actually take?"
+    answer: "Typically under 24 hours once the accounts are connected and your menu is confirmed. The variable is not the technical work, it is how long it takes to get a correct, current menu with prices and modifiers that match what you actually sell. Restaurants with a clean menu go live the same day."
+  - question: "Does the middleware hop slow orders down?"
+    answer: "Not in a way a caller notices. The delay from the end of a call to a ticket in Lightspeed is seconds. The hop matters for failure handling rather than speed: when an order does not land, you need to know whether it stopped at the voice layer, at Deliverect, or at Lightspeed, and your vendor should be able to show you that."
+---
+
+You are on a demo call, the agent takes a test order flawlessly, and then someone asks how it connects to your POS. The answer for Lightspeed is: through Deliverect. That single fact changes the shape of your setup week more than anything about how the agent sounds.
+
+It is not a downgrade. It is a different set of things to get right, and knowing them in advance is the difference between going live tomorrow and going live in ten days.
+
+## Direct versus middleware, in terms that matter to you
+
+X1 Voice connects directly to Square, Clover and OrderCounter. Everything else, including Lightspeed, arrives through Deliverect, which also carries Toast, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros.
+
+A direct connection means the voice layer talks to your POS and there are two systems in the chain. A middleware connection means there are three. In normal operation you cannot tell the difference: an order still appears in Lightspeed within seconds of the call ending, tagged as a takeout or delivery order, with items, modifiers, customer name and quoted pickup time attached.
+
+The difference shows up on a bad day. When a ticket does not arrive, "where did it stop" has three possible answers instead of two, and you need a vendor who can tell you which one without a two-day investigation. Ask for that walkthrough during evaluation, not after your first dropped order. The category-level version of this argument is in [why POS integration depth matters](/blog/why-pos-integration-depth-matters-more-than-voice-quality).
+
+## The Deliverect account is the long pole
+
+If you already use Deliverect to pull DoorDash, Uber Eats and Grubhub orders into Lightspeed, most of your setup is already done. The voice channel is added to an account that exists, against a menu that is already mapped, and the whole thing is quick.
+
+If you have never used Deliverect, that account is a prerequisite. It has to be created, connected to your Lightspeed location, and given a menu before any test order can be placed. That is not difficult work, but it is sequential, and it is the reason some Lightspeed setups take a week while a Square setup takes an afternoon.
+
+Find out which situation you are in before you sign anything. It is a one-question answer and it sets a realistic expectation for everyone. There is more on the middleware layer generally in [Deliverect for multi-location restaurants](/blog/deliverect-voice-agent-multi-location-restaurants) and in the [Deliverect setup guide](/blog/deliverect-setup-guide-restaurants).
+
+There is a cost question attached to this too. Deliverect is a separate product with its own subscription, and if you are adding it solely for the voice channel, that belongs in your arithmetic alongside the $250 a month that X1 Voice plans start at. Restaurants already paying for it because of delivery marketplaces are adding a channel to something they own. Restaurants starting from zero should price both before deciding, and should also ask whether the delivery consolidation they get along the way is worth something on its own. Often it is, which is why the total ends up looking better than the line item does.
+
+## Know which Lightspeed you have
+
+Lightspeed's restaurant lineup has grown partly through acquisition, and the products behind the name are not identical. Configuration paths, terminology in the back office, and which fields carry over all vary.
+
+Before your setup call, open your back office and find the exact product name and version. Have your location ID handy, and know who on your team holds admin credentials, because someone with admin rights has to authorize the connection and that person is often not the person on the call.
+
+Three questions answered in advance turn a thirty-minute call into a thirty-minute call:
+
+- Which Lightspeed restaurant product and version are you on, exactly as it appears in your back office
+- Do you have a Deliverect account already, and if so who administers it
+- Who at your restaurant can approve an integration, and are they available on the day you want to go live
+
+None of this is technical. All of it is where time goes.
+
+## Menu preparation is the part you control
+
+The technical connection is fast. Getting a menu that matches reality is the work.
+
+What "correct" means here is narrow: every item you want the phone to sell, with its current price, its modifier groups, and the required choices marked, exported from Lightspeed rather than retyped from a printed menu. Retyping is how a price gets stale, and a stale price on the phone becomes an argument at the counter.
+
+Then the part nobody enjoys: spoken names. Your POS calls it `GRK SLD LG`. A caller says "the big Greek salad" or "large Greek." Both have to resolve. Budget an hour with someone who actually answers your phone today, because that person knows what customers say better than anyone in your back office does. The method is in [training a voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu).
+
+Decide at the same time what the phone should not sell. Items that need a long conversation, run out constantly, or require a deposit are usually better as an escalation to a person than as a completed phone order.
+
+One more menu decision that catches Lightspeed users specifically: if you run different menus by daypart, each one has to exist on the phone side with the right hours attached. A lunch menu that stays sellable at 9pm produces a caller who ordered something the kitchen broke down four hours ago. Confirm the daypart boundaries against what your kitchen actually does rather than against what the printed menu says, since the two are rarely the same on a Sunday.
+
+## Testing the whole path before you point your number at it
+
+Once it is connected, place real test orders and follow each one all the way to a printed or displayed ticket. Do it at a dead hour and again during service, because the two behave differently.
+
+Check five things each time. Did the order appear in Lightspeed, and how long did it take. Did it fire to the station where your staff would actually see it. Did the modifiers survive intact, especially on your most-customized item. Did the quoted pickup time reflect what your kitchen could really do at that moment. Did the total the caller heard match the total on the ticket.
+
+A mismatch on the last one is a menu mapping error and it takes minutes to fix. A ticket that did not fire where anyone was looking is a routing setting. Neither is a reason to distrust the channel; both are reasons to find out now rather than during a Friday rush.
+
+When those pass, port your number or forward it, and keep a person watching the orders screen for the first two services. That is the whole rollout. The [onboarding checklist](/blog/ai-phone-onboarding-checklist-restaurants) covers the non-Lightspeed-specific parts, and [AI phone ordering for Lightspeed](/blog/ai-phone-ordering-for-lightspeed) covers the product fit.

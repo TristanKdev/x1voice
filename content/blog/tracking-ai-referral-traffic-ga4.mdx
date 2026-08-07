@@ -1,0 +1,74 @@
+---
+title: "Isolating ChatGPT and Perplexity referrals in GA4"
+description: "Assistant traffic hides inside GA4's Referral bucket and gets undercounted. How to build a channel group for it, and what the number can and cannot tell you."
+publishedAt: "2026-04-06"
+faqs:
+  - question: "Where does ChatGPT traffic show up in GA4 by default?"
+    answer: "Under Referral, mixed in with every other site that links to you, with a session source like chatgpt.com or perplexity.ai. GA4 has no built-in assistant channel, so unless you build a custom channel group or a segment, those sessions sit in the same bucket as a link from a food blog and you will not notice them."
+  - question: "Why is my assistant referral number lower than it should be?"
+    answer: "Because a referrer is not always sent. Some assistant interfaces, mobile apps, and privacy settings strip it, so those visits land in Direct. There is no way to fully recover them, which means the number you measure is a floor rather than a count. Treat the trend as the signal and stop trying to reconcile it to a true total."
+  - question: "Do I need a separate custom channel group or is a segment enough?"
+    answer: "A segment is faster to build and fine for answering a one-off question. A custom channel group is better if you want assistant traffic to appear as its own line in standard reports going forward, so anyone who opens the acquisition report sees it without knowing to filter. Most operators should build the channel group once and stop thinking about it."
+  - question: "Will this tell me which answer or prompt sent someone?"
+    answer: "No. You get the referring host and the landing page, and that is all. You cannot see the question asked or the answer given, and no analytics tool can. The landing page is the closest thing to a hint, since a session that lands on your catering page came from a catering-shaped question."
+  - question: "Is assistant referral traffic worth optimizing for yet?"
+    answer: "It is worth measuring now and worth optimizing once the number is large enough that a change in it would be visible. For most independent restaurants that is not yet true, and the same work that helps here, clear pages with real answers, also helps ordinary search. Build the measurement, then let the volume tell you when to care."
+---
+
+There are exactly two ways a visit from an assistant reaches your analytics: as a referral with a recognizable host, or as Direct traffic with no referrer at all. Everything else you might read about tracking AI traffic is a variation on separating the first group out and accepting that the second is unmeasurable.
+
+That framing matters because a lot of effort gets spent trying to get a true number. There is no true number. What you can build is a consistent floor that moves in the right direction when your visibility improves, which turns out to be enough.
+
+## Where these sessions actually land
+
+GA4 assigns a session source and a channel. Assistant referrals arrive with a source that is the assistant's own host, and GA4 has no rule for those, so they fall into Referral alongside every blog, directory, and forum that links to you.
+
+The hosts worth watching are the obvious ones: `chatgpt.com` and `chat.openai.com`, `perplexity.ai`, `copilot.microsoft.com`, `gemini.google.com`, and the Bing and Google properties that carry AI answers. That last group is messy, because a click from an AI overview inside a normal search results page is not reliably distinguishable from an ordinary organic click.
+
+So the clean thing you can measure is the standalone assistants. The blended search surfaces are not separable, and pretending otherwise produces a number you will later have to walk back.
+
+## Building the channel group
+
+In GA4's admin, under data display, you can create a custom channel group. Make a copy of the default, add a new channel above Referral, and define it by session source matching a regex of the hosts above. Order matters, since a session is assigned to the first channel it matches.
+
+The reason to do this rather than build a segment is durability. A segment lives in one exploration that one person knows about. A channel group makes the traffic appear as its own line in the acquisition reports for everybody, forever, without anyone needing to remember it exists.
+
+Two cautions. Custom channel groups apply going forward and to a limited window of past data depending on your property, so build it now rather than when you want the answer. And keep the regex in a document somewhere, because new assistants appear and the list needs updating two or three times a year.
+
+## What to look at once it exists
+
+The volume number is the least interesting thing in the report. Assume it is small. What is useful sits next to it:
+
+- Landing pages, which tell you what kind of question produced the visit, since a session landing on your catering page came from a catering-shaped question and one landing on your homepage came from a brand lookup
+- Engagement, because an assistant referral arrives with more context than a search click and should behave differently, and if it bounces immediately the page did not confirm whatever the assistant claimed
+- Trend over months rather than weeks, since the volume is too small for weekly noise to mean anything
+
+If your landing pages are all your homepage, you are being cited as a name rather than as an answer to a question. That is a content problem, addressed in [answer-first content for a restaurant website](/blog/answer-first-content-restaurant-website) and in [how restaurants show up in AI search](/blog/how-restaurants-show-up-in-ai-search).
+
+## The Direct problem, stated honestly
+
+A meaningful share of assistant-sourced visits never carry a referrer. Some interfaces strip it, some open links in an in-app browser that reports nothing, and some users have settings that suppress it. Those sessions land in Direct next to people who typed your URL and people who clicked a link in a text message.
+
+You cannot separate them. What you can do is watch Direct for unexplained movement that lines up with movement in your measured assistant channel, and treat that as weak corroboration rather than data.
+
+This is worth being clear about internally before anyone builds a report on it. If you tell an owner that assistants sent thirty visits last month, someone will eventually ask why that number is so small, and the honest answer is that it counts only the portion that identified itself. A measured floor that trends is useful. A measured floor presented as a total will get you into an argument you cannot win with the data you have.
+
+The other partial workaround is asking. If you take reservations or catering inquiries through a form, a single optional "how did you hear about us" field with a free-text box will surface mentions of assistants that analytics never will. It is unscientific and it is more informative than another dashboard.
+
+## The channel that never shows up at all
+
+The biggest gap is not Direct. It is the phone.
+
+If an assistant tells someone your number and they call it, there is no session, no referrer, and no row in any report. That visit happened entirely outside your analytics, and for a restaurant it is often the most valuable outcome, because a phone order is a direct order with no commission attached.
+
+There are two partial approaches. One is a call tracking number used only in specific places, which is workable but creates a consistency problem with local listings and should be handled carefully, as covered in [call tracking numbers and attribution](/blog/call-tracking-numbers-attribution). The other is asking callers, which is less awkward than it sounds and is something a voice agent can do consistently in a way rushed staff cannot.
+
+The broader problem of connecting phone revenue to marketing effort is worked through in [attribution for phone versus online orders](/blog/attribution-phone-vs-online-orders), and the mechanics of getting phone orders into GA4 at all are in [tracking phone orders in GA4](/blog/tracking-phone-orders-in-ga4).
+
+## What the number is actually for
+
+Not for reporting. For deciding whether to keep spending time on the work.
+
+Set the channel group up, ignore it for a quarter, then look at three things: whether it grew, what pages it landed on, and whether those sessions did anything. If it grew and the landing pages are specific pages answering specific questions, the content work is landing and worth continuing. If it is flat at near zero and everything lands on your homepage, you are being mentioned rather than cited, and the fix is publishing pages that answer questions rather than pages that describe you.
+
+One more thing to check while you are in there. Compare your assistant landing pages against your busiest phone hours. If people are being sent to a page about your catering minimums at the same time your line is going unanswered, the visibility work is doing its job and the phone is undoing it.

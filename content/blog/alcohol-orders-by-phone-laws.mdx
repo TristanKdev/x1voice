@@ -1,0 +1,78 @@
+---
+title: "Alcohol rules on phone orders and how to configure for them"
+description: "Every state writes its own alcohol rules and some counties rewrite them again. What a voice agent may safely do with a beer order, and what it must refuse."
+publishedAt: "2026-03-12"
+faqs:
+  - question: "Can a restaurant sell alcohol over the phone?"
+    answer: "It depends entirely on the license you hold and the state you hold it in. Many states permit sealed beer and wine to go with a food order, fewer permit mixed drinks, and some permit nothing at all off-premise without a separate license class. Your state alcohol board and the attorney who handled your license are the only reliable sources; a vendor is not one."
+  - question: "Should a voice agent take alcohol orders at all?"
+    answer: "Only as an order-taker within limits you set, never as a decision-maker. Configure which products are available, during which hours, to which delivery areas, and let the agent work inside that box. Any question about whether a sale is permitted should route to a person, because the agent has no way to evaluate it and a wrong answer is a license problem rather than a customer-service one."
+  - question: "Does the phone step count as age verification?"
+    answer: "No. Asking a caller to confirm they are 21 produces a record that someone made a claim, nothing more. Age verification happens face to face at pickup or delivery, with a physical ID, by a trained person. Treat anything collected on the call as a flag that prompts the check, not as a substitute for it."
+  - question: "What happens if a third-party courier delivers our alcohol?"
+    answer: "Responsibility usually still tracks back to the licensee, and many courier platforms impose their own alcohol rules on top of state law. Some will not carry it at all in certain markets, others require a driver certification and an in-app ID scan. Get the specific answer in writing from the platform before you turn alcohol on for delivery orders."
+---
+
+Fifty states write their own alcohol rules, the District writes another, and in a good number of places counties and municipalities write a third layer on top. Wet, dry, and moist counties still exist. Sunday hours vary inside single states. So does whether a restaurant may hand a sealed bottle of wine to a customer picking up wings.
+
+None of that is your voice agent's business, and the mistake operators make is asking it to be.
+
+## The question is about your license, not your phone system
+
+An on-premise license lets you serve alcohol for consumption in your building. Selling it to leave the building is a different privilege, and in many states a different license class or an endorsement on top of the one you have. Delivering it is a third thing again.
+
+A wave of statutes over the past several years expanded to-go and delivery privileges, and those statutes have not landed the same way everywhere. Some were made permanent, some carry sunset dates, some cover beer and wine but not spirits, some allow sealed mixed drinks with specific container and labeling requirements. Whether yours applies to your license, this year, is a question for your state's alcohol control board and the lawyer who filed your paperwork.
+
+Get that answer first and write it down as a one-page rule sheet. Everything below assumes you have it, because you cannot configure a phone system against a rule you haven't stated.
+
+## The five variables that decide any given order
+
+Product type comes first. Sealed beer and wine, sealed mixed drinks, and spirits by the bottle are frequently treated as three separate things by three separate rules, and a system that models "alcohol" as one category will get one of them wrong.
+
+Hours and days come second. Off-premise sale windows often differ from your on-premise service hours, and Sunday or holiday restrictions are common enough that a blanket configuration will eventually be wrong on the one night someone is watching.
+
+Third is where the order is going. Dry areas persist, campus and dormitory addresses carry their own restrictions, and in some states a county line matters more than a mile radius does.
+
+Fourth is how it gets there. Pickup by the buyer, delivery by your own employee, and delivery by a third-party courier can each carry different requirements, and the last one stacks the platform's rules on top of the state's.
+
+Fifth is whether food is attached. Several states permit alcohol to go only as part of a food order, sometimes with a stated ratio between the two.
+
+Those five give you the box. Configuration is the work of drawing the box in your ordering system so nothing outside it can be sold.
+
+## What the agent must never do
+
+It must never answer a legality question. If a caller asks whether they can get a bottle of tequila delivered to the next county, the answer is a transfer to a manager, not a guess. Getting that routing right is the same mechanism as the rest of your escalation policy, described in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+It must never treat a caller's statement of age as verification. That step happens in person, and the reasoning is laid out in [age verification on alcohol deliveries](/blog/age-verification-delivery-alcohol).
+
+It must never upsell alcohol. An agent suggesting a six-pack to someone ordering pizza is a bad idea in every state and an actively dangerous one where solicitation rules exist. Keep alcohol out of the suggestion logic entirely.
+
+It must never take an alcohol order past your cutoff because the caller pushed back. Time-based blocks should be hard, not persuadable.
+
+And it must never carry an alcohol item to the kitchen without a visible marker on the ticket. Whoever hands the bag over needs to know before they hand it over.
+
+## Configuring the box
+
+Start at the menu level. Alcohol items get their own category with their own availability rules, separate from food. If your platform can only turn the whole menu on and off, that's a real limitation and you should know it before rollout.
+
+Then set the hours. Off-premise alcohol windows are their own schedule, distinct from open hours and distinct from your kitchen dayparts. Systems that handle [daypart menu switching](/blog/multi-menu-daypart-switching) usually handle this cleanly; systems that don't will need a manual routine, which means it will eventually be forgotten on a Saturday night.
+
+Then geography. Alcohol delivery frequently has a smaller footprint than food delivery, and the boundary is legal rather than logistical. Your agent needs to check the address against the alcohol zone specifically, not the general delivery zone. The mechanics of address checking are in [delivery zone rules on phone orders](/blog/delivery-zone-rules-phone-orders).
+
+Then multi-location. A group operating across a state line, or across a county boundary in a state with local option, needs per-store rules rather than one shared configuration. This is where [per-store overrides for menus and hours](/blog/per-store-overrides-menu-hours) stops being a convenience feature and starts being the thing keeping a license intact.
+
+Finally the ticket. Every order containing alcohol prints with a flag, and the flag says an ID check is required. Simple, and skipped surprisingly often.
+
+## Couriers add a second rulebook
+
+If a third-party platform is carrying the order, you now have state law and platform policy, and the platform's is usually stricter. Some markets are excluded outright. Some require a specific driver certification. Some run an ID scan in the driver app and will return the alcohol to you if the check fails, which raises the question of what happens to a returned bottle and who eats the cost.
+
+Ask the platform three things in writing before enabling alcohol: whether they carry it in your specific market, what the driver does at the door, and what happens when a delivery is refused. Then configure your agent to match the strictest of the answers, not the most convenient.
+
+## A test worth running tonight
+
+Call your own line ten minutes after your alcohol cutoff and try to order a six-pack. Then call during permitted hours and give a delivery address you know is outside the alcohol zone. Then call and ask, in a friendly way, whether you can get a bottle of bourbon sent over.
+
+You want three outcomes: a clean refusal with an offer of the food order, a clean refusal with a pickup alternative, and a transfer to a person. If you get anything else, including a hedge or an apology that implies the rule might bend, the configuration isn't finished.
+
+Regulators do not care that a phone system made the sale. The license has your name on it. Products with even tighter federal rules, such as [tobacco and nicotine orders](/blog/tobacco-orders-by-phone), shouldn't be on an automated line at all.

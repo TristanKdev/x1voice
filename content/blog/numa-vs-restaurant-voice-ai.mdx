@@ -1,0 +1,56 @@
+---
+title: "Numa and the limits of a vertical agent from another industry"
+description: "Vertical voice agents carry the assumptions of the industry they were built for. Here is what transfers to a restaurant phone line and what quietly does not."
+publishedAt: "2026-06-29"
+faqs:
+  - question: "What is Numa known for?"
+    answer: "Numa is generally known as an AI phone and messaging assistant built for automotive dealerships, particularly service departments. That is a vertical product with a specific customer in mind, which is a strength in its own market and the reason its assumptions do not map cleanly onto a restaurant line."
+  - question: "Can a dealership or clinic voice agent work for a restaurant?"
+    answer: "It can answer calls and take messages, which is real value. What it will not have is a live menu model, modifier logic, or a POS ticket path. Service-industry agents assume the money is decided later at an appointment, while a restaurant call is the transaction itself, and that difference shows up in every part of the product."
+  - question: "Why does the source vertical matter so much?"
+    answer: "Because a vertical agent's data model is shaped by its first customer. Dealership software thinks in vehicles, service orders, and appointment slots. Restaurant software has to think in menu items, modifier groups, availability, and tickets. Retrofitting one into the other is a rebuild, not a configuration screen."
+  - question: "How can I tell whether a vendor really works in restaurants?"
+    answer: "Ask them to price a half-and-half pizza with an added topping on one side, or to handle an item you 86 mid-call. Vendors who built for restaurants answer without hesitating. Vendors adapting from another vertical describe a roadmap or offer to capture it as free text for your staff to key in later."
+  - question: "Is a cross-industry vendor ever the better choice?"
+    answer: "If your calls are almost all questions and message-taking rather than orders, the source vertical barely matters and you should buy on price and reliability. The moment a meaningful share of revenue arrives as phone orders, the vendor's menu and POS depth becomes the only thing worth comparing."
+---
+
+A voice agent built for car dealerships is very good at car dealerships. That is the point of a vertical product, and it is why Numa is a credible name in the market it serves. It is also why an operator evaluating it for a restaurant is evaluating the wrong axis.
+
+Vertical software is not general software with a coat of paint. Its data model, its escalation rules, and the questions it knows how to ask were all shaped by one industry's transaction. When you point it at a different industry, the voice quality transfers and the domain knowledge does not.
+
+## What a vertical agent actually inherits from its home market
+
+Take a service department. A caller wants to know whether their car is ready, or wants to book an oil change. The agent needs to look up a record by name or plate, read a status, and offer an appointment window. The money conversation happens later, in person, with a service advisor. Nothing on the call has to be priced correctly, and nothing has to be manufactured in the next eleven minutes.
+
+Every design decision follows from that. The agent's core objects are customers, vehicles, and appointments. Its escalation logic is built around a human advisor who will call back. Its reporting counts booked appointments, because that is the outcome the dealership pays for.
+
+Now put the same product on a restaurant phone at 6:45. The caller wants three entrees with substitutions, one of which is out. There is no record to look up because they are not in a system. The price has to be right on the call, because you are about to charge a card. The kitchen needs a ticket, in order, with the right modifiers, and it needs it now rather than after a callback. Almost none of the inherited model helps.
+
+## The specific things that do not transfer
+
+Menu structure is the big one. A restaurant menu is not a list, it is a tree with rules: sizes that change price, modifier groups with minimums and maximums, items that exist only at lunch, sides that swap for an upcharge. An agent that was never built to walk that tree will flatten it into text, and flattened text is what your staff ends up retyping. We go through the shape of that problem in [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers).
+
+Availability is the second. Dealership inventory changes daily. Restaurant inventory changes hourly and unannounced, and an agent that keeps selling the special after the kitchen calls it out generates the worst version of a phone failure, which is a customer who paid and cannot be served. Live 86 handling is a specific engineering commitment, not a setting. See [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync).
+
+Latency expectations are the third, and the least discussed. A caller waiting for an appointment slot tolerates a pause. A caller mid-order does not, because they are speaking in bursts and interrupting themselves. Restaurant conversations demand endpointing behavior tuned for people who talk over the agent, in a room with a fryer going. That work is covered in [interruption handling and endpointing](/blog/interruption-handling-endpointing-voice-agents) and in [voice AI in noisy restaurant environments](/blog/voice-ai-noisy-restaurant-environments).
+
+## Why the demo will still sound good
+
+This is the trap worth naming. Cross-vertical agents demo well, because the demo tests the part that genuinely transfers. Speech recognition, turn-taking, tone, and the ability to answer "what time do you close" are largely industry-neutral, and a mature vendor from any vertical will do all four cleanly.
+
+So you finish the call impressed, and the thing you were impressed by is not the thing you are buying. The failure arrives six weeks later, in the form of a ticket with the wrong modifier and a manager who has quietly told the staff to stop trusting the system.
+
+Build your demo around the ugly cases instead. Order something with a substitution. Change your mind halfway. Ask about an allergen. Ask for an item you know is out. Ask a question the menu does not answer and see whether the agent escalates or invents something. There is a fuller script in [what to test in a voice AI demo](/blog/voice-ai-demo-what-to-test).
+
+## The question underneath all of this
+
+Vertical depth is not a marketing claim, it is an integration list and a menu model. A vendor that has done restaurants has direct POS work to point at. X1 Voice integrates directly with Square, Clover and OrderCounter and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect, and the specifics are on the [integrations page](/integrations). A vendor adapting from another industry will talk about their platform, their language model, and their roadmap, all of which may be true and none of which is a ticket in your kitchen.
+
+There is also an honest version of the cross-industry pitch. If your restaurant's phone is genuinely not an ordering channel, and what you want is reliable answering, message capture, and after-hours coverage, then the vendor's home vertical stops mattering and you should shop on price, uptime, and how the escalation works. Plenty of full-service rooms are in exactly that position, and paying for deep ordering they will never use is its own kind of waste.
+
+## What to do with an hour
+
+Pull last month's POS report and find the share of revenue that came in over the phone. That single number decides which comparison you are running.
+
+If the number is small, treat every voice vendor as interchangeable on domain and pick the one whose reliability and support you believe. If the number is meaningful, stop reading vendor pages and start scheduling demos where you order badly on purpose. The vendor that handles a half-and-half pizza with a mid-call change and a sold-out side, and can show you the resulting ticket, is the one that was built for your business. Everything else is a product from someone else's industry, wearing your menu as a costume.

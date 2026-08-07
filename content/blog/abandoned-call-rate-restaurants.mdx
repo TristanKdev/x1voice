@@ -1,0 +1,72 @@
+---
+title: "Abandoned call rate: the metric you probably can't see"
+description: "Callers who hang up before anyone answers leave almost no trace in a restaurant's records. Here is how to get the number and what it is worth knowing."
+publishedAt: "2026-06-11"
+faqs:
+  - question: "What is abandoned call rate?"
+    answer: "The share of inbound calls where the caller hung up before reaching a person, including both rings that went unanswered and callers who gave up while on hold. It is measured against calls offered rather than calls answered, which is why most restaurants cannot calculate it from the records they currently keep."
+  - question: "Why can't I see abandoned calls in my records?"
+    answer: "Because your POS only records orders and your bill only shows connected minutes. A call that rang eleven times and stopped produced no ticket, no charge, and no entry anywhere you normally look. The information usually exists in your carrier's call detail records, which you have to request or export deliberately."
+  - question: "How do I get my abandoned call data?"
+    answer: "Ask your phone provider for call detail records, which list every inbound attempt with a timestamp and a duration. Calls with a very short duration and no answer event are your abandons. If you use a VoIP provider, this is typically a self-serve export in the admin portal rather than something you have to request."
+  - question: "What abandoned call rate should worry me?"
+    answer: "Any rate concentrated in your busiest hour, regardless of the daily average. Ten percent spread evenly across a slow week is a minor annoyance. Ten percent that is actually forty percent between 6 and 7 on Friday means you are losing your most valuable calls at the exact moment they are worth the most."
+  - question: "Does hold music reduce abandonment?"
+    answer: "It buys you a little time and does not solve anything. People tolerate hold longer when they hear something, which shifts your abandons later in the call rather than removing them. If your hold times are long enough that the music matters, the actual problem is coverage during that window."
+---
+
+A caller dials at 6:40 on a Friday, hears seven rings, and hangs up. Nothing about that event is recorded anywhere you will ever look. No ticket, no charge on your bill, no line in your POS, no complaint. The customer eats somewhere else and you never learn their name.
+
+Abandoned call rate is the metric that would have told you it happened, and most restaurants cannot produce it. Getting the number is a one-time administrative task, and it is usually the single most persuasive piece of data an operator can put in front of themselves.
+
+## What the number means and what it does not
+
+Abandoned call rate is abandoned calls divided by calls offered. Offered means every inbound attempt, whether or not anyone picked up.
+
+That denominator is the whole difficulty. Your restaurant knows how many calls it answered because those turned into work. It has no idea how many were attempted, so it cannot compute the ratio, and in the absence of the ratio the phone appears to be functioning perfectly. Every call you can remember was answered, because those are the only ones you experienced.
+
+Two kinds of abandonment sit inside the metric and they have different fixes. Ring abandonment is a caller giving up before anyone picks up, which is a coverage problem. Hold abandonment is a caller giving up after being parked, which is a coverage problem wearing a disguise. Track them separately if your records let you, because the second one often gets misdiagnosed as a hold-music problem.
+
+## Where the data actually lives
+
+Your carrier has it. Every inbound attempt to your number generated a call detail record with a timestamp, a caller number, a duration, and usually a disposition.
+
+If you are on a VoIP provider, the export is typically in the admin portal under call logs or analytics, and you can pull a month in a few minutes. If you are on a traditional line from a local carrier, you may have to request call detail records specifically, and they may charge a small fee. Ask for inbound records including unanswered attempts, because a default export sometimes includes only completed calls, which defeats the purpose.
+
+Once you have a month of records, the analysis is a pivot table. Count attempts by hour of day and day of week, count those with no answer, and divide. The methodology and the common export gotchas are covered in [how many calls does your restaurant miss](/blog/how-many-calls-does-your-restaurant-miss), and the wider set of phone reports worth building sits in [the restaurant phone analytics guide](/blog/restaurant-phone-analytics-guide).
+
+## Read it by hour or do not bother
+
+A single daily or weekly average will understate your problem badly enough to be worse than no number at all.
+
+Abandonment is not spread evenly. It is concentrated in exactly the windows where your staff is least able to reach a phone, which are also the windows where the calls are worth the most. A restaurant with a 9 percent weekly abandonment rate frequently turns out to have something like a third of its Friday dinner calls abandoning, offset by near-zero at 3pm on Tuesday.
+
+The hourly view also tells you what to buy. If the problem is two specific ninety-minute windows, the fix is targeted and cheap. If it is spread across all open hours, you have a structural coverage gap and a different conversation. The staffing arithmetic for those windows is worked through in [peak hour staffing math for the phone](/blog/peak-hour-staffing-math-phone).
+
+## Three things the number will not tell you
+
+Worth being clear about the limits before you build a strategy on it.
+
+- Repeat attempts inflate it. One determined customer calling three times before getting through registers as two abandons and one answer, which looks like a 67 percent abandonment rate from one person. Deduplicate by caller number within a short window if you want a customer-level view rather than a call-level one.
+- Suppressed demand hides beneath it. Regulars who learned years ago that you never answer at 6:30 have stopped trying, so they are not in your records at all. Your true demand is higher than your offered-call count, and you generally only discover this when coverage improves and volume rises with no marketing behind it.
+- Not every abandon is a lost order. Some were vendors, some were wrong numbers, some called back successfully later. The rate is directional evidence, not a revenue figure, and anyone converting it straight into dollars for you is selling something.
+
+Even with those caveats, a concentrated hourly abandonment rate is one of the strongest operational signals available to a restaurant, precisely because it is otherwise invisible.
+
+## Turning the rate into a dollar figure carefully
+
+Once you have abandons in your peak windows, you can estimate the cost, as long as you show your assumptions.
+
+Take abandoned calls in a peak hour. Assume some share would have ordered, and use your measured phone conversion rate from [phone order conversion rate](/blog/phone-order-conversion-rate) rather than a guess. Multiply by your average phone ticket, and then by your contribution margin if you want the number that matters to your bank account.
+
+Do it as a range with a conservative and an optimistic assumption, and present both. A single point estimate invites an argument about the assumption instead of about the problem. The framework for that valuation, including the part where a lost customer is worth more than a lost ticket, is in [the real cost of a missed restaurant phone call](/blog/the-real-cost-of-a-missed-restaurant-phone-call).
+
+## What actually reduces it
+
+There are only a few real options and they are not equally good.
+
+Adding a person to the peak window works and costs what labor costs. A hunt group ringing multiple handsets helps only if there is a free human at the other end of one of them, which during a rush there usually is not. Voicemail does not reduce abandonment, it relabels it, and most callers who reach a voicemail for a takeout order simply hang up. An answering service picks up but generally cannot see your menu or your availability. Software that answers every line at once removes ring abandonment structurally, since there is no queue to abandon from.
+
+Whichever direction you go, measure the same way afterward. Pull the carrier records again a month later and compare the same hours. That before-and-after is the only honest evaluation of a change, and it is the one most operators skip because the number felt fixed once the phone stopped ringing at them.
+
+Request one month of call detail records this week and build the hour-by-hour view. If your worst hour is abandoning at a rate you would not tolerate at your front door, you have found the problem, and you found it in data you were already paying to generate.

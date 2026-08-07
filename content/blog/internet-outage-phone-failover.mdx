@@ -1,0 +1,84 @@
+---
+title: "Failover order when your internet drops mid-service"
+description: "An ISP outage during a Friday rush takes down more than the POS. What should answer the phone next, in what order, and what each fallback actually costs you."
+publishedAt: "2026-05-03"
+faqs:
+  - question: "Does a voice agent keep answering if the restaurant loses internet?"
+    answer: "Answering and order writing are separate questions. A hosted agent answers because the call never routes through your building, so callers still reach a voice. Writing that order into your POS requires the POS to be reachable, and during an ISP outage it usually is not, so the agent can talk but cannot complete the transaction."
+  - question: "What is the right failover order for a restaurant phone?"
+    answer: "Hosted answering first, cellular backup for the POS second, a manager cell phone third, and a clear closure message last. Each step down captures less revenue and costs more staff attention, so the value of the plan is spending as little time as possible on the lower steps."
+  - question: "Is a cellular backup worth it for a restaurant?"
+    answer: "It is worth it if card processing and your POS depend on connectivity, which for most operations they do. A failover router with a cellular sim keeps payments and order writing alive through a wired outage. The monthly cost is small relative to one lost Friday dinner service."
+  - question: "Should staff take phone orders on paper during an internet outage?"
+    answer: "Only for the food you can definitely make and only if you can process payment. Paper orders during an outage create a reconciliation problem later and a second problem if cards will not run. Cash-only pickup with a short verbal menu is workable for an hour; a full menu on paper is not."
+  - question: "How do I know an outage started before customers tell me?"
+    answer: "Watch the POS and the card terminal, since those fail first and loudest. The phone is the channel that fails silently, because a caller getting no answer never reports it to you. If you have call reporting, a sudden gap in answered calls during a busy hour is a reliable outage signal."
+---
+
+Losing internet during service is worse than losing power, because losing power is unambiguous. The lights are off, everyone knows, and the decision to close makes itself.
+
+An ISP outage leaves the lights on. The dining room looks normal, the kitchen has gas and heat, and the room is full of people who expect dinner. What has actually happened is that your POS cannot reach its backend, card payments may or may not run, and your phone has quietly stopped doing whatever it was doing before. That last one is the failure nobody notices for twenty minutes.
+
+## The phone fails in two separate places
+
+It is worth separating these, because they have different fixes and operators tend to lump them together.
+
+The first is answering. Does a caller hear a voice at all? For a hosted setup, yes, because the call is answered off-site and never enters your building. Your internet being down at the restaurant address has no effect on whether the agent picks up. For an on-premise VoIP box, no, because that box needs the connection to receive the call at all.
+
+The second is completing. Can that conversation turn into a ticket in your POS? This one depends on the POS being reachable. If the POS is cloud-hosted and your building's connection is down, the POS is unreachable from the restaurant, though the integration between the voice agent and the POS may still be intact depending on where each side lives. If the POS is a local server in your office, it is fine on its own and unreachable from outside.
+
+The combinations matter less than the habit of asking both questions. Plenty of operators believe they have failover because callers still hear a voice, and then discover during the outage that nothing those callers said reached the kitchen.
+
+## Step one is a connection that is not your ISP
+
+The single highest-value item on this list is a failover router with a cellular sim.
+
+It is unglamorous and it solves most of the problem. When the wired connection drops, the router switches to cellular, and your POS, your card processing, and your ordering integrations keep working. The bandwidth is worse and nobody is streaming anything, which does not matter, because restaurant POS traffic is tiny.
+
+The cost is a monthly line fee and a one-time hardware purchase. Compare that against a single Friday dinner service where you cannot run a card. Most operators who do that arithmetic install it the same week, and the ones who do not usually change their minds after their second outage.
+
+Configure it and then test it by unplugging the wired connection during a slow hour. An untested failover is a theory. The number of restaurants whose backup connection was configured wrong and only discovered it during a real outage is not small.
+
+## Step two is deciding what the phone says while you are degraded
+
+Assume the failover worked and the POS is running on cellular. Nothing needs to change on the phone, and you should still know whether it did, because a cellular fallback can be slower and a slow POS response can surface as a longer pause on a call.
+
+Assume the failover did not exist or did not work. Now the agent answers but cannot write orders, and you have a decision to make in the next few minutes.
+
+The wrong move is to let the agent keep taking orders that go nowhere. The right move is the same temporary override you would use for [an early closure](/blog/closing-early-weather-messaging), with different wording: you are open, you cannot take phone orders right now, come in and order at the counter.
+
+That is a genuinely useful message. It converts a portion of your phone volume into walk-in traffic instead of losing it, and it is honest about a condition the caller can work around. A caller who is told to come in usually comes in.
+
+### Why not just forward to a staff phone
+
+Because during an outage the staff are the scarcest resource in the building.
+
+Forwarding the line to the host stand means a person who is already handling a full room and a broken POS now also fields every call. They will miss most of them, and the ones they answer will take longer than usual because they are reading a paper menu and writing on a pad. [After-hours call routing](/blog/after-hours-call-routing-setup) covers the mechanics of forwarding, and the mechanics are the easy part. The staffing math is what makes this a late step rather than an early one.
+
+Forwarding is a reasonable step three, when the outage is long and you have someone genuinely free. It is a poor step one.
+
+## Paper orders have a narrow window where they make sense
+
+Some operators default to pen and paper the moment the POS goes down, and it works for a while before it stops working.
+
+It holds up when three things are true. You can process payment somehow, which usually means cash or a card reader on cellular. You have narrowed the menu verbally to items the kitchen can definitely produce. And the outage is short enough that reconciliation afterward is an hour of work rather than a day.
+
+It falls apart on the third one. Every paper ticket has to be entered later for inventory, reporting, and tax, and nobody wants to do that at midnight. An hour of paper is fine. Four hours of paper on a Saturday produces a Sunday that nobody enjoys and reporting you cannot trust.
+
+The clean rule: paper for the guests already in the building, closure messaging for the phone. Do not open a second manual channel while the first one is already stressed.
+
+## The last step is saying you are closed, and saying it early
+
+There is a version of this night where the outage runs past ninety minutes, the cellular backup does not exist, and the room is turning over on cash only.
+
+At that point closing phone ordering entirely is the correct call, and the mistake most operators make is waiting too long to make it. Every extra twenty minutes of a half-working channel produces more problems to clean up than it produces revenue.
+
+Set a threshold in advance so this is not a judgment call under stress. Something like: if we are not back in forty-five minutes, phone ordering closes and the greeting says so. A rule decided on a calm afternoon gets followed. A decision made at 7:40 on a Friday gets deferred.
+
+## Write the order down before you need it
+
+The plan is four lines on a card taped inside the office door, and it takes fifteen minutes to produce.
+
+Cellular failover carries the POS and the phone integration. If that is not up, the greeting changes to open-for-walk-in and phone ordering stops. If the outage runs past your threshold, the greeting changes to closed with a return estimate. Forwarding to a staff cell happens only if someone is genuinely free, which during dinner they are not.
+
+Then test the top of that list once, on a slow Tuesday, by unplugging the wired connection and watching what still works. What you learn in that ten minutes is worth more than any of the rest of this, because it tells you which of your assumptions about your own setup were wrong. There is usually at least one. The power-failure version of the same exercise is in [what answers your phone when the power is out](/blog/power-outage-phone-plan), and the POS-specific recovery in [POS outage order capture](/blog/pos-outage-order-capture).

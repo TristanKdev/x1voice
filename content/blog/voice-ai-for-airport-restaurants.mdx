@@ -1,0 +1,71 @@
+---
+title: "Voice AI for airport restaurants: tight pickup windows"
+description: "Airport callers have a boarding time, not a preference. What a voice agent has to get right on pickup quotes, terminal questions, and 5am dayparts."
+publishedAt: "2026-01-26"
+faqs:
+  - question: "Why would anyone call an airport restaurant?"
+    answer: "Because they are already inside the terminal with a boarding time and want food waiting. Calls come from passengers walking from a gate, flight crews on a tight turn, and people asking whether you are past security and near their concourse. The volume is modest and the calls are unusually time-sensitive."
+  - question: "What is the most important thing for the agent to get right?"
+    answer: "The pickup time quote. An airport caller is deciding whether to walk to you at all, and a quote that is five minutes optimistic means they arrive to nothing and miss boarding. Configure conservative quotes tied to your actual ticket times, and have the agent state the location clearly enough that a stranger can find it."
+  - question: "Can the agent answer terminal and security questions?"
+    answer: "It can answer questions about your own location, which is what most callers actually need: which terminal, which concourse, pre- or post-security, and the nearest gate number. It should not answer questions about checkpoint wait times, flight status, or airport policies, which change constantly and are not yours to state."
+  - question: "Do airport dayparts cause problems for a voice agent?"
+    answer: "They cause the same problems they cause your staff. A terminal restaurant may open at 4:30am with a breakfast menu, switch at 10:30, and close around the last departure bank rather than at a fixed hour. Each of those has to be configured as its own menu with its own hours or the agent will take orders for items nobody is cooking."
+  - question: "Is this worth it for a single terminal location?"
+    answer: "It depends on whether your phone rings at all, which varies enormously by terminal and concept. Count for a week before deciding. Where it tends to pay is a location with crew business, a location whose phone is answered by whoever is on register, or an operator running several units in one terminal off one number."
+---
+
+Forty minutes is a normal connection. Take out deplaning, take out the walk between concourses, take out boarding starting thirty minutes before departure, and a passenger who wants to eat has something like eight minutes of usable time.
+
+That is the budget every one of your phone callers is working against. When somebody calls your counter from a moving walkway asking whether two burritos and a coffee can be ready in six minutes, they are not browsing. They are deciding whether to walk to you at all, and if the phone rings out they buy pretzels on the plane instead. That sale is gone, and unlike a neighborhood restaurant you will never see the person again to recover it.
+
+Airport phone volume is lower than most restaurant formats and the calls are strange in a specific way: every caller is operating against a departure time. That single fact changes what a voice agent has to do well and what it can afford to be mediocre at.
+
+## The pickup quote is the whole conversation
+
+At a neighborhood restaurant, a pickup time quote that runs five minutes long produces mild annoyance. At a terminal, it produces a passenger standing at your counter watching a boarding announcement, and either they leave without the food they paid for or they miss the flight.
+
+So the quote is not a nicety. It is the piece of information the caller is actually buying, and it has to be conservative and tied to reality. If your kitchen runs eight minutes at 6am and eighteen minutes at the 7:15 departure bank, the agent cannot quote a flat ten. It has to reflect the same variation your staff would give, which means the quote logic has to be built on your real ticket times by daypart rather than on a single number typed in during setup. That work is covered in [quoting accurate pickup times](/blog/quoting-accurate-pickup-times), and it deserves more attention at an airport than anywhere else.
+
+The second half is location. Your caller is a stranger in a building with confusing signage and no time to explore. "We're in Terminal 2, Concourse B, across from gate B12, past the newsstand" is the answer. "We're in the food court" is a lost order.
+
+## Who is actually calling you
+
+Four groups, and they want different things.
+
+- Passengers already inside the terminal, walking from a gate, who want food ready when they arrive and who care about minutes more than menu.
+- Flight crews on a turn, often ordering for four to eight people, often the same order every time, and often the most valuable repeat business a terminal unit has.
+- Airport and airline employees on a break, who know exactly where you are and want to skip the line.
+- People asking whether you are before or after security, which is a question about whether they can reach you at all.
+
+That last group is worth handling deliberately. A caller outside the checkpoint cannot get to a post-security restaurant without a boarding pass, and telling them so immediately is better service than taking an order they cannot collect. Configure the answer in plain terms and let the agent give it in the first ten seconds.
+
+Crew business is the one most operators underrate. A crew ordering the same six items on every Tuesday turn is a standing order in everything but name, and if that call reaches voicemail because your register was busy, it goes to the unit next door permanently. An agent that reliably picks up on the second ring, takes the order, and quotes an honest time is competing for exactly that account.
+
+## Dayparts at an airport are not a restaurant's dayparts
+
+Terminal units open early, close late, and change menus around departure banks rather than around meals. Some open at 4:30am. Some close when the last bank clears, which is a different time on a Sunday than on a Wednesday, and different again when the schedule changes seasonally.
+
+If any of that is left implied rather than configured, the agent will take orders for items your kitchen is not running. The [daypart switching](/blog/multi-menu-daypart-switching) work is the same one every restaurant does, with two airport-specific wrinkles: the hours are irregular enough that they cannot be described as "breakfast until 11," and airport schedules change on a published seasonal cycle that somebody has to remember to update. Put that update on the same calendar as your seasonal menu changes so it does not quietly rot. The general pattern is in [seasonal menu updates](/blog/seasonal-menu-updates-voice-agent).
+
+Availability matters more here too. A terminal unit that runs out of an item at 6am is out for the morning bank, and a caller who is quoted an available item and arrives to find it gone has no time to choose something else. Real-time [86ing through the POS](/blog/real-time-86ing-menu-sync) is the difference between an agent that helps and one that generates complaints at the counter.
+
+## What the agent should refuse to answer
+
+Airport callers ask about things that are not yours. Checkpoint wait times. Whether their flight is delayed. Whether they can bring a drink through security. Where the nearest charging station is.
+
+Configure the agent to decline those clearly rather than guessing, because a wrong answer about security or a flight will be blamed on you, and because these change hour to hour in ways nothing you configure can track. A short, honest deflection to airport information is the right response. What it should answer confidently is anything about your own operation: hours, location, menu, and whether you take a given payment method, which is the [hours and location question set](/blog/voice-ai-answering-faqs-hours-parking) adapted to a terminal.
+
+Language coverage is worth a specific look. International arrivals concourses take calls in languages your crew does not speak, at hours when nobody bilingual is on. An agent that holds the conversation in a caller's language does something your staffing genuinely cannot, and the setup work on your side is described in [multi-language menu support](/blog/multi-language-menu-support).
+
+## Operator structure changes the math
+
+Many terminal restaurants are run by concession operators holding several units in one building, sometimes under different brands. If that is you, the phone question is not per-unit, it is per-portfolio.
+
+One number that routes across brands, one configuration process, and one place to see call reporting is a different proposition than a single independent restaurant deciding whether to spend $250 a month. Multi-unit reporting and per-store overrides for menus and hours are the mechanics that matter, and they are described in [reporting rollups](/blog/reporting-rollups-multi-location) and [per-store overrides](/blog/per-store-overrides-menu-hours). Confirm before you sign that your units' POS is on the supported list, since airport concessions run a wider spread of systems than street-side restaurants and the answer is unit by unit.
+
+## The honest read on whether to bother
+
+Some terminal units get almost no calls. If yours is a grab-and-go in a small concourse where every customer walks up, the phone is not your problem and you should spend the money on a second register.
+
+Count for a week. Log every inbound call, note the time, and note whether anyone answered inside three rings. Then look specifically at the departure banks, because that is when your register line is longest and your phone is least likely to be answered, and it is also when the calls that come in are worth the most. If your log shows a cluster of unanswered calls sitting right on top of your busiest twenty minutes, you have found orders you are turning away, and the arithmetic against [plans starting at $250 a month](/pricing) is straightforward from there. If the log is nearly empty, believe it and move on.

@@ -1,0 +1,80 @@
+---
+title: "Where SoundHound sits in restaurant voice ordering"
+description: "A multi-industry voice platform and a restaurant-only phone agent are built on different bets. What that difference means for an operator choosing between them."
+publishedAt: "2026-06-27"
+faqs:
+  - question: "What kind of company is SoundHound in the restaurant category?"
+    answer: "It is a voice technology company that serves several industries and has restaurant products among them, including drive-thru and phone ordering. That breadth is the defining fact for a buyer. A platform serving multiple verticals invests in speech and language capability broadly, while a restaurant-only vendor concentrates on menu, modifier, and POS behavior."
+  - question: "Is a multi-industry voice platform worse for restaurants?"
+    answer: "Not inherently. Platform companies often have deeper speech engineering than a small vertical vendor, which shows up in noisy environments and accented speech. What they less often have is opinionated restaurant defaults, such as knowing what to do when a caller asks for a half-and-half pizza or when an item goes 86 mid-shift."
+  - question: "How do I compare a platform vendor with a restaurant-specific one?"
+    answer: "Test both against the same five phone calls using your own menu, then check the resulting tickets in your POS. Include one order with several modifiers, one substitution, one change of mind mid-order, one question about an allergen, and one caller asking for a person. The difference in outcomes is more informative than any capability list."
+  - question: "Does deeper speech technology matter more than POS integration?"
+    answer: "Rarely, for a restaurant. Voice quality across the category has converged enough that most callers get understood. What varies enormously is whether the order lands in your point of sale as a structured ticket with the right modifiers. A perfectly transcribed order that arrives as a free-text note still produces a wrong plate."
+  - question: "What should a single-location restaurant ask a large voice vendor first?"
+    answer: "Ask which POS they write into by name, whether a restaurant of your size is currently running on that integration, and who answers when something breaks at 8pm Saturday. Those three answers filter faster than any feature comparison, and a vague answer to the first one is itself the answer."
+---
+
+Restaurant voice ordering has two kinds of companies in it, and the split is not about quality. It is about what the company is a bet on.
+
+One kind builds speech and language technology as the product and applies it across industries, with restaurants as one of several markets. SoundHound sits in that group. The other kind builds only for restaurants and treats the speech layer as a component in service of getting an order into a POS correctly. Both approaches produce working products. They fail in different places, and knowing which failure you can tolerate is most of the decision.
+
+## What breadth buys you
+
+A company doing voice across multiple industries has usually spent years on the hard parts of speech: noisy environments, overlapping talkers, accented speech, recovering when a caller interrupts. That work does not care what industry it is applied to, and it compounds.
+
+For a restaurant, this shows up in the places where a thin vendor struggles. A caller phoning from a car with the window down. A caller whose first language is not English, which is a real accuracy question covered in [accents and speech recognition accuracy](/blog/voice-ai-accent-speech-recognition-accuracy). A caller who starts over halfway through.
+
+Breadth also usually means the company will still exist in three years, which is not nothing in a category where small vendors get acquired or fold and your phone number is caught in the middle.
+
+## What breadth costs you
+
+The cost is opinionated defaults, and restaurants need a lot of them.
+
+Consider what a restaurant-specific agent has to know without being told. That a half-and-half pizza is a single item with two modifier sets, not two pizzas. That "no onion" applies to the burger and not to the whole order. That a caller asking for "the usual" is a caller who should probably reach a person. That an item marked unavailable in the POS at 7:40 must stop being offered on the very next call, not at the next hourly sync.
+
+None of that is exotic, and none of it emerges from general speech capability. It comes from building for one industry long enough to have opinions. A platform vendor can configure toward the same behavior, but configuration you have to specify is configuration you have to think of first, and most operators discover the gaps in service rather than in setup.
+
+The same dynamic applies to the 86 problem specifically, which is the single most common source of avoidable phone-order failures and is worked through in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes).
+
+## The five calls that separate them
+
+Whatever the vendor, run the same five calls with your own menu loaded and then go read the tickets in your POS.
+
+- An order with four modifiers, where you reverse one of them after the agent has repeated the item back.
+- A substitution the menu does not obviously support, like swapping a side for a salad on a combo.
+- A question mid-order about an allergen, followed by finishing the order.
+- A call placed from your parking lot at 6:45 on a Friday, with the noise that comes with it.
+- A caller who asks for a person in the first ten seconds and should get one.
+
+That fifth one is worth watching closely. An agent that argues with a caller who asked for a human posts a better containment number and produces angrier customers, which is the trap described in [what is call containment](/blog/what-is-call-containment).
+
+Count three outcomes per vendor: tickets exactly right, tickets close enough to serve, tickets that would have gone out wrong. Those numbers settle it, and no capability chart should be allowed to outrank them.
+
+## Where the drive-thru heritage helps and where it does not
+
+Several companies in this category came up through drive-thru work, and that experience is genuinely valuable for lane audio and for speed under a constrained item set.
+
+Phone ordering is a different shape. A drive-thru customer is reading a menu board. A phone caller is not reading anything. They ask what comes on the sandwich, whether you deliver to their street, how long it will be, and whether the kitchen is still open. Those are conversation problems more than recognition problems, and a system tuned for lane throughput can feel clipped on the phone, pushing callers toward a decision faster than they want to make it.
+
+If you have both channels, do not assume one vendor's strength transfers. The differences are laid out in [drive-thru vs phone ordering voice AI](/blog/drive-thru-vs-phone-ordering-voice-ai).
+
+## Who owns the menu file
+
+A quieter difference between the two kinds of vendor is who is allowed to change things, and how fast.
+
+Restaurant menus move constantly. A special on Thursday, a price change when the beef contract resets, an item pulled because the supplier missed a delivery. If updating the agent means filing a request with a support team, you will stop updating it, and within two months your phone will be quoting prices you no longer charge.
+
+Ask the question in its concrete form. It is 3pm, you want to add an item and set it to appear only after 4, and you want it live for tonight's service. Who does that, and by when? Self-serve and immediate is the only answer that survives contact with a real kitchen.
+
+## Buying at your own size
+
+The practical filter for an independent or a small group is not technical. It is whether you are a customer the vendor is organized to serve.
+
+Ask which POS they write into by name and whether a restaurant your size is running on it today. Ask who answers on a Saturday night and what the commitment is in writing. Ask what it takes to add a menu item yourself at 3pm, and whether that is a self-serve change or a support request. Ask what the contract term is and what leaving costs.
+
+Large vendors can answer all of those well. Some do. But the answers tell you where you sit in their priority order, and a single location asking a company organized around enterprise accounts will find that out eventually. Better to find out during evaluation. The full filter is in [evaluating voice AI vendors](/blog/evaluating-voice-ai-vendors-restaurants).
+
+For reference on the other end of the spectrum, X1 Voice writes directly into Square, Clover and OrderCounter and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect, with [pricing](/pricing) published from $250/month and setup typically under 24 hours. Whether that shape suits you depends on how many locations you are planning for.
+
+The decision rule is narrower than the marketing on either side suggests. If your phone calls are long, conversational, and full of substitutions, weight restaurant-specific behavior. If your calls are short, your menu is fixed, and your hardest problem is being understood in a loud lane, weight speech engineering. Run the five calls, count the tickets, and let the count outrank the pitch.

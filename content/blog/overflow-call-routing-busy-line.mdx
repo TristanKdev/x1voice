@@ -1,0 +1,72 @@
+---
+title: "What happens to call two through call six at your peak"
+description: "Your busiest hour doesn't produce one call at a time. Here's where the second, third, and fifth simultaneous call actually go, and how to catch them."
+publishedAt: "2026-02-26"
+faqs:
+  - question: "What is overflow call routing?"
+    answer: "It's the rule that decides where a call goes when your main line is already occupied. Depending on the setup, the second caller hears a busy signal, rings unanswered, lands in voicemail, rolls to a second line, or gets answered by something that can handle calls in parallel. Most restaurants have never chosen this rule deliberately."
+  - question: "Does a second phone line fix simultaneous calls?"
+    answer: "It doubles your capacity, which helps until three calls arrive at once. Adding lines also assumes you have a person free to answer each one, and at 6:30 on a Friday you usually don't. A second line solves the signaling problem while leaving the staffing problem exactly where it was."
+  - question: "How many calls does a restaurant get at the same time?"
+    answer: "At peak, an ordinary independent restaurant commonly sees two to four overlapping calls in the busiest fifteen minutes, and more on a game day or a holiday. The number matters less than the shape: call volume is clustered into the same window when your staff is least able to answer, which is what makes averages misleading."
+  - question: "Can voice AI answer multiple calls at once?"
+    answer: "Yes, and that's the main structural difference from a person or an answering service. Software handling calls in parallel treats the tenth simultaneous call the same as the first, so the peak that overwhelms a two-line system doesn't produce a queue. Capacity limits then come from the kitchen rather than the phone."
+  - question: "How do I find out what my phone does when the line is busy?"
+    answer: "Have two people call your restaurant at the same time from different phones during a slow period, and have a third join a few seconds later. Whatever the second and third caller hear is what your customers hear at 6:30 on Friday. Most owners are surprised, usually by a busy signal they didn't know they still had."
+---
+
+Six people call your restaurant between 6:15 and 6:30 on a Friday. Not six calls over the evening. Six inside fifteen minutes, which is what a real dinner rush looks like on a phone report.
+
+One of them gets answered, if you're lucky and someone was near the host stand. The question worth asking is what happened to the other five, and most operators genuinely do not know. The answer depends on a routing rule that was set once, probably by whoever installed the phones, and never revisited.
+
+## The five things your system might be doing right now
+
+If you have a single analog line with no rollover, caller two hears a busy signal. This is rarer than it used to be but not extinct, and it's the worst outcome available, because a busy signal is the only phone experience that actively tells someone to stop trying.
+
+If you have voicemail on a single line, caller two goes straight to the mailbox mid-rush, when your greeting is least likely to be current and your willingness to check messages is at its lowest.
+
+If you have two lines with rollover, caller two rings the second handset. Whether anyone picks it up is a separate question, and during a seating rush the answer is usually no. Caller three is back to the busy signal or the mailbox.
+
+If you have a hunt group across several extensions, callers ring through a sequence of phones, which sounds better and often isn't. The caller sits through four or five rings per hop while nobody answers any of them, then lands in voicemail forty seconds later with a worse impression than if they'd hit voicemail immediately. We compare that arrangement directly in [multi-line hunt groups versus voice AI](/blog/multi-line-hunt-groups-vs-voice-ai).
+
+If calls forward to a mobile after a delay, caller two typically hits the manager's personal voicemail, which is a genuinely bad thing for a customer to reach.
+
+None of these are exotic misconfigurations. They're the defaults.
+
+## Why the overlap is worse than the volume suggests
+
+Restaurant call volume isn't spread evenly, and reasoning about it as though it were is the main source of the mistake.
+
+Take a place doing 80 calls a day across twelve open hours. That averages under seven an hour, which sounds like a single person with a headset could handle it during a slow shift and be bored. Now look at where those calls actually land. The dinner block from 5:30 to 7:30 often carries a third of the day's calls, so 25 or so calls inside two hours, arriving in bursts rather than at even intervals.
+
+Inside a burst, calls overlap. Two callers on the phone for three minutes each, starting ninety seconds apart, occupy your line together for most of that time. Add a third and you're past what two lines and a host who is also seating a party of six can absorb.
+
+That's why the peak-hour miss rate is the number to look at rather than the daily total. [How many calls does your restaurant miss](/blog/how-many-calls-does-your-restaurant-miss) walks through pulling that figure from your carrier records, and it usually lands somewhere that makes the owner uncomfortable.
+
+## The part nobody sees
+
+A missed table walks past your host stand. Somebody notices. It gets discussed.
+
+A caller who got a busy signal at 6:22 does not exist anywhere in your world. They didn't reach voicemail, so there's no message. They didn't complete an order, so there's no ticket. They called the wing place three blocks over, ordered there, and you have no record that the interaction occurred. Your POS shows a solid Friday. It also would have shown a solid Friday if you'd caught all six calls, and the difference between those two Fridays is invisible from the inside.
+
+That invisibility is why phone overflow gets underinvested relative to almost anything else in the building. The cost is real arithmetic though: five missed calls in one Friday rush at a $35 average ticket is $175 that evening, and the same rush happens every week. Run the numbers for your own ticket average in [the real cost of a missed call](/blog/the-real-cost-of-a-missed-restaurant-phone-call) rather than taking anyone's word for the size of it.
+
+## Why adding lines is the obvious fix and the incomplete one
+
+More lines is the instinct, and it isn't wrong so much as insufficient.
+
+A phone line is a signaling path. Adding a second one means the second caller can reach you. It does nothing about whether a human is available to pick up, and at 6:22 on a Friday no human is available, which is the actual constraint. Restaurants that add lines usually discover their miss rate barely moves, because the bottleneck was never the copper.
+
+Adding people is the other instinct, and it's expensive in exactly the wrong pattern. You'd be hiring for a two-hour window five days a week. Nobody wants that shift, and the labor math on a dedicated phone person for a single location rarely works out. [Voice AI versus hiring another host](/blog/voice-ai-vs-hiring-another-host) works through that comparison honestly, including the cases where hiring is the right call.
+
+Software answering calls in parallel changes the shape of the problem rather than the size of it. The tenth simultaneous call gets the same treatment as the first, so the peak stops being a capacity event on the phone. It becomes a capacity event in the kitchen instead, which is a real constraint and one you should configure for deliberately rather than discovering at the pass. Order throttling against kitchen capacity is covered in [order throttling and kitchen capacity](/blog/order-throttling-kitchen-capacity-phone), and it's the setting people most often skip.
+
+## Find out what yours does this week
+
+This takes ten minutes and one accomplice.
+
+During a slow afternoon, have someone call your restaurant and stay on the line. Thirty seconds later, call it yourself from a different phone and write down exactly what you hear and how long it takes. Then have a third person call while both of you are still connected. Note what the third caller gets.
+
+Do it again at 6:30 on a Friday, when the answering behavior and the human availability are both different. The gap between the two tests is your overflow problem, stated precisely.
+
+If caller two hears a busy signal, fix that this week regardless of anything else you do about your phone. If caller three sits through twenty seconds of ringing before voicemail, that's your peak experience for a meaningful share of your dinner business. Whatever you decide to do about it afterward, the useful move is knowing the number instead of estimating it, and [restaurant phone analytics](/blog/restaurant-phone-analytics-guide) is where that measurement lives permanently.

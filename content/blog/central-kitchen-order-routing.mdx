@@ -1,0 +1,86 @@
+---
+title: "Routing central kitchen orders separately from store orders"
+description: "A commissary order taken at a store counter arrives late. How to split central kitchen production off the store line before it lands on a prep sheet."
+publishedAt: "2026-07-30"
+faqs:
+  - question: "Why should commissary orders be routed away from the store line?"
+    answer: "Because the store cannot fulfill them and has no reliable way to pass them along during service. An order taken at the counter sits on paper until someone remembers to relay it, which usually happens after the commissary has cut its production sheet. Routing by where the food is actually made removes the relay step entirely."
+  - question: "What makes an order a central kitchen order?"
+    answer: "Production location, not dollar value. A four-hundred-dollar order of regular menu items the store cooks all day is a store order. A ninety-dollar tray of something only the commissary produces is a commissary order. Write your routing rules against which kitchen makes the food, and the edge cases mostly disappear."
+  - question: "Can one phone number serve both the store and the central kitchen?"
+    answer: "Yes, and it usually should. The caller shouldn't have to know your production geography. A voice agent answering the published number can identify what the caller wants, apply the routing rule, and write the order into the right ticket stream without the caller ever hearing about a commissary."
+  - question: "What lead time should a central kitchen order require?"
+    answer: "Whatever your production schedule actually requires, stated as a hard cutoff rather than a suggestion. If the commissary cuts tomorrow's sheet at 2 p.m., the agent should stop offering next-day slots at 2 p.m., not at midnight. Soft cutoffs get honored inconsistently and train callers to push."
+  - question: "Does the store still need to know about commissary orders?"
+    answer: "Only for the pickups it handles. If a customer collects a commissary tray at a store, that store needs the order on its board with a time and a name. It does not need the ordering conversation, the deposit, or the production details, and sending those to the store creates noise it will learn to ignore."
+---
+
+A caller dials the Riverside store and asks for forty boxed lunches on Thursday. Riverside has a four-burner line and two people on it at eleven in the morning. It does not make forty boxed lunches. The commissary three miles away does, and it wants that order by 2 p.m. the day before.
+
+What happens next is the entire problem. Someone at Riverside writes the order on the back of a prep list, means to call the commissary, gets buried at noon, and calls at four. The production sheet is already cut. Now it's a favor instead of an order, and somebody is coming in early on Thursday to cover it.
+
+The phone treated a commissary order like a store order, because the phone has no idea there's a difference.
+
+## The two streams share a number and nothing else
+
+Most multi-unit operators with a central kitchen end up with two genuinely separate order streams flowing through one published phone number per store. One stream is walk-up-adjacent: a pickup order, a delivery, a party of six calling ahead. The store cooks it within the hour. The other is production volume, made off-site, scheduled against a sheet, often with a deposit and a delivery window.
+
+They have almost nothing in common operationally. Different kitchen, different lead time, different person approving it, different failure mode when it goes wrong. A store order that goes sideways costs you one ticket. A commissary order that goes sideways costs you a corporate account.
+
+Yet they arrive at the same ringing phone, get answered by the same person, and land in the same POS with the same urgency, which is to say none in particular.
+
+## What actually breaks in the relay
+
+The relay is where orders die, and it dies in a few specific ways worth naming.
+
+The order is taken but never passed. Someone answers at the counter, writes it down, and the note goes into an apron pocket. This is not a discipline problem. It's a design problem, because you asked a person mid-service to be a message queue.
+
+The order is passed but incomplete. The store took a name and a headcount. The commissary needs the allergen note, the delivery address, the setup time, and whether it's on a plate or in a box. Those questions get asked a second time, by someone calling the customer back, which reads as disorganized even when the order eventually goes out fine.
+
+The order is passed with the wrong price. Catering pricing is not menu pricing, and a store employee quoting per-head off the top of their head is guessing. Once a number is said out loud on a phone call it's hard to walk back.
+
+The order is passed after the cutoff. The most common one, and the most expensive, because it converts a normal Thursday into overtime.
+
+## Route on production location, not on order size
+
+The instinct is to route by dollar amount or by headcount. Set a threshold, and anything above it goes to catering. That rule sounds clean and produces constant edge cases.
+
+Route on where the food gets made instead. Ask a simpler question about every order: which kitchen produces this? If the answer is the commissary, it's a commissary order regardless of whether it's four hundred dollars or ninety. If the answer is the store, it's a store order even if it's a large one.
+
+This works because it matches the constraint you actually have. The constraint isn't size, it's production capacity and schedule at a specific address. A store can make thirty individual sandwiches over an hour without noticing. It cannot make one platter that requires a slicer it doesn't own.
+
+Write the rule against your item catalog, not against a number. Items produced centrally get a flag. Anything with that flag on the ticket routes to the commissary stream, applies the commissary lead time, and never appears as available for pickup in twenty minutes. Our [large catering order guide](/blog/voice-ai-large-catering-orders) covers the quoting side of these once they're routed correctly.
+
+## The rules a voice agent needs to hold
+
+If the phone is answered by a voice agent rather than by whoever is closest to it, the routing lives in configuration instead of in someone's memory. That's the real gain, and it's worth being specific about what has to be configured:
+
+- Which items or categories are produced centrally, so the agent can classify an order the moment the caller names an item rather than at the end of the call.
+- The hard cutoff for each production day, expressed as a time the agent stops offering the next day, not as a note it reads aloud.
+- Which stores are pickup points for commissary output and which are not, because customers assume every location can hand them a tray.
+- The minimum information a commissary ticket needs before it can be accepted: headcount, service time, address if delivered, and any allergen flag.
+- Who gets the escalation when a caller wants something outside the rules, since a commissary exception is a management decision rather than a counter decision.
+
+None of that is exotic. It's the same information your catering manager already carries around in their head, written down once. The gap between "in someone's head" and "written down" is where most of the missed orders live, which is also the argument in [routing callers to the right store](/blog/call-routing-across-locations).
+
+## Deposits and confirmations belong to the commissary stream
+
+Store orders don't take deposits. Commissary orders often should, and the decision about whether to collect one has to be attached to the routing rule rather than to a person's judgment on a busy Tuesday.
+
+The same is true of confirmation. A pickup order needs no written confirmation because the customer is standing there in twenty minutes. A commissary order placed on Monday for Thursday needs something in writing, sent immediately, listing the items, the time, the address, and the total. Not because the customer will forget, though some will, but because the written confirmation is what you argue from when Thursday goes wrong.
+
+Attach both to the item flag. If it's a centrally produced order, it takes a deposit rule and it generates a confirmation, automatically, without anyone deciding.
+
+## What the store still needs, and what it doesn't
+
+Routing an order away from the store doesn't mean the store is uninvolved. If a customer collects at Riverside, Riverside needs the order visible on its board with the pickup time and the customer name, ideally the day before rather than the morning of.
+
+What the store does not need is the whole conversation. Deposits, production notes, the back-and-forth about whether the vegetarian boxes come with dressing on the side. Push all of that to a store and staff will learn to ignore the whole channel, which means they'll also miss the one line that mattered. Send the store exactly what it has to physically do, at the time it has to do it. [Capacity and throttling rules](/blog/order-throttling-kitchen-capacity-phone) work on the same principle: the store sees the constraint it can act on, not the reasoning behind it.
+
+If you run virtual brands out of the same commissary, the routing question extends naturally, and the [ghost kitchen setup](/blog/voice-ai-ghost-kitchens-virtual-brands) is the same rule set with more names on it.
+
+## The test
+
+Call your own store number as a customer on a Wednesday at noon. Ask for something only the commissary makes, for Friday, for pickup at a different location than the one you dialed.
+
+Time how long it takes before someone can give you a firm price and a firm time. Then check on Friday whether what you described is what shows up. If the answer involves a callback, a text to a manager, or a note on a prep sheet, your routing is a person, and that person is going to be on vacation the week your biggest account calls.

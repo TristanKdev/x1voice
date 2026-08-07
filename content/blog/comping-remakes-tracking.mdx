@@ -1,0 +1,70 @@
+---
+title: "Track comps and remakes back to what actually caused them"
+description: "A monthly comp total tells you what you spent, not what went wrong. Four fields captured at the moment of the comp turn it into a fixable list of causes."
+publishedAt: "2026-04-20"
+faqs:
+  - question: "What should be recorded every time an order is comped or remade?"
+    answer: "Four things: the order number, the channel the order came from, a one-word cause, and who approved it. That is enough to find patterns and short enough to capture during a rush. Adding a free-text notes field is optional and usually ends up empty, so do not let the policy depend on it."
+  - question: "Which causes are worth having as options?"
+    answer: "Keep the list to about six so people pick honestly: wrong item, missing item, temperature, quality, late, and order entry. Order entry is the one that matters most for a phone operation, because it separates a mistake made taking the order from a mistake made cooking it. Add an 'other' option and expect it to be underused rather than overused."
+  - question: "How long before the data is useful?"
+    answer: "Four to six weeks for a single location doing normal volume. You are looking for clusters by daypart, channel, and item, and clusters need enough events to be visible. Reading it weekly in the first month is fine for checking whether people are actually filling it in, but do not act on a week of data."
+  - question: "Does phone ordering usually show up as a comp driver?"
+    answer: "It shows up as order-entry causes concentrated in the busiest hours, which is what you would expect from people taking orders while doing three other things. Whether it is a large share depends entirely on how much of your volume arrives by phone. The point of tagging channel is that you stop guessing about this."
+  - question: "Will tracking causes make staff hide mistakes?"
+    answer: "It can, if the report is used to identify individuals. Keep the approver field for authorization control and read the cause field in aggregate. Managers who are told the point is to find broken processes will fill it in accurately. Managers who watched a colleague get written up over a comp report will start tagging everything as quality."
+---
+
+At the end of the month the number comes back: eighteen hundred and forty dollars in comps and remakes. Everyone looks at it, someone says it was a rough month with the new menu, and nothing changes. Next month it is nineteen hundred.
+
+The total is not actionable because it is an outcome measure with the cause stripped out. It tells you what leaving the building looked like in dollars. It does not tell you that four hundred of it came from one item that the kitchen keeps sending out wrong, or that two thirds of it happened between six and eight on Fridays, or that phone orders comp at twice the rate of the ones customers typed in themselves.
+
+## What the comp report is actually missing
+
+Most POS comp reports capture an amount, a reason code, and a timestamp. The reason codes are usually inherited from whatever the system shipped with, so they say things like "manager comp" and "customer satisfaction," which is a category that covers every comp ever issued and therefore describes none of them.
+
+The gap is between the remedy and the failure. You know the customer got a free entree. You do not know whether the ticket said no onions, whether the kitchen read it, whether the item was even available, or whether the order was taken correctly in the first place.
+
+That last one is the interesting gap for anyone running phone volume, because an order taken wrong and an order cooked wrong look identical on the comp line and have completely different fixes. One is a training and menu problem in the kitchen. The other is a phone problem, and the phone problem is the one nobody is measuring.
+
+## Four fields, captured at the moment
+
+The discipline is small and it has to happen when the comp is approved, not reconstructed later from memory.
+
+Order number, so the ticket can be pulled. Channel, meaning phone, in person, your own online ordering, or a named delivery platform. Cause, chosen from a short list. Approver, for authorization control.
+
+Keep the cause list to about six options: wrong item, missing item, temperature, quality, late, order entry. Six is short enough that people read all of them and long enough that the honest answer is usually there. Longer lists get answered with whichever option is first.
+
+"Order entry" earns its place because it is the only one that points at the moment the order was captured rather than the moment it was made. A ticket that says medium when the customer said large is an order-entry cause even though the kitchen made exactly what it read.
+
+Two rules keep the data clean. The person approving picks the cause, not the person who took the complaint, because the approver is looking at the ticket. And "other" exists but does not have a text box, since a text box turns a two-second field into a fifteen-second one and the field stops getting filled in during exactly the shifts you most want data from.
+
+## What shows up after six weeks
+
+Real patterns from this kind of tracking tend to fall into a handful of shapes, and each one has a different fix.
+
+- One or two items generating a disproportionate share of wrong-item causes, which is almost always a menu-naming problem where two things sound alike to whoever is taking the order or reading the ticket
+- Missing items clustered on large orders and on delivery, which is a bagging and checklist problem rather than a kitchen problem
+- Order-entry causes concentrated in your two busiest hours, which means the people capturing orders are overloaded and accuracy is the thing giving way first
+- Comps clustered on items that were unavailable, which points at a menu-sync gap where you sold something the kitchen could not make, discussed in [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync)
+- A steady baseline spread evenly across everything, which is the normal cost of running a restaurant and not worth chasing
+
+The first four are work lists. The fifth is a floor. Knowing which of your eighteen hundred dollars is which is the entire point of the exercise.
+
+## The channel field is the one people skip
+
+Tagging channel feels redundant because the ticket already knows where it came from. Capture it anyway, in the comp record, because pulling comp rate by channel out of most POS reporting after the fact is more work than typing one word at the time.
+
+Comp rate by channel is a number worth having before you make any decision about phone ordering. If phone orders comp at two percent and everything else comps at one, that difference has a dollar value you can put next to the cost of fixing it. If they comp identically, the phone is not your problem and you should go look at your bagging process instead.
+
+It also gives you a before-and-after that survives arguments. Anyone changing how phone orders are captured, whether that is a new script, a second person on the line, or an automated agent, should be able to point at comp rate by channel three months later. That is a harder and more honest measure than a containment percentage, and it belongs alongside the accuracy method in [improving phone order accuracy](/blog/improving-phone-order-accuracy).
+
+## Reading it without turning it into a witch hunt
+
+The approver field exists so that authorization stays controlled and so you can see if one manager is approving comps well outside the written policy. That is a legitimate use and it is about the [refund policy](/blog/refund-policy-phone-orders) being followed, not about whose shift had bad luck.
+
+The cause field is different. Read it in aggregate, always. The moment a cook believes the comp report is a performance record, temperature complaints start getting logged as quality and the data stops being worth collecting. Say out loud, once, that you are looking for broken items and broken hours rather than broken people, and then behave that way when the report comes back.
+
+The report should be read monthly by whoever can actually change something, next to the complaint escalations from the same period. Comps tell you what the failures cost. The escalation log, structured the way [the complaint escalation matrix](/blog/complaint-escalation-matrix) describes, tells you what customers said about them. Together they usually agree, and where they disagree is interesting.
+
+Start with one month and one question: what share of your comp dollars carries an order-entry cause. If you cannot answer that today, you are guessing about whether your phone is costing you money, and it is a cheap thing to stop guessing about.

@@ -1,0 +1,80 @@
+---
+title: "How to Get Phone Orders to Show Up in GA4"
+description: "If a third of your revenue arrives by phone, your GA4 reports are wrong by a third. Two ways to push phone orders in, and the mistakes that double-count them."
+publishedAt: "2026-06-21"
+faqs:
+  - question: "Can GA4 track phone orders at all?"
+    answer: "Yes, but not on its own. GA4 only sees what happens in a browser, so a phone order has to be pushed in from outside, either through the Measurement Protocol or through an offline data import. Both are supported, both require someone to build the connection, and neither happens automatically when you install the tag."
+  - question: "What is the difference between Measurement Protocol and data import?"
+    answer: "Measurement Protocol sends events to GA4 over an API, usually within minutes of the order. Data import is a scheduled file upload that attaches offline conversions to existing sessions after the fact. Measurement Protocol gives you near-real-time reporting and more control; data import is easier to start with and fine if daily reporting is enough."
+  - question: "Will phone orders be attributed to a marketing channel?"
+    answer: "Only if you can tie the order to a browsing session, which usually means the caller visited your site first and you captured an identifier. Most phone orders cannot be linked that way and land in an unattributed bucket. That is an honest outcome, and a report that shows the unattributed share is more useful than one that guesses."
+  - question: "How do I avoid double-counting phone orders?"
+    answer: "Pick exactly one system as the source of truth for each order and use the POS order number as the GA4 transaction ID. GA4 deduplicates purchase events that share a transaction ID within a limited window, but the real protection is procedural: only one integration sends an order, and every other system reports without pushing events."
+  - question: "Is this worth building for a single location?"
+    answer: "Often not as an engineering project. For one restaurant, a weekly manual import of phone-order totals answers the same questions as a live integration at a fraction of the effort. Build the automated version when you have several locations, or when someone is making weekly spend decisions that depend on the number being current."
+---
+
+If phone orders are 30 percent of your revenue, then every revenue number in your GA4 property is understated by 30 percent, and every cost-per-order figure you have calculated from it is overstated by roughly the same amount.
+
+That is the whole problem. GA4 measures browsers. A caller who dials your number and reads their order to an agent never touches a browser, so the transaction exists in your POS, on your P&L, and nowhere in your analytics. The channel that generates the money is the channel your reporting cannot see.
+
+## Why the phone is invisible by default
+
+GA4 collects events from a page. Someone loads your menu, adds an item, checks out, and the tag fires a purchase event with a value attached. Every report downstream is built on that event.
+
+A phone order produces no page load. There is no session, no client identifier, no purchase event. Even a caller who browsed your menu on their phone before dialing generates a session that ends in what GA4 records as abandonment, because from the tag's perspective they looked around and left.
+
+Which means your data does not just have a gap. It has an active bias toward the online channel, and the pages that drive phone calls look like your worst-performing pages.
+
+## The two ways in
+
+**Measurement Protocol** is an API. When an order completes in your POS or your voice system, something on your side sends GA4 a purchase event with the order value, items, and an identifier. It arrives within minutes. This is the version worth building if you want current numbers.
+
+**Offline data import** is a scheduled upload. You produce a file of completed orders on a fixed cadence and GA4 joins it to existing data. It is less work to set up and entirely adequate if nobody is making decisions inside a 24-hour window.
+
+One warning on backdated events: GA4 will not accept events timestamped arbitrarily far in the past, and the accepted window is narrower than most people assume. Check the current Measurement Protocol documentation before you design a nightly batch job around it, because a batch that runs too late silently drops rows and the failure looks like a slow week.
+
+## Naming things so the report stays readable
+
+Do this part before you send a single event, because renaming later means reprocessing everything.
+
+- Use the POS order number as the transaction ID, unmodified, so any row in GA4 can be traced back to a ticket someone can pull up
+- Set the source and medium to something stable and human-readable, such as `phone / voice-agent`, rather than letting events land as direct
+- Send item-level detail if the POS exposes it, because phone menu mix differs from online menu mix and that difference is one of the more useful things this project produces
+- Include a parameter for which number was dialed, if you run more than one line
+- Keep the event name `purchase`, not a custom name, so phone orders appear in the standard ecommerce reports rather than requiring a custom explore
+
+That last one is the difference between a project people use and a project that produces a report nobody opens.
+
+## Do not double-count
+
+The most common failure is not missing data. It is the same order arriving twice, from the POS integration and from the voice platform, at slightly different values because one included tax and one did not.
+
+Pick one sender. Write down which system is the source of truth for phone-order events, and configure everything else to report only. Using the POS order number as the transaction ID gives you a second layer of protection, since GA4 will drop a duplicate purchase with a matching ID inside its dedupe window, but the window is not indefinite and it will not save you from a backfill that runs twice.
+
+Check by pulling one day of GA4 transactions against one day of POS tickets and matching them line by line. Do this on day one and again after any change to the integration. It takes twenty minutes and it is the only verification that means anything.
+
+## What attribution you can and cannot get
+
+Getting the order into GA4 is straightforward. Attributing it to a campaign is not.
+
+If the caller browsed your site first, and you captured their GA4 client ID at the moment they tapped your phone number, you can join the two and the order inherits the session's source. That works for the tap-to-call path on mobile, which is a real share of restaurant calls. It does not work for someone who found you on Google Maps, someone who dialed a number off a menu magnet, or someone who has your number saved.
+
+Those orders land unattributed, and the honest move is to leave them there and report the unattributed share as its own line. An attribution model that assigns those calls to a channel is producing a number that reads as fact and is a guess. Tracking numbers narrow the gap somewhat, with a real tradeoff that is covered in [call tracking numbers and NAP consistency](/blog/call-tracking-numbers-attribution), and the split logic itself is in [attribution between phone and online orders](/blog/attribution-phone-vs-online-orders).
+
+## What this actually buys you
+
+Three questions become answerable that were not before.
+
+Which pages drive phone calls, which usually reorders your sense of which content is working. Menu pages and location pages tend to outperform once the phone side is visible.
+
+What a phone order costs to acquire, which is the input for [cost per acquisition on phone orders](/blog/customer-acquisition-cost-phone-orders) and is frequently lower than the online equivalent because no marketplace commission sits in the middle.
+
+And whether a campaign moved total orders or shifted existing customers between channels. A promotion that lifts online orders 20 percent while phone orders fall 15 percent did much less than the online dashboard claims, and that pattern is invisible until both channels are in one report. The broader set of numbers worth watching is in [the restaurant phone analytics guide](/blog/restaurant-phone-analytics-guide), and the related question of traffic arriving from AI assistants is in [tracking AI referral traffic in GA4](/blog/tracking-ai-referral-traffic-ga4).
+
+## Start manually
+
+Before anyone writes an integration, export one week of phone orders from your POS and import them by hand.
+
+You will learn within an hour whether the POS export contains what you need, whether the order values match your daily close, and whether the resulting report changes any decision you were going to make. If it does not change a decision, do not build the automated version. If it does, you now know exactly what the integration has to produce, which is a far better spec than the one you would have written in advance.

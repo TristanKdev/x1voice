@@ -1,0 +1,75 @@
+---
+title: "Running phone orders on Clover Flex without a second screen"
+description: "A Flex-only shop does not need extra hardware to take AI phone orders. What changes is where the ticket appears and who is expected to be looking at it."
+publishedAt: "2026-05-23"
+faqs:
+  - question: "Do I need a Clover Station to take AI phone orders on a Flex?"
+    answer: "No. Orders written into your Clover account through the integration are visible on any device signed into that merchant account, including a Flex. The practical constraint is the screen, not the connection: a Flex is small and usually in someone's hand, so a shared printer or a fixed second device at the pickup counter is often worth the fifty dollars of counter space."
+  - question: "Where does a phone order show up on the Flex?"
+    answer: "In the Orders app, alongside any other order created outside the register. It arrives with the customer name, items, modifiers, and quoted pickup time already attached. Whether it also prints depends on your print routing configuration, which is worth setting deliberately rather than discovering during a rush."
+  - question: "Does the Flex battery matter for this?"
+    answer: "It matters more than operators expect. If the Flex is your only device and it dies at 8pm, phone orders keep arriving in your Clover account but nobody in the building can see them. Keep it docked between uses, or have a printed ticket path so orders are visible without a working screen."
+  - question: "Can the agent take payment for a Clover phone order?"
+    answer: "Card-on-file and pay-at-pickup are both workable patterns, and which one fits depends on your no-show rate and how you handle disputes. Taking a card over the phone brings PCI obligations that a tokenized flow is designed to handle, so read up before deciding rather than improvising it."
+  - question: "What happens if the internet drops?"
+    answer: "The voice agent still answers the phone, because it is not running on your hardware, but the order cannot be written into Clover until the connection returns. A good setup queues those orders and delivers them when the link is back, plus notifies you. Ask specifically how a vendor behaves during an outage; the answer varies a lot."
+---
+
+The common assumption is that adding AI phone answering to a Clover Flex setup means buying a countertop terminal to receive the orders. It does not. The Flex is a full register, the integration writes into your Clover account rather than into a specific device, and a shop running one Flex and a printer can take phone orders on day one.
+
+What does change is the question of who is looking. That is a floor-plan problem, not a hardware problem, and it is the part that decides whether this works in your shop.
+
+## The integration writes to your account, not to a terminal
+
+X1 Voice connects to Clover directly rather than through middleware, which is worth knowing because it removes a hop. The agent takes the call, builds the order, and creates it in your Clover merchant account. Any device signed into that account can see it in the Orders app: a Flex, a Mini, a Station, the web dashboard on a laptop in the office.
+
+For a small shop this is genuinely convenient. There is no second system to reconcile at close, no separate tablet with its own menu that drifts out of sync with the register, and the sales land in the same reports as everything else. The broader case for direct connections over middleware is in [why POS integration depth matters](/blog/why-pos-integration-depth-matters-more-than-voice-quality).
+
+For accuracy, the same rule applies as anywhere: the items and modifiers the agent can sell are mapped to your actual Clover catalog, so a price change in Clover flows through instead of living in two places. Verify that mapping after any menu edit. The [Clover phone ordering guide](/blog/ai-phone-ordering-for-clover) covers the setup end of it, and [/integrations/clover](/integrations/clover) has the current connection details.
+
+### The screen problem, which is real
+
+A Flex is a handheld. It lives in an apron, on a dock, or in someone's hand at the counter. That is exactly what makes it good for line service and exactly what makes it a mediocre order board.
+
+Three arrangements that work in practice:
+
+- Dock the Flex at the pickup station and treat it as a fixed order screen during service hours, using a second device or the printer for anything mobile
+- Keep the Flex mobile and route phone tickets to a printer at expo, so the paper is the signal and the screen is the backup
+- Add a cheap tablet or a Mini at the counter running the Clover dashboard, purely as a display
+
+Pick one before launch. The failure mode when you do not is an order sitting unseen in the Orders app for twenty minutes while the Flex is in the back office charging.
+
+## What a phone ticket looks like when it lands
+
+The order arrives with the caller's name, the phone number, the items with their modifiers, a quoted pickup time, and the payment state. It is a takeout order in Clover's terms, so it behaves like one in reporting and at close.
+
+The pickup time is the field that matters most to your staff, and it is the one worth configuring carefully. The agent quotes a time based on rules you set, not on what your kitchen is actually doing, because Clover does not report kitchen load back. During a rush, a fifteen-minute quote you set in January is a lie in July.
+
+Set the quote by daypart. Set a cap on how many orders the agent will accept in a fifteen-minute window. Then look at the real numbers after two busy weeks and adjust once. This is the same reasoning as [order throttling for kitchen capacity](/blog/order-throttling-kitchen-capacity-phone), scaled down to a shop where the whole kitchen is two people.
+
+Quote long on purpose at first. A caller told twenty minutes who gets food in fifteen is happy. A caller told twelve who waits twenty-five is the one who leaves a review about it. The cost of being conservative is a few callers who go elsewhere because the wait sounded long, and in a first month that is a much cheaper mistake than a line of people standing in your shop watching their food not be ready.
+
+## Where a one-device shop hits friction
+
+Small operations have specific problems that a multi-terminal restaurant does not, and it is more useful to name them than to pretend they are not there.
+
+- The Flex is also your only card reader, so someone taking payment at the counter is not looking at incoming orders during that minute
+- Battery. A dead Flex means orders exist in Clover and are invisible in the building
+- One person on shift means no dedicated expo, so the ticket has to interrupt whoever is cooking
+- Rush hours are when both the phone and the counter are busiest, which is precisely when the single screen is most contested
+
+None of these are reasons not to do it. They are reasons to have a printer. A thermal printer firing phone tickets at the pass costs very little and removes three of the four problems above, because paper does not need a battery, a login, or someone's attention at the right second.
+
+## The pilot that tells you whether it fits
+
+Run it for two weeks and measure three things you can measure without a dashboard.
+
+Count the phone orders that came in during your two busiest hours. Those are the ones you were most likely missing before, and they are the whole economic case. Compare them against a normal two-week period from before, using your Clover reports.
+
+Then count how many of those tickets were noticed late, meaning the customer arrived before anyone had started the food. If that number is more than one or two, your visibility arrangement is wrong and a printer fixes it.
+
+Finally, read the tickets. Not the totals, the tickets. Look for modifiers that came through in a form your cook found confusing, or items ordered by a name you do not use internally. Each one is a ten-minute correction in the menu mapping, and doing that pass once in the first month is most of the difference between a channel you trust and one you second-guess.
+
+Two weeks is enough to know. It is not enough to have optimized anything, and you should expect the second month to be better than the first simply because the menu mapping gets corrected and the pickup-time quotes get tuned to what your kitchen really does. Judge the channel on month two, but decide whether to keep going based on whether month one produced orders you would otherwise have lost.
+
+If the volume is genuinely small, say a handful of calls a week, this is not worth $250 a month to you and it is better to hear that plainly. The math works when the phone is a real channel and it rings while you are busy. Run the count first, decide after. [Pricing](/pricing) is straightforward enough to do that arithmetic against.

@@ -1,0 +1,96 @@
+---
+title: "Should You Block GPTBot and ClaudeBot From Your Site?"
+description: "AI crawlers read restaurant sites for two different reasons, and robots.txt treats them separately. What blocking costs a restaurant, and when it makes sense."
+publishedAt: "2026-03-25"
+faqs:
+  - question: "Should a restaurant block AI crawlers in robots.txt?"
+    answer: "Almost never. A restaurant site exists so people can find your hours, menu, and phone number, and blocking the crawlers that feed AI assistants removes you from answers people are already asking for. The publishers who block have a business selling the text itself. You have a business selling dinner to people who need directions."
+  - question: "What is the difference between GPTBot and OAI-SearchBot?"
+    answer: "OpenAI runs separate crawlers for separate purposes. GPTBot gathers content that may be used for model training; OAI-SearchBot fetches pages to answer live search queries with links back. Blocking GPTBot while allowing OAI-SearchBot is the middle position: your site stays out of training data but still appears in answers. The names and behavior are documented by OpenAI and change occasionally."
+  - question: "Does robots.txt actually stop AI crawlers?"
+    answer: "For the major named ones, generally yes. GPTBot, ClaudeBot, PerplexityBot, and Google-Extended are documented as honoring robots.txt directives. It is a voluntary convention with no enforcement, so a scraper that ignores it faces no technical barrier. If you need real blocking, that is a server or firewall rule, not a text file."
+  - question: "Will blocking AI crawlers hurt my Google rankings?"
+    answer: "Blocking Google-Extended does not affect normal Google Search ranking, because it is a separate control from Googlebot. Blocking Googlebot itself would remove you from search entirely, which is why the two are worth keeping straight. Read every disallow line carefully before you deploy it, since a misplaced wildcard can take your whole site out of the index."
+  - question: "How do I check what my robots.txt currently says?"
+    answer: "Open yourdomain.com/robots.txt in a browser. Most restaurant sites are running whatever their website builder shipped by default, which is often a broad allow, and occasionally a template that blocks more than the owner realizes. If you have never looked at yours, that check takes ten seconds and is worth doing before reading any further advice."
+---
+
+There are four crawler names most restaurant operators will ever need to care about: GPTBot, OAI-SearchBot, ClaudeBot, and PerplexityBot. Google adds a fifth, Google-Extended, which is a control rather than a crawler. Each of them respects a line in a text file at the root of your domain, and each of them does something different with what it reads.
+
+The publishing industry has spent two years arguing about whether to block them. That argument does not transfer to you, and the reason is worth being clear about before you copy anyone's configuration.
+
+## Publishers and restaurants want opposite things
+
+A news site sells its text. When a model reads an article and summarizes it, the reader never arrives, and the ad impression never happens. Blocking is a rational defense of the actual product.
+
+Your product is dinner. Your website is a directions sign. When a model reads your hours and tells someone you are open until ten and delivering to their neighborhood, that is the sign doing its job in a new place. You lose nothing, because you were never selling the sentence "we close at ten."
+
+So the default posture for a restaurant is to allow, and the burden of proof sits with anyone arguing otherwise. The people writing about this online are mostly publishers, which is why the advice reads the way it does.
+
+## The two purposes, and why they get separate switches
+
+Crawling for training and crawling to answer a live question are different activities, and most of the AI companies split them across separate user agents so you can decide about each one.
+
+- GPTBot collects content that may inform model training, with no link back to you and no traffic
+- OAI-SearchBot fetches pages to answer a search happening right now, and answers typically carry citations
+- ClaudeBot serves Anthropic's crawling, with the specific agent names documented and occasionally revised
+- PerplexityBot supports an answer product built around visible citations, which is the case in [Perplexity restaurant visibility](/blog/perplexity-restaurant-visibility)
+- Google-Extended is not a crawler at all, only a signal about whether content already crawled by Googlebot may be used for certain generative features
+
+That split gives you a coherent middle position: block training, allow retrieval. Some operators find that reasonable on principle. It costs you very little either way, because a model's opinion of your restaurant does not come from having trained on your homepage.
+
+## What the file actually looks like
+
+robots.txt is plain text at the root of your domain, and each block names an agent and what it may not fetch. Allowing everything requires no lines at all, which is why most restaurant sites are already open by default.
+
+If you want the middle position, it reads roughly like this:
+
+```
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+```
+
+Two cautions. Agent names change, so a configuration copied from a blog post in 2024 may name agents that no longer exist and miss ones that do. And a stray `Disallow: /` under `User-agent: *` takes your entire site out of Google, which is a far larger problem than anything on this page. Read every line before it ships.
+
+## What blocking actually costs you
+
+Concretely: the assistant answering a question about your restaurant loses its most authoritative source and falls back to whatever else it can find. That means delivery aggregators, review sites, and directory pages, none of which you control and most of which are somewhere between incomplete and wrong.
+
+Blocking does not make a model stop talking about you. It makes it talk about you using worse information. A restaurant that blocks every crawler and then complains that ChatGPT quoted a price from a three-year-old aggregator menu has arranged that outcome itself. The dependency chain is laid out in [how restaurants show up in AI search](/blog/how-restaurants-show-up-in-ai-search).
+
+It also does nothing about the sources that produce most of the wrong answers. Reviews, aggregator listings, and old directory entries are not on your domain, and your robots.txt has no authority over any of them. Blocking is a control over the one source you could have made correct, which is a strange thing to give up.
+
+There are two situations where blocking is defensible. If your site publishes substantial original writing that has value on its own, a recipe archive or a long-running food column, blocking the training agents while allowing the search agents protects the writing without hiding the restaurant. And if you have a legal or franchise obligation about content reuse, follow it, and do not take advice about it from a blog post.
+
+## Crawl load is not your problem
+
+Publishers sometimes block on infrastructure grounds, because an aggressive crawler hitting a site with millions of pages costs real money in bandwidth. Your site has maybe thirty pages, most of them static, and a crawler that fetches all of them once a week is invisible in your hosting bill.
+
+If your site does slow down under crawling, the cause is almost certainly an oversized menu image or a page loading a dozen scripts, not the crawler. Fixing that helps every human visitor too, which is a better use of the afternoon than editing a text file.
+
+The one real exception is an ordering flow or a reservation widget with URLs that generate infinitely, a calendar that keeps producing next month forever. Those are worth disallowing for every crawler, AI or otherwise, and the fix is a disallow line naming the path rather than the agent.
+
+## A configuration worth ten minutes
+
+Do these in order, and stop when your posture matches your intent.
+
+- Open your own robots.txt and read what is there now, because a website builder default is the most likely explanation for anything surprising
+- Confirm nothing is blocking Googlebot, which is the only line on this page capable of costing you real money
+- Decide the training question once, write it down, and stop revisiting it every time the topic trends
+- Leave the retrieval agents allowed unless you have a specific reason, since those are the ones that produce citations and calls
+- Check the file again whenever you change hosts or rebuild the site, which is when these settings quietly reset
+
+Then go do the work that actually changes answers. A crawler you allowed still needs something worth reading, which means a menu page in HTML rather than a PDF, hours that match your listing, and a delivery boundary written in a sentence. That is the substance behind [menu page SEO for restaurants](/blog/menu-page-seo-restaurants) and behind the more general question of [appearing in ChatGPT restaurant recommendations](/blog/appear-in-chatgpt-restaurant-recommendations).
+
+If you are also considering an [llms.txt file](/blog/llms-txt-for-restaurants), settle the access question first. Publishing a summary addressed to a crawler you have blocked is a contradiction that will confuse whoever maintains the site after you.
+
+The whole robots.txt decision is worth one afternoon and then no further thought. What it is not worth is the position most restaurants end up in by accident, where nobody has read the file, nobody knows what it says, and the answer people get about your hours comes from a page you have never seen.

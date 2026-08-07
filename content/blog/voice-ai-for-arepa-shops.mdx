@@ -1,0 +1,60 @@
+---
+title: "Voice AI for arepa shops when the menu is all fillings"
+description: "A short arepa menu does not make phone orders simple. What trips up a voice agent at a filling-driven counter, and how a two-person shop should test one."
+publishedAt: "2026-02-04"
+faqs:
+  - question: "Does a short menu make a voice agent easier to set up?"
+    answer: "No, and often the opposite. Setup difficulty tracks the number of ways customers phrase things, not the number of items on the board. An arepa counter with twelve fillings can carry more spoken variants than a diner with a hundred dishes, because callers name fillings loosely and combine them in ways the printed menu never shows."
+  - question: "Can the agent handle Venezuelan and Colombian Spanish in the same shop?"
+    answer: "Yes, and it needs to, since the same food carries different names across those two traditions. The vocabulary work is what makes it function: reina pepiada, pelúa, arepa de huevo, and choclo all have to be loaded as spoken forms, along with the English descriptions your board may use. That is configuration, not something the system infers."
+  - question: "What happens when the agent does not understand a caller?"
+    answer: "It should ask once for clarification, then transfer to a person rather than guessing. Set that rule deliberately at setup. An agent that keeps rephrasing the same question is worse than one that hands off quickly, and an agent that guesses at a filling produces a wrong order you pay for twice."
+  - question: "Is this worth it for a two-person shop?"
+    answer: "Only if the phone is a real order channel and it currently goes unanswered during your busiest hours. Count missed calls for two weeks before deciding. Plans start at $250 a month, so a shop dropping a handful of orders a week during peak will likely clear that, and a shop taking six calls a week will not."
+---
+
+The usual assumption is that a small menu makes a voice agent easy to set up. Twelve fillings, a few sides, done in an afternoon.
+
+It does not work that way. Setup effort tracks the number of ways your customers say things, not the number of things on your board. An arepa counter is a good example of the gap, because the item list is short and the spoken variants per item are unusually long. A caller orders "una reina" or "the chicken avocado one" or "reina pepiada" or "the one with the chicken salad," and those are four routes to the same arepa. Another asks for "pelúa" and another for "shredded beef with cheese," which is the same thing described from opposite directions. A diner with a hundred numbered dishes is easier, because item 47 is item 47.
+
+That is the real work of putting a voice agent on an arepa shop's phone, and it is worth understanding before you evaluate anyone's product, because most demos are built on menus that do not have this shape.
+
+## What actually confuses a voice agent at a filling counter
+
+Three things, and none of them are about accent quality.
+
+The first is naming across traditions. A Venezuelan-leaning shop and a Colombian-leaning shop use overlapping but different vocabulary, and plenty of counters serve both. Arepa de huevo, arepa de choclo, domino, catira, reina pepiada, pelúa. If your board carries English descriptions alongside the names, your callers use both, sometimes in the same sentence. Every one of those spoken forms has to be mapped to a POS item by hand at setup. A system that reads your menu file will know the printed names and none of the rest.
+
+The second is the implicit structure of an order. On paper an arepa is one item. On a call it is a base, a filling, sometimes a cheese swap, sometimes fried instead of griddled, sometimes with the filling on the side because someone is feeding a toddler. Callers do not announce which of those they are modifying. They say "two reinas, one without onion, and can you make one of them the corn one." Untangling that into two POS lines with the right modifiers is the whole job, and it is where cheap systems fail quietly. [How voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers) walks through that mechanic in more detail.
+
+The third is quantity ambiguity, which sounds trivial and causes most of the arguments at pickup. "Dame tres de carne mechada y queso" might be three arepas or three of each. "A dozen for the office, mixed" needs a follow-up question about which mix, and a human counter person asks it automatically. The agent has to be told to ask, explicitly, or it will pick something reasonable and be wrong about a $90 order. Write those clarification rules down during setup rather than discovering them from complaints.
+
+None of this is a reason to skip voice AI. It is a reason to reject any vendor who tells you a short menu means a fast setup, and to plan for an hour or two of your own time saying out loud how your customers actually order.
+
+## Bilingual is table stakes, and most implementations do it badly
+
+If a meaningful share of your callers open in Spanish, an English greeting followed by a language prompt is a defect, not a feature. It puts a delay in front of every call from your core customers and it signals that Spanish is the exception.
+
+What works is an agent that answers in Spanish, or in one short bilingual line, and then follows the caller. Not a menu press. Not a transfer. And critically, it has to survive a switch in the middle of a sentence, because bilingual customers code-switch constantly and rarely notice they are doing it. Someone orders three arepas in Spanish, says "and a large passionfruit juice," then goes back to Spanish for the pickup time. A system that locks the language on the first utterance drops the middle of that order or asks the caller to repeat, which is the moment they decide the phone is broken.
+
+There is a related question people raise about accents, and it deserves a straight answer. Recognition of Spanish varies by system and by dialect, and Caribbean Spanish with dropped consonants is genuinely harder for speech models than clearly enunciated Mexico City Spanish. Any vendor who tells you accent is a solved problem is overselling. Test it with your own regulars on the line rather than with a demo script. There is more on both points in [multilingual AI phone ordering for restaurants](/blog/multilingual-ai-phone-ordering-restaurants) and [voice AI accent and speech recognition accuracy](/blog/voice-ai-accent-speech-recognition-accuracy).
+
+## Coverage matters more than call volume for a small team
+
+A lot of arepa shops run with two or three people on the floor. That changes the calculation in a way raw call counts hide.
+
+When you have five staff, an unanswered phone means someone was busy. When you have two, an answered phone means someone stopped making food. Every call you take during a rush costs you throughput at the window, and every call you do not take costs you the order. There is no configuration of two people where both of those go to zero, which is the actual reason to look at this, and it is different from the reason a fifty-seat restaurant looks at it.
+
+The practical version: the agent covers the calls you were never going to reach anyway, and it covers the ones you would have reached at the price of a slower line. Both are worth something and only the first is easy to count. When you build your case, count the first and treat the second as unmeasured upside rather than folding it into a number you cannot defend.
+
+Coverage also extends past your open hours. A caller at 9:40 at night who wants to know if you do office catering on Thursday is a lead, and a voicemail box is where leads go to be forgotten. An agent that answers, states hours, takes a name and a callback number, and drops it in your queue converts a portion of those. Not all of them. A portion, and it costs you nothing per call. The same logic applies to a [pupusería's weekend rush](/blog/voice-ai-for-pupuserias), where the misses cluster in a narrow window.
+
+Whether the whole thing clears $250 a month is an arithmetic question specific to your counter, and [is AI phone answering worth it for a small restaurant](/blog/is-ai-phone-answering-worth-it-small-restaurant) lays out the way to run it. If your honest miss count is two orders a week at a $22 average ticket, it does not clear, and you should not buy it. Say that number out loud before a salesperson gives you a different one.
+
+## How to test one in a week
+
+Do not evaluate this from a scripted demo. Ask for a live number and call it yourself, in the way your customers call.
+
+Order four arepas with two different fillings, change your mind about one halfway through, ask whether the reina has onion, then ask for the total. Do the whole thing in Spanish, then do it again switching to English at the third sentence. Order "a dozen mixed" and see whether it asks you what mix or invents one. Ask something it cannot know, like whether you deliver to a specific office park, and watch whether it guesses or transfers.
+
+Then let it run one week live and read every transcript on the first Saturday. Sort the failures into two piles: phrasings nobody loaded, which you fix in twenty minutes, and misunderstandings the system produced from correct input, which you cannot fix and which tell you whether to keep it. Most shops find the first pile is large and the second is small. If yours is the other way around, that is your answer, and you should give it before the contract auto-renews. You can see what the setup covers on [features](/features).

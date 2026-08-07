@@ -96,6 +96,8 @@ export function PlansSection() {
                 {/* CTA anchored to the card bottom so every button aligns on one row */}
                 <Link
                   href={tier.monthlyPrice === "custom" ? "/contact" : tier.ctaHref}
+                  data-track="pricing_plan_click"
+                  data-track-plan-name={tier.name}
                   className={cn(
                     "mt-6 inline-flex h-11 w-full items-center justify-center rounded-full text-sm font-semibold transition",
                     highlighted

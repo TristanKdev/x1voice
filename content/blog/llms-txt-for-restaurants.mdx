@@ -1,0 +1,99 @@
+---
+title: "Should Your Restaurant Have an llms.txt File?"
+description: "llms.txt is a proposed convention, not a standard anyone is obligated to read. What it is, what belongs in one for a restaurant, and why it changes little."
+publishedAt: "2026-03-24"
+faqs:
+  - question: "What is llms.txt?"
+    answer: "A proposed convention for a plain-text file at the root of a website that summarizes the site and points to its most useful pages in a form easy for a language model to read. It was suggested publicly in 2024 and has been adopted mostly by software documentation sites. No major AI company has committed to reading it."
+  - question: "Will adding llms.txt make ChatGPT recommend my restaurant?"
+    answer: "No. Nothing you place on your own site makes a model recommend you, and recommendation comes out of reviews, popularity, and proximity to the person asking. An llms.txt file at most makes your factual details easier to find for a crawler that already visits you. Anyone selling it as a ranking lever is overselling a text file."
+  - question: "What should a restaurant put in an llms.txt file?"
+    answer: "The facts that get asked about on the phone: hours including holiday exceptions, the phone number, the address, the delivery boundary, whether you take reservations, the catering minimum, and a link to a menu page that is real HTML. Keep it short. A file that repeats your entire menu is worse than one that links to the page carrying it."
+  - question: "Is llms.txt the same thing as robots.txt?"
+    answer: "No, and confusing them causes real damage. robots.txt controls crawler access and is honored by most major crawlers; llms.txt is a content summary with no access-control function and no enforcement. Blocking a crawler in robots.txt while publishing an llms.txt file for it is a contradiction worth catching before you ship it."
+  - question: "How long does it take to write one?"
+    answer: "About thirty minutes if your facts are already correct elsewhere, and considerably longer if writing it forces you to discover that your hours, delivery zone, and catering minimum are documented in three places that disagree. That discovery is the real value of the exercise. The file itself is a byproduct."
+---
+
+The pitch you have probably heard is that adding an llms.txt file to your website makes AI assistants find and favor your restaurant. That is not what it does, and no major AI company has publicly committed to reading the file at all.
+
+What it is, precisely: a proposed convention for a markdown file at the root of a domain that summarizes what a site contains and links to the pages worth reading. It was suggested publicly in 2024, it has been picked up mainly by software documentation sites, and adoption by the companies running the crawlers remains uncertain. Treat any claim of a confirmed ranking effect as unverified.
+
+Even so, writing one for a restaurant takes half an hour and produces something useful regardless of whether a crawler ever fetches it. The reason is not the file. It is what writing it forces you to check.
+
+## The format, briefly
+
+A markdown file served at yourdomain.com/llms.txt. The convention is a title line, a one-sentence description in a blockquote, and then linked sections that point at the pages carrying the detail.
+
+For a restaurant, the whole thing fits on one screen:
+
+```
+> Neapolitan pizza and pasta in the Fairview neighborhood. Dine-in,
+> takeout, and delivery within three miles. Open Tuesday through Sunday.
+
+## Key pages
+- Menu, at /menu: full food and drink menu with prices
+- Hours and location, at /visit: address, parking, holiday closures
+- Catering, at /catering: minimums, lead time, delivery area
+
+## Facts
+- Phone: (555) 555-0142
+- Address: 1420 Fairview Ave, Springfield
+- Hours: Tue-Thu 11-9, Fri-Sat 11-10, Sun 12-8, closed Monday
+- Delivery: 3 miles, $25 minimum, ends 30 minutes before close
+- Reservations: parties of 6 or more only
+```
+
+Start the file with a single markdown title line naming the restaurant, above the blockquote. That is the entire specification as it applies to you.
+
+## What belongs in it and what does not
+
+Put in the facts that a person calls to ask. Hours with the exceptions spelled out, phone number, address, delivery boundary and minimum, reservation policy, catering lead time, whether the patio is heated, whether you have a gluten-free crust and whether it is prepared in a shared oven.
+
+Leave out marketing language entirely. A model reading this file is looking for facts, and adjectives are noise that dilutes them. Leave out the full menu as well, because a menu embedded in a static text file is a menu that will disagree with your POS by next quarter, and a wrong price in a machine-readable file is worse than no price at all.
+
+### The staleness problem is the real risk
+
+Every fact you write into this file is a fact you now have to maintain in one more place. That is the honest cost, and it is why the file should stay short.
+
+A restaurant that publishes an llms.txt file with summer hours and forgets it in September has actively made its information worse. The file is unusually credible looking, sitting at the root of the official domain, which means a wrong fact in it can outrank a correct one elsewhere. If you cannot commit to reviewing it when your hours change, do not publish it.
+
+## Why the file is not the point
+
+Here is what actually happens when someone sits down to write one. They get to the delivery line and realize the website says three miles, the Google listing says four, and the person who takes the calls has been quoting "anywhere in Fairview" for two years. They get to the catering minimum and find three different numbers.
+
+Resolving those contradictions is the work that moves anything. A model reading five sources that agree states your delivery radius plainly. A model reading five sources that disagree either hedges or picks one at random, and you have no say in which. That is the mechanism described in [answer engine optimization for restaurants](/blog/what-is-answer-engine-optimization-restaurants), and the llms.txt exercise is just a checklist that surfaces the disagreements.
+
+The version of this that costs money is the delivery boundary. A model that reads four miles from an old directory page sends someone an order you cannot deliver, and the call arrives at your counter as a complaint rather than a sale. Same with the catering minimum: quoted low, it produces an order you have to talk someone out of, and quoted high, it produces an order that never gets placed at all.
+
+## What actually gets read for certain
+
+Two things, and both outrank llms.txt by a wide margin.
+
+Your HTML pages. Crawlers read them today, without any convention needing adoption. A menu page with item names and prices as real text does more for machine readability than any summary file, which is the case made in [menu page SEO for restaurants](/blog/menu-page-seo-restaurants).
+
+Structured data. JSON-LD in your page markup is a documented, widely consumed format that search engines have parsed for over a decade. If you want a machine-readable description of your restaurant, that is the format with an actual consumer, and [restaurant menu schema markup](/blog/schema-markup-restaurant-menu) covers which parts of it repay the effort.
+
+An llms.txt file sits behind both of those in priority. Do them first.
+
+## The contradiction to avoid
+
+If you have blocked AI crawlers in robots.txt, publishing an llms.txt file addressed to those same crawlers accomplishes nothing except confusing whoever inherits your site. Decide the access question first, and [AI crawlers and robots.txt for restaurants](/blog/ai-crawler-robots-txt-restaurants) lays out that tradeoff with the specific user agents named.
+
+Most restaurants should allow the crawlers, since the entire goal is being described accurately to someone deciding where to eat. But it should be a decision, not an accident of a template your web host shipped.
+
+## Who this is genuinely worth it for
+
+Two situations make the file more than a curiosity.
+
+A restaurant group with locations that differ meaningfully, different hours, different delivery zones, one with a bar and one without, has a real disambiguation problem. A short file naming each location and pointing at its page reduces the odds a machine blends two stores into one answer, which is the single most common wrong answer multi-location operators get.
+
+And a restaurant with an unusual model benefits, because the defaults a model assumes about a restaurant will be wrong. A supper club with two seatings, a bakery that sells out by eleven, a ghost kitchen with no dining room, a place that only takes cash. Those facts get inferred incorrectly unless stated, and stating them plainly in one place is exactly what this file is for.
+
+Everyone else can skip it without consequence.
+
+## A reasonable position on all of this
+
+Write the file if your facts are already clean and you can review it twice a year. Skip it if your menu is still a PDF, because you have a much larger problem and the summary file will not touch it. Answer-first pages on your own site are the better use of the same hour, and [answer-first content for restaurant websites](/blog/answer-first-content-restaurant-website) is where that effort compounds.
+
+The test for whether any of this worked is not whether the file exists. Ask three assistants your delivery radius next month. If they agree with each other and with you, the underlying facts got fixed, which was always the actual job.

@@ -1,0 +1,78 @@
+---
+title: "Voice AI for Jamaican and Caribbean Restaurants"
+description: "The hardest call at a Jamaican restaurant isn't an accent problem, it's an oxtail problem. How a voice agent handles sellouts, Sunday rushes, and daily menus."
+publishedAt: "2026-01-07"
+faqs:
+  - question: "Can a voice agent understand patois-accented callers?"
+    answer: "Reasonably well on ordinary conversation, and unreliably on dish names it has never been shown. The gap is closed by loading the variants your customers actually say for each item, then testing with real callers. Any vendor who claims accent handling is a solved problem is overselling; ask to test the demo with your own regulars."
+  - question: "What happens when the oxtail sells out?"
+    answer: "Whatever your POS says. If someone marks oxtail unavailable and that reaches the agent immediately, the agent stops selling it and offers what's left. If the 86 list lives on a whiteboard, the agent keeps selling oxtail until closing. This is the single most important thing to verify before you buy anything."
+  - question: "How does it answer 'what do you have today?'"
+    answer: "By reading current availability out loud, if availability is real data. That question is the most common one at a Caribbean restaurant and the one most likely to expose a stale menu. Configure the agent to answer with what is in stock right now rather than reciting a fixed menu that includes three things you ran out of at two o'clock."
+  - question: "Is Sunday volume actually a problem worth solving?"
+    answer: "For many Caribbean restaurants it is the whole case. Sunday concentrates a large share of the week's orders into a few hours, the kitchen is at capacity, and nobody can reach the phone. Count unanswered calls on one Sunday between noon and four. That number, times your average ticket, is the size of the question."
+  - question: "Will regulars mind talking to an agent?"
+    answer: "Some will, particularly customers who have a relationship with whoever normally answers. You can keep that: route calls to a person during staffed hours and put the agent on overflow and after-hours only. Partial coverage that protects your regulars is usually a better first step than replacing the line entirely."
+---
+
+The assumption most operators bring to this is that a voice agent will fail on the accent. It's the first objection, it's reasonable, and it's not where the failure actually happens.
+
+The failure happens at 2:15 on a Sunday when the oxtail runs out and the agent keeps selling it until closing, because nobody told it. Accent handling is a tuning problem with a known fix. Selling food you don't have is an integration problem, and it produces angry callbacks, refunds, and a customer who drove twenty minutes for nothing.
+
+## The daily menu is the actual product
+
+Caribbean restaurants run a menu that changes by the day and by the hour in a way most formats don't. Curry goat on some days, escovitch on others, oxtail whenever it's on and gone within hours of the doors opening on a Sunday. Half your calls are some version of "what do you have today," and your staff answer it from the steam table in front of them.
+
+An agent cannot see your steam table. It can only read what your POS says is available. So the question that determines whether this works for you is narrow and answerable in one afternoon: when someone 86s an item, how does that get recorded, and how fast does it reach every channel that sells?
+
+If the honest answer is "we tell each other," then buying a voice agent buys you an automated way to oversell. Fix the availability process first. It's worth doing regardless, because your online ordering has the same problem right now and you're already paying for it in refunds. [Real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) walks through what good looks like, and [voice AI POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes) covers what breaks.
+
+## Sunday is a different business than Tuesday
+
+Most Caribbean restaurants make a disproportionate share of the week between Sunday noon and four. The kitchen is flat out, there's a line at the counter, and the phone rings continuously through the peak.
+
+That's the hour where calls go unanswered, and unlike a walked-out customer you never learn it happened. Nobody leaves a voicemail saying they took their family's order somewhere else. The loss is silent, which is why operators consistently underestimate it. The arithmetic is laid out in [the real cost of a missed restaurant phone call](/blog/the-real-cost-of-a-missed-restaurant-phone-call).
+
+Before you evaluate any vendor, get your own number. Pull one Sunday's call log from your carrier and count calls that rang out or hit voicemail between noon and four. Multiply by your average ticket. That figure is the entire business case, and it's either large enough to act on or it isn't.
+
+## Accents, and what tuning can and can't do
+
+Speech recognition on Jamaican Patois, Trinidadian, Haitian Creole, and Guyanese-accented English is decent on common phrases and weakest on proper nouns. Your dish names are proper nouns.
+
+What helps is loading pronunciation variants deliberately. "Rice and peas" said quickly, "festival," "bammy," "doubles," "pepperpot," and the shorthand your regulars use all need to reach the right item even when they're said fast in the middle of a sentence. That's a list you can write in twenty minutes and it does more for accuracy than any model change.
+
+What doesn't help is hoping. Test the demo with three of your actual customers, not with a colleague reading from the menu. If the agent misses on your regulars, it will miss in production. [Voice AI accent and speech recognition accuracy](/blog/voice-ai-accent-speech-recognition-accuracy) covers how to run that test properly.
+
+## Plates, sizes, and the sides that come with
+
+The plate structure at a Caribbean restaurant carries the same trap as any format where staff fill in what the menu leaves out. Small and large plates. Rice and peas or white rice. Plantain included or extra. Two sides or one. Whether a large oxtail comes with a different portion of gravy than a small.
+
+Every one of those choices needs to be a real option in the POS with a price, and the ones your kitchen treats as mandatory need to be required so the agent asks. When a choice is optional in the system but mandatory in the kitchen, the ticket arrives incomplete and someone on the line guesses.
+
+Write down what a large plate actually includes. Not what the menu board says, what goes in the container. Then make the POS agree with that.
+
+## Payment, pickup, and the callback you don't want
+
+Two operational details matter more here than the format usually gets credit for.
+
+Pickup timing during the Sunday peak has to be quoted from something real. If you're an hour deep, the agent quoting twenty-five minutes fills your entry with people waiting, which slows your counter and makes the peak worse.
+
+And if you take card over the phone, the handling has to be right. That's a compliance question rather than a convenience question, and it's covered in [collecting payment over the phone safely](/blog/collecting-payment-over-the-phone-safely) and [PCI compliance for restaurant phone payments](/blog/pci-compliance-restaurant-phone-payments). Don't let a vendor wave at it.
+
+## What to do about your regulars
+
+There is a real cost to putting a machine between you and a customer who has called your restaurant every Sunday for nine years and expects a specific person to pick up. Pretending otherwise is how operators get talked into a rollout they regret.
+
+You don't have to choose all or nothing. The common arrangement is that the agent picks up on overflow, when the main line is busy, and after hours. Calls that reach a free person during staffed hours still reach a person. Your regulars mostly never notice, and the calls you were losing at peak get captured. [Overflow call routing for a busy line](/blog/overflow-call-routing-busy-line) describes the setup.
+
+If you'd rather go further later, you can. Starting narrow costs you nothing and tells you a lot.
+
+## When to walk away from this
+
+If your call volume is genuinely light, ten or fifteen calls a day spread evenly, the return isn't there. Plans start at $250 a month and that has to come out of orders you weren't otherwise capturing.
+
+If your menu is entirely improvisational, with no fixed prices and no POS discipline, the setup work will exceed what you expect and a vendor's 24-hour setup claim refers to their side, not yours.
+
+And if you've already got a person who answers reliably through the Sunday peak and your call log shows almost nothing rings out, you don't have the problem this solves.
+
+Do the Sunday count first. One log, one afternoon, four hours of data. Everything else follows from whether that number is big or small, and you're the only person who can get it.

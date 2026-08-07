@@ -1,0 +1,78 @@
+---
+title: "Voice AI for Cajun and Creole spots in crawfish season"
+description: "Crawfish pricing moves weekly and boil orders sell out by noon. How a voice agent handles by-the-pound quotes, boil lead times, and sold-out days without lying."
+publishedAt: "2026-02-10"
+faqs:
+  - question: "Can a voice agent quote a crawfish price that changes every week?"
+    answer: "Yes, as long as the price lives in your POS and the agent reads from it rather than from a script written at setup. Market pricing breaks any system where the number was typed in once. The practical test for a vendor is whether changing the per-pound price in your POS changes what the phone says within minutes, without anyone editing the agent."
+  - question: "What happens on a day we run out of live crawfish by noon?"
+    answer: "The agent should stop selling them the moment your team marks the item unavailable, and say so plainly instead of taking the order and apologizing later. This is the highest-stakes configuration in a seasonal seafood operation, because a caller who gets told no at 12:15 is annoyed and a caller who gets told yes and shows up to nothing is gone."
+  - question: "How do sack and pound orders get taken correctly?"
+    answer: "By treating weight as a quantity on a real POS item rather than as a note. A caller asking for fifteen pounds boiled with extra corn and potatoes should produce a ticket with fifteen as the quantity and the sides as modifiers. If your POS only has a generic crawfish button and staff type the weight into a comment field, fix that before adding a voice agent to the front of it."
+  - question: "Do boil orders need a lead time the agent enforces?"
+    answer: "Almost always. A thirty-pound boil is a batch decision, not an order, and the lead time is whatever your cook says it is on that day. Give the agent a rule such as two hours' notice for anything over ten pounds, with a hard cutoff before close, and have it offer the next available window rather than guessing when the rule cannot be met."
+  - question: "Is this worth it if crawfish season is only a few months?"
+    answer: "The seasonal spike is the argument for it, not against it. Those are the months where your phone rings hardest and your kitchen is least able to answer, and the rest of the year the agent still handles gumbo, po'boy, and plate orders. If you would consider hiring a seasonal phone person, price that against a monthly subscription you can also use in August."
+---
+
+The common assumption is that market pricing rules out phone automation. If the crawfish price moves every week and sometimes twice in a week, the thinking goes, any system with a menu in it will end up quoting last Tuesday's number to a caller who then argues at the counter.
+
+That's a real failure mode. It is also a question about where the price lives, not about whether a voice agent can work in a Cajun kitchen. A system that reads price from your POS quotes whatever you charged five minutes ago. A system that had prices typed into it during setup quotes whatever you charged in February.
+
+Ask that question first and most of the rest of this gets easier.
+
+## Why market pricing is an integration question
+
+Per-pound seafood pricing changes for reasons outside your control: catch, weather, what your supplier paid this week. You change the number on the board, sometimes mid-shift.
+
+If your voice agent pulls item and price data live from Square, Clover, OrderCounter, or a POS reached through Deliverect, then updating the price where you already update it is the whole workflow. Nothing else has to happen. If the vendor's setup process involved someone typing your menu into their dashboard, you now own a second place to update prices, and the second place will fall behind. It always does.
+
+Test it during a demo. Change a price in your POS and see how long until the phone says the new one. This is the same argument as [why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality), and market pricing is the sharpest version of it.
+
+## Weight has to be a quantity, not a note
+
+The second structural issue is how pounds get recorded. Plenty of Cajun kitchens have a single crawfish button on the POS and a habit of typing "15 lb, ex corn" into a comment field. That works when a person who knows the operation is doing it.
+
+It does not survive automation. An agent writing into a comment field is producing a ticket that requires interpretation at exactly the moment your boil station has no time to interpret anything. The order needs to land as a real item with fifteen as the quantity, with corn and potatoes as modifiers carrying their own upcharges, so the ticket prices itself and the kitchen reads it the same way every time.
+
+Fixing this is a POS housekeeping job, not a voice AI job, and it pays off whether or not you ever automate the phone. Related structure problems show up in [seafood restaurants](/blog/voice-ai-for-seafood-restaurants) generally, where market items and by-weight ordering are common.
+
+## Sold-out days are the thing to get right first
+
+You cook a set amount. When the sacks are gone they're gone, and on a good Saturday in April that happens before two.
+
+An agent that keeps selling sold-out crawfish creates a worse problem than an unanswered phone, because now someone drove over. So before anything else, confirm two things: that your team marks items unavailable in the POS at the moment they run out, and that the agent reads that availability. If sellouts currently live in your staff's heads, that habit has to change before you put a machine in front of it.
+
+Done properly the agent says no cleanly, offers what you do have, and does it sixty times without getting short with anyone. Done improperly it books orders you cannot fill. [Real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) covers the mechanics, and the failure patterns are catalogued in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes).
+
+## Boil orders are a capacity commitment
+
+A caller who wants thirty pounds boiled for a party at four is not placing an order in any normal sense. They are asking you to schedule a batch.
+
+Give the agent a rule it can apply. Something like: under ten pounds, whatever your standard wait is; ten to twenty-five pounds, two hours' notice; above that, call by a stated time the day before. Then let it enforce the rule rather than negotiate, and have it offer the next window when the caller's request falls outside.
+
+The exception handling matters as much as the rule. If your cook can sometimes squeeze in a late boil and sometimes cannot, do not let the agent decide. Let it capture the details and the callback number and say someone will confirm within the hour. A confirmed-later boil is a normal transaction. A promised boil that doesn't exist at four o'clock is a review.
+
+Capacity-aware quoting is the general version of this, covered in [order throttling and kitchen capacity](/blog/order-throttling-kitchen-capacity-phone).
+
+## The off-season menu still carries volume
+
+Crawfish season gets the attention, and it is not most of your year. Gumbo, jambalaya, étouffée, po'boys, and plate lunches ring the phone the rest of the time, and those calls have their own quirks.
+
+Po'boy configuration is the one worth doing carefully. Dressed or undressed, the bread choice, the size ladder, fried or grilled, and the substitution rules on the protein. That's a modifier tree with real depth, and callers state it in their own order rather than yours. An agent handles it if the aliases are mapped and stumbles if they aren't, which is the same lesson as everywhere else in this format.
+
+Also worth setting: what the agent says about heat level. "Spicy" means different things to a caller from out of town and a regular, and a one-line clarifying question saves a remake.
+
+## Seasonal hours and Lent will break a static configuration
+
+Two calendar realities hit this format harder than most. Your hours during peak season are often different from your hours in the fall, and Lent Fridays produce a fish-fry spike that reshapes your entire call mix for six weeks.
+
+If your voice agent's hours are configured once and forgotten, it will tell callers you're open on a day you closed and closed on a day you extended. Whoever owns the phone should own the hours calendar, and it should take under a minute to change. The seasonal-surge pattern is covered in the [holiday rush phone ordering playbook](/blog/holiday-rush-phone-ordering-playbook), which applies to any predictable spike, not only December.
+
+## What to decide before you sign anything
+
+Write down four answers. What is the exact lead-time rule for boils, by weight. Who marks items sold out and at what moment. Which calls always reach a person, which for most Cajun rooms means complaints, catering, and anything above a dollar threshold you pick. And where the price of record lives.
+
+If you can answer those four, setup is straightforward and typically takes under a day. If you cannot, the gap is in your operation rather than in the software, and adding a voice agent will make the gap louder rather than fix it.
+
+Run the price test on a live crawfish day. Change your per-pound price in the POS at 11am, call your own line at 11:10, and listen to what it quotes. Everything else about this decision is downstream of that one answer.

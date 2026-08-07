@@ -1,0 +1,86 @@
+---
+title: "How to handle prank orders without blocking real customers"
+description: "Prank and repeat-nuisance calls cost real food and driver time. How to catch them on the phone, when blocking a number helps, and when it costs you sales."
+publishedAt: "2026-04-21"
+faqs:
+  - question: "How do I stop prank food orders?"
+    answer: "Take a card or a callback verification on any delivery order above a threshold you set, and require a live answer on the callback before the ticket fires. Most prank orders die at that step because the caller has no interest in giving a real payment method. Blocking numbers helps only with repeat offenders who call from the same line."
+  - question: "Should I block a phone number that pranked us?"
+    answer: "Only after two or three confirmed incidents from the same number, and only if you accept that you may be blocking a household, an office, or an apartment building that shares that line. A block is permanent in practice because nobody ever reviews the list. Prefer flagging the number for a human to answer over silencing it."
+  - question: "Can a voice agent tell that a call is a prank?"
+    answer: "Not reliably, and any vendor claiming otherwise is overselling. What an agent can do is apply your rules consistently: require payment on delivery orders over a set amount, read back the address, and refuse to fire a large order without a card. Consistency catches more prank orders than judgment does."
+  - question: "What if the prank order already went out for delivery?"
+    answer: "Treat the food as lost and log the number, the address, and the order value in one place. Give the driver the shift back rather than arguing about it. The only useful output of a completed prank order is a record you can check against the next suspicious call from that number or that address."
+  - question: "Are prank orders and fraud the same problem?"
+    answer: "No. A prank order wastes food with no payment attached. Card fraud is a real payment that gets charged back weeks later, which costs you the food plus a dispute fee. The phone signals overlap, but the money works differently and so do the defenses."
+---
+
+It's 11:40 on a Friday. Someone orders sixty wings and four liters of soda for delivery, gives an address eleven minutes out, and hangs up before your host can read the order back. The driver gets there, the porch light is off, nobody answers, and the number rings out. You're down about $90 in food, a delivery run, and forty minutes of a fryer you needed for paying tickets.
+
+That's the actual shape of the problem. Not a nuisance, a line item.
+
+## What it costs, in numbers you already know
+
+Do the arithmetic on your own menu. A prank delivery order is your food cost on the ticket, plus the driver's time and mileage, plus the opportunity cost of the kitchen minutes. On a $90 order at 30 percent food cost you're out roughly $27 of product, but the driver run and the fryer time during your peak hour are worth more than that, because they came out of the hour when you had a line.
+
+Two of those a month is not a crisis. Two a week during a school term, which is a pattern plenty of operators near a high school will recognize, is a real number by the end of a quarter.
+
+The second cost is quieter. After a bad run of them, staff start treating unfamiliar callers with suspicion, and that leaks into how they talk to first-time customers who are entirely legitimate.
+
+## What nuisance calls actually look like on the line
+
+They fall into a few recognizable patterns, and most of them are catchable before food is made.
+
+The classic prank is a large delivery order to a real address where nobody ordered anything. The caller is often specific about the food and vague about everything else. They don't want to give a card, they push back on a callback, and they hang up fast once the order is repeated.
+
+The repeat caller is different. Same voice, several times a night, sometimes ordering and sometimes just talking. This one rarely costs food but eats your staff's attention during service.
+
+The mistaken-competitor order shows up in delivery-heavy markets: an order placed to a rival's address, or an order placed under a name meant to embarrass someone. These are rare and hard to spot in the moment.
+
+Then there's the category people confuse with pranks, which is card fraud. A fraudulent order pays, at first. The chargeback lands weeks later and takes a dispute fee with it. The phone behavior can look identical, which is why the defenses overlap. Fraud has its own signals worth reading separately in [phone order fraud red flags](/blog/phone-order-fraud-red-flags).
+
+## Blocking is a blunt instrument, and it stays blocked
+
+Blocking a number feels like the obvious answer, and it works for the narrow case of one persistent caller from one persistent line. Outside that case it has a cost operators consistently underestimate.
+
+A number you block might be a household where one teenager is the problem and two adults are customers. It might be a small office. It might be an apartment building's shared line, or a business phone system where dozens of extensions dial out through the same caller ID. Mobile numbers get recycled, too, so a number that pranked you in March can belong to somebody else by the following year.
+
+And blocks never get reviewed. Nobody in the history of restaurants has audited their block list. Whatever you block, assume you have blocked it forever. That's a different situation from automated junk traffic, where a blanket filter is fine because there's no customer behind it, covered in [blocking spam and robocalls on a restaurant line](/blog/blocking-spam-robocalls-restaurant-line).
+
+The better default is to flag rather than silence. A flagged number rings to a person, or rings with a note attached, and a human decides. You keep the call and lose nothing.
+
+## The checks that catch most of it before food gets made
+
+These are policy, not technology, and they work whether a person or a voice agent answers.
+
+- Require a card on any delivery order above a dollar threshold you pick. Something like $60 catches most prank volume without annoying the family ordering dinner. The threshold is yours; write it down so everyone applies the same one.
+- Read the full delivery address back and ask the caller to confirm it. Prank callers frequently won't sit through the confirmation.
+- On a first-time delivery caller placing an unusually large order, call the number back before firing the ticket and require a live answer.
+- Take the order but hold the fire until payment clears, rather than starting food and sorting payment after.
+- Log every confirmed incident with number, address, and value in one shared place, so the second occurrence is visible to whoever answers next time.
+
+The first two catch the overwhelming majority. A caller placing a genuine sixty-wing order has a card and thirty seconds. A caller placing a fake one has neither.
+
+## Where a voice agent helps, and where it doesn't
+
+An agent cannot detect insincerity. It has no instinct, it can't hear that a caller is snickering, and any vendor pitching prank detection as a feature is selling you something that doesn't exist.
+
+What it does do is apply your rules to every single call at 7pm on a Friday exactly as written, which is when a tired host is most likely to skip the card requirement to clear the line. Consistency is the whole benefit. The threshold gets applied, the address gets read back, the large order doesn't fire without payment. That's the same set of checks in [collecting payment over the phone safely](/blog/collecting-payment-over-the-phone-safely), applied without fatigue.
+
+An agent also gives you the record. Every call is logged with a number and a transcript, so the second call from a repeat caller is identifiable instead of a vague feeling that someone has heard this voice before. That's usually the missing piece, because prank patterns are only visible across calls and no shift has that view.
+
+Where you still want a person: a caller who is being abusive rather than placing a fake order, and any judgment call about whether a flagged number gets served tonight. Those belong in your escalation rules, alongside the other handoff cases in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+## The repeat caller who isn't ordering
+
+Some nuisance callers never place an order. They call to tie up the line, to be abusive, or because they're bored. This is a staffing problem more than an ordering problem, and it hits small teams hardest during a rush.
+
+Two things help. First, an agent answering means the caller is talking to software rather than to your seventeen-year-old host, which removes most of the reward. Second, keep a log with times and numbers. If it escalates into harassment, a dated log is what your carrier or local police will ask for, and reconstructing it from memory afterward is worthless.
+
+If the same number calls repeatedly and abusively, that's the narrow case where a block is proportionate. Note the date and the reason next to it.
+
+## Write the rule down tonight
+
+Pick your dollar threshold for requiring a card on delivery. Decide who is allowed to authorize an exception, and it should be one manager, not whoever is on the headset. Decide how many confirmed incidents from the same number trigger a flag, and what a flag does when that number calls.
+
+Four sentences on a laminated card by the phone will prevent more losses than any detection feature, because the failure is almost never that nobody spotted the prank. The failure is that somebody spotted it, was busy, and fired the ticket anyway.

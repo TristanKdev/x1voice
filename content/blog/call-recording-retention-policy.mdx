@@ -1,0 +1,82 @@
+---
+title: "How long to keep call recordings, and who gets to hear them"
+description: "No law tells a restaurant how long to keep phone recordings. Four other things do, and they push in opposite directions. A workable retention policy."
+publishedAt: "2026-03-18"
+faqs:
+  - question: "How long should a restaurant keep call recordings?"
+    answer: "Thirty to ninety days covers nearly every legitimate use, including quality review and card dispute windows. Longer retention rarely adds value and steadily adds risk, because every recording you still hold is a record someone can request, subpoena, or breach. Set a default deletion period, document why you chose it, and let the system enforce it."
+  - question: "Is there a legal minimum retention period for phone recordings?"
+    answer: "Not for ordinary restaurant order calls. Retention minimums generally attach to regulated industries such as financial services and healthcare, not food service. What does bind you is the opposite direction: state privacy laws that require you not to keep personal data longer than the purpose you collected it for."
+  - question: "Who should be able to listen to recorded calls?"
+    answer: "Named roles rather than named people, with access logged. In practice that means the general manager, an owner, and whoever runs quality review. Shift leads rarely need it. The rule that prevents most trouble is that recordings stay in the system and are never downloaded to a personal phone or emailed as attachments."
+  - question: "Do recordings of card payments need different handling?"
+    answer: "Yes. Sensitive authentication data such as the card verification code may not be stored after authorization, and an audio file of a caller reading it aloud counts as storage. Either suppress recording during card entry, route card entry through masked keypad tones, or do not take card payments by phone."
+  - question: "Can a customer ask us to delete their recording?"
+    answer: "In several states, yes, and the number keeps growing. State privacy laws give residents deletion and access rights over personal data, and a voice recording tied to a phone number qualifies. Before you sign with a vendor, confirm you can locate and delete every recording tied to one phone number, and how long that takes."
+---
+
+A letter arrives from a lawyer asking for every recording of calls from one phone number over the previous eighteen months. A customer says they were quoted a price, told an item was safe for an allergy, or promised a delivery time, and they want the audio.
+
+Two answers are workable. "We keep recordings for sixty days under a written policy, so those calls no longer exist" is fine. "Here are the four calls from the retention window" is fine. The bad answer is the common one: nobody knows, the vendor portal has everything since installation, and now somebody spends a week pulling eighteen months of audio because a default setting was never changed.
+
+Retention is a decision. Most restaurants have never made it.
+
+## Nothing tells you a minimum, and that surprises people
+
+Operators expect a number, the way health codes give you a temperature. There isn't one for restaurant phone calls.
+
+Retention mandates live in regulated industries. Broker-dealers, certain healthcare contexts, some debt collection. Food service is not on that list. Nobody is going to fine you for deleting an order call after thirty days.
+
+The pressure runs the other way. State privacy laws increasingly include a data minimization principle: do not keep personal data longer than needed for the purpose you collected it for. A voice recording attached to a phone number is personal data under those statutes. Holding it for three years because the vendor default said "unlimited" is the thing that requires a justification, not deleting it.
+
+## The four forces actually setting your number
+
+Quality review wants the shortest window that still lets you audit. If you sample transcripts monthly, thirty days is enough and sixty is comfortable. Nobody has ever improved order accuracy by listening to a call from last spring. The sampling rhythm this depends on is in [transcript sampling for quality review](/blog/transcript-sampling-qa).
+
+Disputes want a slightly longer one. Card chargebacks can arrive months after a transaction, and a recording that proves what a caller was told about a fee or a total ends an argument fast. Ninety to a hundred twenty days covers most of that window.
+
+Privacy law wants shorter, and wants you able to find and delete on request. Several states now give residents access and deletion rights over personal data. Illinois adds a separate consideration for voice data that has caught technology vendors in expensive litigation, which is worth asking your counsel about specifically if you operate there. The vendor-side obligations that flow from all of this belong in a written agreement, discussed in [data processing agreements with a voice vendor](/blog/data-processing-agreement-voice-vendor).
+
+Payment rules want certain audio to not exist at all. Card verification codes may not be retained after authorization, and a recording of someone reading one aloud is retention. That constraint overrides everything else in this list, and the mechanics sit in [which PCI self-assessment applies](/blog/pci-saq-types-restaurants).
+
+Put those together and thirty to ninety days is where most restaurants should land, with a documented reason for wherever inside that range you sit.
+
+## Storage location is a question you can only answer once
+
+Recordings live wherever your vendor put them, which is usually cloud storage in a region you have never asked about. That is ordinarily fine. It stops being fine in two situations.
+
+The first is a multi-state or cross-border operation where consent law differs by location. A recording made under a single-party consent rule and stored alongside recordings from a two-party state is not automatically a problem, but the recording practice that produced it might be. Consent is a separate topic from retention and gets confused with it constantly, so read [call recording consent laws for restaurants](/blog/call-recording-consent-laws-restaurants) before assuming your announcement covers everything.
+
+The second is what happens when you switch vendors or close. Your recordings and transcripts are your business records, and the contract determines whether you can extract them and whether the vendor deletes their copy. That is a negotiation before signature, not a support ticket afterward. [Voice AI data ownership and privacy](/blog/voice-ai-data-ownership-privacy) covers the terms worth insisting on.
+
+## Access is where policies fail quietly
+
+Retention gets a policy. Access almost never does, and access is where recordings cause real damage.
+
+A recording archive is a searchable record of your customers' phone numbers, addresses, order history, and sometimes their medical information, since anyone mentioning an allergy has told you something sensitive. Every person who can search that archive is a person who can look up an ex-partner's address.
+
+The controls that hold up are unglamorous:
+
+- Access granted to roles rather than individuals, so it disappears when someone changes jobs instead of when someone remembers to remove it.
+- Access reviewed when a manager leaves, on the same checklist as keys and the alarm code.
+- Recordings stay in the system, never downloaded to a personal phone and never forwarded as email attachments, which is how audio escapes any retention policy you write.
+- An access log you can actually read, so "who listened to this call" has an answer.
+- One named owner of the retention setting, because a setting nobody owns reverts to the default at the next platform update.
+
+That last one sounds like paperwork and is the reason most policies fail. Somebody has to be responsible for the number, or the number goes back to unlimited.
+
+## The exception that has to be in the policy before you need it
+
+Legal hold. Once you have notice of a claim or a reasonable expectation of one, the routine deletion schedule stops for the material involved, and continuing to auto-delete afterward is a serious problem on its own terms.
+
+This is easy to handle if the ability exists and impossible if it does not. Ask the vendor how you suspend deletion for a specific phone number or date range, and get the answer before you sign. A platform where retention is a single global toggle will force you to either preserve everything or violate a hold, and both are bad.
+
+Write the trigger into your policy in plain language. If a lawyer's letter arrives, if an incident involves a customer, or if a payment dispute goes to litigation, preservation starts immediately for the calls involved and lasts until counsel says otherwise.
+
+## What to actually do this week
+
+Open your phone system settings and find the current retention value. Most operators discover it is unlimited or set to a year because that was the default and nobody chose otherwise.
+
+Then answer three questions in writing, on one page. How long do we keep recordings and transcripts, and why that number. Which roles can listen, and where is that logged. What happens when we get a preservation demand or a deletion request.
+
+Pick sixty days if you have no reason to pick anything else. Sixty days is defensible, covers quality review and most disputes, and means the eighteen-month subpoena has a short answer. The restaurants that get hurt by call recordings are almost never the ones that kept too little.

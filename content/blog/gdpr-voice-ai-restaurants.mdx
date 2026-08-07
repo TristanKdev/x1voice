@@ -1,0 +1,67 @@
+---
+title: "When a US restaurant actually has GDPR exposure from calls"
+description: "Most American restaurants owe nothing under GDPR, and a handful genuinely do. How to tell which you are before a voice vendor sells you a policy you don't need."
+publishedAt: "2026-03-10"
+faqs:
+  - question: "Does GDPR apply to a restaurant in the United States?"
+    answer: "Only if the restaurant offers goods or services to people located in the EU or UK, monitors their behavior, or has an establishment there. Serving an EU tourist who walks in and calls to order does not create exposure by itself. What creates exposure is deliberately marketing to, pricing for, or selling into the EU, or operating a location inside it."
+  - question: "Is a recorded phone call personal data under GDPR?"
+    answer: "Yes. A recording of someone's voice, along with the name, phone number and address they give you, is personal data in full. A transcript is too. This matters only if GDPR reaches you in the first place, but where it does, call audio is treated no differently from a customer database and carries the same retention and access obligations."
+  - question: "Is a customer's voice biometric data?"
+    answer: "Not automatically. A plain recording of someone speaking is ordinary personal data. It becomes special-category biometric data when you process it specifically to identify a person, such as building a voiceprint that recognizes a repeat caller. Most restaurant voice agents do not do this, but ask your vendor directly, because the answer changes what you owe."
+  - question: "What should I ask a voice vendor about GDPR?"
+    answer: "Ask where audio and transcripts are stored, how long they are kept, which subprocessors touch them, and whether the vendor will sign a data processing agreement. Ask these even if GDPR does not apply to you, because the answers tell you how the vendor treats customer data generally, which is the question you actually care about."
+---
+
+Most restaurants in the United States have no GDPR exposure at all, and a fair number of vendors will happily imply otherwise. Before you buy a compliance posture, work out whether the regulation reaches you.
+
+The test in the regulation is territorial and it is narrower than the marketing around it suggests. GDPR reaches you if you have an establishment in the EU, if you offer goods or services to people located in the EU, or if you monitor the behavior of people located there. That's the whole gate. A taqueria in Tucson that takes a call from a French tourist staying at the hotel down the street has not offered goods or services to someone in the EU. The tourist was in Tucson.
+
+## The three situations where it genuinely bites
+
+The first is obvious: you operate a location in the EU or the UK. A US-headquartered group with a site in Dublin or Berlin is inside the regulation for that entity, and often for the shared systems behind it, including a phone platform that pools call data across all stores.
+
+The second is deliberate targeting. This is the one operators get wrong in both directions. Accepting a euro-denominated payment once does not target the EU. Running a catering business that solicits contracts from EU-based companies, publishing a menu in German with prices in euros, or advertising to a European audience does. The question regulators ask is whether you envisaged serving customers in those countries, not whether one showed up.
+
+The third is the quiet one: your vendor chain. If your voice platform stores audio in an EU region, or subcontracts transcription to a provider that does, you may find contractual GDPR obligations flowing to you through the vendor's own paperwork even where the regulation itself doesn't reach your restaurant. That's a contract question rather than a regulatory one, and it still lands on your desk. The [data processing agreement with a voice vendor](/blog/data-processing-agreement-voice-vendor) is where it shows up.
+
+If none of those three describe you, GDPR is not your problem. Your actual obligations sit in state law, which brings us to the more useful point.
+
+## The rules that probably do apply to you
+
+For a US restaurant, the phone regulations that bite are state call-recording consent statutes and, in a growing set of states, consumer privacy law. Recording consent is the immediate one: whether you need one party's consent or all parties' consent depends on the state, and on where the caller is, not just where you are. That's covered in [call recording consent laws for restaurants](/blog/call-recording-consent-laws-restaurants).
+
+Consumer privacy statutes come next. California's rules treat voice recordings as personal information and give residents access and deletion rights, and several other states have followed with similar frameworks. The practical work looks a lot like GDPR work at a smaller scale, which is why a vendor built for one is usually usable for the other. See [CCPA and voice data for restaurants](/blog/ccpa-voice-data-restaurants).
+
+Spend your effort there first. A restaurant with a solid answer on state recording consent and a real retention policy is in better shape than one with a GDPR binder and no idea how long its call audio is kept.
+
+## What counts as personal data on a phone call
+
+If GDPR does reach you, assume everything on the call is in scope. The audio recording is personal data. The transcript is personal data. The name, callback number, delivery address, card token reference and any allergy the caller mentioned are all personal data, and the allergy is health data, which sits in a stricter category.
+
+The voice itself is the part people misunderstand. A recording of someone talking is ordinary personal data. It becomes biometric data in the special-category sense only when it is processed for the purpose of uniquely identifying a person, such as matching a voiceprint to recognize a returning caller. Ask your vendor whether any speaker-identification feature is running. Most restaurant agents transcribe and understand speech without ever attempting to identify who is speaking, and that distinction is worth confirming in writing rather than assuming.
+
+## Where the obligations actually land
+
+Four things, in the order they cause problems.
+
+- **Lawful basis.** Taking an order is contract performance and needs no consent. Recording the call for quality review is a separate purpose that usually rests on legitimate interests, and it needs a notice at the start of the call and a way to object.
+- **Retention.** "We keep everything forever" is not a policy. Pick a period tied to a purpose, write it down, and confirm your vendor actually deletes on that schedule rather than soft-deleting from a dashboard while the audio sits in object storage.
+- **Access and erasure.** Someone can ask for a copy of their recordings or ask you to delete them. If you cannot pull one caller's calls without a support ticket to your vendor, you cannot meet a thirty-day deadline.
+- **Subprocessors.** Speech recognition, language models, telephony and storage are frequently four different companies. You are entitled to know who they are and where they run, and a vendor that will not list them is telling you something.
+
+None of that is exotic. It is roughly the same list a serious enterprise buyer works through in a [voice AI security questionnaire](/blog/voice-ai-security-questionnaire), which is why the questions are worth asking even when the regulation doesn't apply.
+
+## The multi-country group problem
+
+Groups with locations on both sides of the Atlantic hit a specific trap. Phone platforms tend to centralize: one account, one call archive, one analytics view across every store. That's operationally sensible and it means the EU location's call data is now sitting in the same system as everything else, potentially in a US region, without a transfer mechanism in place.
+
+If that's you, the fix is usually regional isolation rather than a legal document. Ask whether the platform can pin storage and processing for specific locations to an EU region, and whether call data can be segmented by store rather than pooled. Some can, some cannot, and finding out after rollout is expensive. How granular a platform's per-location settings are, right down to menus and hours, is a decent proxy for whether its data handling is granular too.
+
+## What to do this week
+
+Write down two sentences: where your callers physically are when they call you, and whether you have ever solicited business from someone in Europe. For the overwhelming majority of US restaurants, those two sentences end the GDPR conversation.
+
+Then take the questions GDPR would have forced you to ask and ask them anyway. How long is call audio kept, who else touches it, can you export it, and can you delete one customer's records on request without a vendor ticket. Those answers matter whether or not a European regulator ever cares, because they determine what happens to your customer data if you switch platforms or if your vendor has a breach. [Data ownership and privacy in voice AI](/blog/voice-ai-data-ownership-privacy) and [getting your data out when you leave](/blog/data-portability-when-you-leave) are the pieces to read next.
+
+If a vendor's answer to any of them is a marketing page rather than a paragraph, that is your finding.

@@ -1,0 +1,74 @@
+---
+title: "Voice AI for creperies: two menus, one small kitchen"
+description: "A creperie runs a sweet menu and a savory menu on the same griddle. Here is how a phone agent handles that split, the brunch line, and a kitchen with no slack."
+publishedAt: "2026-01-16"
+faqs:
+  - question: "Can a phone agent keep sweet and savory items straight?"
+    answer: "It can, because it reads your POS menu rather than remembering anything. The risk is on your side: if a filling appears under both menus with the same name and different prices or different modifier sets, the agent will pick one and it may not be the one the caller meant. Clean up duplicate item names before launch."
+  - question: "Our kitchen is one griddle and two people. Will phone orders overwhelm it?"
+    answer: "They will if you do not cap them, and that is a configuration decision rather than a flaw. Set a limit on how many phone orders can land in a given time block and a quoted pickup time that stretches when you are busy. A system that accepts unlimited orders during your brunch rush is worse than a ringing phone."
+  - question: "Is a creperie's call volume high enough to justify this?"
+    answer: "For many, no. If you are a weekday-slow, weekend-busy room with a short takeout menu, the phone may not be a real order channel at all. The case gets stronger if your weekend line is long enough that nobody can reach the phone, since those unanswered calls are invisible and never appear in any report you read."
+  - question: "What about callers asking whether something is gluten free?"
+    answer: "Buckwheat galettes draw that question constantly, and it needs a deliberate answer. Configure the agent to state your actual ingredient and shared-surface information, and to route anything more specific to a person. A confident wrong answer about an allergen on the phone is the worst outcome available, so the conservative setting is the right one."
+  - question: "Does it help with the weekend brunch wait?"
+    answer: "Indirectly. It stops the phone from pulling someone off the floor during your busiest ninety minutes, which is usually the real cost of inbound calls at a small room. It does not shorten your line, and if a vendor implies it will speed up your kitchen, that is a claim about your griddle they cannot make."
+---
+
+Sunday, 11:15. There are fourteen people waiting, one griddle running, and the phone has rung four times in ten minutes. Your one floor person picks up the third call, gets asked whether the ham and gruyère galette can be made without egg, holds the phone against her shoulder while she checks, and the party at the front of the line has now been standing there for two minutes without being greeted.
+
+Nobody in that scene is doing anything wrong. The room simply does not have a spare person, and it never will.
+
+## Two menus that share a griddle
+
+A creperie is unusual in that it runs what amounts to two menus off one piece of equipment. Savory galettes with a buckwheat batter and a set of protein and cheese fillings. Sweet crêpes with a different batter and a completely different filling list. Some items exist on both sides with the same name and different content.
+
+That last part is where phone orders go wrong. If "nutella" is a modifier on a dessert crêpe and also a standalone item, or if "ham and cheese" exists at two prices under two categories, an agent reading your POS will pick one of them and it will not always be the right one. It is not guessing badly. Your menu is ambiguous and a person on the counter resolves the ambiguity with context the system does not have.
+
+Fix this in the POS before launch rather than trying to fix it in the voice configuration. Distinct names, one price per item, modifiers scoped to the category they belong to. The general shape of that cleanup is in [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers), and it is the same work described in the [onboarding checklist](/blog/ai-phone-onboarding-checklist-restaurants).
+
+You will benefit from it regardless of whether you ever buy a phone agent, which is worth saying because it is real work and it is your staff doing it.
+
+## A small kitchen needs a cap, not just an answering machine
+
+The failure mode for a room like yours is not missed calls. It is a system that accepts every call.
+
+One griddle produces a known number of crêpes an hour, and on a Sunday every one of them is already spoken for by the people standing in your dining room. An agent that cheerfully takes nine takeout orders between 11 and 11:30 has not helped you. It has moved the problem from the phone to the pass, where it costs more, because now you have walk-in guests waiting on a griddle that is making bags.
+
+So the configuration that matters here is the throttle. Decide how many phone orders can land in a fifteen-minute block during peak, and set the quoted pickup time to stretch when that block fills. A caller told "the next available pickup is 12:10" and who accepts it is a customer. A caller told "fifteen minutes" who arrives to a forty-minute wait is a complaint. The mechanics are in [order throttling and kitchen capacity](/blog/order-throttling-kitchen-capacity-phone) and the quoting logic is in [quoting accurate pickup times](/blog/quoting-accurate-pickup-times).
+
+Set the cap low at first. You can raise it after two weekends of watching real tickets. Raising a cap is easy and lowering one after you have disappointed people is not.
+
+## What the phone is actually costing you on a Sunday
+
+Before deciding anything, get an honest number for what the phone takes from you during peak.
+
+- The count of inbound calls during your busiest ninety minutes, pulled from your carrier log rather than from memory
+- How many of those rang out with nobody answering
+- Roughly how long the answered ones lasted, which is the staff time they consumed
+- Whether the person who answered was on the floor, on the griddle, or at the register at the time
+- What share of the calls were orders versus questions about hours, address, or whether you take walk-ins
+
+That last split changes the decision. A creperie whose phone is mostly hours-and-parking questions has a different problem than one whose phone is mostly orders. Question calls are cheap to deflect and the pattern is in [answering FAQs about hours and parking](/blog/voice-ai-answering-faqs-hours-parking). Order calls are where money is being lost, and the way to size that loss is in [the real cost of a missed call](/blog/the-real-cost-of-a-missed-restaurant-phone-call).
+
+If the answer comes back small, do not buy this. Plans start at $250 a month and a room taking eight calls a Sunday and answering six of them does not clear that. The honest reading of the small-restaurant case is in [is AI phone answering worth it for a small restaurant](/blog/is-ai-phone-answering-worth-it-small-restaurant).
+
+## The gluten question, and answering it carefully
+
+Buckwheat draws allergen questions the way nothing else on a brunch menu does. Callers ask whether the galettes are gluten free, and the true answer for most creperies is complicated: buckwheat itself, a shared griddle, a wheat batter on the same surface, flour in the room.
+
+An agent that says "yes" because the ingredient list says buckwheat is a liability you configured yourself. The correct setting is conservative. The agent states exactly what you tell it about ingredients and shared surfaces, and anything past that reaches a person. That is slower and it is right. The reasoning is in [allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions).
+
+Write the exact sentence you want said. Do not leave it to a default, and do not let a vendor generate it from your menu descriptions.
+
+## What changes on the floor, and what does not
+
+Nothing about your dining room changes. No guest sees anything different, your service model stays intact, and the crêpes come off the griddle the same way.
+
+What changes is that the phone stops interrupting. Your floor person greets the party in front of her instead of holding a handset. That is the entire benefit, and for a room with one or two people working it is a bigger one than the order capture. The same dynamic in a coffee context is in [voice AI for coffee shops](/blog/voice-ai-for-coffee-shops).
+
+What does not change is your kitchen's output. A phone agent cannot make crêpes faster, and any pitch implying a throughput gain is describing your griddle, which it knows nothing about.
+
+X1 Voice connects directly to Square, Clover and OrderCounter and reaches most other systems through Deliverect. Setup is typically under 24 hours once the menu is unambiguous, which for a two-menu operation is the part to budget time for.
+
+Run one Sunday with a stopwatch. Time every minute your staff spends on the phone during your peak ninety, and note what they walked away from to do it. If that total is meaningful and your unanswered count is not zero, you have your answer, and the accuracy check to run afterward is in [improving phone order accuracy](/blog/improving-phone-order-accuracy).

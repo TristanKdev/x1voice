@@ -1,0 +1,77 @@
+---
+title: "Answering the how-long-is-the-wait call without lying"
+description: "Quoting a wait time on the phone is a promise about a room you cannot see in twenty minutes. How to give a number you can keep and what to do when it moves."
+publishedAt: "2026-04-16"
+faqs:
+  - question: "How should staff answer a phone call asking about the wait?"
+    answer: "Give a range based on the current quote at the host stand, say what it is a range for, and say plainly that it is the wait right now rather than a reservation. Something like forty to fifty minutes for a party of four as of this moment, and it usually gets longer by 7:30, is honest and useful. A single confident number is a complaint waiting to happen."
+  - question: "Should a phone wait quote be different from the in-person quote?"
+    answer: "It should be longer, because the caller is not standing in your doorway. A guest quoted forty minutes on the phone has to travel, park, and walk in, and the list moved while they did. Add their travel time to the quote or tell them the clock starts when they arrive, and be explicit about which of those two you mean."
+  - question: "Can callers be added to the waitlist over the phone?"
+    answer: "Some restaurants allow it and many should not. Phone-added guests no-show at a higher rate than walk-ins standing in front of you, and a name on the list that never appears costs you the table twice. If you do allow it, hold the spot only until you text and get a reply, and be clear with the caller about that condition."
+  - question: "What should I say when the wait is very long?"
+    answer: "Say the number, then offer the alternatives you actually have: the bar, a later window, takeout, or another night. Softening a ninety-minute wait into over an hour produces a guest who arrives, waits ninety minutes, and feels misled. The honest number loses some of those callers, which is the correct outcome for a table you did not have anyway."
+  - question: "Can an automated phone system quote wait times?"
+    answer: "It can if it reads your current quote from the host stand or your table management system. Reading a live number and repeating it accurately is straightforward. Inventing a wait estimate without that connection is not, and any system quoting waits from a static configuration will be confidently wrong on exactly the nights when the answer matters."
+---
+
+"How long is the wait?" is the most common call a busy full-service restaurant gets, and it is the one most likely to be answered with a number nobody checked. The host says forty-five because forty-five is what they said to the last three people at the door, the caller arrives at 7:40, and the actual wait is seventy.
+
+That is not a lie anyone told on purpose. It is a quote made about a room twenty minutes in the future by someone with no view of it.
+
+## The phone quote and the door quote are different numbers
+
+A guest standing at your host stand hears forty-five minutes and their clock starts immediately. A caller hears forty-five minutes and then drives twelve minutes, parks, and walks in. Your list moved during all of that.
+
+So the phone quote has to account for travel or explicitly not include it, and you have to say which. "Forty-five minutes from when you get here" and "forty-five minutes and I'd get here soon" are different promises, and either is fine as long as the caller knows which one they received.
+
+The version that fails is the flat number with no framing, because the caller assumes the clock started when they hung up. They arrive having already served twelve minutes of their sentence, in their mind, and every minute after that is a grievance.
+
+## Why the number drifts, and how to quote the drift
+
+Wait times do not move randomly. They move in a pattern your room repeats every week.
+
+Most full-service rooms build steadily from about 6:15, peak somewhere between 7:15 and 8:00, and drop off fast once the last seating is on the floor. A caller at 6:40 who is quoted the current wait is being quoted the wrong number, because by the time they arrive the room is fifteen minutes deeper into the build.
+
+The fix is a sentence, not a system. "Right now it's about thirty, but it usually gets longer by 7:30, so sooner is better" gives the caller real information and lets them make their own decision. It also converts better than a bare number, because it creates an actual reason to leave now.
+
+On the way down, after your peak, the same honesty runs the other direction. Telling a 8:45 caller that the wait is dropping fast is worth a table.
+
+## Adding callers to the waitlist is usually a bad idea
+
+Restaurants get asked constantly to put someone on the list over the phone, and it feels like good service to say yes. In practice a phone-added name behaves very differently from a person standing in your lobby.
+
+The walk-in is committed. They are physically present, they have already parked, and the cost of leaving is high. The phone name is holding an option. They may be deciding between you and two other places, and they will take whichever comes up first.
+
+When that name comes up and does not appear, you have paid twice: the table sat empty during your busiest fifteen minutes, and the party you skipped is now angry. On a Saturday that is real money.
+
+If you do allow it, put a condition on it that costs the caller something. Confirm by text, hold only until you text and get a reply back, and say that condition out loud on the call. The mechanics are the same as any [order status text update](/blog/restaurant-order-status-text-updates), and it changes the behavior meaningfully because a name that will not reply to a text was never coming.
+
+## What honest sounds like when the answer is bad
+
+The hardest version is a ninety-minute wait on a Saturday, and the instinct is to soften it. Do not.
+
+- Give the actual number first, before any alternative, so the caller knows you are not managing them.
+- Offer what you genuinely have: bar seating, a later time, a takeout version of the same food, or a night this week that is open.
+- Do not say "about an hour" when you mean ninety minutes, because the guest who arrives on that quote is guaranteed to be unhappy and will tell you so in writing.
+- If you know a party ahead of them is unlikely to be seated for two hours, say the party size you can seat quickly instead of the one you cannot.
+
+Some of those callers will go elsewhere. That is fine. You did not have a table for them, and a caller who chose not to come is dramatically cheaper than one who came, waited, and left a review about it.
+
+## Who is answering this call at 7:30
+
+Here is the operational problem underneath all of it. The person best positioned to quote your wait is the host, and the host is the one person who absolutely cannot stop what they are doing at 7:30 to take a call.
+
+So the phone either rings out, or it interrupts a guest interaction happening in front of a real human being who drove there. Both are bad, and most rooms trade between them all night without ever calling it a decision. That trade is the whole subject of [reducing host stand phone interruptions](/blog/reduce-host-stand-phone-interruptions).
+
+An automated system helps here in a narrow and useful way. If it can read the current quote out of your table management system, it answers the wait question in eight seconds, every time, without pulling anyone off the floor, and it answers the parking and hours questions in the same call. That FAQ layer is described in [answering hours and parking questions](/blog/voice-ai-answering-faqs-hours-parking).
+
+What it must not do is guess. A system quoting wait times from a number typed into a config file three months ago will be wrong on exactly the nights the answer matters, and it will be wrong with total confidence to every caller in a row. Before buying anything for this, ask the vendor precisely where the wait number comes from and what happens when that connection drops. [Table management integration](/blog/voice-ai-table-management-integration) is the thing to interrogate, not the voice quality.
+
+Large groups are a separate conversation entirely, and quoting them a walk-in wait is how you end up with sixteen people in your lobby at 7:45. Those calls should be qualified rather than quoted, using the questions in [large party reservations by phone](/blog/large-party-reservations-by-phone).
+
+## Check your own quote accuracy for one week
+
+Have the host write down two numbers for every quoted party: what they quoted and what the guest actually waited. Fifty rows is enough.
+
+If your quotes run short by more than about ten minutes on average, you have a systematic optimism problem and it is generating most of your lobby complaints. If they run long, you are losing guests who would have stayed. If the error is small at 6pm and enormous at 7:30, you do not have a quoting problem at all, you have a peak-hour arithmetic problem, and the fix is to quote the build rather than the moment.

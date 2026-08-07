@@ -1,0 +1,76 @@
+---
+title: "Printer or KDS for phone orders, and how each one fails"
+description: "A kitchen display is not automatically the upgrade. Both routes break in specific ways once phone orders are a real share of your tickets. Here's which breaks worse."
+publishedAt: "2026-04-11"
+faqs:
+  - question: "Is a kitchen display system always better than a printer for phone orders?"
+    answer: "No. A KDS is better at sorting, timing, and giving you data, and worse when the network or the screen goes down, because a failed screen leaves no trace of the order at all. A printer's failures are noisier and easier to catch. The right answer depends on how many phone tickets you run and how tolerant your kitchen is of a silent outage."
+  - question: "What is the worst failure mode of a paper printer for phone orders?"
+    answer: "A ticket that prints and is never seen. Paper curls off the rail, gets stuck to another ticket, or falls behind the line, and nothing in your system knows the difference between a ticket that was worked and one that hit the floor. A printer also cannot re-sort itself when a promised pickup time changes."
+  - question: "What is the worst failure mode of a KDS for phone orders?"
+    answer: "Silence. When a screen or its network connection drops, orders keep being accepted and nothing appears in the kitchen, and the first person to find out is a customer at the counter at their pickup time. Any KDS setup for phone orders needs a defined fallback, usually a backup printer or a tablet, and a rule for who checks it."
+  - question: "Can I run both a printer and a KDS?"
+    answer: "Yes, and for phone-heavy operations that is often the sensible setup. The screen drives sequencing and timing, and a printer runs as a physical backup or handles the bagging station where a paper slip travels with the order. The cost is a second thing to maintain and a discipline problem if staff start treating one as authoritative and the other as noise."
+  - question: "At what volume does a printer stop working for phone orders?"
+    answer: "There's no exact number, but the trouble usually starts when phone and pickup tickets pass roughly a fifth of your peak-hour volume and your promised times vary widely. Paper cannot re-sort, so the more your tickets need sequencing by pickup time rather than by arrival, the more work you are asking a human to do in their head."
+---
+
+The common assumption is that a kitchen display is the modern option and a printer is the thing you replace. That framing hides the actual trade-off. A screen is better at almost everything until it stops working, and when it stops working it fails silently, which is the worst property a system can have in a kitchen that has already taken the customer's money.
+
+Paper fails loudly. You can see a jam, you can hear the printer not printing, you can find the ticket on the floor. A dark screen and a screen with a stale connection look identical from six feet away.
+
+That is the real comparison. Not which one is newer, but which set of failures your kitchen is equipped to notice.
+
+## What phone tickets ask of the kitchen that table tickets don't
+
+Start with the requirement, because it decides the answer. A dine-in ticket needs to be cooked and sent. A phone ticket needs to be cooked, finished at a specific time, bagged, and held until a person or a driver arrives.
+
+The timing constraint is the part that matters here. Dine-in tickets are worked roughly in the order they arrive because that is also roughly the order the tables were seated. Phone tickets are not. An order taken at 6:40 for an 8:00 pickup should be built after an order taken at 6:55 for a 7:10 pickup, and that reordering has to happen somewhere. Either the system does it or a human does it in their head while also plating.
+
+This is the underlying question in [where phone tickets should land](/blog/expo-station-phone-order-flow), and it is where the printer-versus-screen decision actually gets made.
+
+## Where paper still wins
+
+Paper does three things well and they are not trivial things.
+
+It survives a network outage. A ticket printed at 7:02 is still a ticket at 7:20 regardless of what happened to your internet, your POS cloud connection, or the middleware between them. That physical persistence is genuinely valuable, and it is why a lot of high-volume pizza operations that could afford screens keep printers anyway.
+
+It travels. A slip can go into the bag, onto the shelf, or into a driver's hand. On a screen, an order that has been bumped exists only in a database, and the bag on the shelf has nothing on it identifying whose it is unless you print a label, at which point you are running a printer again.
+
+And it requires no training. Everyone who has worked a kitchen knows what to do with a ticket rail. That is not nothing when you are hiring in a tight market.
+
+## Where paper genuinely fails
+
+The failure is invisibility, and it takes two forms.
+
+A ticket that never gets seen leaves no trace. It curled off the rail, it stuck to the one in front of it, it went behind the line. Nothing in your system distinguishes a ticket that was made from a ticket that was lost, so you discover it when a customer is standing at the counter at their quoted time and the order does not exist as far as the kitchen is concerned.
+
+And paper cannot re-sort. If a customer calls to move a pickup time, or your kitchen falls behind and every promise shifts by fifteen minutes, the printed rail still shows the original sequence. Someone has to physically rearrange it, which happens at low volume and stops happening at exactly the moment it matters most.
+
+Neither of these is a reason to rip out a printer that is working. They are the specific things to watch for when deciding whether it still is.
+
+## Where a screen earns its cost
+
+A KDS re-sorts. That is the headline benefit for phone orders and it is worth more than the paperless-office argument anybody sells you. If the display can order tickets by promised pickup time rather than by fire time, you have moved the hardest cognitive task off your expo and into software.
+
+It also timestamps everything. When a ticket appeared, when it was bumped, how long it sat. Those numbers are how you find out that your phone tickets are running four minutes longer than your walk-in tickets, and without them you are arguing from memory. Whether a screen or a printer gives you those numbers is often the deciding factor for operators who are trying to actually manage the pickup channel rather than just survive it.
+
+And a screen enforces state. An order is new, working, or done, and it cannot be all three or none. Paper has no state beyond where it is physically sitting.
+
+## Where a screen fails, and why it's worse
+
+Silence. That is the whole answer.
+
+When a display loses its connection, or the middleware between your ordering channel and the kitchen stalls, orders keep being taken. The customer hears a confirmation, the money is captured, and nothing appears on the line. The failure surfaces at the counter, in front of the person who is already annoyed, and by then you have three or four of them stacked up.
+
+This is not hypothetical and it is not a knock on any particular vendor. Every screen-based kitchen has had a version of it. The defensible setup is not a screen that never fails; it is a screen plus a defined answer to what happens when it does. Usually that means a backup printer that stays plugged in, or a tablet running the order view, and a named person whose job it is to check when things go quiet. If ten minutes pass at 7pm on a Friday with no new tickets, that is not a lull, that is an outage, and somebody should be trained to treat it that way. The broader version of that planning is [capturing orders during a POS outage](/blog/pos-outage-order-capture).
+
+## How this interacts with the rest of your setup
+
+Two things worth checking before you decide.
+
+Availability sync matters more than the display choice. If an item goes out and your ordering channel does not know, the ticket is wrong whether it arrives on paper or on glass, and you find out at the pass either way. That plumbing is separate from the kitchen hardware and is covered in [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync).
+
+And the display you already have may constrain the answer more than your preference does. Some POS platforms have a native kitchen display that handles phone tickets well and some route them awkwardly, which is worth checking against your specific stack rather than in the abstract. Our [integrations](/integrations) page covers which platforms X1 Voice writes into directly and which it reaches through Deliverect, and the Square-specific version of the kitchen question sits in [Square KDS and phone orders](/blog/square-kds-phone-orders).
+
+The decision rule is narrow. If your phone tickets are a small share of volume and your promised times are all roughly the same, a printer is fine and replacing it is a waste of money. If phone tickets are a meaningful share and your pickup times are spread across the hour, you are already asking a person to sort them mentally during your busiest service, and that is the job a screen was built to take. Either way, write down what happens when the thing you chose stops working, and make sure one person on each shift knows they own that check.

@@ -1,0 +1,72 @@
+---
+title: "Sales tax on pickup versus delivery, and why totals differ"
+description: "The same order can ring up two different totals depending on where it goes. What drives the difference, and why the delivery fee is the part that trips people."
+publishedAt: "2026-04-25"
+faqs:
+  - question: "Why does a delivery order have a different tax total than the same pickup order?"
+    answer: "Two reasons, usually. Many states source the sale to the delivery address, so a local district rate at the customer's address applies instead of the rate at your restaurant. And in some states the delivery charge itself is taxable, which adds tax on a line the pickup customer never sees. Both vary by state, so confirm yours."
+  - question: "Is a delivery fee taxable?"
+    answer: "It depends on the state, and in several states it depends on how the charge is presented on the receipt. Some treat a separately stated delivery charge differently from one bundled into the price of the food. This is a question for your accountant or your state revenue department, and the answer determines how your POS should be configured."
+  - question: "Who collects the tax on a third-party delivery order?"
+    answer: "In most states the platform is a marketplace facilitator and collects and remits tax on orders placed through it, while you remain responsible for orders placed directly with you. The practical consequence is that your own reporting has to separate the two channels cleanly, or your filings will not reconcile to your sales."
+  - question: "Is catering taxed differently from a normal phone order?"
+    answer: "Often, yes. Mandatory service charges, rentals, and staffing can be taxed differently from the food itself, and some customers such as schools and certain nonprofits hold exemption certificates. Catering is the part of your business where a tax mistake compounds fastest, because the tickets are large and the same error repeats across every event."
+  - question: "Should a voice agent quote tax on the phone?"
+    answer: "It should quote whatever your POS calculates, which is the same figure your counter staff would quote. The tax logic belongs in the POS, configured once and correctly, rather than in a phone script. What matters on the call is that the total the caller hears is the total that appears on the receipt."
+---
+
+The same forty-dollar order can ring up two different totals depending on whether the customer drives over or you drive to them. Customers notice, they call to ask why, and a surprising number of operators cannot explain it because their POS has always just handled it.
+
+That's tolerable until it isn't. The moment it matters is when a tax rate is configured wrong, because the error is silent, it repeats on every ticket, and you find out during an audit or when your accountant reconciles a quarter and the numbers don't sit.
+
+This is an outline of what actually causes the difference. It is not tax advice, and the specifics genuinely vary state by state, so the correct end point for every question here is your accountant or your state revenue department.
+
+## Where the rate comes from is not always your address
+
+Most operators assume the tax rate is a property of the restaurant. For pickup, it usually is: the customer comes to you, the sale happens at your location, your combined state and local rate applies.
+
+Delivery is where it gets interesting. Many states source a delivered sale to the destination rather than the origin. That means the rate applied is the one at the customer's address, and in states with local district or county add-ons, driving eight blocks can cross into a different combined rate.
+
+If you deliver across a city line, a county line, or into a special district, you can be charging several different rates depending on where the driver goes. That's not an error, and a customer who lives in the higher district and calls to complain that their neighbor pays less is describing the system working as designed.
+
+### The part that catches people out
+
+The rate difference is small in percentage terms and invisible on a single ticket. Across a year of delivery volume, a misconfigured sourcing rule is a real number in either direction. Under-collecting means you owe money you never took from customers. Over-collecting means you took money you shouldn't have, which is its own problem.
+
+There's a second-order effect too. If your POS quotes one rate and your online ordering page quotes another because they were configured at different times by different people, the same customer ordering the same food two ways gets two totals from you, and the one who notices assumes somebody is skimming. Channel-to-channel consistency is worth checking whenever you add an ordering surface.
+
+The fix is a one-time configuration question to your POS provider: does this system apply destination-based rates by delivery address, and is it configured for the jurisdictions we actually deliver into. Ask it in those words. "Is tax set up correctly?" gets you a yes from someone who assumes you mean the restaurant's own rate.
+
+## The delivery fee is a separate question from the food
+
+This is the one that generates the most confusion, and the answer is genuinely state-dependent.
+
+In some states a delivery charge is taxable. In others it isn't. In several, the treatment depends on how the charge appears on the receipt, whether it's separately stated or built into the item price, and whether delivery is optional for the customer.
+
+Which means the same $5 delivery fee can be taxed or not taxed depending on facts about your receipt formatting. That is a strange thing to be true and it is true in a number of places.
+
+Two practical consequences. First, how you present fees on a receipt is a decision with tax implications, not just a customer-communication one, which is a wrinkle on top of the disclosure questions covered in [surcharge disclosure on phone orders](/blog/surcharge-disclosure-phone-orders). Second, if you added a delivery fee, a service fee, or a small-order fee at some point without revisiting the tax configuration, that's worth checking this week. Fees get added in a hurry during a cost squeeze, and the tax setup rarely gets revisited at the same time.
+
+The same applies to your delivery boundaries generally. If you're rethinking zones and fees, do the tax question in the same sitting rather than separately, since both depend on the same map. The zone side of it is in [delivery zone rules for phone orders](/blog/delivery-zone-rules-phone-orders).
+
+## Direct orders and platform orders are different filings
+
+If you take orders both directly and through third-party platforms, you have two tax situations running at once.
+
+In most states the platform is treated as a marketplace facilitator, which means it collects and remits sales tax on the orders placed through it. Orders placed on your own phone or your own site remain yours to collect and remit.
+
+Operationally, the only thing that matters is that your reporting separates the channels cleanly. If platform orders and direct orders land in the same POS bucket, your filed sales and your remitted tax will not agree, and untangling it after the fact means going through months of tickets. That reporting hygiene is one of the underrated reasons to keep channels distinct in the first place, which is part of the argument in [consolidating third-party delivery phone orders](/blog/consolidating-third-party-delivery-phone-orders).
+
+Check with your accountant which of your channels you are filing for, and confirm it matches what your POS reports. Plenty of operators have never explicitly checked this, and it takes one email to find out.
+
+## Catering is where a small error becomes a large one
+
+Catering multiplies every tax question by ticket size, and adds a few of its own.
+
+A mandatory gratuity or service charge is often taxed differently from the food, and sometimes differently from a voluntary tip. Equipment rental, staffing hours, and delivery on an event order can each be treated separately. Some customers, schools, churches, certain nonprofits, hold exemption certificates, and honoring one means collecting and keeping a valid certificate on file, not just believing the caller.
+
+None of that is hard. It's just that a mistake on a $3,000 event repeats every time that customer books, and catering customers book on a cycle. An error on a weekly corporate account runs for a year before anyone looks.
+
+If you're collecting deposits on those jobs, the tax treatment of the deposit itself is a question too, and it's easier to settle when you're already writing the policy described in [catering deposits and how to collect one](/blog/deposits-for-large-catering).
+
+Here is the practical test. Take your last delivery order and your last pickup order of the same items, put the two receipts side by side, and explain every line of difference out loud. If you can't explain one of them, you have found the thing to ask your accountant about, and it is almost certainly costing or exposing you money right now.

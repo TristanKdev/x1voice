@@ -1,0 +1,69 @@
+---
+title: "Voice AI for Greek Restaurants: Platters, Trays, Holidays"
+description: "Gyro platter or gyro pita is a $7 question your phone gets wrong all night. How a voice agent handles Greek menus, catering trays, and Orthodox holiday spikes."
+publishedAt: "2026-01-06"
+faqs:
+  - question: "How does a voice agent avoid confusing a gyro pita with a gyro platter?"
+    answer: "By asking, every time, before the item is added. The two are different POS items at different prices, so the agent should treat the format as a required choice rather than defaulting to whichever is more common. Any agent that guesses will be right most of the time and expensive the rest of the time."
+  - question: "Can it take a catering tray order?"
+    answer: "It can take small ones cleanly if half and full trays exist as real items with sizes and lead times attached. Large orders are better escalated to a person on purpose, because they usually involve a delivery time, a headcount conversation, and sometimes a deposit. Set a dollar or headcount threshold and route above it."
+  - question: "What happens during Greek Easter or a big holiday week?"
+    answer: "Call volume concentrates into a few days, and the risk is quoting pickup times your kitchen cannot hit. Before the week starts, set an order cutoff, cap the number of lamb or tray orders per time slot, and update the agent's quoted times. An agent with stale timing during a holiday rush makes the day worse, not better."
+  - question: "Do I still need someone answering the phone?"
+    answer: "For the calls you want a human on, yes. Most Greek restaurants keep large catering, complaints, and anything involving a deposit with a person. The agent's job is the ordinary volume: the pita orders, the hours questions, and the calls that ring out at seven o'clock when nobody can reach the phone."
+  - question: "How long does setup take?"
+    answer: "The vendor side is typically under 24 hours. Your side takes longer, because someone has to reconcile the menu, decide what a platter includes, and write down the rules that currently live in your head. Plan on a few hours of your own time spread over a week, and do it before launch rather than after."
+---
+
+A gyro pita runs around $11 and a gyro platter runs around $18 at most independent Greek restaurants. That $7 gap is the single most common phone error in the format, and it happens in both directions: a caller who says "gyro" and means the platter, and a staff member who rings the platter because that's what most people want on a Friday.
+
+Multiply your own version of that gap by the number of times a week it happens and you have a real number. It's also the clearest example of what a voice agent is good at, which is asking the same clarifying question ten thousand times without getting tired of it.
+
+## The format question, and everything shaped like it
+
+Greek menus are full of items that exist in two or three forms. Gyro, souvlaki, and chicken all show up as a pita, as a platter, and sometimes in a bowl or a salad. The proteins overlap. The names overlap. On the phone, half of the disambiguation is done by tone of voice and the other half by the person taking the order knowing what that caller ordered last time.
+
+An agent has neither. What it has is the ability to treat format as a required choice on every one of those items, so the caller states it before the item lands on the ticket. That's not clever, it's just consistent, and consistency is where the money is.
+
+The pieces to get right before launch:
+
+- Every dual-format item exists as separate POS items or as a required modifier, never as one button with a note
+- Platter sides are itemized if customers choose them, and stated plainly if they don't
+- Pita additions like extra tzatziki, feta, or fries are priced modifiers rather than free text
+- Salad-versus-fries and rice-versus-lemon-potatoes choices are required where your kitchen treats them as a choice
+
+The general pattern here is the same one described in [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers), and the reconciliation work is the same as in [menu sync deep dive](/blog/menu-sync-deep-dive-voice-ai).
+
+## Family platters and trays are a different call entirely
+
+The order for four people and the order for forty are not the same conversation, and treating them the same is the most common configuration mistake in this format.
+
+A family platter for four or six is an ordinary item. It has a fixed composition, a price, and a pickup time, and an agent handles it about as well as it handles a single gyro. Build it as an item, attach the protein choices as modifiers, and let it run.
+
+### Where the threshold should sit
+
+Catering trays are different because of what surrounds them. A half tray of pastitsio has a lead time. A full tray order usually comes with a delivery window, a headcount that the customer wants your opinion on, and occasionally a deposit. Those are conversations, and an agent that pretends otherwise produces a booking your kitchen finds out about too late.
+
+Pick a threshold and route above it. Most independents land somewhere around a headcount of fifteen or a ticket over a few hundred dollars. Below the line, the agent takes the order. Above it, the agent takes the caller's name, number, event date, and rough headcount, then hands off to a person who calls back. That handoff is more valuable than it sounds, because a captured callback beats a voicemail nobody returns. The mechanics are in [catering lead qualification](/blog/catering-lead-qualification-ai) and [voice AI for large catering orders](/blog/voice-ai-large-catering-orders).
+
+## Holiday weeks are when the phone breaks and when the agent has to be right
+
+Greek restaurants have a lopsided calendar. Orthodox Easter concentrates a month of catering into a handful of days. Lenten weeks shift demand toward the vegetarian and seafood side of the menu. Name days, church events, and Christmas trays produce spikes that don't look like an ordinary Saturday.
+
+Two things go wrong in those weeks, and both are configuration rather than technology.
+
+The first is quoted timing. Your kitchen is two hours deep on trays and the agent is still quoting forty-five minutes because that's what someone typed in November. Every one of those customers arrives early and stands in your dining room. Before a known heavy week, update quoted times, and if your system supports capping orders per time slot, cap them. The reasoning is the same as in [order throttling for kitchen capacity](/blog/order-throttling-kitchen-capacity-phone).
+
+The second is availability. Lamb sells out. Trays sell out. An agent selling a sold-out item at eight o'clock on Holy Saturday creates refund calls on the busiest morning of your year. Your 86 list has to reach the agent immediately, not on the next sync, which is why [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) matters more in this format than in most.
+
+A third thing, smaller but worth naming: holiday hours. If you close early on a Sunday in April or open at noon on a holiday you don't normally observe, put it in before the week, not during it. The overrides process is covered in [holiday hours overrides](/blog/holiday-hours-overrides-voice-ai).
+
+## Where an agent will not help you
+
+If your business is overwhelmingly a lunch counter with a line out the door and almost no phone volume, this is not your problem to solve. Buy nothing and improve your pickup flow instead.
+
+If most of your calls are regulars who expect your mother's voice on the line and would be annoyed by anything else, be honest about what that relationship is worth. Some Greek restaurants trade specifically on that, and it is a real asset. You can still put an agent on the after-hours line and the overflow line without touching the calls that matter to those customers. Simultaneous ring and overflow routing exist precisely for this, and are described in [overflow call routing for a busy line](/blog/overflow-call-routing-busy-line).
+
+And if your menu is genuinely improvisational, where prices flex by who's asking and platters get built to order, the setup work is real and nobody should pretend otherwise. Plans start at $250 a month and setup is typically under 24 hours on the vendor's side, but the hours you spend deciding what a platter includes are yours and they're unavoidable.
+
+Run this test before you buy anything. For one week, have whoever closes tally two numbers: calls that rang unanswered between five and eight, and orders where a customer got a pita instead of a platter or the reverse. If those two numbers together represent more than a few hundred dollars a week, you have a phone problem with a price on it. If they don't, keep your money and reprint the menu instead.

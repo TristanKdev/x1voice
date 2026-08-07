@@ -1,0 +1,74 @@
+---
+title: "Getting Restaurant and LocalBusiness Schema Right"
+description: "Restaurant is a subtype of LocalBusiness, and using the wrong one costs you detail. The fields that change answers, and the ones that quietly cause errors."
+publishedAt: "2026-03-26"
+faqs:
+  - question: "Should I use Restaurant or LocalBusiness schema?"
+    answer: "Restaurant, in nearly every case. It is a subtype of LocalBusiness, so it inherits everything LocalBusiness offers and adds properties that only apply to food service, including cuisine, menu, reservation acceptance, and price range. Using the generic parent type gives a machine less to work with for no benefit. Bars, cafes, and bakeries have their own subtypes worth checking."
+  - question: "What is the most common mistake in restaurant structured data?"
+    answer: "Opening hours that contradict the Google Business Profile. Structured data on your own site is read alongside your listing, and when the two disagree, a machine either picks one or hedges. Neither outcome is yours to control. Before adding hours to markup, decide who updates them and confirm they will also update the listing."
+  - question: "Do I need structured data if I already have a Google Business Profile?"
+    answer: "They serve different systems. Your Business Profile feeds Google Maps and local results; structured data on your site is what any crawler reads when it visits your pages, including assistants that never touch Google's listing data. The profile matters more for local search, and markup matters more for anything reading your site directly."
+  - question: "Should each location have its own schema?"
+    answer: "Yes. Each location needs its own page with its own Restaurant markup carrying that location's address, phone number, and hours. A single markup block on a homepage covering four locations is ambiguous, and ambiguity is what produces a wrong phone number in an answer. Location pages with individual markup are the fix, and they are worth building regardless."
+  - question: "Does adding structured data guarantee a rich result?"
+    answer: "No. Search engines describe structured data as an eligibility signal, not a promise, and they change which result types they render without notice. The durable benefit is that a machine reading your page can state your address, hours, and phone number without inferring them, which helps in AI answers where no visual result exists at all."
+---
+
+A guest asks an assistant for the phone number of a restaurant with four locations. The answer comes back with the right name, the right neighborhood, and the phone number of the store across town. They call it. That store takes a message, or worse, takes the order.
+
+That failure usually traces to a website with one block of structured data on the homepage covering all four locations at once, which is ambiguous by construction. It is one of the few structured-data mistakes with a directly measurable cost, and it is common enough to be worth leading with.
+
+## Use Restaurant, not LocalBusiness
+
+Schema.org organizes types in a hierarchy. LocalBusiness is the broad parent covering dentists, plumbers, and dry cleaners. Restaurant is a subtype under FoodEstablishment that inherits everything LocalBusiness has and adds properties specific to food service.
+
+There is no reason to use the parent type. Restaurant gives you servesCuisine, hasMenu, acceptsReservations, and menu-related properties that a generic LocalBusiness entity cannot express. Bars, cafes, bakeries, fast-food operations, and ice cream shops have their own subtypes, and choosing the most specific one that fits is the general rule.
+
+A restaurant marked up as LocalBusiness is not broken. It is just describing itself in fewer words than it could.
+
+### The fields that carry weight
+
+Five of them do most of the work, and they are the ones people get wrong.
+
+- `name` should be exactly what appears on your sign and your Google listing, without a tagline, a location suffix, or a keyword appended for search purposes
+- `telephone` should be the number a customer should actually call, in international format, and it should match your listing character for character
+- `address` uses PostalAddress with street, locality, region, and postal code as separate fields, not one string
+- `openingHoursSpecification` handles split hours and day ranges properly, which a plain text string cannot
+- `priceRange` takes a short band like `$$` and is worth filling in because assistants quote it directly when someone asks whether you are expensive
+
+The phone number field deserves the extra attention. It is the one that produces a wrong outcome you can count, and it accumulates errors through phone system changes, call tracking numbers, and ownership transitions. [NAP consistency for restaurants](/blog/nap-consistency-restaurants) covers the sweep worth running across every place that number appears.
+
+### The fields that cause trouble
+
+Opening hours, when nobody owns them. Structured data hours are read alongside your Business Profile hours, and when the two disagree, you have handed the choice to a machine. Before you add hours to markup, name the person who updates both. If that person does not exist, leave hours out of the markup and keep the listing correct, which is the surface that gets read more anyway. The practical routine for that lives in [Google Business Profile phone optimization](/blog/google-business-profile-phone-optimization).
+
+Aggregate ratings are the other trap. Marking up your own average review score, sourced from your own site, is at best ignored and at worst treated as a policy violation. Review markup has narrow legitimate uses and a long history of abuse. Leave it alone unless someone who has read the current guidelines is doing it deliberately.
+
+And `sameAs` is worth filling in properly. It lists the URLs of your profiles elsewhere, your Google listing, your Yelp page, your Instagram, and it is how a machine confirms that the restaurant on your site is the same entity as the one in three directories. That confirmation is a large part of how a model gets confident enough to state a fact plainly instead of hedging, which is the underlying mechanism in [how restaurants show up in AI search](/blog/how-restaurants-show-up-in-ai-search).
+
+## Where the markup should live
+
+Put the JSON-LD in a script tag in the page head or body. Do not use microdata attributes woven through your HTML, which was the older approach and is painful to maintain, since every template change risks breaking the markup invisibly.
+
+One entity per page describing what that page is about. A location page carries the Restaurant entity for that location. A menu page can carry a Menu entity linked back to the restaurant. Your contact page does not need its own copy of the business, and duplicating the same entity across every page in the site is a common template mistake that produces conflicting copies the moment one gets edited.
+
+Keep the block short enough that a person can read it. Structured data that runs to two hundred lines is structured data nobody will ever audit, and unaudited markup drifts. Twenty accurate fields beat sixty fields where a third of them are guesses about properties someone found in the vocabulary and filled in for completeness.
+
+## One page, one location, one markup block
+
+For a single-location restaurant this is simple: one Restaurant entity, on the homepage or a dedicated location page, with the full address and phone.
+
+For a group, each location gets its own page and its own markup, carrying that location's address, phone, and hours. The homepage describes the brand as an Organization, not as a restaurant that exists in four places at once. Anything else invites the failure that opened this piece.
+
+That structure has benefits beyond markup. Location pages rank for neighborhood searches, give you somewhere to put location-specific hours and parking notes, and give staff a link to send people. The full argument sits in [multi-location local SEO for restaurants](/blog/multi-location-local-seo-restaurants). The markup is a byproduct of building the pages you should have anyway.
+
+## What to check, and how often
+
+Run each location page through a structured data validator after any site change. That catches malformed syntax and unrecognized properties, which are the errors a tool can find.
+
+The errors it cannot find are the ones that matter. A validator will happily approve a perfectly formed phone number that rings a line you disconnected in 2023. So the real check is a person reading the rendered markup against reality once or twice a year, and after any change to hours, phone service, or ownership.
+
+When you do that check, add [menu markup](/blog/schema-markup-restaurant-menu) to the same pass, since the two live in the same JSON block and go stale for the same reasons.
+
+Then test the outcome rather than the file. Ask an assistant for the phone number of your second location by name, from a phone that has never called you. If it gives you the right number on the first try, the markup is doing its job. If it gives you the number of a different store, you have found the exact thing this page is about, and the fix is a page per location with its own markup, starting today.

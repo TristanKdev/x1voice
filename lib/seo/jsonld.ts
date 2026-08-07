@@ -78,17 +78,29 @@ export function buildArticleJsonLd(article: {
   path: string
   publishedAt: string
   updatedAt?: string
+  /** Section label from the blog index grouping, e.g. "Compliance & legal". */
+  section?: string
+  /** Body word count. Assistants use it as a proxy for depth; it costs nothing to state. */
+  wordCount?: number
+  image?: string
 }): WithContext<Article> {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `${SITE_URL}${article.path}#article`,
     headline: article.headline,
     description: article.description,
     url: `${SITE_URL}${article.path}`,
+    mainEntityOfPage: `${SITE_URL}${article.path}`,
+    inLanguage: "en-US",
+    isPartOf: { "@id": WEBSITE_ID },
     datePublished: article.publishedAt,
     dateModified: article.updatedAt ?? article.publishedAt,
     author: { "@id": ORG_ID },
     publisher: { "@id": ORG_ID },
+    ...(article.section ? { articleSection: article.section } : {}),
+    ...(article.wordCount ? { wordCount: article.wordCount } : {}),
+    image: article.image ?? `${SITE_URL}/opengraph-image`,
   }
 }
 

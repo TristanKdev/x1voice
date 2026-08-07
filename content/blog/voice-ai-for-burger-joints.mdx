@@ -1,0 +1,73 @@
+---
+title: "Voice AI for burger joints, temps, combos and the rush"
+description: "The upsell pitch is half right for a burger counter. What actually pays for a phone agent, plus how to handle temp requests and the noon call collision."
+publishedAt: "2026-01-11"
+faqs:
+  - question: "Can an AI phone agent take a temperature request on a burger?"
+    answer: "It can capture it the way any modifier is captured, and it should also deliver whatever policy you have around it. Many counters cook to a single doneness or refuse anything under medium. Configure the rule and the reason, so a caller asking for rare hears your actual answer instead of a yes that the grill will overrule twenty minutes later."
+  - question: "Does an AI agent really increase average ticket?"
+    answer: "It raises it by asking every time, which is the whole mechanism. A human at noon skips the combo question on maybe half of calls because there are three people waiting. An agent asks on all of them. Expect a modest, steady lift on attachment items like fries, drinks and shakes rather than a dramatic change."
+  - question: "What happens when three people call at once during lunch?"
+    answer: "All three are answered simultaneously. That is the structural difference from a phone line, where the second caller hears a busy tone or rings out. For a burger counter with a sharp noon peak, concurrency is usually worth more than any individual feature on the vendor's list."
+  - question: "Will callers accept an AI taking their burger order?"
+    answer: "Most do, provided the call is fast and the order is right. Complaints cluster around slow turn-taking and misheard modifiers, not around the fact that it is software. Test the demo by ordering the way a real customer talks, with corrections mid-sentence, and judge it on whether the ticket comes out correct."
+  - question: "Do we need to change our POS to use one?"
+    answer: "Not usually. X1 Voice integrates directly with Square, Clover and OrderCounter, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect. What often does need work is your modifier setup, since orders are only as clean as the structure they are written into."
+---
+
+The pitch you will hear is that a voice agent pays for itself on upsells. Make it a combo, add a shake, and the extra few dollars per ticket covers the subscription.
+
+For a burger counter that is about half true, and the half that is true works for an unglamorous reason. The agent does not upsell better than your staff. It upsells more often, because it never has three people at the register and a phone in its shoulder. Your best cashier asks about the combo maybe six times out of ten at noon. The agent asks ten times out of ten. That gap is the entire effect.
+
+The bigger money is somewhere else, though, and it is worth being clear about where.
+
+## Concurrency is the thing you are actually buying
+
+A burger joint's call volume is not spread evenly. It is a spike from about 11:45 to 1:15 and a smaller one around 6, and during the spike your phone line can hold exactly one conversation.
+
+So when the second person calls, they get a busy signal or a ring that nobody picks up. They do not call back. They order somewhere with a functioning phone or open an app that takes a cut of the ticket. You never see it happen, and it does not appear in any report you look at.
+
+An agent answers all of them at once. Four simultaneous calls, four orders in the POS, no one pulled off the line. That capture is worth considerably more than an extra order of fries on the calls you were already answering, and it is the number to size the decision against. [Peak hour staffing math for the phone](/blog/peak-hour-staffing-math-phone) walks through how to estimate it from your own volume.
+
+Here is a cheap way to see it. Have someone call your own line four times in a row at 12:15 next Wednesday from four different phones. Count how many get through.
+
+## Temp requests need a policy before they need a system
+
+"Medium rare" is where burger phone orders go wrong, and the failure is usually a policy failure that predates any software.
+
+Plenty of counters cook to one doneness and always have. Plenty refuse anything below medium on a smashed patty because it is physically impossible. Plenty will do a temp on a thick patty and not on the standard one. Whatever yours is, your staff probably answers it three different ways depending on who picked up, and the caller who was told yes shows up expecting a rare burger that the grill was never going to make.
+
+Write the rule down. Then write the sentence you want said out loud. "Our patties are smashed thin, so they come out well done. The half-pound is the one we can cook to temp." That sentence configured into the agent is delivered identically on every call, which is a real improvement over the status quo even if you never automate anything else.
+
+The same applies to a few other recurring answers a burger counter gives: whether you do a lettuce wrap, whether the veggie patty shares a grill surface, and whether you can do a burger without the bun for someone avoiding gluten. That last one is worth extra care, because a shared grill and a shared fryer mean you cannot honestly call anything gluten free. State what is true.
+
+## Combos and shakes are worth configuring properly
+
+If you are going to get the ticket lift, the attachment logic has to be built rather than assumed.
+
+- Ask the combo question on every sandwich, once, and take no for an answer instead of asking again later in the call.
+- Name the actual price difference, since "make it a combo for two ninety-nine" converts better than "would you like to make that a combo."
+- Put shakes on their own prompt, not bundled into the combo question, because they are an impulse item at a different price point and a different moment.
+- Skip the upsell entirely on orders above a certain size, where a caller ordering for six people does not want another question.
+
+The tone rule matters as much as the logic. An agent that pushes twice on the same item reads as pushy in a way a person does not, because there is no social feedback to stop it. Ask once, move on. [Upselling without being pushy](/blog/upselling-without-being-pushy-ai) covers where the line sits, and [average ticket and upsell effects](/blog/ai-phone-ordering-average-ticket-upsell) has the arithmetic on what a realistic lift looks like.
+
+Do not let a vendor quote you an average ticket increase as a guaranteed figure. It depends on your menu, your prices, and how often your staff were already asking. Measure your own before and after.
+
+## Accuracy is the metric that decides whether this worked
+
+A burger order is short, which makes people assume it is easy. The modifiers are what get you: no onion, extra pickle, sub sweet potato fries, sauce on the side, add bacon to one of the two burgers but not the other.
+
+That last one is the classic failure. Two burgers on a ticket with different modifications, and the modification lands on the wrong patty. It happens with human order takers constantly and it happens with voice agents too, which is why the readback at the end of the call is not optional. The agent should restate the full order, item by item with modifiers, before confirming.
+
+Check the output yourself for the first two weeks. Pull twenty phone tickets, compare them against the recordings or transcripts, and count how many were exactly right. That is your real accuracy number, and it is the only one worth trusting. The method is in [improving phone order accuracy](/blog/improving-phone-order-accuracy).
+
+If accuracy is below where you want it, the cause is almost always the menu build rather than the voice. Items named ambiguously, modifier groups that allow contradictory selections, or two similar burgers whose names differ by one word are the usual culprits.
+
+## What this costs against what it replaces
+
+Plans start at $250 a month, and setup is typically under a day, so the comparison is straightforward against the alternatives a burger counter actually considers.
+
+An additional part-time person on the register during the lunch spike costs more than that in a week in most markets. A third phone line does nothing, because the constraint was never the line, it was the human attached to it. Sending overflow to voicemail loses the order outright, since nobody leaves a voicemail to buy a cheeseburger.
+
+Run the four-simultaneous-calls test at 12:15, then run it again a month after you turn something on. If the answer went from one call getting through to four, you have your result, and you did not need anyone's case study to get it. Details on plan structure are on the [pricing page](/pricing).

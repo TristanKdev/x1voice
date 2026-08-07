@@ -1,0 +1,76 @@
+---
+title: "Voice AI for gluten-free restaurants: where it must hand off"
+description: "Three words change what your phone line should do: I have celiac. What a voice agent can answer about gluten, and the exact point it has to get a person."
+publishedAt: "2026-02-02"
+faqs:
+  - question: "Can a voice agent take orders from customers with celiac disease?"
+    answer: "It can take the order, but it should not be the thing that assures the caller the food is safe. Ingredient facts are configuration; whether a given dish is safe on a given shift depends on what is happening in your kitchen right now. Configure celiac mentions to hand the call to a person before the order is confirmed."
+  - question: "What is the difference between gluten-free and celiac-safe?"
+    answer: "Gluten-free usually describes ingredients, and celiac-safe describes handling. A dish can contain no gluten ingredients and still be prepared on a surface, in oil, or with a utensil that carries it. Most kitchens can honestly claim the first and only some can claim the second, and your phone answers should reflect which one you are."
+  - question: "Will handing the call to a person annoy the caller?"
+    answer: "Not if the agent does it well. Callers asking about celiac safety generally want a human, because they have been burned by confident wrong answers before. A transfer that acknowledges the question specifically reads as being taken seriously. A generic transfer with no context reads as a brush-off, so the wording matters."
+  - question: "What should the agent do if no manager is available to take the transfer?"
+    answer: "Take a callback number and say plainly that someone will call back, rather than completing the order. Falling back to selling the item is the worst option, because it converts a careful caller into an unhappy one who trusted you. A short delay costs one order; a wrong reassurance costs the customer and the review."
+  - question: "Can the agent answer whether we have a dedicated fryer?"
+    answer: "Yes, and it should, because that is a fixed fact about your kitchen rather than a judgment call. Load your equipment and prep reality as explicit statements: dedicated fryer or not, separate prep surface or not, what happens with shared utensils. Those answers are stable, verifiable, and among the most useful things you can give an agent."
+---
+
+Three words should change what your phone line does: "I have celiac."
+
+Up to that point the call is an ordinary takeout order, and a voice agent handles it about as well as it handles any other. After it, the conversation is no longer about a menu. It is about whether your kitchen, on this specific shift, with the prep that actually happened this morning, can produce a plate that will not make someone sick. No configuration file knows that.
+
+## Gluten-free on a menu and safe for celiac are two different claims
+
+Most menus use gluten-free to mean the recipe contains no gluten ingredients. That is a real and checkable fact. Celiac disease is an autoimmune condition where trace cross-contact matters, so the question a celiac caller is asking is about handling: shared fryer oil, a grill surface, a cutting board, tongs, a flour-dusted prep table three feet away.
+
+Plenty of good restaurants can honestly claim the first and cannot claim the second. There is nothing wrong with that as long as you say it. What causes damage is a phone answer that blurs the two, because the caller hears reassurance and orders accordingly.
+
+Decide which claim your restaurant actually makes before you configure anything. Every answer downstream follows from that one sentence.
+
+## What these callers are actually asking
+
+They are rarely asking whether you have gluten-free options. They saw that on your site. They are asking follow-ups, and the follow-ups are specific.
+
+Do the fries go in the same oil. Is the pasta cooked in the same water. Is the bun toasted on the same surface. Does anyone change gloves. Is the pizza made on a shared bench. What happens on a Friday night when the kitchen is slammed and the protocol slips.
+
+That last one is the honest question underneath all the others, and it deserves an honest answer from a person who actually runs the line. A caller who asks about Friday night has been let down before and is checking whether you will admit a limit. Restaurants that answer that one straight get loyal customers, because the customer now knows what they can and cannot order from you.
+
+## This is the one order a voice agent should not close
+
+Say it plainly. If a caller identifies celiac disease or a serious gluten allergy, the agent should stop taking the order and get a person on the line.
+
+The reasoning is not that the technology mishears. It is that the answer changes by shift, and the system has no input for it. Whether the dedicated fryer is actually free right now, whether your one trained closer is on tonight, whether the prep cook who understands the protocol called out, all of that lives in the kitchen and not in your menu data. An agent will answer from the configuration confidently and be wrong in a way that hurts someone.
+
+Treat it the way you would treat a refund dispute or a complaint about food already delivered. There are a handful of call types that get routed to a human by policy rather than by capability, and this belongs on that short list. The general framework is in [handoff and failover policy](/blog/human-handoff-failover-voice-ai), and the reasons apply with more weight here than almost anywhere else. The [liability exposure of allergen answers on the phone](/blog/allergen-liability-phone-orders) is worth understanding before you decide how much latitude to give any automated system, including a new hire.
+
+## Write the handoff so it does not read as a brush-off
+
+A transfer can land two ways. Done badly it sounds like the system does not want to deal with you, which is exactly the experience this caller expects and is bracing for.
+
+The wording that works acknowledges the specific thing they said and explains why a person is coming. Something in the shape of: you mentioned celiac, so let me get the manager on because they can tell you what the kitchen is doing tonight. That sentence does real work. It signals you take the question seriously, it sets up that the answer may vary, and it hands the caller to someone who can actually answer.
+
+Then make sure the person picking up knows why the call arrived. A transfer that dumps a manager into a conversation with no context makes the caller repeat themselves, which undoes most of the goodwill. Ask any vendor whether transferred calls carry a summary of what was said, and if the answer is vague, test it. This is also a staff training question, and [training your team on voice AI handoffs](/blog/training-staff-voice-ai-handoffs) is the part operators most often skip.
+
+## What the agent can answer with confidence
+
+Plenty, and it is worth loading properly rather than routing every gluten question to a person.
+
+Fixed facts about your kitchen are ideal material. Whether you have a dedicated fryer. Whether gluten-free pizza is made on a separate bench. Whether your gluten-free bread is baked in house or arrives sealed. Whether you have a written protocol and what it is. These do not change shift to shift, they are verifiable, and callers ask about them constantly.
+
+Ingredient facts are equally safe once written down. Which dishes contain no gluten ingredients, which sauces contain soy sauce, whether the fryer batter has flour in it. That is the same per-item ingredient work a [vegan kitchen](/blog/voice-ai-for-vegan-restaurants) has to do, and it is covered generally in [handling dietary and allergen questions](/blog/voice-ai-allergen-dietary-questions).
+
+The boundary is clean. Facts about your building and your recipes go in the configuration. Judgments about tonight go to a person.
+
+## The callback you get when it goes wrong
+
+Everyone who has run a kitchen with a gluten-free program has taken this call. Someone got sick, or thinks they did, and they are calling the next day.
+
+Those calls should never touch an automated system. Configure any complaint that mentions illness as an immediate escalation with no attempt at resolution, and if nobody is available, take a number and call back the same day. An agent apologizing on your behalf for a possible allergic reaction is a bad look and, depending on what it says, potentially worse than that. The broader handling of [difficult and unusual calls](/blog/how-ai-handles-restaurant-edge-cases) covers the pattern, but this specific case deserves its own explicit rule.
+
+## What to load and what to test
+
+Load your equipment reality, your ingredient facts per item, your written protocol if you have one, and a plain statement of which claim you make. Then set your escalation triggers on celiac, allergy, allergic, and gluten intolerance, and have them fire before order confirmation rather than after.
+
+Testing is the part that gets skipped. Call your own line four times. Say you have celiac at the start of one call, in the middle of another, after the order is confirmed on a third, and mention it casually as a preference rather than a diagnosis on the fourth. The third and fourth are where systems fail, and finding out now costs you nothing.
+
+If your kitchen cannot honestly claim celiac-safe handling, the most valuable thing you can configure is a clear sentence saying so. Losing an order to your own candor is cheap. The alternative is a customer who trusted your phone line, and those calls come back.

@@ -1,0 +1,64 @@
+---
+title: "How to evaluate a newer voice vendor like Maple AI"
+description: "Maple AI is one of several newer restaurant voice vendors with no operator you can call. Here is how to judge a young vendor without references."
+publishedAt: "2026-07-03"
+faqs:
+  - question: "Is a voice vendor with no reference customers automatically a bad choice?"
+    answer: "No. Every vendor with fifty restaurant logos had zero at some point, and early customers often get better attention and more say in the roadmap than they ever will later. The risk is real but it is priceable. Handle it with a short contract, a pilot that can actually fail, and money that stays tied to results rather than to a signature."
+  - question: "What should I ask a vendor who cannot provide restaurant references?"
+    answer: "Ask what they will show you instead. Recordings of calls that went badly, not just the polished demo. A written list of what the agent refuses to handle. The name of the POS integration path and whether it writes orders directly or through a middleware layer. Vendors who have done the work answer these quickly; vendors who have not will redirect to the demo."
+  - question: "How long should a first contract with a new vendor run?"
+    answer: "Month to month, or a term short enough that leaving costs you one month of fees. A young company asking for twelve months up front is asking you to underwrite their runway. If they need a term to make the economics work, trade it for something concrete: a lower rate, a written performance floor, or an exit clause you can trigger on accuracy."
+  - question: "Does a slick demo mean the product works?"
+    answer: "It means the demo works. Demos run on a curated menu, a quiet room, and a caller who speaks in complete sentences. The gap between a demo and a Friday at 7pm is where most voice deployments fail. Judge a vendor on what happens to an unclear order, a caller with background noise, and a POS that stops responding mid-order."
+---
+
+A voice vendor you cannot get a reference for is not automatically a bad vendor. Every company with fifty restaurant logos on its site had zero at some point, and early customers frequently get attention and roadmap influence they will never get again once the vendor is large. The mistake is not buying from a young company. The mistake is evaluating one with the checklist you would use for an established one, watching it pass, and feeling reassured.
+
+Maple AI is one of several names that come up when an operator searches for restaurant phone agents and then cannot find anyone in their market who has run it through a Friday night. We have not run their product and we are not going to invent details about it. What is worth writing down is the method, because you will hit this problem with a new name every few months.
+
+## No references means you are the reference
+
+The practical effect of buying early is that the failure modes have not been found yet, and you are the one who will find them. That is a cost. It is also, occasionally, a benefit: a vendor with twelve customers will rebuild a broken modifier mapping for you in a week, and a vendor with twelve hundred will put it in a queue.
+
+So the question is not whether you are willing to be a test case. It is whether the vendor is honest that you are one, and whether the deal is priced as though you are. A young company that talks like an incumbent is the actual warning sign. If a salesperson tells you their agent handles everything, you have learned something useful about how they will describe a problem later.
+
+## The demo tells you almost nothing
+
+Every voice demo works. It runs on a menu somebody hand-tuned, in a quiet room, with a caller who speaks in full sentences and does not change their mind halfway through. That is not your phone.
+
+What you want instead is the ugly material. Ask for a recording of a call the agent handled badly and what they changed afterward. Ask for a transcript of an escalation. Ask what percentage of calls the system hands to a person and, more importantly, for the reasons behind those handoffs broken out into deliberate and defective, which is the distinction we make in [call containment](/blog/what-is-call-containment).
+
+A vendor who cannot produce a bad call either has not run enough volume to have one or does not keep transcripts. Both are things you want to know before signing.
+
+## Ask where the order actually lands
+
+This is the question that sorts young voice vendors faster than any other, and it has nothing to do with how the agent sounds. A convincing conversation that produces a ticket someone has to retype is a worse product than an awkward conversation that writes cleanly into your POS.
+
+Ask, in plain terms: does the order write into my point of sale automatically, or does it arrive as a text, an email, or a tablet order that staff re-enter? If it writes directly, which POS, and through whose integration? Direct integrations, like ours with [Square](/integrations/square) and [Clover](/integrations/clover), behave differently from orders routed through a middleware layer, and both behave very differently from a system that just sends you a summary. The reasoning behind why this matters more than voice quality is [here](/blog/why-pos-integration-depth-matters-more-than-voice-quality).
+
+The second half of that question is menu sync. Ask whether the agent knows an item is 86'd within seconds or whether someone updates a spreadsheet. A vendor that cannot answer this precisely has not built the hard part yet.
+
+## Price the risk into the contract, not into your hope
+
+A young vendor's contract should be short. Month to month is ideal. If they want a term to make their numbers work, that is a negotiable thing, and you should get something for it: a lower rate, a written accuracy floor, or an exit you can trigger without a lawyer.
+
+Watch for auto-renewal windows, data-export terms that leave your transcripts and order history inside their system, and anything that makes your phone number difficult to move. Number control is the one that quietly traps operators, and it is worth reading [how porting works](/blog/phone-number-porting-guide-restaurants) before you hand a number to anyone. Our list of [contract terms to push back on](/blog/voice-ai-contract-terms-to-avoid) covers the rest.
+
+There is one more clause worth asking about directly, and most operators skip it: what happens if the company is acquired or shuts down. You are not being rude by asking. You are asking a twelve-person company what your continuity plan is, and a founder who has thought about it will have an answer.
+
+## Run a pilot designed to fail
+
+Most pilots are theater. Two weeks, one location, everybody watching, everybody helping. Of course it goes fine.
+
+A pilot that tells you something has a defined window, a defined call volume, and a written number that decides the outcome before you start. Order accuracy measured by pulling actual tickets and comparing them to the recordings, not by reading the vendor's dashboard. Answered-call rate during your worst hour, not your average one. A hard date where you either expand or stop. We lay out the structure in [designing a voice AI pilot](/blog/designing-a-voice-ai-pilot).
+
+Point it at your hardest calls, not your easiest. If your phone gets a lot of accented English or Spanish, test that in week one rather than month three, because [speech recognition across accents](/blog/voice-ai-accent-speech-recognition-accuracy) is where thin products come apart. Same with modifier-heavy orders. A pizza with half-and-half toppings and a substitution will find the seams faster than twenty plain orders.
+
+## What being early is actually worth
+
+Be honest about your own situation. If you run one location and the phone is a mild annoyance, being someone's design partner is a poor use of your attention. Buy the boring option or wait a year.
+
+If you run several locations and the phone is genuinely costing you orders, the calculation changes, because the cost of doing nothing is not zero. In that case, pick the young vendor if their integration story is real and their contract is short, and keep your current phone routing intact so reverting takes an afternoon rather than a project.
+
+The test is simple. Ask yourself what specifically would have to happen for you to cancel, write it down, and check whether your contract lets you act on it. If you cannot answer that in one sentence, you have not evaluated the vendor. You have just liked them.

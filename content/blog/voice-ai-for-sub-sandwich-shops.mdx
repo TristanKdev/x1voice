@@ -1,0 +1,76 @@
+---
+title: "Voice AI for sub shops, party subs, and office platters"
+description: "Sub shops take their hardest phone calls during the lunch rush. How voice AI handles party sub lead times, office platter orders, and fixed franchise menus."
+publishedAt: "2026-02-08"
+faqs:
+  - question: "Can a voice agent quote a lead time on a party sub?"
+    answer: "Yes, if you give it a rule rather than a judgment call. Something like four hours' notice for anything up to three feet and next-day for six-foot subs is a rule the agent can apply consistently. What it cannot do is look at your prep board and decide whether today is the exception, so build in a cutoff after which it offers the next available slot instead of guessing."
+  - question: "How does it handle a build-your-own sandwich with eight toppings?"
+    answer: "It takes them the way a counter person would, one at a time, and confirms the list back before sending the ticket. The failure point is not the number of toppings, it's whether every topping exists as a modifier in your POS with the same name the caller uses. Map lettuce, shredded lettuce, and greens to the same option and the problem mostly disappears."
+  - question: "Will it work with a franchise-standard menu I cannot change?"
+    answer: "A fixed menu makes this easier, not harder. The item names, sizes, and modifier trees are already standardized across the system, which is exactly the structure a voice agent needs. The configuration work shifts to store-level details your franchisor does not set: hours, delivery radius, catering lead times, and which local numbers ring where."
+  - question: "What about callers who want to order for pickup in ten minutes?"
+    answer: "That's the easiest call in the building and the one most likely to ring out during lunch. The agent takes it, fires it into the POS, and quotes a pickup time from a rule you set. If your line is genuinely underwater, throttling rules can push the quote out rather than promising ten minutes you cannot hit."
+  - question: "Is a sub shop's call volume high enough to justify this?"
+    answer: "It depends less on total volume than on when the calls land. A shop taking thirty calls a day where twenty of them arrive between 11:30 and 1:00 has a real problem, because those twenty hit exactly when nobody can pick up. Count calls in your peak hour rather than per day before deciding."
+---
+
+At 12:05 on a Tuesday your line is nine people deep, both slicers are running, and the phone rings. It's an office manager who wants four six-foot party subs for tomorrow at 11:30, one without mayo, and she wants to know whether pickles come on the side. Whoever answers is holding a knife and looking at a customer who has been waiting four minutes.
+
+That call is worth more than the three sandwiches in front of you. It is also the call most likely to go to voicemail, because the person who could answer it well is the person who cannot stop what they're doing.
+
+## The lunch rush is when your best calls arrive and your worst coverage happens
+
+Sub shops have a sharper peak than almost any other format. A pizza shop's phone spreads across a four-hour dinner window. Yours compresses into ninety minutes, and the walk-in line compresses into the same ninety minutes.
+
+So the staffing math never works. Adding a person to answer phones from 11:30 to 1:00 means paying for a shift you can only justify for part of it, and that person is going to end up making sandwiches anyway once the line builds. The phone goes unanswered not because you don't care but because the alternative is worse for the people standing in front of you.
+
+The result is invisible loss. A walked customer is something you see. A caller who got voicemail and called the shop two blocks over is something you never learn about. That gap is the whole argument in [the real cost of a missed restaurant phone call](/blog/the-real-cost-of-a-missed-restaurant-phone-call).
+
+## Party subs are a scheduling problem wearing an ordering problem's clothes
+
+The hard part of a party sub call is not writing down "six-foot Italian." It's the four questions around it: how much notice do you need, can you do it for tomorrow at 11:30, how do you want it cut, and how much is it.
+
+Those are answerable with rules, which is what makes them a good fit for a voice agent. Three feet or under with four hours' notice. Six feet with next-day notice, ordered by 4pm the day before. Cut into two-inch or three-inch portions, default three. Price by the foot with a per-foot upcharge for premium meats.
+
+Write those rules down and the agent applies them the same way every time, including at 7pm on a Sunday when the person who knows them is off. The thing to be careful about is the exception. If your prep capacity is genuinely variable, do not let the agent promise anything past a threshold you set. Have it take the details and tell the caller you'll confirm within the hour. A confirmed-later party sub is fine. A promised party sub you cannot make is a lost account.
+
+## The office platter call is where the ticket size actually lives
+
+Individual box lunches for a twelve-person meeting is a $150 to $250 order in most markets. It also takes eight minutes on the phone, because the caller has a list, half of it has dietary notes, and she is reading it off an email thread.
+
+Eight minutes is the reason those calls get rushed by a person and get done properly by an agent that has nowhere else to be. There is no line building behind a voice agent, so it can let the caller find the fourth name on her list without projecting impatience.
+
+Two things make that call go well. The first is that every dietary note has to land as a real modifier on a real ticket, not as free text in a notes field the line cook does not read. The second is that the agent needs to capture a callback number and a delivery or pickup time before anything else, so that a dropped call still leaves you something to work with. Larger versions of this call are covered in [handling large catering orders by phone](/blog/voice-ai-large-catering-orders).
+
+## A fixed franchise menu is an advantage here
+
+Owners in a franchise system often assume that having no control over the menu makes voice ordering harder. It's the opposite.
+
+A brand-standard menu means the item names, the size ladder, the bread options, and the modifier tree are already defined and already consistent across every store. That structure is what a voice agent needs, and it is the thing independent operators have to build from scratch. If your POS has "Italian BMT, 6 inch" as a real item with a real modifier list, the mapping work is largely done.
+
+What still needs configuring is everything the franchisor does not set for you:
+
+- Your actual hours, including the days you close early and the holidays your system does not observe
+- Your delivery radius and minimum, if you deliver at all
+- Catering lead times, which are usually a store-level decision made by whoever runs your prep
+- Which calls should reach a person immediately, such as a corporate account calling about a standing weekly order
+- Your local pickup-time quote, which depends on your line speed and not on a national average
+
+Multi-unit operators should read the [franchise rollout playbook](/blog/voice-ai-franchise-rollout-playbook) before turning it on across stores, because the per-store override pattern matters more than the initial setup.
+
+## What the agent should be told to refuse
+
+This part gets skipped and it shouldn't. Decide in advance what the agent hands to a human.
+
+Complaints about a previous order, always. Anything above a dollar threshold you pick, because a $600 platter order deserves a person confirming it. Requests for something not on the menu, since a sub shop's answer to "can you do it without the bread, in a bowl" is a store-level decision and the wrong answer creates a ticket the line cannot make. Callers who ask for a manager by name.
+
+A voice agent that tries to handle everything will handle some of it badly, and the calls it handles badly are disproportionately the expensive ones. The handoff policy is covered in more depth in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+## Getting the pickup quote honest
+
+Sub shops live and die on pickup accuracy, because a sandwich sitting on the shelf for eleven minutes is a worse product than one made to order. If the agent quotes ten minutes during a rush that is actually running twenty-five, you have converted a phone problem into a food quality complaint.
+
+The fix is capacity-aware quoting, where the promise stretches with your actual load rather than reading from a fixed number. [Order throttling and kitchen capacity](/blog/order-throttling-kitchen-capacity-phone) covers the mechanics. If your POS cannot supply a live load signal, set the quote conservatively for your peak window and let the agent under-promise between 11:30 and 1:00.
+
+Here's a test worth running before you commit to anything. For one week, have someone log every call in your peak hour: time, whether it was answered, and what it was about. Then price the party sub and platter calls you missed at your average catering ticket. If that number clears $250 a month, plans start at [$250/month](/pricing) and the arithmetic answers itself. If it doesn't, you have learned something useful for the cost of a clipboard.

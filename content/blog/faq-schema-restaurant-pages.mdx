@@ -1,0 +1,82 @@
+---
+title: "FAQ schema for restaurant pages after the rich-result cuts"
+description: "Google stopped showing FAQ rich results for almost everyone. FAQ markup on a restaurant site still pays off, for reasons unrelated to blue links."
+publishedAt: "2026-03-27"
+faqs:
+  - question: "Does FAQ schema still produce rich results in Google?"
+    answer: "For almost no one. Google narrowed FAQ rich results in 2023 to a small set of government and health sites, so an independent restaurant will not see the accordion in search results. The markup still gets crawled and parsed, which is a different benefit from the one it originally had."
+  - question: "Is there any downside to keeping FAQ schema on a restaurant page?"
+    answer: "Only if the markup disagrees with the page. Structured data that claims you deliver when the visible page says pickup only is a quality problem, and Google treats mismatched markup as a manual-action risk. Markup that matches the page costs you nothing beyond the time to keep it current."
+  - question: "How many FAQs should a restaurant page have?"
+    answer: "Four to six per page, each answering a question people actually ask on the phone. A page with twenty questions scraped from a keyword tool reads as filler to both people and crawlers. Fewer questions with real answers beat a long list of invented ones every time."
+  - question: "Should the FAQ answers match what my phone system says?"
+    answer: "Yes, and this is the part most operators skip. Your website, your listings, and whoever or whatever answers your phone should give the same answer to the same question. When they disagree, the caller believes the phone and your site quietly becomes the wrong source."
+  - question: "Do AI answer engines read FAQ schema?"
+    answer: "They read the page, and structured data makes the question-and-answer pairing unambiguous rather than something a model has to infer from headings. It is not a guarantee of being quoted. It removes one reason a model might get your hours, delivery radius, or parking situation wrong."
+---
+
+FAQ schema no longer earns you the dropdown accordion in Google results. Google restricted FAQ rich results in 2023 to a narrow set of government and health sites, and an independent restaurant is not on that list. Anyone still selling FAQ markup as a way to take up more room on the results page is selling you 2019.
+
+Keep the markup anyway. The reason changed, and the new reason is better.
+
+## What actually changed, and what didn't
+
+The display treatment went away. The parsing did not. Google still crawls FAQPage markup, still uses it to understand what a page asserts, and still penalizes markup that contradicts the visible page. Bing reads it. So do the crawlers behind the assistants people now ask for dinner recommendations.
+
+So the change is narrower than it sounded. You lost a visual perk. You did not lose the machine-readable statement that this page answers this question with this answer.
+
+That statement matters more than the accordion did, because the number of systems reading your site without ever showing a user your homepage has gone up. A model summarizing "does this place do gluten-free" is doing a reading-comprehension task on your page. Structured data turns that from inference into a lookup.
+
+## The three readers you are writing for now
+
+Search crawlers are the obvious one, and the least interesting. They already extract question-and-answer content reasonably well from an ordinary H2-plus-paragraph layout.
+
+Answer engines are the second. When someone asks an assistant whether you take reservations for eight, the model is assembling an answer from whatever it can find, which includes your site, your listings, and third-party pages that may be years out of date. A clear, current answer on your own domain is the cheapest way to be the source it uses. That mechanic is the whole subject of [answer engine optimization for restaurants](/blog/what-is-answer-engine-optimization-restaurants).
+
+The third reader is you. Writing five FAQ entries forces you to decide what your actual policy is, in one sentence, in a way you can hand to a new host. Most restaurants discover in this exercise that their delivery radius has never been written down anywhere, and that three staff members would each describe it differently.
+
+## Get the questions from the phone, not a keyword tool
+
+The best source for what belongs on the page is the log of what people call and ask.
+
+Pull a week of calls, or a week of what your staff remembers, and count. You will get some version of the same short list: are you open right now, do you deliver here, how long is takeout, do you have parking, do you take reservations, is there anything without gluten or nuts, do you do large orders. That list is your FAQ section. It is also, not coincidentally, the list every phone system needs to be able to answer, which is why the same content shows up in [voice answering for hours and parking questions](/blog/voice-ai-answering-faqs-hours-parking).
+
+A keyword tool will hand you questions phrased the way search engines see them, which is often not how a caller phrases them. "Restaurant near me open late" is a query. "Are you still serving?" is a question. Write for the second and you will happen to cover the first.
+
+## Write the answer so it survives being quoted alone
+
+The one rule that matters: the first sentence answers the question completely, with no setup and no restating the question. Everything after it is qualification.
+
+Weak: "Great question! Our delivery area depends on a few factors, but generally speaking we try to serve as much of the neighborhood as we can."
+
+Usable: "We deliver within about three miles of the shop, which covers downtown and the university district. Orders outside that radius are pickup only, and we can usually have them ready in twenty minutes."
+
+The second one can be lifted whole by a model, read aloud by a phone agent, or pasted into a text reply by a host, and it is still correct and still sounds like your restaurant. The first one is noise.
+
+Keep answers to roughly 40 to 90 words. Long enough to include the exception, short enough that nothing gets truncated.
+
+## Markup that matches the page
+
+Two mechanical rules and you are done.
+
+Every question and answer in the JSON-LD must appear in the visible page text, word for word or close to it. Markup describing content a visitor cannot see is the specific thing Google's structured-data guidelines prohibit, and it is the one way this can actually hurt you.
+
+Put the FAQ block on the page where the question comes up, not on a single buried FAQ page. Delivery questions belong on the page about delivery. Parking belongs on your location page. That page-level pairing also plays well with the [LocalBusiness markup](/blog/localbusiness-schema-restaurants) already describing your address and hours, and with [menu markup](/blog/schema-markup-restaurant-menu) if you have it.
+
+## What to skip
+
+Some of what gets recommended in this area is a waste of an afternoon.
+
+- Twenty-question FAQ pages built from search-volume exports, where half the questions no human has asked you
+- Answers that end in a call to action instead of a fact, since a model quoting "call us today to learn more" makes you look like you dodged the question
+- Duplicating the same six questions on every page of the site, which dilutes the signal and creates six places to update when your hours change
+- Marking up questions whose answers change weekly, unless you have a real process for updating them
+- Chasing the rich result anyway with plugins that promise the accordion is coming back
+
+## The maintenance problem is the real problem
+
+Structured data goes stale silently. Nothing breaks, nothing errors, and your site keeps confidently telling crawlers you close at nine when you moved to ten in April.
+
+Pick one recurring moment — the same day you update your [Google Business Profile hours](/blog/google-business-profile-phone-optimization), or whenever you change your menu — and reread the FAQ answers then. Five minutes, four times a year, is enough. The failure mode is not writing them badly. It is writing them once.
+
+Here is the test worth running this week. Call your own restaurant and ask the six questions from your FAQ section, then open the page and compare. If the answers differ, the markup is not your problem. The page and the phone are two mouths on the same business, and right now they are saying different things, which is also what a customer finds out at the worst possible moment. Fix the answer first, then write it down in both places.

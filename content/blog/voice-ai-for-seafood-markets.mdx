@@ -1,0 +1,68 @@
+---
+title: "Voice AI for seafood markets when the catch changes daily"
+description: "A menu that changes at 6am is the hardest thing to hand a voice agent. How seafood markets can automate the phone without selling fish they do not have."
+publishedAt: "2026-02-06"
+faqs:
+  - question: "How does a voice agent know what fish we have today?"
+    answer: "Only from whatever system you update. If your daily availability lives in a POS or an inventory list the agent reads, it stays current automatically. If it lives on a whiteboard, someone has to update the agent too, and that becomes a morning task with real consequences. Decide which of those you are running before going live."
+  - question: "Can it quote per-pound prices that change with the market?"
+    answer: "It can quote whatever price your system holds, which means the discipline is on your side. Update prices in one place and let the agent read from it. For weight-variable orders, configure it to quote a range and state that the final total depends on the actual weight, rather than committing to a number it cannot honor at the register."
+  - question: "Will it take steamed-to-order and cooked-to-order requests?"
+    answer: "Yes, and those calls benefit most from automation because they are timing conversations. The agent takes the order, applies your cook time to the pickup quote, and writes a ticket to the kitchen side. The setting that matters is a cap on how many cook orders can be booked in the same fifteen-minute window."
+  - question: "What should it do when someone asks whether the salmon is fresh or previously frozen?"
+    answer: "It should answer if you have loaded a factual answer, and transfer if you have not. Never let it improvise on sourcing, freshness, or allergen questions. Those answers carry real liability and real reputation weight, so either write them yourself and load them verbatim, or route the call to a person who knows."
+  - question: "Is Lent enough of a surge to justify this?"
+    answer: "For many markets it is the single busiest stretch of the year, and Fridays during it can double or triple normal call volume. If your phone rings out on those Fridays, the recoverable revenue is concentrated in about six days. Count the misses on one of them before deciding, since that one day tells you more than a monthly average will."
+---
+
+A menu that changes at six in the morning is the hardest thing you can hand a voice agent. Not because the technology cannot cope, but because most implementations quietly assume the item list is stable, and a seafood counter's is not. Yesterday you had swordfish. Today you have halibut and no swordfish, the price of the tuna moved two dollars, and the littlenecks came in small.
+
+Every failure mode specific to a fish market comes from that one fact. Get the availability plumbing right and the rest is ordinary. Get it wrong and you have bought a machine that sells fish you do not have, which is worse than an unanswered phone.
+
+## The availability problem, stated plainly
+
+Voice agents answer questions from a list. The only question that matters at a seafood counter is whether the list is the same list your case is.
+
+There are three honest configurations, and they are not equally good. The best one reads live from your POS or inventory system, so an item that sells out at the counter stops being offered on the phone within a few minutes. The middle one is a manual update the manager does when the delivery is broken down, which works if it genuinely happens every morning and fails badly the day someone is out sick. The worst one is a fixed menu loaded at setup, which will be wrong by the second week and will keep confidently selling monkfish through August.
+
+If you are shopping, this is the first question to ask, before voice quality and before price. How does the system learn that we are out of something, and how fast. A vendor who answers with a demo of the voice rather than a description of the sync is answering a different question. The mechanics are covered in [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync), and the specific ways it breaks in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes).
+
+There is a middle path that works well for markets and gets underused. Instead of a full item list, configure the agent to know a stable core, the things you basically always have, and to treat everything else as a "let me check" that routes to a person or to a short daily message someone records or types in ninety seconds each morning. That is less elegant than live sync and considerably better than being wrong. A market with a whiteboard operation should run this rather than pretending it has integration it does not.
+
+## Pricing by the pound without creating register arguments
+
+Per-pound pricing puts a small trap in every phone call. The caller wants a number. You cannot give one until the fish is on the scale.
+
+The rule that works is a range plus an explanation, always, on any weight-variable item. "Salmon is $18.99 a pound, so a two-pound piece runs about $36 to $40 depending on the exact weight, and we will weigh it when you pick up." That sentence costs three seconds and prevents the most common complaint a market gets from phone customers, which is a total that came in higher than what someone was told.
+
+Configure it once, at setup, as a rule rather than per item. Any item priced by weight gets the range treatment. Any item with a flat price, a pint of chowder, a crab cake, a dozen oysters shucked, gets a firm number. Mixing the two behaviors inconsistently is how you get a system that is right about the chowder and wrong about the tuna.
+
+Market pricing that moves week to week is a discipline question, not a technology one. Whatever the agent reads has to be the same place you update your case prices. If your prices live in three places, the phone will eventually quote the stalest of them, and you will find out from a customer.
+
+## Steamed to order is a scheduling problem wearing an ordering costume
+
+A large share of a good market's phone calls are cook orders. Steam these lobsters, fry this haddock, have a pound of shrimp cocktail ready at five thirty. Those are the highest-value calls you take and the ones staff most want to be interrupted for least, because they arrive during the same window when the counter line is longest.
+
+They also have a constraint an ordinary takeout order does not: your steamer holds what it holds. The agent has to know two things beyond the item, which are how long the cook takes and how many of that item can be in flight at once. Without the second setting it will book six lobster orders for 5:45 and you will hand out four of them late.
+
+So the configuration to insist on is a per-window capacity alongside the cook time. If the answer to "how many steam orders can we run in fifteen minutes" is four, the agent should stop offering 5:45 after the fourth and offer six o'clock instead. Callers accept an accurate later time. They do not accept an inaccurate earlier one, and the second option costs you the customer. [Quoting accurate pickup times](/blog/quoting-accurate-pickup-times) and [order throttling against kitchen capacity](/blog/order-throttling-kitchen-capacity-phone) both work through the mechanic.
+
+There is a related benefit that is easy to miss. When the phone stops interrupting the person at the case, the line moves faster, and at a market the line is where your margin is. Do not put that in your justification arithmetic, since you cannot measure it cleanly, but do watch for it after a month.
+
+## The questions you should never let it answer on its own
+
+Freshness, sourcing, and allergens. Write the answers yourself or route the call.
+
+A caller asking whether the scallops are dry or wet, whether the salmon is farmed and where, or whether the fry oil has been used for shellfish is asking a question with legal and reputational weight. An agent that improvises a plausible answer is the single largest risk in putting one on a fish counter, and it is entirely avoidable. Either you load an exact answer you are willing to stand behind, or the call goes to a person. There is no third option worth taking.
+
+That constraint is not unique to seafood, but the stakes are higher here than at most counters, and shellfish allergies make it sharper. [Voice AI and allergen or dietary questions](/blog/voice-ai-allergen-dietary-questions) covers the general policy. Apply it strictly.
+
+The good news is that the majority of your incoming questions are not these. They are hours, parking, whether you have oysters today, whether you shuck, and whether you are open on the holiday. Those are cheap to load and they are probably the largest single bucket of calls you take, which is where [answering FAQs about hours and parking](/blog/voice-ai-answering-faqs-hours-parking) does most of its work.
+
+## Whether the arithmetic clears
+
+Plans start at $250 a month, and a seafood market's case for it is usually concentrated rather than spread out. Fridays during Lent, the days before Christmas Eve, the Fourth of July weekend, and whatever your local summer pattern is. On those days the phone rings out constantly and every miss is a real order.
+
+So measure a peak day, not an average one. Put a tally sheet by the register on a Friday in March and mark every ring-out and every hangup on hold. Multiply by a conservative ticket, not your best one. If six Fridays plus the December run produce more than $3,000 of recoverable orders, the annual cost is covered by the surge alone and the other ten months are free coverage. If the tally comes back at two missed calls, you have your answer and it is no.
+
+Then, before you commit, call a demo line and ask for a fish you do not carry. If it takes the order, you have learned everything you need to know in eleven seconds. Compare what you find against how a [seafood restaurant](/blog/voice-ai-for-seafood-restaurants) uses the same tooling, and note that the market version lives or dies on the availability question rather than the menu one.

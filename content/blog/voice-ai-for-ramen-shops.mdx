@@ -1,0 +1,69 @@
+---
+title: "Voice AI for ramen shops and the wait-time problem"
+description: "A ramen shop's phone calls are mostly about the wait and the takeout question. What an AI agent handles, and the one policy you have to decide first."
+publishedAt: "2026-01-10"
+faqs:
+  - question: "Can an AI phone agent quote our current wait time?"
+    answer: "Only if something in your stack knows the wait. If your waitlist app exposes a live quote, the agent can read it. If the quote lives in a host's head, the agent can state a typical range for that day and hour and say plainly that it is an estimate. Never let it invent a number, because a caller who was told twenty and waits fifty is angrier than one who was told nothing."
+  - question: "How does it handle our no-substitution policy?"
+    answer: "You configure the policy as a stated rule, and the agent delivers it the same way every time: which bowls are fixed, what can be added, and what genuinely cannot be removed. Consistency is the point. Staff bend a no-substitution rule differently depending on who is answering, which is how a kitchen ends up with a ticket it refuses to make."
+  - question: "Should we take takeout ramen orders by phone at all?"
+    answer: "That is a business decision, not a technology one. If you pack broth and noodles separately and the bowl survives the trip, phone takeout is straightforward revenue. If your ramen degrades in eight minutes, an agent that pushes takeout will generate refund calls. Decide the policy, then configure the agent to match it, including saying no."
+  - question: "Will an agent understand ramen vocabulary on the phone?"
+    answer: "Names like tonkotsu, shoyu, karaage and ajitama are handled by adding them to the menu the agent works from, along with the way your regulars actually say them. Callers shorten and mispronounce things constantly. The fix is listing common variants during setup rather than assuming a system knows your menu from the name alone."
+  - question: "What about the dinner rush when nobody can answer anyway?"
+    answer: "That is the hour where an agent earns its cost. A ramen counter at 7 pm has every hand on bowls and the phone rings out, so those calls are simply lost. An agent answers all of them at once, quotes the wait, takes takeout orders if you allow them, and never pulls someone off the line."
+---
+
+Most ramen shops do not have an ordering problem on the phone. They have a wait-time problem, and it shows up as a ringing phone nobody can pick up.
+
+The call is almost always the same: how long is the wait, are you taking names, can I order to go. Three questions, asked forty times between 6 and 8, into a room where every person is either at the counter or on the line. So the phone rings out, and the caller either shows up unsure or goes to the place down the street that answered.
+
+An AI phone agent is a decent answer to that specific problem. It is a bad answer to some other things ramen shops get sold on. The difference is worth being clear about before you spend anything.
+
+## The wait quote is the whole game, and it needs a source of truth
+
+You cannot have an agent guessing at your wait. That is the single fastest way to make the phone worse than not answering it.
+
+There are three honest setups, in descending order of quality. If your waitlist software exposes a live quote through an integration, the agent reads it and the caller gets the same number they would get standing at your door. If it does not, you configure day-and-hour ranges from your own observation, and the agent says something like "on a Friday at seven it is usually thirty to forty-five minutes, but I can't see the list right now." If you have neither, the agent should say you do not quote waits by phone and offer to add the caller to the list if that is a thing you do.
+
+All three are fine. What is not fine is a vendor telling you the agent will "estimate" the wait with no data behind it. Ask directly what the number is derived from. If the answer is vague, assume there is nothing behind it.
+
+The related trap is the walk-in list itself. Adding names by phone changes your floor behavior, because a phone-added name has no body in the lobby and no way to be paged. Most counters that tried it went back to in-person only. If you do allow it, set a hold window of five or ten minutes and have the agent state that window out loud during the call. The mechanics are in [waitlist management for phone calls](/blog/waitlist-management-phone-calls).
+
+## No substitutions is a policy, and the phone is where it gets negotiated
+
+Ramen shops tend to hold a line on modifications that other restaurants do not. The bowl is built the way it is built. Broth cannot come without pork fat. The chef is not making a gluten-free tonkotsu.
+
+Staff enforce that unevenly. A new server says yes to something the kitchen will refuse, the ticket comes to the pass, and now someone is walking a bowl back and having an argument in the middle of service. It happens most often on the phone, because the person answering is distracted and just wants the call to end.
+
+A configured agent does not get tired of saying no. You write the policy once: what can be added, what can be removed, what cannot be touched, and what you offer instead when the answer is no. The agent delivers it in the same words at 7:40 as at 11:15.
+
+That last part matters more than the refusal itself. "We can't make that bowl without pork, but the shoyu is chicken-based and a lot of people order it for that reason" is a save. A flat no is a lost order. Write the alternative into the policy, not just the restriction. Restrictions without alternatives are how a policy quietly costs you money.
+
+Allergy calls are a separate category and should not be handled by the same rule. If someone says the word allergy, the safe configuration is a specific, conservative statement about your kitchen followed by a handoff to a person. Broth in a ramen kitchen touches everything, and an agent confidently telling a caller a bowl is shellfish-free is a risk you should not accept. [Allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions) covers how to word that.
+
+## Takeout ramen is a decision you make before you configure anything
+
+Some ramen shops pack noodles and broth separately, include assembly instructions, and the bowl arrives fine. Some serve a bowl that is genuinely worse fifteen minutes later and know it.
+
+Both positions are defensible. What does not work is being ambivalent about it, because the phone will resolve your ambivalence for you. An agent that takes any takeout order it is asked for will grow your to-go volume, and if your ramen does not travel, that volume comes back as complaints and remakes.
+
+Decide, then configure to match:
+
+- If takeout is fully supported, the agent takes the order, applies your packaging rules, and quotes a pickup time based on kitchen load rather than a fixed fifteen minutes.
+- If takeout is supported with caveats, the agent states the caveat before taking the order, in your words, and the caller opts in knowingly.
+- If takeout is not offered during peak, the agent says so and offers the off-peak window instead.
+- If takeout is not offered at all, the agent says that plainly and moves on to what you do offer.
+
+The middle option is where most shops land, and it works. A caller who was told "the noodles are best in the first ten minutes, so we pack them separately and it's worth eating close by" almost never complains afterward.
+
+Pickup timing deserves its own attention. A ramen counter's bottleneck is bowls per hour, not order entry, so a stream of phone orders during a full house creates a queue nobody can see. If your system supports throttling by kitchen capacity, use it. [Order throttling against kitchen capacity](/blog/order-throttling-kitchen-capacity-phone) explains the setup, and [quoting accurate pickup times](/blog/quoting-accurate-pickup-times) covers the promise you are making.
+
+## What to check before signing anything
+
+Your menu names are the first thing. Tonkotsu, shoyu, miso, tsukemen, karaage, ajitama, chashu, plus whatever your regulars call them when they are guessing. Callers will say "the pork one" and "the spicy one" and expect to be understood. Build that variant list during setup instead of discovering it from transcripts a month in.
+
+Noise is the second. A ramen counter is loud, and if you plan to have the agent hand calls to a person during service, that person is standing in the noise. Test it before you commit rather than after. [Voice AI in noisy restaurant environments](/blog/voice-ai-noisy-restaurant-environments) has the practical version.
+
+Then do the cheap experiment. For one week, have whoever is closest to the phone write a tick mark for every ring nobody answered between 6 and 8. Multiply the weekly total by four and by your average check. If that number is well under the [monthly cost of a system](/pricing), you do not have a phone problem worth solving yet, and you should keep your money.

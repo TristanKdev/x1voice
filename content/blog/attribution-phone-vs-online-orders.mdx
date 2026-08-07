@@ -1,0 +1,90 @@
+---
+title: "Splitting Credit Between the Phone and Your Website"
+description: "Most restaurants credit the same order to two channels and call the result attribution. A simpler split that survives scrutiny and still tells you where to spend."
+publishedAt: "2026-06-23"
+faqs:
+  - question: "How should a restaurant split credit between phone and online orders?"
+    answer: "Credit the channel where the order was placed, and report separately on which channel the customer discovered you through. Those are two different questions, and collapsing them into one number is what produces attribution nobody trusts. The placement channel is a fact from your POS; the discovery channel is an estimate, and it should be labeled as one."
+  - question: "Does last-click attribution work for phone orders?"
+    answer: "Poorly, because the last click before a phone order is often your own location page or menu page, which credits the channel that was already going to get the order. Last click also drops calls entirely when the customer never visited the site. Use it for online orders if you like, but do not extend it to the phone without acknowledging the gap."
+  - question: "What percentage of phone orders can actually be attributed?"
+    answer: "It depends entirely on how customers reach you, and the honest answer for most single-location restaurants is under half. Tap-to-call from a mobile session can be traced; a saved contact, a menu magnet, or a number read off a map listing cannot. Report the untraceable share as its own line rather than distributing it."
+  - question: "Should I move phone customers online to make measurement easier?"
+    answer: "No, and this is a real temptation worth naming. Phone orders often carry a higher average ticket and no marketplace commission, so pushing those customers to a channel that measures better can cost you margin for the sake of a cleaner report. Measure the channel you have instead of reshaping the business around the tooling."
+  - question: "How precise does restaurant attribution need to be?"
+    answer: "Precise enough to change a spending decision, and no more. If a model would have to be accurate within five percent to change what you do next month, the model is not the problem, the decision is too close to call. Most operators need to know which two or three channels produce orders, not an exact allocation."
+---
+
+The same $48 order gets counted twice in most restaurants that try to measure this. It appears in the online dashboard because the customer browsed the menu, and in the phone report because they called to place it. Add the channels up and you have $96 of revenue that never existed.
+
+That double count is not a rounding error. It inflates every channel's apparent performance, and it means the two reports you would use to decide where to spend next month are both wrong in the same flattering direction.
+
+## The two questions people mash together
+
+Attribution in a restaurant is really two separate questions, and they have different levels of certainty.
+
+Where was the order placed is a fact. Your POS knows. Every order came in through the phone, the website, a marketplace, or the counter, and the split is exact.
+
+How did the customer come to order is an estimate, and often a weak one. It involves a search two days earlier, a friend's recommendation, a sign they drive past, and a menu magnet from 2019. No system on the market observes most of that.
+
+Report them separately. Placement is your channel mix and it should never be modeled. Discovery is your marketing question and every number in it should carry a stated confidence. Restaurants that merge the two end up with a single attribution report that is part fact and part guess, and once the two are mixed nobody can tell which parts to act on.
+
+## Why last click is worse here than elsewhere
+
+Last-click attribution credits the final touch before the order. For an ecommerce checkout that is at least a defensible convention. For a phone order it breaks in two directions at once.
+
+It over-credits your own site. The last thing a caller often does is open your location page to get the phone number. Under last click, an organic page you would never cut takes credit for an order that a paid campaign produced three days earlier.
+
+And it drops the untraceable calls entirely. Someone who has your number saved never generates a click, so their order either falls into an unattributed bucket or gets quietly excluded from the report, which is worse.
+
+The practical consequence is that a last-click report makes your brand-name organic traffic look extraordinary and your discovery channels look weak, which is exactly backwards for the spending decision you are trying to make.
+
+## A split that is good enough to act on
+
+Here is a model most independent restaurants can maintain without an analyst.
+
+Start with total orders from the POS, split by placement channel. That is your denominator and it is exact.
+
+For online orders, use whatever your analytics already reports, with UTM tags consistent enough to group. That requires the naming discipline in [a UTM convention that survives three agencies](/blog/utm-tagging-restaurant-campaigns), and without it this step produces noise.
+
+For phone orders, split into three buckets. Traceable calls, meaning a tap-to-call from a session you can identify, which get their session's source. Tracking-number calls, which get the channel their number serves, using the setup described in [call tracking numbers and NAP consistency](/blog/call-tracking-numbers-attribution). And unattributed calls, which stay unattributed.
+
+Then report the unattributed share as a visible line rather than distributing it proportionally across the known channels. Proportional distribution feels rigorous and assumes the thing you are least sure of, which is that untraceable callers behave like traceable ones. They probably do not. Traceable callers found you online recently; untraceable ones are more likely to be repeat customers, and treating those two groups as one will overstate your acquisition performance.
+
+Getting the phone side of that into a report at all is a build in itself, described in [tracking phone orders in GA4](/blog/tracking-phone-orders-in-ga4).
+
+## The channel comparison that actually matters
+
+Once both channels are in one place, the comparison to run is not which channel gets more orders. It is what an order is worth in each one, net.
+
+Phone orders frequently carry a higher average ticket than online, because a person asking whether you want the large or the small gets a different answer than a radio button does, and because upsells land better in conversation. Against that, a phone order costs staff time that an online order does not.
+
+Marketplace orders look strong on volume and much weaker net of commission. Your own online ordering costs almost nothing per order but requires the customer to already know you exist.
+
+Run a contribution-margin figure per order for each placement channel, monthly. That single table changes more spending decisions than any attribution model, and it is built entirely from data you already have. The channel-level comparison in [phone ordering versus online ordering](/blog/ai-phone-ordering-vs-online-ordering) covers the operational differences behind those numbers, and the per-order acquisition math is in [customer acquisition cost for phone orders](/blog/customer-acquisition-cost-phone-orders).
+
+## The repeat customer breaks every model
+
+Attribution as an idea assumes a customer was acquired once and the acquisition can be credited. A restaurant's best customers order forty times a year, and crediting the fortieth order to whatever channel touched it last is nonsense.
+
+Split your orders into first-time and repeat before you attribute anything. The POS can usually do this by phone number, which is one of the quiet advantages of the phone channel: the identifier is the customer, with no login required.
+
+Then attribute only the first orders. Repeat orders belong in a retention report, not a marketing one. A campaign that produced 30 first orders in March is a fact you can spend against. A channel credited with 300 orders, 270 of which were regulars who would have called anyway, is a channel you are about to overfund.
+
+This one change usually reorders the channel ranking more than any refinement to the attribution logic itself, and it takes an afternoon in the POS rather than an integration.
+
+## The trap of optimizing for measurability
+
+There is a pull, once you have built this, toward moving customers to the channel that reports cleanly.
+
+Resist it as a default. If phone orders carry a higher average ticket and no commission, then a campaign that migrates phone customers to online ordering can reduce your margin while making your dashboard look better organized. That is a bad trade made for a good-sounding reason, and it is a common one.
+
+There are real reasons to move customers online, mostly around labor at peak and order accuracy on complicated tickets. Measurement convenience is not one of them.
+
+## Where to stop
+
+The test for whether your attribution is good enough is whether a plausible correction to it would change what you do.
+
+If your model says paid social produces 40 orders a month and search produces 90, a correction of ten either way changes nothing about where next month's money goes. The model is sufficient. If two channels are close enough that precision would decide it, then they are close enough that the decision is not worth more analysis, and you should split the budget and revisit in a quarter.
+
+Spend the effort you save on the input that is actually shaky: your phone data. Most restaurants have exact online numbers and a guess about the phone, then build increasingly elaborate models on top of the guess. Fix the guess first, and most of the modeling stops being necessary.

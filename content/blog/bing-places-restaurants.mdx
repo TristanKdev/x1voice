@@ -1,0 +1,78 @@
+---
+title: "Bing Places matters more than Bing's traffic share suggests"
+description: "Almost nobody searches Bing directly for dinner. Plenty of software reads its business data anyway, which is why a free listing you ignore is worth an hour."
+publishedAt: "2026-03-30"
+faqs:
+  - question: "Is Bing Places worth setting up for a restaurant?"
+    answer: "Yes, on a one-time basis. It takes under an hour, costs nothing, and can often be populated by importing your existing Google Business Profile rather than retyping everything. The direct search traffic is small, but Bing's business data reaches Windows search, Microsoft's assistant, and other products that license or query it."
+  - question: "Can I import my Google listing into Bing Places?"
+    answer: "Bing Places offers an import path from Google Business Profile, which is the fastest way to populate a new listing. Review what lands rather than trusting it, since categories and hours do not always map cleanly. Treat the import as a first draft you correct once, not as an ongoing sync between the two."
+  - question: "Do AI assistants actually use Bing data?"
+    answer: "Several assistants have been built on Bing's search index at various points, and Microsoft's own assistant is directly tied to it. The specific plumbing changes often enough that no one should plan around a particular arrangement. The durable point is that your business facts should be correct in more than one index."
+  - question: "How often should I update my Bing listing?"
+    answer: "Whenever your hours, phone number, or address change, and otherwise not at all. This is not a channel that rewards weekly posting. Put it on the same short list as your Google and Apple records so that a single change gets made in three places in one sitting rather than three times a year."
+  - question: "What if a listing for my restaurant already exists in Bing?"
+    answer: "Claim it rather than creating a second one. Unclaimed records get assembled from third-party data and frequently carry an old phone number or the previous tenant's hours. Duplicate listings are worse than a wrong one, because they split whatever signal exists and both keep showing up."
+---
+
+Bing's share of restaurant searches is small. If you rank the things that will grow your takeout revenue this quarter, a Bing listing is not in the top five, and anyone telling you otherwise is padding a scope of work.
+
+Set it up anyway, once, and then never think about it again. The reason has almost nothing to do with people typing queries into Bing.
+
+## What is actually reading that data
+
+Business listings are infrastructure. A record sits in an index, and various products query the index without ever showing a user the search engine's name.
+
+Microsoft's assistant is tied directly to Bing's index. Windows search reaches into it. Other assistants and chat products have been built on Bing's search results at one point or another, and those arrangements shift often enough that betting on any particular one is silly. The durable observation is simpler: there is more than one place where a machine looks up "is this restaurant open and what is its number," and Google is only the largest of them.
+
+For a restaurant, the cost of appearing in the second-largest index correctly is one hour, once. That is a different calculation from the traffic-share argument, which is why the traffic-share argument keeps leading operators to the wrong conclusion.
+
+## The part that takes fifteen minutes
+
+Bing Places offers an import from Google Business Profile. If your Google listing is in good shape, this is the whole job. Connect the account, pull the data, and review what arrives.
+
+Review it honestly rather than trusting it. Categories do not always map cleanly between the two systems, and a specific category on Google can land as something generic on the other side. Hours sometimes import with the holiday exceptions dropped. Photos may or may not come along.
+
+Verification works the usual way, by phone, mail, or email. The phone route means someone at your restaurant has to answer the published number and read back a code, which is a low bar that a surprising number of restaurants fail during a lunch rush.
+
+If a listing for your restaurant already exists, claim it instead of creating a new one. Unclaimed records get built from licensed third-party data, and for a restaurant that changed hands in the last decade, that data is frequently describing whoever was there before you. Two listings for one restaurant is a worse outcome than one wrong listing.
+
+## The phone number is the field that matters here
+
+Everything else on the listing is cosmetic by comparison. A wrong description costs you nothing. A wrong phone number costs you the order.
+
+Match it exactly to what your Google listing, your Apple record, and your own website say. If those already disagree with each other, stop and fix that first, because copying an inconsistency into a fourth system makes the underlying problem harder to unwind later. That whole failure mode is the subject of [name, address, and phone consistency](/blog/nap-consistency-restaurants).
+
+The same goes for hours. A machine reading three sources and finding two different closing times will pick one, and you do not get a vote on which.
+
+## Why this connects to AI answers at all
+
+When a diner asks an assistant where to get late-night pho, the model is assembling an answer from indexed content and structured business data. It is not calling you to check.
+
+Which means every question a model gets wrong about your restaurant traces back to a source that said the wrong thing. An old listing saying you close at nine is a perfectly good reason for a model to tell someone you are closed at 9:30 on a night you are open until eleven. You lost that customer to a stale database record, and no amount of content marketing addresses it.
+
+Being present and correct in more than one index is the cheap insurance against that. It is the unglamorous half of [how restaurants show up in AI search](/blog/how-restaurants-show-up-in-ai-search), and it matters more than most of the tactics that get written about, including for [Microsoft's assistant specifically](/blog/copilot-restaurant-search) and for [appearing in ChatGPT recommendations](/blog/appear-in-chatgpt-restaurant-recommendations).
+
+## What not to bother with
+
+Bing Places has the same feature surface as its larger competitor. Posts, descriptions, extended attributes, photo galleries. Skip almost all of it.
+
+The realistic return on a second-tier listing comes from the five facts a machine needs: name, address, phone, hours, and category. Everything past that is effort you could spend on your [Google Business Profile](/blog/google-business-profile-phone-optimization), which is where the actual volume is, or on your [Apple listing](/blog/apple-business-connect-restaurants), which is where every iPhone in your neighborhood is looking.
+
+Do not pay a service a monthly fee to manage this. It is a free listing with five fields that change maybe twice a year. A recurring invoice for that work is the definition of a bad deal, and the same is true of the citation-blast packages that bundle it with two hundred directories nobody reads.
+
+## The one exception worth knowing about
+
+There is a category of restaurant where this listing pulls above its weight, and it is worth checking whether you are in it.
+
+Business districts skew toward Windows machines. If a meaningful share of your lunch orders come from offices, hospitals, government buildings, or campuses, the person searching for lunch at 11:40 is often doing it on a work computer with a default browser and a default search engine they never changed. That is a different population from the phone-in-hand dinner searcher, and it is one where a correct listing occasionally converts directly into a large pickup order.
+
+Same for catering coordinators, who tend to be doing the search from a desk during business hours rather than from a phone on a sidewalk. If that is your business, spend the extra ten minutes getting the category and the ordering link right rather than the five.
+
+## Where the return actually lands
+
+Be clear-eyed about the size of this. Setting up a Bing listing will not produce a visible bump in anything you measure. You will not see it in your analytics, and attributing anything to it is close to impossible, which is a general problem covered in [tracking AI referral traffic](/blog/tracking-ai-referral-traffic-ga4).
+
+What you get is the removal of a specific way to lose a customer silently: a machine, somewhere, reading an old record and telling someone you are closed or dialing a number that no longer works. That loss is invisible by construction, which is exactly why it goes unfixed for years.
+
+Put it on the list next to Apple. Both are one-time jobs, both take an hour, and both are done for good once the phone number is right. Then go back to the things that actually move volume, starting with whether anyone picks up when the phone finally rings.

@@ -1,0 +1,82 @@
+---
+title: "Vonage call flows and where a voice agent fits in them"
+description: "Vonage gives a restaurant plenty of routing options and no way to take an order. Where an AI agent slots into the flow, and which Vonage features to switch off."
+publishedAt: "2026-02-19"
+faqs:
+  - question: "Where in a Vonage call flow should an AI agent sit?"
+    answer: "As close to the front as your call mix allows. On a takeout-heavy line, the agent should answer directly with no menu ahead of it. If you have real office traffic on the same number, put a two-option Virtual Receptionist in front and send the ordering option to the agent's external number. Anything deeper than that costs you callers."
+  - question: "Do I need to turn off simultaneous ring?"
+    answer: "Yes, on any extension that forwards to the agent. Simultaneous ring means a desk phone and the agent both pick up, the caller talks to whichever won, and your call records end up incomplete. If you want a person available, build that as an escalation the agent triggers rather than as a parallel ring on the same call."
+  - question: "Will Vonage pass the customer's caller ID through to the agent?"
+    answer: "Sometimes. Forwarding configurations differ in whether they present the original caller's number or your own. Place a test call from an outside phone and ask your provider which number arrived. Callbacks on a dropped order and any call-tracking reporting both stop working correctly if the real number isn't passing through."
+  - question: "Can I keep my Vonage extensions and still use a voice agent?"
+    answer: "Yes, and most restaurants should. Extensions, call groups, and direct-dial numbers for a catering coordinator are all things a PBX does well and an agent has no opinion about. The only object you're changing is the routing on the published ordering number, plus the voicemail and ring settings on whatever extension forwards to the agent."
+  - question: "Does a forwarded call cost me minutes on both platforms?"
+    answer: "Check your plan, because forwarding to an external number is a call leg your PBX is placing and some plans meter that separately from inbound. It is rarely a large amount at restaurant volume, but it is a line item worth confirming before you route a few thousand calls a month through it rather than discovering it on a bill."
+---
+
+Call your own restaurant from an outside phone and count the seconds until something asks what you want. On a Vonage setup with a Virtual Receptionist reading four options in front of a call group that rings three devices, the number tends to land somewhere between fifteen and thirty seconds. Your caller spends that entire window deciding whether they still want to be on this phone call.
+
+That count is the real measure of a call flow. Everything else in the admin console is bookkeeping.
+
+## What Vonage is doing and what it can't do
+
+Vonage handles the parts of a phone system that are about where a call goes. Extensions, call groups, schedules, direct-dial numbers, voicemail boxes, and a Virtual Receptionist that plays a menu and moves the caller based on a keypress. All of that is real and useful.
+
+None of it takes an order. A recorded menu can send a caller toward a person who takes orders. It cannot hear "two large pepperoni, one with light cheese, pickup at seven" and put that in your POS. That gap is the entire reason an agent enters the picture, and it's why the two are complementary rather than competing.
+
+## The flow that works for a takeout line
+
+Point the published ordering number at the agent. No menu, no greeting recording, no call group ahead of it. The caller dials, the agent answers within a ring or two, and asks what they'd like.
+
+This feels wrong to operators who spent an afternoon building a menu tree, and it's still the right answer for most takeout-driven restaurants. A caller who wants food does not want to classify themselves against options they haven't heard yet. The agent can determine in one exchange whether this is a pickup order, a delivery, a catering inquiry that needs a human, or someone asking about parking, and it does that faster than four options read at conversational speed.
+
+## The flow that works when the line is shared
+
+Some restaurants genuinely have office traffic mixed into the main number. Vendors, the landlord, applicants, the linen company. If that's you, a Virtual Receptionist in front of the agent is defensible, on one condition: two options, both spoken in under eight seconds.
+
+Press one for orders, hours, and menu questions, forwarded to the agent's number. Press two for everything else, into your existing call group. That's the whole menu. Resist the urge to add catering, reservations, and a fourth option for the manager, because those are all distinctions the agent sorts out in conversation, and each one you add is another few seconds every ordering caller pays for.
+
+## The settings that quietly break the forward
+
+Four things on the Vonage side decide whether the routing behaves once it's live.
+
+Ring duration on the forwarding extension is the first. If the extension rings its own devices before handing off, every caller waits through that cycle, and the delay is charged to your agent's reputation rather than to your PBX config.
+
+Voicemail on that extension is the second. Turn it off. A voicemail timer that expires before the forward connects will swallow orders into a box nobody opens during service, and the pattern is invisible in your order volume.
+
+Simultaneous ring is the third, and it's the one restaurants leave on because it feels like insurance. It isn't. Two answerers on one call means your logs are incomplete and your callers get whichever one won the race. If you want a human available, make it an escalation the agent triggers. The tradeoff is worked through in [simultaneous ring versus AI answering](/blog/simultaneous-ring-vs-ai-answering), and the escalation design itself in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+Caller ID passthrough is the fourth. Place a test call and confirm which number arrives at the agent. If Vonage substitutes your own number, callbacks on a dropped order become impossible and any [call tracking and attribution](/blog/call-tracking-numbers-attribution) you're running reports nonsense.
+
+## Two schedules, and the holiday that exposes them
+
+Vonage holds business hours that decide which routing rule applies. Your agent holds its own hours, because it needs to know whether it can promise a pickup time. These drift apart the first time you close early for a holiday and update one of them.
+
+The symptom is a caller who reaches an open-hours greeting and then gets told the kitchen is closed, or worse, an agent taking an order for a restaurant that stopped cooking forty minutes ago. Write your hours in one place, including the distinction between when the phone is answered and when the kitchen actually stops. Those are different times in most restaurants. Set both systems from that one document and add it to whatever checklist you already run when hours change.
+
+## What the agent needs that Vonage can't give it
+
+Routing gets a caller to the right place. Everything that happens after that depends on information your PBX has never held.
+
+The agent needs your menu the way it exists in your POS, including modifier groups, item names as they print on a ticket, and the things that are on the printed menu but disabled in the system because you stopped carrying them in November. It needs your quoting rules: how far out you take pickup orders, whether you give a time or a window, and what happens to an order placed fifteen minutes before close. It needs a delivery radius if you deliver yourself, and a policy on what to say when someone outside it calls.
+
+It also needs an escalation list, meaning the specific call types that should always reach a person rather than being handled. Complaints and large catering inquiries belong on that list for almost every restaurant. Reservations belong on it for some.
+
+Collecting that is most of the setup work, and it's why onboarding usually finishes inside 24 hours rather than in an afternoon. The Vonage configuration itself takes about fifteen minutes once the rest is written down.
+
+## Whether the ordering number belongs in Vonage at all
+
+Here's the part worth sitting with. Every layer between your customer and the agent is a layer with its own outage history. A forwarded ordering line goes down when your PBX does, and you find out from a customer rather than a dashboard.
+
+If Vonage is running your extensions, your office phones, and your voicemail, keep it. That's what it's for. But the published number on your menus and your Google Business Profile could point straight at the answering platform, with Vonage handling everything behind it. Fewer hops, no forwarding leg, no ring cycle added to every call, and no double voicemail race. [Porting a restaurant phone number](/blog/phone-number-porting-guide-restaurants) walks through the paperwork and the reasons a port stalls.
+
+The reasonable sequence is to forward while you're evaluating, since it's reversible in minutes, and port once you've decided the agent is staying.
+
+## The test that tells you the truth
+
+Do this from an outside phone during a busy hour, not from the office at 3pm.
+
+Count the seconds until something asks a useful question. Place a real order with a modifier and a special instruction, then open your POS and check the ticket matches word for word. Call again and ask for a manager, confirming the handoff rings where you configured it. Call a third time and hang up mid-sentence, then check that the log shows an abandoned call rather than a completed order.
+
+If the first number is above ten seconds, something in your flow is waiting on a timer that doesn't need to exist. Find it and delete it. That single change usually does more for your order capture than anything else on this list.

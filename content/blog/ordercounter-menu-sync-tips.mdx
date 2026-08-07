@@ -1,0 +1,86 @@
+---
+title: "OrderCounter menu hygiene that makes sync predictable"
+description: "Most OrderCounter sync complaints are menu problems wearing a technical costume. The cleanup that makes phone orders land right, in the order to do it."
+publishedAt: "2026-05-28"
+faqs:
+  - question: "Why does my phone agent offer items I no longer sell?"
+    answer: "Almost always because those items are still active in OrderCounter. Deactivating an item at the terminal is different from deleting it, and menus accumulate years of retired specials that are technically still sellable. The sync is faithfully reflecting your POS. Clean the menu and the problem disappears without touching the agent."
+  - question: "How often does the menu sync?"
+    answer: "On a schedule rather than on every call, which is fine for prices and item lists and less forgiving for same-day changes. If you add a special in the morning and want the phone selling it at lunch, make the change early and confirm it landed rather than assuming. Availability changes deserve the same habit."
+  - question: "Do duplicate items actually cause problems?"
+    answer: "Yes, and they are the most common cause of wrong prices on phone tickets. When two versions of an item exist because someone rebuilt it during a promotion, the agent picks one, and it may be the one with the old price or the wrong modifier group. Merging duplicates fixes a class of errors permanently."
+  - question: "Should I rename items in OrderCounter or in the voice agent?"
+    answer: "In OrderCounter, nearly always. A name fixed at the source stays consistent across every channel and survives staff turnover. Fixing it only in the agent creates a private translation nobody remembers in a year, and it drifts the first time someone edits the POS menu without knowing the mapping exists."
+  - question: "What is the fastest way to find the menu problems?"
+    answer: "Print your active item list, sit down with whoever answers the phone most, and read it aloud. Every item that makes them say a different name than what is printed is a problem for the agent too. The exercise takes under half an hour and finds more issues than reading a sync log."
+---
+
+Nearly every complaint that starts with "the sync is broken" turns out to be a menu that was never clean. The connection is doing what it was told. What it was told is a decade of accumulated items, duplicates, and names that only make sense to people who work there.
+
+X1 Voice integrates directly with [OrderCounter](/integrations/ordercounter), so there's no middle layer to blame. The agent reads what your POS says you sell. That's why an hour of menu cleanup does more for phone accuracy than anything else you can do before going live.
+
+## Retired items are still live items
+
+Restaurant menus grow by addition. A special gets built for a weekend, sells fine, and stays in the system forever. A supplier change means the sandwich gets rebuilt rather than edited. A seasonal item comes back every autumn, so nobody deletes it in the spring.
+
+None of that hurts at the terminal, because your staff know which buttons to press and the retired items sit in a category nobody opens. A phone agent has no such instincts. If the item is active and sellable, it can be sold.
+
+Go through your active item list once and deactivate everything you don't currently make. Not delete, if deleting would break your historical reporting, but deactivate so it isn't sellable. Expect to find more than you think. Restaurants that have run OrderCounter for a few years commonly find dozens.
+
+## Duplicates decide their own price
+
+The second pass is duplicates. These form quietly: an item was rebuilt during a promotion, someone created a version with a different modifier group for the second register, a name got a typo and was recreated rather than corrected.
+
+Two items called nearly the same thing, at two prices, both active. The agent will pick one. Which one it picks is not something you want to be discovering from a customer who was quoted less than the ticket says.
+
+Search your item list for near-identical names and merge or deactivate until each thing you sell exists exactly once. This single cleanup removes more wrong-price incidents on phone tickets than any other change, and it improves your reporting as a side effect.
+
+## Names have to survive being said out loud
+
+Your item names were written for a screen. The phone is a different medium and it exposes shorthand instantly.
+
+The patterns worth hunting:
+
+- Abbreviations that only expand in a trained head: "Chk Ceas Wrp", "LG Combo", "Side-2".
+- Internal codes or numbering that customers never see and therefore never say.
+- Names that describe how the kitchen builds the item rather than what the guest ordered.
+- Two items whose spoken forms are nearly identical, where a caller saying either one gets a coin flip.
+- Items whose real name in your dining room is a nickname that appears nowhere in the POS.
+
+Fix these at the source. A rename in OrderCounter propagates to every channel and to whoever inherits the menu when your manager leaves. [Menu naming for voice clarity](/blog/menu-naming-for-voice-clarity) has more on how to choose replacements that still work on a receipt.
+
+## Modifier groups need defaults, not more options
+
+Modifier structure is where phone calls get long. A group with eighteen choices is a screen a cashier scans and a question that takes most of a minute to ask.
+
+Three fixes, in order of payoff. Set a default on every group where your staff already apply one silently, so the agent stops asking a question your cashiers never ask. Mark groups optional where they're optional in practice, because a required group forces a question on every single order. And split any long group into the handful of choices that account for nearly all sales plus a path for the rest.
+
+Do this in OrderCounter rather than as a special case in the phone configuration. The terminal gets faster too, which is an easier sell to your staff than "it helps the phone system."
+
+The deeper version, including nested groups and conditional choices, is in [simplifying modifier trees](/blog/simplifying-modifier-trees).
+
+## Availability is a habit, not a feature
+
+The sync runs on a schedule, which handles prices and item lists comfortably and puts real weight on how your kitchen communicates 86es.
+
+If your kitchen calls out "86 salmon" and nobody touches the POS, your phone agent will keep selling salmon. That's not a sync failure. The information never entered a system. The failure patterns are catalogued in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes), and the short version is that the fix is procedural.
+
+Name the person on each shift who marks items unavailable in OrderCounter, make it part of the same motion as telling the line, and accept a short window where a caller might still order something that just ran out. Most restaurants find that window is a few minutes and that a caller told at pickup is a far smaller problem than a caller told nothing. [Real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) covers how to shorten it.
+
+The same habit matters for specials. An item added at 3pm needs to exist in OrderCounter before the dinner phone rush, not during it. [Seasonal menu updates](/blog/seasonal-menu-updates-voice-agent) covers the recurring version, which is where most restaurants slip after the first enthusiastic month.
+
+## Categories the agent has to reach
+
+OrderCounter menus are organized into categories that make sense at the register, and the organization occasionally hides things.
+
+Watch for items that live only inside a combo or a package and have no standalone entry, because a caller who asks for one by name will be told you don't sell it. Watch for a catering category that shares item names with the regular menu at different portion sizes, where a caller asking for the wings could reasonably mean either. And watch for register-only categories, the ones holding gift cards, employee meals, or open-price keys, which the agent should never be able to reach at all.
+
+The fix is boundaries rather than deletion. Decide which categories the phone can sell from, confirm that the items callers ask for by name exist in one of them, and keep everything operational out of reach. That takes ten minutes and prevents the odd tickets that are hard to diagnose later.
+
+## The half-hour test that finds everything
+
+Print your active item list. Sit down with whoever answers the phone most often, usually a long-tenured counter person, and read the list aloud item by item.
+
+Every time they correct you, or say a different name than what's printed, or tell you the restaurant doesn't make that anymore, you've found something the agent would have gotten wrong. Write it down and fix it in OrderCounter that afternoon.
+
+That exercise takes under thirty minutes and consistently finds more real problems than reading sync logs or testing the agent with orders you already know it can handle. Do it once before launch and again in six months, because menus drift and yours will too.

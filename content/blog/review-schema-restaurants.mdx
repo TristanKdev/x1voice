@@ -1,0 +1,68 @@
+---
+title: "Review schema for restaurants and the self-serving review trap"
+description: "You cannot mark your way into star ratings in search results. Here is what review schema legitimately does for a restaurant, and what it gets you penalized for."
+publishedAt: "2026-03-28"
+faqs:
+  - question: "Can I put my own customer reviews on my site and mark them up for stars?"
+    answer: "No. Google's structured data guidelines specifically exclude self-serving reviews, meaning reviews a business collects or writes about itself, from review rich results for local businesses. Marking them up will not produce stars, and doing it at scale is the kind of thing that draws a manual action against the whole site."
+  - question: "Where do the star ratings in search results actually come from?"
+    answer: "For a restaurant, almost always from third-party sources Google already trusts, chiefly your Google Business Profile reviews and aggregators it crawls. You influence those by getting real reviews from real guests. There is no markup shortcut, and any vendor implying otherwise is describing a rule that stopped applying years ago."
+  - question: "Is review schema useless for restaurants then?"
+    answer: "Not useless, just narrow. It is legitimate on pages reviewing something other than yourself, such as a dish review on a food blog or a critic page. On your own restaurant site, the honest use is describing the entity clearly with LocalBusiness markup and letting ratings come from the platforms that host them."
+  - question: "What happens if I mark up reviews I shouldn't?"
+    answer: "Usually nothing visible, which is the trap. The stars do not appear, so operators assume the markup is inert and leave it. The risk is a structured-data manual action, which suppresses rich results across the site and takes a reconsideration request to clear. The upside was zero and the downside is not."
+  - question: "Does aggregateRating help with AI answers even without stars?"
+    answer: "Marginally, and only if the rating is real and sourced. Models summarizing a restaurant lean heavily on review platforms rather than the restaurant's own claims about itself, for the same reason a diner does. Your reputation work belongs on those platforms, not in your own markup."
+---
+
+Most restaurant owners who ask about review schema are asking the same underlying question: how do I get the gold stars to show up next to my name in Google. The answer is that you cannot mark your way into them, and the markup that promises otherwise is the fastest route to a penalty on a site that was otherwise fine.
+
+Worth understanding why, because the rule is not arbitrary and it changes how you should spend the hour you were going to spend on this.
+
+## The rule that kills the obvious plan
+
+Google's structured data guidelines exclude what they call self-serving reviews. A review is self-serving when the business being reviewed collected it, hosts it, or wrote it. For LocalBusiness and Organization markup, that category is not eligible for review rich results at all.
+
+That covers essentially everything an operator would naturally try. The testimonials on your homepage. The five-star quotes your marketing agency pulled from a comment card. The review widget your web host offers. All of it is technically markable and none of it will produce a star rating in search.
+
+The trap is that nothing appears to break. You add the markup, the validator says it is valid, no error shows up in Search Console, and the stars simply never arrive. Plenty of restaurant sites have been carrying that markup for years on the assumption that Google is slow. It is not slow. It is ignoring it, and in a bad case it is counting it against you.
+
+## What a manual action actually costs
+
+The realistic downside is a structured-data manual action. Google suppresses rich results across the site, you find out through Search Console, and clearing it takes removing the markup and filing a reconsideration request that gets answered on Google's schedule rather than yours.
+
+For a restaurant that mostly gets found through its Google Business Profile and a map pin, that is annoying rather than fatal. But it is a self-inflicted problem with no offsetting benefit, which puts it in a category worth avoiding on principle. The correct move is not to be clever here.
+
+One clarification, because it trips people up. Nothing here says you cannot display reviews on your site. Displaying them is fine and always has been. The restriction is on marking them up as structured data claiming a rating for your own business. The difference is between showing a visitor what a guest said and telling a search engine to treat your own collection of quotes as an authoritative score.
+
+## Where restaurant ratings actually come from
+
+The stars a searcher sees next to your name in a local pack or a map result come from your Google Business Profile reviews. Not from your site. Nothing on your domain moves that number.
+
+Which means the entire reputation lever is the ordinary, unglamorous one: serve people well, ask for reviews at the moment they are happiest, respond to the bad ones like an adult, and keep your listing accurate so the reviews attach to the right business. If you have more than one location, keep the profiles genuinely separate, which is half the work described in [multi-location local SEO](/blog/multi-location-local-seo-restaurants).
+
+There is a phone angle here that operators consistently miss. A meaningful share of one-star reviews are not about the food. They are about nobody picking up, a busy signal on a Friday, or an order that was taken wrong over the phone and blamed on the kitchen. That is reputation damage originating at the phone line, and it is discussed further in [reviews, reputation, and AI answers](/blog/reputation-reviews-ai-answers). Fixing the phone is often cheaper reputation work than any content project.
+
+## The legitimate uses that remain
+
+Review markup is not banned. It is scoped.
+
+If you run a food blog and review other restaurants, review markup on those pages is exactly what it is for. If a critic or a local publication reviews you, their page can legitimately carry it, and you cannot copy their markup onto your own site to inherit it.
+
+On your own domain, the structured data that actually helps is the identity layer. Name, address, phone, hours, price range, cuisine, geographic coordinates, and a link to the profiles that do hold your reviews. That is [LocalBusiness schema](/blog/localbusiness-schema-restaurants), and it is doing a different job: making sure a machine can tell without guessing that the Riverside Kitchen on Main Street is the same business as the Riverside Kitchen in the delivery app and the one with 340 reviews on the map.
+
+Getting that identity right is what makes reviews from elsewhere attach to you cleanly, and it is the same work described in [entity SEO for a restaurant brand](/blog/entity-seo-restaurant-brand). Mismatched phone numbers across sources are the most common way that linkage breaks, which is the subject of [name, address, and phone consistency](/blog/nap-consistency-restaurants).
+
+## What to do with testimonials instead
+
+You still want the good quotes on your site. Put them there as ordinary content.
+
+A quote block with a name and a date, unmarked up, does the persuasion job on a human visitor perfectly well, which was the actual point. You lose a rich result you were never going to get. You keep the social proof for the person reading the page and deciding whether to call.
+
+If you want those quotes to also help a model describing your restaurant, the useful move is not markup. It is writing a plain paragraph on your about or location page that states what you are known for in the terms a guest would use. A model summarizing you can quote a sentence like "the wood-fired pizza and the Sunday porchetta are what regulars come back for" and be accurate. It cannot do much with five floating stars and no context.
+
+## Ten minutes that are worth more than this whole topic
+
+Open your site's source, search for aggregateRating and Review, and see what is there. Web builders and SEO plugins add both by default, sometimes with a rating you never entered. If you find markup asserting a rating on your own business, remove it. That is the entire technical task.
+
+Then spend the rest of the hour on the thing that actually moves your star rating. Pull your last twenty reviews and sort them into food, service, and everything else. If a chunk of the bad ones mention the phone, your rating problem has a phone fix, and no amount of schema on any page will touch it.

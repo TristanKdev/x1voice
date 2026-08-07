@@ -1,0 +1,73 @@
+---
+title: "Voice AI for Pho Restaurants: Bowls, Broth, and Herbs"
+description: "A pho order carries more decisions than most takeout tickets. What a voice agent needs to know about broth, noodles, protein, and herbs before it answers."
+publishedAt: "2026-01-06"
+faqs:
+  - question: "Can a voice agent take a pho order accurately?"
+    answer: "It can, provided every choice on the bowl exists in your POS as a modifier rather than as something the staff know to ask. Broth, size, protein combination, noodle type, and herbs-on-the-side all need slots. Where accuracy drops is on custom requests that have no matching item, and those should route to a person."
+  - question: "How do I handle callers who order in Vietnamese?"
+    answer: "Load the Vietnamese item names your customers actually say, including the numbered bowls, alongside the English menu text. Recognition on conversational Vietnamese is workable; recognition on dish names the system has never been shown is not. Test with regular customers before launch, not with a colleague reading a menu aloud."
+  - question: "What about the numbered menu, like P1 through P12?"
+    answer: "Numbered items are the easiest thing on a Vietnamese menu for an agent to get right, because a number is unambiguous in a way a dish name is not. Make sure each number maps to exactly one POS item and that callers saying either the number or the name land in the same place. Watch for numbers that changed when the menu was reprinted."
+  - question: "Will it remember herbs and sauces on the side?"
+    answer: "Only if those are configured as modifiers on the bowl. Herbs on the side, no onion, extra sriracha, and broth separate for delivery are all common enough to deserve real options with printed output on the ticket. Anything captured as free text ends up in a comment field that the line reads inconsistently under pressure."
+  - question: "Is it worth it if my restaurant is mostly dine-in?"
+    answer: "Probably not on order volume alone. The case for a mostly dine-in room is different: the phone interrupting your host during a seating rush, and calls about wait times going unanswered. Count how many calls ring out during your busiest hour for a week before deciding anything."
+---
+
+A pho order has more branch points in it than a pizza order. Broth, bowl size, protein combination, noodle, herbs on the side, and whether the whole thing is going in a car for twenty minutes. Your staff compress all of that into a fifteen-second exchange because they've done it ten thousand times. A voice agent cannot compress anything it hasn't been told.
+
+That gap is the entire question of whether this works for your restaurant. Not the voice quality, not the accent handling, not the demo. Whether your menu, as it exists in your POS today, describes the bowl a customer actually receives.
+
+## The bowl is a modifier tree, and yours is probably incomplete
+
+Open your POS and look at your most-ordered pho item. If it is one button with a price, your menu is describing a bowl that doesn't exist. Someone at the counter is filling in the rest verbally and typing a note.
+
+The work is to make the choices explicit. Size is usually required. Protein combination is usually required, and if you sell a bowl with rare steak, brisket, tendon, tripe, and meatball, the agent needs to know that combination is one item rather than five modifiers a caller assembles. Broth type matters if you run chicken and beef, and matters a great deal if you run a vegetarian broth that some customers order specifically. Noodle substitutions, if you allow them, are a modifier and not a note.
+
+None of this is voice AI work. It's menu work you can do this week regardless of whether you ever buy anything, and it will improve your online ordering at the same time. The mechanics of doing it well sit in [how to train an AI voice agent on your restaurant menu](/blog/how-to-train-ai-voice-agent-restaurant-menu).
+
+## Numbered menus are a gift, and a trap when they drift
+
+Vietnamese restaurants tend to number their bowls, and numbers are the single most reliable thing a speech system can capture. "P7" is unambiguous in a way that "the one with the brisket" is not. If a meaningful share of your callers order by number, you're starting ahead.
+
+The trap is drift. Menus get reprinted, an item gets dropped, and the numbers shift. Now the printed menu in your window, the laminated one at the counter, the third-party listing, and the POS disagree about what number 9 is. Your staff quietly absorb this. An agent will not. It will confirm number 9, print number 9, and the customer will come back with a bowl they didn't order.
+
+Before launch, put every numbered item side by side across every place it's published and reconcile them. This is tedious and it's the highest-value hour in the whole project.
+
+## Takeout pho is a different product and the agent should say so
+
+Broth in a bowl and broth in a container behave differently, and every pho restaurant has a house policy about it. Some pack broth separately by default. Some ask. Some pack noodles separately for delivery and not for pickup. Some refuse delivery on pho entirely during a rush because the reviews aren't worth it.
+
+Whatever your policy is, the agent needs to state it before the caller commits, not after. A customer who learns at pickup that the noodles are in a separate container is fine. A customer who discovers it forty minutes later at home is a one-star review.
+
+Configure the packing question as a real step on the relevant items. And if you have items you simply won't send out for delivery, mark them unavailable on that channel rather than hoping nobody asks. The general version of this problem is in [delivery zone rules for phone orders](/blog/delivery-zone-rules-phone-orders).
+
+## Vietnamese-speaking callers, and the honest limitation
+
+Recognition on conversational Vietnamese is usable. Recognition on your specific dish names, with your regulars' pronunciation and shorthand, is only as good as what you loaded. That's the practical constraint, and it is fixable by doing the boring thing: writing down how customers actually say each item and adding those variants.
+
+Where you should be skeptical is tonal precision on names that differ by tone alone, and on callers switching mid-sentence between Vietnamese and English, which many of your customers do naturally. The agent should handle a switch gracefully or hand off. It should never argue with a caller about what they said.
+
+If you have a Vietnamese-speaking person on the phone during business hours today, consider routing Vietnamese-language calls to them and letting the agent cover the hours when nobody is there. Partial coverage that's correct beats full coverage that's approximate. More on that tradeoff in [multi-language menu support](/blog/multi-language-menu-support).
+
+## Quoted times are the thing customers judge you on
+
+Pho restaurants get busy in a shape that makes timing hard. Lunch arrives as a wall between 11:45 and 1:15, and during that window your kitchen is further behind than any number typed into a configuration screen back in November.
+
+If the agent quotes fifteen minutes while you're running thirty, every one of those callers walks in at the fifteen-minute mark and stands next to your register while your staff try to seat people. You've turned a phone problem into a floor problem.
+
+Quote from something that reflects current load if your system supports it, and if it doesn't, set the number honestly high for your peak windows and let people be pleasantly surprised. A caller told twenty-five minutes who waits twenty is happy. A caller told fifteen who waits twenty-five is writing a review. The capacity side of this is covered in [order throttling for kitchen capacity](/blog/order-throttling-kitchen-capacity-phone).
+
+## What to fix in the first two weeks after launch
+
+Pull a sample of transcripts weekly and look for a short list of things:
+
+- Bowls where the agent asked a question your staff never ask, which usually means a modifier is marked required when it should have a default
+- Items a caller named that the agent couldn't find, which is a missing spelling variant and a two-minute fix
+- Calls that escalated for a reason you'd rather handle automatically, like a simple hours question
+- Orders where the ticket printed something the line had to interpret, which means a note field is doing work a modifier should do
+
+That list shrinks fast. Most restaurants find the same six or eight corrections and then the system settles. Reading escalation reasons rather than a headline percentage is the point made in [what is call containment](/blog/what-is-call-containment).
+
+Set one number as your test before you launch, and hold yourself to it: the share of phone tickets that reach the line without anyone having to ask a follow-up question. Count it by hand for a week now, and count it the same way a month in. If it hasn't moved, the configuration is wrong, and the fix is almost always a modifier you didn't build rather than anything to do with the voice.

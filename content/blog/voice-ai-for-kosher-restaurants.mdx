@@ -1,0 +1,78 @@
+---
+title: "Voice AI for kosher restaurants: Shabbat, hechsher, catering"
+description: "The strongest case for a voice agent at a kosher restaurant is the hours you are closed. How to handle Shabbat, yom tov, kashrut questions, and catering."
+publishedAt: "2026-01-31"
+faqs:
+  - question: "Can a voice agent handle closures that move every week?"
+    answer: "Yes, but only if it is configured with dated overrides rather than a fixed weekly schedule. Shabbat begins at a different clock time each Friday and ends at a different time each Saturday, so a system that only understands recurring weekday hours will get it wrong most of the year. Load the year's start and end times as explicit dated entries."
+  - question: "Should the agent answer questions about our kashrut certification?"
+    answer: "It should read back exactly what you wrote and nothing more. Give it a fixed statement naming your certifying agency and whether the kitchen is meat, dairy, or pareve, and instruct it to offer a callback for anything beyond that. An agent that improvises on kashrut is a liability, and callers who ask detailed questions usually want a person anyway."
+  - question: "Can it take orders during Shabbat for pickup afterward?"
+    answer: "Technically yes, and many kosher restaurants choose not to. This is a policy decision for you and your certifying agency, not a technical one. Some operators have the agent state that the restaurant is closed and give the reopening time; others let it record a request that nobody processes until after havdalah. Decide before you configure it."
+  - question: "How should Passover be handled?"
+    answer: "As a separate configuration you load in advance, not as a normal menu change. The kitchen, the menu, and often the hours all change, and callers ask questions in the weeks beforehand that your regular answers do not cover. Build the Passover menu and FAQ set as its own package and switch to it on a scheduled date."
+  - question: "Will it take catering orders for a supervised event?"
+    answer: "It should qualify them and hand them off, not close them. Supervised catering involves the venue, the supervising authority, delivery timing around candle lighting, and warming logistics, none of which belong in an automated conversation. Have the agent capture date, headcount, venue, and callback number, then route the call to whoever owns catering."
+---
+
+The strongest argument for a voice agent at a kosher restaurant has almost nothing to do with taking orders faster. It is about the twenty-five hours a week the phone rings into an empty building.
+
+Shabbat and yom tov mean your line is unanswered for a large, predictable, recurring block, and unlike a Tuesday afternoon lull there is nobody who can quietly pick up. Callers during that window are not all Jewish, do not all know your closure schedule, and a fair number will conclude you have gone out of business.
+
+## The closed hours are the whole case
+
+Count it honestly. A weekly Shabbat closure plus the yom tov calendar puts your phone out of service for something like fifteen percent of the year, concentrated in exactly the stretch when people are planning meals.
+
+A recorded greeting helps some. What it does not do is answer the question, which is almost always "when do you reopen" or "can I still get a catering order in for next week." A recording that says only that you are closed sends a caller to a competitor's number, because they still need dinner.
+
+An agent that states you are closed for Shabbat, gives the exact reopening time, answers the menu and hours questions, and takes a callback request turns a dead window into a queue your morning crew works through. That is the same mechanic as ordinary [after-hours phone coverage](/blog/24-7-restaurant-phone-answering-after-hours), except the closure is far longer and far more regular.
+
+## Closures that move every week
+
+This is where most configurations fail, and it is worth being specific about why.
+
+Shabbat does not start at a fixed clock time. It begins at candle lighting on Friday, which shifts week by week with the season, and ends after nightfall on Saturday, also shifting. Yom tov adds multi-day closures that fall on different weekdays each year, and in some cases run two days back to back.
+
+A scheduling system that only understands "closed Fridays after 6 p.m." will be wrong for most of the year. What you need is dated overrides: explicit start and end timestamps loaded for every closure on the calendar, ideally the full year at once. Any vendor should be able to import a list of dates and times, and you should test three of them before you trust the rest. The general mechanism is covered in [holiday hours and dated overrides](/blog/holiday-hours-overrides-voice-ai); the kosher calendar just uses it more heavily than most restaurants ever will.
+
+Set the reopening announcement carefully too. "We reopen Saturday night" is less useful than a specific time, and specific times are what callers repeat back to the person they are ordering for.
+
+## Kashrut questions belong in a script, not in a model
+
+Callers ask about certification constantly, and the answers are matters of fact that you do not want improvised.
+
+Give the agent a short fixed statement: your certifying agency by name, whether the kitchen is meat, dairy, or pareve, and any standing detail you routinely state, such as cholov Yisroel or pas Yisroel status. Instruct it to read that statement and stop. For anything past it, the correct behavior is to offer a callback or transfer.
+
+This is stricter than how a general dietary question gets handled elsewhere. A caller asking whether a dish contains dairy is a [standard dietary-question flow](/blog/voice-ai-allergen-dietary-questions). A caller asking about the level of supervision on your fish or the status of an ingredient is asking a question where a confident wrong answer damages your standing with the community, and the community talks. The same logic applies to certification questions at a [halal restaurant](/blog/voice-ai-for-halal-restaurants), where the reputational cost of guessing runs in the same direction.
+
+Test this in a demo by asking the agent something adjacent to your script and seeing whether it invents. If it fills the gap, that is disqualifying.
+
+## Passover is a different restaurant
+
+For a few weeks a year your kitchen, your menu, and often your hours are not the ones in your configuration. Treating that as a routine menu update is how callers get quoted items you are not making.
+
+Build it as a separate package loaded on a date: the Passover menu, the modified hours, the pickup windows, and a set of answers for the questions that arrive in the weeks beforehand. Order deadlines matter more than usual here, because the kitchen genuinely cannot take a late add, and the agent should state the cutoff date as a hard fact rather than something to negotiate. If seder catering is a meaningful part of your year, treat [Passover catering calls](/blog/passover-catering-orders) as their own planning exercise rather than a variant of a normal week.
+
+## Catering calls should be qualified, then handed to a person
+
+A supervised catering job is not a phone order and should never be closed like one. Too much of it depends on details the caller often has not settled yet.
+
+What the agent should capture before transferring or scheduling a callback:
+
+- The event date and the time food needs to be on the table, plus whether that time falls before or after a candle lighting or havdalah boundary
+- Headcount, and whether the client is firm on it or still counting
+- The venue, including whether it has a kitchen, warming capability, or an existing arrangement with a supervising authority
+- Whether the event needs meat, dairy, or pareve service, since that determines what you can even quote
+- A callback number and the best window to reach them
+
+That is a five-field intake, and it is genuinely useful. Your catering manager returns the call already knowing whether the job is feasible, instead of spending the first ten minutes finding out. The broader version of this intake logic is in [catering lead qualification](/blog/catering-lead-qualification-ai) and in how [large catering orders](/blog/voice-ai-large-catering-orders) get handled generally.
+
+## What to settle before you turn it on
+
+Two policy questions, and neither is technical.
+
+First, what the agent does during Shabbat itself. Some operators want it to state the closure and give a reopening time, full stop. Others allow it to record a callback request that no one touches until after. That is a conversation with your certifying agency, and you should have it before configuration rather than after a caller mentions it.
+
+Second, what transfers to a human and when. During closures the honest answer is nothing, because there is nobody there. During open hours, keep the [transfer list](/blog/human-handoff-failover-voice-ai) to complaints, kashrut questions past your script, and catering.
+
+Before you sign anything, hand a vendor your closure calendar for the next twelve months and ask them to load it. If they can only offer a recurring weekly rule, the product does not fit your operation, and you will find that out in the middle of a yom tov instead of during a sales call.

@@ -1,0 +1,72 @@
+---
+title: "Voice AI for boba shops: sugar, ice, and group orders"
+description: "One boba drink can be ordered hundreds of ways. Here's how a phone agent handles sugar and ice levels, topping stacks, and the messy eight-drink group order."
+publishedAt: "2026-01-14"
+faqs:
+  - question: "Can a voice agent get sugar and ice levels right?"
+    answer: "It can, but only if those levels exist as real modifier options in your POS rather than as notes your staff type by hand. The agent maps what the caller says onto the modifiers your system already has. If your team currently writes 50% in a comment field, that has to become a structured option first, and that cleanup is the bulk of setup."
+  - question: "How does it handle an eight-drink group order?"
+    answer: "By treating each drink as its own object and reading the whole list back at the end. The thing to test is what happens when the caller changes drink four after ordering drink seven, since that is the normal way group orders actually get placed. An agent that cannot revise an earlier item will produce a wrong ticket on most large calls."
+  - question: "Do boba shops get many phone orders at all?"
+    answer: "Many do not, and that is worth saying plainly. If your business runs on walk-ins and app orders, a phone agent solves a problem you do not have. It earns its keep where group and office orders come by phone, where you take catering-style bulk drink orders, or where the counter phone pulls someone off the sealing machine during a rush."
+  - question: "Will it upsell toppings?"
+    answer: "It can offer a topping or a size upgrade at the right moment in the call, and it does it consistently, which is the actual advantage over a tired employee at 8pm. Keep it to one offer per order. Two offers on a drink order reads as pressure and callers notice it faster on the phone than at the counter."
+  - question: "Can it quote a pickup time?"
+    answer: "It can quote whatever rule you configure, and the rule is only as good as your knowledge of your own line. Most shops start with a flat estimate and then adjust it for peak hours once they have watched real tickets. If your POS supports a live prep-time signal, the agent can read that instead of a fixed number."
+---
+
+Count the ways a single milk tea can be ordered at your shop. Four sugar levels, four ice levels, and say six toppings a caller might pick one or two of. That is already several hundred distinct drinks before you get to size, before hot versus cold, and before the customer says "actually make it oat milk."
+
+Now put eight of those in one phone call, placed by someone reading names off a group chat.
+
+That is the order your staff dreads, and it is the one worth thinking about before you decide whether a phone agent belongs in a boba shop.
+
+## Sugar and ice levels have to be real options, not notes
+
+This is the part that decides whether any of this works, and it has nothing to do with the voice technology.
+
+If your team currently takes "half sugar, less ice" by typing it into a comment field on the ticket, your POS does not know what those words mean. It is a string of text a human reads at the sealing station. A voice agent cannot map onto something that does not exist as structured data, so before anything else, sugar and ice have to become modifier options with defined values that your POS carries onto the ticket.
+
+That work is not glamorous and it is where most of the setup time goes. It also fixes problems you already have. Once the levels are structured, they print consistently, they report consistently, and a new hire cannot invent their own shorthand. The general version of this cleanup is in [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers), and the case for pruning your modifier tree while you are in there is in [simplifying modifier trees](/blog/simplifying-modifier-trees).
+
+If a vendor tells you none of this matters and the agent will figure it out from natural language, be skeptical. Something has to write a specific value into a specific field on a specific ticket.
+
+## The group order is the real test
+
+Single-drink calls are easy and almost every system handles them. The eight-drink call is where the differences show.
+
+Group orders do not arrive in order. The caller reads drink one, drink two, gets interrupted, comes back, adds two more, then says "wait, number four should be no boba." A person taking that call scratches out a line on a paper ticket. An agent has to hold eight separate objects in the conversation, revise one of them by reference, and read the corrected list back.
+
+Ask any vendor to demo exactly that. Not a clean eight-drink order, a messy one with a revision to an earlier item and one drink that changes size at the end. If the agent has to start over, your staff will end up taking those calls anyway, which means you bought nothing.
+
+The readback matters as much as the capture. Eight drinks read back at conversational speed is roughly forty seconds, and callers tolerate it because they know what a wrong group order costs them. Do not let a vendor shorten the readback to make the call time metric look better.
+
+## Your call volume might not justify this
+
+Plenty of boba shops should not buy a phone agent, and the honest version of the pitch says so.
+
+If your business is walk-ins and app orders and the phone rings six times a day, mostly asking about hours, you have a voicemail greeting problem and not an ordering problem. Plans start at $250 a month. Six calls a day about closing time does not get that back.
+
+The shops where it does pay are specific. Office and group orders placed by phone, because those are high-ticket and the ones you lose when nobody picks up. Shops near schools where the after-school block produces a call spike you cannot staff for. Shops that take bulk drink orders for events, which behave like catering and are covered in [large catering orders](/blog/voice-ai-large-catering-orders). And shops where the counter phone physically pulls someone off the line during peak, which is the same dynamic described in [voice AI for coffee shops](/blog/voice-ai-for-coffee-shops).
+
+Look at your own logs for a week before deciding. Not your impression of the phone, the actual count of inbound calls and how many rang out.
+
+## Sold-out toppings and the flavor you ran out of at seven
+
+Boba shops run out of things mid-shift constantly. Brown sugar, a seasonal fruit, a specific tea, taro on a good day.
+
+Whether that reaches the phone depends on whether your staff marks it in the POS and whether the agent reads that state live. If the answer is no on either count, the agent keeps selling it and someone has to call the customer back before pickup. That call costs you more than the drink was worth. [Real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) covers how the propagation actually works and how quickly.
+
+There is a related question worth deciding up front: what should the agent do when the caller's topping is out. Silently drop it, offer a substitute, or ask. Pick one and configure it. The default behavior of an unconfigured system is usually the worst of the three.
+
+## The upsell that does not annoy anyone
+
+An agent will offer a topping or a size upgrade every single time if you tell it to, which is more consistently than any human does at the end of a shift. That consistency is most of the ticket lift people talk about.
+
+Keep it to one offer per order. On the phone, without a menu board or a person's face, a second offer reads as a script running at you. The line between an offer and a pitch is in [upselling without being pushy](/blog/upselling-without-being-pushy-ai), and the ticket math is in [average ticket and upsell](/blog/ai-phone-ordering-average-ticket-upsell).
+
+## What to do before you sign anything
+
+Pull one week of call data and count three things: total inbound calls, calls that rang out unanswered, and calls during your two busiest hours. Then pick your ten most common drinks and open your POS to see whether sugar and ice exist as modifiers or as free text.
+
+If your unanswered count during peak is meaningful and your modifiers are already structured, this is a short setup and the money is there. If your modifiers are free text, the project is a menu cleanup first and a phone agent second, and anyone who tells you otherwise is selling past the hard part. X1 Voice connects directly to Square, Clover and OrderCounter, and reaches most other systems through Deliverect, but none of those connections fix a menu that does not know what half sugar means.

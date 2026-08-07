@@ -1,0 +1,71 @@
+---
+title: "Labor Day barbecue orders and pickup windows that hold"
+description: "Bulk barbecue fails at the pickup counter, not in the smoker. How to sell by the pound, schedule real windows, and keep the phone from overbooking noon."
+publishedAt: "2026-05-14"
+faqs:
+  - question: "How wide should a Labor Day pickup window be?"
+    answer: "Fifteen minutes, with a named number of orders in each one. Wider windows feel generous and collapse into a crowd, because everyone arrives at the front of the window anyway. Cap each slot at what your counter can physically hand out in those fifteen minutes, then let the phone book against the remaining slots rather than against the clock."
+  - question: "Should we take barbecue orders by the pound or by the person?"
+    answer: "By the pound, with a per-person guide the caller can use. Pounds are what your smoker produces and what your capacity is measured in, so pricing and cutoffs stay consistent. Then tell the caller that a pound of cooked brisket feeds roughly three adults as a main, and let them do the arithmetic out loud with you."
+  - question: "What is the real capacity limit on a barbecue holiday?"
+    answer: "Cooked pounds coming off the pit, not orders taken. A restaurant that stops counting orders and starts counting pounds usually finds it sold more brisket than it can cook two days before it would have noticed. Set the cutoff in pounds per protein, load it into whatever answers your phone, and stop selling that item when the number is reached."
+  - question: "Can a voice agent handle by-the-pound orders correctly?"
+    answer: "Yes, when quantities are configured as weights with a minimum and an increment rather than as generic item counts. The failure mode to check before the holiday is a caller saying three pounds of ribs and the ticket reading three racks. Test that specific case yourself, out loud, before the week starts, because it is not something you will catch at pickup."
+  - question: "Do we need a deposit on bulk barbecue orders?"
+    answer: "On anything above a few pounds, yes. Smoked meat cooked for a no-show cannot be resold at holiday volume the way sides can, and the cook time means you committed the product a day before the customer failed to appear. A partial deposit taken when the order is placed removes almost all of that exposure and rarely loses you the sale."
+---
+
+Count the pounds, not the orders. That is the whole Labor Day problem in one line, and the restaurants that get burned every year are the ones counting orders.
+
+Forty orders sounds manageable. Forty orders averaging six pounds of brisket is two hundred and forty pounds of finished product, which means somewhere north of four hundred pounds raw, which is more than one pit holds and a lot longer than one overnight cook. That gap does not reveal itself when the orders are taken. It reveals itself at four in the morning on Sunday when someone does the math for the first time.
+
+## Sell in the unit your kitchen produces
+
+Barbecue is priced by weight because it is cooked by weight. Every place the ordering process switches to a different unit is a place errors get in.
+
+A caller who orders "enough ribs for fifteen people" has handed you a judgment call, and whoever takes the call makes it silently. Two different staff members make it differently. Now your pit list has a number nobody can trace back to a customer expectation, and at pickup someone is disappointed.
+
+Take the order in pounds and racks. Give the caller the conversion out loud so they participate in it: a pound of cooked brisket is about three adult portions as a main, a rack is about three to four people sharing. Let them say the number back. The order that gets confirmed in the customer's own words is the order that does not get argued about at the counter.
+
+This is also the specific thing to test if software is answering your phone. A voice agent configured with generic item quantities will hear "three pounds of ribs" and write three of something, and three racks is not three pounds. Quantities need to be set up as weights with a minimum and an increment. Call your own line and say it out loud before the holiday week, then look at the ticket. The general version of that check is in [improving phone order accuracy](/blog/improving-phone-order-accuracy), but this particular error is worth catching by hand.
+
+## Capacity is a pounds number, and it belongs on the phone
+
+Decide, with whoever runs the pit, the maximum finished pounds of each protein you will sell. Not the maximum you could theoretically cook on a perfect night. The number you can hit while also cooking for the people who walk in the door.
+
+Then treat that number as inventory. Every order taken draws it down. When brisket hits its cap, brisket is sold out on the phone, in person, and online, at the same moment. A restaurant that sells past its cap because the phone did not know about the cap spends the holiday morning calling customers to renegotiate, which costs more staff time than the orders were worth.
+
+If your phone is answered by software, that cap has to live in the same place your menu availability lives. Selling an item the kitchen has stopped making is the most common failure in automated ordering and the easiest to prevent, and it is why [POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality) in evaluations. A pleasant voice that books unavailable product is worse than a curt one that does not.
+
+## Pickup windows fail because they are too wide
+
+The instinct is to give a wide window as a courtesy. Pick up between eleven and one. It sounds accommodating and it produces a line out the door at eleven fifteen, because people arrive at the beginning of a window, not the middle.
+
+Use fifteen-minute slots with a hard count in each. The count is not a guess. Stand at your counter, hand off five bagged bulk orders with the receipt check and the sauce question, and time it. Whatever fits in fifteen minutes is the slot size, minus one for the customer who wants to renegotiate their order at the register.
+
+Then book against slots rather than against time. The phone should not be saying "we're open until three." It should be saying that eleven-thirty is full and eleven forty-five has room. That difference in phrasing is the difference between a staged morning and a mob.
+
+Two other things belong in the same conversation:
+
+- Ask on the call whether they are picking up hot or cold, because cold means you can stage it a day early and hot means it occupies a warmer slot at a specific hour.
+- Confirm one phone number for the pickup, and tell them you will text when the order is bagged, so late arrivals do not stack up behind on-time ones.
+
+## The day before is where the phone actually breaks
+
+Sunday of Labor Day weekend runs two businesses at once. Your normal service, plus the last surge of holiday orders from people who waited.
+
+That surge is heavy on questions rather than orders. What time is my pickup. Can I add a pound. Do you have gluten-free sides. Where do I park. Each one is under a minute and there are dozens, and every one of them lands on whoever is trying to run the counter. Order accuracy on holiday eve drops for exactly this reason, and it drops on the orders being taken between the questions.
+
+This is the honest case for automating the phone through a holiday weekend. Not that software takes a two-hundred-pound catering order more carefully than your pitmaster does, but that it answers the fortieth pickup-time question without pulling anyone off the line. If you want to see how those call categories break down before committing, [voice AI for large catering orders](/blog/voice-ai-large-catering-orders) walks through which ones are safe to automate and which ones should always reach a person.
+
+## Hours and cutoffs have to be set before the week starts
+
+Labor Day itself is often a short day, or a closed day, or a pickup-only day with no dining room. Whatever you choose, the phone has to know it, and it has to know it before the calls start arriving in late August.
+
+Set two dates and hold both. The order cutoff, which is when new bulk orders stop, and the change cutoff, which is when existing orders can no longer be modified. The second one is the one operators skip and the one that causes pain, because a customer adding four pounds on Sunday night is a pit change you cannot make. Loading these into an automated line is a configuration step, described in [holiday hours overrides](/blog/holiday-hours-overrides-voice-ai), and it takes ten minutes if you do it in advance and never happens correctly if you do it during the rush.
+
+## What to write down on Tuesday
+
+The afternoon after the holiday, before anyone forgets, write three numbers on a piece of paper: pounds sold of each protein, the slot where the counter backed up, and the number of calls you can remember not getting to.
+
+That last one is a guess, and it is still the most useful of the three, because it is the number you can turn into a plan. Next year's cap, next year's slot size, and next year's decision about who or what answers the phone all come out of it. Restaurants that do this three years running stop being surprised by Labor Day, which is a lower bar than it sounds and almost nobody clears it.

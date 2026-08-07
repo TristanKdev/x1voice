@@ -1,0 +1,1502 @@
+[
+ {
+  "slug": "voice-ai-for-korean-restaurants",
+  "angle": "Korean menus: banchan sets, spice levels, KBBQ party orders, Korean-language callers",
+  "publishedAt": "2026-01-05"
+ },
+ {
+  "slug": "voice-ai-for-vietnamese-pho-restaurants",
+  "angle": "Pho customization (broth, noodle, protein, herbs on the side), Vietnamese-language callers",
+  "publishedAt": "2026-01-06"
+ },
+ {
+  "slug": "voice-ai-for-greek-restaurants",
+  "angle": "Gyro platters vs pitas, family platters, catering trays, Greek Orthodox holiday spikes",
+  "publishedAt": "2026-01-06"
+ },
+ {
+  "slug": "voice-ai-for-caribbean-jamaican-restaurants",
+  "angle": "Sold-out oxtail, \"what's left today\", patois-accented callers, Sunday volume",
+  "publishedAt": "2026-01-07"
+ },
+ {
+  "slug": "voice-ai-for-ethiopian-restaurants",
+  "angle": "Combination platters for groups, injera counts, fasting-season vegan menus",
+  "publishedAt": "2026-01-08"
+ },
+ {
+  "slug": "voice-ai-for-peruvian-restaurants",
+  "angle": "Pollo a la brasa whole/half birds, sides math, weekend family orders",
+  "publishedAt": "2026-01-09"
+ },
+ {
+  "slug": "voice-ai-for-brazilian-steakhouses",
+  "angle": "Reservation-heavy calls, per-person pricing questions, large party deposits",
+  "publishedAt": "2026-01-09"
+ },
+ {
+  "slug": "voice-ai-for-ramen-shops",
+  "angle": "Wait-time quoting, no-substitution policies, takeout noodle-quality caveats",
+  "publishedAt": "2026-01-10"
+ },
+ {
+  "slug": "voice-ai-for-poke-bowl-shops",
+  "angle": "Base/protein/mix-in trees, allergy questions, office lunch group orders",
+  "publishedAt": "2026-01-11"
+ },
+ {
+  "slug": "voice-ai-for-burger-joints",
+  "angle": "Temp requests, combo upsells, shake add-ons, lunch-rush call collision",
+  "publishedAt": "2026-01-11"
+ },
+ {
+  "slug": "voice-ai-for-cheesesteak-shops",
+  "angle": "Wiz/provolone, \"wit or witout\", hoagie sizing, late-night volume",
+  "publishedAt": "2026-01-12"
+ },
+ {
+  "slug": "voice-ai-for-hot-dog-stands",
+  "angle": "Tiny menu, huge call spikes, cash-only realities and prepay",
+  "publishedAt": "2026-01-13"
+ },
+ {
+  "slug": "voice-ai-for-empanada-shops",
+  "angle": "Per-dozen mixes, flavor sold-outs, party trays",
+  "publishedAt": "2026-01-14"
+ },
+ {
+  "slug": "voice-ai-for-boba-tea-shops",
+  "angle": "Sugar/ice levels, topping combinatorics, teen call volume, group orders",
+  "publishedAt": "2026-01-14"
+ },
+ {
+  "slug": "voice-ai-for-donut-shops",
+  "angle": "Early-morning preorders, dozen mixes, corporate standing orders",
+  "publishedAt": "2026-01-15"
+ },
+ {
+  "slug": "voice-ai-for-dessert-shops",
+  "angle": "Custom cake lead times, pickup windows, deposit rules on the phone",
+  "publishedAt": "2026-01-16"
+ },
+ {
+  "slug": "voice-ai-for-creperies",
+  "angle": "Sweet vs savory menus, small kitchens, weekend brunch line",
+  "publishedAt": "2026-01-16"
+ },
+ {
+  "slug": "voice-ai-for-falafel-shawarma-shops",
+  "angle": "Platter vs wrap, sauce rules, halal questions, late-night rush",
+  "publishedAt": "2026-01-17"
+ },
+ {
+  "slug": "voice-ai-for-dim-sum-restaurants",
+  "angle": "Cart-service confusion, per-item takeout counts, Cantonese callers",
+  "publishedAt": "2026-01-18"
+ },
+ {
+  "slug": "voice-ai-for-tapas-restaurants",
+  "angle": "Small-plate counts per person, reservation-plus-order calls",
+  "publishedAt": "2026-01-18"
+ },
+ {
+  "slug": "voice-ai-for-sports-bars",
+  "angle": "Game-time surge, wing counts, big-party call-aheads, TV/reservation questions",
+  "publishedAt": "2026-01-19"
+ },
+ {
+  "slug": "voice-ai-for-breweries-taprooms",
+  "angle": "Food-truck schedules, growler rules, private event inquiries",
+  "publishedAt": "2026-01-20"
+ },
+ {
+  "slug": "voice-ai-for-wineries-tasting-rooms",
+  "angle": "Tasting reservations, group size limits, shipping questions",
+  "publishedAt": "2026-01-21"
+ },
+ {
+  "slug": "voice-ai-for-pop-up-restaurants",
+  "angle": "Changing locations and hours, preorder windows, sellouts",
+  "publishedAt": "2026-01-21"
+ },
+ {
+  "slug": "voice-ai-for-catering-only-kitchens",
+  "angle": "Lead qualification, quote requests, delivery windows, no walk-in traffic",
+  "publishedAt": "2026-01-22"
+ },
+ {
+  "slug": "voice-ai-for-meal-prep-companies",
+  "angle": "Subscription changes, pickup day logistics, macro questions",
+  "publishedAt": "2026-01-23"
+ },
+ {
+  "slug": "voice-ai-for-hotel-restaurants-room-service",
+  "angle": "In-room dining calls, guest room charges, front-desk handoffs",
+  "publishedAt": "2026-01-23"
+ },
+ {
+  "slug": "voice-ai-for-country-clubs",
+  "angle": "Member-only rules, member number lookup, event bookings",
+  "publishedAt": "2026-01-24"
+ },
+ {
+  "slug": "voice-ai-for-stadium-concessions",
+  "angle": "Event-day spikes, suite catering orders, dead days between events",
+  "publishedAt": "2026-01-25"
+ },
+ {
+  "slug": "voice-ai-for-airport-restaurants",
+  "angle": "Gate-side pickup timing, tight windows, traveler questions",
+  "publishedAt": "2026-01-26"
+ },
+ {
+  "slug": "voice-ai-for-casino-restaurants",
+  "angle": "24-hour coverage, comp questions, multi-outlet routing",
+  "publishedAt": "2026-01-26"
+ },
+ {
+  "slug": "voice-ai-for-senior-living-dining",
+  "angle": "Slow, patient call handling, repeat callers, dietary restrictions",
+  "publishedAt": "2026-01-27"
+ },
+ {
+  "slug": "voice-ai-for-hospital-cafes",
+  "angle": "Staff-badge discounts, shift-change rushes, visitor questions",
+  "publishedAt": "2026-01-28"
+ },
+ {
+  "slug": "voice-ai-for-food-halls",
+  "angle": "One number, many stalls: routing calls to the right vendor",
+  "publishedAt": "2026-01-28"
+ },
+ {
+  "slug": "voice-ai-for-drive-thru-coffee",
+  "angle": "Phone preorders alongside a drive-thru line, mobile-order confusion",
+  "publishedAt": "2026-01-29"
+ },
+ {
+  "slug": "voice-ai-for-late-night-restaurants",
+  "angle": "2 a.m. call handling, intoxicated callers, delivery cutoffs",
+  "publishedAt": "2026-01-30"
+ },
+ {
+  "slug": "voice-ai-for-24-hour-diners",
+  "angle": "Overnight skeleton staff, phone coverage when one server runs the floor",
+  "publishedAt": "2026-01-31"
+ },
+ {
+  "slug": "voice-ai-for-kosher-restaurants",
+  "angle": "Shabbat and holiday closures, kashrut questions, catering supervision",
+  "publishedAt": "2026-01-31"
+ },
+ {
+  "slug": "voice-ai-for-vegan-restaurants",
+  "angle": "Ingredient interrogation calls, honey/cross-contamination questions",
+  "publishedAt": "2026-02-01"
+ },
+ {
+  "slug": "voice-ai-for-gluten-free-restaurants",
+  "angle": "Celiac-safety questions and where an agent must hand off to a human",
+  "publishedAt": "2026-02-02"
+ },
+ {
+  "slug": "voice-ai-for-salad-shops",
+  "angle": "Build-your-own trees, office lunch group orders, dressing-on-the-side rules",
+  "publishedAt": "2026-02-02"
+ },
+ {
+  "slug": "voice-ai-for-taco-trucks",
+  "angle": "No landline, cell-phone chaos, location-of-the-day, cash vs card",
+  "publishedAt": "2026-02-03"
+ },
+ {
+  "slug": "voice-ai-for-pupuserias",
+  "angle": "Small Spanish-speaking counters, weekend family orders, cash handling",
+  "publishedAt": "2026-02-04"
+ },
+ {
+  "slug": "voice-ai-for-arepa-shops",
+  "angle": "Fillings menus, Venezuelan/Colombian Spanish callers, small-team coverage",
+  "publishedAt": "2026-02-04"
+ },
+ {
+  "slug": "voice-ai-for-butcher-shops",
+  "angle": "Prepared-food counters, cut requests, holiday roast preorders",
+  "publishedAt": "2026-02-05"
+ },
+ {
+  "slug": "voice-ai-for-seafood-markets",
+  "angle": "Daily catch changes, per-pound pricing, steamed-to-order calls",
+  "publishedAt": "2026-02-06"
+ },
+ {
+  "slug": "voice-ai-for-farm-stands",
+  "angle": "Seasonal availability, CSA pickups, weather-driven closures",
+  "publishedAt": "2026-02-07"
+ },
+ {
+  "slug": "voice-ai-for-pizza-by-the-slice-counters",
+  "angle": "High call volume, tiny tickets, whole-pie upsell math",
+  "publishedAt": "2026-02-07"
+ },
+ {
+  "slug": "voice-ai-for-sub-sandwich-shops",
+  "angle": "Party sub lead times, office platters, franchise-standard menus",
+  "publishedAt": "2026-02-08"
+ },
+ {
+  "slug": "voice-ai-for-chicken-tender-concepts",
+  "angle": "Sauce trees, family packs, drive-thru plus phone",
+  "publishedAt": "2026-02-09"
+ },
+ {
+  "slug": "voice-ai-for-soul-food-restaurants",
+  "angle": "Sunday rush, sides-heavy menus, sellout messaging",
+  "publishedAt": "2026-02-09"
+ },
+ {
+  "slug": "voice-ai-for-cajun-creole-restaurants",
+  "angle": "Crawfish season pricing by the pound, boil orders, sold-out days",
+  "publishedAt": "2026-02-10"
+ },
+ {
+  "slug": "voice-ai-for-filipino-restaurants",
+  "angle": "Turo-turo counters, party trays, Tagalog callers",
+  "publishedAt": "2026-02-11"
+ },
+ {
+  "slug": "voice-ai-for-izakaya",
+  "angle": "Late-night small plates, reservation-plus-order calls, sake questions",
+  "publishedAt": "2026-02-12"
+ },
+ {
+  "slug": "voice-ai-for-turkish-restaurants",
+  "angle": "Kebab platters, family-style catering, Turkish-language callers",
+  "publishedAt": "2026-02-12"
+ },
+ {
+  "slug": "restaurant-call-forwarding-verizon",
+  "angle": "Step-by-step forwarding on Verizon business lines and what breaks",
+  "publishedAt": "2026-02-13"
+ },
+ {
+  "slug": "restaurant-call-forwarding-att",
+  "angle": "AT&T business line forwarding, remote access codes, common failures",
+  "publishedAt": "2026-02-14"
+ },
+ {
+  "slug": "restaurant-call-forwarding-comcast-business",
+  "angle": "Comcast Business Voice forwarding and hunt-group interaction",
+  "publishedAt": "2026-02-14"
+ },
+ {
+  "slug": "restaurant-call-forwarding-spectrum-business",
+  "angle": "Spectrum Business Voice forwarding setup and gotchas",
+  "publishedAt": "2026-02-15"
+ },
+ {
+  "slug": "restaurant-call-forwarding-tmobile-business",
+  "angle": "Forwarding from a T-Mobile business cell line used as the store number",
+  "publishedAt": "2026-02-16"
+ },
+ {
+  "slug": "forwarding-google-voice-to-voice-ai",
+  "angle": "Why Google Voice as a restaurant main line causes trouble, and how to route it",
+  "publishedAt": "2026-02-17"
+ },
+ {
+  "slug": "ringcentral-restaurant-voice-ai-setup",
+  "angle": "Routing a RingCentral extension to an AI agent without losing the auto-attendant",
+  "publishedAt": "2026-02-17"
+ },
+ {
+  "slug": "ooma-office-restaurant-voice-ai",
+  "angle": "Ooma Office routing, virtual receptionist conflicts, forwarding rules",
+  "publishedAt": "2026-02-18"
+ },
+ {
+  "slug": "vonage-business-restaurant-phone-ai",
+  "angle": "Vonage call flows and where an AI agent fits in them",
+  "publishedAt": "2026-02-19"
+ },
+ {
+  "slug": "grasshopper-vs-voice-ai-restaurants",
+  "angle": "Virtual number forwarding vs an agent that actually takes the order",
+  "publishedAt": "2026-02-19"
+ },
+ {
+  "slug": "sip-trunking-basics-restaurants",
+  "angle": "What a SIP trunk is, when a restaurant needs one, and when it doesn't",
+  "publishedAt": "2026-02-20"
+ },
+ {
+  "slug": "voip-vs-landline-restaurant-phone",
+  "angle": "Copper line vs VoIP for a restaurant, including power and outage behavior",
+  "publishedAt": "2026-02-21"
+ },
+ {
+  "slug": "local-vs-toll-free-number-restaurants",
+  "angle": "Why a local number outperforms toll-free for a single-location restaurant",
+  "publishedAt": "2026-02-22"
+ },
+ {
+  "slug": "cnam-caller-id-name-registration",
+  "angle": "Getting your restaurant name to show on outbound caller ID",
+  "publishedAt": "2026-02-22"
+ },
+ {
+  "slug": "stir-shaken-attestation-restaurants",
+  "angle": "Why outbound callbacks get flagged and what attestation levels mean",
+  "publishedAt": "2026-02-23"
+ },
+ {
+  "slug": "robocall-mitigation-database-restaurants",
+  "angle": "What the FCC database is and whether a restaurant is affected",
+  "publishedAt": "2026-02-24"
+ },
+ {
+  "slug": "simultaneous-ring-vs-ai-answering",
+  "angle": "Ringing three phones at once vs answering on the first ring",
+  "publishedAt": "2026-02-24"
+ },
+ {
+  "slug": "after-hours-call-routing-setup",
+  "angle": "Designing the after-hours path: agent, voicemail, emergency transfer",
+  "publishedAt": "2026-02-25"
+ },
+ {
+  "slug": "overflow-call-routing-busy-line",
+  "angle": "What happens to call two through call six, and how to catch them",
+  "publishedAt": "2026-02-26"
+ },
+ {
+  "slug": "voicemail-transcription-vs-voice-ai",
+  "angle": "Transcribed voicemail is a to-do list; an agent is a completed order",
+  "publishedAt": "2026-02-26"
+ },
+ {
+  "slug": "restaurant-phone-network-requirements",
+  "angle": "Bandwidth, QoS, and the switch settings that keep call audio clean",
+  "publishedAt": "2026-02-27"
+ },
+ {
+  "slug": "call-quality-jitter-packet-loss",
+  "angle": "Diagnosing choppy restaurant call audio, in order of likelihood",
+  "publishedAt": "2026-02-28"
+ },
+ {
+  "slug": "second-phone-line-for-catering",
+  "angle": "Whether catering deserves its own number, and how to route it",
+  "publishedAt": "2026-03-01"
+ },
+ {
+  "slug": "vanity-phone-numbers-restaurants",
+  "angle": "When a vanity number is worth it and when it costs you calls",
+  "publishedAt": "2026-03-01"
+ },
+ {
+  "slug": "keeping-your-number-when-switching-pos",
+  "angle": "Number ownership traps when your POS provider also owns your phone number",
+  "publishedAt": "2026-03-02"
+ },
+ {
+  "slug": "two-party-consent-states-call-recording",
+  "angle": "Which states require all-party consent and what that means for recordings",
+  "publishedAt": "2026-03-03"
+ },
+ {
+  "slug": "one-party-consent-call-recording",
+  "angle": "How one-party consent states work and the disclosure you should still give",
+  "publishedAt": "2026-03-03"
+ },
+ {
+  "slug": "california-call-recording-restaurants",
+  "angle": "CIPA basics for a California restaurant recording calls",
+  "publishedAt": "2026-03-04"
+ },
+ {
+  "slug": "florida-call-recording-restaurants",
+  "angle": "Florida's all-party rule and restaurant call recording",
+  "publishedAt": "2026-03-05"
+ },
+ {
+  "slug": "new-york-call-recording-restaurants",
+  "angle": "New York consent rules and cross-border calls",
+  "publishedAt": "2026-03-06"
+ },
+ {
+  "slug": "illinois-voice-privacy-restaurants",
+  "angle": "BIPA, voiceprints, and why voice AI vendors avoid speaker identification",
+  "publishedAt": "2026-03-06"
+ },
+ {
+  "slug": "tcpa-restaurant-text-messages",
+  "angle": "Order confirmations vs marketing texts under the TCPA",
+  "publishedAt": "2026-03-07"
+ },
+ {
+  "slug": "a2p-10dlc-registration-restaurants",
+  "angle": "Registering a brand and campaign so your confirmation texts deliver",
+  "publishedAt": "2026-03-08"
+ },
+ {
+  "slug": "sms-opt-in-consent-restaurants",
+  "angle": "Capturing text consent on a phone call without breaking the rules",
+  "publishedAt": "2026-03-08"
+ },
+ {
+  "slug": "ccpa-voice-data-restaurants",
+  "angle": "Call recordings as personal information under California privacy law",
+  "publishedAt": "2026-03-09"
+ },
+ {
+  "slug": "gdpr-voice-ai-restaurants",
+  "angle": "When a US restaurant actually has GDPR exposure from call data",
+  "publishedAt": "2026-03-10"
+ },
+ {
+  "slug": "ada-phone-accessibility-restaurants",
+  "angle": "Accessibility obligations on the phone and what an agent must support",
+  "publishedAt": "2026-03-11"
+ },
+ {
+  "slug": "tty-relay-calls-restaurants",
+  "angle": "Handling relay-service calls without hanging up on a deaf caller",
+  "publishedAt": "2026-03-11"
+ },
+ {
+  "slug": "alcohol-orders-by-phone-laws",
+  "angle": "State rules on phone and delivery alcohol orders, and agent guardrails",
+  "publishedAt": "2026-03-12"
+ },
+ {
+  "slug": "age-verification-delivery-alcohol",
+  "angle": "ID checks at the door and what the phone step can and can't do",
+  "publishedAt": "2026-03-13"
+ },
+ {
+  "slug": "tobacco-orders-by-phone",
+  "angle": "Why tobacco and nicotine orders should never be agent-completed",
+  "publishedAt": "2026-03-13"
+ },
+ {
+  "slug": "junk-fee-disclosure-rules-restaurants",
+  "angle": "Fee disclosure rules and how they apply to a phone quote",
+  "publishedAt": "2026-03-14"
+ },
+ {
+  "slug": "surcharge-disclosure-phone-orders",
+  "angle": "Card surcharges and service fees disclosed verbally",
+  "publishedAt": "2026-03-15"
+ },
+ {
+  "slug": "menu-price-parity-third-party",
+  "angle": "Different prices on delivery apps vs the phone, and what to tell callers",
+  "publishedAt": "2026-03-15"
+ },
+ {
+  "slug": "allergen-liability-phone-orders",
+  "angle": "Allergen answers that create liability and the handoff rule that prevents it",
+  "publishedAt": "2026-03-16"
+ },
+ {
+  "slug": "pci-saq-types-restaurants",
+  "angle": "Which SAQ applies when phone payments are involved",
+  "publishedAt": "2026-03-17"
+ },
+ {
+  "slug": "call-recording-retention-policy",
+  "angle": "How long to keep recordings, where, and who can hear them",
+  "publishedAt": "2026-03-18"
+ },
+ {
+  "slug": "data-processing-agreement-voice-vendor",
+  "angle": "The DPA clauses that matter when a vendor holds your call data",
+  "publishedAt": "2026-03-18"
+ },
+ {
+  "slug": "ai-disclosure-laws-voice-agents",
+  "angle": "Emerging disclosure requirements and the honest greeting that satisfies them",
+  "publishedAt": "2026-03-19"
+ },
+ {
+  "slug": "insurance-liability-ai-order-errors",
+  "angle": "Who eats the cost when an order is wrong, and what your policy covers",
+  "publishedAt": "2026-03-20"
+ },
+ {
+  "slug": "appear-in-chatgpt-restaurant-recommendations",
+  "angle": "How assistants pick restaurants and what actually influences it",
+  "publishedAt": "2026-03-20"
+ },
+ {
+  "slug": "perplexity-restaurant-visibility",
+  "angle": "What Perplexity cites for restaurant queries and how to be citable",
+  "publishedAt": "2026-03-21"
+ },
+ {
+  "slug": "google-ai-overviews-restaurants",
+  "angle": "How AI Overviews assemble restaurant answers, and the pages they pull from",
+  "publishedAt": "2026-03-22"
+ },
+ {
+  "slug": "gemini-restaurant-answers",
+  "angle": "Grounding sources Gemini favors for local dining questions",
+  "publishedAt": "2026-03-23"
+ },
+ {
+  "slug": "copilot-restaurant-search",
+  "angle": "Bing-fed answers and the listing hygiene that feeds them",
+  "publishedAt": "2026-03-23"
+ },
+ {
+  "slug": "llms-txt-for-restaurants",
+  "angle": "What an llms.txt file is, what to put in it, what it won't do",
+  "publishedAt": "2026-03-24"
+ },
+ {
+  "slug": "ai-crawler-robots-txt-restaurants",
+  "angle": "Allowing or blocking GPTBot, ClaudeBot, PerplexityBot and the tradeoff",
+  "publishedAt": "2026-03-25"
+ },
+ {
+  "slug": "schema-markup-restaurant-menu",
+  "angle": "Menu schema that is worth the effort, and the parts that aren't",
+  "publishedAt": "2026-03-25"
+ },
+ {
+  "slug": "localbusiness-schema-restaurants",
+  "angle": "Getting Restaurant and LocalBusiness structured data right",
+  "publishedAt": "2026-03-26"
+ },
+ {
+  "slug": "faq-schema-restaurant-pages",
+  "angle": "FAQ markup after the rich-result changes: still worth it, for different reasons",
+  "publishedAt": "2026-03-27"
+ },
+ {
+  "slug": "review-schema-restaurants",
+  "angle": "Review markup rules and the self-serving-review trap",
+  "publishedAt": "2026-03-28"
+ },
+ {
+  "slug": "google-business-profile-phone-optimization",
+  "angle": "The GBP fields that change how often your phone rings",
+  "publishedAt": "2026-03-28"
+ },
+ {
+  "slug": "nap-consistency-restaurants",
+  "angle": "Name, address, phone consistency and why a forwarded number breaks it",
+  "publishedAt": "2026-03-29"
+ },
+ {
+  "slug": "apple-business-connect-restaurants",
+  "angle": "Apple Maps listing setup for restaurants",
+  "publishedAt": "2026-03-30"
+ },
+ {
+  "slug": "bing-places-restaurants",
+  "angle": "Bing Places setup and why it matters more than its traffic share",
+  "publishedAt": "2026-03-30"
+ },
+ {
+  "slug": "yelp-phone-number-listing",
+  "angle": "Yelp's number substitution and what it does to your call data",
+  "publishedAt": "2026-03-31"
+ },
+ {
+  "slug": "voice-search-near-me-restaurants",
+  "angle": "How near-me voice queries resolve and what the caller hears next",
+  "publishedAt": "2026-04-01"
+ },
+ {
+  "slug": "siri-alexa-restaurant-ordering",
+  "angle": "What assistants can actually do with a restaurant phone number today",
+  "publishedAt": "2026-04-02"
+ },
+ {
+  "slug": "entity-seo-restaurant-brand",
+  "angle": "Being understood as an entity, not a string, across search and assistants",
+  "publishedAt": "2026-04-02"
+ },
+ {
+  "slug": "answer-first-content-restaurant-website",
+  "angle": "Writing pages that answer in the first sentence, for humans and models",
+  "publishedAt": "2026-04-03"
+ },
+ {
+  "slug": "citations-directories-restaurants",
+  "angle": "Which directories still move the needle and which are noise",
+  "publishedAt": "2026-04-04"
+ },
+ {
+  "slug": "menu-page-seo-restaurants",
+  "angle": "Why a PDF menu is a dead end and what to publish instead",
+  "publishedAt": "2026-04-04"
+ },
+ {
+  "slug": "multi-location-local-seo-restaurants",
+  "angle": "Location pages, store locators, and duplicate-content traps",
+  "publishedAt": "2026-04-05"
+ },
+ {
+  "slug": "reputation-reviews-ai-answers",
+  "angle": "How review text ends up quoted in assistant answers",
+  "publishedAt": "2026-04-06"
+ },
+ {
+  "slug": "tracking-ai-referral-traffic-ga4",
+  "angle": "Isolating ChatGPT, Perplexity and Copilot referrals in GA4",
+  "publishedAt": "2026-04-06"
+ },
+ {
+  "slug": "phone-sop-restaurant-staff",
+  "angle": "Writing a one-page phone SOP your staff will actually follow",
+  "publishedAt": "2026-04-07"
+ },
+ {
+  "slug": "shift-handoff-phone-coverage",
+  "angle": "Who owns the phone at shift change, and the gap that always appears",
+  "publishedAt": "2026-04-08"
+ },
+ {
+  "slug": "training-staff-voice-ai-handoffs",
+  "angle": "Training the team on transferred calls so the caller isn't re-explaining",
+  "publishedAt": "2026-04-09"
+ },
+ {
+  "slug": "host-stand-workflow-redesign",
+  "angle": "Rebuilding the host stand once the phone stops ringing there",
+  "publishedAt": "2026-04-09"
+ },
+ {
+  "slug": "expo-station-phone-order-flow",
+  "angle": "Where phone tickets should land so expo isn't guessing",
+  "publishedAt": "2026-04-10"
+ },
+ {
+  "slug": "kitchen-printer-vs-kds-phone-orders",
+  "angle": "Printer or KDS for phone orders, and the failure modes of each",
+  "publishedAt": "2026-04-11"
+ },
+ {
+  "slug": "ticket-times-phone-vs-walkin",
+  "angle": "Why phone tickets run long and how to fix the sequencing",
+  "publishedAt": "2026-04-11"
+ },
+ {
+  "slug": "quoting-accurate-pickup-times",
+  "angle": "Building a quote rule that survives a Friday rush",
+  "publishedAt": "2026-04-12"
+ },
+ {
+  "slug": "quoting-delivery-eta",
+  "angle": "Delivery time quotes that account for driver supply",
+  "publishedAt": "2026-04-13"
+ },
+ {
+  "slug": "out-of-stock-substitutions-phone",
+  "angle": "Substitution policy that avoids refunds and angry callbacks",
+  "publishedAt": "2026-04-14"
+ },
+ {
+  "slug": "managing-special-requests-phone-orders",
+  "angle": "Which special requests to accept, which to refuse, and how to say no",
+  "publishedAt": "2026-04-14"
+ },
+ {
+  "slug": "large-party-reservations-by-phone",
+  "angle": "Qualifying a large party on the phone without a manager",
+  "publishedAt": "2026-04-15"
+ },
+ {
+  "slug": "waitlist-management-phone-calls",
+  "angle": "Answering \"how long is the wait\" without lying",
+  "publishedAt": "2026-04-16"
+ },
+ {
+  "slug": "handling-driver-calls-doordash",
+  "angle": "Courier calls at the counter and how to keep them off the main line",
+  "publishedAt": "2026-04-16"
+ },
+ {
+  "slug": "third-party-courier-support-calls",
+  "angle": "Support calls from delivery platforms and where they should route",
+  "publishedAt": "2026-04-17"
+ },
+ {
+  "slug": "lost-order-calls-resolution",
+  "angle": "The five-minute script for \"my order never came\"",
+  "publishedAt": "2026-04-18"
+ },
+ {
+  "slug": "complaint-escalation-matrix",
+  "angle": "Which complaints an agent resolves and which reach a human immediately",
+  "publishedAt": "2026-04-19"
+ },
+ {
+  "slug": "refund-policy-phone-orders",
+  "angle": "A refund policy that a phone agent can execute consistently",
+  "publishedAt": "2026-04-19"
+ },
+ {
+  "slug": "comping-remakes-tracking",
+  "angle": "Tracking comps and remakes back to their cause",
+  "publishedAt": "2026-04-20"
+ },
+ {
+  "slug": "phone-order-fraud-red-flags",
+  "angle": "Card-not-present fraud patterns that show up on restaurant phones",
+  "publishedAt": "2026-04-21"
+ },
+ {
+  "slug": "prank-order-handling",
+  "angle": "Prank and repeat-nuisance calls, and blocking without blocking customers",
+  "publishedAt": "2026-04-21"
+ },
+ {
+  "slug": "deposits-for-large-catering",
+  "angle": "Deposit rules and how to collect one on a call",
+  "publishedAt": "2026-04-22"
+ },
+ {
+  "slug": "credit-card-authorization-holds",
+  "angle": "Auth holds on large phone orders and the confusion they cause",
+  "publishedAt": "2026-04-23"
+ },
+ {
+  "slug": "splitting-payment-phone-orders",
+  "angle": "Split payments over the phone: when to allow, when to refuse",
+  "publishedAt": "2026-04-23"
+ },
+ {
+  "slug": "tip-handling-phone-orders",
+  "angle": "Tip prompts on phone orders and how staff get paid out",
+  "publishedAt": "2026-04-24"
+ },
+ {
+  "slug": "tax-on-phone-orders-basics",
+  "angle": "Sales tax on pickup vs delivery and why the totals differ",
+  "publishedAt": "2026-04-25"
+ },
+ {
+  "slug": "promo-codes-over-the-phone",
+  "angle": "Honoring online promo codes on calls without opening an abuse hole",
+  "publishedAt": "2026-04-26"
+ },
+ {
+  "slug": "loyalty-signup-during-calls",
+  "angle": "Enrolling a caller in loyalty in under fifteen seconds",
+  "publishedAt": "2026-04-26"
+ },
+ {
+  "slug": "upsell-scripts-that-work",
+  "angle": "Upsell lines that lift ticket without annoying regulars",
+  "publishedAt": "2026-04-27"
+ },
+ {
+  "slug": "call-scripts-vs-natural-conversation",
+  "angle": "Where a rigid script helps and where it costs you the order",
+  "publishedAt": "2026-04-28"
+ },
+ {
+  "slug": "menu-naming-for-voice-clarity",
+  "angle": "Renaming items so callers and agents both get them right",
+  "publishedAt": "2026-04-28"
+ },
+ {
+  "slug": "simplifying-modifier-trees",
+  "angle": "Cutting a modifier tree down to what people actually order",
+  "publishedAt": "2026-04-29"
+ },
+ {
+  "slug": "managing-limited-time-offers-voice",
+  "angle": "Getting an LTO live on the phone the same day it launches",
+  "publishedAt": "2026-04-30"
+ },
+ {
+  "slug": "seasonal-menu-updates-voice-agent",
+  "angle": "The menu-update routine that keeps the agent from selling a dead item",
+  "publishedAt": "2026-05-01"
+ },
+ {
+  "slug": "multi-menu-daypart-switching",
+  "angle": "Breakfast, lunch and late-night menus on one phone number",
+  "publishedAt": "2026-05-01"
+ },
+ {
+  "slug": "closing-early-weather-messaging",
+  "angle": "Changing the greeting when you close early, in under a minute",
+  "publishedAt": "2026-05-02"
+ },
+ {
+  "slug": "power-outage-phone-plan",
+  "angle": "What answers your phone when the power is out",
+  "publishedAt": "2026-05-03"
+ },
+ {
+  "slug": "internet-outage-phone-failover",
+  "angle": "Failover order when the ISP drops mid-service",
+  "publishedAt": "2026-05-03"
+ },
+ {
+  "slug": "pos-outage-order-capture",
+  "angle": "Capturing orders when the POS is down and reconciling after",
+  "publishedAt": "2026-05-04"
+ },
+ {
+  "slug": "opening-new-location-phone-checklist",
+  "angle": "Phone setup checklist for a new store, in order",
+  "publishedAt": "2026-05-05"
+ },
+ {
+  "slug": "thanksgiving-catering-phone-surge",
+  "angle": "The two weeks where catering calls decide your November",
+  "publishedAt": "2026-05-06"
+ },
+ {
+  "slug": "christmas-eve-restaurant-phone-plan",
+  "angle": "Short hours, huge volume, and a phone nobody can answer",
+  "publishedAt": "2026-05-06"
+ },
+ {
+  "slug": "new-years-eve-reservations-calls",
+  "angle": "Prix-fixe questions and deposit collection at volume",
+  "publishedAt": "2026-05-07"
+ },
+ {
+  "slug": "cinco-de-mayo-taqueria-rush",
+  "angle": "One day, triple volume, and where the orders leak",
+  "publishedAt": "2026-05-08"
+ },
+ {
+  "slug": "halloween-phone-order-surge",
+  "angle": "Early dinner rush, delivery chaos, and staffing gaps",
+  "publishedAt": "2026-05-08"
+ },
+ {
+  "slug": "march-madness-wings-orders",
+  "angle": "Tip-off timing, big orders, and quoting honestly",
+  "publishedAt": "2026-05-09"
+ },
+ {
+  "slug": "graduation-catering-season",
+  "angle": "Six weeks of party trays and how to qualify the leads",
+  "publishedAt": "2026-05-10"
+ },
+ {
+  "slug": "back-to-school-lunch-catering",
+  "angle": "Recurring school and office lunch accounts started on the phone",
+  "publishedAt": "2026-05-10"
+ },
+ {
+  "slug": "ramadan-iftar-catering-calls",
+  "angle": "Sunset-timed pickups and large family orders",
+  "publishedAt": "2026-05-11"
+ },
+ {
+  "slug": "lent-fish-fry-fridays",
+  "angle": "Six Fridays, one menu, and a phone that never stops",
+  "publishedAt": "2026-05-12"
+ },
+ {
+  "slug": "passover-catering-orders",
+  "angle": "Lead times, kosher-for-Passover questions, and deposits",
+  "publishedAt": "2026-05-13"
+ },
+ {
+  "slug": "july-fourth-catering-phone",
+  "angle": "Holiday hours confusion and last-minute party orders",
+  "publishedAt": "2026-05-13"
+ },
+ {
+  "slug": "labor-day-bbq-orders",
+  "angle": "Bulk barbecue orders and pickup windows that actually work",
+  "publishedAt": "2026-05-14"
+ },
+ {
+  "slug": "memorial-day-weekend-calls",
+  "angle": "Travel-weekend volume swings and staffing the phone",
+  "publishedAt": "2026-05-15"
+ },
+ {
+  "slug": "restaurant-week-call-volume",
+  "angle": "Prix-fixe questions, reservation pressure, and menu confusion",
+  "publishedAt": "2026-05-15"
+ },
+ {
+  "slug": "local-game-day-order-surge",
+  "angle": "Home-game days for local teams and predictable order spikes",
+  "publishedAt": "2026-05-16"
+ },
+ {
+  "slug": "easter-brunch-reservations",
+  "angle": "Seating-time questions and a phone line that stays busy all morning",
+  "publishedAt": "2026-05-17"
+ },
+ {
+  "slug": "heat-wave-delivery-surge",
+  "angle": "Hot-weather delivery spikes and driver-supply reality",
+  "publishedAt": "2026-05-18"
+ },
+ {
+  "slug": "prom-night-group-dining-calls",
+  "angle": "Large teen parties, parent callers, and prepayment",
+  "publishedAt": "2026-05-18"
+ },
+ {
+  "slug": "tourist-season-phone-volume",
+  "angle": "Out-of-town callers asking questions locals never ask",
+  "publishedAt": "2026-05-19"
+ },
+ {
+  "slug": "square-kds-phone-orders",
+  "angle": "How phone orders land on Square KDS and the routing settings that matter",
+  "publishedAt": "2026-05-20"
+ },
+ {
+  "slug": "square-online-vs-phone-orders",
+  "angle": "Reconciling Square Online and phone orders in one ticket stream",
+  "publishedAt": "2026-05-20"
+ },
+ {
+  "slug": "toast-handheld-phone-order-workflow",
+  "angle": "Where a phone ticket shows up in a Toast handheld workflow",
+  "publishedAt": "2026-05-21"
+ },
+ {
+  "slug": "toast-menu-modifiers-voice-mapping",
+  "angle": "Mapping Toast modifier groups so the agent quotes the right price",
+  "publishedAt": "2026-05-22"
+ },
+ {
+  "slug": "clover-flex-phone-order-workflow",
+  "angle": "Running phone orders on Clover Flex without a second terminal",
+  "publishedAt": "2026-05-23"
+ },
+ {
+  "slug": "clover-inventory-86-sync",
+  "angle": "Keeping Clover item availability and the phone agent in agreement",
+  "publishedAt": "2026-05-23"
+ },
+ {
+  "slug": "lightspeed-restaurant-voice-setup",
+  "angle": "What to expect connecting Lightspeed through Deliverect",
+  "publishedAt": "2026-05-24"
+ },
+ {
+  "slug": "touchbistro-voice-order-flow",
+  "angle": "iPad-based flow and where phone tickets fit",
+  "publishedAt": "2026-05-25"
+ },
+ {
+  "slug": "spoton-voice-order-flow",
+  "angle": "SpotOn order ingestion and menu mapping notes",
+  "publishedAt": "2026-05-25"
+ },
+ {
+  "slug": "revel-voice-order-flow",
+  "angle": "Revel setups, enterprise menus, and phone order routing",
+  "publishedAt": "2026-05-26"
+ },
+ {
+  "slug": "par-brink-voice-order-flow",
+  "angle": "PAR Brink integration path and franchise menu constraints",
+  "publishedAt": "2026-05-27"
+ },
+ {
+  "slug": "micros-simphony-voice-order-flow",
+  "angle": "Simphony environments and what integration realistically requires",
+  "publishedAt": "2026-05-28"
+ },
+ {
+  "slug": "ordercounter-menu-sync-tips",
+  "angle": "Menu hygiene that makes OrderCounter sync predictable",
+  "publishedAt": "2026-05-28"
+ },
+ {
+  "slug": "aloha-modifier-mapping-voice",
+  "angle": "Aloha modifier structures and voice mapping pitfalls",
+  "publishedAt": "2026-05-29"
+ },
+ {
+  "slug": "deliverect-setup-guide-restaurants",
+  "angle": "What Deliverect does, what it costs you in latency, and how to set it up",
+  "publishedAt": "2026-05-30"
+ },
+ {
+  "slug": "otter-vs-deliverect-voice-orders",
+  "angle": "Two middleware paths compared for phone-order ingestion",
+  "publishedAt": "2026-05-30"
+ },
+ {
+  "slug": "chowly-integration-voice-orders",
+  "angle": "Where Chowly fits and where it doesn't",
+  "publishedAt": "2026-05-31"
+ },
+ {
+  "slug": "olo-integration-voice-ordering",
+  "angle": "Enterprise ordering middleware and phone-channel integration",
+  "publishedAt": "2026-06-01"
+ },
+ {
+  "slug": "doordash-drive-phone-orders",
+  "angle": "Dispatching your own delivery through Drive from a phone order",
+  "publishedAt": "2026-06-01"
+ },
+ {
+  "slug": "uber-direct-phone-delivery",
+  "angle": "White-label delivery for phone orders and the economics",
+  "publishedAt": "2026-06-02"
+ },
+ {
+  "slug": "grubhub-phone-order-routing",
+  "angle": "Grubhub's phone-ordering fees and how to route around them",
+  "publishedAt": "2026-06-03"
+ },
+ {
+  "slug": "slice-pizza-platform-voice",
+  "angle": "Pizzerias on Slice and what phone integration looks like",
+  "publishedAt": "2026-06-04"
+ },
+ {
+  "slug": "menufy-voice-ordering",
+  "angle": "Menufy sites and phone-order reconciliation",
+  "publishedAt": "2026-06-04"
+ },
+ {
+  "slug": "toast-delivery-services-phone",
+  "angle": "Toast-managed delivery triggered from a phone order",
+  "publishedAt": "2026-06-05"
+ },
+ {
+  "slug": "pos-api-limits-voice-agents",
+  "angle": "Rate limits, polling, and why some menus update slower than others",
+  "publishedAt": "2026-06-06"
+ },
+ {
+  "slug": "call-volume-forecasting-restaurants",
+  "angle": "Forecasting next month's calls from last year's tickets",
+  "publishedAt": "2026-06-06"
+ },
+ {
+  "slug": "peak-hour-staffing-math-phone",
+  "angle": "Turning call volume into a staffing number you can defend",
+  "publishedAt": "2026-06-07"
+ },
+ {
+  "slug": "cost-per-phone-order",
+  "angle": "Calculating what a phone order actually costs you to take",
+  "publishedAt": "2026-06-08"
+ },
+ {
+  "slug": "customer-acquisition-cost-phone-orders",
+  "angle": "Phone orders as an acquisition channel, priced honestly",
+  "publishedAt": "2026-06-09"
+ },
+ {
+  "slug": "lifetime-value-phone-customers",
+  "angle": "Why phone customers repeat differently than app customers",
+  "publishedAt": "2026-06-09"
+ },
+ {
+  "slug": "phone-order-conversion-rate",
+  "angle": "Measuring how many answered calls become orders",
+  "publishedAt": "2026-06-10"
+ },
+ {
+  "slug": "abandoned-call-rate-restaurants",
+  "angle": "The metric most restaurants can't see, and how to get it",
+  "publishedAt": "2026-06-11"
+ },
+ {
+  "slug": "average-handle-time-restaurant-calls",
+  "angle": "What a healthy handle time looks like and when short is bad",
+  "publishedAt": "2026-06-11"
+ },
+ {
+  "slug": "first-call-resolution-restaurants",
+  "angle": "Adapting a call-center metric to a 40-seat dining room",
+  "publishedAt": "2026-06-12"
+ },
+ {
+  "slug": "order-accuracy-measurement-method",
+  "angle": "A repeatable way to measure accuracy without a QA team",
+  "publishedAt": "2026-06-13"
+ },
+ {
+  "slug": "mystery-calling-qa-program",
+  "angle": "Running mystery calls on your own phone line monthly",
+  "publishedAt": "2026-06-14"
+ },
+ {
+  "slug": "transcript-sampling-qa",
+  "angle": "Sampling transcripts weekly: how many, chosen how",
+  "publishedAt": "2026-06-14"
+ },
+ {
+  "slug": "sentiment-analysis-restaurant-calls",
+  "angle": "What sentiment scoring is good for and where it misleads",
+  "publishedAt": "2026-06-15"
+ },
+ {
+  "slug": "ab-testing-greetings-voice-ai",
+  "angle": "Testing two greetings properly on low call volume",
+  "publishedAt": "2026-06-16"
+ },
+ {
+  "slug": "menu-mix-shift-from-voice-upsell",
+  "angle": "Watching mix shift after upsells turn on, good and bad",
+  "publishedAt": "2026-06-16"
+ },
+ {
+  "slug": "labor-hours-saved-calculation",
+  "angle": "Converting answered calls into hours off the floor",
+  "publishedAt": "2026-06-17"
+ },
+ {
+  "slug": "payback-period-voice-ai",
+  "angle": "A payback calculation an owner can check in five minutes",
+  "publishedAt": "2026-06-18"
+ },
+ {
+  "slug": "budgeting-voice-ai-monthly",
+  "angle": "Where the line item belongs and what varies month to month",
+  "publishedAt": "2026-06-18"
+ },
+ {
+  "slug": "per-minute-vs-per-call-pricing-math",
+  "angle": "Modeling both pricing shapes against your actual call length",
+  "publishedAt": "2026-06-19"
+ },
+ {
+  "slug": "hidden-costs-voice-ai-contracts",
+  "angle": "Setup fees, menu-change fees, overage, and minimums",
+  "publishedAt": "2026-06-20"
+ },
+ {
+  "slug": "roi-memo-template-owner",
+  "angle": "A one-page memo structure for the owner who signs",
+  "publishedAt": "2026-06-21"
+ },
+ {
+  "slug": "tracking-phone-orders-in-ga4",
+  "angle": "Wiring phone-order events into GA4 so the channel is visible",
+  "publishedAt": "2026-06-21"
+ },
+ {
+  "slug": "call-tracking-numbers-attribution",
+  "angle": "Tracking numbers, NAP consistency, and how to use both",
+  "publishedAt": "2026-06-22"
+ },
+ {
+  "slug": "utm-tagging-restaurant-campaigns",
+  "angle": "A tagging convention that survives three agencies",
+  "publishedAt": "2026-06-23"
+ },
+ {
+  "slug": "attribution-phone-vs-online-orders",
+  "angle": "Splitting credit between the phone and the website honestly",
+  "publishedAt": "2026-06-23"
+ },
+ {
+  "slug": "slang-ai-alternatives-restaurants",
+  "angle": "What operators look for when they outgrow a reservation-first agent",
+  "publishedAt": "2026-06-24"
+ },
+ {
+  "slug": "loman-ai-alternatives",
+  "angle": "Evaluation criteria when comparing ordering-focused agents",
+  "publishedAt": "2026-06-25"
+ },
+ {
+  "slug": "popmenu-answering-alternatives",
+  "angle": "Marketing-suite phone answering vs a dedicated ordering agent",
+  "publishedAt": "2026-06-26"
+ },
+ {
+  "slug": "conversenow-for-independent-restaurants",
+  "angle": "Enterprise drive-thru voice vendors and independent-restaurant fit",
+  "publishedAt": "2026-06-26"
+ },
+ {
+  "slug": "soundhound-restaurant-voice-overview",
+  "angle": "Where SoundHound's restaurant products sit in the category",
+  "publishedAt": "2026-06-27"
+ },
+ {
+  "slug": "polyai-vs-restaurant-focused-voice",
+  "angle": "General enterprise voice platforms vs restaurant-specific ones",
+  "publishedAt": "2026-06-28"
+ },
+ {
+  "slug": "goodcall-vs-restaurant-voice-ai",
+  "angle": "Small-business receptionist agents and the ordering gap",
+  "publishedAt": "2026-06-28"
+ },
+ {
+  "slug": "numa-vs-restaurant-voice-ai",
+  "angle": "Vertical agents built for other industries, applied to restaurants",
+  "publishedAt": "2026-06-29"
+ },
+ {
+  "slug": "rosie-ai-vs-restaurant-voice",
+  "angle": "Answering-first agents and what they leave for staff",
+  "publishedAt": "2026-06-30"
+ },
+ {
+  "slug": "voiceplug-overview-restaurants",
+  "angle": "Where VOICEplug fits and what to ask about POS depth",
+  "publishedAt": "2026-07-01"
+ },
+ {
+  "slug": "bite-buddy-overview",
+  "angle": "Category notes on smaller restaurant voice vendors",
+  "publishedAt": "2026-07-01"
+ },
+ {
+  "slug": "kea-ai-overview-restaurants",
+  "angle": "Kea's model and the questions it raises for independents",
+  "publishedAt": "2026-07-02"
+ },
+ {
+  "slug": "maple-ai-overview",
+  "angle": "Newer entrants: how to evaluate one with no reference customers",
+  "publishedAt": "2026-07-03"
+ },
+ {
+  "slug": "openai-realtime-diy-voice-agent-restaurants",
+  "angle": "What building your own realtime agent actually takes",
+  "publishedAt": "2026-07-03"
+ },
+ {
+  "slug": "vapi-retell-diy-voice-agents-restaurants",
+  "angle": "Agent frameworks and the 20% of the work they don't cover",
+  "publishedAt": "2026-07-04"
+ },
+ {
+  "slug": "building-vs-buying-restaurant-voice-ai",
+  "angle": "The build-vs-buy math for a five-location operator",
+  "publishedAt": "2026-07-05"
+ },
+ {
+  "slug": "white-label-voice-ai-for-agencies",
+  "angle": "Reselling voice AI to restaurant clients, margins and support load",
+  "publishedAt": "2026-07-06"
+ },
+ {
+  "slug": "answering-service-costs-2026",
+  "angle": "What live answering services charge and what you get",
+  "publishedAt": "2026-07-06"
+ },
+ {
+  "slug": "virtual-receptionist-vs-voice-ai",
+  "angle": "Human receptionist services vs an agent that touches the POS",
+  "publishedAt": "2026-07-07"
+ },
+ {
+  "slug": "call-center-outsourcing-restaurants",
+  "angle": "Offshore order-taking: cost, accuracy, and the accent problem",
+  "publishedAt": "2026-07-08"
+ },
+ {
+  "slug": "ivr-cost-comparison",
+  "angle": "What an IVR really costs once you count abandoned calls",
+  "publishedAt": "2026-07-08"
+ },
+ {
+  "slug": "google-duplex-history-lessons",
+  "angle": "What the Duplex era taught operators about voice expectations",
+  "publishedAt": "2026-07-09"
+ },
+ {
+  "slug": "wendys-freshai-what-operators-learned",
+  "angle": "Public chain deployments and the lessons that transfer to independents",
+  "publishedAt": "2026-07-10"
+ },
+ {
+  "slug": "mcdonalds-drive-thru-ai-lessons",
+  "angle": "Why a paused chain rollout is not evidence about your phone",
+  "publishedAt": "2026-07-10"
+ },
+ {
+  "slug": "chain-voice-ai-case-studies-2026",
+  "angle": "Reading vendor case studies critically",
+  "publishedAt": "2026-07-11"
+ },
+ {
+  "slug": "owner-objections-voice-ai",
+  "angle": "The six objections owners raise, answered without spin",
+  "publishedAt": "2026-07-12"
+ },
+ {
+  "slug": "staff-pushback-voice-ai",
+  "angle": "Handling \"is this replacing me\" honestly with your team",
+  "publishedAt": "2026-07-13"
+ },
+ {
+  "slug": "will-customers-hate-ai-answering",
+  "angle": "What the callback and complaint data actually looks like",
+  "publishedAt": "2026-07-13"
+ },
+ {
+  "slug": "elderly-callers-voice-ai",
+  "angle": "Designing for callers who want a person, and when to just transfer",
+  "publishedAt": "2026-07-14"
+ },
+ {
+  "slug": "regulars-and-ai-phone-answering",
+  "angle": "Protecting the relationship with the customers who call weekly",
+  "publishedAt": "2026-07-15"
+ },
+ {
+  "slug": "brand-voice-consistency-ai",
+  "angle": "Making the agent sound like your restaurant, not a call center",
+  "publishedAt": "2026-07-15"
+ },
+ {
+  "slug": "choosing-a-voice-persona",
+  "angle": "Voice selection criteria that matter more than how it sounds",
+  "publishedAt": "2026-07-16"
+ },
+ {
+  "slug": "naming-your-ai-host",
+  "angle": "Whether to name the agent, and what happens when you do",
+  "publishedAt": "2026-07-17"
+ },
+ {
+  "slug": "telling-customers-you-use-ai",
+  "angle": "Disclosure that builds trust instead of costing orders",
+  "publishedAt": "2026-07-18"
+ },
+ {
+  "slug": "handling-negative-reviews-about-ai",
+  "angle": "Responding to a review that complains about the phone system",
+  "publishedAt": "2026-07-18"
+ },
+ {
+  "slug": "30-day-evaluation-plan-voice-ai",
+  "angle": "A month-long evaluation with dates, owners, and numbers",
+  "publishedAt": "2026-07-19"
+ },
+ {
+  "slug": "pilot-exit-criteria-voice-ai",
+  "angle": "Deciding in advance what kills the pilot",
+  "publishedAt": "2026-07-20"
+ },
+ {
+  "slug": "buying-committee-multi-unit",
+  "angle": "Who signs, who blocks, and what each one needs to see",
+  "publishedAt": "2026-07-20"
+ },
+ {
+  "slug": "getting-budget-approval-owner",
+  "angle": "Framing the spend against a line item the owner already pays",
+  "publishedAt": "2026-07-21"
+ },
+ {
+  "slug": "questions-for-vendor-references",
+  "angle": "Reference-call questions that get past the happy-path answers",
+  "publishedAt": "2026-07-22"
+ },
+ {
+  "slug": "reading-a-voice-ai-msa",
+  "angle": "The clauses in a voice AI agreement worth arguing over",
+  "publishedAt": "2026-07-23"
+ },
+ {
+  "slug": "sla-penalties-that-matter",
+  "angle": "Uptime credits that are real vs credits that are theater",
+  "publishedAt": "2026-07-23"
+ },
+ {
+  "slug": "data-portability-when-you-leave",
+  "angle": "Getting your recordings, transcripts and menu data out",
+  "publishedAt": "2026-07-24"
+ },
+ {
+  "slug": "offboarding-checklist-voice-vendor",
+  "angle": "Switching vendors without losing your number or your calls",
+  "publishedAt": "2026-07-25"
+ },
+ {
+  "slug": "proof-of-concept-vs-pilot",
+  "angle": "Two different exercises and which one you actually need",
+  "publishedAt": "2026-07-25"
+ },
+ {
+  "slug": "franchisee-vs-franchisor-rollout",
+  "angle": "Who decides, who pays, and how approved-vendor lists work",
+  "publishedAt": "2026-07-26"
+ },
+ {
+  "slug": "brand-standards-voice-agent",
+  "angle": "Enforcing greeting and script standards across franchisees",
+  "publishedAt": "2026-07-27"
+ },
+ {
+  "slug": "per-store-overrides-menu-hours",
+  "angle": "Shared menus with local overrides that don't drift",
+  "publishedAt": "2026-07-27"
+ },
+ {
+  "slug": "area-developer-economics-voice-ai",
+  "angle": "The economics for a developer running fifteen stores",
+  "publishedAt": "2026-07-28"
+ },
+ {
+  "slug": "private-equity-roll-up-phone-ops",
+  "angle": "Standardizing phone operations across an acquired portfolio",
+  "publishedAt": "2026-07-29"
+ },
+ {
+  "slug": "central-kitchen-order-routing",
+  "angle": "Routing catering and commissary orders separately",
+  "publishedAt": "2026-07-30"
+ },
+ {
+  "slug": "call-routing-across-locations",
+  "angle": "Sending a caller to the right store without an IVR maze",
+  "publishedAt": "2026-07-30"
+ },
+ {
+  "slug": "regional-menu-differences-voice",
+  "angle": "Regional pricing and menu differences on one brand line",
+  "publishedAt": "2026-07-31"
+ },
+ {
+  "slug": "enterprise-security-review-voice-ai",
+  "angle": "Passing a corporate security review as a restaurant vendor",
+  "publishedAt": "2026-08-01"
+ },
+ {
+  "slug": "sso-user-permissions-voice-platform",
+  "angle": "Access control across a fifty-store account",
+  "publishedAt": "2026-08-01"
+ },
+ {
+  "slug": "rolling-out-to-50-locations",
+  "angle": "A staged rollout plan with go/no-go gates",
+  "publishedAt": "2026-08-02"
+ },
+ {
+  "slug": "change-management-multi-unit",
+  "angle": "Getting fifty GMs to adopt the same phone process",
+  "publishedAt": "2026-08-03"
+ },
+ {
+  "slug": "reporting-rollups-multi-location",
+  "angle": "Reports that make store comparisons fair",
+  "publishedAt": "2026-08-04"
+ },
+ {
+  "slug": "vendor-consolidation-restaurant-tech",
+  "angle": "When consolidating vendors helps and when it locks you in",
+  "publishedAt": "2026-08-04"
+ },
+ {
+  "slug": "phone-ops-audit-multi-unit",
+  "angle": "A one-day audit of phone operations across your stores",
+  "publishedAt": "2026-08-05"
+ }
+]

@@ -1,0 +1,82 @@
+---
+title: "Why search stores your restaurant as a string, not a thing"
+description: "Search engines either hold your restaurant as one business or as several near-matching records. How that split happens, what it costs you, and how to repair it."
+publishedAt: "2026-04-02"
+faqs:
+  - question: "What does it mean for a restaurant to be an entity?"
+    answer: "It means the platform holds a single record for your business with attributes attached to it, rather than matching your name as text each time it appears. An entity has one address, one phone number, one set of hours, and a set of confirmed relationships to other records. Text matching, by contrast, treats two spellings of your name as two unrelated businesses."
+  - question: "How do I know if my restaurant is split across multiple records?"
+    answer: "Search your business name in quotes alongside your street name and see how many distinct listings come back. Then check the phone number on each one. Duplicate records usually surface as an old address, a previous owner's name, or a suite number that appears on some listings and not others. Anything with a phone number you no longer use is a live problem."
+  - question: "Does entity recognition actually change how much business I get?"
+    answer: "It changes whether assistants and answer engines will name you confidently, which matters most on spoken queries where only one or two businesses get mentioned. A system that is unsure whether two records are the same restaurant tends to surface neither. The effect is largest for restaurants with common names or a recent move or rebrand."
+  - question: "Is this something an agency needs to do?"
+    answer: "No, for a single location. The work is claiming listings, making the name, address, and phone identical everywhere, removing duplicates, and adding structured data to your own site. That is a few afternoons of tedious clicking. Multi-location groups with franchise or acquisition history are where outside help starts to earn its fee, because the duplicate count grows quickly."
+---
+
+Search your restaurant's name in quotes, then search it again with "and" spelled as an ampersand, then again without the word "the," then again with your old suite number. If any of those four returns a listing you did not know about, you are not one business on the internet. You are several.
+
+That split is what people mean by entity recognition, stripped of jargon. A platform either holds one record for your restaurant with facts attached to it, or it holds a handful of near-matching text records and has to guess which is current. The guess is where you lose.
+
+## Four spellings of one restaurant
+
+Restaurants accumulate duplicate records for ordinary reasons. You moved two doors down in 2019 and the old address stayed live on a data aggregator. A delivery platform created a listing on your behalf with a slightly different name. A prior owner registered the business under a legal name that nobody uses on the sign. Somebody typed "Ave" where you use "Avenue."
+
+None of these are anyone's fault, and each one creates a fork.
+
+### Where the same business splits in two
+
+The common fracture points are boring and consistent:
+
+- A legal entity name that differs from the trading name on the awning
+- An address with or without a unit number, or with a directional prefix that varies
+- A phone number that changed when you switched providers and was never updated on the aggregators that feed navigation apps
+- A location that moved, leaving the old pin live and reviewed
+- A rebrand where the previous name still carries most of the review history
+
+The phone number one deserves particular attention, because it is the attribute platforms lean on hardest to decide whether two records describe the same business. Two listings sharing a number get merged confidently. Two listings with different numbers usually do not, even when everything else matches. If you have ported numbers recently, the checklist in [porting your restaurant's phone number](/blog/phone-number-porting-guide-restaurants) covers what tends to be left behind.
+
+## What being an entity buys you
+
+Recognition changes behavior at the moment a system has to choose one answer.
+
+A screen-based search can hedge. It shows a list, and an ambiguous duplicate simply ranks somewhere in it. A spoken answer cannot hedge. An assistant naming one restaurant, or a model composing a paragraph about where to eat in your neighborhood, has to commit. Faced with two records that might be the same business and might not, the safe move is to name the competitor whose data is unambiguous.
+
+That is the practical argument, and it is narrower than the way this topic usually gets sold. Entity work does not make you rank higher in a general sense. It makes you eligible in the places where only one business gets mentioned, which is exactly where [near-me voice queries](/blog/voice-search-near-me-restaurants) and answer engines live.
+
+There is a second, more mundane benefit. A consolidated record is a record you can maintain. Every duplicate is another place your holiday hours have to be updated, another place an old phone number can survive, another surface where a customer can read something untrue about you. Restaurants that keep five stray listings alive are not just diluting a signal, they are carrying five times the housekeeping and doing it badly.
+
+It also compounds with review signals. Reviews attached to a stale duplicate are not helping the record customers actually see. Merging them is often the single largest visible improvement, because it moves a rating and a review count that took years to earn onto the listing that gets shown.
+
+## The repair, in the order that matters
+
+Start with the record that gets the most traffic and work down. For nearly every restaurant that means Google first, then Apple, then the aggregators, then everything else.
+
+Claim, verify, and make the name, address, and phone identical everywhere, down to punctuation and abbreviation. Identical is the operative word. "St." on one listing and "Street" on another is enough to keep two records from merging, and the tolerance for near-matches is lower than most operators expect. The full discipline is in [NAP consistency](/blog/nap-consistency-restaurants), and the listing-by-listing priority order is in [citations and directories](/blog/citations-directories-restaurants).
+
+Then hunt duplicates deliberately. Search your name, your old address, your old phone number, and any former trading name. Report each duplicate for removal or merge through the platform's own flow. This part is slow and there is no shortcut worth paying for at a single location.
+
+### The part that takes a phone call
+
+Data aggregators feed the smaller apps, and their records are often the oldest thing about you. Some accept online corrections. Some require you to speak to someone. A correction submitted to an aggregator can take weeks to propagate, so submit it, write down the date, and check back rather than resubmitting into the void.
+
+While you are in there, verify the phone number on every record actually rings your restaurant and is answered. A correct-but-abandoned number is worse than a wrong one, since the caller believes they reached you.
+
+## Your own site's job in this
+
+Your website does not create the entity, but it confirms it. Structured data on your pages states in machine-readable form that this name, this address, this phone number, and these hours belong to one business, and it gives crawlers a source that you control completely.
+
+Do the basics: a [LocalBusiness schema block](/blog/localbusiness-schema-restaurants) with the same name, address, and phone as your listings, links from your site to your own profiles, and a menu in real indexable text rather than a PDF, which does double duty for ordinary menu search as well.
+
+Then write pages that state facts plainly in the first sentence, because the systems doing this reading reward directness and punish preamble. That habit is worth building for its own sake and is described in [answer-first content](/blog/answer-first-content-restaurant-website).
+
+## How you find out it worked
+
+Check three things a month after the cleanup:
+
+- Your name searched with each old variant now resolves to one listing rather than several
+- Your review count on the primary listing has absorbed anything that was stranded
+- An assistant asked for your restaurant by name reads back the correct address and current hours
+
+If the third one still fails, the stale record is somewhere in the aggregator layer and needs another pass.
+
+The whole job is maybe six hours spread over a few weeks, and it is genuinely dull. Do it once, put a calendar reminder to re-check every six months, and spend the rest of your attention on whether the calls those listings produce are being answered. A perfectly consolidated entity that rings out at seven on a Friday is a very well-organized way to lose an order.

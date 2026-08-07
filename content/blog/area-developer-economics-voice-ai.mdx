@@ -1,0 +1,68 @@
+---
+title: "The math for an area developer running fifteen stores"
+description: "Voice AI economics change shape at fifteen locations. The subscription is the small number; the real variables are rollout labor, store variance and who pays."
+publishedAt: "2026-07-28"
+faqs:
+  - question: "How does the math differ for an area developer versus a single store?"
+    answer: "The subscription scales linearly and everything else does not. A single owner weighs one monthly fee against one store's missed calls. A developer with fifteen units is buying one configuration effort, one reporting system and one vendor relationship spread across fifteen P&Ls, which makes the per-store overhead of evaluating and running the thing far cheaper than it looks at one unit."
+  - question: "Should the developer entity pay or should each store pay?"
+    answer: "Each store should carry its own subscription in almost every case, because the recovered revenue lands in that store's ledger. The developer entity is better spent paying for the shared work: configuration, menu verification, reporting and the person who owns the vendor relationship. Splitting it that way keeps the store-level ROI legible to whoever runs the store."
+  - question: "Do all fifteen stores have the same payback?"
+    answer: "No, and assuming they do is the most common planning error. Payback tracks call volume and miss rate, both of which vary widely by trade area and daypart. Two or three stores usually carry most of the recovered revenue, several are comfortably positive, and one or two barely break even. Rank the stores before you roll out, not after."
+  - question: "What does the rollout actually cost in developer time?"
+    answer: "Budget the first store as real work and the rest as copying. Setup is typically under 24 hours per location, but the menu verification, delivery rules and escalation policy behind it take a person a day or two the first time. After that you are cloning a known-good configuration and changing hours, delivery zone and local details, which is a short task per store."
+  - question: "At what store count does this stop being worth managing centrally?"
+    answer: "It gets more worth it, not less. Central management is what makes the per-store cost of oversight fall as you add units, since one reporting rollup and one vendor contact serve twenty stores as easily as five. The point where it breaks down is organizational rather than numeric: if nobody owns the phone channel by name, the program drifts at any size."
+---
+
+Fifteen stores at $250 a month is $45,000 a year. That is the number an area developer usually anchors on, and it is the least interesting number in the analysis.
+
+The interesting numbers are on the other side of the ledger, and they do not distribute evenly. If your fifteen stores average even four missed calls a day at a $30 ticket, that is $120 a day per store of demand that went somewhere, or roughly $650,000 a year across the portfolio if the pattern holds seven days a week. Nobody recovers all of that. But the gap between $45,000 of cost and a six-figure leak is wide enough that the decision usually turns on whether the leak is real at your stores, not on whether the subscription is affordable.
+
+So the work is measurement, not modeling.
+
+## Get the miss rate per store before you get a quote
+
+Almost every developer who evaluates this starts with a vendor conversation and should start with their phone bill.
+
+Your carrier's call detail records will tell you inbound call count, answer status and time of day, per line, for the last several months. That single export answers the question the entire investment rests on: how many calls ring out or hit voicemail, at which stores, during which hours. Pull ninety days so a slow February does not distort it, and pull it per location rather than in aggregate, because the aggregate will hide exactly the variance you need to see. [The real cost of a missed restaurant phone call](/blog/the-real-cost-of-a-missed-restaurant-phone-call) works through how to read those records and what an unanswered call is actually worth.
+
+What developers usually find is a distribution rather than an average. Two or three stores are hemorrhaging calls between six and eight on weeknights. Most are losing a modest but steady number. One or two barely ring at all, usually a mall or office-park location where the trade is walk-in and delivery-app.
+
+That distribution is the entire rollout plan. It tells you which stores go first, which ones justify the spend on their own, and which ones you include for consistency rather than for return.
+
+## Why the per-store economics are better than a single owner's
+
+A single-location owner evaluating this is buying a subscription and a project. The project part is the hidden cost: reading contracts, verifying a menu, defining escalation rules, learning what the reporting means, and having somebody to call when something is wrong. At one store that overhead is carried by one store, which is why the single-unit case is a genuinely closer call. [The economics at a single location](/blog/economics-ai-phone-answering-single-location) lays that version out.
+
+At fifteen stores the project cost is paid once. One contract review. One menu structure, assuming your stores share a menu, which in a franchise system they mostly do. One escalation policy. One decision about what the greeting says. One person who knows the reporting. The marginal store after that is hours, delivery zone, local details and a test call.
+
+This is why store count improves the case rather than complicating it, and why the developer tier is often where these programs get traction inside a brand before the franchisor moves. It is also why the rollout labor estimate matters more than the price per store when you are building the budget. Setup runs under 24 hours per location, but the first location includes the thinking, so plan it as a week of somebody's attention rather than a day.
+
+## Who pays, and why it changes behavior
+
+The structural question specific to your position is whether the subscription sits on the developer entity or on each store's P&L.
+
+Push it to the stores. The recovered orders land in store revenue, so the cost belongs next to the benefit, and a general manager who can see both numbers in the same statement will actually manage the thing. A subscription paid centrally becomes invisible overhead that no store defends when the budget gets squeezed, and an unowned line item is an unmanaged program.
+
+What the developer entity should carry is the shared work. The configuration effort, the reporting rollup, the vendor relationship, and the half a person's attention it takes to review escalated calls monthly. That is real cost and it is genuinely central, and pretending it is free is how these rollouts stall in month four when nobody has time to look at the transcripts. If you need to put this in front of partners or a lender, [the owner ROI memo template](/blog/roi-memo-template-owner) has a structure that survives scrutiny.
+
+One caution on contracts. Multi-unit pricing conversations tend to produce term commitments and per-location minimums, and a fifteen-store commitment is a different risk than a one-store month-to-month. Read what happens if you close or sell a location, and read the overage terms if pricing has a usage component. [Hidden costs in voice AI contracts](/blog/hidden-costs-voice-ai-contracts) covers the clauses that matter at portfolio scale.
+
+## Stage the rollout by return, not by geography
+
+The instinct is to roll out by market or by district manager. Roll out by miss rate instead.
+
+Take your three worst stores from the phone records and start there. They will produce the clearest before-and-after inside sixty days, and that result is what you take to the remaining twelve operators, to your franchisor, and to anyone who has to approve the next tranche. A pilot chosen for convenience produces an ambiguous number that convinces nobody. [The franchise rollout playbook](/blog/voice-ai-franchise-rollout-playbook) goes through the sequencing in more detail, and [change management across multiple units](/blog/change-management-multi-unit) covers the part that is about people rather than configuration.
+
+Watch two things during the pilot: answered-call rate, which should move immediately and obviously, and order accuracy, which you verify by pulling tickets rather than by reading a dashboard. If accuracy is not holding, more contained calls is not good news.
+
+## The stores where the answer is no
+
+Be willing to leave locations out.
+
+A store taking a dozen calls a week is not going to earn back $250 a month on recovered orders, and forcing uniformity across a portfolio for its own sake is how a program acquires opponents. The argument for including a low-volume store is brand consistency, and that argument is legitimate, but it should be made as a brand decision paid for as a brand cost, not dressed up as an ROI case that the operator can see through.
+
+The same applies to a store whose phone problem is really a staffing problem. If calls go unanswered because the store runs two people short on Friday, the phone will get answered and the drive-thru will still be twelve minutes.
+
+Run the ninety-day call export this week and sort your fifteen stores by unanswered calls during your two busiest hours. If the top three are losing more than a few hundred dollars a week in tickets you never saw, you have your pilot and you have your business case, and you did not need a vendor to produce either one.

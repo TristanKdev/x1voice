@@ -1,0 +1,62 @@
+---
+title: "Pizzerias on Slice: where phone orders actually land"
+description: "Slice handles your online pizza orders on its own rails. Adding a voice agent means deciding which system is the register of record before you start."
+publishedAt: "2026-06-04"
+faqs:
+  - question: "Does X1 Voice integrate with Slice?"
+    answer: "Not directly. X1 Voice writes into Square, Clover and OrderCounter directly, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect. A pizzeria whose only order system is Slice would need a supported register in place for phone orders to be written automatically."
+  - question: "Can I run Slice for online orders and a voice agent for phone orders?"
+    answer: "Yes, and many pizzerias effectively already do the split version of this with a person on the phone. The requirement is that both streams end up in one place your kitchen reads and one place your close-out reads. Two independent order surfaces printing to two different printers is how tickets get lost on a Friday."
+  - question: "What happens to my menu if orders come from two systems?"
+    answer: "You maintain it twice, unless one system is clearly the source of truth. That is the real cost of a split setup. Every price change, every seasonal special, and every 86 has to be entered in both places on the same day, and the day someone forgets is the day you sell a pizza you cannot make."
+  - question: "Is a voice agent worth it for a single-location pizzeria?"
+    answer: "It depends on call volume during your peak two hours. Count the calls that ring more than four times on a Friday between six and eight. If that number is zero or close to it, your phone is fine. If it is ten or more, you are losing orders at exactly the hour your kitchen has capacity priced in."
+  - question: "Will callers accept an agent taking a pizza order?"
+    answer: "Pizza is close to the easiest case, because the order shapes are repetitive and the vocabulary is small. Size, crust, toppings, half-and-half, and a handful of sides covers most tickets. The friction shows up with regulars who expect to be recognized and with orders that get modified mid-sentence, which is why an escalation path to a person still matters."
+---
+
+It is 6:40 on a Friday. There are three tickets on the rail that came in through your Slice site, one on the Square screen from a walk-in, and the phone is ringing for the fourth time in ten minutes. Whoever picks it up is the same person building the boxes.
+
+That is the actual problem a pizzeria on Slice is trying to solve, and it is worth being precise about what part of it a voice agent touches and what part it does not.
+
+## What Slice is doing and what it is not
+
+Slice gives independent pizzerias an ordering website, an app listing, and in many shops a register. Orders placed through those channels arrive on Slice's own rails and print or display where Slice tells them to. It is a complete online ordering path, and for a lot of shops it works well and costs less than a marketplace.
+
+It does not answer your phone. Nothing about having a Slice site changes what happens when someone dials your number during a rush. The phone remains a separate channel with a separate failure mode, and the failure is silent: a caller who gets six rings and hangs up leaves no record anywhere in either system.
+
+That silence is the reason phone volume is consistently underestimated. Your Slice dashboard shows every online order in detail. Your phone shows you nothing unless you go looking. The methodology for going looking is in [the real cost of a missed restaurant phone call](/blog/the-real-cost-of-a-missed-restaurant-phone-call).
+
+## The register-of-record question comes first
+
+Before any conversation about voice, answer one question: which system does your kitchen treat as the list of what to make, and which system do you close the day out of?
+
+If the answer is Slice for online and a Square or Clover register for everything else, you already run a split. Adding a voice agent means deciding which side phone orders belong on. X1 Voice writes into Square, Clover and OrderCounter directly, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect, so the phone stream lands wherever your register lives. Slice itself is not on that list.
+
+If the answer is that Slice is your only order system, be honest about the constraint. A voice agent has nowhere to write the order, which means a person still has to key it, which means you have automated the conversation but not the labor. That is a worse deal than it sounds, and if that is your setup, the more useful project is deciding whether you want a supported POS at all before you shop for voice.
+
+## What the split actually costs you daily
+
+Two order surfaces means two menus, and two menus drift.
+
+A pizzeria changes prices maybe twice a year, but it 86s something almost weekly. The sausage runs out at eight on a Saturday. In a single-system shop, someone marks it once. In a split shop, someone has to mark it in both places while also running the make line, and the second one gets skipped often enough that it becomes a known category of problem. The customer who ordered the sausage pie online at 8:15 gets a phone call from you, which is a call your staff makes instead of taking a new order.
+
+None of this is unique to Slice. It is what happens with any pair of independently maintained ordering surfaces, and it is the reason [menu sync](/blog/menu-sync-deep-dive-voice-ai) matters more than most operators expect when they are evaluating an ordering tool. The failure modes of that sync are catalogued in [86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes), and they are not exotic.
+
+## Why pizza is the easy case for a voice agent
+
+The order vocabulary is small and stable. Size, crust, sauce, cheese, toppings, half-and-half, a few sides, a couple of drinks. Compared with a full-service menu carrying eighty items and free-form modifiers, a pizza menu is a short, well-structured grammar, and that is exactly what an agent handles well. [Voice AI for pizza shops](/blog/voice-ai-for-pizza-shops) goes through the specifics, including the half-and-half problem, which is the one genuinely awkward construction.
+
+Accents and background noise are the other thing operators ask about, usually because they have a neighborhood with a lot of one and a make line with a lot of the other. That is a fair question and the honest answer is that it depends on the recording conditions on your end as much as the model on the vendor's end. A phone handset in a quiet office is a different input from a cordless handset next to a deck oven, and [accents and speech recognition accuracy](/blog/voice-ai-accent-speech-recognition-accuracy) is worth reading before you decide based on one bad demo call.
+
+The harder part is not the order, it is the room around it. Delivery zones, quote times that shift by ninety minutes between six and nine on a Friday, and the regular who says "the usual" and means a large pepperoni with light sauce. Quote times in particular are worth configuring carefully, because an agent that promises forty-five minutes while your make line is running ninety is generating callbacks, not orders. [Order throttling against kitchen capacity](/blog/order-throttling-kitchen-capacity-phone) is the mechanism for keeping the quote honest.
+
+## What to do if you are on Slice today
+
+Start by counting, not by shopping. For two Fridays, have whoever is on the phone put a tick mark on a piece of paper every time the phone rings and nobody gets to it. Two Fridays is enough to know whether you have a phone problem or a staffing complaint.
+
+If the tick marks are few, keep Slice, keep answering the phone, and spend the money on your make line instead. Voice AI does not pay for itself against six missed calls a week, and any vendor telling you otherwise is selling.
+
+If the tick marks are heavy, the sequence is: confirm what your register of record is, confirm it is one that phone orders can be written into, then evaluate voice against that register. Plans start at $250 a month and setup is typically under 24 hours once the menu is verified, which means the honest limiting factor is almost never the technology. It is whether your menu is clean enough in your POS for another system to read it, and for a lot of pizzerias that has been true for years and nobody has had to look at it until now.
+
+Go pull up your menu in whatever register you use and read it as a stranger would. If half the items are named things like "LG SPEC 3" and the modifiers live in a server's head, fix that first. Everything else downstream gets easier, including the day you decide to let something else answer the phone.

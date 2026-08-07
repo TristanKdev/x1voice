@@ -1,0 +1,300 @@
+voice-ai-for-korean-restaurants	Korean menus: banchan sets, spice levels, KBBQ party orders, Korean-language callers
+voice-ai-for-vietnamese-pho-restaurants	Pho customization (broth, noodle, protein, herbs on the side), Vietnamese-language callers
+voice-ai-for-greek-restaurants	Gyro platters vs pitas, family platters, catering trays, Greek Orthodox holiday spikes
+voice-ai-for-caribbean-jamaican-restaurants	Sold-out oxtail, "what's left today", patois-accented callers, Sunday volume
+voice-ai-for-ethiopian-restaurants	Combination platters for groups, injera counts, fasting-season vegan menus
+voice-ai-for-peruvian-restaurants	Pollo a la brasa whole/half birds, sides math, weekend family orders
+voice-ai-for-brazilian-steakhouses	Reservation-heavy calls, per-person pricing questions, large party deposits
+voice-ai-for-ramen-shops	Wait-time quoting, no-substitution policies, takeout noodle-quality caveats
+voice-ai-for-poke-bowl-shops	Base/protein/mix-in trees, allergy questions, office lunch group orders
+voice-ai-for-burger-joints	Temp requests, combo upsells, shake add-ons, lunch-rush call collision
+voice-ai-for-cheesesteak-shops	Wiz/provolone, "wit or witout", hoagie sizing, late-night volume
+voice-ai-for-hot-dog-stands	Tiny menu, huge call spikes, cash-only realities and prepay
+voice-ai-for-empanada-shops	Per-dozen mixes, flavor sold-outs, party trays
+voice-ai-for-boba-tea-shops	Sugar/ice levels, topping combinatorics, teen call volume, group orders
+voice-ai-for-donut-shops	Early-morning preorders, dozen mixes, corporate standing orders
+voice-ai-for-dessert-shops	Custom cake lead times, pickup windows, deposit rules on the phone
+voice-ai-for-creperies	Sweet vs savory menus, small kitchens, weekend brunch line
+voice-ai-for-falafel-shawarma-shops	Platter vs wrap, sauce rules, halal questions, late-night rush
+voice-ai-for-dim-sum-restaurants	Cart-service confusion, per-item takeout counts, Cantonese callers
+voice-ai-for-tapas-restaurants	Small-plate counts per person, reservation-plus-order calls
+voice-ai-for-sports-bars	Game-time surge, wing counts, big-party call-aheads, TV/reservation questions
+voice-ai-for-breweries-taprooms	Food-truck schedules, growler rules, private event inquiries
+voice-ai-for-wineries-tasting-rooms	Tasting reservations, group size limits, shipping questions
+voice-ai-for-pop-up-restaurants	Changing locations and hours, preorder windows, sellouts
+voice-ai-for-catering-only-kitchens	Lead qualification, quote requests, delivery windows, no walk-in traffic
+voice-ai-for-meal-prep-companies	Subscription changes, pickup day logistics, macro questions
+voice-ai-for-hotel-restaurants-room-service	In-room dining calls, guest room charges, front-desk handoffs
+voice-ai-for-country-clubs	Member-only rules, member number lookup, event bookings
+voice-ai-for-stadium-concessions	Event-day spikes, suite catering orders, dead days between events
+voice-ai-for-airport-restaurants	Gate-side pickup timing, tight windows, traveler questions
+voice-ai-for-casino-restaurants	24-hour coverage, comp questions, multi-outlet routing
+voice-ai-for-senior-living-dining	Slow, patient call handling, repeat callers, dietary restrictions
+voice-ai-for-hospital-cafes	Staff-badge discounts, shift-change rushes, visitor questions
+voice-ai-for-food-halls	One number, many stalls: routing calls to the right vendor
+voice-ai-for-drive-thru-coffee	Phone preorders alongside a drive-thru line, mobile-order confusion
+voice-ai-for-late-night-restaurants	2 a.m. call handling, intoxicated callers, delivery cutoffs
+voice-ai-for-24-hour-diners	Overnight skeleton staff, phone coverage when one server runs the floor
+voice-ai-for-kosher-restaurants	Shabbat and holiday closures, kashrut questions, catering supervision
+voice-ai-for-vegan-restaurants	Ingredient interrogation calls, honey/cross-contamination questions
+voice-ai-for-gluten-free-restaurants	Celiac-safety questions and where an agent must hand off to a human
+voice-ai-for-salad-shops	Build-your-own trees, office lunch group orders, dressing-on-the-side rules
+voice-ai-for-taco-trucks	No landline, cell-phone chaos, location-of-the-day, cash vs card
+voice-ai-for-pupuserias	Small Spanish-speaking counters, weekend family orders, cash handling
+voice-ai-for-arepa-shops	Fillings menus, Venezuelan/Colombian Spanish callers, small-team coverage
+voice-ai-for-butcher-shops	Prepared-food counters, cut requests, holiday roast preorders
+voice-ai-for-seafood-markets	Daily catch changes, per-pound pricing, steamed-to-order calls
+voice-ai-for-farm-stands	Seasonal availability, CSA pickups, weather-driven closures
+voice-ai-for-pizza-by-the-slice-counters	High call volume, tiny tickets, whole-pie upsell math
+voice-ai-for-sub-sandwich-shops	Party sub lead times, office platters, franchise-standard menus
+voice-ai-for-chicken-tender-concepts	Sauce trees, family packs, drive-thru plus phone
+voice-ai-for-soul-food-restaurants	Sunday rush, sides-heavy menus, sellout messaging
+voice-ai-for-cajun-creole-restaurants	Crawfish season pricing by the pound, boil orders, sold-out days
+voice-ai-for-filipino-restaurants	Turo-turo counters, party trays, Tagalog callers
+voice-ai-for-izakaya	Late-night small plates, reservation-plus-order calls, sake questions
+voice-ai-for-turkish-restaurants	Kebab platters, family-style catering, Turkish-language callers
+restaurant-call-forwarding-verizon	Step-by-step forwarding on Verizon business lines and what breaks
+restaurant-call-forwarding-att	AT&T business line forwarding, remote access codes, common failures
+restaurant-call-forwarding-comcast-business	Comcast Business Voice forwarding and hunt-group interaction
+restaurant-call-forwarding-spectrum-business	Spectrum Business Voice forwarding setup and gotchas
+restaurant-call-forwarding-tmobile-business	Forwarding from a T-Mobile business cell line used as the store number
+forwarding-google-voice-to-voice-ai	Why Google Voice as a restaurant main line causes trouble, and how to route it
+ringcentral-restaurant-voice-ai-setup	Routing a RingCentral extension to an AI agent without losing the auto-attendant
+ooma-office-restaurant-voice-ai	Ooma Office routing, virtual receptionist conflicts, forwarding rules
+vonage-business-restaurant-phone-ai	Vonage call flows and where an AI agent fits in them
+grasshopper-vs-voice-ai-restaurants	Virtual number forwarding vs an agent that actually takes the order
+sip-trunking-basics-restaurants	What a SIP trunk is, when a restaurant needs one, and when it doesn't
+voip-vs-landline-restaurant-phone	Copper line vs VoIP for a restaurant, including power and outage behavior
+local-vs-toll-free-number-restaurants	Why a local number outperforms toll-free for a single-location restaurant
+cnam-caller-id-name-registration	Getting your restaurant name to show on outbound caller ID
+stir-shaken-attestation-restaurants	Why outbound callbacks get flagged and what attestation levels mean
+robocall-mitigation-database-restaurants	What the FCC database is and whether a restaurant is affected
+simultaneous-ring-vs-ai-answering	Ringing three phones at once vs answering on the first ring
+after-hours-call-routing-setup	Designing the after-hours path: agent, voicemail, emergency transfer
+overflow-call-routing-busy-line	What happens to call two through call six, and how to catch them
+voicemail-transcription-vs-voice-ai	Transcribed voicemail is a to-do list; an agent is a completed order
+restaurant-phone-network-requirements	Bandwidth, QoS, and the switch settings that keep call audio clean
+call-quality-jitter-packet-loss	Diagnosing choppy restaurant call audio, in order of likelihood
+second-phone-line-for-catering	Whether catering deserves its own number, and how to route it
+vanity-phone-numbers-restaurants	When a vanity number is worth it and when it costs you calls
+keeping-your-number-when-switching-pos	Number ownership traps when your POS provider also owns your phone number
+two-party-consent-states-call-recording	Which states require all-party consent and what that means for recordings
+one-party-consent-call-recording	How one-party consent states work and the disclosure you should still give
+california-call-recording-restaurants	CIPA basics for a California restaurant recording calls
+florida-call-recording-restaurants	Florida's all-party rule and restaurant call recording
+new-york-call-recording-restaurants	New York consent rules and cross-border calls
+illinois-voice-privacy-restaurants	BIPA, voiceprints, and why voice AI vendors avoid speaker identification
+tcpa-restaurant-text-messages	Order confirmations vs marketing texts under the TCPA
+a2p-10dlc-registration-restaurants	Registering a brand and campaign so your confirmation texts deliver
+sms-opt-in-consent-restaurants	Capturing text consent on a phone call without breaking the rules
+ccpa-voice-data-restaurants	Call recordings as personal information under California privacy law
+gdpr-voice-ai-restaurants	When a US restaurant actually has GDPR exposure from call data
+ada-phone-accessibility-restaurants	Accessibility obligations on the phone and what an agent must support
+tty-relay-calls-restaurants	Handling relay-service calls without hanging up on a deaf caller
+alcohol-orders-by-phone-laws	State rules on phone and delivery alcohol orders, and agent guardrails
+age-verification-delivery-alcohol	ID checks at the door and what the phone step can and can't do
+tobacco-orders-by-phone	Why tobacco and nicotine orders should never be agent-completed
+junk-fee-disclosure-rules-restaurants	Fee disclosure rules and how they apply to a phone quote
+surcharge-disclosure-phone-orders	Card surcharges and service fees disclosed verbally
+menu-price-parity-third-party	Different prices on delivery apps vs the phone, and what to tell callers
+allergen-liability-phone-orders	Allergen answers that create liability and the handoff rule that prevents it
+pci-saq-types-restaurants	Which SAQ applies when phone payments are involved
+call-recording-retention-policy	How long to keep recordings, where, and who can hear them
+data-processing-agreement-voice-vendor	The DPA clauses that matter when a vendor holds your call data
+ai-disclosure-laws-voice-agents	Emerging disclosure requirements and the honest greeting that satisfies them
+insurance-liability-ai-order-errors	Who eats the cost when an order is wrong, and what your policy covers
+appear-in-chatgpt-restaurant-recommendations	How assistants pick restaurants and what actually influences it
+perplexity-restaurant-visibility	What Perplexity cites for restaurant queries and how to be citable
+google-ai-overviews-restaurants	How AI Overviews assemble restaurant answers, and the pages they pull from
+gemini-restaurant-answers	Grounding sources Gemini favors for local dining questions
+copilot-restaurant-search	Bing-fed answers and the listing hygiene that feeds them
+llms-txt-for-restaurants	What an llms.txt file is, what to put in it, what it won't do
+ai-crawler-robots-txt-restaurants	Allowing or blocking GPTBot, ClaudeBot, PerplexityBot and the tradeoff
+schema-markup-restaurant-menu	Menu schema that is worth the effort, and the parts that aren't
+localbusiness-schema-restaurants	Getting Restaurant and LocalBusiness structured data right
+faq-schema-restaurant-pages	FAQ markup after the rich-result changes: still worth it, for different reasons
+review-schema-restaurants	Review markup rules and the self-serving-review trap
+google-business-profile-phone-optimization	The GBP fields that change how often your phone rings
+nap-consistency-restaurants	Name, address, phone consistency and why a forwarded number breaks it
+apple-business-connect-restaurants	Apple Maps listing setup for restaurants
+bing-places-restaurants	Bing Places setup and why it matters more than its traffic share
+yelp-phone-number-listing	Yelp's number substitution and what it does to your call data
+voice-search-near-me-restaurants	How near-me voice queries resolve and what the caller hears next
+siri-alexa-restaurant-ordering	What assistants can actually do with a restaurant phone number today
+entity-seo-restaurant-brand	Being understood as an entity, not a string, across search and assistants
+answer-first-content-restaurant-website	Writing pages that answer in the first sentence, for humans and models
+citations-directories-restaurants	Which directories still move the needle and which are noise
+menu-page-seo-restaurants	Why a PDF menu is a dead end and what to publish instead
+multi-location-local-seo-restaurants	Location pages, store locators, and duplicate-content traps
+reputation-reviews-ai-answers	How review text ends up quoted in assistant answers
+tracking-ai-referral-traffic-ga4	Isolating ChatGPT, Perplexity and Copilot referrals in GA4
+phone-sop-restaurant-staff	Writing a one-page phone SOP your staff will actually follow
+shift-handoff-phone-coverage	Who owns the phone at shift change, and the gap that always appears
+training-staff-voice-ai-handoffs	Training the team on transferred calls so the caller isn't re-explaining
+host-stand-workflow-redesign	Rebuilding the host stand once the phone stops ringing there
+expo-station-phone-order-flow	Where phone tickets should land so expo isn't guessing
+kitchen-printer-vs-kds-phone-orders	Printer or KDS for phone orders, and the failure modes of each
+ticket-times-phone-vs-walkin	Why phone tickets run long and how to fix the sequencing
+quoting-accurate-pickup-times	Building a quote rule that survives a Friday rush
+quoting-delivery-eta	Delivery time quotes that account for driver supply
+out-of-stock-substitutions-phone	Substitution policy that avoids refunds and angry callbacks
+managing-special-requests-phone-orders	Which special requests to accept, which to refuse, and how to say no
+large-party-reservations-by-phone	Qualifying a large party on the phone without a manager
+waitlist-management-phone-calls	Answering "how long is the wait" without lying
+handling-driver-calls-doordash	Courier calls at the counter and how to keep them off the main line
+third-party-courier-support-calls	Support calls from delivery platforms and where they should route
+lost-order-calls-resolution	The five-minute script for "my order never came"
+complaint-escalation-matrix	Which complaints an agent resolves and which reach a human immediately
+refund-policy-phone-orders	A refund policy that a phone agent can execute consistently
+comping-remakes-tracking	Tracking comps and remakes back to their cause
+phone-order-fraud-red-flags	Card-not-present fraud patterns that show up on restaurant phones
+prank-order-handling	Prank and repeat-nuisance calls, and blocking without blocking customers
+deposits-for-large-catering	Deposit rules and how to collect one on a call
+credit-card-authorization-holds	Auth holds on large phone orders and the confusion they cause
+splitting-payment-phone-orders	Split payments over the phone: when to allow, when to refuse
+tip-handling-phone-orders	Tip prompts on phone orders and how staff get paid out
+tax-on-phone-orders-basics	Sales tax on pickup vs delivery and why the totals differ
+promo-codes-over-the-phone	Honoring online promo codes on calls without opening an abuse hole
+loyalty-signup-during-calls	Enrolling a caller in loyalty in under fifteen seconds
+upsell-scripts-that-work	Upsell lines that lift ticket without annoying regulars
+call-scripts-vs-natural-conversation	Where a rigid script helps and where it costs you the order
+menu-naming-for-voice-clarity	Renaming items so callers and agents both get them right
+simplifying-modifier-trees	Cutting a modifier tree down to what people actually order
+managing-limited-time-offers-voice	Getting an LTO live on the phone the same day it launches
+seasonal-menu-updates-voice-agent	The menu-update routine that keeps the agent from selling a dead item
+multi-menu-daypart-switching	Breakfast, lunch and late-night menus on one phone number
+closing-early-weather-messaging	Changing the greeting when you close early, in under a minute
+power-outage-phone-plan	What answers your phone when the power is out
+internet-outage-phone-failover	Failover order when the ISP drops mid-service
+pos-outage-order-capture	Capturing orders when the POS is down and reconciling after
+opening-new-location-phone-checklist	Phone setup checklist for a new store, in order
+thanksgiving-catering-phone-surge	The two weeks where catering calls decide your November
+christmas-eve-restaurant-phone-plan	Short hours, huge volume, and a phone nobody can answer
+new-years-eve-reservations-calls	Prix-fixe questions and deposit collection at volume
+cinco-de-mayo-taqueria-rush	One day, triple volume, and where the orders leak
+halloween-phone-order-surge	Early dinner rush, delivery chaos, and staffing gaps
+march-madness-wings-orders	Tip-off timing, big orders, and quoting honestly
+graduation-catering-season	Six weeks of party trays and how to qualify the leads
+back-to-school-lunch-catering	Recurring school and office lunch accounts started on the phone
+ramadan-iftar-catering-calls	Sunset-timed pickups and large family orders
+lent-fish-fry-fridays	Six Fridays, one menu, and a phone that never stops
+passover-catering-orders	Lead times, kosher-for-Passover questions, and deposits
+july-fourth-catering-phone	Holiday hours confusion and last-minute party orders
+labor-day-bbq-orders	Bulk barbecue orders and pickup windows that actually work
+memorial-day-weekend-calls	Travel-weekend volume swings and staffing the phone
+restaurant-week-call-volume	Prix-fixe questions, reservation pressure, and menu confusion
+local-game-day-order-surge	Home-game days for local teams and predictable order spikes
+easter-brunch-reservations	Seating-time questions and a phone line that stays busy all morning
+heat-wave-delivery-surge	Hot-weather delivery spikes and driver-supply reality
+prom-night-group-dining-calls	Large teen parties, parent callers, and prepayment
+tourist-season-phone-volume	Out-of-town callers asking questions locals never ask
+square-kds-phone-orders	How phone orders land on Square KDS and the routing settings that matter
+square-online-vs-phone-orders	Reconciling Square Online and phone orders in one ticket stream
+toast-handheld-phone-order-workflow	Where a phone ticket shows up in a Toast handheld workflow
+toast-menu-modifiers-voice-mapping	Mapping Toast modifier groups so the agent quotes the right price
+clover-flex-phone-order-workflow	Running phone orders on Clover Flex without a second terminal
+clover-inventory-86-sync	Keeping Clover item availability and the phone agent in agreement
+lightspeed-restaurant-voice-setup	What to expect connecting Lightspeed through Deliverect
+touchbistro-voice-order-flow	iPad-based flow and where phone tickets fit
+spoton-voice-order-flow	SpotOn order ingestion and menu mapping notes
+revel-voice-order-flow	Revel setups, enterprise menus, and phone order routing
+par-brink-voice-order-flow	PAR Brink integration path and franchise menu constraints
+micros-simphony-voice-order-flow	Simphony environments and what integration realistically requires
+ordercounter-menu-sync-tips	Menu hygiene that makes OrderCounter sync predictable
+aloha-modifier-mapping-voice	Aloha modifier structures and voice mapping pitfalls
+deliverect-setup-guide-restaurants	What Deliverect does, what it costs you in latency, and how to set it up
+otter-vs-deliverect-voice-orders	Two middleware paths compared for phone-order ingestion
+chowly-integration-voice-orders	Where Chowly fits and where it doesn't
+olo-integration-voice-ordering	Enterprise ordering middleware and phone-channel integration
+doordash-drive-phone-orders	Dispatching your own delivery through Drive from a phone order
+uber-direct-phone-delivery	White-label delivery for phone orders and the economics
+grubhub-phone-order-routing	Grubhub's phone-ordering fees and how to route around them
+slice-pizza-platform-voice	Pizzerias on Slice and what phone integration looks like
+menufy-voice-ordering	Menufy sites and phone-order reconciliation
+toast-delivery-services-phone	Toast-managed delivery triggered from a phone order
+pos-api-limits-voice-agents	Rate limits, polling, and why some menus update slower than others
+call-volume-forecasting-restaurants	Forecasting next month's calls from last year's tickets
+peak-hour-staffing-math-phone	Turning call volume into a staffing number you can defend
+cost-per-phone-order	Calculating what a phone order actually costs you to take
+customer-acquisition-cost-phone-orders	Phone orders as an acquisition channel, priced honestly
+lifetime-value-phone-customers	Why phone customers repeat differently than app customers
+phone-order-conversion-rate	Measuring how many answered calls become orders
+abandoned-call-rate-restaurants	The metric most restaurants can't see, and how to get it
+average-handle-time-restaurant-calls	What a healthy handle time looks like and when short is bad
+first-call-resolution-restaurants	Adapting a call-center metric to a 40-seat dining room
+order-accuracy-measurement-method	A repeatable way to measure accuracy without a QA team
+mystery-calling-qa-program	Running mystery calls on your own phone line monthly
+transcript-sampling-qa	Sampling transcripts weekly: how many, chosen how
+sentiment-analysis-restaurant-calls	What sentiment scoring is good for and where it misleads
+ab-testing-greetings-voice-ai	Testing two greetings properly on low call volume
+menu-mix-shift-from-voice-upsell	Watching mix shift after upsells turn on, good and bad
+labor-hours-saved-calculation	Converting answered calls into hours off the floor
+payback-period-voice-ai	A payback calculation an owner can check in five minutes
+budgeting-voice-ai-monthly	Where the line item belongs and what varies month to month
+per-minute-vs-per-call-pricing-math	Modeling both pricing shapes against your actual call length
+hidden-costs-voice-ai-contracts	Setup fees, menu-change fees, overage, and minimums
+roi-memo-template-owner	A one-page memo structure for the owner who signs
+tracking-phone-orders-in-ga4	Wiring phone-order events into GA4 so the channel is visible
+call-tracking-numbers-attribution	Tracking numbers, NAP consistency, and how to use both
+utm-tagging-restaurant-campaigns	A tagging convention that survives three agencies
+attribution-phone-vs-online-orders	Splitting credit between the phone and the website honestly
+slang-ai-alternatives-restaurants	What operators look for when they outgrow a reservation-first agent
+loman-ai-alternatives	Evaluation criteria when comparing ordering-focused agents
+popmenu-answering-alternatives	Marketing-suite phone answering vs a dedicated ordering agent
+conversenow-for-independent-restaurants	Enterprise drive-thru voice vendors and independent-restaurant fit
+soundhound-restaurant-voice-overview	Where SoundHound's restaurant products sit in the category
+polyai-vs-restaurant-focused-voice	General enterprise voice platforms vs restaurant-specific ones
+goodcall-vs-restaurant-voice-ai	Small-business receptionist agents and the ordering gap
+numa-vs-restaurant-voice-ai	Vertical agents built for other industries, applied to restaurants
+rosie-ai-vs-restaurant-voice	Answering-first agents and what they leave for staff
+voiceplug-overview-restaurants	Where VOICEplug fits and what to ask about POS depth
+bite-buddy-overview	Category notes on smaller restaurant voice vendors
+kea-ai-overview-restaurants	Kea's model and the questions it raises for independents
+maple-ai-overview	Newer entrants: how to evaluate one with no reference customers
+openai-realtime-diy-voice-agent-restaurants	What building your own realtime agent actually takes
+vapi-retell-diy-voice-agents-restaurants	Agent frameworks and the 20% of the work they don't cover
+building-vs-buying-restaurant-voice-ai	The build-vs-buy math for a five-location operator
+white-label-voice-ai-for-agencies	Reselling voice AI to restaurant clients, margins and support load
+answering-service-costs-2026	What live answering services charge and what you get
+virtual-receptionist-vs-voice-ai	Human receptionist services vs an agent that touches the POS
+call-center-outsourcing-restaurants	Offshore order-taking: cost, accuracy, and the accent problem
+ivr-cost-comparison	What an IVR really costs once you count abandoned calls
+google-duplex-history-lessons	What the Duplex era taught operators about voice expectations
+wendys-freshai-what-operators-learned	Public chain deployments and the lessons that transfer to independents
+mcdonalds-drive-thru-ai-lessons	Why a paused chain rollout is not evidence about your phone
+chain-voice-ai-case-studies-2026	Reading vendor case studies critically
+owner-objections-voice-ai	The six objections owners raise, answered without spin
+staff-pushback-voice-ai	Handling "is this replacing me" honestly with your team
+will-customers-hate-ai-answering	What the callback and complaint data actually looks like
+elderly-callers-voice-ai	Designing for callers who want a person, and when to just transfer
+regulars-and-ai-phone-answering	Protecting the relationship with the customers who call weekly
+brand-voice-consistency-ai	Making the agent sound like your restaurant, not a call center
+choosing-a-voice-persona	Voice selection criteria that matter more than how it sounds
+naming-your-ai-host	Whether to name the agent, and what happens when you do
+telling-customers-you-use-ai	Disclosure that builds trust instead of costing orders
+handling-negative-reviews-about-ai	Responding to a review that complains about the phone system
+30-day-evaluation-plan-voice-ai	A month-long evaluation with dates, owners, and numbers
+pilot-exit-criteria-voice-ai	Deciding in advance what kills the pilot
+buying-committee-multi-unit	Who signs, who blocks, and what each one needs to see
+getting-budget-approval-owner	Framing the spend against a line item the owner already pays
+questions-for-vendor-references	Reference-call questions that get past the happy-path answers
+reading-a-voice-ai-msa	The clauses in a voice AI agreement worth arguing over
+sla-penalties-that-matter	Uptime credits that are real vs credits that are theater
+data-portability-when-you-leave	Getting your recordings, transcripts and menu data out
+offboarding-checklist-voice-vendor	Switching vendors without losing your number or your calls
+proof-of-concept-vs-pilot	Two different exercises and which one you actually need
+franchisee-vs-franchisor-rollout	Who decides, who pays, and how approved-vendor lists work
+brand-standards-voice-agent	Enforcing greeting and script standards across franchisees
+per-store-overrides-menu-hours	Shared menus with local overrides that don't drift
+area-developer-economics-voice-ai	The economics for a developer running fifteen stores
+private-equity-roll-up-phone-ops	Standardizing phone operations across an acquired portfolio
+central-kitchen-order-routing	Routing catering and commissary orders separately
+call-routing-across-locations	Sending a caller to the right store without an IVR maze
+regional-menu-differences-voice	Regional pricing and menu differences on one brand line
+enterprise-security-review-voice-ai	Passing a corporate security review as a restaurant vendor
+sso-user-permissions-voice-platform	Access control across a fifty-store account
+rolling-out-to-50-locations	A staged rollout plan with go/no-go gates
+change-management-multi-unit	Getting fifty GMs to adopt the same phone process
+reporting-rollups-multi-location	Reports that make store comparisons fair
+vendor-consolidation-restaurant-tech	When consolidating vendors helps and when it locks you in
+phone-ops-audit-multi-unit	A one-day audit of phone operations across your stores

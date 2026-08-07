@@ -1,0 +1,71 @@
+---
+title: "Why phone tickets run long and how to fix the sequencing"
+description: "Phone orders often show worse ticket times than walk-ins, and the cause is usually sequencing rather than kitchen speed. How to read the gap and close it."
+publishedAt: "2026-04-11"
+faqs:
+  - question: "Why do phone orders take longer than walk-in orders in my ticket time report?"
+    answer: "Usually because the clock starts earlier and the food waits longer, not because the kitchen is slower. A phone ticket is often timestamped when the order is placed, which may be forty minutes before the pickup time, so the reported duration includes deliberate hold time. Check what your report is measuring before you conclude the kitchen has a problem."
+  - question: "Should phone and walk-in ticket times be compared at all?"
+    answer: "Only if both are measured from the same event. Compare fire-to-finish for both and the comparison is fair. Compare order-placed-to-bagged against order-placed-to-served and you are measuring two different things, and the phone number will always look worse regardless of how well the kitchen is running."
+  - question: "What's the single biggest cause of long phone ticket times?"
+    answer: "Firing on arrival instead of firing to a target finish time. If every phone ticket is worked in the order it printed, orders with distant pickup times get built early and sit, while orders due sooner queue behind them. That one sorting error accounts for more of the gap than cook times, staffing, or menu complexity in most kitchens."
+  - question: "Does adding a voice agent make ticket times worse?"
+    answer: "It can, for a reason unrelated to the agent's speed: you start capturing calls you were previously missing, so volume goes up. If the kitchen was already at its limit at peak, more captured orders means longer times until you throttle intake or change staffing. That is a capacity result, not a defect in the phone system."
+  - question: "How often should I actually look at these numbers?"
+    answer: "Weekly is enough for most operations, and looking at one peak hour beats looking at a daily average. Averages across a whole service day hide the ninety minutes where everything went wrong, and those ninety minutes are where nearly all of your unhappy customers came from. Pull Friday between six and eight and read that."
+---
+
+Pull your ticket time report for last Friday. If phone and pickup orders are averaging eighteen minutes against nine for walk-ins, the number is probably telling you something true and almost certainly not the thing you think.
+
+The instinct is that the kitchen handles phone orders worse. Sometimes that is real. More often the two numbers are measuring different intervals, and half the gap disappears once you define the interval consistently. The other half is a sequencing problem with a specific fix.
+
+## Check what the clock is actually timing
+
+A walk-in ticket usually starts its clock when it fires. Someone ordered, the ticket printed, the kitchen started. Time to serve is time to make.
+
+A phone ticket often starts its clock when the order was placed. A customer calls at 6:15 and asks for a 7:00 pickup. The ticket exists at 6:15. If your report measures from order creation to bag-out, that order will show forty-five minutes even if the kitchen made it in nine and it sat on the shelf for one.
+
+That is not a kitchen failure. That is a reporting artifact, and it is present in a lot of POS ticket time reports by default. Before you change anything in the kitchen, find out which event your report uses as the start. If it uses order creation for phone and fire time for dine-in, you have been comparing two different questions and the phone side was never going to win.
+
+Once both are measured fire-to-finish, most operators find the real gap is two to four minutes rather than nine. That remaining gap is worth chasing, and it is where the actual problem lives.
+
+## The real gap comes from firing in the wrong order
+
+Here is what produces the genuine difference. Phone tickets arrive spread across an hour with pickup times spread across a different hour, and the two orderings do not match.
+
+An order placed at 6:40 for 8:00 prints before an order placed at 6:55 for 7:15. Work the rail in print order and the 8:00 order gets built first, occupies the line, and then sits under a lamp for over an hour while the 7:15 customer waits past their quoted time. Both orders now have bad numbers, and the kitchen did nothing wrong except follow the rail.
+
+Fixing this means firing to a target finish time rather than to arrival order. It sounds obvious written down and it is startlingly rare in practice, because paper rails cannot re-sort themselves and most kitchens default to left-to-right. The mechanics of setting that up, including what has to be printed on the ticket for expo to sort by it, are in [where phone tickets should land](/blog/expo-station-phone-order-flow).
+
+## Four things that stretch phone times and are not the kitchen's fault
+
+Before blaming cook times, rule these out. Each is common and each has a fix that does not involve making anyone move faster.
+
+- The order sat bagged on a shelf because nobody owned the shelf, so the food was ready at 7:04 and left at 7:16 and the report counted all twelve minutes.
+- The promised time was generated by a fixed rule rather than by current kitchen load, so the ticket was always going to be late at peak and always early at 3pm.
+- The order included an item with a long cook that could have been started first and was started last, because the ticket was read top to bottom rather than by cook time.
+- Intake outran capacity, meaning twelve orders landed in a four-minute window against a line that can produce six, and everything after the sixth was late by arithmetic rather than by performance.
+
+That last one deserves its own attention because it is the one that gets worse when you start answering more calls. Capturing calls you previously missed is the point of a voice agent, and it means more orders reaching a kitchen that was already at its ceiling. Holding intake to what the line can actually produce is the answer, and [order throttling against kitchen capacity](/blog/order-throttling-kitchen-capacity-phone) covers how that is supposed to work.
+
+## The quote is half the problem
+
+A ticket time is only meaningful against a promise. Fifteen minutes is fast if you said twenty and slow if you said ten, and most of what customers experience as a long wait is actually a broken quote.
+
+Fixed quotes are the usual culprit. A rule that says every pickup is ready in twenty minutes is right at 2:30 on a Tuesday and badly wrong at 7:10 on a Friday, and the Friday version is the one that generates complaints, negative reviews, and callbacks that consume more staff time than the original order did.
+
+The quote needs to move with load. When the line is running twelve tickets deep, the quote should reflect twelve tickets deep. Building that rule so it holds up during a rush is a real piece of work and it is laid out in [quoting accurate pickup times](/blog/quoting-accurate-pickup-times).
+
+There is a second-order benefit here that operators tend to miss. When quotes are honest, expo can trust them, and once expo trusts them they can sequence by them. A kitchen that has learned the times on the tickets are fiction will always fall back to sorting by arrival, and no amount of instruction fixes that until the underlying numbers become reliable.
+
+## What to actually measure, weekly
+
+Averages across a service day are close to useless for this. The problem hour is buried in them.
+
+Pick your busiest ninety minutes, one day a week, and pull three numbers for phone and pickup tickets: fire to finish, finish to handoff, and promised time versus actual handoff. Then pull fire to finish for dine-in over the same window as a control.
+
+If fire-to-finish is close between the two channels and finish-to-handoff is long, your kitchen is fine and your shelf is the problem. If fire-to-finish is genuinely longer on phone tickets, look at sequencing before you look at staffing, because the sequencing fix is free and the staffing fix is not. And if promised versus actual is where the damage is, the kitchen may be performing perfectly against a promise that was never achievable.
+
+Accuracy belongs in the same review, since a fast wrong order is worse than a slow right one, and the method for measuring it honestly is in [improving phone order accuracy](/blog/improving-phone-order-accuracy).
+
+Run those four numbers for three consecutive Fridays before you change anything. One Friday is an anecdote and it will send you after the wrong problem. Three gives you a pattern, and in most kitchens the pattern points at the shelf or at the sort order rather than at anyone's hands.

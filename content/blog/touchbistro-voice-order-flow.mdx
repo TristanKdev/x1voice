@@ -1,0 +1,72 @@
+---
+title: "Where phone tickets fit in an iPad-first TouchBistro flow"
+description: "TouchBistro was built around servers carrying iPads on the floor. A phone order arrives on a different path, and the handoff point is the pickup counter."
+publishedAt: "2026-05-25"
+faqs:
+  - question: "How does a voice order reach TouchBistro?"
+    answer: "Through Deliverect, which carries TouchBistro along with Toast, Lightspeed, SpotOn, Aloha, Revel, PAR Brink and Micros. The order is created as a takeout or delivery order and appears in TouchBistro with the customer name, items, modifiers and quoted pickup time already attached, so nobody has to key it in."
+  - question: "Will phone orders interrupt servers on their iPads?"
+    answer: "They should not, and that is the correct design. A phone order has no table, so it belongs on the expo or pickup side rather than in a server's section. Route it to the same printer or screen your existing takeout tickets use. A phone ticket appearing on a server's iPad during a seating rush is a configuration mistake, not a feature."
+  - question: "Does this replace TouchBistro Online Ordering?"
+    answer: "No, they run alongside each other and serve different customers. The one thing to keep aligned is item availability, because two ordering surfaces reading separately maintained menus will eventually disagree, and the disagreement always surfaces as something you sold and cannot make."
+  - question: "What if my iPads run on a local network?"
+    answer: "The voice agent does not run on your hardware, so it keeps answering the phone regardless of what your local network is doing. What stops is the order landing in TouchBistro until connectivity returns. Ask your vendor how queued orders are handled and how you are notified, because behavior during an outage varies more than anything else in this category."
+  - question: "Is TouchBistro's table-service focus a problem for phone ordering?"
+    answer: "Only if your phone volume is small. A room where takeout is incidental will not get much from this. A full-service restaurant where calls interrupt the host stand during seating, or where takeout is a real share of revenue, gets the benefit on the floor rather than in the kitchen."
+---
+
+TouchBistro was designed around a server standing at a table with an iPad. Almost every decision in the product follows from that, and it is why it works well in full-service rooms. It is also why a phone order does not belong anywhere in that flow, and trying to put it there is the main way operators get this wrong.
+
+A phone order has no table, no server, and no course firing. It is a takeout ticket, and it should live where your takeout tickets already live.
+
+## What the iPad flow assumes
+
+A server opens a check against a table, adds items with modifiers, sends courses, and closes out. The iPad is a personal device tied to a person and a section. That model is why TouchBistro rooms tend to feel orderly during a rush: everything on a given iPad is one server's problem.
+
+Nothing about that changes when you add a voice agent. Your servers do not learn a new screen, do not get new notifications, and do not need to know anything about how the phone is being answered. If the rollout requires retraining your floor staff, something has been configured wrong.
+
+The change lands entirely on the takeout side of the house, and on whoever currently stops what they are doing to answer the phone. In most full-service rooms that is the host, which is exactly the interruption discussed in [reducing host stand phone interruptions](/blog/reduce-host-stand-phone-interruptions).
+
+## The path a phone order actually takes
+
+The caller reaches X1 Voice instead of a ringing host stand. The agent has the conversation, builds a structured order against your mapped menu, and sends it through Deliverect into TouchBistro as a takeout or delivery order.
+
+TouchBistro treats it the way it treats any off-premise ticket. It carries the customer's name and phone number, the items with modifiers, and a pickup time the agent quoted. It fires to whatever printer or display your takeout orders already use. It appears in your sales reporting in the same place as your other takeout revenue, which is what you want for close.
+
+The delay between "that's everything" and a ticket at the pass is seconds. Not instant, and on a very busy night you might notice it once. Compare it against the current baseline honestly: today that order either got written on a pad and entered fifteen minutes later, or it rang out and went to the restaurant down the street.
+
+## Routing is the decision that determines whether this works
+
+The integration puts the order in TouchBistro. It does not decide who looks at it. That is your setting, and it is worth ten minutes of deliberate thought before launch.
+
+Send phone tickets to the station where someone is physically present and expected to be watching during service. For most rooms that is expo or a dedicated pickup counter, and for most rooms a printed ticket is more reliable than a screen, because paper does not require someone to have the right app in the foreground.
+
+Do not send them to server iPads. A ticket that appears on a floor device during a seating rush gets acknowledged by whoever taps first and then forgotten, and there is no owner. The whole benefit of taking the phone off your host is undone if the ticket lands somewhere with no clear owner.
+
+If you have a KDS, phone tickets should look distinguishable from dine-in tickets at a glance, because the timing expectation is different. A dine-in appetizer fires now; a phone order quoted for 7:45 should be started to hit 7:45, and a cook who cannot tell the difference will make everything immediately.
+
+## What happens to a full-service room's timing
+
+This is where full-service operators get a real result that fast-casual operators do not.
+
+In a takeout counter, the phone competes with the register. In a full-service room, the phone competes with the front door. A host taking a five-minute order call while three parties wait to be seated is trading a $40 takeout ticket for the first impression of twelve covers. That trade happens several times a night and nobody logs it.
+
+The same applies at the bar. In rooms where the bartender is the backup phone answerer, every call is a drink not being made in front of a paying guest, and bartenders are usually too busy to say so. Ask yours how many calls they take on a Saturday. The number tends to surprise the owner.
+
+Removing it does not save labor in an obvious way. Nobody's hours get cut. What changes is that your host is at the podium during the hours when being at the podium matters most, and your table turn times stop absorbing phone-call-shaped interruptions. Measure it by watching your door during a Friday seating window before and after, not by looking at a dashboard.
+
+## Availability, and the reason two channels drift
+
+If you run TouchBistro Online Ordering as well, you now have three surfaces selling your menu: the floor, the web, and the phone. They coexist without conflict as long as they agree on what exists.
+
+They stop agreeing the moment an item runs out and only one surface gets updated. The kitchen 86s the halibut, someone pulls it from the online menu, and the phone agent keeps selling it for the rest of the night. The customer who ordered it finds out at pickup.
+
+So the operating rule is that availability is changed in one place and flows everywhere, and that whoever marks an item out is doing it in the POS rather than on a whiteboard. That habit is the whole game, and it is covered in [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync). Everything else in a voice setup is configuration; this one is a floor discipline you either have or have to build.
+
+## Deciding whether it fits your room
+
+Two numbers answer this, and you can get both this week.
+
+Pull your takeout and delivery revenue as a share of total, from TouchBistro. Then count what your phone actually does during one Friday between 6 and 8: total calls, how many were answered, how many rang out, and roughly what an average takeout ticket is worth.
+
+If takeout is a rounding error and your phone rings six times a night, this is not for you and $250 a month is better spent elsewhere. If takeout is a real line in your P&L and you are losing calls during the exact two hours your host is busiest, the recoverable revenue is sitting in the calls that rang out, and it is money you currently have no record of losing. Run the count first. [AI phone ordering for TouchBistro](/blog/ai-phone-ordering-for-touchbistro) and [how many calls your restaurant misses](/blog/how-many-calls-does-your-restaurant-miss) are the places to start.

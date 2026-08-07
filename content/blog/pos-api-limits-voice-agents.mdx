@@ -1,0 +1,80 @@
+---
+title: "Why your 86'd item kept selling for eleven minutes"
+description: "Rate limits, polling intervals and webhooks decide how fast a voice agent learns your menu changed. What the delay is, and how to set expectations around it."
+publishedAt: "2026-06-06"
+faqs:
+  - question: "Why is there any delay between 86ing an item and the agent knowing?"
+    answer: "Because the agent learns about the change either by being told or by asking. If your POS pushes a notification the moment the change is saved, the delay is seconds. If the agent has to poll on a schedule, the delay is however long until the next poll. Most integrations use some mix of both, and the mix determines your worst case."
+  - question: "What is an API rate limit, in restaurant terms?"
+    answer: "A cap on how often an outside system may ask your POS a question, set by the POS vendor to keep their servers stable. It means the agent cannot simply re-read your entire menu every ten seconds. The cap is why sync intervals exist at all, and why a very large menu can take longer to refresh than a small one."
+  - question: "Does a middleware layer like Deliverect make the delay worse?"
+    answer: "It adds a hop, so it can add seconds to minutes depending on how that layer syncs with the POS behind it. In exchange it gives you one consistent connection across many POS systems. Whether that trade is worth it depends on which POS you run and whether a direct connection is available for it at all."
+  - question: "How do I find out my actual sync delay?"
+    answer: "Measure it. 86 an item in your POS, note the time to the second, then call your own number and try to order that item. Repeat during a slow hour and again during service. The two numbers are often different, and the busy-hour number is the one that matters for planning."
+  - question: "Should I pick a POS based on its API?"
+    answer: "Not on its own, but it belongs in the decision. A POS with an event-push model and generous limits gives you faster and more reliable sync than one that only supports scheduled reads. If you are already committed to a register, this is not worth switching over. If you are choosing one now, ask the question."
+---
+
+A cook calls out that the wings are gone at 7:12. Someone marks them unavailable on the register at 7:14. At 7:23 a caller successfully orders wings from your phone agent, and now you are making an apology call instead of a sale.
+
+Nine minutes. That gap is not a bug in the ordinary sense, and understanding why it exists is the difference between configuring around it and filing a support ticket that comes back saying working as designed.
+
+## Two ways a system learns something changed
+
+There are only two, and every integration is some combination of them.
+
+The first is being told. Your POS fires a notification the moment a change is saved, and whatever is listening updates immediately. This is usually called a webhook, and when it is available and working, the delay is measured in seconds.
+
+The second is asking. The outside system requests the current menu on a schedule: every minute, every five minutes, every fifteen. This is polling, and the delay is bounded by the interval. If the poll runs every ten minutes and your cook calls out wings one minute after a poll completes, the agent stays wrong for nine more minutes. Which is exactly the scenario above.
+
+Most real integrations use notifications where the POS supports them and polling as the backstop, because notifications get dropped, delivered twice, or arrive out of order, and a system that trusts them completely eventually gets stuck believing something false.
+
+## Why the polling interval is not just set to five seconds
+
+Because the POS vendor will not allow it. Every POS API has a rate limit: a cap on requests per minute or per hour, per account or per application. It exists so one badly written integration cannot degrade service for every restaurant on the platform.
+
+That cap is a fixed budget, and everything competing for it has to fit. Menu reads, availability reads, order writes, order status updates, and whatever else you have connected all draw from the same allowance. Order writes are the ones you cannot afford to have throttled, since a rejected order is a lost sale in real time, so a sensibly built integration reserves headroom for them and spends what is left on refresh frequency.
+
+Menu size matters here too. A menu with sixty items and simple modifiers is a small read. A menu with four hundred items, nested modifier groups and per-location pricing may take several requests to assemble, which means fewer complete refreshes fit inside the same budget. This is one of the quiet reasons a large multi-location operation sees slower propagation than a single pizzeria, and it is part of why [multi-location menu management](/blog/deliverect-voice-agent-multi-location-restaurants) is a different problem from single-shop menu management.
+
+## The hop you may not know is there
+
+X1 Voice writes directly into Square, Clover and OrderCounter, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect. A direct connection has one link in the chain. A connection through middleware has two, and each link has its own sync behavior and its own limits.
+
+That is not an argument against middleware. It is what makes broad POS coverage possible at all, and for most of those registers there is no realistic direct path. It does mean your expectations should match your topology: a Square shop and a Micros shop should not expect identical propagation times, and a vendor who quotes one number for every POS has not thought about it carefully.
+
+The practical version of this question is in [why integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality). A pleasant-sounding agent selling an item you do not have is worse than a plain-sounding one that does not.
+
+## Measure your own number instead of asking for a benchmark
+
+Take fifteen minutes on a slow afternoon.
+
+- Pick a real item, 86 it in your POS, and write down the exact time.
+- Call your own number and try to order it. Note the time when the agent first refuses it.
+- Restore the item and note how long until the agent will sell it again.
+- Repeat the whole test during your busiest hour on a different day.
+
+You now have two numbers, a quiet-hour delay and a busy-hour delay, and the second is the one to plan around. If both are under a minute, you can treat 86ing as effectively immediate and move on. If the busy number is ten minutes, that is a fact about your operation to design around rather than to be surprised by twice a week.
+
+## Designing around a delay you cannot remove
+
+You have a few options, and they are cheap.
+
+- 86 items in the POS before the last portion goes out, not after, which converts a reactive delay into a planned buffer.
+- For the two or three items that run out most often, set a low-stock threshold in the POS if it supports one so the change fires earlier.
+- Have the agent confirm availability for the handful of items with unreliable supply rather than treating the cached menu as final.
+- When a stale sale slips through, catch it at expo rather than at handoff, since a call back at minute two is a different experience from a discovery at minute forty.
+
+The failure catalogue in [86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes) covers the cases beyond simple delay, including the nastier one where an item is marked unavailable in one system and available in another and neither is wrong from its own point of view.
+
+## What to ask a vendor, precisely
+
+Not "is it real time." Everyone says yes to that. Ask these instead: does the integration receive change notifications from my POS, or does it poll? If it polls, what is the interval, and does it change under load? Is there a middleware layer between you and my register, and what is its own sync interval? What happens to in-flight orders if the POS returns a rate limit error?
+
+That last question is the revealing one. The correct answer describes a retry with backoff and, if retries fail, an escalation that gets a human involved before the caller hangs up. An answer that describes the order silently failing is telling you about lost tickets you will not learn about until someone calls asking where their food is.
+
+## The part that is genuinely on you
+
+Sync speed is a shared responsibility, and the half you control is menu hygiene. Items that exist twice under different names, modifier groups nobody has pruned in three years, and seasonal items left active year-round all inflate the size of every read and increase the number of places a change has to be made. [Menu sync](/blog/menu-sync-deep-dive-voice-ai) covers what a clean structure looks like.
+
+Go run the 86 test this week and write the busy-hour number on the wall by the register. Once everyone knows the delay is, say, four minutes, marking an item out becomes something people do before the last one leaves the window rather than after, and that single habit change removes most of the problem without anyone touching an integration.

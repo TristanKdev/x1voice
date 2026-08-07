@@ -1,0 +1,82 @@
+---
+title: "Micros Simphony voice ordering: what setup really takes"
+description: "Simphony environments vary enormously between properties. What a phone ordering project actually requires, who has to be involved, and when to say no."
+publishedAt: "2026-05-28"
+faqs:
+  - question: "Does X1 Voice work with Micros Simphony?"
+    answer: "Yes, through Deliverect rather than a direct connection. The agent takes the call and passes a completed order in as an incoming order for a specific revenue center. The technical path is settled; the variable part is your property's Simphony configuration and who has the access to change it."
+  - question: "Why do Simphony projects take longer than other POS integrations?"
+    answer: "Because Simphony properties are usually managed environments with an IT owner, a hierarchy of enterprise and property-level configuration, and change controls. The work is not harder, it is gated. Expect the schedule to be set by access and approvals rather than by setup, which is typically under 24 hours once those are cleared."
+  - question: "What is a revenue center and why does it matter here?"
+    answer: "Simphony organizes a property into revenue centers, such as a dining room, a bar, and a takeout counter, each with its own menu and workstation setup. A phone order has to be bound to one of them. Picking the wrong one sends tickets to a printer nobody watches, which is the most common go-live problem at a property."
+  - question: "Is a hotel or resort property a good fit?"
+    answer: "Sometimes, and often not for ordering. Large properties usually get more value from an agent that answers, gives accurate information, and transfers well than from one that builds tickets, because the call mix is dominated by questions rather than orders. Look at what your calls actually are before scoping an ordering project."
+  - question: "What should I confirm before signing anything?"
+    answer: "Who owns Simphony configuration at your property, whether external orders already flow into it today, and which revenue center should receive phone tickets. If nobody can answer the first question in a day, the project timeline is going to be set by that ambiguity, and it is better to know before you start."
+---
+
+Operators assume a Simphony integration is harder than a Square one because Simphony is bigger. That's the wrong model. The connection path is comparable. What differs is that at a Simphony property, almost nobody who wants the phone answered has the access to make it happen.
+
+That is the real scoping question, and it's an organizational one. Sorting it out first will save you a month.
+
+## The technical path is the short part
+
+X1 Voice reaches Micros Simphony through Deliverect. The agent runs the call, builds the order against an imported copy of the menu, and passes it through as an incoming order bound to a specific revenue center. Simphony handles it as it handles other external orders, following your existing routing and print rules.
+
+Setup, once access exists, is typically under 24 hours. That number is honest and also misleading at a Simphony site, because "once access exists" is doing more work in that sentence than anywhere else in this category. The general integration argument is in [why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality).
+
+## Find the person who owns the configuration
+
+At an independent restaurant, the owner changes the menu. At a Simphony property, the answer is one of several: a property IT manager, a corporate systems team, a regional support contract, or a reseller who set the system up and still holds the keys.
+
+Ask the question on day one, in plain terms: who can make a configuration change in Simphony, and what does that person need in order to approve one? If you get a confident answer, the project is straightforward. If you get three different answers from three people, that ambiguity is your timeline, and no vendor can compress it for you.
+
+Where external orders already flow into the property today, most of this is settled. Somebody already made those decisions, and phone orders can follow the same path.
+
+Managed environments have change windows, and properties that take them seriously will not let you reconfigure anything on a Friday. Find out when yours are and plan around them, because a menu correction you want to make on Saturday afternoon may have to wait until Tuesday.
+
+That constraint changes how you should test. Front-load everything. Verify the menu, the revenue center, the printer path, the hours, and the escalation rules before go-live rather than expecting to iterate daily in the first week. A property that gives you one change window per week rewards a careful first configuration and punishes a fast, sloppy one.
+
+It also matters who does the testing. The property IT contact can confirm a ticket arrived. Only the person who runs the outlet can tell you the ticket is wrong. Get both on the go-live call.
+
+## Revenue centers are the routing decision
+
+Simphony divides a property into revenue centers. A dining room, a bar, a lounge, a takeout counter, a poolside outlet. Each has its own menu configuration and its own workstations, and each prints where it prints.
+
+A phone order has to be bound to one. This is the decision most likely to be made carelessly, and the symptom is unmistakable: tickets appear correctly in the system and nobody makes the food, because they're printing at a station that isn't staffed on weeknights.
+
+Pick the revenue center whose menu matches what phone callers order and whose printer someone is standing next to. If those are two different revenue centers at your property, that's a conversation to have before go-live rather than during service. Walk the ticket path physically once, from the order to the printer to the person who picks it up.
+
+## The enterprise menu versus the property menu
+
+Simphony's hierarchy lets an enterprise define menus that properties inherit and modify. That's useful for a chain and confusing for a phone agent, because the version that matters is the resolved one for your revenue center on your property.
+
+Prices differ by property. Items get suppressed locally. Seasonal changes land at different times in different regions. The template someone sends you during setup is often the enterprise version, and configuring against it produces an agent that quotes prices your property doesn't charge.
+
+Verify against sales data instead of documents. Pull the last month of item sales for the revenue center, look at the top items by count, and confirm names and prices against that. It's faster than reading a configuration export and it reflects reality. [The menu sync deep dive](/blog/menu-sync-deep-dive-voice-ai) covers how that imported menu stays current afterward.
+
+## Whether ordering is even the right project
+
+This deserves more skepticism than it usually gets.
+
+A takeout-heavy outlet inside a larger property is a genuine fit. So is a restaurant using Simphony because it belongs to a group, with a call mix that looks like any other restaurant's. Those are ordinary phone ordering projects that happen to sit on enterprise software.
+
+A hotel or resort property is often a different story. The inbound call mix at a resort restaurant tends to be dominated by questions: hours, dress code, whether the patio is open, whether children are allowed, and reservations. Very few of those calls are orders. An agent that answers every call accurately and transfers cleanly to a person is worth a lot at such a property. An agent that builds Simphony tickets may barely be exercised.
+
+Look at your call mix before scoping. Listen to fifty calls, or have someone tally the reasons for a week. If under a fifth are orders, build the answering and routing project and skip the ticket integration entirely for now. Saying that plainly loses vendors deals, and it's still the right advice.
+
+## Large orders and the handoff rule
+
+Properties with banquet, catering, or group business need an explicit rule about what the agent does not do.
+
+A twelve-person pickup order is fine. A catering inquiry with a contract, a deposit, and a delivery window is not a call to automate, and it's usually your most valuable inbound call of the week. Configure the agent to recognize those and hand them to a person immediately, with the caller's number captured so nobody has to call back to ask for it. [Handling large catering orders](/blog/voice-ai-large-catering-orders) works through where that line sits.
+
+Getting this rule wrong in the direction of automation is expensive in a way that never shows up in your metrics, because a mishandled catering lead just doesn't come back.
+
+## Measuring whether it worked
+
+Track answered-call rate and phone order accuracy, and ignore anything that only reports how many calls the system kept to itself.
+
+For accuracy, read tickets against transcripts for the first two weeks, twenty a week, chosen at random rather than chosen because someone complained. That sample tells you whether the menu mapping is right, and two weeks of clean tickets is enough to stop checking daily. The method is in [improving phone order accuracy](/blog/improving-phone-order-accuracy).
+
+Before you scope anything, do one thing: ask your property who can approve a Simphony configuration change and how long that takes. If the answer arrives within a day, proceed. If it doesn't, you've just learned the most important fact about this project.

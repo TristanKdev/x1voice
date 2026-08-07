@@ -1,0 +1,84 @@
+---
+title: "Voicemail transcription gives you homework, not orders"
+description: "A transcribed voicemail is a task someone still has to do. An answered call is a finished order. The difference decides whether the phone costs or earns."
+publishedAt: "2026-02-26"
+faqs:
+  - question: "Is voicemail transcription useful for a restaurant?"
+    answer: "It's useful for messages you need to read rather than act on quickly: vendor calls, landlord calls, a customer complaint you want in writing. It's close to useless for orders, because a transcribed order is still an order nobody has taken, and the caller has no idea whether the food is coming."
+  - question: "How accurate is voicemail transcription on food orders?"
+    answer: "Accuracy drops hardest on exactly the words that matter in a restaurant: menu item names, modifiers, quantities, and street addresses. General-purpose transcription has no knowledge of your menu, so it renders unfamiliar dish names phonetically and guesses at address numbers. A transcript that reads cleanly can still be wrong in the one field that ruins the order."
+  - question: "What's the difference between transcription and a voice agent?"
+    answer: "Transcription converts a recorded monologue into text for a human to read later. A voice agent has a two-way conversation, asks clarifying questions in the moment, confirms the order back to the caller, and writes it into the POS. One produces a to-do item, the other produces a ticket and a customer who knows their food is coming."
+  - question: "Can I keep voicemail as a backup?"
+    answer: "Yes, and most setups should. Voicemail is a reasonable last resort behind an agent for callers who want to leave a message for a specific person, or for the rare case where the agent can't help and no manager is available. The mistake is making voicemail the primary destination for order calls."
+  - question: "Why do transcribed voicemails go unreturned?"
+    answer: "Because returning them requires a person with time, a phone, and the caller still being reachable, and those three rarely line up during service. Messages left at 6:30 get read at 9:00, and by then the customer has eaten. The callback rate on order-related voicemails in a busy restaurant is low enough that most operators stop tracking it."
+---
+
+A transcribed voicemail is a job you now have to do. An answered call is a job that's finished. Everything else about the comparison follows from that.
+
+Restaurants adopt voicemail transcription because it removes a genuine annoyance: standing at the phone with a pen, replaying a message three times to catch an address. Reading it is faster. But the work that follows is identical. Someone still has to call the person back, confirm what they wanted, enter it into the POS, and quote a time. During the hours when messages actually pile up, nobody has a spare four minutes to do that once, let alone six times.
+
+## What the transcript is missing
+
+The transcript captures what the caller said. It doesn't capture what the caller meant, and on a food order those diverge constantly.
+
+"Two of the chicken thing, no onions, and whatever the soup is today." A person on the phone asks two questions and resolves that in eight seconds. A transcript preserves the ambiguity perfectly and hands it to you an hour later, at which point resolving it means calling back a number that may or may not be answered.
+
+Then there are the fields where transcription fails in a specific way. Menu item names are the worst case, because a general transcription model has never seen your menu and will render an unfamiliar dish phonetically. Street numbers are second. "Fifteen fifty" and "fifty fifty" and "fifteen fifteen" are all plausible transcriptions of the same audio, and the transcript won't flag its own uncertainty. It reads confidently either way.
+
+The result is a document that looks complete and quietly isn't. That's a harder failure to catch than a garbled recording, because a garbled recording announces itself.
+
+### Where transcription genuinely earns its place
+
+None of this makes the feature useless. It earns its place on the calls you need to read rather than act on inside the hour:
+
+- A vendor confirming a delivery window, where the details matter and the timeline is tomorrow
+- A complaint you want in writing before you decide how to respond
+- A landlord, inspector, or utility call that needs to be forwarded to someone else intact
+- A job applicant leaving contact information you'll get to on Monday
+
+Those are real. They're also maybe a tenth of your inbound volume, and none of them are the calls losing you money.
+
+## What an answered call produces instead
+
+The difference is the back-and-forth. An agent on a live call asks which chicken dish, confirms the address digit by digit, states today's soup, reads the full order back, and quotes a pickup time. The caller hangs up knowing their food is coming at 7:15. The kitchen has a ticket. Nobody has homework.
+
+That confirmation step is doing more work than it appears to. It's where the caller catches your mishearing, which is the only reliable accuracy check that exists on a phone order. A recorded message has no confirmation step at all, and that's the structural reason transcribed orders go wrong more often than answered ones. We go through the measurement side of this in [improving phone order accuracy](/blog/improving-phone-order-accuracy).
+
+The other thing the live call produces is a customer who isn't anxious. A person who left a voicemail with an order has no idea whether it registered. A meaningful number of them call back twenty minutes later to check, which is a second call your staff also has to handle, generated by the first one you didn't.
+
+It also resolves the questions that aren't orders at all. Roughly half of restaurant call volume is people asking whether you're open, whether you deliver to a given street, whether the kitchen does gluten-free, or how long a pickup will take. A mailbox turns every one of those into a callback. A live answer closes them in fifteen seconds and never reaches a person on your staff at all.
+
+## What this does to your close-out
+
+There's a shift-level effect worth naming separately from the revenue.
+
+A transcribed-voicemail setup produces a queue that someone owns at the end of the night. Closing managers already have a list: cash drawer, deposit, prep sheet for tomorrow, temperature logs. Adding "return the eleven voicemails" to that list means either they stay past close or the messages get skipped, and in most restaurants they get skipped. Nobody decided that. It's just what happens when a task lands on the busiest person at the worst hour.
+
+The result is that the transcription feature looks like it's working. Messages arrive, they're readable, the technology does what it says. The failure is downstream, in a step that never got staffed, and it's invisible in every report the phone system produces.
+
+## The callback math nobody runs
+
+Try this with your own numbers.
+
+Say ten order-related voicemails land during a Friday dinner service. Returning each one properly takes about four minutes: dial, wait, re-take the order, enter it, quote a time. That's forty minutes of somebody's shift, in the two hours when nobody has forty minutes.
+
+So in practice they don't get returned during service. They get returned at nine, or the next morning, or not at all. Assume half of those callers already ate somewhere else by then. At a $32 average ticket, that's roughly $160 gone on one Friday, and the same pattern next Friday.
+
+Now run it the other way. Those same ten calls answered live are ten tickets, zero callback minutes, and no anxious follow-up calls. The gap isn't a matter of degree. One path produces revenue and one produces a queue of tasks that decay.
+
+There's a version of this where an answering service takes the messages instead of a mailbox, which is better but doesn't close the gap, because most services still hand you a message rather than an order in your POS. That comparison is laid out in [AI receptionist versus answering service](/blog/ai-receptionist-vs-answering-service-restaurants).
+
+## Building the layered version
+
+The right setup usually keeps voicemail, just not as the front door.
+
+Order calls get answered and written into the POS directly, with a confirmation text if you want the caller to have a record ([SMS order confirmations](/blog/sms-order-confirmations-voice-ai) covers when that's worth turning on). Calls the agent can't resolve escalate to a person while the caller is still on the line. Voicemail sits behind all of that, for callers who specifically want to leave a message for a named person and for the window where no manager is reachable. Your closed-hours behavior is a related decision, worked through in [designing the after-hours path](/blog/after-hours-call-routing-setup).
+
+Two things are worth doing whichever way you go:
+
+- Re-record the greeting anyone still reaches, because most restaurant voicemail greetings state hours that changed a year ago
+- Check where messages actually go, since a mailbox tied to a former manager's extension is more common than you'd expect
+
+Then measure the one number that settles the argument. For the next two weeks, count the order-related voicemails you receive and count how many you successfully turned into a ticket. If that second number is most of the first, transcription is working for you and you can stop reading. If it's under half, the transcript was never the problem. The callback was.

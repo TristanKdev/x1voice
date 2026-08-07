@@ -1,0 +1,68 @@
+---
+title: "Capturing SMS opt-in consent on a restaurant call"
+description: "Getting text permission during a phone order takes about four seconds if the wording is right, and produces nothing usable if it isn't. Here are the scripts."
+publishedAt: "2026-03-08"
+faqs:
+  - question: "Can text consent be collected verbally on a phone call?"
+    answer: "Yes for order-related messages, and the FCC has treated a recorded oral agreement as capable of satisfying the written consent standard for marketing when the required disclosures are actually read aloud and the recording is retained. The recording is the whole point. Consent you cannot play back is consent you cannot prove."
+  - question: "What has to be said before a marketing opt-in counts?"
+    answer: "The caller needs to hear who is sending, that the messages are promotional, that automated texting is used, that agreeing is not required to place an order, and how to stop. Then they have to say yes. Leaving out the not-required-to-buy part is the single most common way a restaurant opt-in fails to qualify."
+  - question: "Do I need consent to send an order confirmation?"
+    answer: "You need the customer to have given you the number for that purpose, which happens naturally when your agent asks for a mobile number to send order updates to. Say what the number is for at the moment you ask for it. A number collected without stating a purpose supports much less than one collected with a sentence attached."
+  - question: "Should we send a confirmation text asking people to reply YES?"
+    answer: "For marketing lists, yes. It is not legally required on top of a valid opt-in, and it gives you a second, independently timestamped record from the phone itself, catches mistyped numbers before you send to a stranger, and demonstrates the person actually controls that handset. The cost is one message."
+  - question: "How do I record an opt-out that arrives by voice?"
+    answer: "Your voice agent should recognize a request to stop texting as an intent, write it to the same suppression list your messaging platform checks at send time, and confirm it out loud to the caller. Opt-outs communicated by any reasonable means have to be honored, and a caller telling your phone system to stop is reasonable."
+---
+
+Here is the moment, about forty seconds into a normal takeout call. The order is entered. Your agent says, "Can I get a mobile number so I can text you when it's ready?" The customer reads off ten digits. Order confirmed, call ends.
+
+That exchange is fine for the confirmation text. It is worth nothing at all if six weeks later somebody exports the number into a promotion about half-price wings. The difference between a permission that covers one message and a permission that covers a marketing program is entirely in what was said before the customer answered, and it costs about four extra seconds to get right.
+
+## Two different asks, two different scripts
+
+Stop thinking of it as collecting a phone number. You are collecting a specific permission, and the permission is only as wide as the sentence attached to it.
+
+For order updates, the ask is nearly free. "Can I get a mobile number so I can text you when the order's ready?" states the purpose in the question itself, and the customer supplying the number in response has agreed to that purpose. Nothing more is needed for that class of message. Do not skip the purpose clause. "What's a good number for you?" collects a number attached to no stated use, which is a weaker record and an easy thing to fix.
+
+For promotions, the ask is longer because the law asks for more. The caller has to hear who is sending, that the messages are marketing, that an automated system sends them, that agreeing is not a condition of ordering, and how to stop. That last item is the one restaurants leave out, and it is the item that most reliably invalidates the whole thing.
+
+A version that fits in one breath: "Would you like to get our specials by text? These are marketing messages from Marino's sent by an automated system, you don't have to say yes to order, and you can reply STOP any time."
+
+Then wait for an actual yes. Not silence. Not "sure, whatever" that the transcript renders ambiguously. A clear affirmative that a person listening to the recording six months from now would score as agreement.
+
+## Why the recording carries the whole thing
+
+The written consent standard sounds like it rules out a phone call, and it does not. Electronic signature law has long treated agreement captured electronically as equivalent to ink, and the FCC has accepted that an oral agreement, recorded and retained, can meet the requirement when the disclosures were genuinely made.
+
+Which means your evidence is an audio file. If the recording is gone, the consent is gone with it, and you are left asserting that a conversation happened. That inverts the normal retention advice. Most call audio should age out on a short window, discussed in [call recording consent laws for restaurants](/blog/call-recording-consent-laws-restaurants), but a call where someone opted into marketing is a call you want to keep for as long as you might send to that number.
+
+Practically, that means tagging opt-in calls rather than treating all audio the same. Ask your vendor whether a call can be flagged when a consent intent fires, and whether flagged calls can be held on a separate retention schedule. If everything is on one 30-day timer, your marketing list will quietly become undocumented at day 31.
+
+## What the record has to contain
+
+Auditing your own consent is a five-minute exercise and most operators fail it the first time.
+
+Pick a number from your promotional list at random. You should be able to produce, without asking anyone for help: the date and time consent was given, the channel it came through, the exact language the person heard, the audio or written artifact showing their agreement, and the current opt-out status. If your system stores a phone number and a boolean flag, you have a list, not a consent record.
+
+The exact language matters more than people expect. Scripts change. If your agent said one thing in March and something different in September, "the exact language the person heard" is not a single document, it is whatever was live that day. Version your consent script with dates, keep the old versions, and you can answer the question years later. This is unglamorous and it is the difference between a defensible list and an expensive one.
+
+## The confirmation text is worth sending
+
+After a verbal marketing opt-in, send one message: who you are, what they signed up for, the frequency, and how to stop. Ask them to reply YES to confirm.
+
+Nobody requires this on top of a valid oral opt-in. Send it anyway, for three reasons that have nothing to do with the statute. Transposed digits get caught before you start texting a stranger who never called you. The reply gives you a second record generated by the handset itself, which is harder to argue with than a recording of a voice. And people who confirm are people who actually want the messages, which does more for your open rates than any list-growth tactic.
+
+Treat a non-reply as a soft no. A number that never confirmed can stay in your transactional flow and stay out of your promotional one.
+
+## Where this breaks in a real restaurant
+
+Three failure modes, all mundane.
+
+The first is script drift. Somebody shortens the opt-in line because it feels long on the phone, the "not required to order" clause disappears, and nobody notices for four months. Lock the consent wording as a reviewed asset rather than a piece of copy anyone can tune, and treat changes to it the way you would treat changes to a price. The general question of what your agent says and how it is maintained is covered in [custom greetings and brand voice](/blog/custom-greetings-brand-voice-ai).
+
+The second is list merging. Confirmation numbers and marketing numbers end up in one export because someone needed a customer list for something. Keep them in separate systems if you can, and if you cannot, make the marketing send filter on a consent flag rather than on a saved segment.
+
+The third is the opt-out that arrives by voice. Customers do not distinguish between your channels. They will tell your phone agent to stop texting them, and unless that intent writes back to your suppression list, your next campaign reaches someone who already revoked. The legal framing is in [TCPA rules for restaurant texts](/blog/tcpa-restaurant-text-messages), and the delivery plumbing that has to honor it in [A2P 10DLC registration](/blog/a2p-10dlc-registration-restaurants) and [SMS order confirmations from a voice agent](/blog/sms-order-confirmations-voice-ai).
+
+Run the random-number audit this week. If you can produce a full record for the number you picked, your program is in decent shape. If you cannot, the list you have is one you should stop sending marketing to until you can rebuild it with the four extra seconds attached.

@@ -1,0 +1,75 @@
+---
+title: "Quoting a delivery ETA when driver supply is the variable"
+description: "Most delivery quotes describe the kitchen, not whether a driver is free. How to build an ETA window that survives Friday night and what to say when it slips."
+publishedAt: "2026-04-13"
+faqs:
+  - question: "How long should a delivery ETA quote be?"
+    answer: "Quote a window rather than a single number, and size the window to your driver queue rather than to cook time alone. A ten to fifteen minute window works for most operations: 40 to 55 minutes at a normal dinner, wider once open delivery tickets exceed what your drivers on shift can clear in an hour. A single precise number sounds confident and creates a complaint the moment it passes."
+  - question: "Should I pad delivery quotes to be safe?"
+    answer: "Pad honestly, not defensively. Adding ten minutes because your driver queue is long is accurate. Adding twenty-five minutes to every quote so you always look early trains regulars to assume your quotes are fiction, and it costs you orders from callers who hear a number they will not wait for. Pad based on a condition you can name."
+  - question: "What do I tell a caller when the order is running late?"
+    answer: "Tell them before they ask, with a new time and a reason. A text at the moment the original window passes, saying the driver is on a run and the order leaves in about twelve minutes, prevents almost every angry callback. Silence past the quoted window is what turns a late order into a refund conversation."
+  - question: "Can a voice agent quote delivery times accurately?"
+    answer: "It can quote as accurately as the data you connect to it. An agent reading a static number from a config file will be wrong at peak the same way a static number is always wrong at peak. An agent that reads current ticket count and adjusts its window by daypart quotes better than most rushed staff do, because it does the arithmetic every time instead of guessing."
+  - question: "Does using DoorDash Drive or Uber Direct change how I quote?"
+    answer: "Yes, because you no longer control the driver pool. Courier assignment time is your new variable and it is largely invisible to you. Quote a wider window on third-party courier orders, track how long assignment actually takes at your busiest hours, and be honest with callers that the driver is dispatched rather than sitting in your parking lot."
+---
+
+"About forty-five minutes." That is what most restaurants say when a caller asks how long delivery will take, and the number almost always describes the kitchen and nothing else. It quietly assumes a driver is standing at the expo window waiting. At 7:15 on a Friday, that driver is nine minutes into someone else's run across town.
+
+The distance between those two facts is where bad delivery quotes come from. Cook time is predictable and you already know it. Driver availability is the part that swings, and it swings hardest at exactly the hours when you are handing out the most quotes.
+
+## Cook time is the half you can already see
+
+Pull a week of tickets and look at fire-to-ready by daypart. Most kitchens land in a fairly tight band: sixteen minutes at 4pm, twenty-three at 7pm, back down to seventeen by 9:30. If you have a single wood oven or one fryer as a bottleneck the spread is wider, but it is still a number you can learn from your own data in one sitting.
+
+That is the half operators quote, because it is the half in the building. The expo screen is right there. The driver is not.
+
+## Driver supply is the number nobody is tracking
+
+If you run your own drivers, the question is easy to state and annoying to answer during service: how many are on shift, and how many are currently mid-run?
+
+Two drivers on a Friday night with eleven open delivery tickets is not a forty-five-minute operation. The eleventh order leaves after two full run cycles have turned over, which on a four-mile radius puts it closer to ninety minutes. Runs per driver per hour, multiplied by drivers on shift, gives you throughput. When open tickets exceed that throughput, your quote has to include the queue and not just the cook.
+
+Almost nobody does this arithmetic in the moment, because the person answering the phone is also cutting pizzas. So the quote comes out as whatever it was at 4pm, and the 7:40 caller gets a number that was accurate three hours ago.
+
+## Building a quote with the queue in it
+
+You do not need a model. You need a rule your staff or your phone system can apply without thinking about it.
+
+- Start from your measured cook time for the current daypart, not from a number someone picked when you opened.
+- Add drive time to the zone. Ten minutes for close, twenty for your outer ring. If you have not measured this per zone, one week of driver timestamps will tell you, and it also feeds your [delivery zone rules](/blog/delivery-zone-rules-phone-orders).
+- Add queue time whenever open delivery tickets exceed drivers on shift times two. This is the piece everyone skips and it is the one that causes the ninety-minute surprise.
+- Quote a window, not a point. "Fifty to sixty-five minutes" is a promise you can keep. "Fifty-two minutes" is a complaint with a timer on it.
+
+Write the rule down. A rule that lives only in the head of your best closer stops working on their day off.
+
+## What to say when the quote is going to slip
+
+The most useful thing you can do about late deliveries is tell people before they call you.
+
+When the top of the quoted window passes and the order has not left, the customer starts doing math about whether they were forgotten. That is the moment a normal late order becomes a refund conversation. A short message at that exact point, with a revised time and a plain reason, defuses nearly all of it. "Your order is ready and going out with our driver in about ten minutes" costs nothing and buys enormous patience. The mechanics of doing that automatically are covered in [order status text updates](/blog/restaurant-order-status-text-updates).
+
+What does not work: quoting an aggressive number, hoping, and then absorbing the call at 8:20 while your kitchen is buried. That call takes four minutes, comes in on your busiest line, and now you are also not answering the next order.
+
+## Third-party couriers move the variable somewhere you cannot see it
+
+If you dispatch through a courier network rather than your own drivers, you have handed off the driver-supply problem and gained a new one: assignment time. The order sits ready while the platform looks for someone to take it. On a rainy Friday that can be twelve minutes. On a slow Tuesday it can be ninety seconds.
+
+You cannot control that, and you should not quote as if you can. Widen the window on courier-dispatched orders, and track your actual assignment times at peak for two weeks so your widening is based on something. Be plain with callers about what is happening, because "our driver" and "a driver we're dispatching" are different promises. That distinction matters more once couriers start calling your line, which is its own workflow in [handling driver calls from delivery platforms](/blog/handling-driver-calls-doordash).
+
+## Where a phone agent helps, and where it does not
+
+An automated system quoting delivery times is only as good as what it reads. Point it at a static number and it will be confidently wrong at 7:30 every single night, with the added downside that it will be wrong identically to ten callers in a row.
+
+Point it at live ticket count and daypart cook times, and it does something your staff genuinely cannot do at peak: run the same arithmetic on every call, without shortcuts, while three tickets are firing. That is also where throttling belongs, since the honest answer at capacity is sometimes a later window rather than a faster one. The reasoning is in [order throttling and kitchen capacity](/blog/order-throttling-kitchen-capacity-phone).
+
+What it will not do is invent driver capacity. If you are two drivers short on a Friday, a very good quote just tells the truth earlier. That is worth having, and some callers will decline, which is a better outcome than a customer waiting eighty minutes for a forty-five-minute promise. Weather nights make this obvious fast, as [snow day delivery surges](/blog/snow-day-delivery-surge-calls) tend to demonstrate.
+
+## The test worth running this week
+
+Take fifty delivery orders from your last busy Friday. For each one, compare the quoted time against the timestamp the customer actually received the food. Sort by how far off you were.
+
+If your misses cluster in one hour, you have a driver-supply problem at a known time and you can staff or quote around it. If they scatter evenly, your base number is wrong and you should re-measure cook time. If nearly everything came in early, you are padding so heavily that you are losing callers who hang up on the quote, and you should find out how many.
+
+Whichever pattern you find, the fix is arithmetic rather than apology. Quote the queue, not the oven.

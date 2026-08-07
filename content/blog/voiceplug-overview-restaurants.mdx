@@ -1,0 +1,66 @@
+---
+title: "VOICEplug for restaurants and the POS depth question"
+description: "Multi-surface voice vendors sell phone, drive-thru and kiosk ordering at once. Here is how to work out what that breadth means for a single restaurant phone line."
+publishedAt: "2026-07-01"
+faqs:
+  - question: "What kind of vendor is VOICEplug?"
+    answer: "It presents as a restaurant-focused conversational ordering vendor that covers more than one ordering surface, phone among them, with point-of-sale integrations behind it. The category label that matters for a buyer is multi-surface: the same conversational engine is sold for several channels rather than for the phone alone."
+  - question: "Does drive-thru experience help or hurt a phone product?"
+    answer: "It helps with noise handling, short utterances, and speed, because a drive-thru lane is an unforgiving audio environment. It can hurt on conversation length and question handling, since drive-thru callers rarely ask about allergens, catering, or delivery zones, and phone callers ask about all three."
+  - question: "What does POS depth actually mean?"
+    answer: "Three things. Whether the agent reads your live menu with current prices, whether availability changes reach it within seconds when you 86 an item, and whether the finished order writes into your POS as a real ticket with modifiers rather than arriving as an email or a printout someone re-keys."
+  - question: "How do I read a vendor's integration list?"
+    answer: "Ask which entries are direct and which run through a middleware layer such as Deliverect or Otter, and what each path supports. A direct integration and a pass-through can both be listed as supported while differing on modifiers, 86 sync speed, and order status. The distinction is not usually on the website."
+  - question: "Is a multi-surface vendor wrong for a single-location restaurant?"
+    answer: "Not wrong, but often more product than the problem needs. Breadth tends to come with a longer setup and a buying process built for chains. If you have one location and one phone line, the deciding factors are setup time, price, and whether the agent handles your menu, not how many channels the platform can serve."
+---
+
+There are four places a restaurant can put a conversational ordering agent: the phone, the drive-thru speaker, a kiosk in the lobby, and a widget on the website. VOICEplug is one of several vendors that sells into more than one of them, and that breadth is the first thing to understand when you are shopping for a phone.
+
+Breadth is not a flaw. It is a business model, and it shapes what the product is good at, who it is priced for, and how long it takes to turn on.
+
+## What a multi-surface vendor is optimizing for
+
+Building one conversational engine and pointing it at four channels is efficient engineering. The menu model, the ordering logic, and the POS write path are shared, and only the input and output layers differ. A vendor that does this well can genuinely serve a chain that wants the same ordering behavior on every surface, which is a real requirement for anyone managing brand standards across fifty stores.
+
+The tradeoff is that shared engines get tuned for the average of their channels. Drive-thru conversations are short, loud, and transactional. Kiosk sessions are visual, with the menu on screen doing most of the work. Website widgets have a search box. The phone has none of that: no visual menu, no lane geometry, and a caller who feels free to ask a question that has nothing to do with ordering.
+
+## Why drive-thru heritage cuts both ways
+
+A vendor that survived a drive-thru lane has solved problems worth having solved. Background noise, engine idle, wind across a microphone, callers who mumble three words and expect to be understood. That work carries over to a restaurant with a busy expo line behind the phone, which is the same class of problem. We wrote about that side of it in [voice AI in noisy restaurant environments](/blog/voice-ai-noisy-restaurant-environments).
+
+What does not carry over is conversational range. Nobody in a drive-thru lane asks whether the calamari is fried in the same oil as the fries, or whether you deliver to an address six miles out, or how much notice you need for forty sandwiches on Thursday. Phone callers ask all of that, constantly, and an agent that was optimized for a nine-second transaction will either handle those poorly or hand them straight to a person. Allergen questions in particular deserve a specific policy rather than an improvised answer, which is the argument in [voice AI and allergen or dietary questions](/blog/voice-ai-allergen-dietary-questions).
+
+## The POS question is really three questions
+
+Every vendor says they integrate with your POS. The word covers at least three different capabilities, and they fail independently.
+
+The first is menu read. Does the agent speak from your live menu, with your current prices and your modifier groups, or from a copy someone exported during onboarding? A copy drifts within weeks, and the drift shows up as a price the caller was quoted and the counter cannot honor.
+
+The second is availability. When you 86 the short rib at 7:15, when does the agent stop offering it? Seconds is a live connection. Overnight is a file. There is no honest middle answer, and the consequences of getting it wrong are covered in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes).
+
+The third is order write. Does the finished order land in the POS as a ticket the kitchen prints, with the right modifiers and tender type, or does it arrive as an email, a fax, a tablet notification, or a line in a portal that someone re-keys? Re-keying is the thing that kills adoption, because your staff will do it for two weeks and then stop trusting the system.
+
+## How to read an integration list
+
+Long lists are common and they hide a real distinction. Some entries are direct connections the vendor built and maintains. Others run through a middleware layer, most often Deliverect or Otter, which is a legitimate and widely used path but does not always carry the same modifier fidelity or 86 speed as a direct connection.
+
+Both can appear on a webpage as a logo. Ask which is which for your specific POS, and ask what each path supports. X1 Voice is direct with [Square](/integrations/square), [Clover](/integrations/clover) and [OrderCounter](/integrations/ordercounter), and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect, which is stated plainly rather than blended into one list. The broader case for caring about this is in [why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality).
+
+## What breadth costs an independent
+
+Multi-surface platforms are usually sold to organizations that buy in committees. That tends to mean a scoping call, a menu build handled by a professional services team, a pilot store, and a timeline measured in weeks. For a franchisor rolling out to eighty locations, that process is appropriate and you would be nervous if it were absent.
+
+For one restaurant with one phone line, it is friction with no payoff. You are paying, in time and often in dollars, for an implementation model designed around complexity you do not have. X1 Voice setup is typically under 24 hours, and the reason that number is possible is that the scope is a phone line and a menu, not four channels and a brand standard. If you want to see what that setup actually involves, the [onboarding checklist](/blog/ai-phone-onboarding-checklist-restaurants) is the honest version.
+
+## Where the multi-surface vendor is clearly right
+
+If you run drive-thrus, you should be talking to vendors who do drive-thru. The lane is a harder problem than the phone in specific ways, and a phone-first vendor extending into it is making the same mistake in the other direction.
+
+The same goes for a group that wants one ordering personality across lane, kiosk, and phone, with one reporting rollup and one menu source of truth. That is a real requirement, and it is worth the longer implementation. The comparison between the two channels, and why they are not interchangeable, is in [drive-thru vs. phone ordering](/blog/drive-thru-vs-phone-ordering-voice-ai).
+
+## The demo that settles it
+
+Ask for a live call, not a recording, and order badly. Change an item after hearing the price. Ask for a substitution the menu does not list. Ask whether an allergen is in something. Ask them to 86 an item while you are on the line and then try to order it.
+
+Then ask to see the ticket, on a printer, with the modifiers. A vendor that clears that in one call is deep enough for your phone regardless of how many other surfaces they sell. A vendor that needs to schedule a follow-up with a solutions engineer has told you what their implementation is going to feel like, and that answer is as useful as the demo.

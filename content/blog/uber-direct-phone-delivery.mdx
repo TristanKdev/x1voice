@@ -1,0 +1,75 @@
+---
+title: "Uber Direct for phone orders and the arithmetic behind it"
+description: "White-label delivery is cheaper per order than the marketplace and worse at finding you customers. What that trade means for orders that arrive by phone."
+publishedAt: "2026-06-02"
+faqs:
+  - question: "What is Uber Direct?"
+    answer: "A courier service you call rather than a marketplace you list on. The customer orders from you, on your channel, at your prices; Uber supplies a driver for a per-delivery fee and sends the customer a tracking link. Your restaurant is not being browsed in the Uber Eats app as part of this, and no percentage commission is taken on the order."
+  - question: "Is white-label delivery actually cheaper?"
+    answer: "Per order, usually, especially on larger tickets where a flat delivery fee costs less than a percentage of the total. What it does not include is demand. A marketplace listing puts you in front of people who do not know you exist; a courier service only moves orders you already earned. Compare the two on cost per delivered order, not on fee percentage alone."
+  - question: "Can I charge the customer the delivery fee?"
+    answer: "Yes, in full or in part, and most operators pass through some of it. The decision that matters more is consistency. Pick one rule, such as a flat customer-facing fee with free delivery above a ticket threshold, and hold it. Fees that change per order generate confusion at the counter and disputes later."
+  - question: "How does an order taken by phone reach a courier?"
+    answer: "The voice agent captures the order and a deliverable address and writes it into the POS as a delivery ticket. A dispatch request then goes out, either automatically from your POS or delivery platform, or manually by a staff member. Confirm which one your setup does before launch, because a manual dispatch step that nobody owns turns into forgotten orders during a rush."
+  - question: "Should I keep the marketplace listing if I add white-label delivery?"
+    answer: "Most restaurants should, at least initially. The marketplace does customer acquisition you cannot easily replace, and dropping it usually costs more volume than the commission savings return. The productive move is to keep the listing and steadily move repeat customers onto your own channels, where the margin is better."
+---
+
+White-label delivery is not cheaper than the marketplace. It's cheaper per order and much worse at finding you customers, and confusing those two is how operators talk themselves into dropping a listing that was paying for itself.
+
+Uber Direct is the courier half of Uber's business, sold without the storefront. You take the order, you keep the customer, you set your own prices, and you buy a driver for a fee. It's a good fit for orders that arrive by phone, for a reason that has nothing to do with technology.
+
+## Why the phone is the natural channel for it
+
+A caller already knows you. They found your number, they had a reason to dial it, and no platform introduced you. That's the exact situation where paying a percentage commission makes the least sense, because the commission is priced as though someone brought you the customer.
+
+So the phone and white-label delivery fit together. Every call you answer is an order you sourced yourself, and moving those orders onto a flat-fee courier keeps the margin you earned. Every call you don't answer is that same order arriving through a channel that charges you for the privilege, which is the quieter cost described in [the real cost of a missed restaurant phone call](/blog/the-real-cost-of-a-missed-restaurant-phone-call).
+
+## Do the arithmetic with your own numbers
+
+Nobody's published percentage is going to answer this for you, so use yours.
+
+Take your average delivery ticket. Call it $42. Apply whatever commission rate your marketplace agreement actually says, and you have the marketplace cost of that order in dollars. Now take the courier fee you're quoted for your typical distance, subtract whatever portion you pass to the customer, and you have the white-label cost of the same order.
+
+Two things fall out of that comparison. The first is that flat fees win on large tickets and lose on small ones, so there's a ticket size below which the marketplace is genuinely the better deal. Find yours. The second is that menu pricing changes the picture: many operators mark up prices on marketplace menus to absorb the commission, and on your own channel you don't have to. If you're currently running inflated third-party prices, moving a customer to the phone means they pay less and you keep more, which is a rare arrangement worth understanding rather than stumbling into. The parity question is worked through in [menu price parity on third-party channels](/blog/menu-price-parity-third-party) and the broader comparison in [voice AI versus delivery app commissions](/blog/voice-ai-vs-delivery-app-commissions).
+
+## What you give up
+
+Discovery. That's the whole list, and it's not a small item.
+
+The marketplace is a search engine for hungry people in your zip code. Turning off the listing turns off the flow of customers who never knew your name. Restaurants who cut the listing on the strength of commission math alone frequently find that the orders don't move to the direct channel, they just stop.
+
+The reasonable posture is to keep the listing as an acquisition cost and treat your own channels as where the relationship goes afterward. Print your number on the bag. Answer it when it rings. That last part is the one most restaurants fail, and it's why the phone channel has to actually work before any of this arithmetic pays off.
+
+## The order path, and the step that gets skipped
+
+The agent takes the call, captures the order and a deliverable address, and writes a delivery ticket into your POS. A dispatch request goes to Uber. A courier accepts, collects, and the customer gets a tracking link.
+
+Interrogate the dispatch step specifically. Ask whether it fires automatically when a delivery ticket lands in your POS, or whether a human presses something. Both are workable; only one of them survives a Friday at 7:30 without supervision. If it's manual, it belongs on a written checklist with a name against it, not in the general awareness of whoever is nearest the tablet.
+
+## The address is where it goes wrong
+
+Marketplace addresses were typed into a map and validated. Phone addresses were spoken aloud, sometimes from a car, sometimes by someone ordering for a house they're visiting.
+
+- Capture the unit, suite or floor as its own confirmed field, because a courier at a large building with only a street number will call, wait, and then leave the bag somewhere.
+- Read the full address back including the street suffix and zip, and get an explicit yes. Oak Street and Oak Avenue exist in the same town more often than seems reasonable.
+- Ask for gate codes and entrance details at order time. They're free to collect on the call and expensive to chase during the delivery.
+- Check the address against your zone during the conversation and decline out-of-range orders then, not after payment. The rules are in [delivery zone rules for phone orders](/blog/delivery-zone-rules-phone-orders).
+
+## Courier supply is the risk you can't control
+
+The fee is predictable. Availability is not.
+
+On an ordinary Tuesday there are more drivers than deliveries and none of this matters. On a Friday in bad weather, during a big game, or on a holiday, courier supply tightens across the whole city at exactly the hour your volume peaks. Fees can move with demand, and acceptance can slow.
+
+Plan for it rather than discovering it. Decide at what point you stop promising delivery and start offering pickup instead, and give whoever answers the phone the authority to make that switch without asking. A caller told at minute one that delivery is running an hour and pickup is twenty minutes will usually take pickup. The same caller told nothing, then left waiting ninety minutes, is gone for good. Weather nights and big-game nights are the two that catch operators repeatedly, and they are both on a calendar you can see in advance.
+
+## When to keep it manual, and when to expand
+
+If you're doing four or five deliveries a night, don't build anything. Someone requests a courier by hand, and the effort of automating dispatch outweighs what it saves.
+
+The threshold to watch is when courier requests start colliding with your rush, which is precisely when they get forgotten. At that volume, automatic dispatch stops being a convenience and becomes the thing preventing a nightly mistake.
+
+The comparable service from the other side is covered in [dispatching DoorDash Drive from a phone order](/blog/doordash-drive-phone-orders), and if you're already juggling several delivery channels, get those consolidated before you add another one. X1 Voice plans start at $250 a month, and the [pricing page](/pricing) has the details, but the number that decides this is not ours. It's the one you get when you multiply your commission rate by a month of delivery revenue and compare it to a month of flat courier fees.
+
+Run that calculation this week on last month's actual numbers. If the gap is smaller than you expected, your ticket sizes are telling you to stay where you are. If it's large, the constraint was never the courier. It was how many of those calls you managed to answer.

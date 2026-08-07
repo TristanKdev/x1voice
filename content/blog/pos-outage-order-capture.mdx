@@ -1,0 +1,70 @@
+---
+title: "When your POS goes down, the phone is still ringing"
+description: "A POS outage does not stop inbound orders. How to keep capturing phone orders during downtime, what to write down, and how to reconcile once the system returns."
+publishedAt: "2026-05-04"
+faqs:
+  - question: "Can a voice agent still take orders if my POS is offline?"
+    answer: "Yes, if it has been configured for that case. The agent can keep the conversation going, capture the order in full, and hold it in a queue instead of writing it to a POS that is not accepting tickets. What it cannot do is confirm live item availability or apply promotions that live inside the POS, so the greeting and the confirmation both have to change during an outage."
+  - question: "Should the agent tell callers the POS is down?"
+    answer: "Not in those words. Callers do not care which system failed. Say what affects them: that the wait is longer than usual, that card payment has to happen at pickup, or that you are only taking a shortened menu right now. A caller who hears an accurate constraint will plan around it. A caller who hears nothing and shows up to a twenty-minute delay calls back angry."
+  - question: "What happens to held orders when the POS comes back?"
+    answer: "They have to be entered, and someone has to decide in what order. The safest pattern is to enter by promised pickup time rather than by the order the calls arrived in, because the kitchen has usually already been firing off paper tickets. Enter them, match each one against a paper ticket or a transcript, and mark the ones that never got made before reopening the line."
+  - question: "How long can this go on before I should just stop taking orders?"
+    answer: "Until your kitchen loses track, which is usually sooner than the phone does. The limit is not the phone system, it is how many un-ticketed orders your expo can hold in their head and on the rail. Pick a number in advance, something like twenty open orders or thirty minutes of backlog, and have a rule for what the agent says once you pass it."
+  - question: "Does this apply to an internet outage too?"
+    answer: "Partly. If your internet is down but your phone service runs over a separate cellular or PSTN path, a hosted voice agent may still answer while your on-premise POS terminals are isolated. If the whole site is dark, calls should forward to a cell phone with a defined script. Test which of those two situations you are actually in before you need to know."
+---
+
+Your card reader stops responding at 6:40 on a Friday. Terminals show a spinner. The kitchen printer goes quiet. Meanwhile there are four calls in the queue and none of the people on the other end know or care that anything happened.
+
+That gap, between the moment your ordering system stops working and the moment your phone stops ringing, is where most of the damage from an outage happens. The outage itself is usually short. The orders lost during it, and the mess left behind when it clears, tend to be much larger than the downtime would suggest.
+
+## The first ten minutes decide most of it
+
+An outage announces itself to your staff and to nobody else. Guests in the room can see something is wrong. Callers cannot.
+
+If your phone answering is a person, the default behavior in those minutes is improvisation. Someone starts writing orders on a guest check pad, someone else keeps telling callers to call back in twenty minutes, and a third person is on hold with support. None of that is coordinated, and the inconsistency is the part that hurts. Two callers who ordered the same thing five minutes apart get different promised times, different payment instructions, and different levels of warning.
+
+If your phone answering is a voice agent, the default behavior is whatever you configured. That is the entire advantage. It is not that software handles an outage better than a person, it is that software handles it the same way every time, and consistency during a bad twenty minutes is worth more than cleverness.
+
+## What actually breaks in the pipeline
+
+It helps to know which part failed, because the answers differ.
+
+A POS terminal outage on site means your registers are down but a cloud-connected agent may still be able to write orders through the API. A cloud POS outage means the write itself fails and every channel, including your own website, is down with it. A menu or integration failure sits between the two: the agent is up, the POS is up, and the connection between them has stopped syncing. That third case is the sneakiest, because everything looks healthy while orders quietly stop arriving. We go through the specific ways that sync layer fails in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes).
+
+Whichever it is, the question for your phone is the same. Can the agent still take a complete, accurate order and put it somewhere a human will find it?
+
+## Capture, hold, and say so
+
+The behavior worth configuring is a hold queue. The agent keeps taking calls, captures the whole order with modifiers and callback number, and stores it rather than attempting a write that will fail. Your staff sees those orders in a live view or as printed tickets from a separate path, and the kitchen works from those.
+
+Two things have to change during the hold, and they both have to change in the caller's ear.
+
+Payment is the first. If the POS is down, card capture usually is too. Move to pay-at-pickup and say it plainly during the confirmation, not as a mumbled aside at the end. Callers who expected to have paid already will otherwise show up without a wallet. The mechanics of taking money over the phone safely are unchanged during an outage and are covered in [collecting payment over the phone safely](/blog/collecting-payment-over-the-phone-safely).
+
+Promised time is the second. Your quoted times were computed against a system that is no longer telling you how deep the queue is. Pad them, and pad them honestly. A caller told thirty minutes who waits forty-five is a complaint. A caller told forty-five who waits forty is fine.
+
+## Paper is fine. Unstructured paper is not.
+
+Plenty of restaurants run an outage on paper and do it well. The ones that struggle are the ones whose paper has no structure, because reconciliation later depends entirely on what got written down in the moment.
+
+Whatever your fallback capture looks like, every held order needs four things: a name, a callback number, a promised time, and the full item list with modifiers. If you are running a voice agent, the transcript already contains all four and you can print it. If you are writing by hand at 7pm on a Friday, the callback number is the field that gets skipped, and it is the one you will want most when you discover an order that never got made.
+
+Number the tickets sequentially. It costs nothing and it is the only reliable way to notice a gap afterward.
+
+## The reconciliation nobody plans for
+
+When the POS comes back, the temptation is to declare the problem over and go back to service. It is not over. You now have a stack of orders that exist in the physical world and not in your records, and every one of them represents revenue that will not appear in your daily close unless someone enters it.
+
+Enter them in promised-time order rather than call order. Match each entry against its paper ticket or transcript and mark the ticket as it goes in. Anything unmatched at the end is either an order you made and did not record, which is a cash-versus-sales problem, or an order you recorded and did not make, which is a much worse phone call to receive.
+
+Then check the ones the agent held but never got fired. During a long outage a few orders always fall through, usually the ones taken right at the transition. Call those people. The recovery call is worth more to that customer's opinion of you than the meal was.
+
+## Write the policy before the outage
+
+The useful version of this is a one-page decision rule that lives where your managers can find it at 6:40 on a Friday. It answers three things. Who declares an outage and switches the agent into hold mode. What the agent says about payment and wait times while it is in that mode. And at what backlog you stop taking new orders entirely, with the exact wording for turning callers away without losing them.
+
+That last one deserves a real sentence rather than a hang-up. "Our system's down and we're only taking orders for pickup after eight tonight" keeps the customer. Silence does not.
+
+Test it on a slow Tuesday. Put the agent into outage mode for ten minutes, take four real orders through the hold path, and walk them through reconciliation. You will find out whether your fallback works before it matters, and you will find out how your team behaves under a rule they have practiced once. The broader question of what your vendor owes you during downtime is a contract question, and it belongs in [voice AI SLAs and uptime](/blog/voice-ai-slas-uptime-restaurants) alongside the general failure behavior in [what happens when voice AI fails](/blog/what-happens-when-voice-ai-fails).

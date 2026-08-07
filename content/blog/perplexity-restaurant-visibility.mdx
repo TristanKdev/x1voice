@@ -1,0 +1,76 @@
+---
+title: "What Perplexity cites for restaurant queries"
+description: "Perplexity shows its sources, which makes it the easiest place to see why your restaurant does or does not get mentioned. Run the query and read the citations."
+publishedAt: "2026-03-21"
+faqs:
+  - question: "Why does Perplexity matter if its audience is smaller than Google's?"
+    answer: "Because it shows its work. Every answer lists the pages it drew from, so you can see exactly which sources describe restaurants in your city and whether any of them mention you. That makes it a free diagnostic for the retrieval layer that other assistants use too, regardless of how many of your customers use it directly."
+  - question: "What kinds of pages usually get cited for a restaurant query?"
+    answer: "Local publications, review platforms, directory listings, neighborhood guides and forum threads, more often than individual restaurant websites. A restaurant's own site tends to get cited for specific factual questions about that restaurant rather than for open recommendation queries. Read the citation list on your own city's query and you will see the pattern within a minute."
+  - question: "Can I get my restaurant added as a source?"
+    answer: "There is no submission process and nothing to buy. Your site becomes citable the ordinary way, by existing as crawlable text that answers a question directly. The faster path for recommendation queries is usually getting mentioned on the third-party pages that already get cited, which is local press and listings work rather than anything technical."
+  - question: "Does blocking AI crawlers hurt my visibility?"
+    answer: "It can remove you from answers entirely, so check what your robots.txt is doing before assuming you are being ignored for content reasons. Some site builders and security tools block AI user agents by default, and operators often have no idea it was turned on. If you want to appear in cited answers, those agents need to reach your pages."
+  - question: "How often should I check this?"
+    answer: "Quarterly is enough for most single-location restaurants, and after any change that alters your facts: new hours, a menu overhaul, a second location, a rebrand. What you are checking is whether the answer about you is accurate, not whether you ranked. Errors point at a specific stale page you can go fix."
+---
+
+Ask Perplexity for the best ramen in your city and count the citations under the answer. It is usually somewhere between four and ten sources, listed by name, each one clickable. That list is the entire mechanism, visible, for free, without a tool or a subscription.
+
+No other assistant makes it that easy to see why you were or were not mentioned. Which is why it is worth a half hour of your time even if approximately none of your customers use it, because the pages Perplexity cites for your city are largely the same pages every other retrieval-based system is reading.
+
+## Read the citation list before you change anything
+
+Run three queries about your own market and screenshot the sources.
+
+Something broad, like the best of your cuisine in your city. Something with a qualifier, like where to get late-night food in your neighborhood, or a good spot for a group of ten. And something about your restaurant by name.
+
+Then look at what got cited. In most cities, the recommendation queries pull from a predictable mix: a local food publication or two, one or more review platforms, a directory, and often a forum thread where somebody asked the same question a year ago. Individual restaurant websites show up rarely on those queries, and regularly on the by-name query.
+
+That tells you the honest division of labor. Your own site is not going to win "best ramen." Your own site is what gets cited when someone has already heard of you and wants to know whether you are open on Mondays.
+
+## The by-name query is the one you can fix this week
+
+Ask about your restaurant by name and read the answer for mistakes rather than for flattery.
+
+Common findings, in roughly the order they show up: hours that are wrong on one day, usually the day you changed six months ago. A description of your food that matches your menu from two years back. A phone number from a previous system. A claim that you do or do not deliver that is the opposite of true. Occasionally an entire location you closed.
+
+Each of those has a source, and the source is right there in the citation list. Click through, find the page holding the stale fact, and correct it where it lives. Sometimes that is a directory you can edit in five minutes. Sometimes it is a review site profile you have never claimed. Sometimes it is an aggregator that pulled from another aggregator, and the fix is upstream of both.
+
+This work is unglamorous and it compounds, because the same stale record is feeding several different systems. The [listings and citations cleanup](/blog/citations-directories-restaurants) is the same job in more detail.
+
+## Why direct answers on your own pages get pulled
+
+For factual queries, a retrieval system is looking for a passage that answers the question, not a page that is generally about the topic.
+
+Which means the structure of your pages matters more than their length. A page that says "We deliver within three miles of the shop, Tuesday through Sunday, until 9:30pm" in a plain sentence is quotable. A page where that information is spread across a hero image, a form, and a footer note is not. Same facts, different retrievability.
+
+The practical version is to answer the question in the first sentence under a heading that asks it, then add the nuance. That structure is the whole of [answer-first content](/blog/answer-first-content-restaurant-website) and it is worth more than another thousand words about your sourcing philosophy.
+
+Reviews with text in them help here too, for a different reason. A star rating carries no language for a summarizer to quote, while a review that says the birria tacos were worth the wait gives a system something to say about you. You cannot manufacture that honestly, and you can ask satisfied regulars to write a sentence rather than just tap five stars. Marking up what you legitimately have with [review structured data](/blog/review-schema-restaurants) makes it easier to read.
+
+## Check that you are not blocking the crawlers by accident
+
+This one catches a surprising number of restaurants and it takes two minutes.
+
+Open your site's robots.txt in a browser and look at it. Some website builders, hosting plans, and security products now block AI user agents by default, sometimes as a feature announced in a changelog nobody read. If those directives are there and you did not put them there, you are invisible to the systems in question for reasons that have nothing to do with your content.
+
+A short list of things to verify while you are in there:
+
+- Your robots.txt does not disallow the crawlers you want reading you, and you know which choice you made on purpose.
+- Your menu page returns actual HTML rather than requiring JavaScript to render its contents.
+- Your hours, address and phone appear as text on at least one page, not only inside images.
+- Your site loads without an interstitial, an age gate, or a cookie wall that blocks a crawler before content.
+- Your important pages return a 200, including the old menu URL you replaced and never redirected.
+
+Blocking is a legitimate choice. Some operators do not want their content used this way, and that is theirs to decide. What is not defensible is being blocked without knowing it and then wondering why you never appear.
+
+## What a realistic result looks like
+
+Do not expect to appear in "best pizza in Chicago." That answer is assembled from publications with a decade of authority on the subject, and no amount of on-site work moves you into it.
+
+What you can realistically get is: accurate answers when someone asks about you by name, inclusion in narrower queries where the competition is thinner, such as a specific dish in a specific neighborhood, and being correctly described when a cited third-party page mentions you. That is a modest set of outcomes and it is the honest one.
+
+The broader version of this, across every assistant rather than one, is in [how restaurants show up in AI search](/blog/how-restaurants-show-up-in-ai-search), and the mechanics of recommendation queries specifically are in [appearing in ChatGPT recommendations](/blog/appear-in-chatgpt-restaurant-recommendations). Perplexity is just the one that lets you watch it happen.
+
+Set a calendar reminder for ninety days out. Run the same three queries, compare the citation lists to your screenshots, and see whether the pages that describe your market have changed and whether the facts about you have gotten better or worse. That comparison is the only measurement here that means anything, and it costs you twenty minutes a quarter.

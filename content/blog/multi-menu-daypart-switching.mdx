@@ -1,0 +1,91 @@
+---
+title: "Daypart menu switching on a single restaurant phone number"
+description: "One number, several menus, and a caller at 10:52 who wants breakfast. How daypart switching works on the phone and where the edge cases actually hurt."
+publishedAt: "2026-05-01"
+faqs:
+  - question: "Can one voice agent handle breakfast, lunch and dinner menus?"
+    answer: "Yes, on a single phone number. The agent reads menu availability from your POS, so items scheduled to breakfast hours are offerable during breakfast hours and not after. The configuration work is defining the boundaries and deciding what the agent does for a caller who wants the wrong menu for the time of day."
+  - question: "What happens if someone calls two minutes before the lunch menu starts?"
+    answer: "That depends on a policy you set, not on the technology. The common choice is to let the agent take the order and time the pickup for after the switch, since the caller is driving over anyway. The alternative is a hard cutoff. Either is defensible, but pick one deliberately rather than discovering what the default does."
+  - question: "Do I need separate phone numbers for different dayparts?"
+    answer: "No, and separate numbers make things worse. A second number has to be published, listed, and remembered, and callers will use whichever one they saved. One number with time-aware menu logic gives every caller the right menu without asking them to know your schedule."
+  - question: "How does the agent handle items that span dayparts?"
+    answer: "All-day items are simply available across every daypart in the POS, so the agent offers them at any hour. The items that need attention are the ones that change price or portion between dayparts, since those need to exist as distinct records rather than one record someone edits twice a day."
+  - question: "What is the most common daypart configuration mistake?"
+    answer: "Menu hours that do not match kitchen reality. The POS says breakfast runs until 11, the kitchen breaks down the griddle at 10:40, and the phone keeps selling eggs for twenty minutes. Set the menu boundary to when the kitchen actually stops making the food, not to when the sign says the daypart ends."
+---
+
+A diner running breakfast from 6 to 11, lunch from 11 to 4, and a late-night menu from 10pm to 2am has three separate menus and one phone number. Somewhere around 700 calls a week hit that number, and every one of them has to land on the right menu without the caller knowing anything about the schedule.
+
+That is the whole problem. Not switching the menu, which is a scheduling field in your POS. The caller who does not know the schedule, calls at the wrong time, and wants something you stopped making twelve minutes ago.
+
+## What the agent is actually reading
+
+A voice agent does not keep its own copy of your menu with its own hours. It reads availability from your POS, which is where the daypart schedule already lives. X1 Voice pulls this directly from [Square](/integrations/square), [Clover](/integrations/clover) and [OrderCounter](/integrations/ordercounter), and through Deliverect for Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros.
+
+The practical consequence is that daypart switching is a POS configuration exercise, not a phone configuration exercise. If your breakfast items are correctly scheduled in the POS, they are correctly scheduled on the phone. If they are not, no amount of phone-side setup fixes it.
+
+### Where that assumption breaks
+
+Two situations where the POS schedule is not the whole answer.
+
+The first is a restaurant that has never used POS menu scheduling because the daypart lived in staff knowledge. The server knew not to ring in pancakes at two in the afternoon, so nobody built the constraint into the system. That works until an ordering channel with no staff knowledge starts reading the menu. Building the schedule is a one-time job and it improves your online ordering at the same time.
+
+The second is a kitchen whose real cutoff differs from the printed one. This one is common enough to plan around, and it gets its own section below.
+
+## The greeting has to change with the menu
+
+The menu switching correctly is only half of it. What the agent says first should also match the hour.
+
+At 7am, a caller is almost certainly calling about breakfast, and a greeting that opens with your dinner positioning is noise. At 11:30pm, a caller wants to know if you are still open, and the greeting should answer that before they ask.
+
+Time-aware greetings are cheap to set up and they shorten calls, because the most common question of that hour gets answered before it is asked. [Custom greetings and brand voice](/blog/custom-greetings-brand-voice-ai) covers the general shape. Two things worth putting in a daypart greeting specifically:
+
+- The daypart you are currently in, said plainly, so the caller immediately knows whether they are calling in time for what they want.
+- The next transition if it is close, since a caller at 10:50 benefits from hearing that breakfast runs another ten minutes far more than they benefit from a tagline.
+
+Skip anything longer. A greeting that explains three menus and their hours takes fifteen seconds and callers stop listening at four.
+
+## The boundary is where the money and the arguments are
+
+Everything interesting about dayparts happens in the twenty minutes on either side of a switch.
+
+### The caller who is early
+
+Someone calls at 10:52 wanting a lunch item that goes live at 11. They are probably in a car, and by the time they arrive it will be 11:10.
+
+You have two reasonable policies. Take the order and time the pickup for after the switch, or tell them lunch starts at 11 and invite them to call back. The first captures the order and costs the kitchen nothing, since the food gets made after the switch anyway. The second is simpler and loses some of those callers.
+
+Most operators should take the order. The exception is a kitchen that physically cannot start lunch prep early, where an order accepted at 10:52 for an 11:10 pickup sets an expectation the line cannot hold. Know which one you are before you set the rule.
+
+### The caller who is late
+
+Someone calls at 11:06 wanting breakfast. This is the harder one, because the honest answer depends on what the griddle looks like right now, and the agent cannot see the griddle.
+
+A hard no is clean and slightly costly. A soft "let me check" means a handoff to a human during a shift change, which is exactly when nobody wants to answer the phone. [Human handoff and failover](/blog/human-handoff-failover-voice-ai) is the mechanism, but the policy question is yours: is a late breakfast order worth interrupting the line?
+
+For most operations the answer is no, and the right move is a clean, warm decline with an alternative offered. "Breakfast ended at eleven, but the breakfast burrito is on the all-day menu if you want that." Callers accept a no with a substitute far better than they accept a no by itself.
+
+### The overlap that should not exist
+
+Do not schedule two dayparts to overlap in the POS unless the kitchen genuinely runs both at once. Overlapping schedules produce a window where the agent can offer items from both menus, which sounds generous and produces tickets the line cannot fire together. If both menus really do run simultaneously for an hour, that is not an overlap, it is a fourth daypart, and it should be configured as one.
+
+## Set the boundary to the kitchen, not the sign
+
+The most common daypart problem has nothing to do with the phone.
+
+Your sign says breakfast until 11. Your kitchen breaks down the griddle around 10:40 so the line is ready for lunch service. For twenty minutes every day, every channel that reads your POS sells food that the kitchen is no longer positioned to make, and the phone is now one of those channels.
+
+Before this, that gap was absorbed by a person. The server or the counter staff knew, and quietly steered people off it. An ordering channel with no staff knowledge does not absorb anything. It sells exactly what the record says is sellable.
+
+So the fix is to make the record honest. Set the breakfast cutoff to 10:40 in the POS if 10:40 is when the griddle comes down. You are not shortening breakfast, you are writing down when breakfast actually ends. Your online ordering benefits from the same correction, and so does any third-party channel reading the same menu.
+
+The related version of this appears at the end of the night, when items sell out before close. That is a [real-time 86ing](/blog/real-time-86ing-menu-sync) problem rather than a scheduling one, but it produces identical symptoms and gets diagnosed as a daypart bug about half the time.
+
+## A test worth running once a season
+
+Pick a day and call your own number four times: mid-breakfast, five minutes before the lunch switch, five minutes after it, and once during your late-night window.
+
+Each time, order something that should not be available at that hour, and something that should. You are checking two things. That the agent refuses what it should refuse, and that the refusal sounds like a person declining rather than a system erroring out.
+
+Twelve minutes of your morning tells you whether your daypart configuration matches your kitchen. Most operators who run this find exactly one boundary that is wrong, usually the one nobody has looked at since the menu changed.

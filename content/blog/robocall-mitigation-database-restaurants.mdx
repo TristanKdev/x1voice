@@ -1,0 +1,75 @@
+---
+title: "The Robocall Mitigation Database and your restaurant"
+description: "The FCC database carriers must file in, why a restaurant almost certainly is not one, and the one question about it that is genuinely worth asking a vendor."
+publishedAt: "2026-02-24"
+faqs:
+  - question: "Does a restaurant have to register in the Robocall Mitigation Database?"
+    answer: "No. The filing obligation applies to voice service providers, meaning companies that originate, carry, or terminate phone calls for others. A restaurant is a customer of such a company, not one of them. Your carrier files; you do not. If anyone tells you your business must register or face penalties, they are describing an obligation you do not have."
+  - question: "What is the Robocall Mitigation Database for?"
+    answer: "It is where voice service providers certify to the FCC how they authenticate caller ID and what steps they take against illegal robocall traffic crossing their networks. Other providers are expected to check it before accepting traffic, which makes it a gatekeeping list. A provider missing from it or removed from it can find its calls refused by other carriers."
+  - question: "Should I ask my phone provider whether they are listed?"
+    answer: "Yes, and it takes one email. A provider's filing status is a reasonable due-diligence question, particularly for a small reseller or a newer platform handling your calls. The answer you want is a plain confirmation. Vagueness on a question with a public, factual answer tells you something about how the service is assembled underneath."
+  - question: "Someone emailed offering to register my restaurant. Should I pay?"
+    answer: "No. There is no registration for a restaurant to buy, so a fee for one buys nothing. Filings are made by carriers about their own networks and are free to submit. Treat unsolicited outreach about telecom compliance deadlines the way you would treat any invoice for a service you never ordered, and check with your actual provider instead."
+  - question: "Could a restaurant ever count as a voice service provider?"
+    answer: "Only in unusual arrangements, such as a group that resells phone service to franchisees or operates its own carrier-facing infrastructure. If your business only buys phone service and makes calls on it, you are on the customer side of the line. When in real doubt, a telecom attorney answers this in a single consultation rather than a subscription."
+---
+
+Almost no restaurant needs to be in the Robocall Mitigation Database. That is the whole answer, and it is worth stating up front because the question usually arrives attached to something alarming.
+
+The database exists. The FCC runs it. Failing to be in it has real consequences. None of those facts land on you, because every one of them lands on the company that carries your calls.
+
+## What the database is and who it binds
+
+The Robocall Mitigation Database is where voice service providers tell the FCC how they handle caller ID authentication and what they do about illegal robocall traffic moving across their networks. A provider files a certification describing its implementation, and that filing is public.
+
+The teeth are in what other carriers do with it. Providers are expected to check the database before accepting traffic from another provider. A company that has not filed, or that has been removed for a deficient filing, can find its calls simply refused downstream. That is a business-ending problem for a carrier, which is why the filings get taken seriously.
+
+The category the obligation attaches to is the operative part. A voice service provider originates, transmits, or terminates calls on behalf of others. That is a carrier, a VoIP company, a wholesale intermediary, a communications platform. Your restaurant buys phone service. It does not sell phone service. Different side of the transaction, different obligations.
+
+The framework this database enforces is the same caller ID authentication described in [STIR/SHAKEN attestation](/blog/stir-shaken-attestation-restaurants), and the two get conflated constantly. Attestation is a thing your carrier does to each of your calls. The database is a filing your carrier makes about its whole network. Neither is something you configure.
+
+### The narrow exception
+
+There is a version of a restaurant business that could cross the line, and it is rare enough to name and move past.
+
+A group that resells phone service to its franchisees, or that runs its own carrier-side infrastructure and hands traffic to other providers, is operating as something more than a customer. Multi-location operators occasionally build arrangements like this without thinking of them in telecom terms.
+
+If that describes you, the question is worth one conversation with a telecom attorney, not a subscription to a compliance service. If it does not describe you, and for the overwhelming majority of operators it does not, you can stop thinking about the database as an obligation entirely.
+
+## Why this reaches restaurant owners at all
+
+Two ways, mostly.
+
+The first is unsolicited outreach. Telecom rule changes produce a reliable wave of messages warning small businesses about deadlines and offering to handle a filing for a fee. There is no filing for a restaurant to buy, so the fee buys nothing. The tell is always the same: a compliance obligation you have never heard of, a deadline, and a payment link.
+
+The second is more legitimate. An operator adding a phone system, an answering service, or a voice agent starts reading about how calls are authenticated and lands on the database as part of the same body of rules. That is a reasonable path to end up here, and it leads to a question actually worth asking.
+
+A third path shows up in multi-location groups. Somebody at the corporate level reads about a filing deadline, assumes it applies to the operating entity, and sends a note to every general manager asking them to confirm compliance. Twenty managers then spend an afternoon looking for a registration that does not exist for them. If that memo lands in your inbox, the reply is one sentence about which side of the customer line the business sits on.
+
+## The question that is worth asking
+
+Turn the database from your obligation into your due diligence. When someone else will be carrying or placing calls on behalf of your restaurant, their filing status is a fair thing to check.
+
+Ask any provider or platform in the path of your phone calls:
+
+- Are you listed in the Robocall Mitigation Database, and if the calls are carried by an underlying provider rather than by you, which company is it and are they listed?
+- What attestation level will my outbound calls be signed at, and what do you need from me to sign them at full attestation?
+- If my number gets flagged as spam by a carrier's analytics, what is your process for getting that reviewed?
+- Who holds the number, you or an upstream partner, and what happens to it if I leave?
+
+The last one matters more than it looks. A number that turns out to be held by an upstream partner rather than by the vendor you signed with is a number you may have trouble taking with you, and your number is the part of your phone setup that took years to become valuable.
+
+None of those questions require you to understand telecom law. They require the vendor to answer clearly about publicly verifiable facts, and the quality of the answer is most of the signal. A platform that resells someone else's carrier and does not know whose it is has told you how thin the operation is, and that is the same instinct behind the checklist in [evaluating voice AI vendors](/blog/evaluating-voice-ai-vendors-restaurants).
+
+## What you actually control
+
+Everything on your side of the line is about behavior rather than filings.
+
+Your outbound calling pattern feeds the analytics engines that apply spam labels. A restaurant dialing a burst of unfamiliar numbers during a service outage looks, in shape, like a campaign, regardless of how legitimate the reason. Keeping callbacks tied to an actual customer transaction, and keeping your display name and attestation clean, is the entire lever. When a label does land, the remediation path is in [fixing a Spam Likely caller ID](/blog/fixing-spam-likely-caller-id-restaurant).
+
+Your inbound side is a separate nuisance with separate tools. The volume of junk calls hitting a restaurant line during service is a real operational cost, and it is addressed with filtering and screening rather than with anything in a federal database, which is the ground covered in [blocking spam robocalls on your line](/blog/blocking-spam-robocalls-restaurant-line).
+
+And your genuine compliance exposure on the phone is almost entirely elsewhere. If you record calls, consent law is a real obligation with real state-by-state variation, and it is the one telecom rule most likely to actually apply to a restaurant. That is laid out in [call recording consent laws](/blog/call-recording-consent-laws-restaurants).
+
+So the practical version is short. Do not file anything. Do not pay anyone to file anything. Send one email to whoever handles your phone calls asking whether they and their underlying carrier are listed, and file the reply. If a message arrives next quarter warning that your restaurant faces penalties for not registering, you will already know it is addressed to the wrong kind of business.

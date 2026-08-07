@@ -1,0 +1,66 @@
+---
+title: "Building your own realtime voice agent: what it takes"
+description: "A weekend prototype on a realtime speech API is easy. Getting one to take restaurant orders correctly at 7pm is a different project. Here is the gap."
+publishedAt: "2026-07-03"
+faqs:
+  - question: "Can I build a restaurant phone agent on a realtime speech API myself?"
+    answer: "Yes, and a working prototype takes a competent developer a weekend. The speech-to-speech part is the easy part now. The work that follows is telephony, POS order writing, live menu and availability sync, error handling when the caller is unclear, and the monitoring you need to catch a bad order before the guest does."
+  - question: "What does a self-built voice agent actually cost to run?"
+    answer: "Two meters run at once: the model provider charges by audio minute, and the telephony carrier charges separately per minute and per number. Both are usually small next to the engineering time. Budget the developer, not the API. A single person maintaining menu mappings and monitoring transcripts across a few locations is a real recurring cost."
+  - question: "What breaks first in a homemade voice agent?"
+    answer: "Menu accuracy. The model will confidently accept an item you do not sell, miss a modifier, or fail to notice something is 86'd, and the ticket still reaches the kitchen looking correct. Order errors surface at the pass, hours after the call, which makes them expensive to trace and easy to underestimate during a pilot."
+  - question: "When is building your own the right call?"
+    answer: "When you have in-house engineers already, an unusual ordering flow no vendor supports, and enough volume that a per-order fee exceeds a salary. Under roughly that threshold, the build is a side project competing with everything else your team owns, and side projects do not get patched on a Saturday night."
+---
+
+Someone on your team, or a relative who writes software, spends a Saturday wiring a realtime speech model to a phone number. By Sunday it answers, greets the caller by the restaurant name, and takes a pepperoni pizza order out loud. It sounds good. It sounds, honestly, about as good as anything you have been demoed.
+
+That prototype is real, and it is also roughly fifteen percent of the product. The speech-to-speech piece stopped being the hard part a while ago. Everything downstream of the conversation is where the months go.
+
+## The parts the prototype already solved
+
+Credit where it is due. A modern realtime speech API gives you low-latency turn-taking, interruption handling, and a voice that does not sound like a phone tree. Ten years ago that was the entire problem. Today a developer can reach a convincing demo quickly, which is exactly why so many operators get one shown to them by a friend.
+
+Latency in particular is mostly handled for you now, though not entirely. Response delay is the single most noticeable failure to a caller, and the difference between a local prototype and a production path through a carrier is significant. If you build, measure it under real telephony rather than on your laptop, using the standard we describe in [sub-second latency](/blog/sub-second-latency-voice-ai-restaurants).
+
+## Telephony is a separate product
+
+Your prototype probably used a test number. Production is different.
+
+You need a carrier relationship, a way to route your existing restaurant number without losing it, call recording that complies with the consent rules in your state, and a failover path for when your code is down. That last one matters more than it sounds: a vendor outage means calls forward to your host stand, and a homemade system with no failover means your phone rings into nothing.
+
+Porting is its own small project with its own rules, covered in [phone number porting](/blog/phone-number-porting-guide-restaurants). Recording consent varies by state and is not optional, which we go through in [call recording consent laws](/blog/call-recording-consent-laws-restaurants). Neither is difficult. Both take weeks of calendar time you did not plan for.
+
+## The POS integration is the actual project
+
+Here is where most self-builds stall out, and it has nothing to do with AI.
+
+A conversation that ends in a summary email is not an ordering system. Someone still retypes the order into the POS during a rush, which reintroduces the error and the labor you were trying to remove. To be useful, the agent has to write a ticket into your point of sale with the right items, the right modifiers, the right pricing, and the right routing to the kitchen.
+
+That means working against a specific POS API with its specific idea of what a modifier group is. Square, Clover and OrderCounter each model menus differently. Toast, Lightspeed and the rest are typically reached through a middleware layer, which adds its own contract, its own rate limits, and its own latency. Our writeup on [why integration depth matters](/blog/why-pos-integration-depth-matters-more-than-voice-quality) is about vendors, but the engineering is identical when you are the vendor.
+
+Then there is menu sync, which is not a one-time import. Prices change, items get 86'd mid-service, dayparts swap the menu underneath you. An agent working from a stale menu sells food you cannot make, and the failure lands on the expo line rather than in a log file. The failure modes are catalogued in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes).
+
+## What you own forever once it works
+
+Assume you get through all of that. The build is finished. Now you own the operations, and this is the part nobody budgets for:
+
+- Menu maintenance every time the kitchen changes an item, including modifier names that a model can distinguish by ear
+- Transcript review, because order errors do not announce themselves and only show up when you read calls against tickets
+- Model and API version changes, which arrive on the provider's schedule and can shift behavior without any change on your side
+- On-call coverage during service, since the failure window that matters is Friday 7pm and not Tuesday morning
+- Prompt and rule updates for every new promo, holiday hours change, or delivery radius adjustment
+
+None of these are hard. All of them are recurring, and they compete with the rest of your engineer's job. The pattern we see is a system that works well for three months, drifts as the menu changes, and quietly starts producing wrong tickets that nobody traces back to the phone.
+
+## Cost, honestly
+
+The API bill is rarely the deciding number. Speech models charge by audio minute and telephony charges separately per minute and per phone number, and for a restaurant's call volume both are modest. What costs money is a person.
+
+Do the arithmetic with your own figures. If a developer spends four to six weeks building and then a few hours a week maintaining, price those hours at what you actually pay for engineering and compare it against a vendor subscription. Our plans start at $250 per month per location and setup is typically under a day, so the comparison is usually not close for a single restaurant. At fifteen or twenty locations with an in-house team already on payroll, it gets closer, and that is the honest version of the [build versus buy math](/blog/building-vs-buying-restaurant-voice-ai).
+
+## When building is the right answer
+
+There is a real case for it. If you have engineers on staff, an ordering flow no vendor supports, and volume high enough that per-order pricing exceeds a salary, build it. You will end up with something shaped exactly like your operation, and you will not be waiting on someone else's roadmap.
+
+If you are a restaurant operator whose technical resource is a talented relative, do not. Not because the prototype is fake, but because the prototype is the part that gets finished. Ask the person offering to build it one question: who fixes it at 7:15 on a Friday when it starts confirming orders for a pizza you took off the menu last week. If the answer is anything other than a name and a phone number, you have found your reason.

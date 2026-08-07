@@ -1,0 +1,76 @@
+---
+title: "Voice AI for cheesesteak shops and the wit or witout call"
+description: "Cheesesteak orders are three words long and full of local shorthand. What a phone agent has to learn before it can take one without embarrassing you."
+publishedAt: "2026-01-12"
+faqs:
+  - question: "Will an AI phone agent understand \"whiz wit\"?"
+    answer: "Only if you teach it. No system arrives knowing regional shorthand, so the setup work is listing the phrases your callers actually use and mapping each to the right modifiers. Whiz wit maps to Cheez Whiz plus fried onions. Provolone witout maps to provolone with no onions. Once mapped, the agent handles them faster than a new hire does."
+  - question: "How many variants do we need to configure?"
+    answer: "Fewer than you would guess, usually twenty to forty phrases covering cheese choices, onion phrasing, bread sizing and the two or three sandwiches that get nicknamed. Pull them from a week of listening at the counter rather than from a list someone wrote from memory, because the phrases people actually say are narrower and stranger than the ones you would predict."
+  - question: "Can it handle late-night calls when we're the only place open?"
+    answer: "That is where it does the most work. Bar-close volume arrives in a compressed window with every caller talking over background noise, and one person on the line cannot answer four phones. An agent answers all of them, and it does not get short with a caller at 1:40 in the morning."
+  - question: "What about drunk or unclear callers?"
+    answer: "Expect a lower completion rate in that window and configure for a fast handoff rather than repeated clarification attempts. An agent that asks the same question three times makes things worse. Two attempts and then either a transfer or a polite close is the pattern that keeps late-night calls from turning into complaints."
+  - question: "Do we lose anything by taking the phone away from staff?"
+    answer: "You lose some regular-customer rapport, and it is fair to weigh that. What you get back is a line that never rings out at seven o'clock and a grill person who is not holding a phone against their shoulder. Most shops keep a path to a person for anyone who asks, which preserves the relationship where it matters."
+---
+
+"Yeah, lemme get two whiz wit, one provolone witout, and a large fry." Eleven seconds, four decisions, and a phrasing that means nothing to any system that has not been told what it means.
+
+That is the cheesesteak phone order, and it explains both why automation works well here and why a generic setup fails on day one. The orders are short and highly repetitive, which is the ideal case for a voice agent. They are also encoded in shorthand that exists nowhere in a standard menu file.
+
+## The shorthand is the entire setup problem
+
+Your menu says "Cheesesteak with Cheez Whiz and grilled onions." Nobody has ever ordered it that way on your phone.
+
+What they say is whiz wit, provolone witout, American wit, whiz wit no salt, and some fraction of them say "the usual" and expect that to land. Some callers say hoagie when they mean a cold sandwich and some say it when they mean any long roll. Half your regulars order by size in a way that only makes sense in your shop.
+
+None of this is difficult, but it has to be done deliberately. Before you turn anything on, spend a week writing down phrases at the counter and on the phone. Not what you think people say. What they actually say, verbatim, including the ones that annoy you.
+
+Then map each phrase to the exact modifier combination it should produce. Whiz wit maps to two modifier selections. Witout maps to a negative selection, which matters because some POS builds handle "no onions" as an explicit modifier and some as the absence of one, and the difference decides whether it prints on the ticket. The general method is in [training an agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu), and the naming problems it exposes are covered in [menu naming for voice clarity](/blog/menu-naming-for-voice-clarity).
+
+### Sizing is its own mess
+
+Ten inch, whole, half, long, short, and whatever your shop calls the big one. Callers mix these freely and often use a competitor's terminology because it is the one they learned.
+
+Pick one canonical size name per item in the POS, then list every alias that should resolve to it. Do not try to correct the caller's vocabulary during the call. An agent that says "we don't have a whole, did you mean a large" is doing the opposite of what a good counter person does, which is quietly translate and move on.
+
+### The nicknames matter more than the menu names
+
+If a sandwich on your board is called the Broad Street and half the neighborhood calls it the pizza steak, both need to work. Ask your longest-tenured employee for the nickname list. They will have one, and it will not be written down anywhere.
+
+## The rush is where the money is
+
+Cheesesteak shops have two peaks, and they are both bad for phones.
+
+The dinner block is dense and short. The late-night block, if you run one, is worse: bar close, a compressed window, every caller in a loud environment, and one or two people working. The phone rings and nothing happens, because everyone is at the grill.
+
+Those unanswered calls are pure loss. A caller who wanted a twenty dollar order at 1:15 in the morning has two other options at most and will take one of them. Unlike a walked customer, you have no record that it happened, which is why most operators underestimate the volume badly.
+
+An agent takes every one of those calls at once. Late-night configuration deserves separate thought from your dinner setup, and [running voice AI late night](/blog/voice-ai-for-late-night-restaurants) covers what changes: shorter menus, tighter handoff rules, and a lower tolerance for clarification loops with callers who are not at their most articulate.
+
+Set the late-night escalation rule deliberately. Two failed attempts to understand, then transfer or close politely. An agent grinding through a fifth clarification at 1:40 produces a call your shop gets blamed for.
+
+Pickup timing is the other thing that changes after ten o'clock. A grill running four steaks at once during a bar-close rush is not producing an order in eight minutes, and a phone agent quoting eight minutes because that is the daytime default will generate a lobby full of annoyed people. If your setup allows a different quote by daypart, set the late window longer and say the real number. Callers at that hour are more forgiving of a fifteen minute wait than of a broken promise.
+
+Worth deciding in advance: whether you keep taking phone orders during the last twenty minutes before close. Plenty of shops cut the phone off earlier than the door, because a ticket landing at 2:08 means somebody is scraping the grill twice. Whatever you choose, configure it, because otherwise the agent will happily take an order at 2:14 that nobody intends to make.
+
+## What to check in a demo
+
+Do not let a vendor drive the demo with a clean script. Call it yourself and order the way your customers do.
+
+- Say "two whiz wit" with no pause and see whether it comes back with two sandwiches and the right cheese, or with a question.
+- Correct yourself mid-order, the way real callers do: "make that three, no, two, and one witout."
+- Order with background noise playing, since that is the actual condition of a late-night call.
+
+If the agent handles those three and reads the order back accurately at the end, it will handle most of your volume. If it stumbles on the shorthand, ask specifically how the phrase mapping gets configured and who does it, because that is work someone has to do and you want to know whether it is you.
+
+Accent handling is worth probing too. Cheesesteak shops sit in neighborhoods with strong local speech patterns and often serve a mixed customer base, and speech recognition quality varies more across accents than most vendors will volunteer. [Accents and speech recognition accuracy](/blog/voice-ai-accent-speech-recognition-accuracy) explains what to test and what a fair answer sounds like.
+
+## Deciding whether it is worth it
+
+The arithmetic here is simpler than at most formats because your tickets are consistent. Say your average phone order runs twenty five to thirty five dollars. At a $250 monthly starting point, roughly eight to ten recovered orders a month covers it, which is two or three per week.
+
+Two or three per week is a low bar for any shop that goes to voicemail during dinner. It is not a low bar for a shop that answers nearly everything, and if that is you, keep your money and revisit when volume changes. The [pricing page](/pricing) has the plan structure.
+
+Before you decide either way, do one thing. Next Friday between 6 and 8, have someone tally every ring that nobody picked up. Then do it again at close. That tally, times your average ticket, is the whole business case, and it takes one evening to produce.

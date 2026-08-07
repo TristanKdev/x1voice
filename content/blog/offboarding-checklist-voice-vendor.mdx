@@ -1,0 +1,78 @@
+---
+title: "Leaving a voice AI vendor without losing your number"
+description: "Offboarding a voice vendor is mostly a phone number problem. What to get in writing, what to export, and the order to run the cutover so no call lands nowhere."
+publishedAt: "2026-07-25"
+faqs:
+  - question: "Who owns my restaurant's phone number if the vendor provisioned it?"
+    answer: "Whoever the carrier record lists as the account holder, which is often the vendor rather than you. If they bought the number on your behalf and put it under their carrier account, you can usually still port it out, but you need their cooperation and their account details. Check this before you sign anything, not on the way out."
+  - question: "How long does it take to port a restaurant phone number away from a vendor?"
+    answer: "Plan for one to four weeks for a US local number, driven mostly by how fast the losing carrier responds and whether your paperwork matches their records exactly. A single mismatched character in the service address will reject the request and restart the clock. Never schedule your cancellation date before the port completes."
+  - question: "What should I export before I cancel a voice AI contract?"
+    answer: "Call recordings and transcripts, your configured menu and prompt set, escalation and routing rules, customer phone numbers collected through the system, and at least twelve months of call reporting. Ask for it in a machine-readable format. Many contracts delete your data on a fixed schedule after termination, sometimes within 30 days."
+  - question: "Can I run the old and new voice systems at the same time?"
+    answer: "Yes, and you should. Point a temporary number at the new system and test it against real conditions for a week or two while the old one still answers your published number. Only then move the published number over. Running both briefly costs one extra month of fees and removes almost all of the cutover risk."
+  - question: "What contract terms make leaving a voice vendor expensive?"
+    answer: "Auto-renewal with a narrow notice window, termination fees tied to the remaining term, data-export charges, and any clause that makes number release conditional on your account being paid in full through the renewal period. Read the termination section before the pricing section. The pricing is what you pay to stay; those clauses are what you pay to leave."
+---
+
+A restaurant gives its voice vendor the required 30 days' notice on the first of the month. On the thirty-first, the vendor shuts off the account. The number they had been answering was one the vendor provisioned two years earlier, sitting under the vendor's carrier account, and it goes dark with everything else. The restaurant's number on Google, on delivery menus, on the sign outside, and on two thousand takeout receipts now rings nowhere.
+
+That's the failure mode. Almost everything else about leaving a voice vendor is recoverable with a phone call and a couple of late nights. The number is not.
+
+## Start by finding out whose name is on the number
+
+There are three situations, and they have very different exit costs.
+
+You brought your own number and the vendor forwards or SIP-routes to it. This is the good case. Your carrier account is yours, the number never left, and offboarding means turning off a forward. You can do it in an afternoon.
+
+You brought your own number and ported it to the vendor. You still have a right to port it back, but the process runs through their carrier and their timeline, and you need their account number, the exact service address on file, and often a PIN. Get all three in writing while the relationship is still friendly.
+
+The vendor bought the number for you. Now the account holder on the carrier record is the vendor, and porting out requires their active cooperation. In practice most vendors will release it, because refusing is both bad business and hard to defend. But "most" is doing real work in that sentence, and once you've given notice they hold every card. The mechanics of getting a number moved are covered in the [phone number porting guide](/blog/phone-number-porting-guide-restaurants).
+
+Find your case today, even if you have no intention of leaving. It takes one email and it determines how much of the rest of this matters.
+
+## Get your data out before you give notice, not after
+
+Termination clauses commonly give the vendor the right to delete your data on a schedule after the contract ends. Thirty days is typical. Some are shorter. Once you've sent the notice email, you are working against that clock with a vendor who no longer has a reason to prioritize your ticket.
+
+So pull everything first:
+
+- Call recordings and transcripts for as far back as you can get, since these are your record of what was actually said to customers and the only way to settle a dispute months later
+- The configured menu, prompts, and answers the agent was using, which represent real hours of tuning you'd rather not redo from scratch
+- Escalation rules, transfer targets, and hours logic, written down in plain language even if the export format is proprietary
+- Customer phone numbers and any order history captured through the phone channel, which is your list and not theirs
+- At least twelve months of call reporting so your new baseline has something to be compared against
+
+Ask for a machine-readable format. A PDF of a dashboard is not an export. If the contract is silent on export format, ask before you cancel, because after you cancel the answer tends to become "we can provide a summary." Who owns what is worth understanding in general, and [voice AI data ownership and privacy](/blog/voice-ai-data-ownership-privacy) goes through the questions to ask up front.
+
+## Run both systems before you move the published number
+
+The temptation is to flip everything on a Monday and be done. Don't.
+
+Provision a temporary number, point it at the new system, and run it for a week or two against real conditions. Call it yourself during a Friday rush. Have a manager call with a messy order and a substitution. Have someone with an accent call, someone calling from a car, someone who asks a question the menu doesn't answer. Order something and check that it landed in the POS correctly, with the right modifiers, on the right ticket.
+
+That parallel period costs you one extra month of fees on one system. It buys you the ability to discover that the new agent doesn't know your Sunday hours before your actual customers discover it. Our [designing a voice AI pilot](/blog/designing-a-voice-ai-pilot) piece covers what to actually test during that window.
+
+Only when the temporary number behaves do you move the published one.
+
+## The order the cutover actually goes in
+
+Sequence matters more than speed here. Submit the port request or forwarding change first and let it complete. Confirm live calls are landing on the new system. Then, and only then, send the cancellation notice to the old vendor.
+
+Operators reverse this constantly, usually because the notice period is long and they want the clock started. The problem is that a notice period and a port timeline are independent, and a port that hits a paperwork rejection can easily run past a 30-day notice. If the account closes first, the number closes with it, and recovering a released number ranges from difficult to impossible.
+
+If the contract's notice window forces your hand, negotiate a short paid extension in writing rather than letting the two dates collide. A vendor will almost always take another month's fee over an ugly exit.
+
+## Everything downstream of the number
+
+Once calls are landing correctly, there is a tail of small updates that nobody assigns to anyone. Your Google Business Profile, Yelp, your website header and footer, delivery platform listings, printed menus, the recorded greeting on your voicemail box, the number on your receipts, and the door sign. If you're keeping the same published number, none of this changes, which is the strongest argument for keeping it.
+
+Also check the pieces that talk to the phone system rather than the number: POS integration credentials, SMS confirmations, and any call-tracking numbers you were routing through for attribution. Those break quietly. You find out three weeks later when someone asks why online order confirmations stopped going out.
+
+## What to read in your contract before you're ready to leave
+
+Auto-renewal terms with a narrow notice window are the most common trap. A clause requiring written notice between 60 and 30 days before renewal means a single missed calendar reminder costs you another year. Put that date in a shared calendar the day you sign, not in your head.
+
+Look for termination fees tied to the unexpired term, charges for data export, and any language conditioning number release on the account being current through the renewal period. Any of these is negotiable at signing and none of them is negotiable at the exit. [Voice AI contract terms to avoid](/blog/voice-ai-contract-terms-to-avoid) lists the ones worth pushing back on, and [switching voice AI vendors](/blog/switching-voice-ai-vendors) covers the wider migration.
+
+The test to run this week has nothing to do with leaving: call your current vendor and ask them to confirm, in writing, which carrier account your published number sits under and what their standard number-release process is. A vendor who answers that in a day is one you can leave whenever you want, which is exactly why you probably won't need to.

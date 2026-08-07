@@ -1,0 +1,72 @@
+---
+title: "Slang.ai alternatives: what changes once you add ordering"
+description: "A reservation-and-FAQ agent answers a different call than an ordering agent. What to check before you switch, and what to keep from the setup you already have."
+publishedAt: "2026-06-24"
+faqs:
+  - question: "Why would a restaurant switch away from a reservation-first voice agent?"
+    answer: "Usually because the call mix changed. An agent built around bookings, hours, and directions handles those calls well, but a growing takeout or catering business means callers now want to place orders. Taking an order requires live menu data, modifier logic, and a write into the POS, which is a different technical problem from booking a table."
+  - question: "Can one agent handle both reservations and phone orders?"
+    answer: "Yes, and most operators with both channels should want that, because splitting them across two numbers or two vendors pushes the routing problem onto the caller. The thing to verify is that neither side is an afterthought. Ask to hear the same agent take a modified order and then book a six-top, in the same demo."
+  - question: "What should I ask before replacing a voice vendor I already pay for?"
+    answer: "Ask what happens to your phone number, your recordings, and your configuration on the way out. Number portability and call-forwarding setup are the parts that create downtime if handled badly. Also ask the new vendor to reproduce your current agent's FAQ answers before cutover, so regulars do not notice the change."
+  - question: "Does switching voice vendors mean changing my phone number?"
+    answer: "It should not. Most setups route your existing published number to the agent through call forwarding, so the number on your menus, your signage, and your Google listing stays the same. Confirm this explicitly in writing before signing anything, because a vendor that requires a new published number is asking you to absorb a real marketing cost."
+  - question: "How long does a switch usually take?"
+    answer: "The configuration work is the slow part, not the cutover. Menu verification, hours, delivery rules, and escalation policy take most of the effort. With X1 Voice, setup is typically under 24 hours once that information is in hand, and the actual forwarding change takes minutes and can be reversed just as fast."
+---
+
+A host stand on a Saturday at 6:40. The agent on the phone has answered three calls in ten minutes: one asking whether you take walk-ins, one booking a table for Thursday, one asking for a large pepperoni with light sauce and half mushroom. It handled the first two cleanly. The third it took a message about.
+
+That third call is the whole reason operators start looking at alternatives to a reservation-first agent. Nothing broke. The product did what it was built to do. Your call mix just moved past it.
+
+## Booking a table and taking an order are different problems
+
+A reservation is a request against a calendar. The agent needs your availability, your party-size rules, and a place to write a name and a time. The data is small and it changes slowly.
+
+An order is a request against a live menu. The agent needs every item, every modifier, every price, every combination that is legal and every one that is not, plus what is 86'd right now, plus your delivery radius and minimum, plus whatever the tax and fee rules are. Then it has to write a ticket into your POS in a format the kitchen can read.
+
+Vendors that started with reservations and FAQ handling built for the first problem. Some have added ordering since. The question is not whether ordering appears on the feature page, it is how deep the POS integration goes. We wrote about why [integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality) because this is where the difference actually shows up, and it never shows up in a scripted demo.
+
+## The tell is what happens with a modifier
+
+In an evaluation call, do not ask the agent to order a cheeseburger. Ask it for a cheeseburger with no onion, add avocado, cooked medium, and substitute the fries for a side salad, and then change your mind about the avocado halfway through.
+
+Three things can happen. The agent handles it and the ticket lands correctly in the POS with every modifier attached. The agent handles the conversation but writes a free-text note that your kitchen printer renders as a wall of text. Or the agent takes a message for someone to call back.
+
+Only the first one is ordering. The second is a transcription service with a good voice, and it will generate remakes. The rest of the script we would run in an evaluation call is the same one we use for any vendor: a substitution, a reversal, an allergen question, and a caller who asks for a person.
+
+## What is worth keeping from the agent you already have
+
+Switching does not mean starting from zero, and it is a mistake to treat it that way.
+
+You have already done the hard, boring work: writing the FAQ answers, deciding your hours logic, deciding when a caller should reach a person. That configuration is portable in the sense that the decisions transfer even if the file format does not. Export or screenshot every custom answer your current agent gives before you cancel anything. Regulars notice when the answer to "do you have parking" changes.
+
+You have also settled a set of small policy questions that are annoying to relitigate. Where a call goes at 11pm. Whether the agent quotes a wait time or declines to. What it says when someone asks about a food allergy, which should almost always be a handoff rather than an answer. Write those down as they stand today, before you are in a demo and someone asks you to decide them again from scratch under time pressure.
+
+You have also probably learned what your callers actually ask. That call log is more valuable than any vendor's default template. If your current provider gives you transcripts, pull a month of them and read a sample. Whatever question shows up twenty times should be a configured answer on day one of the new setup, not something you discover in week three.
+
+## The five things to confirm before you sign
+
+- Your published number stays yours, routed by forwarding rather than replaced, and you keep control of it if the relationship ends.
+- The POS write is structured, item by item and modifier by modifier, not a note field the kitchen has to interpret.
+- Availability syncs both ways, so an 86'd item stops being offered on the phone without anyone remembering to update a second menu.
+- Escalation is a policy you set, not a fixed behavior, and you can see the reason each call was handed off.
+- Pricing is legible enough that you can predict next month's bill from this month's call volume.
+
+That last one deserves more attention than it usually gets. Per-minute billing and per-call billing produce very different invoices for the same restaurant depending on how chatty your callers are, which we walk through in [AI phone answering pricing models](/blog/ai-phone-answering-pricing-models). X1 Voice plans start at $250/month, and [pricing](/pricing) is published rather than quoted.
+
+## Running both vendors for two weeks is cheaper than guessing
+
+The safest way to change providers is not to change providers on a Tuesday. It is to point a second number at the new agent, place your own calls into it for two weeks, and compare the tickets against what your current setup produces.
+
+Call it during your actual dinner rush with actual background noise. Call it with the accent range your real customers have, which is the specific failure mode covered in [accents and speech recognition accuracy](/blog/voice-ai-accent-speech-recognition-accuracy). Have your least patient employee call it and interrupt it mid-sentence.
+
+Then look at the POS. Not the vendor dashboard, the POS. Count the tickets that were exactly right, the ones that were close, and the ones that would have gone out wrong. That count is the entire decision, and you can produce it in an afternoon of deliberate calling. The mechanics of a clean handover are in [switching voice AI vendors](/blog/switching-voice-ai-vendors).
+
+## When staying put is the right answer
+
+If your restaurant takes reservations and almost no phone orders, a reservation-first agent is the correct tool and switching would be busywork. A fine-dining room with a twelve-item prix fixe and no takeout does not need modifier logic, and paying for it buys nothing.
+
+The threshold is roughly this: once the number of order calls in a week exceeds the number of booking calls, the product you need is an ordering product that also books tables, rather than a booking product that also takes messages. If you are near the line, the distinction between [reservations and ordering](/blog/voice-ai-reservations-vs-ordering) as primary use cases is worth reading before you shop.
+
+Pull last month's call log and sort it into two piles, orders and everything else. If the order pile is thin, close the tab and go do something else with your afternoon. If it is thick and most of those calls ended in a callback message, you already know what the calls were worth.

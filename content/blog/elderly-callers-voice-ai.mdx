@@ -1,0 +1,82 @@
+---
+title: "Older callers and AI phone answering: design for transfer"
+description: "Older customers call more, order more predictably, and abandon faster when a system fights them. The fix is a fast, obvious route to a person on the first ask."
+publishedAt: "2026-07-14"
+faqs:
+  - question: "Do older callers struggle with AI phone agents?"
+    answer: "Some do, and the difficulty is usually mechanical rather than generational attitude. Slower speech that gets cut off mid-sentence, hearing loss that makes a fast synthetic voice hard to follow, and landline audio quality all cause failures. Adjusting turn-taking sensitivity and speaking pace fixes more of this than any change to the wording."
+  - question: "Should the agent just transfer any caller who sounds older?"
+    answer: "No, and it should not be trying to guess age at all. Guessing produces wrong calls in both directions and is a bad look if a customer ever learns you did it. Trigger on behavior instead: repeated confusion, a request for a person, or two failed attempts at the same item. Those signals are accurate and defensible."
+  - question: "What greeting works best for older callers?"
+    answer: "A short one that names the restaurant, says a person is available, and then stops. Long menus of options and lengthy explanations of what the system can do both increase abandonment. Roughly eight to twelve seconds before the caller gets to speak is the ceiling worth aiming for on any phone greeting."
+  - question: "Do we lose these customers if we automate the phone?"
+    answer: "Only if the system has no exit. The customers who leave are the ones who could not reach a person and gave up, not the ones who spoke to software once. Keep a staffed transfer path during open hours and a clear voicemail policy when nobody can pick up, and the retention risk drops close to nothing."
+  - question: "Is this a bigger issue for some restaurant types?"
+    answer: "Yes. Diners, breakfast spots, seafood houses, and anywhere with a long-standing neighborhood clientele see a higher share of older callers and more phone volume overall. Delivery-heavy operations with a younger customer base see less of it. Check your own call log before assuming which one you are."
+---
+
+A woman calls a diner at 4:40 on a Tuesday for the same order she has placed most weeks for six years. She speaks slowly, pauses in the middle of naming the soup because she is deciding, and the agent takes the pause as the end of her turn and asks her to confirm an order she has not finished giving. She repeats herself. The agent repeats itself. Ninety seconds later she hangs up and drives over.
+
+That call did not fail because she is eighty-one. It failed because of a turn-taking setting.
+
+## The failures are mechanical, not attitudinal
+
+The assumption behind most of the worry here is that older customers dislike talking to machines. Some do. But the calls that actually break do so for reasons you can list and fix.
+
+Slower speech with mid-sentence pauses trips endpoint detection, so the agent starts talking before the caller is done. Hearing loss makes a fast synthetic voice hard to follow, and the caller responds by asking the agent to repeat, which lengthens the call and raises the chance of another failure. Landline and cordless-handset audio is narrower than a modern mobile connection, which costs you recognition accuracy on exactly the calls that already have the least margin. And callers who grew up on phone trees will press zero out of habit, so the agent needs to treat that as a request for a person rather than ignore it.
+
+None of those are opinions about technology. They are audio and timing problems with settings attached. The endpointing side of it repays the most attention, and the mechanics are in [interruption handling and endpointing](/blog/interruption-handling-endpointing-voice-agents).
+
+## Slow the agent down before you change anything else
+
+Two adjustments do most of the work.
+
+The first is speaking pace. A voice tuned for briskness sounds efficient in a demo and sounds like a fast talker on a bad line. Slowing the agent's delivery slightly costs a few seconds per call and buys back far more in reduced repetition.
+
+The second is patience at the end of a caller's turn. Whatever silence threshold the system uses to decide someone has finished speaking, the default is usually tuned for a confident mobile caller in a quiet room. Lengthening it means the agent occasionally waits when it did not need to, which callers barely notice, instead of interrupting, which they notice immediately.
+
+Both settings trade a little speed for a lot of successful calls. That trade is worth making outright rather than trying to detect who needs it, because a slightly slower agent is fine for everyone and a slightly faster one is not.
+
+## Do not try to guess who is old
+
+It is technically possible to make an agent branch on voice characteristics. Do not.
+
+The classification will be wrong often, in both directions, and every wrong call produces a worse experience than no branching at all. It is also the kind of thing that reads badly if a customer or a local reporter ever hears about it, and you would have a hard time explaining why the restaurant was sorting callers by perceived age.
+
+Branch on behavior instead, which is both more accurate and easier to defend. Repeated confusion, a stated request for a person, a pressed zero, two failed attempts at the same menu item, or a long silence after a prompt are all observable signals with nothing inferred. Route on those and you catch the callers who need help regardless of who they are, including the person calling from a car wash parking lot with a bad connection.
+
+## The transfer is the whole design
+
+Everything else is secondary to this. A caller who knows a person is one sentence away tolerates almost anything. A caller who feels trapped does not.
+
+That means the greeting mentions a person, the agent transfers on the first clear request without arguing, and there is a defined destination for that transfer during every hour you are open. The last part is where most operators quietly fail: the rule exists, but during the dinner rush the transfer rings a handset nobody picks up, which is worse than not offering it. Decide what happens in that case before it happens, whether that is a second phone, a callback promise the agent states out loud, or an explicit voicemail with a stated response time. The full set of options is in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+Set the escalation triggers to include:
+
+- Any request for a person, a manager, or an owner, on the first ask
+- Two consecutive failures to understand the same item
+- Anything involving a complaint, a refund, or a previous order that went wrong
+- Any caller who has been on the line past a threshold you pick, usually around three minutes for a simple order
+- Any pressed digit, since a caller reaching for the keypad is a caller who has given up on speaking
+
+Those rules will send some calls to staff that the agent could have handled. That is the correct direction to be wrong in.
+
+## What the greeting should and should not do
+
+Short. Name the restaurant, say a person is available, stop.
+
+The instinct to explain the system in the greeting is understandable and it backfires. Every extra second before the caller can speak raises abandonment, and the callers most likely to hang up during a long greeting are the ones you were trying to accommodate. Twelve seconds is a generous ceiling. Eight is better.
+
+Say plainly that they have reached an automated line. Older callers in particular resent the discovery more than the fact, and the ones who feel misled are the ones who mention it at the counter. The wording that works, and the reasons the honest version outperforms the coy one, are in [custom greetings and brand voice](/blog/custom-greetings-brand-voice-ai) and [telling customers you use AI](/blog/telling-customers-you-use-ai).
+
+## Where this matters most, and where it barely matters
+
+Look at your own call log before deciding how much of this applies to you.
+
+Neighborhood diners, breakfast rooms, seafood houses, and long-established family restaurants carry both a higher share of older callers and a higher share of business arriving by phone in the first place, which makes the phone experience disproportionately important. The specifics for that kind of room are in [voice AI for diners](/blog/voice-ai-for-diners). Operations serving residential communities have their own version of this, covered in [voice AI for senior living dining](/blog/voice-ai-for-senior-living-dining).
+
+A delivery-forward operation whose orders arrive mostly through apps has a different problem and can spend less time here.
+
+There is also a case for not automating at all. If your phone rings twelve times a day, the owner picks up every one, and a third of those calls are people who want to talk to the owner, an agent takes away something the customer values and returns very little. Say that out loud rather than talking yourself into a rollout.
+
+For everyone else, the practical test is simple. Have someone on your staff who has a parent or grandparent in the neighborhood ask them to place a real order on your line, then read the transcript together. You will learn more from that one call than from a month of dashboard review, and whatever you find will point at a pace setting, a silence threshold, or a transfer rule rather than at the idea itself. General caller sentiment, and what complaints actually cluster around, is covered in [whether customers hate AI answering](/blog/will-customers-hate-ai-answering).

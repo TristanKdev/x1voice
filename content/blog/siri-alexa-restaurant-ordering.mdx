@@ -1,0 +1,78 @@
+---
+title: "What Siri and Alexa can really do with your restaurant line"
+description: "Assistants rarely place restaurant orders. They find a listing and dial. What that means for your listing data, your phone line, and a caller who has no screen."
+publishedAt: "2026-04-02"
+faqs:
+  - question: "Can Siri or Alexa place a food order at my restaurant?"
+    answer: "Not directly with your restaurant in the general case. Assistants resolve a spoken request to a business listing and then offer a call or a handoff to a partner app. Where ordering does happen end to end, it runs through a delivery marketplace or a chain's own connected account, not through a direct line into an independent restaurant's point of sale."
+  - question: "Should I build a voice app or skill for my restaurant?"
+    answer: "Almost certainly not. A single-location restaurant will get close to zero discovery from a custom assistant skill, because nobody knows to ask for it by name. The same effort spent on accurate listing data and reliable call answering reaches the people who are already asking for food near them, which is the query that actually happens."
+  - question: "How do assistants decide which restaurant to name?"
+    answer: "They query a local index built from business listings, maps data, and review signals, then rank on relevance to the request, distance from the user, and general prominence. Your website's design has no bearing on it. Your categories, hours, service attributes, and review volume do, which is why listing hygiene beats site redesigns for this particular problem."
+  - question: "Why does an assistant-driven call feel different from a normal one?"
+    answer: "Because the caller usually has no screen in front of them. Someone driving or cooking who asked out loud for a nearby restaurant has not seen your menu, your prices, or your hours. Every question they would have answered by scrolling gets asked on the call instead, which makes the first thirty seconds of that conversation unusually load-bearing."
+  - question: "Do assistant referrals show up in my analytics?"
+    answer: "Rarely in any usable form. A tap-to-call from an assistant or maps result often leaves no web session at all, so it never appears in site analytics. The only reliable trace is in your phone records: inbound call volume by hour, and how many of those calls were answered. Treat call logs as the measurement surface here, not your website reporting."
+---
+
+The common assumption is that people are saying "order me a large pepperoni from Tony's" into their phones and that restaurants are missing out by not being connected to it. That is not what is happening, and building for it would be a waste of a month.
+
+What people actually say is closer to "pizza near me" or "call Tony's." The assistant resolves that to a listing and offers to dial. The order gets placed by a human talking to whoever answers your phone. Assistants are a discovery layer that terminates in a phone call, and treating them as an ordering channel misreads where the work is.
+
+## What assistants reliably do
+
+Three things, consistently, across platforms and devices.
+
+They resolve a spoken business name or a category-plus-location query to an entry in a local index. They read back a small number of facts from that entry, usually the name, the rating, whether it is open, and sometimes the distance. And they offer an action, which for a restaurant is nearly always a call or directions.
+
+Everything beyond those three is uneven. Menu reading, wait times, ordering, and reservations exist in some combinations of platform, region, and partner integration, and not in others, and the combinations shift. Building an operating assumption on top of a capability that varies by device generation is a bad trade for an independent restaurant.
+
+## Where end-to-end ordering does exist
+
+It exists through intermediaries. Delivery marketplaces have built assistant integrations, and large chains have connected their own accounts so that a linked user can reorder a saved order by voice. Both paths require an account relationship that predates the request.
+
+Neither is available to you as an independent operator by filling in a form. And the marketplace path carries the commission structure you already know about, which is the arithmetic in [voice AI versus delivery app commissions](/blog/voice-ai-vs-delivery-app-commissions). Routing your voice-assistant demand through a marketplace to capture it is a decision to pay a percentage for a call that would otherwise have come to you free.
+
+## The car is the real use case
+
+Most of this traffic is not somebody standing in a kitchen talking to a speaker. It is somebody driving.
+
+That shapes everything. A driver is deciding within about a minute, has both hands occupied, cannot look at anything, and is comparing you to whatever else the assistant named. They are also, quite often, twenty minutes from wanting food rather than four hours from it, which makes them the highest-intent caller you will get all day.
+
+They are also the least forgiving. A phone tree that opens with four options loses them. A ring that goes eight cycles loses them. The next name on the assistant's list is one sentence away.
+
+## Your caller arrives with no screen
+
+This is the operational consequence worth internalizing. An assistant-referred caller has skipped every surface you built to answer questions.
+
+They have not seen your hours. They have not seen your menu, so they will ask whether you have something and how much it is. They have not seen your delivery zone, so they will ask if you come to their street. They have not seen your parking note or your closing time.
+
+A staff member handling this well is fine. A staff member handling it during a seating rush is a person taking four minutes away from guests standing in front of them, which is the trade examined in [reducing host stand phone interruptions](/blog/reduce-host-stand-phone-interruptions). And a caller who gets "can you hold" on a question that takes six seconds to answer is a caller who hangs up and asks their assistant again.
+
+The category of question here is narrow and repetitive: hours, location, parking, whether you deliver, whether an item is available. Those are the same questions covered in [answering hours and parking questions](/blog/voice-ai-answering-faqs-hours-parking), and they are the easiest possible thing to get consistently right.
+
+There is a second consequence worth planning for. A caller who has not seen prices will ask about them, and they will ask about a whole order rather than one item. "How much for two large pies and a side of wings" is a question that requires somebody to know current pricing, including whatever promotion you started on Tuesday. Staff who guess low create an argument at pickup. Staff who put the caller on hold to check lose them. Whatever answers your phone needs current pricing in front of it, which in practice means the menu the phone works from and the menu in your point of sale have to be the same object rather than two copies that drift. That is the failure mode in [menu sync](/blog/menu-sync-deep-dive-voice-ai).
+
+## What actually improves your odds of being named
+
+Your listing data, and specifically the parts assistants read aloud.
+
+Categories, because a query for a cuisine matches on category before anything else. Hours, because "is it open" is often the deciding fact and a wrong holiday entry costs you the whole day. Service attributes, because delivery and takeout intent queries filter on them. Reviews, because rating is one of the two numbers an assistant will speak.
+
+Consistency across platforms matters more than depth on any one of them, since Siri, Alexa, and Google each draw from different underlying sources. That is the [entity, rather than string, problem](/blog/entity-seo-restaurant-brand), and it is why the same restaurant can be perfect on Google and invisible in a car running a different system.
+
+Structured data on your own site helps the models that read the open web, though it is not what Siri is reading when it names a nearby restaurant. [LocalBusiness schema](/blog/localbusiness-schema-restaurants) is worth doing for the broader answer-engine surface, and is not the lever for assistant call referrals specifically.
+
+## Do not build a skill
+
+Custom assistant apps and skills for a single restaurant get essentially no usage. Discovery requires the user to know your invocation name and choose to say it, which is a behavior nobody has. The restaurants that make skills work are national brands whose name people already say out loud.
+
+If someone quotes you for one, ask them how a customer will learn it exists. The answer is usually a sign in your window, which is a lot of engineering to replace a sign.
+
+## The ten-minute test
+
+Take your phone outside, open the assistant, and say your cuisine plus "near me" from three points: your parking lot, half a mile away, and two miles away. Note whether you are named and where.
+
+Then call your own number from the car, at dinner time, and ask two questions a stranger would ask. Time how long until you have both answers.
+
+The first test tells you whether the discovery layer knows you exist. The second tells you whether that knowledge is worth anything. Most operators find the first is fine and the second is not, and the second is the one that costs money every single night it goes unfixed.

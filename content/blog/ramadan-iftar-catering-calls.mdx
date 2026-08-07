@@ -1,0 +1,78 @@
+---
+title: "Ramadan iftar calls: every order wants the same minute"
+description: "Iftar pickups cluster on a sunset time that shifts every night for a month. How to take the orders, quote the times, and keep the kitchen from stacking up."
+publishedAt: "2026-05-11"
+faqs:
+  - question: "Why do iftar orders all want the same pickup time?"
+    answer: "The fast breaks at sunset, so a household eating together wants food on the table at that minute, not ten minutes after. Unlike a dinner rush that spreads across two hours, iftar demand collapses into a window of roughly thirty to forty-five minutes. Every order in that window is competing for the same oven space and the same counter."
+  - question: "How should pickup times be quoted during Ramadan?"
+    answer: "Quote a specific clock time rather than a duration, and stagger the times deliberately. Telling someone forty minutes is useless if their real constraint is a fixed sunset; telling them their order will be ready at 7:35 lets them plan the drive. Staggering pickups in ten-minute bands across the hour before sunset is the only way most kitchens get through the volume."
+  - question: "Does the sunset time change enough to matter over the month?"
+    answer: "Yes. Sunset shifts by roughly a minute or two per day, which adds up to about half an hour across the month. A restaurant that sets one iftar cutoff on day one and never revisits it will be quoting a time that's meaningfully wrong by the last week. Check the local sunset time weekly and update whatever your phone quotes."
+  - question: "What language questions come up on these calls?"
+    answer: "Callers may be more comfortable in Arabic, Urdu, Bengali, Somali, Turkish, or another language depending on the neighborhood, and large family orders are exactly the calls where a misunderstanding is expensive. If your staff already covers the languages your customers speak, that's an advantage worth advertising. If not, a phone system that handles more than English is the practical alternative."
+  - question: "Is Eid a bigger day than the nights leading up to it?"
+    answer: "It's a different kind of day. Eid is a daytime celebration with large catering orders booked in advance, closer to a graduation party than to an iftar pickup. The last ten nights of the month are usually the heaviest for nightly volume, and Eid is the heaviest for single large orders. They need separate planning."
+---
+
+Sunset moves about a minute a day. Over a month of Ramadan that's roughly half an hour of drift, and every one of those nights your phone is being asked for food that has to be ready at a specific clock time your customers are watching more closely than you are.
+
+That's the whole operational problem in one sentence. Iftar is not a dinner rush. A dinner rush spreads across two hours and the kitchen absorbs it. Iftar demand collapses into thirty to forty-five minutes, ends abruptly, and repeats the next night at a slightly different time.
+
+## The compression, not the volume, is what breaks
+
+A halal grill or a Mediterranean kitchen in a neighborhood with a mosque might do a strong but manageable number of covers during Ramadan. The number isn't the problem.
+
+The problem is that at 6:50 on a night when sunset is 7:12, twelve people call inside eleven minutes, and every one of them wants their order in hand before the call to prayer. The phone rings out for half of them. The kitchen gets eight tickets stamped within four minutes of each other, all with the same effective due time.
+
+If you've read [order throttling and kitchen capacity](/blog/order-throttling-kitchen-capacity-phone), this is the textbook case for it. Your line has a throughput ceiling per ten minutes, and iftar is the one service where demand does not politely spread itself around that ceiling.
+
+## Stagger the times or the kitchen decides for you
+
+The single change that helps most is quoting specific clock times and deliberately spreading them.
+
+Instead of taking twenty orders all due at sunset, take them due at 6:35, 6:45, 6:55, 7:05. Say the time out loud on the call. Most families are perfectly happy to pick up twenty-five minutes early, because the alternative is standing in a line of eight people at 7:10 while their food sits under a heat lamp anyway.
+
+What doesn't work is quoting a duration. "About forty minutes" means nothing to someone whose constraint is a fixed minute. They will translate it into their own arithmetic, get it slightly wrong, and arrive at the worst possible moment. This is where taking orders hours ahead with a named pickup slot earns its keep, which is what [order-ahead scheduling](/blog/voice-ai-order-ahead-scheduling) is for.
+
+The orders placed in the afternoon are the ones that save your evening. Push for them.
+
+There's a holding question underneath this that's worth answering honestly. Food picked up at 6:35 for a 7:12 sunset sits for half an hour, and some of your menu survives that and some doesn't. Fried items and anything with a crust are the usual casualties. If a dish genuinely can't be held, say so and steer the early pickups toward what can, because a family that gets soggy food at the moment they break their fast will remember it for the rest of the month.
+
+## Update the times as the month moves
+
+Whatever your phone tells callers about iftar timing needs to change during the month, because sunset does.
+
+Set a weekly habit: check the local sunset time, and adjust your pickup bands and your cutoff accordingly. If you're running a voice agent or an automated greeting, that's a scheduled override rather than a permanent setting, handled the same way as any other dated hours change in [holiday hours overrides](/blog/holiday-hours-overrides-voice-ai).
+
+The same applies to suhoor if you serve it. A restaurant that opens before dawn for a few hours has a genuinely unusual schedule, and the most common failure is that the phone still says the normal hours. Callers checking at 3:40 in the morning whether you're open get a wrong answer and don't call again.
+
+## The orders are large and family-shaped
+
+Iftar orders skew big. A household with grandparents, cousins, and neighbors is ordering for twelve, not for two, and the ticket reflects it.
+
+Large orders taken under time pressure by a person who is also making food are where accuracy goes. The things that go wrong are predictable:
+
+- Quantities heard as sizes, so eight chicken plates becomes a large chicken plate.
+- Bread, rice, and sides counted separately from mains and then forgotten.
+- Dietary notes taken verbally and not written on the ticket.
+- The name and callback number skipped because the caller was in a hurry.
+- The pickup time agreed to but never repeated back, so nobody actually confirmed it.
+
+Reading the order back by count, out loud, costs fifteen seconds and prevents most of these. It feels slow at 6:55. It is much faster than remaking a family's dinner after sunset has already passed.
+
+## Language is a real variable, not a courtesy
+
+Depending on your neighborhood, a meaningful share of these calls may come from people more comfortable in Arabic, Urdu, Bengali, Somali, or Turkish than in English.
+
+These are also the highest-value, most detail-heavy calls of your night. A language gap on a two-item order is a minor annoyance; a language gap on a fourteen-item family order with a fixed pickup time is a ruined evening for both sides.
+
+If your staff covers the languages your customers actually speak, that's a genuine asset and you should say so on your voicemail and your listings. If they don't, and the calls are coming in anyway, that's the concrete case for [multilingual phone ordering](/blog/multilingual-ai-phone-ordering-restaurants). The category-specific version of the whole picture is in [voice AI for halal restaurants](/blog/voice-ai-for-halal-restaurants).
+
+## Plan the last ten nights and Eid separately
+
+Volume tends to build through the month, and the final ten nights are usually the heaviest for nightly iftar pickups. Staff for those specifically rather than averaging across the month, and order your proteins on the same curve. A prep plan built on the second week's numbers will leave you short on the twenty-seventh night, which is usually the busiest of all.
+
+Eid is a different animal. It's a daytime celebration, the orders are large catering bookings placed days ahead, and the qualifying conversation looks nothing like a nightly pickup. Treat those calls the way you'd treat any large advance order: date, headcount, service time, pickup or delivery, deposit. Squeezing an Eid catering conversation into the 6:55 rush is a reliable way to lose it.
+
+One test worth running before the month starts: call your own restaurant at 6:52 on a busy night and time how long it takes to get a person and place a six-item order with a named pickup time. Whatever that number is, multiply it by the twelve people calling in the same window. If the arithmetic says you can't serve them all, you already know what the month is going to look like, and you still have time to change it.

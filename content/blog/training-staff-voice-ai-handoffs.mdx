@@ -1,0 +1,80 @@
+---
+title: "Training staff to take a handoff without making callers repeat"
+description: "A transferred call that starts with \"how can I help you?\" wastes the ninety seconds the caller already spent. Here's how to train the pickup so it doesn't."
+publishedAt: "2026-04-09"
+faqs:
+  - question: "What should a staff member say when they pick up a transferred call?"
+    answer: "Confirm what you already know before asking anything. Something like \"Hi, this is Dana, I have a large order for Saturday at six, is that right?\" tells the caller their previous ninety seconds counted. If the transfer screen is empty, say so honestly and ask one narrow question rather than a general one."
+  - question: "Does everyone on the floor need this training?"
+    answer: "No. Pick two or three people per shift who can take a transfer and train them properly, rather than training everyone shallowly. Transfers are usually complaints, catering, and edge cases, which are the calls that need judgment. A line cook who happens to be near the phone is not the right destination for a refund conversation."
+  - question: "How long does it take to train someone on this?"
+    answer: "About fifteen minutes of explanation and then three or four practice calls. The concept is simple; the habit is not. Most staff default to the standard greeting because that is what a ringing phone has meant for their entire working life, and it takes a few real transfers before the new open becomes automatic."
+  - question: "What if the handoff screen shows nothing?"
+    answer: "Say plainly that you were just brought into the call and ask one specific question, such as whether they were calling about an order or a reservation. That is faster than a generic opener and it does not pretend to know something you do not. An empty screen on a call that should have context is also a defect worth reporting."
+  - question: "How do I tell whether handoffs are actually going well?"
+    answer: "Listen to five transferred calls a week and time the gap between pickup and the first useful sentence. If your staff are re-collecting information the caller already gave, the gap will be twenty or thirty seconds. Under ten seconds means the context is arriving and the person is using it."
+---
+
+A caller spends ninety seconds with your voice agent. They give their name, they say it is a catering order for eighteen people on Saturday, they mention one person in the group cannot have dairy. The agent decides this is not a call it should finish and transfers it to the counter.
+
+Your closer picks up and says: "Thanks for calling, how can I help you?"
+
+Everything the caller just did was thrown away. From their side, the automated system was a delay before reaching the person they wanted in the first place, which is exactly the impression you were paying to avoid. The handoff is not a technical problem here. The transfer worked. The training did not.
+
+## The pickup is the part nobody rehearses
+
+Most restaurants get the routing right and stop there. The escalation rules are set, the ring group is configured, the call lands on the correct phone. Then a human answers it with the greeting they have used since they were sixteen, because a ringing phone has always meant a stranger with an unknown request.
+
+That reflex is the whole problem, and it is not a discipline issue. Nobody told them the call arriving on this phone is different from the call arriving on that phone. You have to say it out loud, and then you have to make it easy to do the right thing.
+
+## What should be on the screen before they speak
+
+Whoever takes a transfer needs three things visible at the moment they pick up: what the caller was trying to do, what the agent already collected, and why it escalated. That last one matters more than operators expect. "Caller asked for a manager" and "agent could not find the item they asked for" call for completely different first sentences.
+
+If your setup does not put that in front of the person answering, the training can only go so far, and you should fix the tooling before you fix the humans. The escalation policy and what travels with the call are configuration decisions, not habits. [Human handoff and failover](/blog/human-handoff-failover-voice-ai) covers how to set those rules up so context actually moves.
+
+## The two sentences that fix most of it
+
+Teach one pattern and drill it until it is automatic. Confirm, then ask a narrow question.
+
+"Hi, this is Dana. I have a catering order for eighteen on Saturday and a dairy allergy noted. What did you want to change?"
+
+That opener does three jobs at once. It proves the earlier part of the call was recorded, it gives the caller a chance to correct anything the agent got wrong, and it moves straight to the reason a person is now involved. Compare it to the generic greeting, which forces the caller to start over and often to start over annoyed.
+
+The narrow question is the part people skip. "How can I help?" after a confirmation is better than nothing, but it still asks the caller to explain a situation your screen is already showing you.
+
+## When the screen is empty, say so
+
+Sometimes context does not arrive. The call came in on a rollover line, the transfer was manual, the system dropped the detail. Do not fake it.
+
+"Hi, this is Dana, I just came onto the call so I have not got your details in front of me. Were you calling about an order or about a reservation?"
+
+Honest and narrow beats confident and vague. Callers forgive a system that admits a gap. They do not forgive being asked their phone number for the second time in one call by someone who sounds like they were not listening.
+
+Separately, log it. If context is missing on calls where it should be present, that is a defect with a fix, not a fact of life. Treat those the way you would treat a printer that skips tickets.
+
+## Not everyone should be a transfer destination
+
+Decide who takes transfers and stop routing them to whoever is closest. Two or three people per shift, chosen for judgment rather than availability, is the right shape for most rooms.
+
+The reason is what transfers actually are. Once a voice agent is running, the simple stuff stays with the agent, and what reaches a human is complaints, refunds, large parties, catering with unusual constraints, and callers who are already frustrated. Those are the highest-stakes conversations you have on the phone, and they arrive pre-selected for difficulty. Handing them to the newest server because they were standing near the terminal is a decision you would not make deliberately.
+
+This also changes who your host is. If the phone was previously an interruption at the podium, and now the podium only gets the hard calls, the host stand job description has shifted. That reshaping is worth doing on purpose rather than letting it happen, and it interacts with [reducing host stand phone interruptions](/blog/reduce-host-stand-phone-interruptions) in ways that surprise people the first month.
+
+## Practice before it is real
+
+Fifteen minutes of explaining and then three practice calls beats an hour of explaining. Have a manager call in from a cell phone, work through the agent, ask for a person, and let the staff member take the pickup cold. Do it once for a complaint, once for a catering question, once with the context screen deliberately blank.
+
+The first attempt will almost always start with the old greeting. That is expected and it is why you practice. By the third one, most people have it.
+
+Run the same three when you hire, alongside whatever else is in your [phone standard operating procedure](/blog/phone-sop-restaurant-staff). It costs less than the first mishandled complaint.
+
+## Reading the ones that went badly
+
+Once a week, pull five transferred calls and listen to the first thirty seconds only. You are timing one thing: how long between pickup and the first sentence that moves the call forward.
+
+Under ten seconds means the context arrived and the person used it. Twenty or thirty seconds means somebody is re-collecting a name and a phone number that were already in the system. That gap is the entire measure of whether this training took, and it is far more useful than a satisfaction score.
+
+While you are in there, sort the transfers by reason. Escalations that happened by design, like a complaint reaching a manager, are the system working. Escalations that happened because the agent could not understand a menu item are a menu problem, and they show up in your [containment numbers](/blog/what-is-call-containment) as noise. Both matter, and they need different fixes from different people.
+
+If you only do one thing from this: write the confirm-then-narrow-question opener on a card, tape it next to the phone that receives transfers, and check next week whether anyone is using it. If the card is still pristine and the greeting has not changed, the problem is not that your staff did not understand. It is that nobody was watching, and phone habits do not change unless someone is.

@@ -1,0 +1,75 @@
+---
+title: "Where Chowly fits alongside voice ordering, and where it doesn't"
+description: "Chowly pulls third-party orders into your POS. A phone order is a different shape of order, and the two systems coexist better than they combine."
+publishedAt: "2026-05-31"
+faqs:
+  - question: "Does X1 Voice send orders through Chowly?"
+    answer: "No. X1 Voice connects directly to Square, Clover and OrderCounter, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect. Chowly is not part of that path. If you already run Chowly for marketplace orders, it keeps doing that job while phone orders take the direct or Deliverect route into the same POS."
+  - question: "Can I keep Chowly and add a voice agent?"
+    answer: "Yes, and most operators in this position do. Both systems end up writing tickets into the same POS from different sources, which is fine. The condition is that one of them owns your menu. If Chowly's channel menus and your phone channel's menu are maintained separately, they drift, and drift is what produces an order you cannot make."
+  - question: "What does Chowly actually do?"
+    answer: "It takes orders that originate on third-party ordering channels and injects them into the restaurant's POS, so staff aren't re-keying tickets off a tablet. Its historical center of gravity is independents and small groups on common POS platforms, with menu management for the connected channels layered on top of that core job."
+  - question: "Will two integrations into one POS cause duplicate tickets?"
+    answer: "They shouldn't, because each writes distinct orders from distinct sources. What does go wrong is reporting. If your POS tags orders by source inconsistently, phone orders and marketplace orders can land in the same bucket and you lose the ability to see which channel is growing. Fix the order-source tagging before you need the report."
+  - question: "How do I decide whether to consolidate onto one platform?"
+    answer: "Count menus, not subscriptions. If your menu currently lives in more than one place and a price change requires more than one login, you are paying for that in errors whether or not it shows on an invoice. Consolidating is worth doing when the number of channels is growing; it is rarely urgent for a single location with two channels."
+---
+
+A 60-seat pizzeria on Toast, already running Chowly to pull marketplace orders into the POS, asks a reasonable question when they start looking at phone automation: can the voice agent go through Chowly too, since that connection already exists?
+
+The short answer is no, and the longer answer is that it doesn't matter, because the two systems were never going to be doing the same job.
+
+## What Chowly is already doing in your restaurant
+
+Chowly's core function is order injection from third-party channels. An order placed on a delivery marketplace arrives at your POS as a ticket, rather than as a tablet chirping on the counter for someone to re-key. It also manages the menus those channels display, which is the same pattern every piece of ordering middleware follows.
+
+Its natural customer has historically been the independent and the small group on a mainstream POS, which is precisely the restaurant that couldn't get a direct build from anyone and was living with a tablet stack. If that describes how you got here, Chowly is probably solving a real problem for you and there's no reason to rip it out.
+
+The value it delivers is mostly re-keying you no longer do. A busy Friday with three marketplaces used to mean someone standing at the counter transcribing tickets, transposing a modifier every twentieth order, and adding forty seconds of delay to each one. Removing that is worth real money in labor and in remakes, and it's the reason this category of software exists at all.
+
+What it doesn't change is who took the order. Every channel it connects is a screen the customer used. Nobody spoke to anyone.
+
+## A phone order is a different shape of order
+
+Marketplace orders arrive complete. The customer chose items in a structured interface, the modifiers were constrained by the menu, the address was validated, payment cleared, and the whole thing is a data object before it reaches any middleware. The job is translation.
+
+A phone order arrives as a conversation. Someone says "large pepperoni, light sauce, and can you do half the meatballs on one side." Nothing is structured yet. The work of turning that into a valid ticket happens on the voice side, against a live menu, before any middleware sees it. By the time an order is handed off for injection, the hard part is over.
+
+### Where the two genuinely overlap
+
+Both need the same three things from your POS: an item mapping that matches what your kitchen builds, a modifier structure with the right required-versus-optional rules, and current availability. Whatever cleanup you did for one benefits the other. If your Chowly menu is clean, most of the work for a phone channel is already done.
+
+### Where they don't
+
+Availability urgency is different. A marketplace order for an 86'd item is an annoyance you resolve by refunding. A phone caller ordering an 86'd item is a live conversation where the agent either knows or looks foolish, and the caller is on the line waiting. That raises the bar on sync freshness considerably, which is the subject of [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync).
+
+Address capture is different too. Marketplace addresses come validated. A phone address is spoken, often over kitchen noise, sometimes with an apartment number the caller mumbles. That's a voice-side problem with voice-side answers, covered in [delivery zone rules for phone orders](/blog/delivery-zone-rules-phone-orders).
+
+## Running both without creating a second menu
+
+The coexistence works. Chowly writes marketplace tickets into your POS; X1 Voice writes phone tickets into the same POS through its direct connection on Square, Clover and OrderCounter, or through Deliverect on the rest. Two roads, one destination.
+
+What sinks operators is menu governance, so handle these four things before go-live and the rest tends to take care of itself.
+
+- Name one person who owns menu changes across every channel, and make the POS the single source of truth that everything else copies from.
+- Add "update all ordering channels" to whatever checklist you already use when a price moves or an item is added, and treat a missed update as a defect rather than an oversight.
+- Check that your POS tags order source distinctly for each path, so a month from now you can tell phone revenue from marketplace revenue without guessing.
+- Run a deliberate 86 test on both channels the same afternoon and time how long each takes to reflect it. The slower one sets your real-world exposure.
+
+## The reporting problem nobody notices until quarter end
+
+Two integrations writing into one POS is fine operationally and messy analytically.
+
+Marketplace tickets arrive tagged however your Chowly configuration tags them. Phone tickets arrive tagged however the voice integration sets them. If both collapse into a generic "online" or "third party" bucket, you lose the one number that justifies the phone channel: how much revenue arrives by phone, and whether it's growing.
+
+Sort this before launch, because retroactive tagging is not a thing. Ask your POS reseller how order source gets recorded, place one test order down each path, and pull a report the same afternoon to see whether they separate. Ten minutes of work that saves you an argument with yourself in three months. The wider measurement set is in [the restaurant phone analytics guide](/blog/restaurant-phone-analytics-guide).
+
+The other thing to verify is your POS version, not your POS brand. Integration support is version-specific on most platforms, and a location running an older on-premise build can be perfectly functional day to day while being invisible to a connection that assumes a newer release. Confirm the version number with whoever maintains the system, and confirm it per location if you have more than one, because groups drift apart on this quietly and nobody finds out until an install stalls.
+
+## The question to ask before adding anything
+
+Not "which middleware is better." Ask what a price change costs you today, measured in logins.
+
+If changing the price of a large pie means one edit in the POS and everything downstream follows, your setup is healthy and adding a phone channel is a small, contained project. If it means three logins and a note to yourself, adding a fourth channel makes an existing problem worse, and the fix is menu consolidation before automation. That sequencing argument runs through [why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality) and, on the third-party side, [consolidating third-party delivery phone orders](/blog/consolidating-third-party-delivery-phone-orders).
+
+Do that count this week. It takes ten minutes, it tells you more than any vendor comparison, and if the number is above one, you now know what the first project is.

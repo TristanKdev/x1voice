@@ -1,0 +1,82 @@
+---
+title: "Making a voice agent sound like your restaurant"
+description: "Brand voice on the phone is mostly word choice and policy answers, not the voice actor. Here is what to write down so your agent sounds like your staff."
+publishedAt: "2026-07-15"
+faqs:
+  - question: "What actually makes a voice agent sound like a specific restaurant?"
+    answer: "Word choice and policy answers, far more than the voice itself. If the agent calls a size a large when your staff and your menu both say sixteen-inch, every caller hears something slightly off. Getting the internal vocabulary right, and answering the ten questions you get daily the way your manager would, does more for consistency than any voice sample."
+  - question: "Should the agent try to imitate a specific employee?"
+    answer: "No. Copying a real person's speech patterns sets an expectation the system cannot hold, and it gets uncomfortable if that person leaves. Aim for a competent, unremarkable member of your staff instead. The goal is that nobody comments on the phone at all, which is the same bar your best host clears."
+  - question: "How long does it take to write a brand voice down?"
+    answer: "Most operators can do the useful ninety percent in about an hour. Sit with your menu and list the words you use for sizes, modifiers, and combos, then write one-sentence answers to the questions you field every day. That document is the raw material for configuration and it stays useful long after setup."
+  - question: "Does brand voice matter if most calls are simple takeout orders?"
+    answer: "It matters less, but it still shows up at the edges. A simple order goes fine either way. The moments that read as off-brand are the ones outside the script: a substitution request, a question about an allergy, a caller who wants to know if you are busy. Those are where a generic answering script sounds like an answering service."
+  - question: "How often does the voice configuration need updating?"
+    answer: "Any time your menu names change and roughly once a quarter otherwise. New items arrive with new vocabulary, and seasonal specials introduce words the agent has never had to say. A short quarterly pass reading five call transcripts will surface most of the drift before customers do."
+---
+
+A caller asks for a large pepperoni. Your agent says, "Got it, one large pepperoni." Your menu board, your staff, and your POS all call it a sixteen-inch. The order lands correctly and nothing breaks, but the caller has just been told by your restaurant that you use a word you do not use.
+
+That is what brand voice on the phone actually is. Not warmth, not a specific timbre, not personality. It is whether the vocabulary and the answers match the ones a customer would get standing at your counter.
+
+Operators tend to arrive at this backwards. They spend an afternoon listening to voice samples and five minutes on the answers, when the ratio should be the reverse.
+
+## The vocabulary layer matters more than the voice
+
+Every restaurant has an internal dialect. Sizes, combos, half orders, the shorthand for the thing on the specials board, the way you describe spice levels. Staff learn it in a week and never think about it again.
+
+An agent configured from a generic template will not have it. It will translate your sixteen-inch to a large, your build-your-own to a custom, your family bundle to a large order. Each of those is individually harmless and collectively makes the phone sound like it belongs to a different business.
+
+The fix is a list. Open your menu and write down every word you use that a stranger would guess differently, along with the guesses. If your menu item is written one way and spoken another, note both, because callers will say the spoken one and the agent has to recognize it. That exercise overlaps almost entirely with the work in [menu naming for voice clarity](/blog/menu-naming-for-voice-clarity), and doing it once serves both purposes.
+
+## Policy answers are the second half
+
+The other place a caller hears your restaurant, or fails to, is the non-order question. Can I substitute the fries. Do you do half and half. Is the soup vegetarian today. How long for pickup right now.
+
+Your staff answer these consistently because they have heard them five hundred times. If your configuration does not include those answers, the agent gives a safe non-answer or transfers, and the caller experiences a system rather than a restaurant.
+
+Write out the ten questions you field most often and one sentence for each, in the words your manager would use. Not a polished marketing sentence. The actual one. "We can swap fries for a side salad, that's a dollar." Those sentences are the highest-value thing you will hand a vendor during setup, and they are more useful than any amount of voice tuning. Our [onboarding checklist](/blog/ai-phone-onboarding-checklist-restaurants) has the full list of what to gather.
+
+## Register: how much the agent says
+
+The third variable is length. A fast-casual counter answers in four words. A steakhouse host answers in a full sentence with a greeting attached. Both are correct for their room, and the wrong one is noticeable in the first two seconds of a call.
+
+Longer is not friendlier on the phone. A caller who dialed during their commute to order a pickup pizza is not charmed by a paragraph. If your volume is order-heavy and your callers are regulars, err short. If you take reservations and event inquiries, a slightly fuller register fits, because those callers expect a conversation anyway.
+
+You can test this without guessing. Call your own restaurant during a rush and time how long your staff take to get to "what can I get you." Then match it.
+
+## What not to do
+
+Do not model the agent on a specific employee. It is tempting when you have a beloved host, and it creates two problems: the system will not hold the imitation under any pressure, and the resemblance becomes strange the moment that person is no longer there.
+
+Do not write jokes into it. Humor that lands in person, with a face and timing, reads as a script on the phone, and it reads as a script every single call. The second time a regular hears the same quip they know exactly what they are talking to.
+
+Do not overcorrect toward formality. Most restaurants that try to sound professional on the phone end up sounding like an insurance company, which is a further distance from their actual counter than the generic default was.
+
+## The things worth writing down
+
+If you want a working document, these are the pieces that pay off:
+
+- Every size, combo, and modifier name in both the written and the spoken form, with the common wrong guesses listed next to each one.
+- The greeting, word for word, including whether you say the restaurant name first or last, and whether you name the neighborhood.
+- One-sentence answers to your ten most common non-order questions, written the way a manager says them out loud.
+- Your substitution and modification policy, including the ones you refuse, so the agent declines the same things your staff decline.
+- The handoff line: what the agent says at the moment it transfers a caller to a person, since that sentence is the one people remember when something went wrong.
+
+That last one gets skipped constantly and it is the sentence under the most pressure. A caller asking for a human is usually already mildly annoyed. Getting them a clean, quick, non-defensive handoff matters more than anything the agent said before it. The routing side of that is covered in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+## Consistency across locations is a different problem
+
+If you run more than one store, you now have a choice you did not have with human staff: whether every location sounds identical.
+
+Identical is easy to configure and usually right for brand-forward concepts. It is wrong when your locations genuinely differ, which happens more than owners admit. Different menus, different neighborhoods, different hours, sometimes different clientele. A downtown store and a suburban store with the same script will each be slightly wrong in opposite directions.
+
+The middle path is a shared vocabulary and greeting with per-store overrides for menu, hours, and local specifics. That is how [per-store overrides for menu and hours](/blog/per-store-overrides-menu-hours) are usually structured, and it costs nothing to set up correctly at the start versus untangling later.
+
+## It drifts, so check it
+
+Menu changes are the main source of drift. A new item arrives, someone adds it to the POS, nobody adds the spoken variants, and for three weeks the agent does not recognize what half your callers are asking for.
+
+Set a recurring reminder to pull five transcripts a month and read them the way you would listen to a new hire on the phone. You are not grading accuracy here, you are listening for anything a customer would find slightly off. Most of what you find will be a word, and most words take two minutes to fix. The sampling method is in [transcript sampling for quality assurance](/blog/transcript-sampling-qa).
+
+Here is the test that tells you whether the work landed. Play a recorded call to someone who works your floor and do not tell them it is the agent. If their first reaction is about the order rather than about the voice, you are done. If they say "that doesn't sound like us," ask them which word gave it away. They will usually name one, and it will usually be a size.

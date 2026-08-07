@@ -1,0 +1,78 @@
+---
+title: "Voice AI for slice counters and the whole-pie upsell math"
+description: "Slice shops take enormous call volume for tiny tickets. The case for a phone agent lives entirely in whether it moves callers from two slices to a whole pie."
+publishedAt: "2026-02-07"
+faqs:
+  - question: "Do slice counters get enough phone volume to need this?"
+    answer: "Volume is rarely the problem at a slice counter. Call volume is often very high and ticket size is very low, which flips the usual argument. The question is not whether the phone rings, it is whether the average call is worth enough to pay for automation, and that usually depends on whole-pie and catering orders inside the mix."
+  - question: "How does a $9 phone order justify $250 a month?"
+    answer: "On its own it does not. Roughly twenty-eight recovered orders a month at a $9 ticket only just covers the cost, which is a thin case. The purchases that work are the ones where the agent also captures whole pies, party orders, and office lunches, since a single recovered eight-pie order can be worth thirty slice tickets."
+  - question: "Can a voice agent upsell without irritating callers?"
+    answer: "Yes, if the offer is relevant and appears once. A caller ordering four slices of the same pizza should hear that a whole pie is eight slices for a specific price, stated as arithmetic rather than as a pitch. What fails is an offer on every order regardless of size, or a second attempt after a caller declines the first."
+  - question: "Will regulars accept an agent when their order takes ten seconds?"
+    answer: "Some will not, and that is worth planning for. A caller whose entire order is 'two pepperoni, five minutes' is fast with a person and only slightly slower with an agent. Make sure the system can take a short order without forcing a scripted flow, and that asking for a human transfers immediately."
+  - question: "What is the single most useful setting for a slice shop?"
+    answer: "An accurate pickup time that reflects what is currently in the oven and on the counter. Slice callers are almost always coming within fifteen minutes, so a quote that is off by ten minutes creates a crowd at the counter or a cold pizza. Tie the quote to your actual current wait rather than a fixed number."
+---
+
+Say your counter takes ninety phone calls on a Friday and the average phone ticket is nine dollars. That is $810, spread across ninety interruptions, which works out to about nine dollars of revenue per time somebody stopped cutting to pick up the handset.
+
+Put that next to a wing shop where forty calls produce $1,400 and you can see why slice counters are a genuinely different case for phone automation. The volume argument is strong and the value-per-call argument is weak. Anyone selling you on this without addressing the second half is selling you the wrong thing.
+
+## Why the usual pitch does not fit a slice shop
+
+The standard case for a voice agent is that missed calls are lost orders and lost orders are expensive. At a slice counter each individual lost order is not expensive. It is nine dollars, sometimes six.
+
+Worse, a portion of your missed callers just walk in anyway, because you are the pizza place on the corner and they were coming past regardless. That recovery rate is invisible and it eats into any straightforward miss-times-ticket calculation. If you build a business case that assumes every unanswered call was a permanent loss, you will overstate the benefit by a lot, and you will notice within two months.
+
+So do the arithmetic honestly. At $250 a month and a $9 average ticket, you need to recover something like twenty-eight orders a month before the thing pays for itself, and only counting orders that would truly have gone elsewhere. That is achievable at high volume, but it is thin, and thin cases are the ones that get cancelled in the spring. The method for counting your own misses is in [how many calls does your restaurant miss](/blog/how-many-calls-does-your-restaurant-miss), and the per-order framing in [cost per phone order](/blog/cost-per-phone-order).
+
+## The case actually lives in the big orders hiding in your call mix
+
+Here is what makes the numbers work at a slice counter, and it has nothing to do with slices.
+
+Inside those ninety Friday calls are a handful you cannot afford to miss. The office ordering six pies for Monday. The parent ordering ten for a team. The neighbor who wants four pies at nine on a Saturday for a party. Those calls arrive during the same rush as everything else, and they are the ones most likely to ring out, because a rush is a rush.
+
+One recovered eight-pie order at roughly $140 is worth about fifteen slice tickets. Two of those a month, plus the slice orders, and the arithmetic stops being thin. That is the real case, and it means the setting you care about most is how the agent handles a large order, not how gracefully it takes two slices. [AI phone ordering and average ticket](/blog/ai-phone-ordering-average-ticket-upsell) works through the same dynamic across formats, and [catering lead qualification](/blog/catering-lead-qualification-ai) covers what the agent should ask when the order is genuinely large.
+
+Before you evaluate anything, go count. Pull two weeks of orders and separate everything over $60 from everything under. If the over-$60 bucket is a real number and a chunk of it comes by phone, you have a case. If practically all your phone revenue is slices, be skeptical.
+
+## Whole-pie upsell, and how to do it without becoming annoying
+
+The other lever is moving a caller from slices to a pie, and it is a lever precisely because the arithmetic is favorable to the customer. Four slices at $3.75 is $15. A whole pie at $22 is eight slices. Anyone buying four slices for two people is better off with the pie and often has not done the math.
+
+An agent can state that once, plainly, and it converts a nontrivial share of those calls. What matters is the form of the offer:
+
+- It triggers only when the caller's order is close to the threshold, which usually means three or more slices of the same pizza rather than any order at all.
+- It is stated as a comparison the caller can verify in their head, not as a recommendation.
+- It happens once. If the caller says no, the order continues and the offer does not come back.
+- It never applies to a caller who already ordered a pie, which sounds obvious and is a common configuration mistake.
+- It is disabled entirely at your busiest thirty minutes if longer calls are backing up your oven, which is a setting worth having.
+
+That is a narrow, well-behaved upsell and it is roughly what a good counter person does. The failure mode is the agent that offers something on every single call, which trains your regulars to talk over it. [Upselling without being pushy](/blog/upselling-without-being-pushy-ai) goes further into where the line sits.
+
+Sides are the smaller version of the same thing. A garlic knot attachment on a slice order raises a $9 ticket to $13, which across ninety calls is real money. Same rule applies: once, relevant, and never after a no.
+
+## Speed matters more here than almost anywhere
+
+A slice caller is usually two minutes away and coming now. That changes what a good phone interaction looks like.
+
+The order itself is short. "Two pepperoni and a Sprite, I'll be there in five." A person handles that in eleven seconds. An agent that runs a full scripted flow, confirms each item, repeats the order, asks for a name, and offers a side has turned eleven seconds into fifty, and your regulars will notice and hate it. Ask specifically whether the system can take a compact order without forcing the whole script, and test it with a short order during the demo.
+
+The pickup quote is the other half. Slice callers show up almost immediately, so a quote that is off by ten minutes either puts someone at your counter waiting or leaves a boxed pie sitting under the lights. The quote has to reflect your actual current state, which means the agent needs a live sense of your wait, not a fixed number typed in at setup. That is a real integration requirement and it is worth pushing on. [Quoting accurate pickup times](/blog/quoting-accurate-pickup-times) covers the mechanism.
+
+## The interruption cost you are actually paying
+
+There is a benefit here that does not show up as revenue and is probably the most defensible reason a busy slice counter buys this.
+
+Ninety calls on a Friday means ninety times someone at the counter stopped, wiped their hands, and picked up. During a lunch rush at a slice place, the person answering is frequently the person cutting and boxing, and the line is standing right there watching it happen. That is slower service for the people already in your shop, some of whom are the walk-in traffic that is most of your revenue.
+
+I would not put a dollar figure on that, and I would be suspicious of any vendor who does. But if your walk-in line is the business and the phone is the thing that keeps breaking it, that is a legitimate reason to move calls off the counter even if the phone revenue math is only break-even.
+
+## How to decide in two weeks
+
+Do this before you talk to anyone. For two weeks, keep a running count of phone calls and separately tag every phone order over $60. Note how many times the phone rang more than four times without being answered.
+
+Then run three numbers. Missed calls times a $9 ticket, discounted by half for the people who walked in anyway. Large phone orders per month times their actual value, times whatever share you think you are currently losing. And the count of interruptions during your busiest hour.
+
+If the first two together clear $250 with room to spare, buy it and configure the whole-pie offer carefully. If they clear it only barely and the third number is enormous, it is still probably worth it for the counter, but go in knowing that is what you are buying. If neither clears, do not, and instead look at whether a second line or a simple call-forwarding change fixes most of the pain for free. The broader format-level treatment is in [voice AI for pizza shops](/blog/voice-ai-for-pizza-shops), and current plan details are on [pricing](/pricing).

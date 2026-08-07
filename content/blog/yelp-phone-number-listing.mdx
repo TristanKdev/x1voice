@@ -1,0 +1,78 @@
+---
+title: "What Yelp's phone number substitution does to your data"
+description: "Directories sometimes show a forwarding number instead of yours. How to check your Yelp listing, what substitution breaks in your call data, and what to fix."
+publishedAt: "2026-03-31"
+faqs:
+  - question: "Does Yelp replace my restaurant's phone number?"
+    answer: "On some listings, yes. Directories including Yelp have used call-forwarding or call-tracking numbers that route through to your real line. The caller reaches you either way, but your phone system sees the directory's number rather than the customer's. Check your own listing instead of assuming, because substitution is not applied uniformly across every business page or every market."
+  - question: "Why does a substituted number matter if the calls still reach me?"
+    answer: "Because your call data stops describing customers. Repeat-caller detection, callback ability, and area-code patterns all break when every call arrives stamped with the same forwarding number. If you use caller ID to pull up a regular's usual order, or to call someone back about a pickup that ran late, substitution removes both of those in one move."
+  - question: "Can I get my real number displayed on Yelp?"
+    answer: "Sometimes, through the claimed business account, and sometimes not. Claim the listing, open the business information section, and confirm the publicly displayed number matches the one you want. If the platform still routes through its own number after that, treat it as a constraint to work around rather than a fight worth spending weeks on."
+  - question: "How do I track call sources if the directory number is fixed?"
+    answer: "Put tracking numbers on the channels you actually control and leave the directory alone. Your website, your Google Business Profile, printed menus, and delivery-bag stickers can each carry a distinct number that forwards to the same line. That gives you channel attribution without depending on a directory's reporting or on its willingness to show your number."
+  - question: "Does a forwarding number interfere with AI phone answering?"
+    answer: "Not with the answering itself. A voice agent picks up whatever rings your line regardless of how the call was routed. What changes is the reporting layer, because calls arriving through one forwarding number can look like a single enormous repeat caller. Ask any provider how it separates the originating caller ID from the trunk number before you read a caller-level report."
+---
+
+Pull your call log for last Friday night and look at the incoming numbers. If a large block of them share one number, or share a prefix that has nothing to do with your neighborhood, your calls are arriving through somebody else's line before they reach yours.
+
+That is number substitution, and directory platforms have used it for years. Yelp is the one restaurant operators notice most, because Yelp sends real phone volume and because the substitution shows up plainly in a call log the moment you go looking.
+
+The calls still land. Nothing is broken in the sense of a customer failing to reach you. What breaks is quieter and takes months to notice: the data you would use to make decisions about the phone stops describing the people on the other end of it.
+
+## Checking your own listing takes about ninety seconds
+
+Open your Yelp page on a phone, in a private browsing window, signed out. Signed-in views and business-owner views can render differently from what a customer sees, which is why owners often insist their number is fine when it isn't.
+
+Compare the number on the page against the number on your printed menu. If they match, you are done. If they don't, tap it and let it ring your restaurant, then check what appears on your caller ID display or in your provider's call log. A substituted number reaches you and identifies itself as something other than the caller.
+
+Do the same on your other listings while you have the window open. Apple Maps, Bing, and the aggregators that feed navigation apps all pull from different sources, and they drift apart on their own. That drift is the subject of [NAP consistency for restaurants](/blog/nap-consistency-restaurants), and it is worth an hour a quarter.
+
+## What a forwarding number actually costs you
+
+Start with the obvious loss: you cannot call anyone back. A customer orders for pickup, gets cut off mid-call, and you are holding a partial ticket with no way to reach them. Under substitution, the callback goes to the directory, not to the person.
+
+Then repeat-caller identification. If half your dinner volume is regulars, caller ID is a genuine service tool. The staff member who answers sees a familiar number and greets somebody by name, or a voice agent recognizes a returning caller and offers their last order. Substitution flattens that entirely, because every routed call presents as the same customer.
+
+Then geography. Area-code distribution across your inbound calls is a rough but honest map of where your delivery demand sits, and it is one of the few free signals you get about a market you might expand into. Route the calls through a single forwarding number and the map goes blank.
+
+None of these individually will close a restaurant. Together they turn your phone from a source of information into a bell that rings.
+
+## Why the platform does this, and why it isn't malice
+
+Directories substitute numbers to prove they sent you business. A platform selling ads to restaurants needs to demonstrate that calls came from its listing, and routing through its own number is the simplest way to count them. The same logic sits behind every call-tracking product ever sold, including ones restaurants buy voluntarily.
+
+The friction is that the platform's measurement need and your operational need point in opposite directions. The platform wants every call to carry its stamp. You want every call to carry the customer's identity. Both are reasonable and only one of you controls the listing.
+
+Which is the practical frame here. Argue about it if you like, but plan as though the answer is no.
+
+## What you can change, and what you can't
+
+Claim the listing first, if you haven't. An unclaimed business page is populated by whatever the platform scraped, and a claimed one at least gives you a field to edit and a support path to complain through. Then check the business information section for a phone field and see whether editing it changes the public display.
+
+If it does, put your real number there and move on. If the platform continues routing through its own number regardless of what you enter, stop spending time on it. That is a product decision made above the level of anyone you can email.
+
+What you control is everything outside that one listing. Your website, your Google Business Profile, your delivery-bag stickers, your window decal, your voicemail greeting, and the number you read aloud when somebody asks. Get those consistent and correct, and the directory becomes one channel among several rather than the front door. There is a related discipline in [optimizing your Google Business Profile phone presence](/blog/google-business-profile-phone-optimization), which is the listing that most often drives more calls than Yelp does anyway.
+
+## Tracking numbers you actually own
+
+If you want channel attribution, buy it on your own terms rather than accepting the directory's version.
+
+A tracking number is a real phone number that forwards to your main line and records which number the caller dialed. Assign one to your website, one to printed menus, one to delivery packaging, and leave your primary number as the one on your listings. Every call still rings the same phone, and now you know which surface produced it.
+
+Two cautions. First, tracking numbers scattered across the internet damage listing consistency, so keep them off anything a search engine will index as your business number. Second, if a tracking number rings a line answered by a voice system, confirm the system reports both the dialed number and the originating caller ID separately. A provider that collapses them gives you a report that is technically accurate and operationally useless. The wider version of that problem sits in the [restaurant phone analytics guide](/blog/restaurant-phone-analytics-guide).
+
+## The measurement you should trust instead
+
+Substituted numbers make attribution murky, and the honest response is to lean on a number that doesn't depend on attribution at all: how many calls you answered versus how many rang.
+
+That figure is unaffected by routing. A call that comes through a directory forwarding number and rings out unanswered is lost exactly the same as one dialed directly off your menu. Counting it is the method in [how many calls your restaurant misses](/blog/how-many-calls-does-your-restaurant-miss), and it takes one week of pulling reports.
+
+Most operators discover their answer rate is worse than their attribution problem, by a wide margin. Fixing where a call came from is bookkeeping. Fixing whether it was answered is revenue, and the case for that sits in [the real cost of a missed call](/blog/the-real-cost-of-a-missed-restaurant-phone-call).
+
+## The two-hour version of this job
+
+Block a slow Tuesday afternoon. Check every major listing signed out and write down the number each one displays. Fix the ones you can edit. Note the ones you can't and stop thinking about them.
+
+Then pull a week of call records and count two things: total inbound calls, and calls that rang more than four times without being picked up. If the second number is more than a handful, that is where your attention belongs, and the directory's phone number is a detail you can safely ignore until the phone is being answered every time.

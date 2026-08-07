@@ -1,0 +1,70 @@
+---
+title: "How to read a voice AI case study without getting fooled"
+description: "Chain case studies are marketing documents with real numbers in them. Here is how to tell which figures mean something and which ones were chosen for you."
+publishedAt: "2026-07-11"
+faqs:
+  - question: "Are voice AI case studies from big chains useful at all?"
+    answer: "They are useful for understanding what a vendor considers a success, and close to useless as a prediction of your own results. A fifty-store chain has a standardized menu, a dedicated tech person, and volume that justifies weeks of tuning. Read the case study for the operational details it mentions in passing, not for the headline percentage."
+  - question: "What number should I look for in a vendor case study?"
+    answer: "Order accuracy measured against actual tickets, and the method used to measure it. Almost every case study leads with containment or calls answered, which move for reasons that have nothing to do with whether orders came out right. If accuracy appears with no explanation of how it was checked, treat it as an estimate."
+  - question: "Why do case studies usually cover pilots rather than full rollouts?"
+    answer: "Because pilots are where the numbers look best. A pilot store gets attention, hand-tuned menu data, and a staff that knows it is being watched. Ask the vendor how many of their published pilots went to a full rollout and how long the reported performance held after the attention moved elsewhere."
+  - question: "Should I ask to talk to the operator in the case study?"
+    answer: "Yes, and the response tells you a lot on its own. A vendor who connects you with the actual operator is confident in the story. A vendor who offers a different, unnamed reference instead is signaling that the published version was polished. Ask the operator what broke in the first month, not whether they are happy."
+---
+
+Every chain voice AI case study you will read this year was written to be persuasive, and most of them are still worth reading. The trick is knowing which parts a marketing team chose and which parts leaked through.
+
+A published case study is a sales document with real operational details buried in it. Those details are the valuable part. The headline percentage on the cover is the part you should ignore first.
+
+## The number on the cover was chosen, not found
+
+When a vendor writes up a chain deployment, someone looked at every metric the system produced and picked the one that read best. That is not dishonest. It is what any company would do. But it means the headline figure tells you which metric was most flattering, not which metric mattered.
+
+Containment is the usual pick, because it is the easiest number to move and the hardest to argue with. A system that resists transferring callers posts a high containment rate while making the caller experience worse. We went through that trap in detail in [what call containment actually measures](/blog/what-is-call-containment), and it applies with extra force to a document written to sell you something.
+
+"Calls answered" is the other favorite. A phone system answers every call by definition once you point it at a machine. Answering a call and handling it are different events.
+
+## Ask who counted and against what
+
+The question that separates a real result from a produced one is simple. How was this measured, and by whom.
+
+Order accuracy is the metric that matters, and it is genuinely expensive to measure honestly. Doing it right means pulling a sample of tickets, listening to the matching calls, and marking each one against what the caller asked for. Most published accuracy figures are not produced that way. They come from the system's own confidence scoring, which is the software grading its own homework.
+
+If a case study says 96 percent accuracy and never says how, the honest translation is that the vendor's dashboard reported 96 percent. That might be true. It also might mean the agent confidently wrote the wrong modifier onto a ticket and counted it as a success, which is exactly the failure mode you cannot see from the outside. The method we recommend for your own store is in [improving phone order accuracy](/blog/improving-phone-order-accuracy), and it involves reading tickets, not reading dashboards.
+
+## A pilot is not a rollout
+
+Watch the word "pilot." It appears in nearly every chain case study, and it changes the meaning of everything around it.
+
+A pilot store gets treatment no store gets again. The vendor's implementation team hand-checks the menu. Someone on the corporate side is watching a dashboard daily. Store staff know the pilot is being evaluated and behave accordingly. Under those conditions almost any competent system will perform well.
+
+The interesting question is what happened in month four, at store thirty, when nobody was watching and someone at the store level changed a menu item without telling anyone. Case studies rarely cover month four. When you talk to a vendor, ask how many published pilots became full rollouts, and ask what performance looked like a year in. If they have that data they will be glad to share it. If they change the subject, you learned something.
+
+Our own view on what a defensible pilot looks like, including what you should be measuring during one, is in [designing a voice AI pilot](/blog/designing-a-voice-ai-pilot).
+
+## Chain conditions do not transfer to your store
+
+This is the part most operators skip, and it is the part that makes a case study misleading rather than merely optimistic.
+
+A fifty-unit chain running a case study has a menu that is standardized down to the modifier level, maintained centrally, and changed on a schedule. Their POS configuration is identical across stores. They have someone whose job includes this project. Their call mix is homogeneous because their concept is homogeneous.
+
+Your single restaurant has a menu with three items that only the kitchen understands, a modifier structure that grew organically over eight years, and specials that change when your chef feels like it. None of that makes voice AI a bad fit. It makes the chain's numbers a bad forecast for yours. Menu structure is the single biggest driver of how well an agent performs on the phone, and it is the variable that differs most between a chain and an independent.
+
+The same goes the other direction. A chain case study reporting a modest result may be understating what a simple menu would do. A pizza counter with twenty items and clear modifiers is a much easier problem than a fifty-store casual dining brand, and it should perform better, not worse.
+
+## What a case study that would convince me looks like
+
+Four things, and they are rarely all present.
+
+A stated measurement method for every number, including who did the counting. A before figure from the same store, not an industry average. A time window long enough to include a bad week, ideally a holiday. And at least one thing that went wrong, described specifically enough that you can tell whether it would happen to you.
+
+That last one is the tell. Every real deployment has a rough patch. A case study with no failure in it was either written about a two-week window or edited until the failure came out. A vendor willing to describe the problem and the fix is showing you how they operate when something breaks, which is more useful information than any percentage.
+
+## The one call that settles it
+
+Ask to speak with the operator named in the case study.
+
+Not a reference the vendor selects for you. The specific person in the specific story. If the vendor connects you, ask them three concrete things: what broke in the first month, what they had to change about their menu, and what their staff said in week two. Their answers will not match the case study exactly, and the gap between the two is the most honest measurement you will get. There is a fuller list in [questions for vendor references](/blog/questions-for-vendor-references), and the broader evaluation frame in [evaluating voice AI vendors](/blog/evaluating-voice-ai-vendors-restaurants).
+
+If the vendor cannot or will not connect you, that is not proof the case study is false. It is a reason to weight it at close to zero, and to run your own two-week test instead. Your own store's numbers, measured badly, are still worth more than someone else's numbers measured well.

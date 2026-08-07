@@ -1,0 +1,72 @@
+---
+title: "Ooma Office and a voice agent: routing without collisions"
+description: "The Ooma Virtual Receptionist and an AI phone agent will fight over your calls unless you decide which one answers first. How to set the order and test it."
+publishedAt: "2026-02-18"
+faqs:
+  - question: "Can Ooma Office forward calls to an AI phone agent?"
+    answer: "Yes. An Ooma extension, ring group, or Virtual Receptionist menu option can forward to an external number, and that external number is what your voice provider assigns you. The configuration is ordinary call forwarding. The work is in deciding which layer answers first and turning off the pieces of Ooma that would otherwise answer instead."
+  - question: "Does the Ooma Virtual Receptionist conflict with a voice agent?"
+    answer: "It can. Both are designed to answer inbound calls, so if the Virtual Receptionist plays a menu before the forward, your caller hears a keypad prompt before reaching an agent that would have just asked them what they wanted. Either shorten the menu to one relevant option or bypass it entirely on your ordering number."
+  - question: "Is Ooma Telo suitable for a restaurant phone line?"
+    answer: "Not really. Telo is the residential product and lacks the extension, schedule, and routing features a restaurant needs, along with the business support path. If your restaurant is running on a Telo because someone bought it years ago, moving to a business-grade line is worth doing before you layer anything else on top of it."
+  - question: "What happens to my Ooma voicemail once the agent is live?"
+    answer: "Disable it on any extension that forwards to the agent. If Ooma's voicemail timer expires before the forward is answered, calls land in a voicemail box that nobody checks during service. One system should answer the ordering line, and it should be the one that can write an order into your POS."
+  - question: "Should I port the number off Ooma or keep forwarding?"
+    answer: "Forward while you're evaluating, port once you've decided. Forwarding adds a ring cycle and a dependency on Ooma being up. Porting the published ordering number directly to the answering platform removes both, and you can leave Ooma running your back-office extensions if the rest of the system works for you."
+---
+
+Plenty of restaurants believe their Ooma Virtual Receptionist is doing the same job an AI phone agent would do. It isn't close. The Virtual Receptionist plays a recorded menu and moves the call somewhere. It cannot take an order, cannot answer a question about whether you have gluten-free crust, and cannot write anything into your POS. It's a switchboard with a recorded voice.
+
+That distinction matters because both features want to be the first thing a caller hears, and if you set them up without deciding which wins, they collide in ways that are invisible from the admin panel and obvious to your customers.
+
+## The three ways calls go wrong on this setup
+
+The first is the double front door. Your Virtual Receptionist answers, reads four options, the caller presses one, and only then does the agent pick up and ask what they'd like to order. The caller has now spent twenty seconds being routed before anyone asked them anything. On a Friday at seven, some of them are gone before the agent speaks. That cost is the subject of [what a missed restaurant phone call actually costs](/blog/the-real-cost-of-a-missed-restaurant-phone-call), and a menu that adds twenty seconds is a slow-motion version of the same loss.
+
+The second is the voicemail race. Ooma extensions have their own voicemail with their own timer. If the extension forwards to the agent but Ooma's voicemail fires first on a slow connect, the call disappears into a box nobody opens until Monday. You will not notice this pattern from your order volume. You notice it when a regular mentions they left a message.
+
+The third is parallel ringing. If the extension still rings a desk phone and the mobile app while forwarding, whoever picks up first gets the call. Sometimes that's the agent, sometimes it's a manager who's mid-conversation with a vendor. Your order records end up with holes in them, and reconstructing what happened on a specific call becomes guesswork.
+
+## Deciding which layer answers first
+
+There are two defensible arrangements, and the right one depends on how much non-ordering traffic hits your main number.
+
+If nearly every call is a customer, skip the Virtual Receptionist on that number entirely and let the agent answer on the first ring. The agent can sort an order from a catering inquiry from a job applicant in one sentence of conversation, which is faster and more accurate than asking a caller to self-classify against a menu they haven't heard yet. The argument in full is in [voice AI versus phone trees](/blog/voice-ai-vs-ivr-phone-trees-restaurants).
+
+If you genuinely have office volume on the same number, keep the Virtual Receptionist but cut it to two options:
+
+- Press one for orders, hours, and anything about the menu, which forwards straight to the agent's number
+- Press two for everything else, which rings your office extension or manager's ring group
+
+That's it. No submenus, no "please listen carefully as our options have changed", no recorded pitch about your catering program before the options play. A caller who wants food should be talking to something that can take the order inside ten seconds.
+
+### Settings to change on the forwarding extension
+
+Once the routing is decided, four settings on the Ooma side decide whether it behaves.
+
+- Ring duration set so the forward happens immediately rather than after the extension's own devices ring out
+- Voicemail disabled on that extension, so the agent is the only thing that can answer
+- Desk phones and the mobile app removed from that extension's device list, to kill parallel ringing
+- Business hours checked against the agent's own hours, because both systems hold a schedule and they will drift apart
+
+That last one is the sleeper. Ooma has a schedule that decides which Virtual Receptionist menu plays, and your agent has a schedule that decides whether it can promise a pickup time. Change your Sunday close and forget one of them, and callers hear an open greeting from a system that then tells them the kitchen is closed. Write your hours down once and set both from that document. The daypart edge cases are covered in [after-hours call routing](/blog/after-hours-call-routing-setup).
+
+## What Ooma still does well after the agent is in place
+
+Keep it for what a PBX is actually good at. Extensions for your office, your kitchen line, and your back room. A ring group for the escalation path so that when the agent hands a caller to a person, it rings the host stand and then the manager in the order you've already tuned. Direct-dial numbers for a catering coordinator who wants their own line.
+
+None of that overlaps with the agent's job, and there's no reason to tear it out.
+
+The mobile app is worth keeping too, for one specific reason: it gives a manager a way to place outbound calls that display the restaurant's number rather than a personal cell. Returning a call about a wrong order from a number the customer recognizes gets answered far more often than one from an unfamiliar mobile. That's a small thing that matters on the exact calls where you're already on thin ice.
+
+Voicemail also stays useful, just not on the ordering path. Keep a mailbox on the office extension for vendors and applicants, and let the agent take a message when a caller genuinely needs one taken. The distinction is that voicemail should be a destination somebody chose, not the thing that catches calls your system failed to answer.
+
+What you should reconsider is whether the published ordering number belongs inside Ooma at all. Every layer between your customer and the agent is a layer that can fail on its own. A forward through a PBX means a PBX outage takes your ordering line down, and the first person to tell you will be a customer. Pointing the ordering number directly at the answering platform removes that dependency. [Porting a restaurant phone number](/blog/phone-number-porting-guide-restaurants) covers the mechanics and the ways a port stalls.
+
+The honest sequence: forward first, because it's reversible in five minutes and lets you find out whether an agent fits your operation. Port once you've decided it does and the number is printed on menus and listed on your Google Business Profile, at which point the number is the asset and the platform holding it is incidental.
+
+## Prove it works before you trust it
+
+Call your published number from a phone that has never called your restaurant, during a busy hour rather than a quiet one. Count the seconds until something asks you a useful question. Place a real order with a modifier and a special instruction, then check the ticket in your POS. Call again and ask for a manager, and confirm the handoff lands where you configured it. Then call once more and hang up mid-sentence, and see whether that shows up in your logs as an abandoned call rather than an order.
+
+Four calls, ten minutes. Do it again the week after any change to your Ooma settings, your hours, or your menu. Most routing failures on this kind of setup are silent, and a ten-minute test is the only thing that makes them loud.

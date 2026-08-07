@@ -1,0 +1,64 @@
+---
+title: "Phone accessibility obligations your voice agent has to meet"
+description: "A restaurant phone line is part of a public accommodation. What that means for deaf callers, callers with speech differences, and the agent answering for you."
+publishedAt: "2026-03-11"
+faqs:
+  - question: "Does the ADA cover a restaurant's phone line?"
+    answer: "Restaurants are public accommodations under Title III, and the effective communication obligation is not limited to what happens inside the dining room. A phone line you hold out as a way to order is part of the service you offer. Refusing to serve someone over that line because of how they communicate is where restaurants get into trouble, whether a person or an automated agent does the refusing."
+  - question: "Can a restaurant refuse a relay call?"
+    answer: "No, and hanging up on relay operators is one of the more common complaints against retail and food businesses. A relay call is a customer call with an operator or captioning service in the middle. Staff sometimes mistake the pauses and the operator's scripted phrasing for a scam and disconnect, which is a refusal of service regardless of intent."
+  - question: "Does a voice agent make accessibility better or worse?"
+    answer: "Both, depending on how it is configured. It removes the busy signal that shuts everyone out at peak, and it can hold a slower conversation without impatience. It gets worse if silence timeouts are short, if it demands speech from callers who cannot produce it fluently, or if there is no fast path to a person. The configuration decides which one you get."
+  - question: "What is the simplest accessibility fix for a restaurant phone line?"
+    answer: "Give every caller a reliable way to reach a human and a working non-voice ordering path, then test both. A published text or online ordering option covers callers who cannot use voice at all, and a short, dependable transfer to staff covers everything the agent mishandles. Neither requires special technology, and together they resolve most of what goes wrong."
+---
+
+It's 6:40 on a Friday. The phone rings, someone picks up, and there's a pause. Then a flat voice says a relay service is calling on behalf of a customer, and asks the restaurant to go ahead. Half the time, whoever answered hangs up, because the pause and the phrasing sound like a telemarketer.
+
+That call was a deaf customer trying to place a $60 order. They are not going to call back.
+
+This is the part of phone accessibility that actually costs restaurants money and generates complaints, and it has almost nothing to do with technology. It has to do with what happens when a call doesn't sound like a normal call. Putting a voice agent on the line changes who is answering, not the obligation.
+
+## What the obligation actually is
+
+Restaurants are public accommodations under Title III of the ADA. The requirement that matters here is effective communication: you have to communicate with people with disabilities as effectively as you communicate with everyone else, and you can't refuse service because of the method they need to use.
+
+That's deliberately general, and it does not come with a technical specification for a phone system. There's no rule that says your voice agent must support a particular protocol. What there is, is a straightforward expectation that a customer who reaches you through a telecommunications relay service gets served the same as a customer who dials directly, and that you don't impose extra hurdles on someone because their speech is atypical or because they use an assistive service.
+
+The practical read for an operator: you don't need a certified accessible phone system. You need a phone line that doesn't hang up on people and a path to a human that works.
+
+## The four caller situations worth designing for
+
+Deaf and hard-of-hearing callers reaching you through relay are the first and the most likely to be mishandled. The mechanics of those calls are specific enough that they deserve their own treatment, which is in [handling TTY and relay calls](/blog/tty-relay-calls-restaurants).
+
+Callers with speech differences are the second, and they are the group most likely to be failed silently by an automated agent. Stuttering, dysarthria after a stroke, a tracheostomy, cerebral palsy, or simply speaking very quietly all reduce recognition accuracy on systems tuned for fluent, confident speech. The failure looks the same as any other recognition failure: the agent asks the caller to repeat, then repeats itself, then the caller gives up. What separates a decent system here is patience settings, not model quality, and the same tuning that helps accented speech tends to help. That overlap is covered in [accent handling and speech recognition accuracy](/blog/voice-ai-accent-speech-recognition-accuracy).
+
+Older callers with hearing loss are the third group, and the largest by a wide margin. They typically need the agent to speak slower, to not talk over them, and to repeat a total without irritation. Most systems can be configured for this and most are not. [Older callers and voice AI](/blog/elderly-callers-voice-ai) goes through the specific settings.
+
+Callers with cognitive disabilities are the fourth. Long menu recitations, multi-part questions, and any prompt that requires holding four options in working memory are the problem. So is a system that interprets a long pause as an abandoned call.
+
+## Where automated agents fail these callers, specifically
+
+Silence timeouts are the single biggest offender. A default that treats four seconds of quiet as the end of a turn will cut off a relay operator mid-typing, a caller using a speech device, and anyone who needs a moment to organize a sentence. Extending that window costs nothing and fixes a large share of the problem.
+
+Barge-in behavior is the second. Systems that stop talking the instant they detect sound will trip over background noise in a caller's environment, and systems that never stop talking will steamroll someone trying to interrupt. Neither default suits every caller.
+
+Retry loops are the third and the most damaging. Two failed attempts to understand something should route to a person, not trigger a third attempt with the same prompt phrased slightly differently. A caller who has already struggled twice is not helped by a fourth try, and an agent that keeps trying rather than transferring will post a better containment number while serving the caller worse. That failure mode is the whole argument in [what call containment hides](/blog/what-is-call-containment), and the routing policy that fixes it sits in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+The fourth is having no non-voice alternative at all. If your online ordering is broken on a screen reader and your phone requires speech, a blind caller who also has a speech disability has no way to order. That's a narrow case, and it's exactly the kind of narrow case that turns into a complaint.
+
+## Testing it without hiring a consultant
+
+Call your own line and stay silent for eight seconds after the greeting. See what the agent does. If it hangs up or loops, that setting needs changing.
+
+Then call and speak very slowly, with long gaps mid-sentence, the way someone with a speech impairment might. Then call and ask for a person immediately, in the plainest possible words, and time how long it takes to get one. Then have someone place a test order through a relay service if you can arrange it, which is the only way to see what your line actually does with those calls.
+
+Four calls, fifteen minutes. That's the audit. It will tell you more than any vendor's accessibility statement, and it produces a short list of settings to change rather than a document. Fold it into your [onboarding checklist](/blog/ai-phone-onboarding-checklist-restaurants) so it gets rerun after any menu or script change.
+
+## The business case is the same as the legal one
+
+Hearing loss is common enough among older adults that any restaurant with a regular older clientele is fielding these calls weekly, whether or not anyone behind the counter has noticed.
+
+These are not edge cases. They are customers, they order at full price, and they are unusually loyal to businesses that handle them without friction, because most businesses don't. The restaurant that answers relay calls politely becomes the place the local deaf community orders from, and that's not a small effect in a mid-size town.
+
+So the settings above aren't a compliance chore. They are the same settings that make the phone work for anyone calling from a loud car, anyone with a bad connection, and anyone who talks slowly. Fix them for the caller you're legally obliged to serve and you've fixed them for a much larger group you'd like to keep. Start with the silence timeout, then go make four test calls.

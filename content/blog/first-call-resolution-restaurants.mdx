@@ -1,0 +1,72 @@
+---
+title: "First call resolution, translated for a 40-seat dining room"
+description: "A call-center metric restaurants borrow badly. What first call resolution means on a phone order, how to define it honestly, and which repeat calls it counts."
+publishedAt: "2026-06-12"
+faqs:
+  - question: "What is first call resolution?"
+    answer: "The share of callers whose reason for calling is fully handled on the first call, with no callback from either side. It comes from contact centers, where a customer with a billing problem might call three times. In a restaurant the equivalent is a caller who places an order once and does not have to ring back to fix it."
+  - question: "How is first call resolution different from containment?"
+    answer: "Containment asks whether a call avoided a transfer to a human. First call resolution asks whether the caller's problem was actually solved. A call can be contained and unresolved, which happens whenever an agent confidently takes an order it misunderstood. Resolution is the harder metric to game and the more honest one."
+  - question: "What time window should I use for a repeat call?"
+    answer: "Most restaurants should use the same service period, or 24 hours at the outside. A caller who rings back forty minutes later to fix a missing side is clearly a failed resolution. A caller who rings back on Thursday to order dinner again is a returning customer, and counting that against you makes the metric useless."
+  - question: "How do I identify repeat callers without special software?"
+    answer: "Sort your call log by caller number and look for the same number appearing twice inside one service period. Nearly every phone provider exposes caller ID and timestamps in its records, which is all the pairing requires. The pairs are then read by hand, and a hundred of them will teach you more than any dashboard."
+  - question: "Is a high repeat-call rate always a phone problem?"
+    answer: "No, and this is where the metric earns its keep. Repeat calls cluster around specific causes, and only some of them are the phone. Callers ringing back about delivery timing point at the kitchen or the driver, not the person who took the order. The pattern in the repeat calls is what tells you where the fix belongs."
+---
+
+Most restaurants that adopt first call resolution copy the contact-center definition without checking whether it survives the move, and it does not. A phone company measures resolution because a customer with a broken bill will call repeatedly until it is fixed. A restaurant has a caller who wanted forty dollars of food twenty minutes ago, and if the order was wrong the second call is often the last one you get from them.
+
+The metric is still worth having. It just has to be rebuilt around what a restaurant call is for, which is nearly always one of four things: place an order, book a table, ask a question, or complain about something that already happened.
+
+## Defining it so the number means something
+
+First call resolution is the share of callers whose reason for calling was fully handled on the first call, with no follow-up call from either side. The whole metric lives or dies on how you define a follow-up.
+
+Use the service period as your window, or twenty-four hours if you want a single rule that survives a lunch-to-dinner spillover. A caller who rings back forty minutes later has a problem with the first call. A caller who rings back next Tuesday is a regular, and any definition that counts them as a failure will produce a resolution rate that falls as your business improves.
+
+Then decide what counts as the same reason. Same number plus same service period plus a related topic is a repeat. Same number calling back to add a dessert because they changed their mind is not a failure of your phone, it is an upsell you did not make. Those two are easy to conflate in a report and completely different in what they tell you to do.
+
+You will not automate this cleanly in the first month, and you should not try. Pair the calls by number and read them.
+
+## Why it catches what containment misses
+
+Containment measures whether a call avoided a human. It rises when a system refuses to transfer, and it rises when a system confidently completes an order it got wrong. That second failure mode is the expensive one, and containment is structurally blind to it, which is the argument laid out in [what is call containment](/blog/what-is-call-containment).
+
+Resolution is harder to fake. A misunderstood order produces a second call, and the second call lands in your denominator. An agent that stonewalls a caller asking for a manager produces a second call too, usually an angrier one. Both show up.
+
+That is the case for tracking resolution alongside containment rather than instead of it. Containment tells you how much volume the system absorbed. Resolution tells you how much of it stayed absorbed.
+
+Where the two disagree is the interesting part. High containment with poor resolution is a system that ends calls rather than finishing them. Low containment with high resolution is a system that transfers freely and correctly, which is not a failure at all, only more expensive in staff time than it needs to be. The full metric set that these sit inside is in [voice AI metrics and KPIs for restaurants](/blog/voice-ai-metrics-kpis-restaurants).
+
+## What the repeat calls actually tell you
+
+The rate is a scoreboard. The reasons are the work.
+
+Pull a month of repeat pairs and sort them by cause. In most restaurants they land in a small number of buckets, and the buckets are more actionable than any percentage. A caller ringing back because an item was missing from a bag points at expo and packing, not at the phone. A caller ringing back to ask where the driver is points at delivery communication. A caller ringing back because the order was entered with the wrong modifiers points squarely at the call, and specifically at whether items were confirmed back before the caller hung up.
+
+That last category is the one that responds to phone changes, and it is usually smaller than operators expect. When you read a hundred repeat calls you generally find that the phone is responsible for a minority of them. That is a useful thing to know before you spend money on the phone.
+
+Modifier-driven repeats are the exception, and they concentrate around a handful of menu items every time. Almost always it is the items whose spoken names are ambiguous, or whose option sets are deep enough that a rushed conversation skips a step. How those get mapped is the subject of [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers), and the same audit is worth doing on your human phone script whether or not you ever buy software.
+
+Complaint calls need their own treatment. A complaint that gets resolved on the first call is a genuinely good outcome and should count as one, but resolving a complaint often correctly means a transfer to a manager. If your definition of resolution quietly requires no handoff, you have re-invented containment and will punish exactly the behavior you want. Handle those separately, along the lines of [handling refund and complaint calls](/blog/handling-refund-complaint-calls).
+
+## Where the metric quietly breaks
+
+Two situations will produce a resolution rate that is wrong in a way you will not notice.
+
+The first is the caller who does not call back. A customer who received the wrong order, decided you were not worth a second attempt, and ordered somewhere else next Friday is recorded as a resolved call, because nothing about your phone records says otherwise. Resolution counts the failures loud enough to complain. It cannot count the ones that leave. That is a structural ceiling on the metric and it is the reason accuracy sampling has to run alongside it rather than being replaced by it.
+
+The second is the caller who uses a different number the second time. A household that orders from a landline at dinner and a mobile at lunch will not pair, and a caller who rings back from a car will not either. This inflates your resolution rate by an amount you cannot measure. It is not a reason to abandon the pairing, since the pairs you do catch are real, but it is a reason to treat the rate as a floor on your problem rather than an estimate of it.
+
+Neither of these matters much if you use the metric the way it should be used, which is as a generator of repeat-call pairs to read. Both matter a great deal if you put the percentage on a wall and ask a manager to move it.
+
+## What a realistic target looks like
+
+Do not go looking for a benchmark. Resolution rate depends on call mix in the same way handle time does, and a pickup counter will beat a catering-heavy operation without either of them doing anything differently. What matters is your own number and its direction.
+
+Get the baseline first. One month of call records, paired by number, read by hand, sorted into causes. It is a few hours of tedious work and it will be the most informative few hours you spend on your phone this year, because it turns a suspicion into a list. Most operators come out of it surprised by which bucket is largest.
+
+Then fix the top cause and watch whether the repeats in that bucket fall. Not the overall rate, which moves for a dozen reasons at once. The bucket. If you corrected the way three ambiguous menu items are handled and the modifier repeats did not move, the correction was wrong, and knowing that in three weeks is worth far more than a dashboard telling you resolution went up two points.
+
+Run that loop twice and you will have a phone that produces measurably fewer second calls, and you will know which changes did it. Track it next to [average handle time](/blog/average-handle-time-restaurant-calls), because a restaurant that shortens calls and raises repeat calls has moved work from the first call to the second one and gained nothing.

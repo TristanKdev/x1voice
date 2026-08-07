@@ -1,0 +1,60 @@
+---
+title: "Voice AI for stadium concessions: where it actually fits"
+description: "Nobody phones a concession stand. The phone case at a venue is suite catering and the quiet days between events, and those are worth handling well."
+publishedAt: "2026-01-25"
+faqs:
+  - question: "Do stadium concession stands get phone orders?"
+    answer: "Essentially none. Concourse stands serve people already inside the building, and in-seat ordering runs through an app rather than a call. Buying voice AI to answer a concession stand phone solves a problem that does not exist, and any vendor pitching it that way has not worked a venue."
+  - question: "So where does a voice agent help at a venue?"
+    answer: "On the premium and catering line. Suite orders, group hospitality inquiries, and pre-event catering questions all arrive by phone, cluster in the days before an event, and often land while your sales team is working the last event. Those calls carry real ticket value and are the ones most likely to go unanswered."
+  - question: "What about the days when nothing is happening?"
+    answer: "That is the other half. A venue's phone rings all week with questions about upcoming event dates, whether the restaurant or team store is open, parking, and private rentals. Most of those reach a switchboard or voicemail because the food and beverage staff are only on site around events."
+  - question: "Can an agent take a suite catering order?"
+    answer: "It can take a straightforward reorder against a published suite menu if those items exist in your POS, and it can capture the details of anything more complicated for a person to complete. It should not price custom packages, negotiate minimums, or handle contracted accounts, all of which need your premium services team."
+  - question: "Does this make sense for a small venue?"
+    answer: "It scales down better than most people assume, because the case rests on event-day clustering rather than call volume. A minor league park or a 2,000-seat theater with a handful of suites and a busy week before each event has the same shape of problem as a major arena, just with fewer zeros attached."
+---
+
+Nobody calls a concession stand. If a vendor is selling you voice AI for stadium concessions on the premise that fans phone in orders for a hot dog and a beer, they have never worked a venue.
+
+The people your concourse stands serve are already inside the building. In-seat ordering, where it exists, runs through an app tied to a seat number. The concession phone, if there even is one, is an internal line for a manager to call the commissary. There is no missed-order problem to fix there and no revenue leaking out of it.
+
+That does not mean a venue has no phone problem. It means the phone problem sits somewhere else in the building, and it is worth more per call than anything happening on the concourse.
+
+## The premium line is where the money calls in
+
+Suites, clubs, group hospitality, and pre-event catering are phone businesses, and they always have been. A suite holder calls to place an order for Saturday. A company that bought a party deck calls to ask what is included and whether they can add a carving station. A youth sports group calls about a pregame buffet for 60.
+
+Those calls are large, they are time-sensitive, and they arrive in a compressed window. Most venues take suite orders up to a cutoff a day or two before an event, which means the two days before every event are when your phone is busiest and your premium services staff are simultaneously finalizing the current event, walking suites, and chasing signatures. The call that comes in at 4pm on the day before a game is competing for attention with the game.
+
+What happens to the ones nobody catches is the part worth measuring. A suite holder who cannot reach anyone will often order less, or order nothing and buy on the concourse, and you will never see the difference because the seat still sold. The structure for handling those larger inbound orders is in [voice AI for large catering orders](/blog/voice-ai-large-catering-orders), and it transfers to suites with almost no modification.
+
+## Event-day spikes are a scheduling problem, not a volume problem
+
+Venue phone volume does not look like a restaurant's. A restaurant's calls arrive in a daily curve you can staff against. A venue's arrive in a curve tied to an event calendar you already know months in advance.
+
+That shape is unusual and it is favorable. You know that the Thursday before a Saturday home game will be four times your Tuesday. You know a concert on-sale week produces a different mix of calls than a game week. You know a stretch of road games means ten quiet days. Staffing to the peaks means paying for people during the troughs, and staffing to the average means the peaks go unanswered, which is the choice most venues have made by default.
+
+An agent has no such tradeoff. It absorbs the Thursday spike at the same cost as the empty Tuesday, and the [forecasting work](/blog/call-volume-forecasting-restaurants) that a restaurant has to do with historical call data is already sitting in your event calendar. Configure it around your event schedule, not around a generic weekday pattern, and make sure the cutoff dates for suite ordering are represented so the agent stops taking orders when your kitchen stops accepting them.
+
+## The dead days matter more than they look
+
+Between events, the building is mostly empty and the phone still rings. Callers want to know what time doors open on the 14th, whether the club restaurant is open to the public on non-event days, where to park, whether you do private rentals, and who to talk to about a wedding in the atrium.
+
+At most venues, those calls hit a general switchboard staffed to route rather than to answer, or they hit voicemail. Food and beverage inquiries in particular go nowhere useful, because the F&B staff are event-day staff and the caller is calling on a Tuesday.
+
+Private event and rental inquiries are the expensive ones in that pile. A venue can book non-event revenue year-round if someone answers the phone and takes a name, and the operators who do this well are the ones who never let an inquiry sit until the next home stand. An agent answering [outside staffed hours](/blog/24-7-restaurant-phone-answering-after-hours) and capturing date, headcount, event type, and callback number turns those into a follow-up list instead of a set of missed calls. Deposit and contract terms stay with your sales team, following the pattern in [deposits for large catering](/blog/deposits-for-large-catering).
+
+## What to set up, and what to leave alone
+
+Point one number at it: the premium services or catering line. Leave the ticket office, the switchboard, and anything on the concourse untouched.
+
+Configure the suite menu as it is actually published, with the cutoff times, the minimums if you publish them, and the standing items suite holders reorder. If those items exist in your POS the agent can take a reorder end to end. X1 Voice writes directly into Square, Clover, and OrderCounter, and reaches Toast, Lightspeed, SpotOn, Aloha, Revel, PAR Brink, and Micros through Deliverect, which covers most of what venues run, though the concessions half of a large building often runs a system that is not on that list. Check what your premium kitchen uses rather than what the building uses, because they are frequently different.
+
+Then set escalation aggressively. Anything about a contracted account, a custom package, a minimum, an alcohol service question, or a complaint goes to a person on the first sign of it. Venue premium clients are relationship accounts, and the cost of an agent guessing wrong on one of them is higher than the cost of a transfer. The way to think about that boundary is in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+## The test that tells you whether this is real at your building
+
+Pull the call log for your premium and catering line across one home stand and the week before it. Count the calls, count the ones answered inside three rings, and count the ones that reached voicemail. Then look at when the voicemails landed.
+
+If they cluster in the 48 hours before each event, which is what most venues find, you are losing suite and group orders at precisely the moment those orders are worth the most, and the fix costs [$250 a month to start](/pricing) against suite tickets that run into the thousands. If your voicemails are scattered thin across quiet weeks, the case is weaker and you should spend the money on someone answering the phone on Tuesdays instead. Either way you will know inside an afternoon, and you will know it about the right phone line rather than the concourse.

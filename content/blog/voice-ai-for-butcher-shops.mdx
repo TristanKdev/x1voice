@@ -1,0 +1,85 @@
+---
+title: "Voice AI for butcher shops and holiday roast preorders"
+description: "Butcher counters lose the most phone revenue in the four weeks before a holiday. How a voice agent handles cut requests, preorders, and the prepared-food case."
+publishedAt: "2026-02-05"
+faqs:
+  - question: "Can a voice agent take a custom cut request?"
+    answer: "It can take the request and write it to a ticket, but it should not pretend to price or approve it. The reliable pattern is capture and confirm: the agent records thickness, weight, trim, and quantity, states that a butcher will confirm the price, and creates a callback task. That keeps a specialized conversation with the person qualified to have it."
+  - question: "How does it handle per-pound pricing when the weight is not known yet?"
+    answer: "It quotes a range based on your posted per-pound price and the requested weight, then states that the final total depends on the actual cut. Do not configure a firm total for weight-variable items. A caller told 'about $46 to $52 depending on the exact weight' is prepared for the register; a caller told $46 is annoyed at $53."
+  - question: "Is a butcher shop's call volume high enough to justify this?"
+    answer: "For most shops the answer depends entirely on the holiday weeks. A counter that fields ordinary volume for ten months and then takes several hundred preorder calls in the three weeks before Thanksgiving and Christmas is buying coverage for the surge, not for the average. Run the math on the peak weeks and see whether it clears."
+  - question: "Can it stop taking preorders once we are full?"
+    answer: "Yes, if you set a cap and the system respects it. Give it a maximum number of prime ribs or turkeys for a given pickup day, and configure the agent to stop offering that item and to say the day is full once the cap is hit. Without a cap it will keep booking, which is the worst possible failure on a holiday."
+  - question: "Do we need a POS integration for this to be useful?"
+    answer: "Not strictly, but it changes what you get. With integration the order lands as a ticket in your system with the modifiers in real fields. Without it you get a message or an email, which someone still has to re-enter. For preorder-heavy weeks, the re-entry step is where errors and duplicates come from."
+---
+
+Three weeks before Christmas, a good butcher shop will field more phone calls than it does in the whole month of September. Most of them are the same four questions and one preorder. If you take a hundred and fifty preorder calls across those weeks at an average of $85, that is roughly $12,750 sitting on the phone line, arriving during the exact hours the counter is three deep.
+
+The question is not whether you are missing some of them. You are. The question is how many, and whether the fix costs less than the loss.
+
+## The holiday shape of the problem
+
+A butcher counter has an unusual load curve compared to a restaurant. A pizza shop's phone peaks every Friday night, all year. Yours peaks catastrophically for about five weeks and is manageable the rest of the time.
+
+That shape argues against hiring for the phone, because you would be hiring for six weeks a year and training someone who leaves in January. It argues against a voicemail box, because a customer who wants a standing rib roast for the 24th will call the next shop rather than leave a message. And it argues for something that costs the same in November as it does in May and simply absorbs the surge.
+
+It also means your evaluation should be built on peak-week numbers, not on an annual average. An annual average will tell you the phone is not a big deal. The last week of November will tell you otherwise, and the last week of November is where the money is. The same seasonal logic is worked through in [the Thanksgiving catering phone surge](/blog/thanksgiving-catering-phone-surge).
+
+## What a voice agent should actually do at a meat counter
+
+Not everything. The useful configuration is narrow, and shops that try to make the agent do the butcher's job get bad results.
+
+Four categories of call are worth automating end to end:
+
+- Hours, parking, whether you are open on the holiday itself, and whether you have a specific item today, which together are usually the largest single bucket of calls you take.
+- Prepared-food and case orders where the item and price are fixed, like a tray of stuffed peppers, a dozen sausages, or a pound of the marinated chicken.
+- Holiday preorders against a fixed list, where the caller picks a roast, a weight band, and a pickup slot from what you have left.
+- Callback capture for anything specialized, where the agent takes the details and puts a real person on the task rather than improvising.
+
+The last one is the important discipline. A caller who wants a crown roast frenched a particular way, or who wants to talk through what size brisket feeds eighteen people, should end up talking to a butcher. That is a sales conversation and you want your best person in it. The agent's job there is to capture the request cleanly and not to lose the lead, which is a different and easier problem. [Human handoff and failover](/blog/human-handoff-failover-voice-ai) covers how to set those rules explicitly.
+
+### Why capture-and-confirm beats a full quote
+
+There is a temptation to let the agent quote everything. Resist it on anything weight-variable or custom.
+
+A voice system quoting "$46" for a roast that rings up at $53 has created a problem at your register, and the customer is right to be irritated. A system that says "that runs about $12.99 a pound, so a six to seven pound roast is roughly $78 to $91, and we will weigh it when you pick up" has set the expectation correctly and closed the sale. The second phrasing takes one more sentence and eliminates a category of complaint. Configure it that way from the start.
+
+## Cut requests are language, not data
+
+The reason meat counters are harder than they look is that the vocabulary is dense and regional, and customers use terms loosely.
+
+Someone asks for a chuck roast and means a shoulder clod. Someone asks for London broil, which is a preparation rather than a cut and means different things in different shops. Someone asks for "the thin pork chops, about an inch" which is a contradiction you would catch in person by asking. Someone says "flank" and means skirt.
+
+An agent handles this well only if you sit down and write out the mappings: the term the customer says, the item it should land on in your system, and the clarifying question to ask when a term is ambiguous in your shop. That is an hour or two of a manager's time and it is the difference between a working setup and one that produces confusing tickets. Nobody can do it for you, because your regulars' vocabulary is local. The general process is described in [training an AI voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu).
+
+Thickness, count, and trim are the three fields to always capture explicitly. If your ticket says "4 ribeyes" without a thickness, the cutter guesses and someone is unhappy either way.
+
+## Caps, sellouts, and the promise you cannot keep
+
+The single worst failure mode for a butcher shop on a holiday is overselling. A phone agent that cheerfully books a fourteenth prime rib when you have twelve is not saving you money, it is manufacturing two furious customers on Christmas Eve.
+
+So before anything goes live, three settings have to be right:
+
+- A hard cap per item per pickup day, after which the agent stops offering it and says that day is sold out.
+- Pickup slot limits, so eighty people are not all told to come at noon on the 24th.
+- A live connection to whatever tracks availability, so an item you sell out of at the counter stops being sold on the phone within minutes rather than at closing.
+
+That third one is where implementations quietly fail. If the agent's availability list is a spreadsheet someone updates each morning, you will oversell every busy afternoon. The mechanics and the ways this breaks are laid out in [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) and [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes).
+
+If you take deposits on large preorders, decide up front whether the agent collects them or whether it books the order and sends a payment link. Either is defensible. What is not defensible is having no rule, which produces a holiday list full of unconfirmed orders you cannot tell apart from real ones. [Deposits for large catering](/blog/deposits-for-large-catering) is the closest analog.
+
+## Where the ticket lands
+
+An order the agent takes is only useful if it arrives somewhere your staff already looks. On [Square](/integrations/square) or [Clover](/integrations/clover), that means a real ticket with the weight, cut, thickness, and pickup slot in structured fields, not a paragraph dumped in a notes box that a cutter has to interpret at 7am.
+
+This matters more at a butcher shop than at a restaurant, because your preorders sit for days before anyone works them. A restaurant ticket is wrong for eleven minutes. A holiday preorder ticket is wrong for two weeks, and nobody notices until the customer is standing there.
+
+## The test worth running before the holidays
+
+Put it live in a slow month. October, or the back half of January.
+
+Call it and ask whether you are open Sunday. Order two pounds of Italian sausage. Ask for a seven-pound rib roast and see whether it quotes a range or a number. Ask something only a butcher can answer and time how fast it hands off. Then pull every ticket it produced in the first two weeks and check them against what was actually cut and what was actually paid.
+
+If the ordinary orders land clean and the specialized ones reach a person quickly, you have something that will hold up in December. If it is guessing at cuts in October, it will guess at cuts in December, when the cost of a guess is a customer who bought their holiday roast from you for nine years.

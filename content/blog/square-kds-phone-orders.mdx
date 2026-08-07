@@ -1,0 +1,77 @@
+---
+title: "How phone orders land on Square KDS, and what to check"
+description: "A phone order that reaches Square but shows up on the wrong screen at the wrong time is still a broken order. The routing settings that decide where tickets go."
+publishedAt: "2026-05-20"
+faqs:
+  - question: "Do AI phone orders appear on Square KDS automatically?"
+    answer: "They appear if the order is created in Square as a real order with a fulfillment type your kitchen display is configured to show. The integration writing the order is only half of it. The other half is your own routing setup deciding which stations see which items and whether pickup and delivery tickets are displayed at all."
+  - question: "Why would a phone order reach Square but not the kitchen screen?"
+    answer: "Almost always a filter. The screen is set to show a category or station that the item does not belong to, or it is filtered to a fulfillment type the order was not created with, or the item has no station assignment at all. Check the display's filters before suspecting the integration, because the order record in Square will tell you whether it arrived."
+  - question: "Should phone orders fire immediately or hold until a prep time?"
+    answer: "Depends on your lead times. A pickup order twenty minutes out that fires instantly means food sitting under a heat lamp. If your setup supports scheduling a ticket to fire based on the promised time, use it. If it does not, quote pickup times that match your actual fire-to-ready window rather than assuming the kitchen will hold the ticket."
+  - question: "How should phone orders be visually distinguished on the screen?"
+    answer: "By source, so the line knows a ticket has nobody standing at the counter waiting for it. Most kitchens handle a phone or online ticket differently from a walk-in, and the difference matters most during a rush. If your display cannot label the source, at least agree on a convention so expo can tell them apart at a glance."
+  - question: "What breaks first when phone volume goes up on Square KDS?"
+    answer: "Modifier display. An order with several modifiers per item can render in a way that pushes detail off the visible portion of the ticket, and a cook working fast reads the top three lines. Test your highest-modifier item as a phone order at real volume and look at the screen, not at the order record."
+---
+
+A Friday at 6:15. A phone order for two large pies with three modifiers each hits Square cleanly. It is in the order list, the customer got a confirmation, the payment is authorized. It never appears on the pizza station screen. Twenty-five minutes later somebody notices it in the order list and the customer has been waiting outside for ten minutes.
+
+The integration worked. The routing did not. That gap is where most of the real trouble with phone orders on a kitchen display lives, and it is almost always a configuration problem inside your own Square setup rather than a problem with whatever wrote the order.
+
+## The order has to be a real order, with the right fulfillment type
+
+Start at the beginning, because a surprising number of KDS complaints resolve here.
+
+When a voice agent takes a phone order, what it should produce in Square is an ordinary order object with line items, modifiers, a fulfillment type, and a customer. Not a note. Not a placeholder ticket someone rekeys. If that is what lands, everything downstream in Square behaves the way it does for any other order, which is the whole point of a direct integration rather than a bolt-on. How that pipeline works end to end is described in [AI phone ordering for Square](/blog/ai-phone-ordering-for-square).
+
+Fulfillment type is the field that quietly decides a lot. A pickup order, a delivery order, and a dine-in order can display differently, route differently, and appear or not appear on a given screen depending on how that screen is filtered. If your phone orders are being created with a fulfillment type your kitchen displays are not configured to show, the order exists and the kitchen has no idea.
+
+Check this first, before anything else. Open the order record in Square, confirm it is there, then confirm what type it was created as.
+
+## Where tickets actually go
+
+Square's display routing generally works off item and category assignments to stations. An item that has never been assigned to a station will not reliably show up anywhere useful, and that is easy to miss because your in-person orders may have been getting keyed in a way that worked around it.
+
+### The audit worth doing once
+
+Go through the categories a phone caller can actually order from and confirm each one routes somewhere. Then do the same for the items that only exist as modifiers or as rarely-ordered specials, because those are the ones nobody assigned.
+
+While you are in there, check the reverse case: items appearing on two screens because they were assigned to both a category-level and an item-level station. Duplicate tickets are less obviously broken than missing ones and cause more waste, since two stations each make the item.
+
+### Filters on the display itself
+
+Each display has its own view settings, and those settings live on the device rather than in your central menu. A screen filtered to dine-in will not show a pickup ticket no matter how correctly the item is assigned. If you have several screens and staff who occasionally change the view, this is a recurring source of missing tickets and it is worth a written standard for how each screen is set.
+
+The broader question of whether you should be on a screen at all rather than a printer is a separate decision, and [kitchen printer versus KDS for phone orders](/blog/kitchen-printer-vs-kds-phone-orders) takes that up.
+
+## Timing: when the ticket should fire
+
+A walk-in ticket fires now because the guest is standing there. A phone order for 7:00 that arrives at 6:20 should not.
+
+If your setup supports scheduled orders that fire at a prep-time offset, configure it and pick the offset per station rather than globally, since your fryer and your salad station do not have the same lead time. If it does not support that, you have two honest options: hold tickets manually with a rule everybody follows, or quote pickup times that assume the ticket fires on arrival. The second is worse for food quality and better than pretending. Pickup quoting is covered in [quoting accurate pickup times](/blog/quoting-accurate-pickup-times).
+
+The measurable version of this problem is the gap between when a phone ticket is made and when it is picked up. If that number is consistently high, your fire timing is wrong and the food is aging under a lamp. [Ticket times for phone versus walk-in](/blog/ticket-times-phone-vs-walkin) goes into how to read it.
+
+## Modifiers are where the display fails, not the integration
+
+An order can be perfectly correct in Square and unreadable on the screen. This is the failure mode that surprises operators, because every system involved reports success.
+
+Watch for these when you test:
+
+- A long modifier list rendering below the visible area of the ticket, so a cook working at speed reads only the first few lines.
+- Negative modifiers such as "no onion" displaying in the same weight as additions, which is exactly the one that needs to stand out.
+- Free-text special requests appearing in a place the line does not habitually look.
+- Nested or multi-level modifier trees collapsing into an ambiguous string.
+
+The fix is usually to simplify the modifier structure rather than to fight the display. A tree built for a cashier who can see the whole screen behaves badly when the same order comes from a phone conversation and prints ten lines. There is a longer treatment in [simplifying modifier trees](/blog/simplifying-modifier-trees), and the sync side in [the menu sync deep dive](/blog/menu-sync-deep-dive-voice-ai).
+
+## Availability has to flow the other direction
+
+Routing is one direction. The return path matters just as much: when a cook 86s an item on the screen, the phone has to stop selling it.
+
+If that link is missing, your agent will keep taking orders for something the kitchen already ran out of, and the caller finds out when someone rings them back. That call costs more than the item. How the round trip works, and the ways it commonly breaks, is in [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync).
+
+The lag on that path is worth knowing rather than assuming. Ask your vendor how long it takes for an item marked unavailable at the register to stop being sellable on the phone, then test it during a slow hour with a real item. A delay of a few seconds is fine. A delay of several minutes on a Friday is a handful of orders you will be calling back to apologize for.
+
+Before you go live with phone orders on Square, place three of them yourself: your most-modified item, an item from a category that rarely gets ordered, and a scheduled pickup an hour out. Then walk to the kitchen and look at the screen rather than the dashboard. What you are checking is not whether the order arrived, which it almost certainly did, but whether a cook in the middle of a rush would make the right thing from what is displayed. That is the only test that predicts what happens on a Friday.

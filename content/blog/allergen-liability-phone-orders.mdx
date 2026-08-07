@@ -1,0 +1,84 @@
+---
+title: "The allergen answer on the phone that creates real liability"
+description: "Saying a dish is safe is a different act from saying what is in it. On a phone order, that distinction decides who ends up holding the allergen risk."
+publishedAt: "2026-03-16"
+faqs:
+  - question: "Can a voice agent answer allergen questions?"
+    answer: "It can read ingredients from your menu data, and it should not affirm that a dish is safe for a specific allergy. Those are different acts. Reading a stored ingredient list is a factual statement you control; declaring a dish safe requires knowledge of what happened on the line ten minutes ago, which no menu file contains."
+  - question: "What is the difference between cross-contamination and cross-contact?"
+    answer: "Cross-contact is the transfer of an allergen protein from one food to another, and unlike bacterial cross-contamination it is not fixed by cooking. A shared fryer, a wiped-down cutting board, or the same tongs will move enough peanut or wheat protein to trigger a reaction in a sensitive guest. Heat destroys pathogens; it does not destroy allergen proteins."
+  - question: "Are restaurants required to disclose allergens?"
+    answer: "Restaurants are not required to label dishes the way packaged foods are labeled, but the FDA Food Code makes the person in charge responsible for knowing the major food allergens and for the staff's ability to answer accurately. Several states and localities add training or notice requirements. The absence of a labeling mandate is not the absence of a duty."
+  - question: "What should a phone script say when someone mentions an allergy?"
+    answer: "Flag the order, state the ingredients if asked, decline to certify safety, and route the caller to a manager. One sentence covers it: 'I can tell you what's in it, and I'll have a manager confirm what we can do about cross-contact.' That answer is honest, useful, and does not make a promise the kitchen has not agreed to."
+  - question: "Should we just refuse to serve guests with allergies by phone?"
+    answer: "No, and most operators who consider it are reacting to a script problem rather than a kitchen problem. Refusing turns away real revenue and reads badly. The workable position is that you take the order, you state what you know, you never guarantee an environment you cannot verify, and a person makes the final call on anything severe."
+---
+
+The dangerous allergen answer is not the wrong one. It is the confident one.
+
+Ask most restaurants whether their staff handle allergy calls well and you will hear about how careful everybody is. Ask what happens when a caller says "my daughter has a peanut allergy, is the pad thai okay?" and you find out that a part-time employee, six weeks in, standing next to a running ticket printer, is being asked to make a medical judgment about a kitchen they cannot see from where they are holding the phone.
+
+They almost always say yes. Not because they are careless. Because "let me check" feels like bad service and "yes" feels like good service, and nobody ever taught them that those two answers carry completely different exposure.
+
+## The distinction that does all the work
+
+There are two things a person on your phone can say about an allergen, and they are not variations of the same act.
+
+The first is a statement of composition. "The pad thai is made with rice noodles, egg, tamarind, fish sauce, and crushed peanuts on top." That is a fact about your recipe. You control it, you wrote it down, and it is true or false in a way anyone can check.
+
+The second is a statement of safety. "The pad thai is fine for a peanut allergy." That is a claim about what happened on your line in the last twenty minutes. It depends on which wok was used, whether the tongs were changed, whether the prep cook portioned garnish over the same station, and whether tonight's cook is the one who understands the difference. Nobody on a phone knows any of that.
+
+Every serious allergen incident I have heard an operator describe traces back to somebody making the second statement while believing they were making the first.
+
+## Cross-contact is the part nobody explains to phone staff
+
+Food safety training covers cross-contamination, and cross-contamination is a bacteria concept. Cook the thing hot enough and the pathogens die. That framing is drilled in hard enough that people apply it to allergens without noticing they have switched topics.
+
+Allergens do not work that way. Cross-contact moves allergen protein from one food to another, and cooking does nothing to it. A shared fryer carries wheat protein into your gluten-free fries. A cutting board that was wiped rather than washed carries enough to matter. Sesame on a bun leaves residue on the tongs.
+
+Somebody answering the phone who thinks "we cook it thoroughly" is a real answer will give confident assurances that are wrong in a specific and dangerous way. This one explanation, given once in a pre-shift meeting, does more for your risk position than any script rewrite.
+
+## What the rules actually require of you
+
+Restaurants sit in a gap. Packaged food carries a labeling mandate for the major food allergens, which now includes sesame alongside milk, eggs, fish, crustacean shellfish, tree nuts, peanuts, wheat, and soybeans. Restaurant menus carry no equivalent labeling requirement in most of the country.
+
+What does apply is the FDA Food Code's assignment of duty to the person in charge, who is responsible for knowing the major allergens and for the staff being able to answer questions about them accurately. A number of states and cities have layered on training mandates, poster requirements, or menu notices. Your local health department is the authority on which of those reach your address.
+
+Note the shape of the obligation. It is not "label everything." It is "the person responsible must know, and your people must be able to answer." A phone process where a new hire improvises allergen answers is out of step with that duty even in a jurisdiction with no specific phone rule at all.
+
+And if you make an affirmative claim, that claim is regulated on its own terms. "Gluten-free" is not decorative language. It carries a defined meaning, and using it on a dish prepared in a kitchen with a shared fryer is a misstatement regardless of your intentions. Most kitchens should be saying "made without gluten ingredients" and explaining why the distinction matters.
+
+## The handoff rule, stated as one sentence
+
+Any call that mentions an allergy gets ingredients from the script and a human for anything beyond ingredients.
+
+That is the entire policy. It survives turnover, it survives a rush, and it does not require the person answering to understand cross-contact under pressure. The one sentence that implements it: "I can tell you exactly what's in it, and I'll get a manager to confirm what we can do about cross-contact."
+
+Callers accept this readily, which surprises operators who expect it to sound evasive. Anyone managing a real allergy has heard restaurants breeze past their question a hundred times and has learned to distrust the fast yes. A restaurant that slows down and gets someone qualified reads as more competent, not less. The people it frustrates are mild-preference callers who wanted a quick answer, and they will wait ten seconds.
+
+## Where a voice agent helps and where it must not go
+
+A voice agent is unusually good at the first half of the rule and must be prevented from attempting the second.
+
+It reads ingredients accurately every time, from data you approved, without paraphrasing under pressure. It never forgets an ingredient because the ticket printer was loud. It flags the order consistently so the allergy note actually lands on the kitchen ticket, which is where a lot of human phone processes quietly fail. It does this at 11 p.m. with the same care as at noon. The detailed configuration side of this is covered in [how voice AI handles allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions).
+
+What it must never do is certify safety. An agent that answers "yes, that's safe for a peanut allergy" has made a claim your kitchen never authorized, in a recorded conversation, with a confident tone. That is worse than a nervous teenager guessing, because it is repeatable and it sounds authoritative.
+
+So the configuration requirement is explicit: allergy mentions trigger a handoff, and the handoff is not optional or best-effort. This is exactly the kind of by-design escalation discussed in [human handoff and failover](/blog/human-handoff-failover-voice-ai), and it is one of the few places where a lower containment number is unambiguously the correct outcome.
+
+## The ingredient data has to be real before any of this works
+
+An agent reading ingredients is only as good as the ingredient list somebody typed in. If your menu data says the aioli contains egg and mustard but the current recipe added anchovy in January, the agent will state the old list flawlessly forever.
+
+That makes ingredient accuracy a maintenance obligation rather than a setup task. Whoever changes a recipe has to change the record, and that handoff between the kitchen and the menu file is where it breaks in almost every restaurant. The habits that keep it honest are the same ones in [training a voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu), applied with a shorter tolerance for drift.
+
+If you serve callers in more than one language, verify the allergen terms specifically rather than trusting a general translation, since allergen vocabulary is exactly where an approximate translation becomes dangerous. That is worth a dedicated pass alongside [multi-language menu support](/blog/multi-language-menu-support).
+
+## The version of this that ends badly
+
+A severe reaction produces a hospital visit, an insurance claim, an inspection, and eventually a question: what was this customer told on the phone, and by whom.
+
+Most restaurants have no answer. Nobody remembers the call, the employee has moved on, and the reconstruction is a manager describing what staff are generally supposed to say. That is a weak position, and it is weak because the process was never written down, not because anyone did anything wrong.
+
+Go pull three dishes off your menu that contain a common allergen in a non-obvious place. Nuts in a sauce, sesame in a dressing, anchovy in a dressing, wheat in a thickener. Call your own restaurant and ask about each one. If you get three confident yesses in under ten seconds, you have not learned that your staff are careless. You have learned that nobody ever gave them permission to say "let me get someone who knows."

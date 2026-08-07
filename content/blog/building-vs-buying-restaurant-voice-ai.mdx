@@ -1,0 +1,70 @@
+---
+title: "Build vs. buy voice AI: the math at five locations"
+description: "The build-versus-buy decision for restaurant phone AI is usually decided by maintenance, not by the build. Here is the arithmetic for a five-location group."
+publishedAt: "2026-07-05"
+faqs:
+  - question: "At what point does building your own restaurant voice agent make financial sense?"
+    answer: "Roughly when you already employ engineers and the per-location subscription across your group exceeds what a fraction of a developer's salary costs. For a five-location operator paying a few hundred dollars per store, that is not close. The crossover usually sits well past a dozen locations, and only for groups with a technology team already on payroll."
+  - question: "Why do build-versus-buy comparisons usually come out wrong?"
+    answer: "Because the build gets estimated and the maintenance does not. Teams price four to six weeks of engineering and compare it to a year of subscription fees, which flatters the build. The recurring work is menu mapping updates, transcript review, POS API changes, and coverage during service hours, and it never ends."
+  - question: "Does building give me anything a vendor cannot?"
+    answer: "Control over behavior and no dependency on someone else's roadmap. If your ordering flow is genuinely unusual, or you want the agent to do something no vendor supports, building is the only path. You also keep your call data entirely in your own systems, which matters to some enterprise groups more than the cost difference does."
+  - question: "What is the hybrid option between building and buying?"
+    answer: "Buy the phone agent and build the pieces around it. Most operators who think they need a custom system actually need custom reporting, a specific handoff rule, or an integration with a loyalty system. Those are additions on top of a vendor, not reasons to own the whole stack, and they cost a fraction of a full build."
+---
+
+The usual way this decision gets made is that someone prices four to six weeks of engineering, compares it against a year of subscription fees, notices the build is cheaper, and stops there. That comparison is wrong in a specific way, and the error is not in the estimate of the build. It is in treating the build as the cost.
+
+A phone ordering agent is not a project you finish. It is a system that runs during your busiest hours, against a menu that changes weekly, on top of a POS API that changes on someone else's schedule. The build is the down payment.
+
+## Set up the comparison honestly
+
+Take a five-location group with reasonable phone volume. Both sides of the decision have a one-time cost and a recurring cost, and both sides have a risk cost that people leave out because it is uncomfortable to quantify.
+
+On the buy side: a per-location subscription, an onboarding effort measured in hours, and the risk that the vendor's roadmap diverges from what you need. Our plans start at $250 per month per location and setup is typically under 24 hours, so five stores gives you a floor of roughly $1,250 a month, or $15,000 a year, plus a couple of days of your own time verifying menus.
+
+On the build side: engineering time to first working location, engineering time to roll out to the other four, usage fees to a model provider and a telephony carrier, and a permanent maintenance load. Use your own fully loaded engineering cost per hour rather than a salary figure, because benefits and overhead are real.
+
+Now the part that decides it.
+
+## Maintenance is the number that matters
+
+Ask any team that has run a homemade voice agent for a year what the ongoing work is, and the list is consistent. Menu mappings drift as the kitchen renames and reprices items. Modifier groups get restructured in the POS and the agent's mapping silently breaks. Model versions change and behavior shifts without any deploy on your side. Somebody has to read transcripts against actual tickets to find errors, because a wrong order shows up at the pass rather than in a log.
+
+Call that four to eight hours a week for a five-location group, more in the first months and after any menu overhaul. At a realistic loaded engineering rate, run that against your own numbers and you will usually land at or above the subscription cost, before counting the build at all.
+
+The uncomfortable version of this is that the maintenance load does not scale down. One location and five locations require roughly the same menu discipline and the same transcript review habit. That is why building tends to make sense only when you have enough stores to spread a fixed cost, which is also the logic behind [multi-location deployments](/blog/voice-ai-multi-location-franchise-groups).
+
+## The failure cost nobody prices
+
+A vendor outage at 7pm on a Friday is a phone call to support and a fallback routing rule. A homemade outage at 7pm on a Friday is your developer, who is at dinner.
+
+This is not a hypothetical difference. It is the reason [uptime and SLA terms](/blog/voice-ai-slas-uptime-restaurants) exist as a contract concept in the first place. When you build, you are the SLA. Ask whoever is proposing the build who carries the phone on weekends, and whether that arrangement survives them taking a vacation or leaving the company.
+
+Related, and more expensive: a wrong order costs you the food, the remake, the driver time if it was delivery, and often the customer. Order errors that go unnoticed for weeks are the most common quiet failure of a self-built system, because nobody is sampling calls. Vendors are not immune, but a vendor whose whole business is accuracy is measuring it, and you can hold them to it using the methods in [improving phone order accuracy](/blog/improving-phone-order-accuracy).
+
+## What building genuinely buys you
+
+Two things, and they are real.
+
+Control. If your ordering flow is unusual, if you need the agent to check a loyalty balance mid-call, or if you want behavior no vendor will prioritize for you, owning the code is the only way to get it. You are not in a queue behind other customers.
+
+Data. Every transcript, every recording, every order sits in your systems. For some multi-unit groups with strict security review processes, that is worth more than the cost difference, and it removes a category of vendor diligence work entirely. If that is your situation, the questions you would otherwise be asking a vendor are in our [security questionnaire](/blog/voice-ai-security-questionnaire), and they become questions you ask yourself.
+
+If neither of those describes you, you are paying the build cost for benefits you will not use.
+
+## The hybrid that most operators actually want
+
+A large share of the operators who tell us they are considering building do not want a custom voice agent. They want one specific thing a generic product does not do: a particular escalation rule, a report their COO asks for, an integration with a system nobody supports.
+
+Those are small projects on top of a bought agent, not reasons to own the stack. Buy the phone layer, keep your engineer's time on the thing that is actually specific to your business, and revisit in a year. If the vendor cannot accommodate the one thing, that is a vendor selection problem before it is a build decision, and [evaluating vendors properly](/blog/evaluating-voice-ai-vendors-restaurants) will surface it in the first conversation.
+
+## How to settle it in a week
+
+Do not debate this in the abstract. Run two things in parallel for two weeks.
+
+Have your engineer build a prototype against your real menu, not a simplified one, and specifically make it write a ticket with modifiers into one store's POS. That single task is where most of the build's difficulty lives, and two weeks tells you whether the estimate was serious.
+
+At the same time, run a vendor pilot on one location with written pass or fail criteria, structured the way we describe in [designing a voice AI pilot](/blog/designing-a-voice-ai-pilot).
+
+At the end you will have two concrete artifacts instead of two opinions: a prototype whose remaining work you can now estimate credibly, and a month of real call data. If the prototype is still fighting modifier groups after two weeks, you have your answer, and it did not cost you a quarter to find out.

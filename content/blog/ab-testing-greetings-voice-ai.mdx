@@ -1,0 +1,84 @@
+---
+title: "A/B testing greetings when call volume is low"
+description: "Two greetings, a few hundred calls a week, and a decision to make. How to run a greeting test that measures something real instead of ordinary variation."
+publishedAt: "2026-06-16"
+faqs:
+  - question: "How many calls do I need before a greeting test means anything?"
+    answer: "More than a single week at most independent restaurants. The honest guide is the size of the effect you are looking for: a three-point conversion difference needs many hundreds of calls per version, while a difference big enough to see in a few hundred calls has to be large. If your shop takes fifty calls a day, plan on three to four weeks per version and only test changes you expect to move the number noticeably."
+  - question: "Should I alternate greetings by call or by week?"
+    answer: "By call, if your platform can randomize it. Randomizing within the same hours removes the biggest source of contamination, which is that week two had different weather, a different promo, or a holiday in it. If the platform can only switch on a schedule, alternate week to week rather than running one version for a month and the other for the month after."
+  - question: "What should a greeting test measure?"
+    answer: "Order conversion rate and average ticket, in that order. Hang-ups in the first ten seconds are the second-most useful signal, because a greeting that makes people bail shows up there before it shows up anywhere else. Containment rate is a poor choice for this test, since a greeting barely touches it and the number moves for unrelated reasons."
+  - question: "What if the two greetings come out the same?"
+    answer: "Then keep the one your staff and regulars prefer, and stop testing greetings. A genuine tie after a fair test is useful information: it tells you the greeting is not the constraint on your phone revenue, and the time you were about to spend on version three is better spent on menu naming, hold behavior, or how the agent handles a caller who does not know what they want."
+  - question: "Can I test more than one change at a time?"
+    answer: "You can, but then you learn only whether the bundle won, not which part of it did. At low call volume that is often the right trade. Change the whole greeting at once, find out if the new one is better, and accept that you will not know which sentence did the work. Isolating a single word requires call volume most single locations do not have."
+---
+
+Most greeting tests at a single restaurant are not tests. They are two weeks of ordinary variation with a conclusion attached to the end.
+
+That is not an argument against testing. It is an argument for testing fewer things, for longer, with a bigger gap between the two versions than feels necessary.
+
+## The arithmetic that tells you whether a test is even possible
+
+Start with call count, because everything else follows from it.
+
+Say you take 60 calls on an average day and about half of them are people trying to place an order. That is 30 order attempts a day and roughly 210 a week. Now suppose greeting A gets 70 percent of those callers to an order, and greeting B gets 73 percent. Over a week, greeting B produces about six more orders than greeting A.
+
+Six. Your week-to-week swing from weather, a school schedule, a rained-out game, or one large catering order is bigger than six. The signal is sitting underneath the noise, and no amount of staring at the dashboard will pull it out.
+
+This is the part most operators skip, and it is why so many greeting tests end with a confident wrong answer. A three-point difference is real and worth having. It is also invisible at 210 calls a week over any test length you have the patience for.
+
+So the practical rule at low volume is: only test changes large enough to produce a difference you could see. If you cannot describe what the new greeting does differently in one plain sentence, it is probably too small a change to detect.
+
+## Change one thing, and change it a lot
+
+The temptation is to tune. Swap "Thanks for calling" for "Hi, thanks for calling," move the word "today" to the end, try a slightly warmer read of the same line. None of that will show up in your numbers at your volume, and testing it wastes a month you could have spent on something with a chance of mattering.
+
+Test structural differences instead. A greeting that names the restaurant and immediately asks "pickup or delivery?" is a genuinely different conversation from one that names the restaurant, mentions a special, and waits. A greeting that runs four seconds is a different experience from one that runs eleven. Those are gaps big enough to move a number.
+
+If you want to know how to write either version well, [custom greetings and brand voice](/blog/custom-greetings-brand-voice-ai) covers the wording itself. This post is only about finding out which one wins.
+
+## Randomize by call if you can, alternate by week if you cannot
+
+The cleanest version of this test assigns each incoming call to version A or version B at random. Both versions then face the same Friday rush, the same snowstorm, the same week that the high school had an away game. Every difference in outcome is attributable to the greeting, which is the entire point.
+
+Ask your vendor whether the platform supports that. Some do. If yours does not, the fallback is alternating weeks: A, B, A, B, for at least three cycles. Alternating is much better than running A for a month and B for the month after, because a month is long enough for real seasonality to walk in and take credit for your greeting.
+
+Whatever you do, do not switch versions mid-shift by hand. Someone will forget, and you will spend the analysis arguing about which calls belonged to which version.
+
+## Measure conversion and ticket, not containment
+
+Two numbers carry almost all the information.
+
+Order conversion rate is the share of order-intent calls that end with an order written into the POS. This is the number a greeting can actually move, because the greeting determines whether the caller feels they are in the right place and whether they know what to do next. If you have not defined it yet, [phone order conversion rate](/blog/phone-order-conversion-rate) sets out a definition that holds up.
+
+Average ticket is the second, and it matters because a greeting that mentions a category can shift what people order before any upsell logic runs. That effect is real and it is separate from the upsell prompt itself, which is the subject of [menu mix shift from voice upsell](/blog/menu-mix-shift-from-voice-upsell).
+
+Add one more if you can get it: hang-ups inside the first ten seconds. A greeting that is too long, too corporate, or too obviously a menu tree loses people there, and that shows up in early abandonment well before it shows up in conversion.
+
+Skip containment. It barely responds to a greeting and it moves for reasons that have nothing to do with your test, which the [containment guide](/blog/what-is-call-containment) goes through in detail. Watching it during a greeting test mostly produces false excitement.
+
+## Reading a result honestly
+
+When the test ends, you will have two conversion rates. Before you declare a winner, do one sanity check: split each version's calls in half by date and compare the two halves against each other. If version A's first half and second half differ by as much as A differs from B, you have not learned anything. Your noise is as large as your effect.
+
+That check takes ten minutes and it will save you from acting on a coin flip more often than you would expect.
+
+If the halves are stable and the gap between versions holds, believe it. Ship the winner and stop.
+
+## When a tie is the useful answer
+
+A real tie is not a failed test. It says the greeting is not what is limiting your phone revenue, which is worth knowing before you spend another six weeks on version three.
+
+Most of the time, that is the correct finding. Greetings matter for how your restaurant sounds, and they are largely a brand decision rather than a revenue lever. The things that move phone revenue at a typical independent are further down the call: whether the menu names match what people actually say, whether the agent handles a modifier without a fight, whether the quoted pickup time is believable. If your greeting test comes back flat, the next test should be somewhere in that stretch, not back at hello.
+
+## What is actually worth testing at your volume
+
+Two things, in this order.
+
+First, greeting length. Short-and-direct against warm-and-longer is a big enough contrast to detect, and it is the version of this test most likely to produce a result you can act on.
+
+Second, whether the greeting asks a routing question immediately or waits for the caller to speak. That changes the whole shape of the call and it interacts with everything downstream, including how often the agent has to ask a clarifying question. The rest of the metric set that surrounds this sits in [voice AI metrics and KPIs](/blog/voice-ai-metrics-kpis-restaurants).
+
+Run one of those, for at least three weeks per version, with randomization if your platform offers it. If the result is flat, take the answer and move on to something with more room in it. A greeting is worth getting right once. It is rarely worth optimizing twice.

@@ -1,0 +1,87 @@
+---
+title: "Comcast Business call forwarding and the hunt group problem"
+description: "Forwarding a Comcast Business restaurant line usually fails because of hunt groups. Where the setting lives, what overrides it, and how to test the whole path."
+publishedAt: "2026-02-14"
+faqs:
+  - question: "Why is my Comcast Business forwarding being ignored?"
+    answer: "Almost always a hunt group. If your published number is a group that rings several lines in sequence, a forward set on one member line does not govern the group. The call keeps hunting through the remaining members and lands wherever the group's own no-answer treatment points. Change the setting at the group level, not the line level."
+  - question: "Where do I set call forwarding in Comcast Business?"
+    answer: "It depends on the product. Basic Comcast Business Voice lines respond to star codes dialed from the handset, typically *72 to enable and *73 to disable. Business VoiceEdge is a hosted system configured in a web portal, with separate always, busy, no-answer, and selective forwarding options per user, plus independent settings for each hunt group."
+  - question: "Can I forward calls only when the restaurant is closed?"
+    answer: "Yes, on Business VoiceEdge. It supports schedules and selective forwarding rules, so you can route everything outside service hours to a voice agent while keeping normal behavior during the day. Build the schedule around your real closing time rather than your posted one, since a fair number of calls arrive in the thirty minutes after the door locks."
+  - question: "Do star codes work on Business VoiceEdge?"
+    answer: "Often yes, and using them is still a bad idea. A code dialed at the handset and a rule set in the portal can hold different values, and which one wins is not obvious from either screen. Pick the portal as the single source of truth, and treat star codes as an emergency override you reconcile the same day."
+  - question: "Will forwarding change what my caller ID shows?"
+    answer: "Your restaurant's outbound caller ID is unaffected, but a forwarded call arrives at the destination carrying information that varies by setup. This matters if the receiving system routes by the number it sees. Ask whether the original caller's number is passed through, because a system that only sees your restaurant's number cannot text an order confirmation back to the customer."
+---
+
+A Comcast Business hunt group will walk a caller down every line in the group before any forwarding rule fires. With three lines and a handful of rings on each, that's most of a minute of ringing before the call reaches whatever you configured. Meanwhile the caller has already opened a second tab.
+
+This one behavior accounts for the large majority of "we set up forwarding and nothing changed" conversations I have with Comcast Business customers. The star code worked. It just wasn't the thing controlling the call.
+
+## Two Comcast products, two different jobs
+
+Comcast sells restaurants two things that both get described as "our phone."
+
+Comcast Business Voice is the simpler line service. It behaves like a traditional line for most purposes, star codes work from the handset, and features like forwarding and hunting are per-line settings tied to your account.
+
+Business VoiceEdge is the hosted phone system. Every extension is a user object in a web portal with its own forwarding rules, and hunt groups, auto attendants, and schedules are separate objects with separate settings. Nothing about it is configured by dialing a code, even though codes may still function.
+
+Before you change anything, work out which one you have. The bill will say. So will the phones: VoiceEdge deployments usually came with specific handsets and an admin login someone at your company was given and has since forgotten.
+
+## Where the switch lives
+
+On Business Voice, pick up the line, dial `*72`, wait for the confirmation tone, dial the ten-digit destination, and let it answer. `*73` cancels. Busy and no-answer variants exist on many accounts with their own codes; confirm which are provisioned rather than assuming.
+
+On VoiceEdge, log into the portal, find the user or line, and open its call-forwarding settings. You'll see forward always, forward on busy, forward on no answer, and usually selective forwarding driven by schedules and caller criteria. Set the destination, save, and then go set the same thing on the hunt group, which is a separate screen and the one that actually matters.
+
+## Hunt groups override what you just did
+
+Say your published number is 555-0100. Calls to it ring the host stand, then the office, then the manager's desk, then stop. That's a hunt group, and Comcast may call it a hunt group, rollover, or group calling depending on which document you're reading.
+
+When a call arrives at the group, the group's policy governs. A forward-always set on the first member typically pulls that member out of the rotation, so the call skips to the second member and continues hunting. You have changed one line's behavior without changing where callers end up. Every extra member you forward just shortens the hunt.
+
+The fix is to change the group. Either point the group's no-answer or overflow destination at the voice agent, or replace the group as the target of the published number entirely. If your account doesn't expose the group settings to you, that's a support call, and it's worth making the call rather than working around it with per-line codes.
+
+Check these before you contact support, because they'll ask:
+
+- The exact number customers dial, verified by calling it from a phone outside the building rather than read off an invoice.
+- Whether that number terminates on a single line or a group, and if a group, every member number in it.
+- Where the group currently sends a call that nobody answers, which is often a voicemail box nobody has opened in years.
+- How many rings each member gets before the hunt advances, since the default is usually higher than a hungry caller will tolerate.
+
+## Auto attendants make it worse
+
+If your VoiceEdge deployment includes an auto attendant, the recorded menu that asks callers to press one for hours and two for orders, that object sits in front of everything else and has its own routing table.
+
+A caller who presses two gets sent wherever the attendant's option two points, regardless of what any line or group is configured to do. So the forwarding you set is invisible to most of your call volume, and you've spent an afternoon on a setting that only governs the fraction of callers who press nothing at all.
+
+My honest advice is to remove the attendant when a voice agent goes in rather than layering one on the other. The menu exists because a human couldn't answer every call, and it costs every caller fifteen seconds and a decision they didn't want to make. An agent that just answers is strictly better, and the case against keeping the tree is made in [eliminating the restaurant phone tree](/blog/eliminate-restaurant-phone-tree).
+
+If you keep it, point every option at the same destination during the hours you're forwarding, or you'll be debugging one branch at a time for a month.
+
+## The main-number problem
+
+Restaurants accumulate numbers. The one on the awning, the one on the menu printed three years ago, the one a marketing agency issued for tracking, the one the delivery apps have, and the one Comcast considers your account's main line. These are frequently not the same number.
+
+Forward the wrong one and everything looks configured while your actual call volume continues to ring an empty office. The only reliable check is to call each published number from outside and listen to what answers. It takes five minutes and it has saved several operators a week of blaming the wrong system.
+
+## Voicemail is the thing you have to remove
+
+A forward that ends in voicemail is not a win. The caller believes they reached you, they leave a message about a pickup order for 7pm, and nobody hears it until close.
+
+On VoiceEdge, voicemail is a service on the user and on the group, and both can catch a call ahead of your forwarding rule depending on ring timers. Turn off the mailbox in the path, or set its timer well beyond the forwarding timer, and then confirm by calling in and doing nothing. Silence is the test case that finds this every time.
+
+## Forwarding first, porting later
+
+Keep the number where it is and forward it. That's reversible, requires no paperwork, and lets you run a full dinner service on the new setup before you commit to anything. If it goes badly, you undo it in seconds.
+
+Moving the number itself is a later decision and a slower process, covered in [porting a restaurant phone number](/blog/phone-number-porting-guide-restaurants). What matters more than either choice is that whatever answers the call writes the order into your POS correctly, which is the argument in [why POS integration depth matters](/blog/why-pos-integration-depth-matters-more-than-voice-quality). Setup on a forwarded number is typically live within 24 hours, and plans start at $250 a month on [pricing](/pricing).
+
+## The test that catches the hunt group
+
+Do this from a cell phone, standing outside the restaurant, on a slow afternoon.
+
+Call the published number and let it ring all the way through without anyone picking up. Time it. Then have a staff member occupy every line in the group and call again. Then call and stay completely silent once something answers. Then call and ask for a manager.
+
+If the first call took more than about twelve seconds to reach the agent, your hunt timers are too long. If the second call reached a busy signal or a mailbox, the group overflow was never changed. If the silent call ended in voicemail, the mailbox is still in the path. Each of those is a specific screen to fix, and none of them are the voice agent's fault. The broader first-week routine is in [the onboarding checklist](/blog/ai-phone-onboarding-checklist-restaurants).

@@ -1,0 +1,70 @@
+---
+title: "Substitution rules that keep an 86'd item from becoming a refund"
+description: "A written substitution policy is cheaper than the callbacks and refunds you get without one. What to decide in advance, and who is allowed to decide it at 7pm."
+publishedAt: "2026-04-14"
+faqs:
+  - question: "Should staff be allowed to substitute without asking the customer?"
+    answer: "No, with one narrow exception: a swap you have pre-approved in writing and that costs the customer nothing, such as a different brand of the same soda. Anything that changes the dish, the protein, or the price needs the customer's yes on the call. Silent substitutions are the single most common cause of a refund request on a pickup order."
+  - question: "What is the best substitution to offer when an item is 86'd?"
+    answer: "Offer the closest thing in the same category and price band, named specifically, rather than asking the caller to pick again from the whole menu. Saying the short rib is out and the braised pork shoulder is the closest thing on the menu tonight keeps roughly half of those orders. Reopening the entire menu turns a two-minute call into a six-minute one and loses more of them."
+  - question: "How do I stop selling something that just ran out?"
+    answer: "Mark it unavailable in the POS at the moment the line calls it, and make every ordering channel read that same availability. If your phone, your website, and your delivery apps each keep their own menu, you will sell an 86'd item on at least one of them for the rest of the night. One source of truth is the whole fix."
+  - question: "Do I have to refund a customer who got a substitution they did not approve?"
+    answer: "Practically speaking, yes. If the guest did not agree to the swap, you delivered something they did not order, and arguing about it costs more than the item. Refund or remake without friction, then fix the process that let it happen. The cost worth managing is the frequency, not the individual refund."
+  - question: "Can an automated phone system handle substitutions?"
+    answer: "It can, if it reads live availability and has a substitution mapped for each item in advance. Configured that way it never offers an 86'd item at all, which removes most substitution conversations before they start. Without live availability it is worse than a person, because it will take the order confidently and nobody catches it until the ticket hits the line."
+---
+
+The mahi came in short on Thursday and the line called it at 6:40. The phone kept selling it until 8:15, because the person answering was working from the printed menu taped by the register. Nine orders went out with tilapia instead, nobody was asked, and four of those customers called back. Two wanted refunds. One left a review.
+
+That entire evening was a policy problem, not a fish problem. Running out of something is normal and unavoidable. What it costs you depends almost entirely on decisions you made, or failed to make, before service started.
+
+## The expensive part is the silence, not the swap
+
+Most customers are reasonable about an item being out. They ordered short rib, you are out of short rib, they will take the pork. What they are not reasonable about is opening the bag in their car and finding something they never agreed to buy.
+
+The refund is not really about the food. It is about having been handled. A guest who was asked and said yes owns the decision with you. A guest who was not asked has been given a worse product at the same price by someone who hoped they would not notice, and that is how they will describe it to whoever they eat with.
+
+So the first rule is short enough to put on a wall: no substitution without a yes on the call. The only carve-outs are swaps you have written down in advance that a reasonable person would not consider a change, like a different brand of cola or a different color of the same bell pepper.
+
+## Decide the swaps before service, not during it
+
+The reason staff substitute silently is that being asked to invent an answer at 7pm on the phone is genuinely hard. There is a caller waiting, a line backing up, and no obvious right answer. Under that pressure people either guess or offer the whole menu again.
+
+Both are bad. The guess produces the refund. Reopening the menu produces a six-minute call while three others ring out.
+
+The fix is a substitution map. For every item that goes 86 more than once a season, write down the one item you offer instead, and what happens to the price. Not a category, one item. "Short rib is out, the closest thing tonight is the braised pork shoulder, same price" is a sentence anyone can say without thinking. It also converts far better than "what else would you like?", because you have done the choosing work for a customer who does not know your menu as well as you do.
+
+### Price differences need a rule, not a judgment call
+
+If the substitute costs more, you eat the difference. If it costs less, you charge the lower price and say so on the call. Both of these should be pre-decided so nobody is doing arithmetic and negotiation simultaneously while the fryer beeps.
+
+The one thing not to do is charge the higher price on a substitution the customer did not choose freely. It is a small amount of money and it reads as opportunistic every time.
+
+## The real fix is that the phone should never offer it
+
+All of the above is damage control for a system that let an unavailable item get sold. The upstream fix is that availability lives in one place and every channel reads it.
+
+When the line calls an item, someone marks it unavailable in the POS. That single action should remove it from your phone script, your website, and your delivery apps within the minute. If those are four separately maintained menus, you will be selling the 86'd item on at least one of them until close, and you will find out from a customer. The mechanics of doing this properly are in [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync), and the ways that sync breaks quietly are worth reading in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes).
+
+This matters more for automated phone answering than for people, and in both directions. A voice agent connected to live availability simply never says the word "mahi" after 6:40, which eliminates the substitution conversation entirely rather than handling it well. The same agent connected to a static menu is worse than your worst host, because it will confidently sell an out-of-stock item to twenty consecutive callers without the faint hesitation a human would have.
+
+## Who is allowed to say yes at 7pm
+
+Substitution policy fails in practice when the answer is "ask a manager." At peak there is no manager available, so staff either freeze or improvise, and improvisation is what you were trying to avoid.
+
+Give whoever answers the phone standing authority within a boundary. Something like: any pre-mapped substitution, any price adjustment downward, and any comped item under a set dollar amount, without asking anyone. Above that line, take a number and call back rather than making the customer hold.
+
+Two things follow from that. Your boundary has to be generous enough to cover the ordinary cases, or people will route around it. And it has to be written down, because a verbal policy is a different policy for each person who heard it. That same reasoning applies to how you [handle refund and complaint calls](/blog/handling-refund-complaint-calls) generally.
+
+## Substitutions and allergies are not the same conversation
+
+Worth separating clearly, because the failure mode is much worse.
+
+A substitution offered to someone who has stated a dietary restriction is not a service decision, it is a safety one. If a caller has told you no shellfish and the item they ordered is out, the substitute has to be checked against that restriction rather than against price. Staff who are moving fast will occasionally offer the closest-tasting thing without re-checking, and that is the one substitution error that does not end with a refund. Keep the allergen conversation on its own track, as described in [handling allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions).
+
+## What to measure
+
+Count two things for a month. How many orders involved a substitution, and how many of those generated a callback, refund, or remake.
+
+If the callback rate on substituted orders is above a few percent, your staff are swapping silently, and no amount of policy writing fixes that until you find out why. Usually it is because the approved swap is not obvious enough or the price rule is unclear, so asking feels harder than not asking. If the substitution count itself is high, the problem is upstream in prep and par levels, and a phone policy is treating a symptom. Either way you now know which of the two conversations to have, which is more than most operators know about a night like Thursday. The broader version of this measurement sits in [improving phone order accuracy](/blog/improving-phone-order-accuracy).

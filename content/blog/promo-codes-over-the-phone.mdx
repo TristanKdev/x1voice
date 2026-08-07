@@ -1,0 +1,78 @@
+---
+title: "Honoring online promo codes on phone orders"
+description: "Callers will read you a code from an email or a delivery app. Here is how to decide which ones you honor on the phone without opening a discount hole."
+publishedAt: "2026-04-26"
+faqs:
+  - question: "Should a voice agent apply promo codes automatically?"
+    answer: "Only for codes you have deliberately loaded into the POS as phone-eligible. An agent that accepts any string a caller reads out is applying discounts you never approved. The safe configuration is an allowlist: a small set of active codes with their rules attached, and everything else routed to a manager or politely declined."
+  - question: "What is the most common way promo codes get abused on the phone?"
+    answer: "Reuse of a one-per-customer code. Online checkout tracks the account or the card and blocks a second redemption; a phone order usually has neither, so the same code can be read out every Friday for a year. The second most common is an expired code that a staff member honors anyway to avoid an argument."
+  - question: "Can a voice agent check whether a code has already been used?"
+    answer: "It depends on whether your POS exposes redemption state and whether the order is tied to something identifying, such as a phone number or a loyalty account. Where that link exists, per-customer limits can be enforced. Where it does not, treat every phone redemption as unlimited and pick codes accordingly."
+  - question: "Do third-party delivery promo codes work on direct phone orders?"
+    answer: "No, and they should not. A code issued by a delivery marketplace is funded by that marketplace's promotional budget and applies inside their checkout. If you honor it on a direct order you pay for it yourself. Say so plainly to the caller and offer whatever direct-channel discount you actually run."
+  - question: "What should the agent say when a code is not valid?"
+    answer: "State that the code is not active for phone orders, then immediately offer the alternative you do have, if any. The failure case matters more than the success case, because a caller who feels accused of trying something will not order. A neutral sentence and a real alternative keeps the ticket."
+---
+
+A caller opens with "I've got a code, WINGS20, it came in your email." The person on the phone has three seconds to decide whether that code is real, whether it applies to a phone order, whether it has already been used, and whether arguing about it is worth losing a $42 ticket. Most of the time they just apply it.
+
+That decision, repeated a few hundred times a month, is where a promotion quietly turns into a permanent price cut. It is worth deciding once, in writing, instead of at the counter under pressure.
+
+## The four things a code has to survive before you honor it
+
+Every promo code carries rules, and online checkout enforces them for free. It checks the expiration date, the minimum spend, the item eligibility, and the per-customer limit before it lets the discount through. None of that happens on a phone call unless someone or something makes it happen.
+
+Expiration is the easiest to enforce and the most commonly ignored. A code from a March email still gets honored in June because the staff member does not want the friction. Minimum spend is second: the code required a $30 order and the caller is at $24, and nobody is going to do that math out loud while three lines are ringing.
+
+Item eligibility is where the real money leaks. A code meant to move a slow appetizer gets applied to the whole ticket because the rule lived in a marketing email nobody kept. And per-customer limits are effectively unenforceable on the phone unless the order is tied to something identifying, which is exactly why the same caller can use a one-time code every week.
+
+## Why the phone is the channel where discounts get away from you
+
+Online, the rules live in the code itself. On the phone, they live in whatever the person answering remembers or is willing to enforce.
+
+Both failure directions cost you. A staff member who honors everything gives away margin on orders that would have come in at full price anyway. A staff member who refuses everything picks a fight with a regular over four dollars. Neither is a decision you actually made; both are the result of leaving the rule undefined.
+
+There is a third pattern that is worth naming. Codes get shared. A one-per-customer offer posted to a local Facebook group becomes a hundred-per-week offer, and because phone orders are not deduplicated the way online checkout deduplicates, the pattern is invisible in your reporting until you look at redemption counts against email sends and find they do not match.
+
+## What a voice agent changes about this
+
+An agent taking the call does exactly what it is configured to do, every time, at 7pm on a Friday with the same consistency as at 2pm on a Tuesday. That is the useful property here, and it is the same reason [phone order accuracy](/blog/improving-phone-order-accuracy) improves when order taking stops depending on who happens to pick up.
+
+The configuration is an allowlist, not a parser. You load the codes that are currently active and phone-eligible, with each one's rules attached: what it discounts, the minimum spend, the date range, and what to do when it does not apply. Anything the caller reads out that is not on that list gets a straight answer rather than a judgment call.
+
+Where your POS exposes redemption state and the order can be attached to a phone number or a loyalty account, per-customer limits become enforceable on the phone for the first time. That link is the whole reason [loyalty programs and voice ordering](/blog/voice-ai-and-loyalty-programs) fit together well: the account is what makes the limit real. If a caller is already enrolled, or gets enrolled during the call as described in [loyalty signup during calls](/blog/loyalty-signup-during-calls), you have an identifier to count against.
+
+What an agent cannot do is invent enforcement your POS does not support. If discount state is not queryable, a phone-eligible code is an unlimited code. Choose codes with that in mind rather than assuming the software will catch what the system cannot see.
+
+## Which codes belong on the phone and which do not
+
+The sorting rule is whether the code's economics survive unlimited redemption by one person.
+
+- Percentage-off-everything codes with no minimum are the worst fit for phone orders, because the abuse is uncapped and the discount lands hardest on your largest tickets.
+- Fixed-dollar-off codes above a real minimum spend are the safest, since the exposure per redemption is bounded and the minimum protects the ticket.
+- Free-item codes work well when the item is a low-cost add-on and badly when it is an entree.
+- Delivery-app codes should never be honored on direct orders, because the marketplace funds them and you would be funding them yourself.
+- First-time-customer codes only belong on the phone if you can actually check whether the caller has ordered before.
+
+The pattern underneath: codes designed around identity do not translate to a channel without identity. Codes designed around basket size do.
+
+## The stacking problem nobody plans for
+
+The other thing online checkout does silently is refuse to combine offers. One code per order, no code on an already-discounted item, no code on top of a happy-hour price. On the phone, none of that is enforced unless somebody enforces it.
+
+The result is a caller who has a ten-percent code, orders the Tuesday two-for-one, and asks for the code on top. Whoever is answering has no rule to point at, so they either say yes and give away more margin than the promotion ever intended, or they say no and sound arbitrary. Both outcomes are avoidable with one line written down in advance.
+
+Decide the stacking rule once and make it absolute: a code either combines with your recurring specials or it does not, and that is a property of the code rather than a judgment about the caller. Absolute rules are easier to state without sounding personal, which matters more on the phone than it does online. Nobody argues with a rule; people argue with a decision.
+
+Watch the interaction with gift cards too, since a code applied before a gift card balance and a code applied after produce different totals on split payments. Pick the order of operations and use the same one every time so the readback matches what actually posts.
+
+## Write the rule down, then load it
+
+The practical version takes about twenty minutes. Pull your currently active promotions into one list. For each, mark it phone-eligible or not, and if it is eligible, write the exact rule in a sentence a person could read aloud. Then load only those into the agent configuration and put the same list at the host stand for anyone taking calls manually.
+
+Add a review date. The failure mode is not that the list is wrong today, it is that a promotion ends and nobody removes it, so the agent keeps honoring a February offer in September. Tie the review to whatever cadence you already use for [menu updates](/blog/menu-sync-deep-dive-voice-ai) so it happens as part of work you are already doing.
+
+The decline script matters as much as the acceptance rule. "That code isn't active for phone orders right now, but I can do the ten percent pickup discount if you're picking up" keeps the order. "That code isn't valid" ends the call. Write the second sentence before you need it.
+
+Then check one number next month: total phone redemptions against the number of codes you actually distributed. If redemptions exceed distribution, a code has escaped into a group chat and it is time to retire it.

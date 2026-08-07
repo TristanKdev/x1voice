@@ -21,8 +21,13 @@ const CSP = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: https:",
   "font-src 'self' data:",
-  "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://app.cal.com",
-  "frame-src https://app.cal.com",
+  // googletagmanager.com appears in connect-src as well as script-src: GTM
+  // fetches container config over XHR, and GA4's regional collect endpoints
+  // are the *.google-analytics.com / *.analytics.google.com wildcards.
+  "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://app.cal.com",
+  // googletagmanager.com in frame-src is the GTM <noscript> iframe; the
+  // tagassistant origin is what GTM Preview mode loads the debug pane from.
+  "frame-src https://app.cal.com https://www.googletagmanager.com https://tagassistant.google.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",

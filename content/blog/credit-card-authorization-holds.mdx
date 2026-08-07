@@ -1,0 +1,81 @@
+---
+title: "Why a $400 phone order can show up twice on a customer's card"
+description: "Authorization holds make one large phone order look like two charges. What the customer is actually seeing, why it clears itself, and how to say so on the call."
+publishedAt: "2026-04-23"
+faqs:
+  - question: "What is a credit card authorization hold?"
+    answer: "A hold is the card network reserving funds against a customer's available credit or balance before the money actually moves. It confirms the card is good and the funds exist. The charge itself happens later, when you capture the transaction, which is why a customer can briefly see both the hold and the final charge in their banking app."
+  - question: "How long does an authorization hold take to disappear?"
+    answer: "That is the card issuer's decision, not yours. Most fall off within a few business days once the real charge settles, though some banks hold longer. You can tell a customer the hold will clear on its own and that you have not taken a second payment, but you cannot make it drop faster from your terminal."
+  - question: "Why does the hold amount differ from the final total?"
+    answer: "Usually because of a tip line or an estimate. If the order was authorized before a tip was added, the hold reflects the pre-tip amount and the settled charge is higher. On catering, the hold may reflect an estimate that changed once the final headcount came in. Both are normal, and both are worth saying out loud when you take the card."
+  - question: "Do debit cards behave differently from credit cards?"
+    answer: "Yes, and this is where most complaints come from. A hold on a debit card reduces the money the customer can actually spend, not just their available credit. Someone who paid $400 for a catering order and sees $800 unavailable has a real problem until it clears, so flag it before you run a large debit transaction."
+  - question: "Should I authorize a large catering order in advance?"
+    answer: "Authorize a deposit in advance and charge the balance at delivery, rather than holding the full amount for days. A long-lived authorization on a big total can expire before you capture it, which forces you to re-run the card, and it ties up funds the customer may need. Take the deposit, confirm the final number, then charge."
+---
+
+A customer orders $400 of catering by phone on Tuesday. They open their banking app on Wednesday and see $400 pending and $400 posted. They call you, reasonably annoyed, convinced you have charged them twice.
+
+You haven't. Almost every phone-order payment complaint that isn't an actual error is this one, and it costs you a call, a manager's ten minutes, and some of a good customer's trust. It's entirely preventable with about eight words said at the right moment on the original call.
+
+## What is actually happening to the money
+
+Card payments happen in two steps, and the gap between them is the whole story.
+
+The first step is authorization. Your processor asks the customer's bank whether the card is valid and the funds are there. The bank says yes and sets that amount aside, reducing the customer's available credit or, on a debit card, their spendable balance. No money has moved. Nothing has been paid to you.
+
+The second step is capture, or settlement. This is when the transaction is finalized and the funds actually route toward your account. For a takeout order the two steps often happen close together. For a catering order authorized on Tuesday and delivered on Friday, they can be days apart.
+
+The customer's banking app shows both, labeled in ways that are not designed to be reassuring. The hold shows as pending. The capture shows as posted. For a window of a day or several, both are visible and the app just displays them as two lines with the same dollar figure.
+
+### Why you cannot fix it from your terminal
+
+Once the settled charge is through, releasing the hold is the issuing bank's job, on the issuing bank's schedule. Your processor sends the signal. The bank decides when to act on it, and different banks behave differently.
+
+So the truthful thing to tell a customer is that you have taken one payment, the other line is a temporary hold, and it will drop off on its own within a few business days. Do not promise a specific date, because you do not control it. Do not run a refund to "fix" it either, because that creates an actual refund transaction against a payment you already need, and now you have a genuine mess.
+
+## The tip line makes the two numbers different
+
+If the hold and the charge match, most customers work out what happened. If they don't match, the customer is certain something is wrong.
+
+The mismatch is usually a tip. Where the card is authorized on the pre-tip total and then captured with the tip added, the settled charge is higher than the hold. On a delivery order with a $12 tip on a $68 subtotal, the customer sees $68 pending and $80 posted, and the story writes itself in their head.
+
+The same thing happens on catering when the authorization is against an estimate and the final headcount changed. Twelve extra people at $22 a head is a real difference between the two lines.
+
+Neither is a problem. Both need one sentence of warning at the time of the call, and you avoid the callback entirely. How tips get added and paid out is its own tangle, covered in [tip handling on phone orders](/blog/tip-handling-phone-orders).
+
+## Debit cards are where this turns into a real complaint
+
+On a credit card, a hold consumes available credit that most people are not close to using. Mildly confusing, rarely painful.
+
+On a debit card, the hold takes money the customer cannot spend. That $400 catering order can leave $800 of a checking account unavailable until the hold releases. For an office manager expensing a lunch, that's an annoyance. For a customer who does not carry a large balance, it is a genuine problem, and they will be upset in a way that has nothing to do with your restaurant's food.
+
+Two things follow. Say it before you run the card on any large debit transaction, in plain words. And if the total is big, consider taking a deposit rather than the full amount up front, which is the approach in [catering deposits and how to collect one](/blog/deposits-for-large-catering).
+
+## What to say on the call
+
+Say it when you take the card, not after. The sentence is short and it does not need to sound like a legal disclosure.
+
+- "You may see a temporary hold for this amount as well as the actual charge, and the hold will clear on its own in a few days."
+- On a card where a tip will be added later: "The hold will show the food total, and the final charge will include the tip."
+- On a large debit transaction: "This will reduce your available balance by the order amount until it settles, so I want to flag that before I run it."
+- On catering booked in advance: "I'm taking the deposit today. The balance runs on the delivery date, so you'll see two separate transactions."
+
+Four sentences, none of them technical. What they buy you is that the customer who opens their banking app already knows what they are looking at.
+
+## Where authorizations go wrong operationally
+
+Two practical failures show up on large phone orders.
+
+An authorization does not last forever. Hold a big total for a week and it can expire before you capture it, which means re-running the card, which usually means calling the customer back to ask for it again. Authorize the deposit, capture it, and run the balance at delivery instead of sitting on a stale authorization.
+
+The other is the split between what your POS shows and what the customer's bank shows. Your terminal reports a clean single sale. The customer reports two lines. Whoever answers the phone needs to know that both are true at once, or they will look at their own screen, tell the customer there is only one charge, and be perfectly wrong. That's the kind of dispute that turns into a refund demand if handled badly, which is the territory of [handling refund and complaint calls](/blog/handling-refund-complaint-calls).
+
+## Building the disclosure into the call itself
+
+The reason this problem persists is not that it is hard. It's that the sentence gets skipped, and it gets skipped exactly when your line is busiest and the orders are largest.
+
+An agent answering the phone says it every time, because it's part of the payment flow rather than something a person remembers under pressure. It applies the same tokenized card handling described in [collecting payment over the phone safely](/blog/collecting-payment-over-the-phone-safely), and it says the hold line before running the card, on the four hundredth call as reliably as the first.
+
+Try this test on your own operation. Pull the last five phone-payment complaints that reached a manager. Count how many were a duplicate charge that turned out to be an authorization hold. If it's most of them, you don't have a payments problem. You have a script problem, and it costs one sentence to fix.

@@ -1,0 +1,70 @@
+---
+title: "Square Online and phone orders in one ticket stream"
+description: "Two order channels feeding one kitchen only works if they share a menu, a prep clock, and a reporting definition. Where the two paths quietly diverge in Square."
+publishedAt: "2026-05-20"
+faqs:
+  - question: "Do Square Online and phone orders use the same menu?"
+    answer: "Not automatically. Square Online has its own item visibility and availability settings, so an item can be live in your point of sale and hidden online, or the reverse. If your phone agent reads from the point-of-sale catalog and your website reads from the online site settings, the two channels will eventually disagree about what you sell."
+  - question: "Why do my online and phone prep times differ?"
+    answer: "Because they are usually set in different places. Square Online carries its own pickup and fulfillment timing configuration, and a phone quote comes from whatever rule the agent was given. Nobody notices they have drifted apart until a customer who was quoted 20 minutes on the phone sees 45 on the website and calls to ask which is true."
+  - question: "Should I push callers to order online instead?"
+    answer: "Sometimes, but not as a default. A caller who wanted to talk to somebody and gets told to visit a website often orders from a competitor instead. Offering the link as an option is reasonable; using it as a way to avoid handling the call is how restaurants lose the customers who prefer the phone, which is a real and persistent group."
+  - question: "How do I tell which channel an order came from in Square?"
+    answer: "Orders carry a source, and that is the field to report on rather than guessing from timing or ticket shape. Set the reporting up before you need it, agree on what counts as a phone order versus an online order, and be consistent, because these definitions are what any later comparison of the two channels rests on."
+  - question: "Can the same item be priced differently online and by phone?"
+    answer: "Technically yes, and it usually creates more problems than it solves. A customer who sees one price on your site and hears another on the phone assumes an error or a markup. If you do run different pricing, have a reason you are willing to state plainly, and make sure whoever answers the phone can state it."
+---
+
+Two ordering channels feeding one kitchen is not a technology problem. It is a bookkeeping problem, and the bookkeeping is about which system holds the truth for each of three things: what is available, how long it takes, and what it costs.
+
+Square Online and a phone channel writing into Square both end up producing orders in the same account. That similarity is what fools people. The order objects look alike at the end. The settings that produced them live in different places, get edited by different people, and drift apart within a few weeks of going live.
+
+## The menu is the first thing to diverge
+
+Square Online maintains its own view of your catalog, including which items are visible on the site and whether a given item is marked available. Your point-of-sale catalog is the underlying source, but the site layer sits on top of it with its own switches.
+
+So there are two ways to hide an item and they do not agree. A manager who takes something down in the online site editor has not taken it off the phone. A cook who marks something unavailable at the register has not necessarily taken it off the website. Both of those produce the same customer-facing failure, which is an order accepted for food you cannot make, and both are invisible until a customer complains.
+
+Decide which layer is authoritative and make everything read from it. In practice that means 86ing happens in one place, at the register or on the kitchen display, and everything else follows. The failure modes when it does not are laid out in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes), and the underlying mechanics in [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync).
+
+Item naming is the quieter version of the same problem. Your website can say "The Rustico" because there is a photo next to it. On the phone, a caller says "the one with the sausage," and an agent working from the display name has nothing to match against. Names that work visually often work badly by voice, which is a real constraint on your catalog rather than a preference. [Menu naming for voice clarity](/blog/menu-naming-for-voice-clarity) covers what to do about it.
+
+## Prep times drift silently
+
+Square Online holds its own fulfillment timing. A phone quote comes from wherever your agent's rule lives. Neither one is wrong, and nobody compares them.
+
+The result is a customer who sees a 40-minute pickup estimate on your site and hears 20 on the phone. They will assume one of the two is a lie. During a rush, when the website estimate has stretched and the phone quote has not, the phone becomes the channel that overpromises, and every one of those orders arrives late.
+
+Pick one prep-time source and make both channels read from it. If your setup does not allow that, at least put a standing task on someone during peak periods to keep the two aligned, and be aware that a manual process fails on exactly the nights it matters. The dynamic quoting logic is in [quoting accurate pickup times](/blog/quoting-accurate-pickup-times).
+
+## Where the two tickets look different in the kitchen
+
+Both orders land in Square, and both should land on the same kitchen display, but they do not necessarily look identical when they get there.
+
+Online orders carry structured modifiers a customer picked from a list. Phone orders carry whatever the conversation produced, which can include a free-text note that renders in a different position on the ticket. If your line has learned to read online tickets in a certain shape, a phone ticket with detail somewhere else gets misread during a rush. That is a display problem worth testing directly, and the routing and rendering specifics are in [how phone orders land on Square KDS](/blog/square-kds-phone-orders).
+
+The other difference is that nobody is watching a phone order. An online customer gets a status page and a notification. A phone customer has hung up and is driving over. If the ticket is late, the online customer sees it and the phone customer does not, which means phone order delays produce more people standing in your lobby.
+
+## Pricing and fees should match unless you can explain them
+
+You can price differently per channel. Ask yourself what you would say when a regular notices.
+
+There are defensible reasons for a difference, mostly around fees you actually incur. There are also plenty of restaurants running a price gap that started as an accident, because someone updated the point-of-sale catalog and never touched the online site. The customer cannot tell the difference between a strategy and an oversight, and both read as a markup.
+
+The same goes for service fees and surcharges. Whatever appears on the website has to be what the phone quotes, and the disclosure rules apply to both channels equally. [Surcharge disclosure on phone orders](/blog/surcharge-disclosure-phone-orders) covers what has to be said out loud, and [menu price parity](/blog/menu-price-parity-third-party) covers the wider question across channels.
+
+## Reporting only works if you define the channels first
+
+Order source is a field, and it is the field to report on. Set that up before you start comparing anything, because retroactive channel attribution is guesswork.
+
+Then agree on definitions and write them down. Is an order placed by phone but paid at the counter a phone order? Is a repeat customer who was acquired on the phone and now orders online a phone customer? These sound pedantic until you are trying to decide whether the phone channel is paying for itself and every number you pull means something slightly different. [Attribution for phone versus online orders](/blog/attribution-phone-vs-online-orders) works through the specific cases, and [cost per phone order](/blog/cost-per-phone-order) through the arithmetic.
+
+What you are usually looking for is not which channel is bigger. It is average ticket and repeat rate by channel, because those are where the two genuinely differ and where a decision might actually change.
+
+## Do not treat the phone as the channel to shut down
+
+The instinct once online ordering works is to deflect calls toward it. Resist that, or at least test it before committing.
+
+Some customers order by phone because they want to ask something, because the order is complicated, because they are driving, or because they have always done it that way. Telling that person to visit a website is telling them to go through the friction they called to avoid. A share of them will, and a share of them will call somebody else. The comparison is worked through in [phone ordering versus online ordering](/blog/ai-phone-ordering-vs-online-ordering).
+
+The version that works is both channels operating properly against the same menu and the same clock, with the phone answered every time. Pull last month's Square orders, split them by source, and compare average ticket. If the phone number is higher, which it often is because a conversation upsells and a checkout page does not, then the channel you were about to deprecate is the one carrying your better orders.

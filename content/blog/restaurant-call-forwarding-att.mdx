@@ -1,0 +1,76 @@
+---
+title: "Restaurant call forwarding on AT&T: codes, PINs, and gaps"
+description: "AT&T business forwarding is three separate settings, not one. Which to use for a restaurant phone, how remote access works, and where these setups fail."
+publishedAt: "2026-02-14"
+faqs:
+  - question: "What code forwards an AT&T business line?"
+    answer: "Dial *72 from the line itself, wait for the second dial tone, then dial the ten-digit destination. *73 cancels it. On many AT&T lines the forward only takes hold once the destination answers, so have someone pick up on the other end and stay on for a second. Hosted AT&T products are configured in a web portal rather than by star code."
+  - question: "What is Remote Access to Call Forwarding?"
+    answer: "It is a paid AT&T feature that lets you turn forwarding on and off from any phone instead of only from the line itself. You call a dedicated access number, enter your business number and a PIN, then use the normal star codes. Without it, a snow day or an unexpected closure means driving to the restaurant to change a phone setting."
+  - question: "Should I forward every call or only unanswered ones?"
+    answer: "Forward every call once you trust the system, and forward only unanswered ones while you are still testing. Overflow forwarding leaves the caller listening to four or five rings before anything happens, which is long enough for a hungry customer to hang up and dial a competitor. Overflow is a training-wheels setting, not a destination."
+  - question: "Why did my forwarding stop working after a service visit?"
+    answer: "Line work, a modem swap, or a change to your account can clear forwarding without any notification. This is common enough that it belongs in your opening checklist. Call your own restaurant number from a personal cell each morning for the first two weeks, then weekly. Ten seconds of checking beats discovering it during a dinner rush."
+---
+
+Most owners think call forwarding is one setting. On an AT&T business line it is usually three, and the two people skip are the ones that decide what happens during your dinner rush.
+
+The confusion is understandable. `*72` is the code everyone knows, it does something visible, and it works. It's also the blunt instrument, and if it's the only tool you use you'll either send every call away when you didn't mean to or send none of the ones that matter.
+
+## Three settings, not one
+
+### Forward all calls
+
+Dial `*72` from the line, wait for the stutter tone, dial the ten-digit destination, and wait for it to answer. `*73` turns it off. Once this is on, the handset in your restaurant does not ring. Not quietly, not once. The call never arrives.
+
+This is the correct setting for a restaurant running a voice agent full time, because there's no reason for a phone to ring on your line at all if the agent takes the order and transfers the calls that need a human. It is the wrong setting the first week, when you still want to hear what's happening.
+
+### Forward when busy
+
+Fires only when the line is already in use. On AT&T this is a separately subscribed feature, commonly activated with `*90` and cancelled with `*91`, though the codes vary by region and by how old the line is. Confirm yours with business support instead of trusting a code you found in a forum.
+
+For a single-line restaurant this is the most underrated setting in the building. Every second caller during a rush currently hears a busy signal or rolls to voicemail, and neither of those is a customer.
+
+### Forward when there's no answer
+
+Fires after a set number of rings, commonly `*92` to activate and `*93` to cancel, again subject to what's provisioned. The ring count is usually configurable through support and defaults higher than you want. Ask for three rings, not six.
+
+The trap here is the interaction with voicemail. AT&T voicemail is itself a no-answer forward. If both are set, whichever fires first wins, and it's usually not the one you configured last. If you're forwarding on no-answer to a voice agent, the voicemail box has to be taken out of the path or it will keep catching calls and you'll spend a week blaming the agent.
+
+## Remote access, and why it's worth the line item
+
+Star codes have a physical requirement that nobody mentions until it bites: you have to be standing at the phone.
+
+Remote Access to Call Forwarding removes that. AT&T gives you an access number and a PIN; you call in from anywhere, identify the line, and use the same codes. It's a small monthly charge and it pays for itself the first time you're closed for a burst pipe, a funeral, or a health inspection and need every caller to hear something other than a ring.
+
+Ask for it when you set up forwarding, not after. Adding it later is another call to support and another wait.
+
+## AT&T sells several different phone products
+
+The instructions above cover traditional AT&T business lines. If your restaurant is on AT&T Phone for Business over fiber, or on AT&T Office@Hand, the star codes may work but the web portal is what actually governs the line, and the two can hold conflicting settings.
+
+The rule is the same as anywhere else: configure in one place. If there's a portal, use the portal, and treat the handset codes as an emergency override you use once and then reconcile. Fighting a portal with star codes produces a phone system where nobody can explain what happens to an incoming call, which is a genuinely expensive state to be in during a Friday service.
+
+## Where these setups actually fail
+
+The failure is almost never the star code. It's what sits between the code and the customer.
+
+Hunt groups are the big one. If your published number rolls to a second line when the first is busy, forwarding the first line does nothing for the roll. The caller lands on line two, which is still ringing an empty office. Every number in the group needs the same treatment, or the group's overflow destination itself has to change. This is the single most common reason an operator tells me forwarding "didn't do anything."
+
+The second is the wrong number. The number on your menus, your Google listing, and your delivery apps is not always the number AT&T shows as your main line, especially if a marketing company issued a tracking number at some point. Forward the number customers actually dial, which you verify by calling it from a phone outside the building rather than by reading the bill.
+
+The third is shared-line equipment. Card terminals, alarm panels, and kitchen fax machines that dial out over a voice line will break under forward-all, and they break silently. Check what's plugged in before you flip anything.
+
+The fourth is nobody testing. Forwarding either works or it doesn't, and the check takes one call. Make it part of the opening routine for two weeks. Details of what to watch in that first fortnight are in the [onboarding checklist](/blog/ai-phone-onboarding-checklist-restaurants).
+
+## Forwarding versus moving the number
+
+Forwarding leaves the number on your AT&T account and passes calls along. Porting moves it outright. Start with forwarding, always. It's reversible with one dialed code, it requires no paperwork, and it lets you run a real dinner service on the new setup before committing anything. If it goes badly, you dial `*73` and you're back where you started in four seconds.
+
+Porting is worth considering after a month of stable operation, and the process, along with what genuinely goes wrong during it, is in [porting a restaurant phone number](/blog/phone-number-porting-guide-restaurants). Our own setup runs on the forwarded number and is typically live within 24 hours; the plan tiers are on [pricing](/pricing).
+
+## The four-minute test
+
+Set the forward at 2pm on a quiet day. Then, from a cell phone that has never called your restaurant, place four calls in a row: a normal pickup order, a question about closing time, a request to speak to a manager, and one where you go silent and wait.
+
+Read the POS and the call log after. If the pickup order landed correctly and the manager request reached an actual human, you have a working configuration. If the silent call ended up somewhere you didn't expect, that's the path an intoxicated caller, a bad connection, and half your elderly customers will also take, so fix it before Friday.

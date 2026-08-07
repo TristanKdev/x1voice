@@ -1,0 +1,78 @@
+---
+title: "Getting a limited-time offer live on the phone same day"
+description: "An LTO that marketing launched at 9am and the phone agent has never heard of costs you orders all week. Here is the sequence that closes that gap."
+publishedAt: "2026-04-30"
+faqs:
+  - question: "How fast can a limited-time offer go live on a voice agent?"
+    answer: "Same day, if the item exists as a real POS item with a real price. The voice agent reads your menu from the POS, so once the item is built and available, the agent can sell it. The delay operators actually hit is not technical, it is that the LTO was announced on social media before anyone created it in the POS."
+  - question: "Does an LTO need a different setup than a permanent menu item?"
+    answer: "It needs two extra things: a stop date and a list of the names customers will call it by. A permanent item earns its aliases over months of callers saying it wrong. An LTO has three weeks, so you write the aliases up front instead of discovering them from transcripts."
+  - question: "What happens when an LTO sells out mid-run?"
+    answer: "If your POS marks it unavailable, the agent stops offering it and tells callers it is gone. That path is the same 86 sync used for any other item. The failure case is an LTO tracked on a whiteboard rather than in inventory, because nothing tells the agent to stop selling it."
+  - question: "Should the voice agent proactively pitch the LTO to every caller?"
+    answer: "Usually no. A mention on the first turn of every call gets stale fast and lengthens every conversation, including from regulars who called to reorder the same thing they always get. Attaching it to a relevant moment, like a caller ordering the category the LTO belongs to, converts better and annoys fewer people."
+  - question: "Who should own the LTO checklist in a restaurant?"
+    answer: "Whoever builds the item in the POS, because that is the step everything else depends on. Marketing owns the announcement, the kitchen owns prep, but the POS build is the gate. If one person does that and also updates the phone aliases in the same sitting, the offer goes live everywhere at once."
+---
+
+A regional chain launches a brisket sandwich on a Tuesday morning. Instagram post at 9am, window cling by 10, radio spot running by noon. At 12:40 a customer calls and asks for the brisket sandwich, and the phone agent says it does not have that item and asks if they would like to order something else.
+
+That call is gone. So are the forty after it. The offer ran for three weeks and the phone, which for a takeout-heavy store is a third of the volume, sold it for eighteen days instead of twenty-one.
+
+The gap is almost never a technical limit. It is a sequencing problem, and it is fixable with a short routine you run every time an offer launches.
+
+## Why the phone lags behind the sign in the window
+
+Limited-time offers get announced before they get built. The marketing calendar is set months out, the creative is finished weeks out, and the actual POS work happens whenever the person who does POS work gets to it. That is often the morning of, or the afternoon of, or Thursday.
+
+Every other channel tolerates that. A window cling does not need a database record. Your online ordering page usually does, but somebody notices immediately when the page is wrong, because the page is public and staff look at it. The phone has no equivalent. Nobody at the restaurant calls their own number to check, so a missing LTO on the phone can run silently for the entire promotion.
+
+A voice agent reads its menu from your POS. X1 Voice pulls from Square, Clover and OrderCounter directly, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect. The mechanism is covered in [menu sync](/blog/menu-sync-deep-dive-voice-ai). The practical consequence is simple: the item has to exist in the POS before the agent can sell it, and no amount of marketing enthusiasm changes that order of operations.
+
+## The build order that actually works
+
+Put the POS build first, before the announcement rather than after it.
+
+Create the item with its real price and its real modifiers a day or two ahead of launch, and if your POS supports scheduling availability, schedule it rather than leaving it live early. If it does not, build it and mark it unavailable until launch morning. Either way the record exists, the sync has already picked it up, and launch day involves flipping one switch instead of building an item under pressure.
+
+Then write down what callers are going to ask for. This is the step most operators skip, and it is the one that determines whether the LTO actually sells on the phone.
+
+## Callers will not say the name you printed
+
+Your menu says "Smoked Brisket Melt with Horseradish Aioli." On the phone you will hear: the brisket, the brisket melt, the new brisket thing, the smoked one, the special, that sandwich from the commercial, the horseradish sandwich.
+
+For a permanent menu item this sorts itself out. Transcripts accumulate over months, you notice the patterns, you add aliases, and the item becomes reliable. An LTO does not get months. If it takes you two weeks to learn the alias list from transcripts, the offer is over before the agent gets good at selling it.
+
+So write the aliases when you build the item. Sit with whoever wrote the marketing copy and ask what the radio spot calls it, what the sign calls it, and what the crew has been calling it in the walk-in for the past week. That last one is usually the most accurate prediction of what customers will say, because staff shorthand and customer shorthand converge on the same lazy syllables. The general principle is in [menu naming for voice clarity](/blog/menu-naming-for-voice-clarity), and it applies double under a three-week clock.
+
+Include the promotional framing too. If the radio spot says "the two for twelve," someone will call and ask for the two for twelve without ever naming the food. That phrase needs to resolve to something.
+
+## When to have the agent bring it up
+
+There is a real temptation to have the agent mention the LTO on every call, right after the greeting. Resist it for most offers.
+
+A mention on the first turn of every single call adds several seconds to every conversation, including calls from the regular who orders the same large pepperoni every Friday and does not want a pitch. Do that for three weeks and you have added a meaningful amount of hold-adjacent time across thousands of calls, in exchange for a pitch most of those callers tuned out on day two.
+
+The better placement is contextual. A caller ordering from the sandwich category hears about the brisket sandwich. A caller ordering wings does not. That is the same discipline as any other suggestion on the phone, and [upselling without being pushy](/blog/upselling-without-being-pushy-ai) covers where the line sits. The measurable version of the question is in [average ticket and upsell on phone orders](/blog/ai-phone-ordering-average-ticket-upsell).
+
+There is one exception worth making. If the entire promotion is the offer, a limited run of something you will sell out of, a first-turn mention is defensible for the first few days and then should come off. Set a date to remove it when you set it up, or it will run until someone complains.
+
+## Ending it is harder than starting it
+
+Offers end badly more often than they start badly, and the failure is worse. A caller who asks for an item you no longer have and gets told no is a mildly disappointed customer. A caller who successfully orders an item you no longer have is a refund, a remake, or an argument at the counter.
+
+Three things have to happen at the end of a run, and they have to happen together:
+
+- The POS item goes unavailable or gets removed, which is what actually stops the agent from selling it.
+- Any first-turn promotional mention gets deleted from the greeting, since an agent advertising a dead item is worse than one that never mentioned it.
+- The aliases stay, at least for a few weeks, so the agent understands "the brisket melt" well enough to say it is no longer available instead of failing to parse the request.
+
+That third one gets skipped constantly and it is the cheapest of the three. Callers keep asking for an LTO for a month after it ends. An agent that recognizes the name and says it ended handles that gracefully. An agent that has never heard the phrase escalates to a human or asks the caller to repeat themselves.
+
+If the item sells out early rather than ending on schedule, the same 86 path handles it, assuming the item is tracked in inventory rather than on a whiteboard. [Real-time 86ing](/blog/real-time-86ing-menu-sync) covers how that propagates, and [86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes) covers what breaks when it does not.
+
+## Test it by calling your own restaurant
+
+The whole routine collapses to one verification. On launch morning, after the item is live, call your own number and order the LTO using the sloppiest name you can imagine a customer using. Not the menu name. The radio name, or the crew name.
+
+If the agent takes it and the ticket lands correctly in the POS, the offer is live on the phone. If it does not, you found out at 9:15am instead of on day eleven when a manager happens to overhear a call. Two minutes of your morning, against three weeks of a channel that would otherwise have failed quietly.

@@ -1,0 +1,66 @@
+---
+title: "Bite Buddy and the Small Voice AI Vendor Problem"
+description: "Some restaurant voice vendors have almost no public footprint. Here is how to evaluate one you cannot research, and the four questions that settle it."
+publishedAt: "2026-07-01"
+faqs:
+  - question: "Is a small voice AI vendor riskier than a large one?"
+    answer: "Differently risky, not automatically worse. A small vendor gives you a founder who answers the phone and will build what you ask for. A large one gives you a support queue and a roadmap you cannot influence. The real risk with a small vendor is continuity: if two engineers built it and one leaves, your phone line is exposed. Ask who runs the on-call rotation and what happens at 7pm on a Friday."
+  - question: "How do I evaluate a vendor with no public reviews?"
+    answer: "Call their demo line yourself, ask for two reference customers in your format and call them without the vendor on the line, and read the contract for the exit terms. Those three steps tell you more than any review page. A vendor who cannot produce a working demo number or a single reference is telling you something, and you should listen to it."
+  - question: "What if the vendor cannot name their POS integration path?"
+    answer: "That is the disqualifying answer. Every restaurant voice vendor connects to your POS directly, through middleware like Deliverect or Otter, or not at all. If they cannot say which one applies to your system, the orders will arrive as emails or text messages for someone on your staff to key in, which is not what you are buying."
+  - question: "Should I care that a vendor has no funding announcements?"
+    answer: "Not much on its own. Plenty of profitable software companies never raise. What matters is whether they can survive losing your account and whether you can leave without losing your phone number. Funding news is a weak proxy for both. Contract terms and number ownership are direct evidence."
+  - question: "How long should I test a small vendor before committing?"
+    answer: "Thirty days of real calls at your actual volume, with written exit criteria you set before you start. That is long enough to hit a Friday rush, a holiday, and at least one system failure, which is the part you actually need to observe. A two-hour demo tells you how the voice sounds and nothing about how the vendor behaves when something breaks."
+---
+
+Search for most restaurant voice AI vendors and you find a landing page, a pricing table, maybe a press release. Search for the smaller names in the category — Bite Buddy among them — and you often find less than that. No review corpus, no case studies you can verify, no operator you know who has used it.
+
+That absence is not evidence of a bad product. It is evidence that you have to do the evaluation work yourself instead of outsourcing it to a review site. The good news is that the work is not hard, and the questions that matter are the same for a two-person company as for a funded one.
+
+## Why the category has so many small names
+
+Building a voice agent that answers a phone got dramatically cheaper in the last two years. Speech recognition, language models, and telephony are all available as APIs now, which means a competent developer can assemble something that answers a call and sounds decent in a few weeks.
+
+What has not gotten cheaper is everything after the demo: mapping a real menu with its modifier trees, writing orders into a POS that was designed in 2011, handling the caller who changes their mind three times, staying up on a Friday at 7pm, and answering the phone when a restaurant calls about a ticket that came out wrong. That gap between "sounds good in a demo" and "runs your phone line" is where most of the small vendors live, and it is what your evaluation has to measure.
+
+The five-category breakdown in [five categories of restaurant voice AI](/blog/five-categories-of-restaurant-voice-ai) is a useful place to start, because a vendor built for reservations will demo beautifully and then fall apart on a twelve-item order.
+
+## The four questions that settle it
+
+**Where do the orders land?** Ask for the exact path from the caller's words to a ticket in your kitchen. The honest answers are: a direct integration with your POS, a middleware connection through Deliverect or a similar layer, or a message to a staff member who keys it in. The third answer is not a phone agent. It is a transcription service with a nicer voice, and you should price it accordingly.
+
+**Who answers at 7pm on Friday?** Not "we have support." Who, specifically, and how fast. A small vendor where the founder answers is often better than a large one with a ticket queue, but you need to know which you are getting. Ask what their last outage was and how long it took to resolve, and listen for whether they can describe one at all.
+
+**Who owns the phone number?** This is the one operators skip and regret. If the vendor provisions a new number and forwards it, and your marketing goes out with that number on it, you have handed them the one asset you cannot rebuild. The mechanics are in [the phone number porting guide](/blog/phone-number-porting-guide-restaurants), and the short version is that you want to keep your existing number and forward it to them, not the reverse.
+
+**What happens when you leave?** Every vendor relationship ends eventually. The exit terms are the cheapest thing to negotiate before you sign and the most expensive thing to fix after. [Contract terms to avoid](/blog/voice-ai-contract-terms-to-avoid) covers the specific clauses.
+
+## Call the demo line before anything else
+
+If a vendor cannot give you a phone number you can call right now, without a scheduled meeting, stop. This is a voice product. A voice product that cannot be heard on demand is a voice product someone is nervous about.
+
+When you do call, do not order a cheeseburger politely. Order the way your worst caller orders: interrupt it, change your mind halfway through, ask for a modifier that does not exist, ask a question about an allergy, then ask for a human. [What to test on a voice AI demo](/blog/voice-ai-demo-what-to-test) has the full script, and the interruption handling is usually where a thin product shows itself.
+
+## The reference call matters more than the reference list
+
+Ask for two customers running your format at roughly your volume. A pizzeria reference does not tell a fine-dining room much, and a five-location group's experience does not predict a single store's.
+
+Then call them without the vendor on the line, and ask questions the vendor cannot coach around: what broke in the first month, how long support took the last time it mattered, what the agent still gets wrong, and whether they would sign again knowing what they know now. That last question produces the most honest answer of the four, because it lets someone be positive overall while still telling you the truth.
+
+A vendor who will not produce a reference is giving you information. A vendor who produces one who sounds rehearsed is giving you different information.
+
+## What a small vendor can genuinely offer
+
+There is a real case for going small, and it is worth stating plainly rather than treating size as a defect.
+
+A small vendor will build the thing your menu needs. If your restaurant has a pricing rule that no configuration screen supports, a two-person company will write it for you in a week and a large one will put it on a roadmap. You will get the founder's phone number. You will not be account number 4,000.
+
+The trade is continuity and depth. Deep POS integration takes years to build and maintain, because the POS keeps changing. A vendor who has been at it for six months has not hit the edge cases yet, which means you will find them, on a Friday, during service. Whether that trade is worth it depends on how much of your revenue comes through the phone and how much appetite you have for being an early customer.
+
+## Decide with a bounded test, not a feeling
+
+Set the criteria before the trial starts, in writing: order accuracy on your real menu, how many calls reached a human and why, what happened during your busiest two hours, and how the vendor behaved the first time something broke. Thirty days, real volume, no extensions. [Designing a voice AI pilot](/blog/designing-a-voice-ai-pilot) lays out the structure, including the part most operators skip — deciding in advance what result would make you say no.
+
+Run that test and the vendor's size stops mattering. You will have watched the product handle your callers, watched the company handle a failure, and read what happens when you want out. That is a better basis for a decision than any amount of research on a company that has not published much about itself.

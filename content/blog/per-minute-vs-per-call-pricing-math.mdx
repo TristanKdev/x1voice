@@ -1,0 +1,80 @@
+---
+title: "Per-minute vs. per-call pricing: run both numbers"
+description: "The cheaper headline rate wins about half the time. How to model both pricing shapes against your own real call length before you sign anything."
+publishedAt: "2026-06-19"
+faqs:
+  - question: "Is per-minute or per-call pricing cheaper for a restaurant?"
+    answer: "It depends entirely on your average call length, and the crossover is easy to find. Divide the per-call price by the per-minute rate and you get the break-even call length in minutes. If your real average is shorter than that, per-minute wins. If it is longer, per-call wins. Most restaurant order calls run two to four minutes, which puts many quotes uncomfortably close to the line."
+  - question: "How do I find my average call length?"
+    answer: "Pull it from your phone provider or POS call reporting rather than estimating. Ask for a distribution, not just a mean, because a handful of long catering calls will pull the average above what most calls actually look like. If you only have a mean, use it but treat the result as approximate and add margin on the per-minute side."
+  - question: "Does per-minute billing count ringing and hold time?"
+    answer: "Ask, in writing, because the answer varies and it changes the math. Some meters start when the agent answers and stop at hang-up. Others include the time a call spends in a queue or on hold during a transfer. If hold time is billable, any call that escalates to a person gets expensive, and the effective rate you modeled will be lower than the rate you pay."
+  - question: "What is the risk with a flat monthly plan?"
+    answer: "The risk is the overage terms, not the flat rate. A flat plan with a generous included allowance is the most predictable option available and it is easy to budget. A flat plan with a small allowance and a steep per-unit charge above it behaves like metered pricing during exactly the months you can least afford surprises, which are your busiest ones."
+  - question: "How much should I plan for seasonal swing?"
+    answer: "Model your busiest month, not your average one. Take your highest call-volume month from the past year, apply whichever pricing shape you are considering, and check whether that bill is one you would be comfortable seeing. A model built on an average month will be right in April and wrong every December, and the December version is the one that causes arguments."
+---
+
+The lower headline rate wins about half the time, which is a bad hit rate for a number people treat as decisive.
+
+Per-minute and per-call pricing are not better or worse than each other. They are bets on call length, made by the vendor, and whether the bet pays for you depends on a number you can pull from your phone reporting in about ten minutes.
+
+## The one division that settles it
+
+Divide the per-call price by the per-minute rate. That gives you the call length, in minutes, at which the two are identical.
+
+If a vendor quotes 55 cents a call and another quotes 22 cents a minute, the crossover is two and a half minutes. Calls shorter than that are cheaper on the per-minute plan. Calls longer than that are cheaper per call.
+
+Now put your own average next to it. Most restaurant order calls run somewhere between two and four minutes end to end, which means a great many quotes land within a minute of the crossover in either direction. That is close enough that the difference between the two shapes is smaller than the difference a menu change would make to your call length, and it is why treating the headline rate as the deciding factor is a mistake.
+
+Do the division anyway. It takes thirty seconds and it tells you which side of the line you are on, which is the only thing the two numbers by themselves can tell you.
+
+## Your average is probably not your average
+
+Pull a distribution, not a mean, and the picture usually changes.
+
+A restaurant with a two-minute-forty average often has most of its calls landing around ninety seconds to two minutes, with a tail of six- and nine-minute catering conversations dragging the mean upward. On a per-minute plan you pay for that tail directly. On a per-call plan the tail is free and the ninety-second calls are subsidizing it.
+
+Which means the right question is not "what is my average call" but "what does my call mix look like." A shop that is nearly all quick pickup orders has a genuinely short profile and should like per-minute pricing. A shop that fields long catering and large-party calls has a fat tail and should like per-call.
+
+If your reporting will not give you a distribution, take a sample by hand. Thirty calls timed across two shifts is enough to see the shape, and it is the same sample you need for the labor arithmetic in [turning answered calls into hours](/blog/labor-hours-saved-calculation).
+
+## What the meter counts
+
+This is the part that quietly moves the effective rate, and it is worth asking about in writing before you compare anything.
+
+On a per-minute plan, find out whether the meter starts at the first ring or at the moment the agent answers. Find out whether hold time during a transfer is billable. Find out whether a call that escalates to a person keeps running on the meter while the caller waits for someone to pick up. If the answer to any of those is yes, and your escalation rate is meaningful, your real per-call cost is higher than the model you built. Escalation policy is a design choice covered in [human handoff and failover](/blog/human-handoff-failover-voice-ai), and it interacts with billing more than most operators expect.
+
+Also find out the rounding. Per-second billing and per-minute rounding are materially different at restaurant call lengths, because a large share of your calls will be just over a minute boundary. Rounding up to the full minute on a ninety-second call is a fifty percent premium on that call.
+
+On a per-call plan the questions are different. Ask what counts as a call. Specifically:
+
+- Does a wrong number that hangs up in three seconds bill as a call.
+- Does a robocall or spam call that reaches the agent bill as a call, and what filtering exists ahead of it.
+- Does a caller who hangs up during the greeting bill as a call.
+- Does a call that transfers to a person bill once or twice.
+- Does someone who calls back four minutes later to add an item bill as a second call.
+
+Those five answers can shift a per-call quote by a noticeable percentage, and spam volume in particular is a bigger contributor than most operators realize until they look. [Blocking spam and robocalls on a restaurant line](/blog/blocking-spam-robocalls-restaurant-line) is worth reading alongside a per-call quote, because filtering that traffic before it reaches a billable meter is straightforwardly worth money.
+
+## The flat plan, and why the overage terms are the whole story
+
+A flat monthly plan is the third shape and usually the most livable one, because it is the only one you can budget without a forecast. Plans here start at $250 a month, and the current tiers are on the [pricing page](/pricing).
+
+The thing to examine is not the flat rate. It is the included allowance and the overage terms above it. A flat plan with a comfortable allowance is genuinely predictable. A flat plan with a thin allowance and a steep per-unit charge above it is a metered plan wearing a fixed-price label, and it converts into metered pricing during your busiest months, which is precisely when a surprise is least welcome.
+
+Ask for the overage rate as a number, ask whether unused allowance rolls over, and ask what happens in a month that runs double your normal volume. A vendor who will answer all three plainly is one you can plan around.
+
+## Model your worst month, not your typical one
+
+Take your highest call-volume month from the past twelve. Apply each pricing shape to it. Look at the resulting figure and decide whether it is one you would be comfortable seeing on a statement.
+
+That is the test, and it is a different test from comparing average months. A pizza shop's Super Bowl Sunday, a caterer's December, a patio restaurant's July: these are the months where the pricing shape actually matters, and a model built on April will tell you nothing about them. The seasonal budgeting side of this sits in [budgeting for voice AI monthly](/blog/budgeting-voice-ai-monthly).
+
+## Deciding
+
+Run the crossover division. Pull your call-length distribution. Ask the meter questions in writing. Model your peak month under both shapes.
+
+If the two land within roughly ten percent of each other across both an average month and a peak month, stop comparing and choose on something else. Integration depth, escalation behavior, and how quickly a menu change takes effect will all affect your operation more over a year than a ten percent difference in a line item this size. Whether the payback holds at either price is the question in [the payback calculation](/blog/payback-period-voice-ai), and the answer there is usually not sensitive to which pricing shape you picked.
+
+If the two are far apart, the shape that is cheaper for you is cheaper because your call profile is unusual in some way, and that is worth understanding on its own. Very short calls suggest an efficient flow. Very long ones suggest a menu that is hard to say out loud, or a lot of high-value catering conversation. Either finding is more useful than the pricing decision it came out of.

@@ -1,0 +1,78 @@
+---
+title: "Voice AI for donut shops: the calls before you open"
+description: "Donut shops take their most valuable calls before they open. Here's how a phone agent handles early preorders, mixed dozens, and standing office accounts."
+publishedAt: "2026-01-15"
+faqs:
+  - question: "What happens to calls that come in before we open?"
+    answer: "Right now they go to voicemail or ring out, and most callers do not leave a message for a dozen donuts. A phone agent answers at 5am the same way it answers at 10am, takes the order, and puts a ticket in front of your fryer person with a pickup time attached. That before-open block is the main reason donut shops buy this at all."
+  - question: "Can it take a mixed dozen?"
+    answer: "Yes, if the flow was built with quantity math in it. The agent needs to keep a running count, tell the caller when the mix does not add to twelve, and read the full list back before writing the ticket. Ask a vendor for a recording of a mixed dozen where the caller changes their mind partway, because that is the actual call."
+  - question: "How do standing corporate orders work?"
+    answer: "Recurring orders are usually configured once and then confirmed by phone or by exception, rather than re-taken from scratch every week. The useful thing a phone agent adds is handling the changes: the office that needs three dozen instead of two this Thursday, or wants to skip a week. Decide early whether those changes route to a person."
+  - question: "Will it know when we sell out of a specific donut?"
+    answer: "Only if your staff marks it unavailable in the POS and the agent reads that live. Donut shops sell out of specific items faster than almost any other format, often by nine in the morning, so this is not a minor setting. If availability updates only overnight, the agent will keep promising the item you ran out of two hours ago."
+  - question: "Is this worth it for a single shop?"
+    answer: "It depends on how many calls you get before and during your morning rush. Plans start at $250 a month, so the question is whether the calls you currently miss add up to more than that. Count a week of unanswered calls in your first three open hours, multiply by an average dozen ticket, and the answer is usually obvious in either direction."
+---
+
+Your busiest phone hour happens before the doors open. Someone needs four dozen for a 7:30 meeting and they are calling at 5:50 because that is when they remembered. Nobody answers, because the two people in the building are frying and glazing and the phone is on the other side of the kitchen.
+
+That call is a fifty to eighty dollar order and it goes to whichever shop picks up.
+
+## The pre-open window is the whole argument
+
+Donut shops have an unusual phone shape. The valuable calls cluster in a window when you are physically present but least able to answer, and they mostly do not come back. A person who needs donuts by 7:30 and cannot reach you at 5:50 calls the next place on the list. They do not leave a voicemail, because voicemail does not get them donuts.
+
+You will not find those calls in any report you currently look at. They are ring-outs, and unless you pull your carrier's call log you have never counted them. Do that first. Take one week, count inbound calls between the hour you arrive and the hour your counter gets staffed, and count how many went unanswered. That number, times an average dozen or two-dozen ticket, is the size of the problem.
+
+An agent that answers at 5am does the same thing at 5am that it does at noon: takes the order, applies your prep rules, quotes a pickup time, and writes a ticket. The staffing question disappears because there was never a person on that phone to begin with. The general shape of after-hours coverage is in [24/7 phone answering](/blog/24-7-restaurant-phone-answering-after-hours) and the routing setup is in [after-hours call routing](/blog/after-hours-call-routing-setup).
+
+### The pickup time is the part that goes wrong
+
+Taking the order is easy. Promising a time you can hit is not.
+
+A caller at 5:50 asking for four dozen at 7:30 is asking a production question, not an ordering question. Whether you can say yes depends on what is already in the case, what is proofing, and what else is promised for that morning. If your agent quotes a flat "twenty minutes" to everyone, it will promise four dozen assorted at a time you cannot make them.
+
+Start with a rule you know you can keep, and make it conservative. Something like: single dozens available at your open time, anything over two dozen requires a set number of hours of notice, and anything above a threshold you pick routes to a person. Tighten it later once you have watched real tickets. The reasoning behind quoting rules is in [quoting accurate pickup times](/blog/quoting-accurate-pickup-times), and the capacity side is in [order throttling and kitchen capacity](/blog/order-throttling-kitchen-capacity-phone).
+
+## Mixed dozens are counting, not ordering
+
+"Give me a dozen: three glazed, two chocolate, a couple of those maple bacon, and whatever else looks good."
+
+That sentence contains a count the caller has not finished computing, a fuzzy quantity, and a request for a recommendation. A person behind the counter handles it by keeping a tally in their head and asking a question at the end. An agent has to do the same thing out loud.
+
+What that looks like in a working system:
+
+- It keeps a running count and tells the caller they are at nine when they have named nine
+- It handles "a couple" and "a few" by asking for a number rather than guessing
+- It offers your top sellers when the caller asks what else, using what is actually available right now
+- It reads the finished mix back with a total before writing anything
+- It applies dozen pricing when the count crosses twelve, and says so, because that usually sells a thirteenth
+
+An agent that records each flavor as an unrelated line and never checks the sum will hand your kitchen a ticket for ten donuts sold at a dozen price. That is not a rare edge case in this format, it is most orders.
+
+## Standing office accounts are a different product
+
+The Tuesday and Thursday account that takes three dozen every week is your best phone customer and the one you can most easily lose to a mistake.
+
+Recurring orders are usually set up once and then run on their own. The value a phone agent adds is not re-taking the order every week, it is absorbing the changes without anyone in your kitchen stopping to write on a sticky note. The office that needs an extra dozen this week. The one skipping next Monday for a holiday. The new office manager who wants the standing order moved to 8am.
+
+Before launch, decide these:
+
+- What an existing account can change by phone, and what has to reach a person
+- Whether a caller can cancel a standing order outright or only pause it
+- How far in advance a change has to land to count for that day's production
+
+Write those down as a policy and configure to it. Shops that skip this end up with an agent that either refuses every reasonable change or accepts a cancellation at 5am for donuts already in the fryer. Both are your fault and not the software's. The handoff logic is covered in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+Holiday weeks break every rule you just wrote, so plan for them separately. The pattern is in [holiday hours and overrides](/blog/holiday-hours-overrides-voice-ai).
+
+## Selling out is the normal case here
+
+Most restaurants 86 an item occasionally. Donut shops sell out of specific items nearly every day, often by mid-morning, and the caller at 9:40 asking for a dozen old-fashioned is asking about inventory that changed an hour ago.
+
+If your staff marks sold-out items in the POS and the agent reads that state live, the caller hears it during the call and picks something else. If it updates overnight, the agent promises what you do not have and someone has to make a call back. [Real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) explains how fast that propagation actually is, which varies more by POS than most vendors admit.
+
+X1 Voice connects directly to Square, Clover and OrderCounter and reaches most other systems through Deliverect. Setup is typically under 24 hours, though that assumes your POS menu matches what you actually sell, which for a shop with a rotating specialty board is worth checking first. The bakery version of the same problem is in [voice AI for bakeries](/blog/voice-ai-for-bakeries).
+
+Here is the number that decides it. Count unanswered calls in your first three hours for one week, multiply by your average phone ticket, and compare it to $250 a month. If it clears that with room, the phone is costing you more than the fix.

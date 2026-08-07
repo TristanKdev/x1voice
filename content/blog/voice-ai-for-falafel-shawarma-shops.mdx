@@ -1,0 +1,80 @@
+---
+title: "Voice AI for falafel and shawarma shops at 1am"
+description: "Platter or wrap, sauce on the side, is it halal, and a bar rush at 1am. Here is what a phone agent gets right in a shawarma shop and what it does not."
+publishedAt: "2026-01-17"
+faqs:
+  - question: "How does the agent know whether a caller wants a platter or a wrap?"
+    answer: "It asks, and it should ask before anything else about that item. Chicken shawarma names a protein, not a format, and the two carry different prices and different modifier sets. A well-built flow resolves the format first and then takes sauces and sides. If a demo lets a caller say chicken shawarma and skips straight to sauces, the flow is wrong."
+  - question: "Can it answer whether our meat is halal?"
+    answer: "It can state exactly what you tell it and nothing more. Configure a specific sentence covering what is halal, what is not, and any certification you actually hold, then have the agent route follow-up questions to a person. This is a question where a confidently generated answer would be worse than no answer, so keep the setting conservative."
+  - question: "Will it understand callers with accents?"
+    answer: "Modern speech recognition handles a wide range of accents better than the systems most people remember, though performance varies by language background and by how noisy the caller's environment is. The practical test is your own customers, not a benchmark. Have five regulars call during a trial and check the tickets rather than trusting a vendor's number."
+  - question: "Does it help with the late-night rush?"
+    answer: "That is usually the strongest part of the case. Between midnight and closing you have the fewest staff and the most calls, and every unanswered ring is a full order lost to whoever picks up next. An agent answers all of them at once, which is something a single person on a grill cannot do at any staffing level you would pay for."
+  - question: "Can it take orders in Arabic or Spanish?"
+    answer: "Multiple languages are supported, and the useful question is which ones your callers actually use. Pull a day of recordings and listen. Shops often find a meaningful share of hangups happen within a few seconds of an English greeting, which is a lost order that never shows up as a missed call in any report."
+---
+
+"Chicken shawarma" is not an order. It is a protein, and it tells you nothing about whether the caller wants a wrap for nine dollars or a platter for fifteen, which means the first thing anyone taking that call has to do is ask a question the caller did not expect.
+
+Multiply that by every call between midnight and close on a Friday, when you have two people on and a line at the counter, and you have the specific reason phone orders in this format go wrong.
+
+## Format first, then everything else
+
+The order of questions matters more here than in most restaurant categories.
+
+Platter versus wrap changes the price, the sides, the packaging, and the modifier list. A platter comes with rice and salad and a pita on the side; a wrap does not. Sauces behave differently in each. If a phone flow takes the protein and then starts asking about garlic sauce before it knows the format, it has to back up and re-ask, and callers who get re-asked lose confidence in the whole call.
+
+Test this specifically in a demo. Have someone say "let me get a chicken shawarma and a falafel" and see whether the agent resolves the format for each item before moving on. If it guesses, or defaults to whichever is listed first in your POS, you will get platters printed for wrap prices. The underlying menu work is the same cleanup described in [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers).
+
+While you are in there, check whether platter and wrap versions of the same protein exist as distinct items with distinct prices. Plenty of shops carry one item and a modifier that changes the price, which works fine on a POS screen a human is looking at and is a common source of wrong tickets on the phone.
+
+## Sauce is where accuracy actually gets measured
+
+Nobody calls back about the rice. They call back about the sauce.
+
+Garlic sauce, tahini, hot sauce, on it or on the side, extra, none, and the caller who says "just a little" and means something specific. This is the field that determines whether the customer thinks the order was right, and it is the field most likely to end up as a free-text note that nobody reads at the pass.
+
+For a phone agent to get this right, the sauce options have to exist as structured modifiers with real values. "On the side" has to be an option, not a comment. "Extra" has to be an option, and if it carries a charge, it has to carry the charge. Free-text notes are where phone orders go to die, because they print in a place the person building the wrap does not look during a rush.
+
+The readback matters here too. An agent that reads sauces back is slower by ten seconds and right more often, and in this format the trade is clearly worth it. How to actually measure whether it is working is in [improving phone order accuracy](/blog/improving-phone-order-accuracy).
+
+## The halal question needs one written sentence
+
+You get asked this constantly, and it deserves a deliberate answer rather than whatever a system generates from your menu text.
+
+Decide the exact sentence. Something that states what is halal, what is not if anything on your menu is not, and what certification you hold if you hold one. Then configure the agent to say that sentence and route anything further to a person. A caller asking a detailed question about sourcing or slaughter should reach someone who can answer it, not a system improvising.
+
+This is not a place to be clever. A wrong confident answer about halal status damages trust with the customers most likely to be regulars, and it is entirely avoidable with one configured response. The broader version of this is in [voice AI for halal restaurants](/blog/voice-ai-for-halal-restaurants), and the same conservative logic applies to allergen questions covered in [allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions).
+
+## Late night is where the money is
+
+Here is the part of the case that usually decides it.
+
+Between eleven and close you have your thinnest staffing and, in a lot of neighborhoods, your heaviest call volume. Bars empty out. People order for four. The phone rings while both of your people are on the grill, and it rings again ninety seconds later from someone else. One person can answer one call. An agent answers all of them at the same time.
+
+What to check before assuming this applies to you:
+
+- Your inbound call count by hour for one week, taken from the carrier log and not from memory
+- How many of those calls went unanswered after eleven at night
+- What your average late-night ticket is, since these orders skew large
+- Whether your kitchen can actually absorb the orders you are currently missing
+- Whether you are open late enough for this to be a real block rather than a half hour
+
+That fourth item is the one people skip. If your grill is already at capacity at 1am, capturing more orders means longer quoted times, not more revenue, and the throttle settings in [order throttling and kitchen capacity](/blog/order-throttling-kitchen-capacity-phone) matter more than the answering does. The late-night pattern generally is in [voice AI for late-night restaurants](/blog/voice-ai-for-late-night-restaurants).
+
+## Language and accents, measured on your own callers
+
+Two related things get conflated in vendor pitches.
+
+The first is whether the agent can take an order in another language. That is a configuration question and the answer is generally yes, with the real question being which languages your customers use. Pull a day of recordings and count. Shops are often surprised by how many calls end within a few seconds of an English greeting, and none of those register as missed calls anywhere you would look. The details are in [multilingual phone ordering](/blog/multilingual-ai-phone-ordering-restaurants).
+
+The second is whether it understands accented English, which is a recognition-quality question. Performance is genuinely better than the phone systems most people are thinking of, and it still varies. Do not accept a benchmark number. Have five of your own regulars call during a trial and read the tickets they produce. That is the only measurement that describes your shop. The background is in [accents and speech recognition accuracy](/blog/voice-ai-accent-speech-recognition-accuracy).
+
+## What it does not fix
+
+It will not make your grill faster, and it will not fix a delivery radius you have never defined. If your late-night calls include people twelve minutes outside where you are willing to drive, that needs a rule before the phone starts capturing them, and the rule is described in [delivery zone rules](/blog/delivery-zone-rules-phone-orders).
+
+X1 Voice connects directly to Square, Clover and OrderCounter and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect. Plans start at $250 a month and setup is typically under 24 hours, assuming your platter and wrap items are already separated in the POS. The closest cousin to this format is in [voice AI for delis and sandwich shops](/blog/voice-ai-for-delis-sandwich-shops).
+
+Pull last Friday and Saturday from your carrier log and count the rings after eleven that nobody picked up. Multiply by your late-night average ticket. If that figure comfortably clears $250 a month, the phone is where your losses are, and the format question is the first thing to get right.

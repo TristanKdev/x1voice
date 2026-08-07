@@ -1,0 +1,80 @@
+---
+title: "A payback calculation you can check in five minutes"
+description: "Payback on a phone agent is usually simpler than the spreadsheets suggest. Four inputs, one division, and a short list of the assumptions that break it."
+publishedAt: "2026-06-18"
+faqs:
+  - question: "How do you calculate payback period for a restaurant phone agent?"
+    answer: "Divide the monthly cost by the monthly gross profit it produces, and you get payback in months. Because these systems are billed monthly rather than bought outright, payback usually collapses to a break-even question: how many recovered orders per month cover the subscription. At a $30 ticket and a 25 percent contribution margin, that is roughly one recovered order per day against a $250 plan."
+  - question: "What counts as a recovered order?"
+    answer: "A call that would have gone unanswered or been abandoned, and instead ended with a ticket in the POS. Measure it against a real baseline: your missed-call count from the month before you switched on. Counting every order the agent takes as recovered is the most common mistake in these calculations, since most of those calls would have been answered by a person anyway."
+  - question: "Should I use revenue or gross profit in the calculation?"
+    answer: "Gross profit, meaning the ticket minus food cost and any variable cost tied to that order. Using revenue makes payback look roughly four times faster than it is at typical restaurant margins, and it is the first thing anyone reviewing the number will correct. If you want a single figure that survives scrutiny, contribution margin per ticket is the input to use."
+  - question: "How long before the numbers are trustworthy?"
+    answer: "Sixty to ninety days. The first two or three weeks are unrepresentative because the menu is still being corrected, staff are still learning the handoff, and callers who used to hear a busy signal have not adjusted their habits yet. Take a baseline before you switch on, ignore the first month entirely, and calculate from months two and three."
+  - question: "What makes a payback calculation wrong in practice?"
+    answer: "Three things, in order of frequency: counting all orders as incremental rather than only recovered ones, using revenue instead of margin, and leaving out costs that are not the subscription line. The third includes number porting, any per-minute overage, integration fees, and the staff hours spent on menu setup and monitoring in the first month."
+---
+
+Payback on a phone agent is not really a payback calculation. Nobody is buying a capital asset here.
+
+You are paying monthly for something that produces monthly, which means the question is not "when do I recover my investment," it is "does this month cover itself." That collapses a spreadsheet into a single division, and the honest version fits on the back of a guest check.
+
+## The four inputs
+
+Monthly cost, all in. Recovered orders per month. Average ticket. Contribution margin per ticket.
+
+That is the whole model. Every complication people add to it is a refinement of one of those four, and most of the refinements do not change the answer.
+
+## The division
+
+Monthly cost divided by contribution margin per ticket gives you the number of recovered orders the system needs each month to break even.
+
+Work it with round numbers. A plan at $250 a month, an average phone ticket of $30, and a contribution margin of 25 percent gives you $7.50 of margin per ticket. Two-fifty divided by seven-fifty is about 33 orders a month. Call it one a day.
+
+That is the number to hold in your head, and it is the reason this decision is usually easier than it looks. One recovered order per day is a low bar for any restaurant that was missing calls at peak. It is a high bar for a restaurant that takes eight calls a week and answers all of them, and if you are that restaurant, the calculation just told you something useful.
+
+Replace every figure with your own. If your average phone ticket is $45 and your margin is 30 percent, the break-even drops under twenty orders a month. If you run a coffee shop with a $9 ticket, it rises past a hundred, and you should think harder.
+
+## What counts as recovered
+
+This is where most of these calculations quietly break, and it breaks in the flattering direction.
+
+A recovered order is one that would not have happened. It is the call that rang out at 6:40 on a Friday, or the caller who hung up after four rings, or the person who called at nine at night when you were closed and ordered for tomorrow. Those are incremental.
+
+An order the agent took at two in the afternoon, from a caller who would have been answered by the counter person in one ring, is not incremental. The revenue existed either way. Counting it inflates the model enormously, and any owner or partner reviewing your numbers will find it.
+
+So you need a baseline, and you need it before you switch anything on. Pull your missed and abandoned call counts for the month prior, broken out by hour if your provider supports it. That count, not your total order volume, is the pool that payback comes out of. [How many calls does your restaurant miss](/blog/how-many-calls-does-your-restaurant-miss) covers how to get it, and [abandoned call rate](/blog/abandoned-call-rate-restaurants) covers the half of it people forget.
+
+## Margin, not revenue
+
+Using revenue instead of contribution margin makes payback look about four times better than it is at ordinary restaurant economics, and it is the single most common error in vendor-supplied models.
+
+Contribution margin is the ticket minus food cost and minus any variable cost attached to that specific order. For most independents that lands somewhere between 20 and 35 percent, and you know your own number better than any general figure. Use it.
+
+There is a reasonable argument that phone orders carry slightly better contribution than dine-in, since there is no table turn and no server attached. There is an equally reasonable argument that packaging and the pickup counter eat that back. Do not spend time on it. Use your normal margin and move on, because the answer is not sensitive to two points either direction.
+
+## The costs that are not the subscription
+
+The plan price is the largest cost and it is not the only one.
+
+Number porting or forwarding may carry a one-time charge from your carrier. Some pricing shapes include per-minute overage above an included allowance, which is worth modeling against your actual call length rather than the vendor's example, and [per-minute versus per-call pricing math](/blog/per-minute-vs-per-call-pricing-math) works through both shapes. Integration through a middleware layer may add a fee depending on your POS. And there is staff time: menu verification, testing, and the first month of listening to call recordings is real work, even if it does not appear on an invoice.
+
+None of these are large. Together they can add a meaningful percentage to month one, which matters if you are calculating payback over a short window. [Hidden costs in voice AI contracts](/blog/hidden-costs-voice-ai-contracts) goes through the ones that show up later. Current plan pricing is on the [pricing page](/pricing), and setup is typically under 24 hours, so the first-month time cost is smaller than most technology projects but it is not zero.
+
+## Why month one does not count
+
+Ignore it. Genuinely ignore it.
+
+In the first few weeks the menu is still being corrected, your staff is still learning when to take a handoff, and the callers who trained themselves not to bother calling you at seven on a Friday have not unlearned that yet. Recovered orders in week two understate what the system will do in week ten, and any accuracy problems in week one overstate what it will look like once the menu names are fixed.
+
+Take your baseline before go-live, discard month one, and calculate from months two and three. If you want a structured version of that window, [the 30-day evaluation plan](/blog/30-day-evaluation-plan-voice-ai) sets out what to watch and when.
+
+## When the number says no
+
+Sometimes it does, and it is worth saying that plainly rather than hunting for a soft input to adjust.
+
+If you take very few calls, and you answer nearly all of them, and your average ticket is small, the recovered-order pool is not deep enough to cover a monthly subscription. That is a real answer and it is the right one for a fair number of small operations. The [single-location economics post](/blog/economics-ai-phone-answering-single-location) works through where the line usually falls.
+
+The labor side does not rescue a failing calculation either, and it is worth not pretending otherwise. Scattered interruption minutes rarely leave the schedule, which is the argument in [converting answered calls into hours](/blog/labor-hours-saved-calculation). Treat labor as a tiebreaker on a marginal case, never as the case itself.
+
+Run the division with your own four numbers. If the break-even order count is a fraction of what you were already missing, you have your answer and you do not need a model. If it is close, take a real baseline and revisit it in ninety days with actual data instead of arguing about assumptions now.

@@ -1,0 +1,75 @@
+---
+title: "The only step that verifies age is the one at the door"
+description: "A caller saying they're 21 proves nothing. What the phone step can usefully do on an alcohol delivery, and what has to happen when the driver is standing there."
+publishedAt: "2026-03-13"
+faqs:
+  - question: "Does asking a caller's age on the phone count as age verification?"
+    answer: "No. It records that someone made a claim, which is not the same as checking a government-issued ID against the face of the person receiving the order. Every state that permits alcohol delivery puts the actual check at the point of handoff. Treat anything said on the call as a prompt for the real check, and never as the check itself."
+  - question: "Can an alcohol delivery be left at the door?"
+    answer: "Generally no. Contactless delivery and alcohol are incompatible, because the whole point of the requirement is that a person examines an ID and looks at who is receiving the order. If your ordering flow offers a leave-at-door option, it has to disappear the moment an alcohol item is added, and that rule belongs in the phone flow as much as the app."
+  - question: "What if someone other than the buyer answers the door?"
+    answer: "The person taking possession is the one who has to be of age and not visibly intoxicated, regardless of whose name is on the order. A driver handing a case of beer to a teenager because the adult who ordered it is upstairs has made an illegal sale. Train drivers to check the person in front of them rather than the ticket."
+  - question: "Who pays when a delivery is refused for a failed ID check?"
+    answer: "Decide that before it happens and write it into your policy. Most operators charge for the food and refund the alcohol minus a restocking or delivery fee, but the specifics matter less than having a rule your staff can state without checking with a manager. The refusal itself is not negotiable; the money is a business decision."
+---
+
+The driver is on a porch at 8:15 with a bag of tacos and a six-pack. A kid who looks about seventeen opens the door and says his mom ordered it, she's in the shower, just leave it.
+
+Everything that happens in the next thirty seconds is the actual age verification on that order. The phone call an hour earlier, the checkbox in the ordering system, the note on the ticket — none of that verified anything. It just set up this moment.
+
+Operators put a lot of design effort into the phone step and almost none into the porch. It's backwards.
+
+## What the phone step can usefully do
+
+Not verify age. It can't, and building a flow that implies it can is worse than useless, because it creates a paper record that looks like diligence and isn't.
+
+What it can do is set expectations and route the order correctly. A caller who hears "the driver will need to see an ID from whoever takes the bag, and they can't leave it at the door" at the moment they add beer to the order is not surprised later. That one sentence prevents most refused deliveries, because the person who can't produce an ID either cancels the alcohol or arranges for someone who can to answer.
+
+It can also block things. An address outside your alcohol delivery zone, an order past the cutoff hour, a leave-at-door instruction on an order containing alcohol: all of those should be refused in the flow rather than discovered on the porch. The general configuration for that sits in [alcohol rules on phone orders](/blog/alcohol-orders-by-phone-laws).
+
+And it can mark the ticket. Loud, visible, on the printed copy the driver sees: ID REQUIRED. Not a small icon.
+
+Pickup orders get the same treatment for the same reason. A caller who is told the total including a bottle of wine, drives over, and then can't produce an ID has a bad twenty minutes and a refund conversation at your counter during a rush. One sentence on the call prevents it.
+
+### The one thing not worth collecting
+
+Don't have your agent ask for a date of birth. It doesn't verify anything, it doesn't create a defense, and now you have a date of birth in a call recording and a transcript, which is personal information you have to protect and eventually delete. Collecting sensitive data with no operational use is a pure liability, and it shows up again in your [call recording retention policy](/blog/call-recording-retention-policy).
+
+A confirmation that the customer understands an ID is required is fine and useful. A birthdate is neither.
+
+## The door is where the control lives
+
+Four things happen at handoff, and every one of them is a person's job.
+
+- The driver asks for a physical government-issued ID, not a photo of one on a phone screen, and looks at it long enough to read the date.
+- The driver looks at the person, not just the card, and compares.
+- The driver assesses whether the recipient is visibly intoxicated, which is a separate refusal ground in most states and the one drivers forget.
+- The driver records the outcome, at minimum a tap in the app confirming the check occurred.
+
+Scanner apps that read the barcode on a driver's license make the first two faster and produce a log entry, and several delivery platforms include one. They're worth using. They are not a substitute for the driver looking up.
+
+### When someone else answers
+
+This is the case that generates the actual violations. The order is under a 40-year-old's name, the card matched, everything on the ticket is clean, and the person reaching for the bag is nineteen.
+
+The rule is that whoever takes possession has to be of age. Not the account holder, not the person who paid, the person receiving. Drivers need to hear this stated plainly during training, because the instinct is to trust the ticket, and the ticket is not who is standing there.
+
+Same for hotels and dorms. A front desk clerk cannot accept an alcohol delivery on behalf of a guest in most jurisdictions, and a dorm address is worth blocking outright rather than litigating on a Friday night.
+
+## Refusals, and what they cost
+
+A driver who refuses a delivery is doing the job correctly. Treat it that way, out loud, or you will quietly train your team to wave things through.
+
+Write down the money rule before you need it. Something like: the food is charged in full, the alcohol is refunded less the delivery fee, and the driver brings the alcohol back. Whatever you choose, the person answering the follow-up call needs to state it without escalating, which means it belongs in your published [refund policy for phone orders](/blog/refund-policy-phone-orders) and in your staff briefing.
+
+Check who is allowed to do the delivering, too. Several states set a minimum age for the employee carrying alcohol, and it is not always the same number as the purchase age. A nineteen-year-old driver may be fine for food and not fine for the six-pack in the same bag, which is a scheduling constraint rather than a training one, and it has to be solved before a Friday night rather than during it.
+
+Log every refusal with the date, the address and the reason. Three or four entries a year is a functioning program. Zero entries at a place doing meaningful alcohol delivery volume means nobody is checking, and that's the pattern an investigator will notice.
+
+## Couriers make this someone else's job, but not someone else's problem
+
+If a third-party platform is carrying your alcohol, their driver performs the check under their procedures and their training. That's usually a good thing, since the large platforms have invested more in ID scanning than any independent restaurant could.
+
+It does not move the liability off your license in most states. Get three answers in writing before you enable alcohol on courier deliveries: whether they carry it in your market at all, what the driver is required to do at the door, and what happens to the product when a delivery is refused. The same due diligence applies to any handoff arrangement, including the ones described in [Uber Direct for phone deliveries](/blog/uber-direct-phone-delivery).
+
+Then do the thing almost nobody does: place an order to your own address with a bottle in it and see whether anyone asks you for anything. If the driver hands it over without looking up, you've learned that your alcohol program currently consists of a note on a ticket, and you can go fix it on Monday. Products under stricter federal rules, like [tobacco and nicotine](/blog/tobacco-orders-by-phone), don't belong on a delivery flow at all.

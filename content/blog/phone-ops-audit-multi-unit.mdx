@@ -1,0 +1,84 @@
+---
+title: "A one-day phone audit across your locations"
+description: "You can find out how your group's phones behave in a single day, with a spreadsheet and a cell phone. Here is the schedule and what each step tells you."
+publishedAt: "2026-08-05"
+faqs:
+  - question: "How do you audit phone operations across multiple restaurant locations?"
+    answer: "Call every store yourself at a known-busy time, log what happened, then pull carrier call detail records for the same window and compare. The calls tell you what a customer experiences and the records tell you how often it happens. Neither is sufficient alone, and together they take about a day for a fifty-store group."
+  - question: "What does a missed call actually cost a restaurant?"
+    answer: "It is the ticket value of an order that went elsewhere, and you never see it on any report because the customer simply called someone else. Run your own arithmetic: your average phone ticket times your unanswered calls during peak, times the days you operate. Most operators find the annual figure larger than the cost of fixing it."
+  - question: "Can I get call data from my phone provider?"
+    answer: "Usually yes. Most business phone providers and VoIP platforms expose call detail records showing inbound attempts, answered calls, ring duration, and abandons, either in a portal or by request. Ask specifically for unanswered inbound attempts by hour. That single report answers most of what an audit is trying to find out."
+  - question: "How many test calls do I need per location?"
+    answer: "Three per store, placed at different times, is enough to see a pattern across a group. One during your busiest hour, one mid-afternoon, one just after close. You are not measuring the store precisely, you are finding the locations that behave differently from the rest so you know where to look harder."
+  - question: "What should I do first with the audit results?"
+    answer: "Rank stores by unanswered calls during their own peak hour, not by total volume, and start at the top. That list is almost always shorter than expected and concentrated in a handful of locations with a specific structural cause, like a single line at a store with a two-person counter. Fix the causes before buying anything."
+---
+
+Nobody in your group knows how the phones actually behave. Not because anyone is hiding it, but because the failure is silent. An unanswered call leaves no ticket, no complaint, and no line on any report. The GM does not know it happened, the district manager cannot see it, and the customer is already eating something from a competitor.
+
+You can fix that gap in one day with a spreadsheet, a cell phone, and one report request. Here is the whole thing.
+
+## Before the day: request one report
+
+Contact whoever provides your phone service and ask for inbound call detail records for the last 90 days, per location, with these fields: timestamp, ring duration, whether the call was answered, and whether the caller abandoned. Most VoIP providers can produce this from a portal. Traditional carriers usually can, though it may take a few days, which is why this step happens before the audit day rather than on it.
+
+If you get told it is unavailable, ask again more specifically for unanswered inbound attempts by hour of day. That is the number the whole audit is built around, and it exists somewhere in every phone system sold in the last fifteen years.
+
+While you wait, build a call log sheet with one row per test call and columns for store, time, rings before answer, who answered, what you asked, what they said, and how long the whole thing took.
+
+## Morning: call every store yourself
+
+Do this personally, or have one person do all of it. Consistency matters more than volume, because you are comparing stores against each other and a second caller introduces a second set of expectations.
+
+Place three calls per location at different times. The first goes during that store's known busiest hour, which you already have from your POS. The second goes mid-afternoon, when nothing is happening and the phone should be flawless. The third goes fifteen minutes after close.
+
+Ask the same three things at every store. What time do you close today. Do you deliver to a nearby cross street. Can I place an order for pickup in an hour.
+
+The after-close call is the one people skip and the one that most reliably finds a problem. Groups routinely discover that a third of their locations ring out into nothing after close, when a recorded message stating hours and pointing to online ordering would capture a portion of that demand.
+
+## What to write down while it rings
+
+Count rings before answer, or count to thirty and hang up. Note whether you reached a person, a hold, an automated menu, or nothing. If you reached a menu, count how many key presses stood between you and a human. If you got put on hold, note how long and whether music or dead air.
+
+The subjective column matters too. Did the person who answered sound like they were doing three other things? They probably were, and that is a staffing structure finding rather than a service finding.
+
+Fifty stores at three calls each is 150 calls. At two minutes a call plus dialing, that is a long morning for one person. Split it across two people if you must, but have them use the same script and the same sheet.
+
+## Afternoon: put the records next to the calls
+
+Now the two halves meet. Your test calls tell you what a customer experiences. The call detail records tell you how often that experience happens.
+
+Build one row per store with four numbers: total inbound attempts during its own peak hour, how many went unanswered, the average ring duration on answered calls, and the abandon count. Sort by unanswered calls during peak, descending.
+
+That sort is the audit's actual output. It is usually concentrated: in most groups a handful of stores account for the majority of unanswered peak calls, and the reason is structural rather than managerial. One line at a store with a two-person counter. A host stand phone twenty feet from the host. A location where the drive-through headset and the phone share one person.
+
+The arithmetic on what those rows cost is in [the real cost of a missed call](/blog/the-real-cost-of-a-missed-restaurant-phone-call), and it is worth running per store rather than as a group total, because the group total is abstract and the store number is a conversation with a specific GM.
+
+## Late afternoon: read what your callers heard
+
+Take the ten worst rows and look for a cause you can name in one sentence. In practice the causes are a short list.
+
+- One line, so a second caller during peak gets a busy signal or a rollover to a phone nobody carries.
+- The phone lives at a station that is fully occupied during exactly the hour the calls arrive.
+- A menu tree with more than two levels, which callers abandon rather than complete.
+- Hours in the greeting that no longer match the hours the store keeps.
+- Nothing at all after close, on the shift when a caller is most likely to be planning tomorrow's catering order.
+
+Two of those are configuration and cost nothing. Two are staffing structure. One is a line-count question, and whether adding lines helps depends on whether anyone is free to answer them, which is the trade examined in [hunt groups versus a voice agent](/blog/multi-line-hunt-groups-vs-voice-ai).
+
+## The finding you did not expect
+
+Groups that run this audit almost always come away with the same surprise, and it is not the miss rate. It is the variance.
+
+Store 8 answers in two rings and knows the delivery boundary cold. Store 19 takes eleven rings, puts you on hold, and quotes a price that changed in spring. Both report to the same district manager. Nobody had ever compared them, because there was no report that could.
+
+That variance is the real target. A group with a five-point spread on answered-call rate has a staffing question. A group with a forty-point spread has a process that was never actually implemented anywhere, and the way to close it is described in [change management across a multi-unit group](/blog/change-management-multi-unit).
+
+## What to do in the week after
+
+Fix the free things first, at every store, in one pass: correct hours in every greeting, an after-hours message that states hours and points to online ordering, and menu trees cut to one level or removed.
+
+Then set up the measurement so this is not an annual heroic effort. Standing monthly report of unanswered peak-hour calls per store, plus twenty sampled phone tickets checked against what the customer asked for, which is the method in [improving phone order accuracy](/blog/improving-phone-order-accuracy). Both of those roll up cleanly if you define them once, which is the subject of [reporting rollups across locations](/blog/reporting-rollups-multi-location).
+
+Only then price a fix. You now know which stores have the problem, how large it is in orders per day, and what it would be worth to answer those calls. That makes a [pricing](/pricing) conversation with any vendor a comparison against a number you produced rather than one they supplied. Run the audit before you take the meeting, not after.

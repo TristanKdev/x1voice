@@ -1,0 +1,79 @@
+---
+title: "PAR Brink voice ordering and franchise menu limits"
+description: "What the PAR Brink integration path looks like for phone orders, and how franchise menu governance decides what you can actually change before launch."
+publishedAt: "2026-05-27"
+faqs:
+  - question: "How does X1 Voice connect to PAR Brink?"
+    answer: "Through Deliverect rather than a direct connection. The agent takes the call, builds the order against your imported Brink menu, and passes it in as an incoming order for that store. From Brink's side it arrives the way other external orders do, which means it follows whatever routing and printing rules you already have for those."
+  - question: "Can a franchisee set this up without the franchisor?"
+    answer: "It depends on your agreement, and you should check before you buy. Many brands control the menu catalog centrally and some maintain an approved-vendor list for anything that touches the POS. The integration itself is straightforward; the approval path is usually the longer part of the timeline for a franchised store."
+  - question: "What if the brand menu does not match what my store sells?"
+    answer: "That gap is the single biggest source of phone order problems in franchise environments. The agent should be configured against the resolved menu for your store, including local price overrides and items your location does not carry, rather than the corporate template. Verify it store by store with the person who runs the store."
+  - question: "Does the agent handle combos and upsize prompts?"
+    answer: "It can, but combos built as deep required-choice chains produce long phone calls. A combo that takes a cashier three taps takes a caller three questions, and callers get impatient faster than cashiers do. Restructure the worst chains before launch or accept that those items will have longer average handle times."
+  - question: "What does this cost for a single franchise location?"
+    answer: "X1 Voice plans start at $250 per month, and setup is typically under 24 hours once the menu is verified and any brand approval is in hand. For a franchised store the timeline is usually driven by the approval, not the technical work."
+---
+
+Three phone calls during a lunch rush at a franchised store is not a technology problem. It's the same three calls the store has been missing for years, and the reason nobody fixed it is that the fix has to pass through a brand office.
+
+That's the real shape of a PAR Brink voice project. The integration path is settled and unglamorous. The constraints that decide whether the project works are governance constraints: who owns the menu, who approves vendors, and how much of your store's actual operation is visible in the corporate catalog.
+
+## The connection path, briefly
+
+X1 Voice reaches PAR Brink through Deliverect. The agent conducts the call, prices the order against an imported copy of your Brink menu, and hands the completed order through as an incoming order for a specific store. Brink processes it the way it processes other external orders, so it inherits your existing routing to the kitchen and your existing printing behavior.
+
+That inheritance is convenient and worth confirming rather than assuming. If your store already receives third-party orders and they print where you want them, phone orders will too. If third-party orders currently land on a tablet that someone manually re-keys, phone orders will land in that same broken workflow, and you should fix the workflow before adding volume to it.
+
+## Franchise governance decides your timeline
+
+For a corporate-owned store, this is a menu verification exercise and a short one. For a franchised store, sequence it differently.
+
+Find out three things before you spend time on menus:
+
+- Whether your agreement restricts POS integrations or third-party vendors that touch order data, and if so, what the approval process is.
+- Whether menu items and prices are yours to change or the brand's, at your specific location.
+- Whether the brand has already evaluated phone ordering vendors, because some have and that shortens everything.
+
+None of those are technical questions and all of them can add weeks. Operators who skip this step tend to discover the constraint after configuring a menu. [Franchisee versus franchisor rollout](/blog/franchisee-vs-franchisor-rollout) covers who typically decides what, and [voice AI for multi-location franchise groups](/blog/voice-ai-multi-location-franchise-groups) covers the case where you own several stores under one brand.
+
+## The corporate menu is not your menu
+
+Brink catalogs in franchise systems describe the brand. Your store is a variation on it, and the variation lives in overrides, local pricing, and things the brand never encoded.
+
+The gaps that show up most:
+
+- Items the brand sells that your store has never carried, still present in the catalog and therefore offerable by an agent.
+- Local price overrides that exist in your store's configuration but not in the template anyone hands you during setup.
+- Limited-time offers that ended at your store but remain active in the catalog.
+- Regional items your store does carry that were added locally and are named inconsistently.
+
+Verify against what your store actually rings up, not against a document. Pull a week of item sales from Brink, sort by volume, and check the top fifty items by name and price. That list is your real menu, and it takes about twenty minutes to review. [Regional menu differences](/blog/regional-menu-differences-voice) goes further into the multi-market version of this problem.
+
+## Combos punish phone callers more than cashiers
+
+Franchise menus are combo-heavy, and combos in Brink are typically built as chains of required choices. Size, then side, then drink, then sometimes a sauce, sometimes an upsize prompt.
+
+A cashier resolves that chain in a few taps while looking at a screen. On the phone, every required choice is a question, and a caller who wanted "a number seven with a Coke" now answers four of them. The call gets long, the caller gets impatient, and long calls are where people hang up.
+
+There are three honest options. Set sensible defaults so the agent only asks about the choices that genuinely vary. Accept the longer call for those items and watch the abandonment number. Or restructure the combo in Brink, which is often not yours to do in a franchise system.
+
+Most stores land on defaults plus a shorter question set for the top three combos, and leave the long tail alone. [Simplifying modifier trees](/blog/simplifying-modifier-trees) covers the restructuring work where you have the authority to do it, and [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers) covers what happens on the call itself.
+
+## Pickup times are a promise the store has to keep
+
+Brink stores usually quote a fixed pickup window at the counter, and the number is often whatever the manager decided years ago. A phone agent will quote whatever you configure, on every single call, all day.
+
+That consistency exposes a problem you already had. If the store quotes fifteen minutes and actually takes twenty-five at peak, callers used to hear that from a person who could soften it. Now they hear a flat number and arrive to wait, which is the sort of thing that generates a review.
+
+Set the quote against reality rather than against the sign. Pull ticket times from Brink for your busiest hour and quote near the upper end of what the kitchen actually does, then tighten it later if the kitchen improves. A caller told twenty minutes who waits twelve is happy. The reverse is not.
+
+## What to watch in the first month
+
+Read the escalated calls weekly. In franchise environments, most escalations cluster into a few causes, and they're all fixable in an afternoon: an item name the agent can't match, a combo path that loops, a question about a promotion the agent has never heard of.
+
+Promotions are the recurring one. Brands run offers on a national schedule, they get advertised on television, and callers ask about them by the name in the ad. If nobody tells the agent that the ad name and the catalog name are the same thing, every one of those calls escalates. Put the current promotion into the agent's answers at the start of each campaign, and take it out when the campaign ends. That's a five-minute recurring task and it prevents a predictable spike in transfers. [Answering common questions like hours and parking](/blog/voice-ai-answering-faqs-hours-parking) covers how these standing answers are maintained.
+
+The number worth tracking is not containment. It's whether the store's phone order count went up. A franchised store that was missing calls at peak should see more phone tickets within two weeks, at roughly the same average check. If ticket count rose and average check fell noticeably, the agent is probably failing at upsells the counter staff were doing by habit, which is a configuration fix rather than a reason to stop.
+
+Before signing anything, call your brand office and ask one question: is there an approved vendor list for POS-connected ordering? The answer changes what you do next more than any feature comparison will.

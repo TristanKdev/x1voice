@@ -1,0 +1,74 @@
+---
+title: "Voice AI for Filipino restaurants and party tray orders"
+description: "Turo-turo counters sell what's in the steam table right now. How a voice agent handles party trays, sold-out pans, and callers who switch languages."
+publishedAt: "2026-02-11"
+faqs:
+  - question: "Can a voice agent take orders from callers speaking Tagalog?"
+    answer: "Ask any vendor which languages their agent actually handles and then test it with a real caller before you sign. Language support varies widely and marketing pages tend to overstate it. What matters more for most Filipino restaurants is handling code-switching, where a caller uses English sentence structure with Tagalog dish names, which is a different problem from full translation."
+  - question: "How does it handle dish names like sisig, kare-kare, or pinakbet?"
+    answer: "It handles them if they exist in your POS and the pronunciations your customers actually use are mapped to them. This is configuration work, not a limitation of the technology. Include the shortened forms and the English descriptions people use when they don't know the name, since a caller asking for the peanut stew means kare-kare."
+  - question: "What about a steam table where availability changes hourly?"
+    answer: "The agent is only as current as your POS. If your team marks a pan out when it empties, the agent stops offering it within minutes. If availability lives in the head of whoever is behind the counter, the agent will keep selling dishes that ran out at one o'clock. Getting availability into the POS is the prerequisite, not an optional refinement."
+  - question: "Can it price a party tray with a small, medium, and large size?"
+    answer: "Yes, provided each tray size is a real item or a real size option in your POS with its own price. The failure case is a single generic tray button where staff type the size into a note, because the agent has nothing to price against. Fixing that in the POS helps your counter as much as it helps the phone."
+  - question: "Is this worth it for a small family-run place?"
+    answer: "It depends on how many calls you miss during your peak, not on how big you are. A single-location turo-turo doing heavy weekend and holiday volume can lose more revenue to unanswered calls than a much larger restaurant with even traffic. Count your missed calls in your busiest two hours and price them at your average ticket before deciding."
+---
+
+"Meron pa ba kayong crispy pata?" is probably the most common sentence spoken into your phone, and on a Saturday afternoon roughly none of the people saying it get an answer.
+
+That question costs fifteen seconds to answer and nothing to get wrong. The one behind it, three large trays of pancit for tomorrow, is a $200 ticket. Both ring during the same forty minutes, both go unanswered for the same reason, and only one of them shows up as a loss you would ever notice.
+
+## A steam table is a live inventory and your phone doesn't know it
+
+Turo-turo service has a structural feature that most restaurant formats don't: what you can sell is literally visible in front of you and changes every hour. A pan empties at 1:15 and that dish is gone until the next batch, if there is one.
+
+Your counter staff handle this instinctively because they can see the pans. A voice agent cannot see anything. It knows what your POS says is available, which means the whole question is whether your POS reflects the steam table.
+
+For a lot of family-run places, it doesn't. Availability lives in the staff's heads, and the POS has every dish permanently on. That arrangement works fine with people answering the phone and breaks immediately when a machine does. So the prerequisite is a habit change: whoever works the counter marks a dish unavailable when the pan empties, and marks it back when a new one drops.
+
+That is not a large ask, and it pays off beyond the phone, since your online ordering has exactly the same problem. [Real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) covers how the signal travels, and [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes) is the list of ways it goes wrong.
+
+## Party trays are the calls worth protecting
+
+Small, medium, and large trays of pancit, lumpia, adobo, or lechon kawali are where the money is, and those calls arrive by phone almost exclusively. A caller planning a birthday, a baptism, or a Sunday gathering is not using an ordering app. They are calling, often at an odd hour, often with a list they are still assembling.
+
+Three things make those calls go well:
+
+- Every tray size exists as a real POS item or size option with its own price, so nothing has to be typed into a note field and interpreted later
+- The agent captures the callback number and the pickup date and time before it captures the food, so a dropped call still leaves you a lead you can follow up
+- Anything above a dollar threshold you set gets confirmed by a person, because tray quantities have prep implications the agent cannot see
+
+That last rule is the one operators skip and regret. Six large trays for Saturday is a batch-planning decision, not an order. Let the agent take the details and have someone confirm within the hour. The broader shape of this is in [catering order handling](/blog/ai-phone-answering-catering-orders).
+
+## Dish names are the actual configuration work
+
+The technology handles Filipino menus fine. What it needs is a list of what your customers say versus what your POS calls things.
+
+Some of this is obvious. Kare-kare, sinigang, pinakbet, dinuguan, palabok, and bicol express need to be recognized in the pronunciations real callers use, including the ones from people who grew up here and the ones from people who didn't. Some of it is less obvious: a caller asking for "the peanut one" means kare-kare, "the sour soup" means sinigang, and "the purple cake" means ube. Those descriptive fallbacks belong in the alias list too, because a decent share of your callers are ordering food they've eaten and never named.
+
+Then there's the sizing vocabulary. A caller who asks for "one order" of lechon kawali and a caller who asks for "a small tray" want very different amounts of food, and both phrasings are normal. The agent needs to distinguish them or ask.
+
+Rice is its own small trap. Some places include it, some charge for it, some ask garlic or plain, and callers assume whichever version they grew up with. If the agent has to ask, it should ask once and briefly. If rice is included, it should say so rather than leave the caller wondering whether to add it separately.
+
+An hour with your menu and someone who works your counter produces this list. It is the highest-value hour of setup in this format, and no vendor can do it for you because it depends on your customers.
+
+## Code-switching is a specific requirement, not a general one
+
+Plenty of your callers speak English fluently and still use Tagalog for the food. A sentence like "can I get two orders of sisig and one large pancit bihon" is entirely English except for the parts that matter.
+
+That is a different technical problem from full-language support, and it's the one most Filipino restaurants actually need. An agent that handles it treats the dish names as vocabulary rather than as a language switch. An agent that tries to detect a language and route accordingly will get confused mid-sentence.
+
+For callers who genuinely prefer Tagalog end to end, usually older family members, ask the vendor directly what they support and test it before signing. Do not accept a list on a marketing page. Have someone who speaks it call the demo line and try to place a real order, then read the transcript. Details on how language handling works sit on the [languages page](/languages) and in [multilingual phone ordering](/blog/multilingual-ai-phone-ordering-restaurants), and the accuracy question specifically is covered in [accents and speech recognition](/blog/voice-ai-accent-speech-recognition-accuracy).
+
+## What to run before you commit
+
+A short list, and you can do all of it in a week:
+
+- Count calls offered and answered during your busiest two hours on a weekend, then price the gap at your average ticket
+- Have three different people, including one older relative and one non-Filipino customer, call a demo line and order something real
+- Change a dish to unavailable in your POS and time how long until the phone stops offering it
+
+The first tells you whether the money is there. The second tells you whether it will work for your actual callers rather than for a vendor's scripted demo. The third tells you whether the integration is real.
+
+If the missed-call arithmetic clears the monthly cost and the demo calls come back clean, the decision is straightforward. If the demo calls come back rough on dish names, that is usually a fixable alias problem and worth a second pass rather than a walk-away. If the availability test takes longer than a few minutes, the integration is shallow, and in a turo-turo operation a shallow integration is the one thing you cannot live with.

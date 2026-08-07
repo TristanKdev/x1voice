@@ -1,0 +1,84 @@
+---
+title: "The menu-update routine that keeps dead items off the phone"
+description: "Seasonal menu changes break phone ordering more often than any other menu event. A short recurring routine stops the agent from selling what you no longer make."
+publishedAt: "2026-05-01"
+faqs:
+  - question: "Why do seasonal menu changes break voice ordering?"
+    answer: "Because a seasonal change is many edits at once, and partial edits are the dangerous kind. Adding six items and retiring nine touches prices, modifiers, and categories in the same sitting. If two of those edits get missed, the agent keeps selling something the kitchen stopped prepping, and nobody finds out until a ticket hits the line."
+  - question: "How often should a restaurant audit the menu its voice agent uses?"
+    answer: "Once per menu change, plus one standing check each quarter even in seasons with no planned change. The standing check catches drift: an item someone deleted in a hurry, a price that moved on the printed menu but not in the POS, a modifier that got renamed. Fifteen minutes of reading beats a week of wrong tickets."
+  - question: "Do I have to reconfigure the voice agent every time the menu changes?"
+    answer: "No. The agent reads the menu from your POS, so an item you change in the POS changes for the phone too. What needs human attention is the naming layer: the alternate phrasings callers use for new items, and whether a retired item's name should still be recognized so the agent can say it is gone."
+  - question: "What is the most common seasonal mistake operators make?"
+    answer: "Retiring an item on the printed menu without retiring it in the POS. The printed menu is what staff look at, so the kitchen stops making the item while the POS record stays live and sellable. Every ordering channel that reads the POS, including the phone, keeps taking orders for it."
+  - question: "Should retired seasonal items be deleted or marked unavailable?"
+    answer: "Mark them unavailable if they are coming back, delete them if they are not. An unavailable item keeps its history, its modifiers, and its reporting, which matters for anything that returns each year. Deleting a returning item means rebuilding it from scratch next season and losing the comparison in your sales reports."
+---
+
+Seasonal menu changes cause more phone-order problems than 86ing, more than call volume spikes, and more than accents. Not because seasonal changes are technically hard, but because they are many edits at once, done under time pressure, by someone who is also expediting.
+
+The specific failure is narrow and predictable. Somebody retires an item from the printed menu and forgets to retire it in the POS. The kitchen stops prepping it. The phone keeps selling it. Two days later a ticket for a butternut squash soup lands on a line that has no butternut squash, and now a cook, a manager, and a customer are all having a worse evening than they needed to.
+
+## The printed menu and the POS are different systems
+
+This sounds obvious and it is still the root of most of these incidents.
+
+Your printed menu is the artifact everyone treats as authoritative. It gets designed, proofed, printed, and put on the tables, and once it is out there the change feels done. The POS record is invisible by comparison. Nobody sees it during service. It only surfaces when something orders against it.
+
+Every digital channel you run reads the POS, not the paper. Online ordering, the third-party apps if you push your menu to them, and the voice agent. So the paper menu can be a full season ahead of what your ordering channels believe you sell, and nothing will tell you.
+
+A voice agent makes this more visible rather than less, which is worth saying plainly: it does not create the problem, it just gives the stale record a mouth. The item was sellable online too. The phone is simply where you notice, because a person asked out loud and got an answer.
+
+## What to change, in what order
+
+Seasonal turnover has a sequence that keeps the window of inconsistency short.
+
+Build the new items first, while the old menu is still running. New items that exist but are marked unavailable break nothing. You can create them a week ahead, get the modifiers right without hurry, and check the prices twice.
+
+Retire the outgoing items second, and do it in the POS before the paper changes rather than after. This is the inversion that matters. If the POS goes first, the worst case is a caller asking for something you still technically have in the walk-in, and you can honor it. If the paper goes first, the worst case is selling something you cannot make.
+
+Flip the new items available third, on the morning the menu changes, in one pass.
+
+The whole thing takes under an hour for a typical seasonal swap, and it is worth doing on a slow morning rather than squeezing it in before a Friday.
+
+### The part that needs a person
+
+One step in the sequence does not come from the POS: how callers will refer to the new items.
+
+The agent reads item names from your menu data, and customers do not use item names. They use descriptions, category words, and whatever the special board said. A new fall item called "Harvest Bowl" gets asked for as the harvest thing, the fall bowl, the squash bowl, the new bowl, and just the bowl. If none of those resolve, the caller either accepts a substitute or gets handed to a human who is busy.
+
+Adding those alternate names takes a few minutes per item at build time, and [training the agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu) covers the mechanics. Do it in the same sitting as the POS build, because if you defer it you will be learning the aliases from transcripts three weeks into a twelve-week season.
+
+## Retired items should still be understood
+
+The instinct is to make a retired item disappear completely. That is half right.
+
+Stop selling it, absolutely. But leave the name recognizable for a while, because customers do not read your seasonal calendar. People will call and ask for the summer peach salad in October, and there is a real difference between an agent that says the peach salad ended with the season and offers what replaced it, and an agent that has never encountered the phrase and asks the caller to repeat themselves twice before escalating.
+
+The first one is a normal conversation. The second one is a caller deciding your restaurant is annoying to order from.
+
+This matters most for items with a following. Anything that had regulars will generate requests for months. Anything that was on a billboard will generate requests from people who saw the billboard and did not notice it came down.
+
+## Where prices quietly drift
+
+Seasonal changes are also when prices move, and price drift is harder to catch than item drift because nothing about it looks broken.
+
+A wrong item causes an incident. A wrong price causes a fifty-cent discrepancy that nobody escalates. The caller was quoted $14.50 by the phone, the printed menu says $15.25, and the difference gets absorbed at the counter by a cashier who does not want an argument. That happens a hundred times and it is real money, spread thin enough to be invisible in your reporting.
+
+The check is mechanical. After a seasonal update, put the printed menu next to a POS item export and read down both columns. It is boring and it takes fifteen minutes and it catches things. The same read catches modifier prices, which drift more than base prices because fewer people look at them. If you run several locations with different pricing, this is the moment [per-store overrides for menus and hours](/blog/per-store-overrides-menu-hours) either save you or bite you, depending on whether they were maintained.
+
+## The standing quarterly read
+
+Even in a quarter with no planned menu change, the POS menu drifts. Someone adds a one-off item for a party and leaves it. Someone renames a modifier. Someone marks an item unavailable during a supply gap and never marks it back.
+
+So put a recurring fifteen minutes on the calendar, once a quarter, to read your live menu the way a customer would. Not to look for anything specific, just to read it and notice what looks wrong. The person doing it should be someone who works the floor, because they will recognize an item that has not been made in months faster than any report will flag it.
+
+Pair it with a look at what the phone is actually failing on. Your [phone analytics](/blog/restaurant-phone-analytics-guide) will show you unrecognized item requests, and those are usually either a menu record problem or a naming problem. Both are cheap to fix and neither fixes itself.
+
+## The test that proves it took
+
+After every seasonal change, call your own number twice.
+
+Once ordering a brand-new item, using a name a customer would use rather than the one on the menu. Once ordering something you just retired, to confirm the agent says it is gone rather than taking the order.
+
+If both calls go the way they should, the change landed everywhere it needed to. If the second call succeeds in ordering a dead item, you found a live problem before the kitchen did, on a Tuesday morning, with time to fix it. That is the entire value of the exercise, and it costs three minutes.

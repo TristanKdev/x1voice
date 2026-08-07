@@ -1,0 +1,68 @@
+---
+title: "Loman AI alternatives: how to compare ordering agents"
+description: "Most ordering agents sound alike on a demo call. The differences that matter sit in POS write depth, menu sync, escalation control, and the bill at volume."
+publishedAt: "2026-06-25"
+faqs:
+  - question: "What separates one restaurant ordering agent from another?"
+    answer: "Almost never the voice. The separation is in how the order reaches your POS, whether the menu and 86 list stay in sync without manual work, how much control you have over when a call goes to a person, and how the pricing behaves as call volume grows. Two agents that sound identical on a demo can produce very different tickets."
+  - question: "Which POS systems can a voice agent write orders into?"
+    answer: "It depends entirely on the vendor's integrations, so check your own POS by name before anything else. X1 Voice integrates directly with Square, Clover and OrderCounter, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink, Micros and others through Deliverect. A vendor that answers this question vaguely is telling you something."
+  - question: "Is a direct POS integration better than one through a middleware layer?"
+    answer: "Direct integrations generally have fewer moving parts and fewer places for a sync to lag, which matters most for 86'd items. Middleware integrations are perfectly workable and often the only route to a given POS. The practical question is what the delay is between an item selling out on the floor and the phone agent no longer offering it."
+  - question: "How should I compare pricing between voice AI vendors?"
+    answer: "Rebuild each quote against your own numbers rather than comparing headline rates. Take last month's call count and average call length, apply each vendor's pricing structure, and see what the invoice would have been. Per-minute and per-call models diverge sharply for restaurants with long, chatty calls, which most independents have."
+  - question: "How many vendors should I actually evaluate?"
+    answer: "Two or three, tested seriously, beats six evaluated on marketing pages. Testing seriously means placing real calls into each one during your busiest hour with your own menu loaded, then checking the resulting tickets in your POS. That takes an afternoon per vendor and it produces the only comparison that predicts how the thing will behave in service."
+---
+
+Every ordering agent on the market sounds good on a demo call. The demo is a controlled environment with a clean menu, a quiet room, and a caller who speaks in complete sentences and does not change their mind. Voice quality stopped being a differentiator in this category a while ago.
+
+What differentiates them is what happens after the caller hangs up, and none of it is audible.
+
+## Where the order lands, and in what shape
+
+The first question for any vendor is whether they integrate with your POS by name. Not "we support most major systems," not "we can work with that." By name, and with an existing restaurant running on it.
+
+The second question is what the write actually looks like. There is a meaningful difference between an agent that creates a structured ticket with each item and modifier attached to the right line, and one that creates an order with a free-text comment containing the caller's request. The second kind demos fine. It falls apart at your kitchen printer, where your expo now has to read a paragraph instead of a ticket.
+
+Ask to see a real ticket. Not a screenshot from a marketing page, a photo of a printed ticket from a restaurant on your POS. Anyone with live customers can produce one in a day. The reasoning behind weighting this so heavily is in [why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality).
+
+For X1 Voice the direct integrations are Square, Clover and OrderCounter, with Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros reached through Deliverect. The full list sits on the integrations page, and the honest framing is that a direct integration has fewer places to lag than one passing through a middleware layer, while the middleware route is often the only route to a given POS and works fine in practice.
+
+## What happens when you 86 the salmon
+
+This is the question that separates products more cleanly than any other, and almost nobody asks it during a sales call.
+
+Your kitchen runs out of an item at 7:15. Someone marks it unavailable in the POS. How long until the phone agent stops offering it? If the answer is "at the next sync" and the sync is hourly, you will sell salmon you do not have for up to an hour, and every one of those calls becomes a callback, an apology, and sometimes a refund.
+
+If the answer is "we do not sync availability, you update the agent separately," you have just been handed a second menu to maintain. Two independently maintained menus always diverge, and the divergence always surfaces as an item you sold and cannot make. The failure modes here are catalogued in [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes), and they are the most common source of avoidable phone-order problems we see.
+
+## Who decides when a caller gets a human
+
+Escalation should be a policy you write, not a behavior the vendor chose for you.
+
+Some calls belong with a person and always will. A complaint. A catering inquiry for sixty people. A regular who has been coming in for eleven years and wants to talk to the owner about a rehearsal dinner. You should be able to say, in configuration, that calls matching those shapes go to the host stand or to a mobile number, and that everything else the agent handles.
+
+You should also be able to see, per call, why a handoff happened. A vendor that reports a containment percentage without escalation reasons is giving you a number you cannot act on, which is the argument in [what is call containment](/blog/what-is-call-containment). The useful version of that report sorts handoffs into the ones you designed and the ones that represent a gap in the configuration. The second bucket is your fix list, and it is usually short and cheap to close.
+
+The other half of this is where the handoff goes. A transfer to a phone nobody picks up during a rush is not a handoff, it is a longer path to voicemail. Ask whether you can route by time of day, whether the agent can reach a mobile number, and what happens when the transfer target does not answer. Those three answers tell you whether escalation was designed or bolted on.
+
+Be skeptical of any agent that resists transferring. It makes the containment chart look better and it makes your callers angry, and one of those two things shows up in your revenue.
+
+## Rebuild every quote against your own call log
+
+Headline pricing is not comparable across vendors because the units differ. Per-minute, per-call, per-order, flat monthly, and hybrid structures all exist, and they rank differently depending on your call pattern.
+
+Pull your own numbers before you compare anything. Your phone system can tell you how many calls came in last month and roughly how long they ran. A pizza counter with three-minute order calls and a catering-heavy deli with nine-minute calls will get opposite answers from the same two price sheets. Do the arithmetic in a spreadsheet, with your actual volume, for each vendor. It takes twenty minutes and it is the only way the comparison means anything. The structures themselves are laid out in [AI phone answering pricing models](/blog/ai-phone-answering-pricing-models).
+
+Also price the failure cases. Ask what happens to your bill during a Mother's Day surge, whether there is a minimum, what the contract term is, and what it costs to leave. X1 Voice plans start at $250/month with published [pricing](/pricing), which is a deliberate choice, because a quote-only vendor is a vendor whose price depends on how much they think you will pay.
+
+## Test two vendors properly instead of six casually
+
+Shortlist by integration fit, because a vendor that cannot write into your POS is not a candidate regardless of everything else. That usually leaves two or three names.
+
+Then run each one for real. Load your actual menu, not a sample. Call during your dinner rush from the parking lot with traffic noise. Order something with four modifiers, change your mind, ask a question about an allergen, then ask for a person. Have three different staff members do the same, because voices vary and so does recognition. The structure for a longer trial is in [designing a voice AI pilot](/blog/designing-a-voice-ai-pilot).
+
+Then go look at the POS and count. Tickets that were exactly right, tickets that were close enough to serve, tickets that would have gone out wrong. Three numbers per vendor.
+
+If one vendor is meaningfully ahead on that count, the decision is made and nothing on a comparison chart should change your mind. If they tie, pick the cheaper one, or the one whose support you can reach on a Friday night. Those are the tiebreakers that matter once the tickets are equal.

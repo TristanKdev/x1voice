@@ -1,0 +1,73 @@
+---
+title: "Forecasting next month's calls from last year's tickets"
+description: "Your POS already holds enough history to predict phone volume by day and hour. The arithmetic takes an afternoon and it changes how you staff the phone."
+publishedAt: "2026-06-06"
+faqs:
+  - question: "Can I forecast call volume without a phone system that reports?"
+    answer: "Yes, approximately. Your POS knows how many off-premise tickets you did by day and hour last year. Multiply by your own measured calls-per-order ratio and you have an estimate good enough to staff against. It will not capture calls that never became orders, which is exactly why the estimate runs low and should be treated as a floor."
+  - question: "What is a calls-per-order ratio and how do I get mine?"
+    answer: "It is total inbound calls divided by phone orders taken over the same period. Sit with a tally sheet for three or four representative shifts, marking every call and every call that produced an order. A ratio of 1.4 means four in ten calls are hours, directions, status checks or wrong numbers rather than revenue."
+  - question: "How far back should the history go?"
+    answer: "Twelve months, so you capture the same month last year, plus the last eight weeks for recent trend. The prior year gives you seasonal shape and holiday spikes. The recent weeks tell you whether your business is running above or below that shape. Using only one of the two produces forecasts that miss in predictable directions."
+  - question: "Does forecasting matter if a voice agent answers every call anyway?"
+    answer: "It matters less for phone coverage and just as much for the kitchen. Knowing that next Friday will bring forty percent more orders between six and eight changes prep, staffing and how you set quote times. Answering the calls does not help if the line cannot absorb what the calls produce."
+  - question: "What is the most common forecasting mistake?"
+    answer: "Averaging across the week. A restaurant that averages ninety calls a day may take twenty on a Tuesday and two hundred on a Friday, and staffing to the average leaves you overstaffed four days and drowning on one. Forecast by day of week and by hour, or the number is worse than not forecasting at all."
+---
+
+Your POS knows roughly how many phone calls you are going to get next month. It does not store calls, but it stores tickets, and tickets and calls move together closely enough that last June predicts this June better than any vendor's benchmark ever will.
+
+The arithmetic is a single afternoon of work and produces a number per day and per hour, which is the only useful shape for a forecast. A monthly total tells you nothing you can staff against.
+
+## Pull the tickets and split them by channel and hour
+
+Export last June's tickets from your register, and last month's while you are in there. You want three columns: date, hour, and order type. Filter to off-premise types, which usually means takeout, pickup, delivery and catering, since dine-in orders do not arrive by phone.
+
+Then group by day of week and hour. Not by date. What you are looking for is the shape: how many off-premise tickets happen on a Tuesday at 6pm versus a Friday at 6pm versus a Sunday at 2pm. Most restaurants find their off-premise volume is far more concentrated than they expected, with a large share landing in a two-hour band four days a week.
+
+Write those hourly numbers down. That grid is the foundation for everything else, and it is worth keeping, because it is also the input to prep planning and to [peak-hour staffing math](/blog/peak-hour-staffing-math-phone).
+
+## Your calls-per-order ratio is the number nobody has
+
+Tickets only tell you about calls that ended in a sale. To get from tickets back to calls you need to know how many calls it takes to produce one order at your restaurant, and almost nobody has measured that. Getting it takes a tally sheet and four shifts.
+
+Put a sheet by the phone. Two columns: every call gets a mark in the first, every call that produces an order gets a mark in the second. Do it for two weekday shifts and two weekend shifts, covering your peak hours. That is enough.
+
+Divide total calls by orders. If you took 210 calls and 150 became orders, your ratio is 1.4. That means for every phone order in your POS history, roughly 1.4 calls arrived. The other 0.4 were hours questions, order status, reservations, a vendor, a wrong number, and someone asking whether you have gluten-free crust.
+
+That ratio is stable enough to reuse for months. It shifts when something changes: a new listing, a holiday, a marketing push, or a delivery platform sending status calls your way. Re-measure twice a year rather than continuously.
+
+## Combine the two and adjust for recent trend
+
+Now the actual forecast. For any given hour:
+
+Predicted calls = last year's off-premise tickets in that hour, times your calls-per-order ratio, times a growth factor.
+
+The growth factor comes from comparing your last eight weeks against the same eight weeks last year. If you are running eight percent ahead on off-premise revenue, use 1.08. If you are down five percent, use 0.95. One factor for the whole forecast is fine at this level of precision. Pretending to more accuracy than that is false comfort.
+
+A worked example. Last June, Fridays between 6pm and 7pm averaged 38 off-premise tickets. Your measured ratio is 1.4. You are running six percent ahead of last year. So 38 times 1.4 times 1.06 is about 56 calls in that hour. Then ask the question that matters: can one person handle 56 calls in sixty minutes while also doing whatever else they do at the host stand? At an average of two and a half minutes per call, 56 calls is 140 minutes of talk time. One person cannot. That is the whole point of the exercise.
+
+## What the forecast systematically misses
+
+Be clear about the direction of the error, because it is not random.
+
+- Calls that rang out and never became tickets are invisible to your POS, so the ticket-derived estimate runs low by exactly the amount you are already losing.
+- Callers who hung up on hold appear nowhere, and hold abandonment concentrates in the same peak hours the forecast is trying to size.
+- Repeat callers who got a busy signal and tried again inflate call counts without inflating orders, which distorts your ratio if you measure it on a bad night.
+- Weather, local events and school calendars move volume in ways last year's same-week data captures only if the same event happened on the same week.
+
+The first two matter most, and they mean your forecast is a floor rather than a center estimate. If the arithmetic says 56 calls, the true demand is higher, because the calls that never got answered never became the tickets you counted. Sizing that gap is what [the real cost of a missed call](/blog/the-real-cost-of-a-missed-restaurant-phone-call) is about, and a phone system that logs every inbound call closes the measurement hole permanently. [Restaurant phone analytics](/blog/restaurant-phone-analytics-guide) covers what a proper call log gives you that a POS export cannot.
+
+Weather is the one worth a separate note. A snow forecast can reshape a night's demand entirely, and the pattern is consistent enough to plan for even though the trigger is not. [Snow day delivery surges](/blog/snow-day-delivery-surge-calls) describes what that looks like from behind the counter.
+
+## Using the number for something
+
+A forecast you file is a forecast you wasted. Three decisions it should drive.
+
+Staffing the phone. If a peak hour forecasts more talk minutes than you have person-minutes, you are choosing between hiring for two hours a day, accepting the misses, or moving the calls somewhere else. That is a real three-way decision and none of the options are free. [Phone coverage during a staffing shortage](/blog/restaurant-staffing-shortage-phone-coverage) works through the trade honestly.
+
+Prep and quote times. If Friday 6pm forecasts 40 percent more orders than Tuesday 6pm, your quote times should differ by more than they probably do now. A fixed 30-minute quote across every night is a promise you keep four days a week and break on the fifth.
+
+Whether a system change pays. Multiply your forecast misses by your average off-premise ticket and you have a monthly revenue figure attached to unanswered calls. Compare it against what coverage costs. X1 Voice starts at $250 a month, so the comparison is arithmetic rather than judgment: if the forecast says you are losing more than that in a month, the decision is made, and if it says you are losing forty dollars, keep answering the phone yourself and spend the money elsewhere.
+
+Build the hourly grid first. Everything else in this post is one multiplication away from it, and most operators who build it discover their phone problem is concentrated in about eight hours a week, which is a far more tractable problem than the vague sense that the phone is always ringing.

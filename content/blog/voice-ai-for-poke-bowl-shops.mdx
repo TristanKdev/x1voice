@@ -1,0 +1,74 @@
+---
+title: "Voice AI for poke shops when every bowl is custom"
+description: "A poke bowl is a decision tree, not a menu item. How an AI phone agent handles build-your-own orders, allergy questions and the office lunch group order."
+publishedAt: "2026-01-11"
+faqs:
+  - question: "Can an AI agent take a build-your-own poke bowl order?"
+    answer: "Yes, if your POS models the bowl as a base item with modifier groups rather than as free text. The agent walks the caller through size, base, protein, mix-ins, sauce and toppings in your configured order, tracks which choices are included and which cost extra, and writes the whole thing to the ticket. The limit is your POS structure, not the conversation."
+  - question: "How does it handle callers who don't know the format?"
+    answer: "By leading. A caller who says 'I want a poke bowl' gets asked the first question rather than a list of forty ingredients. Good configuration asks one decision at a time, states the included counts as it goes, and confirms the full build at the end. That is the same script your best counter staff use."
+  - question: "What happens on allergy questions?"
+    answer: "Configure a conservative statement and a handoff. Poke stations share utensils and surfaces across raw fish, shellfish, soy and sesame, so cross-contact is a real risk in almost every shop. The agent should state what your kitchen can and cannot guarantee in your own words and route the caller to a person rather than clearing an ingredient itself."
+  - question: "Can it take an eight-bowl office order?"
+    answer: "It can, and this is where it saves the most staff time, because that call runs eight to twelve minutes and always arrives at 11:40. The practical limits are whether the caller stays organized and whether your kitchen wants that ticket dropping at once. Set a bowl-count threshold above which the agent collects details and a person calls back."
+  - question: "Will it slow down our lunch line?"
+    answer: "It should do the opposite. The reason the line slows is that someone steps away from the make station to answer the phone mid-bowl. An agent takes every call at once without touching the station, and phone orders arrive as tickets you can sequence rather than as interruptions you have to absorb."
+---
+
+Six bases, five proteins, a dozen mix-ins, eight sauces, and a toppings row. That is somewhere north of two hundred thousand distinct bowls, and your phone agent has to be able to build any of them correctly on the first pass.
+
+That combinatorial mess is the real question for a poke shop looking at phone automation. Ordering is not one item, it is a guided sequence of six or seven decisions with pricing rules layered on top. Whether a voice agent works for you comes down almost entirely to how well your modifier structure is built, and most shops have never had a reason to look at theirs closely.
+
+## The bowl is a tree, and the tree has to already exist
+
+An agent does not invent your menu logic. It reads it out of your POS.
+
+So the first thing to check is not the voice. It is whether your point of sale represents a bowl as a parent item with ordered modifier groups: size, base, protein with an included count, mix-ins with an included count, sauce, toppings, extras that carry a price. If that structure is clean, an agent can walk it. If your shop currently rings up bowls as a generic "large bowl" with the details typed into a note field, no phone agent is going to fix that, and neither is your online ordering.
+
+This is worth saying bluntly because it is the most common reason a poke shop's rollout goes badly. The fix is a menu build, not a vendor change. [How voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers) explains what a workable structure looks like, and [simplifying modifier trees](/blog/simplifying-modifier-trees) covers trimming one that has grown wild.
+
+While you are in there, look at your included counts. Two proteins included on a large, three mix-ins on a regular, extra sauce at fifty cents. Those rules are what generate pricing disputes at pickup, and they are also the rules an agent will state out loud on every call, which means any inconsistency between your POS, your menu board and your website becomes audible.
+
+## Ask one question at a time
+
+The bad version of a poke phone call is the agent reciting the ingredient list. Nobody can hold twelve mix-ins in their head, and the caller ends up saying "uh, just do whatever."
+
+The good version leads. What size. White rice, brown rice, or greens. Which proteins, and you get two on that size. Mix-ins, you get three. Sauce. Anything on top. Then a readback of the whole bowl before it goes to the kitchen.
+
+That is exactly how a good counter person runs it, and it is how your agent should be configured. If a vendor's demo has the agent reading a menu aloud, that is a configuration you will have to fix later.
+
+The readback matters more here than at most restaurants. A poke bowl has six or seven components and no obvious visual check at pickup, so an error is discovered at a desk twenty minutes later by someone who is not coming back. Confirming the build in one sentence costs eight seconds and catches nearly everything.
+
+## Allergy calls need a hard stop
+
+Poke shops handle raw fish, shellfish, soy, sesame, tree nuts on the toppings row and gluten in most sauces, across shared utensils and a single make line. Cross-contact is not an edge case in that setup, it is the normal operating condition.
+
+Do not let a phone agent clear an ingredient. Configure a statement that describes your actual kitchen honestly, something like "our proteins and toppings share a prep line, so we can't guarantee any bowl is free of shellfish or sesame," followed by a handoff to a person if the caller wants to go further. Take the small hit in containment rate. That is the correct trade and any vendor who argues otherwise is selling you a number instead of a system. [Allergen and dietary questions](/blog/voice-ai-allergen-dietary-questions) has the wording patterns.
+
+Raw fish adds a second wrinkle. Callers ask about sourcing, freezing, and whether pregnant customers should order it. Have a prepared, factual answer about what you serve and where it comes from, and let the agent give that answer rather than improvising one.
+
+## The office order is the call worth automating
+
+Every poke shop has the same 11:40 phone call. Someone in an office is ordering seven bowls off a group text, reading them one at a time, backtracking twice, and asking whether they can pay with one card. It takes ten minutes, it arrives at the exact moment your line forms, and whoever takes it is not making bowls while they take it.
+
+An agent handles that call without occupying anyone. It also handles the second and third one arriving at the same time, which a human physically cannot.
+
+Two configuration decisions make it work. Set the naming convention up front, so each bowl gets tagged with the eater's name and the labels come out of the printer matching. And set a threshold, probably somewhere around eight or ten bowls, above which the agent collects the details and tells the caller a person will confirm. Beyond that count you want a human eye on kitchen timing anyway, for the same reason described in [catering lead qualification](/blog/catering-lead-qualification-ai).
+
+Pickup timing on a large order should not be the default quote. Seven bowls is twenty minutes of make time during a rush, not the eight you promise a single order. If your system can quote off actual kitchen load rather than a fixed number, use it.
+
+## Where a poke shop should be skeptical
+
+Three things, honestly.
+
+If you do most of your volume through a delivery app and walk-ins, and the phone rings six times a day, this is not your problem to solve. Count the calls first. A shop with genuinely low phone volume is better off spending the money on labeling or on a second make station.
+
+If your menu changes seasonally in a meaningful way, someone has to keep the agent's menu current, and that someone is you. A sold-out protein that the phone keeps selling is a worse experience than a busy signal. Live availability sync is the feature to ask about specifically, and it is the difference described in [real-time 86ing](/blog/real-time-86ing-menu-sync).
+
+And if your shop's appeal is a counter person who knows regulars by name and builds their usual without asking, understand what you are moving to the phone. The agent handles the transactional calls. Keep the relationship where it lives.
+
+## The number that decides it
+
+Stand at the make station for three lunch shifts and count two things: how many times the phone rings, and how many of those rings pull someone off a bowl.
+
+The second number is the one that matters. Every interruption during a build costs you roughly thirty to sixty seconds of line throughput plus the risk of a wrong bowl. If that happens fifteen times a shift, you are losing something like ten minutes of make capacity a day to a device, and that is before counting the calls that rang out entirely. Compare that against a [$250 monthly floor](/pricing) and the decision usually makes itself in one direction or the other within a week of counting.

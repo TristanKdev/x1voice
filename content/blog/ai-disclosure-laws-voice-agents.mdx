@@ -1,0 +1,76 @@
+---
+title: "AI disclosure rules and the greeting that satisfies them"
+description: "Disclosure requirements for voice agents are arriving state by state. The honest fix is a greeting that says what the caller is talking to, in six words."
+publishedAt: "2026-03-19"
+faqs:
+  - question: "Does my restaurant legally have to tell callers they are talking to AI?"
+    answer: "It depends on where you operate, and the rules are moving. Several states have passed or proposed disclosure requirements for automated systems that interact with consumers, and the scope varies from all interactions to only those where the caller asks. Because the answer changes by jurisdiction and by year, the practical position is to disclose everywhere rather than track thirty-odd rulebooks."
+  - question: "What does a compliant greeting sound like?"
+    answer: "Something like: thanks for calling Mario's, this is the automated ordering line, what can I get started for you. It names the restaurant, states plainly that the caller has reached an automated system, and moves straight into the task. Callers who want a person can ask at that point, which is the outcome disclosure is meant to produce."
+  - question: "Will telling people it is AI make them hang up?"
+    answer: "Some will, and fewer than operators expect. The hang-ups that matter are the ones caused by a system that dodges the question and gets caught, because a caller who feels tricked tells other people. Disclosure up front costs a small number of calls and removes the worst version of the interaction entirely."
+  - question: "Is disclosure the same thing as call recording consent?"
+    answer: "No, and conflating them creates a legal gap. Disclosure tells the caller they are speaking to an automated system. Recording consent tells them the call is being recorded, which is governed by separate state wiretap statutes with their own one-party and two-party rules. A greeting can carry both, but they are two obligations, not one."
+  - question: "What if the agent is asked directly whether it is a bot?"
+    answer: "It should say yes immediately and offer a person. Several disclosure regimes hinge specifically on a direct question, and a system configured to deflect it is the clearest possible violation as well as the fastest way to lose a customer. Test this before launch by calling your own line and asking."
+---
+
+Do not build a voice agent that pretends to be a human being. That is the whole rule, and everything else on this page is detail about how to say it out loud.
+
+Disclosure requirements for automated systems that talk to consumers have been arriving state by state, with different triggers and different scopes. Some apply to any automated interaction, some only where the system is trying to sell something, and some only when the person on the other end asks directly. The set of states is not the same this year as last year. For a restaurant with one line in one city, tracking that is a bad use of your time, and the fix that satisfies all of it is the same fix: say it in the greeting.
+
+## Why a moving target argues for the simplest possible answer
+
+Rules that vary by jurisdiction usually push operators toward compliance mapping. Which states, which triggers, which thresholds. That work makes sense for a company with call centers in twelve states.
+
+It does not make sense for you. The cost of disclosing when you were not required to is roughly zero. The cost of not disclosing where you were required to is a consumer protection complaint plus the version of the story your customer tells. Adopting the strictest available standard everywhere means you stop caring what your state does next session, which is worth more than the handful of seconds it takes to say.
+
+Confirm the specifics for your own state with your attorney, particularly if you operate across state lines or run outbound calls. Outbound is a different and stricter world, and general disclosure rules sit alongside separate telemarketing statutes.
+
+## The greeting, and the parts that are load-bearing
+
+Six to nine words does it. "Thanks for calling Mario's, this is the automated ordering line."
+
+Three things are doing work in that sentence. The restaurant name confirms the caller reached the right number. The word "automated" states what they are talking to in language nobody has to interpret. And the phrase moves immediately into the task rather than lingering on the disclosure, which is what keeps it from sounding like a legal notice.
+
+What to avoid is softening. "Virtual assistant" is vague enough that some callers hear a human with a title. "Digital host" is worse. If a caller could plausibly walk away thinking they spoke to a person, the greeting did not do its job, whatever the transcript technically says.
+
+Some operators want to add "powered by" and a vendor name. Skip it. Your customer called a restaurant.
+
+## The direct question is the one that matters
+
+A meaningful share of disclosure rules turn on whether the system answers honestly when asked. It is also the moment callers remember.
+
+Configure the agent so that any form of "am I talking to a robot" gets an immediate yes and an offer to transfer. Not a deflection, not a joke, not a pivot back to the order. Then test it, out loud, on your own line, using the phrasings people actually use: "is this a real person", "are you a machine", "hello? is anyone there". Systems that handle the formal version and fumble the casual ones are common.
+
+The transfer offer matters as much as the yes. Disclosure without an escape route just tells the caller they are stuck. Whether the handoff goes to your host stand, a manager's cell, or voicemail after close, it should exist and it should work. Callers who ask that question are frequently the ones about to place a large or complicated order.
+
+## What disclosure does not cover
+
+Disclosure and recording consent are separate obligations, and operators routinely collapse them into one line and end up short on both.
+
+Telling someone they reached an automated system says nothing about whether the call is being recorded. Recording is governed by wiretap statutes that differ by state, with one-party and all-party consent rules that predate any of this technology by decades. If your vendor stores audio, and nearly all do, you need the recording notice too, on its own terms. The [consent rules for restaurant call recording](/blog/call-recording-consent-laws-restaurants) go through the mechanics, and the [all-party consent states](/blog/two-party-consent-states-call-recording) are the ones to check first.
+
+A combined greeting works fine and stays short: automated line, calls recorded, what can I get you. Two facts, one breath.
+
+## Testing that your disclosure survives contact with real calls
+
+Disclosure that exists in a config file and not in the caller's ear is not disclosure. A short list of things to actually check, once, before you stop thinking about this:
+
+- Call from a number the system has seen before and confirm the greeting is not skipped for returning callers, which some systems do as a courtesy and which quietly removes the notice.
+- Call during your busiest hour and confirm the greeting is not truncated or talked over by a caller who starts ordering immediately.
+- Ask the bot question in three different phrasings and confirm all three get a yes.
+- Call after hours and confirm the after-hours flow carries the same greeting rather than dropping straight to a message.
+- Pull five transcripts at random a week later and read the first line of each.
+
+That last one is the real check. Configuration drifts, menus get updated, someone changes a prompt, and the greeting is the thing nobody re-listens to. Reading five first lines a month is a small habit that catches it.
+
+## What this costs you in orders
+
+Less than people fear, and the fear is worth addressing plainly because it is the actual reason operators want to skip disclosure.
+
+Some callers will hang up when they hear "automated." Those callers were going to discover it within two sentences anyway, and the ones who discover it mid-order after feeling deceived are the ones who leave a review about it. There is no version of this where the caller never finds out. A system good enough to fool people for a full order is a system that will eventually be caught in a way you cannot control, and that outcome is worse than a hang-up.
+
+The category's honest problem is not disclosure, it is quality. Callers do not object to talking to a machine so much as they object to talking to a bad one, which is the distinction in [whether AI answering sounds robotic](/blog/does-ai-phone-answering-sound-robotic) and in [what customers actually think about it](/blog/will-customers-hate-ai-answering). Fix the quality and disclosure costs you almost nothing.
+
+Go call your own restaurant right now and listen to the first sentence. If you cannot tell from that sentence alone what the caller is talking to, you have a change to make this afternoon, and it is a one-line change. Then look at what your line does with the direct question, because that is the part a regulator and a customer would both check first.

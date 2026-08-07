@@ -1,0 +1,73 @@
+---
+title: "Voice AI for Peruvian Restaurants: Pollo a la Brasa Math"
+description: "Whole bird, half bird, which sides, how many people. Peruvian phone orders are arithmetic, and that is exactly what a voice agent can be made to get right."
+publishedAt: "2026-01-09"
+faqs:
+  - question: "Can a voice agent handle whole and half chicken orders?"
+    answer: "Yes, and it is one of the easier things to get right, because bird sizes are discrete items rather than judgment calls. Whole, half, and quarter each need to be their own POS item with their own included sides. The agent then asks quantity and side choices and reads the total back before confirming."
+  - question: "How does it answer 'how much chicken do I need for twelve people?'"
+    answer: "Only as well as you configure it to. Write down your own rule, something like one whole bird per three to four adults, and put it in the agent's answers so it gives the same guidance your counter staff give. Without that, the agent will either dodge the question or route the call to a person, and dodging is worse."
+  - question: "What about sides that come with the combo?"
+    answer: "Included sides need to be required choices on the item so the agent asks which ones. If a whole chicken comes with two large sides, the agent should collect both before moving on. Extra sides and upgrades belong as priced modifiers rather than as free text, or the kitchen will pack the wrong container."
+  - question: "Do Spanish-speaking callers get handled well?"
+    answer: "Spanish recognition is solid on conversation and weaker on dish names it hasn't been shown. Load the item names your customers actually use, including lomo saltado, aji de gallina, and the shorthand your regulars say, and test with real callers. If you have Spanish-speaking staff on shift, consider routing to them during staffed hours."
+  - question: "When is this not worth buying?"
+    answer: "When your phone rarely rings out. If you have someone who reliably answers through Saturday dinner and your call log shows almost no missed calls, the return is not there. Plans start at $250 a month and that has to come from orders you were otherwise losing, not from orders you were already capturing."
+---
+
+Most Peruvian takeout calls are arithmetic. How many birds, cut how, which sides, how many people are eating, and what does that come to. Nothing about it is subtle, and that's precisely why the phone still gets it wrong on a Saturday night: the calls aren't hard, there are just too many of them arriving at once while the counter is three deep.
+
+A voice agent is well suited to arithmetic that never varies and poorly suited to anything your staff improvise. Sorting your menu into those two buckets is most of the work.
+
+## Bird sizes are the easiest thing on your menu to get right
+
+Whole, half, quarter dark, quarter white. These are discrete, unambiguous, and easy for a speech system to capture correctly, which puts pollo a la brasa restaurants ahead of formats where every item is a paragraph.
+
+The only thing that goes wrong is what comes with each size. A whole chicken with two large sides, a half with one, a quarter combo with a side and a drink. If those inclusions live in your staff's habits rather than in the POS, the agent will confirm "one whole chicken" and the ticket will land without the side choices, and someone in the kitchen will pick for the customer.
+
+Build each size as its own item with its included sides as required choices. Then the agent asks for both sides before moving on, the same way your best counter person does and your worst one doesn't. The general pattern is in [how voice AI handles menu modifiers](/blog/how-voice-ai-handles-menu-modifiers).
+
+## The sides question is where the ticket actually gets built
+
+Peruvian sides carry real price differences and real portion differences. Papas fritas, ensalada, arroz chaufa, yuca, tallarines, platanos. Some are included, some are upgrades, some are only sold in a large size after four o'clock because the pan runs out.
+
+Every one of those needs to exist with a price and a size. Upgrades need a charge attached rather than being something the counter waives when they feel like it. And if a side runs out at eight on a Saturday, that has to reach the agent immediately, not on tomorrow's sync, which is the argument in [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync).
+
+Sauces deserve their own mention. Aji verde is the thing your customers call about, ask for extra of, and complain about when it's short. If extra sauce is sold, make it an item. If it's free up to a count, put the count in the system. A note field saying "extra green sauce" gets read inconsistently under pressure and the customer who paid for four containers gets two.
+
+## Family orders on a weekend are a headcount conversation
+
+The valuable call is the one for a family gathering: three birds, six large sides, a stack of containers, picked up at seven. Your counter staff handle it by asking how many people and then telling the caller what they need.
+
+An agent can do that too, but only if you write down the rule. Something like one whole bird for three to four adults, one large side per two people. Put your own version into the agent's configured answers so it gives the same guidance a person would. If you skip this, the agent will either avoid the question or escalate every family order, and escalating what should be your smoothest call defeats the purpose.
+
+Above a certain size, escalation is correct. A twenty-bird order for a party has a lead time, a pickup window, and sometimes a deposit, and a person should be on that call. Pick a threshold, route above it, and have the agent capture the caller's name, number, date, and headcount so nobody has to chase. [Catering lead qualification](/blog/catering-lead-qualification-ai) covers how to structure that capture.
+
+## Spanish-language calls and the honest version of the tradeoff
+
+A meaningful share of your callers may prefer Spanish. Recognition on conversational Spanish is good. Recognition on your dish names, in your regulars' pronunciation, is only as good as what you loaded.
+
+The list to write is short: lomo saltado, aji de gallina, causa, ceviche, anticuchos, chaufa, and every way a customer has ever mangled or shortened those on the phone. Load them as alternates pointing at the same items. Then test the demo with three actual customers rather than with a staff member reading from the menu, because a staff member reading from a menu is the easiest possible test and tells you nothing.
+
+The tradeoff to be honest about: if you have Spanish-speaking staff answering today and your Spanish-speaking regulars value that, an agent handling those calls adequately is a step down for your best customers. Route Spanish calls to a person during staffed hours and let the agent take overflow and after-hours. That's discussed further in [bilingual Spanish AI phone ordering](/blog/bilingual-spanish-ai-phone-ordering).
+
+## What breaks in the first month
+
+Four things, roughly in the order they show up:
+
+- Quoted pickup times that were typed in during setup and don't reflect a Saturday at seven, which sends every caller to your counter early
+- A side or a bird size marked available that ran out two hours ago
+- Callers naming an item with a spelling nobody loaded, which shows up as a failed lookup in the transcripts
+- Escalations for questions the agent should have answered, usually hours, parking, or whether you deliver to a given address
+
+All four are cheap corrections, and all four are found the same way: read a sample of transcripts every week for the first month and sort the failures by cause. That loop, rather than any headline metric, is the actual work of running this well, and it's laid out in [what is call containment](/blog/what-is-call-containment).
+
+## Where this stops making sense
+
+If you're doing forty covers a night with a phone that rings six times, don't buy anything. Fix your listing hours and move on.
+
+If your prices genuinely flex by customer and your menu changes weekly with no POS discipline behind it, the setup burden is larger than a 24-hour implementation claim suggests. The vendor side is fast. Your side is a real afternoon of decisions and it doesn't get shorter by starting late.
+
+And if the phone is already answered reliably by someone through your peak, you're solving a problem you don't have.
+
+The number that decides it: pull your call log for one Saturday and count how many calls rang out between five and eight. Multiply by your average family-order ticket rather than your average ticket overall, because the calls you miss at peak skew large. If that figure is meaningfully above what you'd pay in a month, you have your answer, and if it isn't, keep the money in the kitchen.

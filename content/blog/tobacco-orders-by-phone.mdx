@@ -1,0 +1,62 @@
+---
+title: "Why a voice agent should never complete a tobacco order"
+description: "Tobacco sits under stricter federal rules than beer does, and a phone order that gets delivered can trip them. Configure the agent to refuse rather than try."
+publishedAt: "2026-03-13"
+faqs:
+  - question: "Can a business take a tobacco order over the phone?"
+    answer: "Taking a phone order that is then delivered can turn an ordinary counter sale into a regulated delivery sale, which carries federal registration, reporting and age-verification requirements that most restaurants and small retailers have never filed for. Pickup orders are a narrower question that still depends on state and local rules. Ask counsel before enabling anything, not after."
+  - question: "What is the federal minimum age for tobacco?"
+    answer: "Twenty-one, nationwide, since federal law was amended in December 2019. That applies to cigarettes, cigars, smokeless tobacco, e-cigarettes and other nicotine products regardless of what a state statute says, because states may set a higher bar but not a lower one. A location still selling at 18 under an old state rule is out of compliance with federal law."
+  - question: "Do vapes and e-cigarettes follow the same rules as cigarettes?"
+    answer: "Largely yes, and that surprises people. Federal law governing delivery sales of tobacco was extended in 2021 to cover electronic nicotine delivery systems, which brought vape products under registration, reporting and shipping restrictions that previously applied only to traditional tobacco. The Postal Service will not carry them. Assume a vape order is at least as regulated as a pack of cigarettes."
+  - question: "How should the agent respond to a tobacco request?"
+    answer: "With a clear, friendly refusal and a redirect to the counter. Something like: those have to be bought in person with an ID, but the food order can be started now. No hedging, no offer to take a message, no quoting price or stock. A definite answer ends the call cleanly; an ambiguous one produces a customer who arrives expecting something you cannot sell them."
+---
+
+Tobacco looks like alcohol with a different number on it. Same age check, same ID at the door, same general shape of rule. That reading is wrong in a way that costs money, because tobacco carries a layer of federal machinery that alcohol does not, and the machinery is triggered by exactly the thing a voice agent is built to do: take an order remotely.
+
+This matters to more operators than it sounds like. Bodegas and corner stores running phone ordering, gas station delis, hookah lounges, cigar bars with a takeout menu, and any convenience-adjacent business putting an agent on the line will get asked for cigarettes within the first week.
+
+## The federal layer people miss
+
+The minimum purchase age is 21 everywhere in the country, and has been since federal law was amended at the end of 2019. State law can go higher and cannot go lower. That part is straightforward.
+
+The part that catches businesses is the federal statute governing delivery sales of tobacco, which imposes registration with federal and state authorities, monthly reporting of shipments, specific age-verification and labeling requirements, and restrictions on who may carry the product. In 2021 its scope was extended to electronic nicotine delivery systems, which pulled vapes and e-liquids into the same regime. The Postal Service will not mail these products.
+
+The operational risk is definitional. A sale arranged remotely and delivered can be treated as a delivery sale rather than a face-to-face one, and delivery sales are the category with all the filings attached. Whether a specific arrangement crosses that line is a question for a lawyer who reads your state's version of the rules. What an operator needs to internalize is that adding tobacco to a phone-ordering flow is not a menu change. It is a regulatory posture change.
+
+## Why "just take it as a note" doesn't help
+
+The common workaround is to have the agent record the request without completing it. The customer asks for a pack of Marlboro Lights, the agent says fine, adds it to the order notes, and someone at the counter sorts it out.
+
+That's still an order placed remotely. If it gets bagged with the food and handed to a driver, nothing about the note changed what happened. And if the customer is picking up, you've created a promise your counter may not be able to keep, because the product might be out of stock, the state might restrict the flavor, or the person arriving might be nineteen.
+
+The cleaner design is refusal at the point of request. The agent says these have to be bought in person, does not add anything to the ticket, and offers to continue with the food. That's a two-second interaction and it ends the ambiguity. Where a caller pushes, the call goes to a person, using the same routing you already have for anything the agent won't decide, described in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+## The state and local layer on top
+
+Local governments have been legislating in this area faster than states have. Flavored product bans exist at the city and county level in a number of places. Licensing is usually per-location and often per-product-category. Some jurisdictions prohibit tobacco delivery outright, and a few restrict how and where it may be displayed or offered.
+
+Read your own city's ordinance rather than your state's summary of it. The gap between the two is where most of the surprises live, particularly on flavored products and on whether delivery is permitted at all.
+
+For a single location this is one afternoon of reading. For a group operating across municipal lines it is a per-store configuration problem, and treating it as one shared rule will produce a violation in whichever store has the strictest local ordinance.
+
+The structural point is the same as with alcohol, where privileges and hours vary by license and geography, covered in [alcohol rules on phone orders](/blog/alcohol-orders-by-phone-laws). The difference is that alcohol has a workable phone configuration and tobacco mostly doesn't. Beer to go can be sold within a properly drawn box. Tobacco's box is small enough that most operators are better off declaring the phone channel closed to it.
+
+## What ID verification can and can't carry here
+
+Everything true about alcohol handoff is true here and then some. The check happens in person, against a physical ID, by a person looking at the customer as well as the card. Nothing said on a call verifies anything. The full argument for that is in [age verification on alcohol deliveries](/blog/age-verification-delivery-alcohol).
+
+The added wrinkle is that for delivery sales, federal requirements contemplate a verification standard beyond a driver glancing at a license, and the carriers themselves impose restrictions on what they will accept. A delivery driver who is comfortable checking an ID for a six-pack is not thereby qualified to complete a compliant tobacco delivery, and asking them to is putting a $12 sale in front of a licensing problem.
+
+There is also an enforcement reality worth stating plainly. States run underage compliance checks on tobacco retailers, and a failed check produces fines and, on repeat, license consequences. Those checks happen at the counter with a real person, which is one more argument for keeping the transaction there where your trained staff and your ID scanner are, rather than distributing it across a phone script and a driver's judgment on a dark porch.
+
+Hookah lounges and cigar bars have a narrower version of this. On-premise consumption is its own licensed activity in many places, and a phone agent taking reservations for it is fine. A phone agent selling product to leave the building is not the same activity, even though it looks like the same menu.
+
+## Configure the refusal, then test it
+
+Keep tobacco and nicotine out of the menu the agent is trained on entirely. Not disabled, not zero-stock, absent. Then add an explicit intent so the agent recognizes the request and answers it rather than falling through to a confused clarification loop. The distinction between a missing item and a deliberately handled refusal is the difference between a clean call and a caller repeating themselves four times. The mechanics of teaching an agent both are in [training a voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu).
+
+Then call your own line and ask for a pack of cigarettes. Then ask for a vape. Then ask for a cigar, which is the one operators forget because it doesn't feel like the same category. Then ask twice, pushing a little, the way a real customer does.
+
+You are looking for the same short refusal every time, with no offer to check, no price quoted, and no note landing on a ticket. If any of the four produces a hedge, fix it before it produces a sale. Add the four calls to your [onboarding checklist](/blog/ai-phone-onboarding-checklist-restaurants) so they get rerun whenever the menu changes.

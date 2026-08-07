@@ -1,0 +1,86 @@
+---
+title: "Changing your phone greeting when you close early"
+description: "Closing at 6 because of ice and leaving the phone taking orders until 9 creates a worse night than closing does. Here is the one-minute version of that change."
+publishedAt: "2026-05-02"
+faqs:
+  - question: "How do I stop a voice agent from taking orders when I close early?"
+    answer: "Set a temporary hours override for the day, which closes ordering and swaps the greeting at the same time. It is the same mechanism used for holidays, applied to a single date. The change takes effect on the next call, so a manager can make it from a phone in the parking lot."
+  - question: "Should the greeting say why we closed early?"
+    answer: "Yes, in about five words. Callers accept a closure much better when they hear a reason, because a reason means the closure is temporary and specific rather than a sign something is wrong with the restaurant. Naming the weather also stops people from calling back three times to check."
+  - question: "Can the agent still take orders for tomorrow if we close tonight?"
+    answer: "It depends on whether you want it to. Accepting next-day pickup during an early closure is fine when your ordering setup supports scheduled pickup, and it captures demand from people who are already thinking about food. If your kitchen may also be affected tomorrow, close the whole channel instead of promising a pickup you might cancel."
+  - question: "Who at the restaurant should be able to change the greeting?"
+    answer: "Whoever makes the call to close, usually the manager on duty. If the change requires reaching an owner or filing a support ticket, it will not happen fast enough to matter. Give the closing decision and the greeting change to the same person, and confirm they have done it once before they need to do it in a storm."
+  - question: "What should the greeting do after the early closure ends?"
+    answer: "Revert on its own. A same-day override that expires at end of day means nobody has to remember to undo it, which is the step people forget. An override with no end date is how a restaurant ends up announcing a snow closure on a clear Thursday two weeks later."
+---
+
+Most operators think of an early close as a decision about staff and inventory. Send people home, break down the line, lock the door. The phone is not on the list, because the phone feels like it stops mattering the moment the lights go off.
+
+It does the opposite. The phone gets more important during an early close, because it is the only thing still talking to customers, and by default it will keep telling them you are open and taking their orders for the next three hours.
+
+## What actually happens when you skip it
+
+Ice storm, you decide at 4:30 to close at 6 instead of 9. Staff leave, kitchen breaks down, doors lock at 6:05.
+
+Between 6:05 and 9, the phone takes eleven orders. Every one of those is a person who arranged their evening around food that is not coming, and at least four of them drive to your parking lot in bad weather to find a dark building.
+
+Tomorrow you refund eleven orders, field the complaints, and absorb whatever those customers now think about ordering from you. The closure was the right call. The phone made it expensive.
+
+## The change itself takes under a minute
+
+A same-day hours override does two things at once: it stops the agent from accepting orders past the new closing time, and it swaps the greeting to say what is happening. It is the same mechanism as a [holiday hours override](/blog/holiday-hours-overrides-voice-ai), just pointed at today instead of at Thanksgiving.
+
+The reason this matters more than it sounds is speed. The decision to close early is made by whoever is standing in the restaurant watching the parking lot ice over. If changing the phone requires reaching the owner, or emailing a vendor, or waiting on a support queue, it will not happen in time. It has to be something a manager does from their own phone while the crew is still breaking down.
+
+## Say why, in five words
+
+A greeting that says only "we are closed" reads as ambiguous, and ambiguity generates callbacks. People call twice more to check whether it is a system error.
+
+A greeting that says "we are closed early tonight for the weather, back at 11am tomorrow" answers all three questions a caller has. What is happening, why, and when it stops. Callers accept that immediately and stop calling.
+
+Keep it short. This is not the moment for a paragraph. Five to twelve words of explanation, a return time, and done.
+
+## Decide about tomorrow before you record it
+
+There is a genuine choice here, and it should be made deliberately rather than defaulted into.
+
+If your ordering setup supports scheduled pickup and you are confident about tomorrow, letting the agent take next-day orders during the closure captures real demand. The caller is already hungry and already thinking about your food. Moving them to tomorrow at noon is a better outcome than losing them.
+
+If tomorrow is also uncertain, close the channel entirely. A promise you cancel is worse than a no. Weather that closes you at 6 tonight frequently means an 11am open becomes a 2pm open, and the customer who scheduled an 11:15 pickup now has a second bad experience stacked on the first.
+
+The rule of thumb: take tomorrow's orders only when you would bet your own money that tomorrow is normal.
+
+There is a middle option that works well for storms with a clear end. Let the agent take the order but tell the caller you will confirm by text in the morning before anything gets made. That keeps the demand attached to you overnight without committing the kitchen to a time it might not hit, and it gives you an easy out if the morning goes badly. It only works if somebody actually sends those texts, so assign that to the opening manager rather than leaving it as a general intention. If nobody owns the follow-up, use a plain no instead.
+
+## The part everyone forgets is turning it off
+
+The failure mode is not forgetting to close. Managers remember to close because the consequence is immediate and loud.
+
+The failure is the greeting still announcing a snow closure on the following Tuesday, when the sky is clear and you are very much open. That greeting costs you every caller who hangs up believing you are shut.
+
+Set an end time when you set the override. A same-day override that expires at midnight solves the problem structurally, because nobody has to remember anything. If your setup requires a manual revert, put it on the opening checklist for the next morning rather than trusting someone to recall it.
+
+## Weather calls are a different conversation than ordering calls
+
+Something worth knowing before you need it: on a bad-weather day your call volume changes shape before it changes size.
+
+The calls that come in during a storm are disproportionately "are you open," not "I want to order." People check first. If your greeting answers that question in the first three seconds, most of those callers never need anything else, and the ones who do want to order get to it faster.
+
+This is the same dynamic behind the [snow day delivery surge](/blog/snow-day-delivery-surge-calls), read from the other end. Bad weather drives people to order in when you stay open, and drives them to call and verify when they are not sure. Both patterns start with a question your greeting can answer for free. The general version, hours and parking and the rest, is in [answering FAQs on the phone](/blog/voice-ai-answering-faqs-hours-parking).
+
+## Delivery is a separate switch
+
+Closing the kitchen early and stopping delivery early are not always the same decision, and the phone should reflect whichever is true.
+
+Plenty of early closures are actually delivery closures. The roads are bad, you are not sending drivers out, but the dining room is fine and pickup is fine. If the agent treats that as a full closure, you lose pickup revenue you could have had. If it treats it as business as usual, you take delivery orders you cannot deliver.
+
+Have both switches available and know which one you are flipping. A greeting that says "we are open for pickup tonight, no delivery until the roads clear" is a good greeting. It sets an accurate expectation and it keeps half your revenue.
+
+## Do a dry run on a nice day
+
+The reason to write any of this down is that the moment you need it is the worst possible moment to learn it. Ice is falling, the crew wants to go home, and someone is asking whether the phone is handled.
+
+So run it once when nothing is happening. Have your closing manager set a same-day override, call the number to hear the new greeting, then remove it. Ten minutes on a slow Tuesday.
+
+If the manager who will make the call has done it once, the storm version takes under a minute. If they have not, it takes twenty and probably does not happen at all. That gap is the entire thing, and it closes on a Tuesday afternoon in good weather.

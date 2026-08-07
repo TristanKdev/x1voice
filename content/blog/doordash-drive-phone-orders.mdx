@@ -1,0 +1,77 @@
+---
+title: "Dispatching DoorDash Drive from an order taken by phone"
+description: "Drive gives you a courier without the marketplace commission. Here is how a phone order reaches one, and the two places the handoff usually breaks."
+publishedAt: "2026-06-01"
+faqs:
+  - question: "What is DoorDash Drive?"
+    answer: "A courier-only service. The order comes in on your own channel, you keep the customer relationship and set your own menu prices, and DoorDash supplies the driver for a per-delivery fee instead of a percentage commission on the order. Your restaurant is not listed on the marketplace as part of it, and the customer never places the order in the DoorDash app."
+  - question: "Can a voice agent trigger a Drive delivery automatically?"
+    answer: "It depends on what sits between the agent and the courier. The agent's job is to capture a complete, deliverable address and write the order into your POS. Whether dispatch then fires automatically or a staff member presses a button depends on your POS and delivery setup. Confirm which one you have before go-live, because a manual step nobody knows about becomes a forgotten order."
+  - question: "Is Drive cheaper than listing on the marketplace?"
+    answer: "Per order, usually yes, because a flat delivery fee on a large ticket costs less than a percentage of it. The tradeoff is demand. The marketplace puts you in front of people who have never heard of you; Drive only carries orders you already earned. Most operators end up running both and pushing repeat customers toward the direct channel."
+  - question: "What is the most common failure with phone orders going to a courier?"
+    answer: "The address. A marketplace address arrives validated by the app; a spoken address arrives with a mumbled apartment number, an ambiguous street suffix, or a gate code nobody asked for. Confirm the address back to the caller, capture unit and access details as separate fields, and reject anything outside your zone during the call rather than at dispatch."
+  - question: "Does Drive fix late deliveries?"
+    answer: "Only the driver half. If your kitchen is running twenty minutes behind, a courier arriving on time makes it worse, because the driver waits and then delivers cold food with your name on the bag. Get your quote times honest first. Courier dispatch amplifies whatever your kitchen actually does, in both directions."
+---
+
+A caller wants a $58 order delivered four miles out. You have no drivers, you've never had drivers, and the only reason you've been turning this order down is that the marketplace takes a cut you can't stomach on a ticket that size.
+
+That's the gap DoorDash Drive is for. It's also the point where a lot of operators connect two systems that were never introduced to each other, and discover the seam during a Friday rush.
+
+## What Drive is, stripped of the marketing
+
+You take the order. You own the customer, the menu prices, the receipt and the phone number. DoorDash supplies a driver and charges a per-delivery fee.
+
+That's the entire difference from the marketplace, and it's a big one. On the marketplace, DoorDash brought you the customer and prices accordingly. On Drive, you brought the customer and you're buying transportation. The economics only work in your favor because you did the demand generation yourself, which is exactly why the phone channel matters here: a caller is a customer who already chose you.
+
+The [commission comparison](/blog/voice-ai-vs-delivery-app-commissions) goes through the arithmetic in more detail, but you can do the useful version on a napkin. Take your average delivery ticket. Multiply by the marketplace commission rate on your agreement. Compare that to a flat per-delivery fee plus whatever portion of it you pass to the customer. On small tickets the percentage often wins; on large ones the flat fee usually does. The crossover point is a number specific to your menu, and it's worth knowing where it sits.
+
+## The path an order takes
+
+Four steps, and only two of them are yours to get right.
+
+The agent takes the call and captures the order plus a deliverable address. The order writes into your POS as a delivery ticket. A dispatch request goes to Drive, either automatically from your POS or delivery platform, or manually by someone on your staff. A courier accepts, arrives, and the customer gets a tracking link.
+
+The step to interrogate is the third one. Automatic dispatch is what you want, and whether you have it depends on your POS and whichever ordering platform sits in front of it. Ask the question specifically: when a phone order lands in the POS marked for delivery, does anything fire on its own? If the answer is that someone has to press a button on a tablet, then that button is now a single point of failure staffed by whoever is closest to it at 7 p.m. Write the step into your service checklist or accept that you'll drop orders.
+
+## The address is where phone orders break
+
+A marketplace address was typed into an app and validated against a map. A phone address was spoken by someone in a car with the window down.
+
+These are the failure modes worth designing against.
+
+- The unit number. Capture apartment, suite and floor as a separate confirmation rather than as part of the street line, because a courier looking at "1420 Oak St" with no unit will call, wait, and eventually leave it in a lobby.
+- Ambiguous streets. Many towns have an Oak Street and an Oak Avenue two miles apart. Have the agent read the full address back including the suffix and the zip, and have the caller confirm it rather than assume.
+- Access details. Gate codes, building entrances, and "come around back" are the difference between a delivery and a support call. Ask for them at order time or you'll get them from an annoyed courier later.
+- Out-of-zone addresses. Reject during the conversation, not at dispatch. A caller told no at minute one is mildly disappointed; a caller told no after paying is a refund and a review. The rule-setting is in [delivery zone rules for phone orders](/blog/delivery-zone-rules-phone-orders).
+
+Getting the address right on a call is a solved problem when the agent is built for it, and a disaster when address capture was bolted onto an order flow designed for pickup.
+
+## Quoting time honestly
+
+Two clocks stack on a Drive order: how long your kitchen takes, and how long a courier takes to arrive and drive. Most operators quote the first and forget the second.
+
+Give the caller a delivery window, not a prep time, and say plainly that a driver is involved. If your average courier leg is fifteen minutes and your kitchen is running twenty-five, the honest number is forty to fifty, and the caller who hears that and orders anyway will be far happier than the one who heard twenty-five.
+
+Then send the tracking link by text so the customer stops calling you for status. That pattern is in [order status text updates](/blog/restaurant-order-status-text-updates) and the confirmation side in [SMS order confirmations](/blog/sms-order-confirmations-voice-ai).
+
+## What happens when the delivery goes wrong
+
+It will, and the difference between Drive and the marketplace is who the customer blames.
+
+On a marketplace order, a late or missing delivery is largely the platform's problem to resolve, and the customer complains in an app. On a Drive order, the customer has your phone number, because you gave it to them. They call you. They are not interested in the distinction between your kitchen and a contracted courier, and they're right not to be.
+
+So decide in advance what your staff is allowed to do. Can a shift lead comp an item without a manager. At what point do you remake versus refund. Who calls the customer back if a courier abandons a delivery. Writing three sentences of policy on a card by the phone is the difference between a two-minute resolution and a manager's evening. The call-handling side of that is in [handling refund and complaint calls](/blog/handling-refund-complaint-calls).
+
+The same logic applies to the courier calling you. Drivers call restaurants constantly, about parking, about an order not being ready, about a name they can't find on the shelf. Those calls hit the same line your customers use, and at peak they compete with revenue.
+
+## Before you turn it on
+
+Three things to settle, and one to test.
+
+- Decide who pays the delivery fee, and be consistent. Splitting it, absorbing it on tickets above a threshold, or passing it through entirely are all defensible; changing it per order is not, and your staff will get it wrong.
+- Decide how payment is taken, because a Drive order is your transaction and not the marketplace's. Card capture over the phone has rules attached, and they're in [collecting payment over the phone safely](/blog/collecting-payment-over-the-phone-safely).
+- Decide what happens when no courier accepts during a storm or a game night. Someone has to call the customer, and that someone should be named before the night it happens.
+
+The test: place a real delivery order to a real address at your busiest hour, and time every leg. Confirm to ticket, ticket to dispatch, dispatch to pickup, pickup to door. If any leg surprises you, that's the one to fix before you advertise delivery to the callers you've been turning away.

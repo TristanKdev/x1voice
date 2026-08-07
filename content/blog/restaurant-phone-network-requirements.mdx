@@ -1,0 +1,82 @@
+---
+title: "The network your restaurant phone actually needs"
+description: "Voice calls need almost no bandwidth and are ruined by things bandwidth doesn't fix. What to check on your restaurant network before you blame the phone system."
+publishedAt: "2026-02-27"
+faqs:
+  - question: "How much bandwidth does a restaurant phone call use?"
+    answer: "Roughly 85 to 100 kilobits per second in each direction for a standard uncompressed voice call, including packet overhead. Ten simultaneous calls is under one megabit each way. Almost any business internet connection has that capacity, which is why upgrading your plan rarely fixes call quality on its own."
+  - question: "Do I need a separate internet connection for the phones?"
+    answer: "Usually not. What you need is for voice traffic to be prioritized over everything else on the connection you have. A separate line is a blunt way to buy that separation, and it's reasonable if your router can't do quality-of-service properly, but it costs monthly money to solve a configuration problem."
+  - question: "Does guest Wi-Fi affect call quality?"
+    answer: "It can, badly, if guest traffic shares the same connection with no limits on it. One person streaming video or backing up a phone can fill your upload and make calls choppy. Putting guest Wi-Fi on its own network segment with a bandwidth cap is one of the higher-value hours of work available on a restaurant network."
+  - question: "Should phones be on Wi-Fi or wired?"
+    answer: "Wired, whenever the handset or adapter has an ethernet port. Wi-Fi in a restaurant contends with microwaves, POS terminals, guest devices, and metal equipment, and it introduces variable delay that voice is particularly sensitive to. A cable is the cheapest call-quality improvement available in most buildings."
+  - question: "Does an AI phone agent change my network requirements?"
+    answer: "Not meaningfully, if the agent answers calls in the cloud rather than on hardware in your building. In that setup the call never touches your network at all, so your internet has no effect on call audio. The requirements in this article apply to handsets and adapters on your premises."
+---
+
+The most common assumption about restaurant phone quality is that bad audio means not enough internet. It's usually wrong, and acting on it costs money without fixing anything.
+
+A single voice call uses roughly 85 to 100 kilobits per second in each direction on a standard uncompressed codec, packet overhead included. Ten calls at once is under a megabit up and down. Your delivery tablets use more than that idling. If you're on any ordinary business connection, capacity is not your problem, and upgrading from 200 to 500 megabits will change nothing about how your calls sound.
+
+What ruins voice audio is timing, not volume. Voice packets are small, frequent, and worthless if they arrive late. Everything below is about protecting timing.
+
+## Why voice is fragile in a way streaming isn't
+
+A video stream buffers. It pulls ten seconds ahead, and when the network hiccups, you never notice, because the player has a cushion.
+
+A phone call can't buffer, because the person on the other end is waiting for you to finish your sentence. Every packet has about 150 milliseconds to make the trip before the conversation starts feeling wrong. Miss that window and the packet is useless even if it arrives perfectly. So a connection that runs a 4K stream flawlessly can still produce terrible calls, and the same connection can produce terrible calls only between six and eight in the evening.
+
+That last part is the tell. Call quality problems in restaurants are almost always time-of-day problems, and time-of-day problems are almost always contention problems.
+
+## The three numbers that matter
+
+Latency is one-way delay. Under about 150 milliseconds each way, conversation feels natural. Past 300, people start talking over each other, because neither party can tell whether the other has finished.
+
+Jitter is variation in that delay. Packets arriving 20 milliseconds apart, then 5, then 60, arrive out of rhythm, and the receiving device has to smooth them out with a buffer. Beyond roughly 30 milliseconds of jitter, the smoothing stops working and you hear it as choppiness.
+
+Packet loss is packets that never show. Voice tolerates a little; under 1 percent is generally imperceptible, and past 2 or 3 percent you hear clipped syllables and dropped words. Diagnosing which of the three you have is a separate job, walked through in [jitter and packet loss](/blog/call-quality-jitter-packet-loss).
+
+Test these with a hosted voice quality test rather than a speed test. A speed test measures how much water fits through the pipe. It says nothing about whether the water arrives on a schedule.
+
+## Upload is where restaurants actually run out
+
+Most business plans are asymmetric. You might have 300 megabits down and 20 up, and nobody thinks about the second number until something breaks.
+
+Voice sends as much as it receives. Meanwhile everything else in your building that fills the upload does so in bursts: cloud POS syncing, camera systems uploading footage, a manager's laptop backing up, a staff member's phone dumping a day of photos onto the guest Wi-Fi. Your security cameras alone can consume more upstream capacity than every phone in the building combined, continuously.
+
+When upload saturates, the queue at your router fills, and voice packets sit in it behind a chunk of video. That's the mechanism behind most "the phones get bad at dinner" complaints. It's not that dinner brings more calls. It's that dinner brings more of everything else.
+
+## What quality of service actually does
+
+Quality of service, or QoS, is the setting that tells your router to move voice packets to the front of the queue when the connection is full. It's the single most useful thing on this list and the one most often left off.
+
+On most business routers it's a checkbox or a short list of rules, usually labeled something like traffic prioritization. You mark voice traffic as high priority and, ideally, cap guest and camera traffic so they can't take everything. If your router doesn't support it, that's the actual reason to consider a separate connection for voice, and it's a cheaper fix to buy a router that does.
+
+Two things make QoS fail in practice. It only controls traffic leaving your building, so it can't help with congestion on your provider's side. And it does nothing if your equipment marks all traffic identically, which some consumer gear does. Neither is a reason to skip it.
+
+## The switch and cable side
+
+Wired beats wireless for anything voice, without exception, whenever a port exists.
+
+Restaurant Wi-Fi is a hostile environment. Metal shelving, walk-in doors, microwaves sitting directly in the 2.4 GHz band, dozens of guest devices, and POS terminals all competing. Wireless handles that by retrying, and retries mean variable delay, which is exactly what voice can't absorb.
+
+If your phones use power over ethernet, keep them on a switch that supports it properly rather than a chain of injectors. Verify cable runs are actual category 5e or better and terminated correctly, because a marginal cable produces intermittent errors that look identical to an internet problem and will send you chasing your provider for a week.
+
+Keep the phones on their own VLAN if your equipment supports it. That gives you a clean way to apply prioritization and stops a compromised guest device from seeing your voice traffic. It also makes troubleshooting far faster, since you can look at one segment instead of everything.
+
+## Where guest Wi-Fi belongs
+
+On its own network segment, with a bandwidth cap, isolated from every device that runs your business.
+
+The cap is the part restaurants skip. Without one, a single guest downloading something large can degrade calls, card processing, and your POS simultaneously. Something in the range of 5 to 10 megabits down and 2 up per device is plenty for someone checking email over lunch and not enough to hurt anyone.
+
+The isolation matters for reasons beyond audio. Your POS, your card terminals, and your voice traffic should not sit on the same flat network as a stranger's laptop, and that's a security position independent of call quality.
+
+## When none of this applies to you
+
+Worth saying plainly: if your phone agent answers calls in the cloud, none of the above touches the audio your customers hear.
+
+In that arrangement the call arrives at a carrier, gets routed to the provider's infrastructure, and is handled there. It never enters your building. Your internet could be down entirely and the phone would still answer, which is a genuine argument for that architecture and one worth confirming with any vendor you're evaluating. [How AI phone ordering works](/blog/how-ai-phone-ordering-works-the-pipeline) traces that path, and the latency budget inside it is covered in [sub-second latency](/blog/sub-second-latency-voice-ai-restaurants).
+
+Your network still matters for the handsets your staff use, for the tablets, and for the POS. It just stops being the thing standing between a customer and an answered phone. If you're troubleshooting bad audio, the first question to settle is which of those two worlds the bad call lived in, because half the checks above are irrelevant to one of them.

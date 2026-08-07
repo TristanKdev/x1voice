@@ -1,0 +1,80 @@
+---
+title: "What voice AI can and can't do for a churrascaria"
+description: "Voice AI for Brazilian steakhouses lives or dies on party size, per-person pricing and deposits. What it handles well, and where a person still has to pick up."
+publishedAt: "2026-01-09"
+faqs:
+  - question: "Can an AI phone agent book a table for sixteen at a churrascaria?"
+    answer: "It can take the request and write it into your book if your table management system exposes large-party availability. Most operators would rather it collect the details and stop there, because a sixteen-top usually needs a manager to confirm room configuration, timing against the gaucho rotation, and whether a deposit applies. Capture, then hand off."
+  - question: "How does an AI agent answer per-person pricing questions?"
+    answer: "The same way a well-trained host does, by stating the adult rodizio price, the salad-bar-only price, the child pricing tiers by age, and what is excluded. Those are fixed facts you configure once. The agent will repeat them identically every time, which is more than most phone answering does on a Saturday night."
+  - question: "Should the agent take deposits over the phone?"
+    answer: "Usually no. Deposits for large parties involve a signed agreement, a cancellation window, and a card on file, and that conversation is worth a person's time. A better pattern is for the agent to qualify the party, collect contact details, and text a payment link or route the caller to the manager who handles events."
+  - question: "Will it confuse callers asking about the meat rotation?"
+    answer: "Only if you leave the answer out of its knowledge. Configure the cut list, which cuts run at which service times, and your policy on requesting a specific cut. Callers ask about picanha more than anything else, and an agent that answers that directly saves your host stand a repeated conversation every evening."
+  - question: "Does this work if we also do takeout?"
+    answer: "Yes, and the takeout side is easier than the dining room. Boxed rodizio, family platters and sides map to a normal menu structure and write into the POS the way any phone order would. The complexity in a churrascaria sits in the reservation and party-size conversations, not in the food."
+---
+
+A party of fourteen calls at 4:40 on a Saturday. Your host is seating a four-top, two more parties are waiting at the podium, and the phone rings out. The caller books somewhere else, and you never learn that fourteen covers at rodizio pricing walked past your door.
+
+That is the actual economics of a churrascaria phone line. The average inbound call is worth more than at almost any other format, because the average party is larger and the per-head check is fixed and high. Losing one call on a Saturday costs more than losing ten at a sandwich counter.
+
+## The call mix is nothing like a takeout restaurant
+
+Most restaurant voice AI content assumes the phone is an order channel. In a Brazilian steakhouse it mostly isn't. Your inbound calls sort into four rough buckets: reservations, pricing questions, party and event inquiries, and the usual hours-and-parking traffic.
+
+Almost none of that is order taking. It is question answering and booking, which changes what you should be evaluating in a system. A vendor demoing a smooth pizza order is showing you a capability you will barely use. The distinction is worth understanding before you shop, and it is covered in [reservations versus ordering](/blog/voice-ai-reservations-vs-ordering).
+
+The volume pattern is different too. A pizza shop peaks between 5 and 8. A churrascaria takes a heavy block of calls between about 3 and 5, when people plan the evening, and that block lands exactly when your floor is at its thinnest. One person is usually running the podium, the phone, and the setup for service at the same time.
+
+## Per-person pricing is the question you get most
+
+Ask your host what callers ask about. It will be the price.
+
+Rodizio pricing has enough structure to it that the answer takes a few sentences: the adult dinner price, the lunch price if it differs, the salad bar and hot bar without the meat service, children free under some age and half price up to another, and what beverages, dessert and gratuity do or don't include. There may also be a weekend or holiday differential.
+
+That is a script. It does not change from call to call, and it is exactly the kind of fixed factual answer a voice agent handles well and a rushed host handles inconsistently. Half your staff quotes the child pricing wrong at least occasionally, and the caller who was told the wrong number arrives expecting it.
+
+Configure those numbers as answers the agent reads verbatim. Then update them the day your pricing changes, not the week after, because the phone will now be quoting your old price to every caller until you do. Fixed answers like these are the cheapest part of the setup and the part most often left half-finished.
+
+## Large parties should be captured, not confirmed
+
+Here is where most operators get the setup wrong. They either let the agent book anything, which produces a twenty-two-top on your book that the room cannot physically seat, or they route every party call to voicemail, which loses the lead.
+
+The useful middle is capture. The agent takes the date, the time, the head count, the occasion, whether anyone is under the child pricing threshold, and a callback number. It tells the caller plainly that a manager will confirm within a set window, and it means it. Then someone actually calls back.
+
+That pattern converts far better than voicemail because the caller has already invested in the conversation and given you their details. It also protects you from the double-booking problem, since nothing hits the book until a person looks at the room. The mechanics of that handoff are in [large party reservations by phone](/blog/large-party-reservations-by-phone).
+
+Pick a threshold and be specific about it. Most rooms set it somewhere between eight and twelve, and below that the agent books directly against availability.
+
+## Deposits are a person's conversation
+
+A deposit involves a card, a cancellation window, a signed or acknowledged agreement, and often a per-head minimum. It is a small contract. Do not hand that to the phone agent, and be skeptical of a vendor who suggests you should.
+
+What works is a split. The agent qualifies the party and collects contact details. A manager follows up, sends the agreement and the payment link, and closes it. The agent's job was to make sure the lead existed at all, which is the part you were previously losing on a Saturday afternoon.
+
+If you want the deposit flow tightened up on the human side, [deposits for large catering](/blog/deposits-for-large-catering) covers the terms that reduce no-shows.
+
+## Meat rotation questions have real answers
+
+Callers ask which cuts are running, whether picanha is available at lunch, whether they can request a specific cut, and how the rotation works if they arrive at 9:30. Some ask whether the gauchos come by continuously or on a set pass.
+
+These are answerable facts about your operation and they belong in the agent's configuration alongside the pricing. An agent that says "the gauchos serve continuously until close, and picanha runs at both lunch and dinner" is doing the job. An agent that says "let me connect you to someone who can help with that" on the most common cut question is failing at the easy part.
+
+Write these answers yourself. Do not let a vendor generate them from your website, because your website is probably a year out of date on the cut list.
+
+## What breaks the setup
+
+Three things, in the order they cause trouble.
+
+Your reservation system may not expose party-size-aware availability through an API, which limits what the agent can book directly and pushes you further toward the capture-and-confirm pattern. Ask about your specific platform before you sign anything. The integration questions are in [voice AI and table management](/blog/voice-ai-table-management-integration).
+
+Portuguese-speaking callers are common at many churrascarias, and a system configured for English and Spanish only will drop them. Check which languages the agent actually handles conversationally rather than which ones appear on a marketing page. See [multilingual phone ordering](/blog/multilingual-ai-phone-ordering-restaurants).
+
+Holiday pricing differentials get forgotten. Mother's Day and Christmas Eve are your two biggest days and often carry a different price. If nobody updates the agent, it quotes Tuesday's number to a caller booking a fifteen-top. Set a calendar reminder for the Monday before each one and check the quoted price yourself by calling your own line.
+
+## Run this test before you buy
+
+Next Saturday, put a tally sheet next to the podium. Every time the phone rings between 3 and 6, mark whether it was answered, and if it was, mark what the caller wanted in one word: price, book, party, other.
+
+Do it for two Saturdays. You will have a real count of missed calls during your planning window and a real breakdown of what those calls were about. If most of them are price and book, a voice agent handles the majority of your inbound traffic on day one and you can size the value directly against the [$250 monthly starting price](/pricing). If most are party inquiries, what you actually need is a faster callback process, and you should fix that first.

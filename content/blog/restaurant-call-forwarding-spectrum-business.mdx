@@ -1,0 +1,86 @@
+---
+title: "Spectrum Business Voice call forwarding: setup and gotchas"
+description: "How to forward a Spectrum Business Voice restaurant line, why selective forwarding beats forward-all at first, and the settings that quietly undo your work."
+publishedAt: "2026-02-15"
+faqs:
+  - question: "How do I forward a Spectrum Business Voice line?"
+    answer: "Two ways. From the handset, dial *72, wait for the tone, then dial the ten-digit destination, and *73 to cancel. From the account portal, open the voice settings for the specific line and set a forwarding rule there. The portal is the better choice because it survives power cycles and shows you what is currently configured."
+  - question: "What is selective call forwarding good for in a restaurant?"
+    answer: "Routing by time of day. You can send calls to a voice agent only outside your service hours, or only during the two hours when the phone is busiest and nobody can reach it. It lets you introduce the change gradually instead of handing over the whole phone on day one, which is the sensible way to start."
+  - question: "Why does my Spectrum forwarding keep turning itself off?"
+    answer: "Usually it did not turn itself off. Either a star code was dialed at a handset and overrode the portal rule, someone reset equipment during a service visit, or the forward was set on a line that is not the one customers dial. Check the portal first, then verify which number your menus and Google listing actually publish."
+  - question: "Does forwarding work if my Spectrum internet goes down?"
+    answer: "It depends where the forwarding is applied. A rule held in the network keeps working during a local outage, because Spectrum redirects the call before it ever reaches your building. Anything that depends on equipment on your premises does not. Ask Spectrum support directly whether your forwarding is network-side, since the answer determines what happens during an outage."
+  - question: "Should I forward all calls or only unanswered ones?"
+    answer: "Forward all calls once the setup has survived a full weekend, and forward only unanswered ones before that. No-answer forwarding makes a caller sit through several rings before anything happens, which loses the impatient ones. Treat it as a testing configuration you graduate out of rather than a permanent arrangement."
+---
+
+You log into the Spectrum Business account portal to turn on call forwarding, and the setting isn't where you expected. It's a line-level option under voice services, not an account-level switch, and if your restaurant has three lines you have to know which one carries the number printed on your menu.
+
+That single question, which line do customers actually dial, causes more failed forwarding attempts than any technical limitation in the product. Everything below assumes you've answered it by calling your own published number from a phone outside the building and hearing which handset rings.
+
+## Where the setting lives
+
+Spectrum Business Voice gives you two paths, and they aren't equivalent.
+
+From the phone itself, `*72` starts a forward and `*73` ends one. Dial the code, wait for the second dial tone, then dial the full ten-digit destination. Some configurations want the destination to answer before the forward commits, so have a person pick up rather than letting it ring out.
+
+From the portal, you sign in to the Spectrum Business account, open the voice section, select the specific line, and configure forwarding there. You'll typically find forward-always, forward-on-busy, forward-on-no-answer, and selective forwarding driven by rules.
+
+Use the portal. Star codes are fine for an emergency at 6:40pm, but a setting you can see on a screen is one you can audit six weeks later when something behaves strangely. A setting that lives only in a code someone dialed in February is not.
+
+## Selective forwarding is probably what you want first
+
+Forward-always sends every call to the voice agent and stops your restaurant phone ringing entirely. That's the right end state, and it's a lot to do on day one.
+
+Selective forwarding lets you specify conditions, most usefully time of day. Send calls to the agent from 5pm to 9pm when the phone rings through a rush nobody can answer, or from close to open when there's no one in the building at all. Run that for a week, read the transcripts and the orders that landed, and then widen it.
+
+The point of starting narrow isn't caution for its own sake. It's that you get real data about your own callers on a small slice before you commit the whole phone, and the fixes you'll find are cheap ones: a menu item the agent mishears, a question it should answer and doesn't, a transfer rule that's too eager. The after-hours slice specifically is a good first window, and what to expect from it is in [24/7 phone answering after hours](/blog/24-7-restaurant-phone-answering-after-hours).
+
+## Hunting is the setting that undoes you
+
+If your restaurant has multiple Spectrum lines, they're probably in a hunt arrangement: the published number rings line one, and when line one is busy the call rolls to line two.
+
+Forwarding line one in that arrangement doesn't do what you expect. Depending on how the group is built, forwarding a member can remove it from the rotation and push calls further down the group rather than out to your destination. The calls keep landing inside the building, at a phone nobody is near.
+
+So before you set anything, get clear on whether hunting is on and which lines are in the group. Then either apply the same destination consistently or, better, ask Spectrum support to change where the group sends calls it can't complete. That's a five-minute support call and it's the correct fix.
+
+Check these three before you make it:
+
+- Which number is on your menus, your Google listing, your delivery app profiles, and your window decal, since these frequently disagree with each other and with your account's main line.
+- Whether any line in the group has equipment attached that dials out, like a card terminal or an alarm panel, because forward-always breaks those quietly.
+- What currently happens to a call that nobody answers, which is often a voicemail box with a greeting recorded by an employee who left in 2023.
+
+## What happens when the restaurant closes
+
+Voicemail is the failure mode nobody plans for. A caller who reaches a mailbox has a worse experience than one who reaches a busy signal, because they think they've told you something. They ordered a tray of wings for tomorrow at noon and nobody will hear it until Thursday.
+
+If you're forwarding to a voice agent, get voicemail out of the path entirely rather than leaving it as a backstop. Then test the silent call: dial in, let the agent answer, and say nothing for thirty seconds. Whatever happens at the end of that silence is what happens to every caller with a bad connection, a screaming toddler, or three drinks in them.
+
+Also check what your agent says about hours during the closed window, because a system that takes an order for pickup in twenty minutes when the kitchen is dark creates a problem worse than a missed call. Getting holiday and closure overrides right is its own job, described in [holiday hours overrides](/blog/holiday-hours-overrides-voice-ai).
+
+## What to ask Spectrum support directly
+
+Three questions get you further than an hour of clicking around the portal, and the representative can answer all of them from your account record.
+
+The first is which telephone number is the pilot for your service, meaning the one calls arrive on before any hunting happens. That's the number to forward, and it isn't always the number you think.
+
+The second is whether call forwarding on your account is applied in the network or at equipment in your building. This decides what happens during an outage, a power cut, or the afternoon someone unplugs a box to make room for a new prep table. Network-side forwarding keeps working when your building doesn't, which for a restaurant is most of the value.
+
+The third is whether selective forwarding and schedules are included on your plan or cost extra. They're worth paying for. The ability to route by time of day is the difference between introducing a voice agent gradually and handing it your entire phone on a Friday.
+
+Write down the answers and put them somewhere a manager can find them, because the person who set this up will not be the person troubleshooting it at 6pm in eight months.
+
+## A second line is usually cheaper than you expect
+
+One arrangement worth considering if your catering business is meaningful: add a line, publish it separately for catering and large orders, and forward only that one at first.
+
+It isolates the highest-value calls, gives you a clean read on how the agent handles them, and means a mistake affects a small slice of your volume rather than all of it. It also solves a real operational problem, which is that catering inquiries and a Friday takeout rush compete for the same phone and the takeout calls win by volume while the catering calls are worth more. That split is worked through in [a second phone line for catering](/blog/second-phone-line-for-catering).
+
+## Test it from outside your own building
+
+Everyone tests forwarding from the restaurant phone, and the restaurant phone is the one device that can't tell you the truth about it.
+
+Stand in the parking lot with a personal cell that has never called your number. Place four calls: a straightforward pickup order, a question about parking, a request for a human, and one where you hang up halfway through ordering. Then walk back inside and look at what reached the POS.
+
+The order that landed correctly proves the integration. The transfer that reached a person proves the escalation path. The abandoned call proves what your reporting will show you later. If all four behave, extend the forwarding window and repeat the test at 7pm on a Friday, which is the only condition that really counts. Plans and what's included sit on [pricing](/pricing), and the direct POS connections are listed under [integrations](/integrations).

@@ -1,0 +1,79 @@
+---
+title: "Average handle time on restaurant calls, and when short is bad"
+description: "Average handle time tells you how long a call took, not whether it went well. What a healthy range looks like, and why a falling average often means trouble."
+publishedAt: "2026-06-11"
+faqs:
+  - question: "What is average handle time for a restaurant phone call?"
+    answer: "The mean length of a call from answer to hang-up, usually including any hold time and any wrap-up work afterward. For a simple takeout order most restaurants land somewhere between 90 seconds and three minutes. A pickup-only pizza counter sits at the low end, a full-service room taking reservations and answering questions sits well above it."
+  - question: "Is a shorter handle time always better?"
+    answer: "No. Handle time falling while order accuracy or average ticket also falls usually means calls are being cut short, not handled efficiently. The number is only good news when it drops alongside stable accuracy and stable ticket size. Read those three together or the average will flatter a system that is rushing people off the phone."
+  - question: "Should I include hold time in handle time?"
+    answer: "Include it, and also track it separately. Hold time is the part of the call the caller experiences as waiting, and it behaves differently from talk time. A restaurant that pushes total handle time down by shifting talk into hold has made the call worse while the headline number improved."
+  - question: "What handle time should I expect from a voice agent?"
+    answer: "Roughly comparable to a competent staff member on the same call type, sometimes slightly longer on complex modifier-heavy orders because the agent confirms items back. Treat a voice agent that is dramatically faster than your staff with suspicion until you have checked the resulting tickets against what the caller actually asked for."
+  - question: "How do I measure handle time without a call-center system?"
+    answer: "Pull call duration from your phone provider's records, which nearly all of them expose, then segment by hour and by outcome. If you cannot segment, time twenty calls by hand across a lunch rush and a dinner rush with a stopwatch. A hand-timed sample of twenty is more useful than an unsegmented average of two thousand."
+---
+
+Two and a half minutes is a normal phone order. Forty seconds is not, and if your average drifted down to forty seconds last month, something got worse rather than better.
+
+Average handle time is the mean length of a call, answer to hang-up. It is the easiest phone metric to collect, which is why it gets watched, and it is close to meaningless on its own. It measures duration. It says nothing about whether the order was right, whether the caller got what they wanted, or whether they hung up halfway through and ordered from someone else.
+
+## What the number is actually built from
+
+A handle time figure usually bundles three different things: talk time, hold time, and wrap-up. Talk time is the conversation. Hold time is the caller waiting while someone checks whether you still have the branzino. Wrap-up is whatever happens after the caller hangs up, which in a restaurant is usually keying the order into the POS if it was taken on paper.
+
+Those three respond to completely different fixes. Talk time comes down when your menu is easier to say out loud and your staff know it. Hold time comes down when availability is visible without walking to the kitchen. Wrap-up disappears entirely when the order is entered during the call rather than after it.
+
+If your provider gives you one blended number, you are looking at a sum of three problems and cannot tell which one is yours. Splitting them is usually the first useful thing to do.
+
+## What a healthy range looks like
+
+There is no universal target, because handle time is mostly a function of call type. A pickup order for two pizzas is a different animal from a Saturday reservation for fourteen with a dietary restriction.
+
+Rough shapes worth knowing, from ordinary restaurant experience rather than any published figure:
+
+- A simple takeout order with no modifiers runs about 90 seconds to two minutes, most of which is reading the order back.
+- A modifier-heavy order (build-your-own, allergy notes, substitutions) runs three to five minutes and should.
+- A hours-and-parking question is under 45 seconds and never needs to be longer.
+- A catering or large-party inquiry runs five minutes or more and is the call you least want rushed.
+
+The useful move is to stop reporting one average and start reporting one per call type. A blended average across those four buckets moves whenever your call mix moves, which makes it a poor signal of anything you did.
+
+## Why the average falling is often bad news
+
+This is the part operators get wrong most often. Handle time is presented as an efficiency metric, so down looks like progress. In a restaurant it frequently means one of three things went wrong.
+
+Someone is cutting callers off. Under pressure at 6:40 on a Friday, a host who takes the order and skips the read-back has just shaved thirty seconds and bought a materially higher chance of a wrong ticket. That trade shows up in your handle time immediately and in your remake rate two weeks later.
+
+The upsell stopped happening. Asking whether they want to add garlic knots takes eight seconds and lifts the ticket. When handle time drops and average ticket drops with it, the conversation got shorter by removing the profitable part of it. The mechanics of that are in [upselling without being pushy](/blog/upselling-without-being-pushy-ai).
+
+Callers are abandoning. A call that rings, gets answered, and dies at fifteen seconds because the caller was put straight on hold still counts in your average and drags it down. Handle time and [abandoned call rate](/blog/abandoned-call-rate-restaurants) have to be read side by side or short calls will look like fast calls.
+
+## The three numbers that make it interpretable
+
+Handle time alone is a duration. Handle time next to accuracy, ticket size, and abandonment is a diagnosis.
+
+Order accuracy tells you whether the shortened call still produced the right food. Measure it by checking tickets against what was asked for, not by trusting a dashboard, using something like the [order accuracy measurement method](/blog/order-accuracy-measurement-method). Average ticket tells you whether the conversation still did commercial work. Abandonment tells you whether the short calls are short because they ended badly.
+
+When handle time falls and all three hold steady, you genuinely got faster. When handle time falls and any of the three moves against you, you did not get faster, you got sloppier, and the average is hiding it. The wider metric set this sits inside is covered in [voice AI metrics and KPIs for restaurants](/blog/voice-ai-metrics-kpis-restaurants).
+
+## What changes when a voice agent answers
+
+A voice agent's handle time behaves differently from a person's in a few specific ways, and knowing them stops you from misreading the first month of reporting.
+
+Wrap-up goes to zero, because the order is written into the POS during the conversation rather than keyed afterward. If your old number included wrap-up, expect an apparent drop that reflects no change in the caller's experience at all.
+
+Hold time also goes to zero, or close to it, because availability comes from the POS rather than from someone walking to the line. That is the real efficiency gain and it is worth isolating, since it is the part the caller actually feels. Whether it holds depends on your menu sync being live, which is the subject of [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync).
+
+Talk time may go up. A well-configured agent confirms items back and asks clarifying questions where a rushed human would guess. On a complicated order that is slower and better. An agent that is dramatically faster than your staff on the same order type is skipping confirmation, and the place that shows up is your kitchen.
+
+Response latency is a separate thing from handle time and matters more to how the call feels. A system that pauses two seconds before every reply produces calls that feel interminable at any duration, which is why [sub-second latency](/blog/sub-second-latency-voice-ai-restaurants) is worth asking a vendor about directly.
+
+## How to get a usable baseline this week
+
+Your phone provider almost certainly exposes per-call duration in its records. Export a month, split by hour of day, and look at the distribution rather than the mean. A histogram of call lengths tells you far more than an average: you are looking for a cluster of very short calls, which is your abandonment problem wearing a disguise, and a long tail, which is usually catering and reservations that deserve their own bucket.
+
+If you cannot export anything, sit with a stopwatch through one lunch and one dinner and time twenty calls. Write down the call type next to each duration. That sample will give you the four bucket ranges for your restaurant, which is the thing you actually need, and it takes about two hours.
+
+Then set the rule before you start changing anything: handle time is allowed to fall only if accuracy, ticket, and abandonment all hold. Write that down where whoever reviews the numbers will see it. Most of the damage done in the name of faster phone service comes from people optimizing a duration nobody asked them to shorten.

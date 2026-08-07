@@ -1,0 +1,76 @@
+---
+title: "The five-minute script for \"my order never came\""
+description: "Lost delivery calls get expensive because nobody decides fast. A fixed sequence for finding the order, ending the call, and recording what actually failed."
+publishedAt: "2026-04-18"
+faqs:
+  - question: "How long should a lost-order call take?"
+    answer: "Under five minutes, and most of that is lookup. The call gets long when the person answering has no authority and has to find a manager, or when they try to diagnose whose fault it was while the customer is still on the line. Decide the outcome first, investigate afterward. The investigation is for you, not for the caller."
+  - question: "Who pays when a third-party courier loses the order?"
+    answer: "On most delivery platforms the platform refunds the customer and then decides whether to charge the cost back to you, depending on where the order was when it went wrong. You will not settle that on the phone. Remake or refund on your own terms, note the order number, and dispute it through the platform afterward if the fault was clearly not yours."
+  - question: "Should a voice agent handle a lost-order call?"
+    answer: "It should handle the first thirty seconds and then hand off in most cases. An agent can pull up the order, confirm the address on file, and check whether the ticket was ever marked out for delivery, which saves a manager real time. Deciding to comp, remake, or refund is a money decision and belongs with a person unless you have written a policy specific enough to delegate."
+  - question: "What is the most common actual cause?"
+    answer: "A wrong or incomplete address, usually an apartment number that was never captured, followed by a driver who marked the order delivered at the wrong building. Both are visible in your own records if you keep the address as the customer gave it. Kitchens losing tickets outright is rarer than operators assume, though it does spike during a rush."
+  - question: "Do I need to track these calls if the volume is small?"
+    answer: "Yes, because the pattern matters more than the count. Ten lost-order calls a month that all come from the same delivery zone, the same daypart, or the same courier platform is a fixable operational problem. The same ten scattered randomly is the cost of doing delivery. You cannot tell the difference without writing down the order number and the cause."
+---
+
+A caller who says their order never arrived is not asking you to investigate. They are asking to be fed or to be made whole, and every minute you spend establishing whose fault it was makes the eventual resolution cost you more. The call is a decision, not an inquiry.
+
+Most restaurants handle these badly because the person answering has neither the information nor the authority to close them. So the call becomes a hold, then a manager walk, then a second retelling of the story by an increasingly annoyed customer. Twelve minutes of labor and a worse outcome than a thirty-second remake.
+
+## Run the same sequence every time
+
+The sequence has four steps and the order matters.
+
+Find the order. Name, phone number, or order number, whichever the caller has. If your phone system pulls the caller's number against recent orders automatically, this takes seconds. If someone is scrolling a tablet, it takes two minutes and the customer hears the scrolling.
+
+Confirm the address on file, out loud, and let the customer correct it. This is the single highest-yield question in the whole call. A meaningful share of lost orders are sitting at the right street number in the wrong building, or at an apartment complex where nobody captured the unit.
+
+State the outcome. Not options, not a question, an outcome: the food is being remade and will leave in about twenty minutes, or the charge is being reversed and here is when it will show. Offering a choice sounds generous and doubles the length of the call. Give the outcome, then offer the alternative if they push back.
+
+Get off the phone. Confirm the callback number, say what happens next, end it.
+
+The temptation at every one of these steps is to explain. Explaining is what makes the call long. A customer who has been waiting an hour for dinner does not want to hear about the driver's route or the new tablet, and each sentence of context invites a follow-up question you also cannot answer. Facts and an outcome, in that order, with nothing between them.
+
+### Why the address question goes second
+
+Because it resolves the call about a third of the time in a way that costs you nothing. If the customer says "oh, I moved last month" or "I'm in building C," the driver is probably four hundred feet away and can be redirected. If you have already promised a remake, you have given away a meal you did not owe.
+
+It also lands better than it reads. Nobody hears a confirmed address as an accusation. They hear it as looking.
+
+## Where the third-party case differs
+
+If the order came through a delivery platform, your standing and your obligations both change. The platform holds the payment, owns the customer relationship, and in most cases has already refunded by the time the customer calls you. You cannot see their refund status and you should not pretend to.
+
+What you can do is remake the food, which is frequently what they want more than money. Say that plainly. "I can't see the app's refund, but I can have this remade and out in twenty minutes." That is an honest sentence and it usually ends the call.
+
+Note the order number and the platform. Disputes get filed later, in a batch, by someone with the ticket history in front of them. Doing it live is a waste of a rush. Platform support traffic, including their own calls to you about the same order, is a separate stream worth routing deliberately, which is the subject of [delivery platform support calls](/blog/third-party-courier-support-calls).
+
+## Write down what actually failed
+
+This is the part that gets skipped, and it is the only part that reduces next month's volume.
+
+Every lost-order call should leave one line behind: the order number, the delivery zone or address, the daypart, and a one-word cause. Address, driver, kitchen, platform, or unknown. Unknown is a legitimate answer and you should expect a fair number of them.
+
+After a month you will have something to read. Lost orders clustered in one zone means your [delivery zone rules](/blog/delivery-zone-rules-phone-orders) are letting you accept addresses you cannot reliably reach. Clustered on Friday between seven and nine means the kitchen is losing tickets under load, which is a throughput problem rather than a delivery problem, and [order throttling against kitchen capacity](/blog/order-throttling-kitchen-capacity-phone) is the lever. Clustered on one courier platform means it is time for a conversation with your account rep, with numbers.
+
+Scattered evenly across all of those means you are running a normal delivery operation and the cost is just the cost.
+
+One more field is worth capturing while you are at it: whether the order was ever confirmed back to the customer, by text or otherwise. Orders where nobody read the address back go wrong more often than orders where someone did, and if you send confirmations on some channels and not others, the gap will show up here before it shows up anywhere else. That is most of the argument for [order status text updates](/blog/restaurant-order-status-text-updates), and the confirmation is cheaper than the remake it prevents.
+
+## What the phone system should do before a human picks up
+
+A caller reporting a missing order is one of the cases where automation earns its keep in the first thirty seconds rather than the whole call.
+
+The agent identifies the caller, pulls the matching recent order, reads back the address on file, and checks whether the ticket was marked out for delivery and when. By the time a manager takes the handoff, the facts are on screen and the customer has already corrected the address if it was wrong. The manager spends ninety seconds on a decision instead of five minutes on discovery.
+
+That handoff has to be built deliberately, with the context carried across rather than dumped. A transfer that makes the customer start the story again is worse than no automation at all, which is why the escalation design in [human handoff and failover](/blog/human-handoff-failover-voice-ai) matters more here than in almost any other call type.
+
+Whether the agent itself can authorize a remake depends entirely on how specific your policy is. A rule like "remake without approval under thirty dollars, once per phone number per ninety days" is executable. "Use judgment" is not. Writing a policy at that level of specificity is worth doing regardless of who is answering, and it is the subject of [a refund policy phone agents can execute](/blog/refund-policy-phone-orders).
+
+## The thing that makes these calls expensive
+
+It is not the food. A remade thirty-dollar order costs you eight or nine dollars in product. It is the twelve minutes of a manager's time during peak service, the two staff who stopped to help find the ticket, and the four other calls that rang out while all that happened.
+
+Time the next three of these with an actual clock. If any of them runs past five minutes, the problem is not the customer and it is not the driver. It is that nobody on the floor was allowed to decide, and the fix costs you nothing but a written rule and a number attached to it.

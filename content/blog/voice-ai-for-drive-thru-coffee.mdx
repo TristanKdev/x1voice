@@ -1,0 +1,79 @@
+---
+title: "Voice AI for drive-thru coffee stands: phone against the lane"
+description: "A phone order for one latte loses to the drive-thru lane every time. Where a voice agent actually earns its keep at a coffee kiosk, and where it clogs your bar."
+publishedAt: "2026-01-29"
+faqs:
+  - question: "Should a drive-thru coffee stand take phone orders for single drinks?"
+    answer: "Usually no. A customer ordering one latte is faster served in the lane or through your app, and every phone ticket that lands mid-rush competes with the lane for the same espresso machine. The phone earns its place on group orders, order-status questions, and everything a car in the lane can't ask, not on replacing the window."
+  - question: "What do people actually call a coffee kiosk about?"
+    answer: "Mostly four things: your hours, where a mobile order went, whether you carry a specific milk or syrup, and group orders for an office or a team. Only the last one is a transaction, and it's the largest ticket you take all day. The other three are interruptions that pull a barista off the bar during a rush."
+  - question: "Won't a phone order slow down the drive-thru line?"
+    answer: "It will if the ticket drops into the same queue at the same priority. Route phone and group orders to a scheduled time rather than to the front of the rail, so the bar makes them in a gap instead of between two cars. The problem is sequencing, not the channel, and it is solvable in how you configure the ticket, not in the phone system."
+  - question: "Can a voice agent fix a mobile order that never arrived?"
+    answer: "No, and it shouldn't pretend to. When an app charged a customer and the store never received the ticket, the fix involves the app's system, a refund, or a manager's judgment. The agent's job is to recognize that call in one exchange and hand it to a person, with the customer's name and what they ordered already captured so nothing gets asked twice."
+  - question: "Is this worth it for a single kiosk?"
+    answer: "It depends almost entirely on group orders. If you take three or four office orders a week at $60 to $120 each and you know you miss others because nobody hears the phone, the arithmetic works quickly. If your entire phone volume is people asking your hours, a recorded message with correct hours costs nothing and does most of the job."
+---
+
+It's 7:20 on a Tuesday. Eleven cars deep, two baristas on the bar, and the landline in the corner of the kiosk is ringing for the third time in ten minutes. Nobody is going to answer it, and everyone in the building has silently agreed that's correct.
+
+They're right, mostly. Answering that phone during a rush costs more than the call is worth, because pulling a hand off the bar backs up the lane and the lane is the business. The question worth asking is what those callers wanted, because one of them out of ten is worth more than the three cars you'd have lost picking up.
+
+## The lane beats the phone for a single drink, and that's fine
+
+A customer who wants one latte has three ways to get it: pull into the lane, order in the app, or call. The lane is fast and already there. The app is faster still and takes their payment. The phone is the slowest of the three and produces a ticket your bar has to slot in between cars.
+
+So the argument for phone ordering in a drive-thru coffee format is genuinely weaker than it is for a pizza shop or a deli, and anyone selling it to you as a drive-thru replacement is selling something else. The distinction between the two channels is worth reading properly, and we go through it in [drive-thru versus phone ordering](/blog/drive-thru-vs-phone-ordering-voice-ai).
+
+What changes the picture is that a coffee kiosk's inbound calls are not mostly single-drink orders. They're something else, and the something else is where the money is.
+
+## The four calls a kiosk actually gets
+
+Log a week of them and the list is remarkably consistent:
+
+- Are you open, or what time do you close, usually from someone about to drive over.
+- Where is my mobile order, from a customer the app charged whose ticket never printed.
+- Do you carry oat milk, sugar-free vanilla, a specific tea, or something a regular has been asking about since a supplier change.
+- An office order: ten to twenty drinks for a 9 a.m. meeting, called in by whoever drew the short straw.
+
+Three of those four are interruptions with no revenue attached. The fourth is a ticket two to four times your average and the single largest transaction of the morning. Right now it's competing for attention with the other three, in a building where nobody can safely stop making drinks.
+
+That's the actual case for automating this line. Not order volume, and not labor savings, since you aren't staffing a phone position to begin with. It's that the group order stops being a call somebody has to be free to take.
+
+## Group orders belong on a clock, not on the rail
+
+If you do nothing else, do this part deliberately.
+
+A twelve-drink office order dropped into the live queue between two cars will stall the lane for four or five minutes, and every car behind it pays for that. Baristas know this, which is why group orders taken by phone get quietly deprioritized and occasionally forgotten.
+
+The right handling is a scheduled pickup time rather than an immediate ticket. The agent takes the order, quotes a time that gives the bar a real gap, and tells the caller to come to the window or the walk-up at that time. The bar builds it in the lull at 9:40 instead of in the middle of the 8:15 crush. Quoting that time honestly is the hard part, and it's the same discipline described in [quoting accurate pickup times](/blog/quoting-accurate-pickup-times).
+
+While the agent has the caller, this is also the one place upselling is genuinely useful rather than annoying. Someone ordering twelve drinks for an office frequently forgets pastries, and asking once is welcome. Asking twice is not, and the difference is covered in [upselling without being pushy](/blog/ai-phone-ordering-average-ticket-upsell).
+
+Set a floor for what counts as a group order and route anything under it to the lane. Four drinks is not a group order. Ten is.
+
+## Mobile order confusion needs a fast exit
+
+The call that starts with "I ordered on the app twenty minutes ago" is not a call a voice agent should try to resolve.
+
+Those situations usually involve a ticket that never reached the store, a charge that already went through, and a customer who is either in your lot or about to be. Fixing it takes a refund, a remake, or a judgment call about a customer who might be wrong. All of that is a person's job.
+
+What the agent can do is recognize the call type in one exchange and transfer it with the name and the drink already captured, so the customer doesn't repeat themselves to a barista who is now standing at the window holding a phone. That's a small improvement and customers notice it, because the alternative is telling the whole story twice while their coffee gets colder.
+
+Build the trigger on the words customers actually use. Mobile order, app, I already paid, my order isn't here. Then call in and test it, because a trigger you didn't test is a trigger that fires on the wrong things.
+
+## What the kiosk environment does to a call
+
+A drive-thru coffee stand is a loud, small building. If the phone is a handset near the bar, background noise from steam wands and the lane speaker is going to be on every call that gets transferred to a person, and that's a real quality problem separate from anything the agent does. Noise handling on the caller's side is the more common concern and we cover it in [noisy environments](/blog/voice-ai-noisy-restaurant-environments), but the outbound side matters here in a way it doesn't in a quiet dining room.
+
+The practical fix is usually about where transferred calls land rather than about the technology. A phone in the back with a door beats a handset next to the espresso machine, even if it means the transfer takes eight seconds longer.
+
+If your operation also has an indoor counter or a second location that isn't drive-thru only, the ordering flow there behaves differently and [voice AI for coffee shops](/blog/voice-ai-for-coffee-shops) is the closer reference.
+
+## The number that decides it
+
+Count your group orders. Not calls, orders: how many times last month did somebody buy eight or more drinks at once, and what did those tickets average.
+
+Then ask your morning crew a single question, which is how often they hear the phone ring during a rush and don't answer. They'll know, and the number will be higher than you expect.
+
+Multiply the second by even a small conversion rate against your group-order average, and you have the honest case for or against. If it comes out to one missed office order a week at $90, that's roughly $4,500 a year against a line you're already paying for. If it comes out to nothing because nobody ever calls you, put your hours on a recorded greeting and spend the money on your app instead. That's a real answer and it's the one some kiosks should take.

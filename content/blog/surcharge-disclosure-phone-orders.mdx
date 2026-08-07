@@ -1,0 +1,74 @@
+---
+title: "Card surcharges on phone orders: what has to be said aloud"
+description: "Card brand rules require surcharge disclosure before the customer pays. On a phone order there is no screen to put it on, so the script carries it."
+publishedAt: "2026-03-15"
+faqs:
+  - question: "Can I add a credit card surcharge to a phone order?"
+    answer: "In most states yes, if you follow the card brand rules. Surcharging requires advance notice to your acquirer and the networks, a cap on the percentage, disclosure before the customer pays, and a line item on the receipt. A few states and territories still prohibit it outright, so confirm your own before you switch it on."
+  - question: "Can I surcharge a debit card?"
+    answer: "No. Card brand rules prohibit surcharging debit and prepaid transactions, including debit cards run as credit. This is the rule most often broken by accident, because a phone order gives you no way to tell which kind of card you are keying. A flat service charge applied to every payment method avoids the problem entirely."
+  - question: "How do I disclose a surcharge over the phone?"
+    answer: "Say it before you ask for the card number, as a dollar amount rather than only a percentage. The card brand requirement is disclosure at the point of interaction, and on a phone order the only point of interaction is speech. State the subtotal, the surcharge in dollars, and the total, then take payment."
+  - question: "Is a cash discount different from a surcharge?"
+    answer: "Legally and contractually, yes. A cash discount prices the item at the card price and subtracts for cash, while a surcharge prices at the cash price and adds for card. Cash discounting sits outside most surcharge restrictions and is permitted in every state, which is why operators in prohibited states use it. The arithmetic can land in the same place."
+  - question: "Does a voice agent handle surcharge disclosure automatically?"
+    answer: "It does if you configure it during setup. The fee is defined once, and the agent states it in the same words on every call before requesting payment. That is stronger compliance than a written policy taped by the phone, and the transcript gives you a record of what each caller was told."
+---
+
+A caller orders four entrees, hears a total of $86.40, gives a card number, and hangs up. The receipt in the bag says $89.00. The difference is a 3 percent card surcharge that has been in your POS since last spring, that your online ordering page displays correctly, and that nobody on the phone has ever said out loud.
+
+That gap is a card brand rules violation before it is anything else, and it is the most common one in restaurants that surcharge. Not because operators are hiding the fee. Because the phone is the one channel with no screen to put it on, and nobody wrote the sentence that replaces the screen.
+
+## The rules that actually bind you are your processor's, not a statute
+
+Surcharging is governed in two layers, and most operators only think about one of them.
+
+The outer layer is state law. A short list of states and territories still prohibits credit card surcharging outright. Several other state bans were challenged and struck down on speech grounds over the past decade, which is why the list is shorter than the one your uncle remembers. Check your own state, and check it again if you cross a line with a second location.
+
+The inner layer is your merchant agreement, and it applies everywhere. The card networks permit surcharging on credit transactions subject to conditions that read like a checklist: notify your acquirer and the networks in advance, cap the surcharge at a stated percentage that has moved down in recent years, never surcharge debit or prepaid, apply it consistently, disclose it before the customer pays, and itemize it on the receipt.
+
+Violating a state law gets you a regulator eventually. Violating the card rules gets you a fine from your acquirer or your account shut down, and it happens faster. Ask your processor for the current cap and the current notice requirement in writing rather than trusting a number from a blog post, including this one.
+
+## The debit problem the phone creates for you
+
+Here is the mechanical issue nobody mentions when they sell you on surcharging.
+
+You may not surcharge a debit card. Not a debit card run as credit, not a prepaid card. In a card-present environment your terminal identifies the card type and suppresses the surcharge automatically. Over the phone, you have a sixteen digit number read aloud by a customer who does not know or care what kind of card it is, and no reliable way to tell.
+
+Some gateways will do the lookup for you before authorization and adjust. Many will not, and plenty of restaurants running phone payments through a virtual terminal are surcharging debit cards every single day without knowing it. That is a real liability, and it is invisible until an acquirer audit or a customer complaint surfaces it.
+
+The clean way out is to stop calling it a card surcharge. A flat service charge applied to every order regardless of payment method is not a surcharge under the card rules, so the debit prohibition does not reach it. You still have to disclose it, under the general price-representation logic covered in [junk fee disclosure rules for restaurants](/blog/junk-fee-disclosure-rules-restaurants), but you are out of the network compliance thicket.
+
+## What a compliant phone disclosure sounds like
+
+Short, before payment, and denominated in dollars.
+
+"Your subtotal is $86.40. There's a 3 percent card fee of $2.60, so your total is $89.00. Can I take a card number?"
+
+That single sentence satisfies the disclosure timing requirement, converts the percentage into a number the caller can verify against their statement, and puts the request for the card after the price rather than before it. Ordering matters. A surcharge mentioned after the card number has been read is not a disclosure.
+
+What fails, in rough order of how often it happens:
+
+- Disclosing the percentage but not the dollar amount, leaving a caller to do mental arithmetic while their food order is still half-remembered.
+- Saying "there's a small card fee" without a number at all, which is the version that most reliably produces an argument at pickup.
+- Disclosing at the counter when the customer arrives, twenty minutes after they authorized a payment over the phone.
+- Applying the surcharge to a debit card because the phone gave you no way to distinguish it.
+- Describing a mandatory service charge as a tip, which mixes a required fee with a voluntary one and creates a separate problem discussed in [tipping on phone orders](/blog/tipping-on-phone-orders).
+
+## Why this is easier to fix with a voice agent than with training
+
+Phone script compliance is a training problem that never stays fixed. You write the sentence, you teach it at onboarding, it holds for three weeks, and then a Saturday rush arrives and the sentence gets dropped because dropping it saves four seconds and nothing visibly breaks. Turnover resets the clock. Most operators have run this cycle enough times to be cynical about it, correctly.
+
+A voice agent moves the problem from behavior to configuration. The surcharge amount, its basis, and its exact wording get defined once during setup, and the agent says it identically on every call. Peak Friday, Tuesday at 2 p.m., the fortieth call in an hour, same words. There is no rushing and no shortcut available, which is a strange thing to describe as a feature until you have watched a phone script decay.
+
+The second effect is evidentiary. Every call produces a transcript showing what the caller was told about price and at what point in the conversation. Chargebacks over a disputed surcharge normally resolve into a disagreement between a customer's memory and a manager's assumption about what staff usually say. A transcript settles it. Handle the recordings themselves carefully, since payment conversations carry their own retention constraints laid out in [PCI compliance for restaurant phone payments](/blog/pci-compliance-restaurant-phone-payments).
+
+Worth being blunt about one thing: a voice agent does not solve the debit card problem. That one is determined by your gateway and your fee structure, not by who is speaking. If you are surcharging over the phone today and cannot answer how debit cards are excluded, that is the item to fix first, before anything about scripts.
+
+## Deciding whether to surcharge at all
+
+The case for surcharging is straightforward. Processing costs on card-not-present phone transactions run higher than card-present, and passing them through protects a margin that is already thin on a $30 takeout ticket.
+
+The case against is that on the phone, a surcharge costs you a sentence in every conversation, adds a number the caller has to accept while committing to an order, and gives a price-sensitive customer a reason to compare you against the delivery app they already have open. Some operators would rather absorb 2 to 3 percent than introduce friction at the exact moment the sale closes. That is a defensible read, not a soft one.
+
+If you do surcharge, the test is simple enough to run tonight. Call your own restaurant from a number nobody recognizes, place a real order, and write down every figure you hear before you are asked for a card. Then look at the receipt. If a number appears on paper that you did not hear on the phone, you have found your defect, and it is not a legal question yet. It is a script that was never written down.

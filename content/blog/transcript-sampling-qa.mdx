@@ -1,0 +1,74 @@
+---
+title: "Sampling call transcripts weekly: how many, chosen how"
+description: "Twenty-five call transcripts a week, chosen deliberately rather than at random, find most of what is wrong with your phone. How to pick them and what to read."
+publishedAt: "2026-06-14"
+faqs:
+  - question: "How many call transcripts should I read each week?"
+    answer: "Twenty-five is a practical weekly number for a single location, taking about forty minutes. Ten will find only the loudest problems. Fifty is better statistically and almost nobody sustains it past the first month, and a review habit that collapses in March measures nothing for the rest of the year."
+  - question: "Should transcripts be sampled randomly or chosen?"
+    answer: "Both, in a fixed mix. A random slice tells you what a typical call looks like and lets you compare week to week. A targeted slice, picked for short calls, escalated calls, and calls with repeat callers, is where nearly all the defects live. Random-only sampling wastes most of the reading on calls that went fine."
+  - question: "What am I actually looking for in a transcript?"
+    answer: "Places where the caller had to repeat themselves, places where an item was never confirmed back, and places where the conversation stopped matching the caller's intent. Those three cover most real defects. Reading for general quality produces impressions rather than a list of things to fix."
+  - question: "Do transcription errors make this unreliable?"
+    answer: "They add noise, mostly on proper nouns, addresses, and menu items with unusual names. Treat a garbled menu item in the transcript as a signal worth checking against the audio rather than as a confirmed error. If a specific item is garbled repeatedly, that is itself a finding about how the name is being heard."
+  - question: "Who should do the transcript review?"
+    answer: "A GM or an owner, not the person who configured the phone system, and ideally the same person each week so the judgment stays consistent. Rotating the reviewer monthly sounds fair and produces a trend line that moves whenever the reviewer changes, which makes the trend useless."
+---
+
+Twenty-five transcripts a week is the number that works. It takes about forty minutes, it is small enough that a GM will still be doing it in month four, and it is large enough that a real pattern shows up within a fortnight.
+
+Reading transcripts is the highest-yield thing you can do with a phone system that produces them, and most restaurants that have them never open one. The dashboard is right there, it summarizes everything, and the summary is exactly the layer where the problems get averaged away.
+
+## Random sampling alone wastes the hour
+
+The instinct is to pull twenty-five calls at random, because that is what sampling means. It produces a fair picture of a typical call and it spends most of your reading time on calls that went fine, which teach you nothing.
+
+A better split for a weekly review of twenty-five:
+
+- Ten at random, which is your control group and the only part that supports week-over-week comparison.
+- Five of the shortest calls, because a very short call is usually an abandonment or a caller who gave up, and both hide inside a good-looking average.
+- Five escalated or transferred calls, which are the system telling you where its edges are.
+- Three from callers who rang more than once in the same service period, since a repeat call is a failure that already happened.
+- Two of the longest calls, which are where confusion compounds and where the worst caller experiences live.
+
+Keep the proportions fixed. If you change the mix each week, your random ten are still comparable but everything else becomes anecdote.
+
+## What to read for
+
+Reading for quality produces a vague sense that things are fine or not fine. Reading for three specific things produces a list.
+
+Repetition is the first. Any point where the caller says the same thing twice is a place where they were not understood the first time. Count those. A transcript with three repetitions is a bad call regardless of whether the order came out right, because the caller experienced three moments of friction and will remember them. Repetition clustered on one type of word, usually an address, a name, or a specific menu item, points at a fixable cause rather than a general one.
+
+Unconfirmed items are the second. Walk the order in the transcript and check that every item and every modifier was said back to the caller before the call closed. This is where wrong tickets come from, and it is visible in the text without any comparison to the POS.
+
+Intent drift is the third and hardest. Find the point where what the conversation is about stops matching what the caller wanted. A caller asking about delivery who ends up being read the pickup hours has experienced intent drift, and unlike the first two it usually indicates a structural problem in how the call is routed rather than a one-off.
+
+A fourth thing belongs in the margin rather than on the defect list: the questions callers ask that you did not expect. Transcripts are the cheapest customer research a restaurant has access to. Two months of reading will tell you which items people ask about that are not obvious on your menu, which parts of your delivery area are genuinely uncertain, and which questions come up often enough to belong in a scripted answer rather than in an improvised one. Operators who read transcripts consistently tend to end up changing their menu descriptions, not just their phone.
+
+Everything else, tone, pacing, whether the greeting was warm, is better tested with [mystery calls](/blog/mystery-calling-qa-program), because a transcript strips out the delivery that makes those judgments possible.
+
+## What transcripts cannot tell you
+
+The text is not the call. Two things get lost, and forgetting that produces confident wrong conclusions.
+
+Timing disappears. A transcript with a perfectly reasonable exchange may have had a two-second gap before every reply, which makes the call feel painful and shows up nowhere in the text. If you are evaluating a voice system, latency has to be measured separately, and it matters more to caller experience than most of what you will read. That is the argument in [sub-second latency for restaurant voice AI](/blog/sub-second-latency-voice-ai-restaurants).
+
+Audio conditions disappear too. A transcript full of garbled words might be a caller in a car with the windows down, or it might be a system that struggles with a particular accent, and the text cannot distinguish those. When you see a cluster of garbled turns, listen to the audio for two or three of them before you conclude anything. The general problem is covered in [accents and speech recognition accuracy](/blog/voice-ai-accent-speech-recognition-accuracy).
+
+Transcription errors themselves also need a rule. A menu item rendered as nonsense once is noise. The same item rendered as nonsense in five transcripts across two weeks is a finding, and usually the fix is teaching the system an alternate pronunciation or renaming the item, which is part of [training a voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu).
+
+## Turning the reading into a work list
+
+Keep a running document with one line per finding, dated, with the call reference. Not a summary of the week. A line per specific thing that went wrong.
+
+At the end of a month, sort those lines by cause. In most restaurants they collapse into a handful of buckets, and two or three buckets account for the majority. That collapse is the whole payoff, because a month of impressions is unactionable and a month of eighty dated lines sorted into six causes is a project plan.
+
+Then fix one cause and read the next month's transcripts with that cause specifically in mind. If the lines in that bucket disappear, the fix worked. If they do not, you misdiagnosed it, and you know that in four weeks rather than never. This is the same loop that makes [order accuracy measurement](/blog/order-accuracy-measurement-method) worth doing, and the two programs feed each other: transcripts tell you what kind of error, ticket checks tell you how often.
+
+## The habit is the hard part
+
+Nobody abandons transcript review because they decided it was useless. They abandon it because week three was busy and nobody had it on a calendar.
+
+Put a recurring forty-minute block on one named person's calendar, on a slow morning, with the sampling rule written into the invite so it does not have to be remembered. Keep the running findings document in the same place every week. Those two things are the difference between a program and an intention.
+
+One more rule worth setting at the start: the person reading transcripts should not be the person who configured the phone system or wrote the phone script. Reviewing your own work produces findings that are mysteriously mild. If you run a single location and that person is you, at least read the escalated calls first, before you have talked yourself into a picture of how the week went.

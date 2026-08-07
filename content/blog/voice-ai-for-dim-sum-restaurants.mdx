@@ -1,0 +1,78 @@
+---
+title: "How voice AI handles dim sum orders, counts, and Cantonese calls"
+description: "Dim sum takeout is arithmetic, and Sunday is the worst possible time to answer a phone. What a voice agent handles well on a cart floor, and what it doesn't."
+publishedAt: "2026-01-18"
+faqs:
+  - question: "Can a voice agent take a dim sum order with per-item counts?"
+    answer: "Yes, and counts are the part it handles most reliably. The agent captures a quantity for every line and reads the full list back with numbers before sending it to the POS. That readback is the safeguard a person seating tables on a Sunday usually skips, which is where most miscounted takeout orders come from."
+  - question: "Will it understand callers speaking Cantonese?"
+    answer: "X1 Voice supports multilingual calls, and Cantonese callers are worth testing directly during a demo rather than accepting on a spec sheet. Record five real regulars saying their usual order, play those recordings to the agent, and listen to how it handles item names spoken in Cantonese inside an otherwise English sentence. That mixing is the harder case."
+  - question: "Does the agent know when a dish has run out?"
+    answer: "Only if your POS knows. The agent reads availability from the same menu data your registers use, so an item marked unavailable stops being offered on calls. Kitchens that 86 by shouting across the pass rather than by hitting the button in the POS will see the agent keep selling something that ran out twenty minutes ago."
+  - question: "Is a cart-service room a bad fit for phone AI?"
+    answer: "No, though the value shows up in a different place than at a takeout counter. Cart rooms get wait-time and reservation calls during the exact window when every staff member is on the floor. Most of that volume is questions rather than orders, and answering it without pulling someone off the room is usually the larger win."
+  - question: "How long does setup take for a menu this large?"
+    answer: "Setup is typically under 24 hours once your menu is accurate in the POS. The work that takes longer is on your side: deciding the canonical name for each dish, listing the alternate names callers actually use, and confirming which items exist only on weekends. Budget an afternoon for that list before you start."
+---
+
+Sunday at 11:15. The room is full, three carts are working the floor, and the phone at the host stand has rung four times in ten minutes. Two of those callers wanted to know the wait. One wanted forty pieces of har gow for pickup at one. Nobody answered any of them, because the person who would have was seating a party of nine.
+
+That is the whole problem in a single shift. Your busiest two hours of the week are also the two hours when nobody can pick up the phone.
+
+## The order is a list of counts, not a list of dishes
+
+A dim sum takeout order is arithmetic. Six orders of siu mai, four har gow, two char siu bao, one cheung fun with shrimp, and the caller changes their mind twice while you write. Every line is a quantity attached to an item that has three common English spellings and at least two names.
+
+That's structurally different from a burger order, where the modifiers hang off a single entree. Here the count *is* the order. Get it wrong and the ticket is wrong in a way the kitchen can't catch, because six siu mai and eight siu mai look equally reasonable coming off a printer.
+
+A voice agent does well here for one specific reason. It reads the order back with numbers before it commits, every time, including at 12:40 on a Sunday. A host taking that call between two seatings skips the readback. That isn't a criticism of your staff. It's what happens when one person is doing two jobs and the party in front of them can see their face.
+
+## Steamed counts feed straight into kitchen capacity
+
+Forty pieces of har gow at one o'clock is not a small request during peak service. It's four or five baskets that have to come out of the same steamers feeding your dining room, at the hour those steamers are already committed.
+
+When the phone is answered by whoever is closest, that order gets accepted without anyone checking whether the kitchen can absorb it. The steamer team finds out when the ticket prints. A configured agent can cap how many large takeout orders land in a given fifteen-minute window and push the rest later, which is the same logic covered in order throttling and kitchen capacity.
+
+That's a policy decision, not a technical one. You have to decide what your Sunday ceiling actually is. Most operators have never written that number down, and the exercise of writing it down is worth more than the software.
+
+## Cantonese, Mandarin, and English arrive on the same line
+
+Plenty of your regulars order in Cantonese. Plenty order in English but say the dish names in Cantonese, which is the harder case for any speech system, because the sentence switches language mid-clause and then switches back.
+
+Test this directly. During a demo, don't accept a general claim about language support. Record five of your actual regulars placing their usual order, then play those recordings to the agent and listen. Our demo checklist covers how to run that, and the [multilingual ordering guide](/blog/multilingual-ai-phone-ordering-restaurants) covers what varies between languages. The [languages page](/languages) lists current coverage.
+
+Here's the honest part. Accent and code-switching performance is uneven across vendors and across dishes, and no spec sheet will tell you where it breaks for your menu. Twenty minutes of testing with real recordings will.
+
+## Naming the menu is most of the setup work
+
+The configuration effort for a dim sum restaurant is not the technology. It's deciding what each dish is called.
+
+Take shrimp dumplings. A caller might say har gow, ha gow, hargow, "the shrimp ones," "the pink ones," or "number 12." All of those need to point at the same POS item. Same for shumai, siu mai, and "the pork ones with the orange top."
+
+Before setup, sit down with whoever answers the phone most often and write out the alternate names people actually use for your top thirty items. Not the names on the menu. The names on the phone. This is the same exercise described in [training a voice agent on your menu](/blog/how-to-train-ai-voice-agent-restaurant-menu), and it is the hour that decides whether the whole thing works.
+
+While you're at it, flag anything that only runs on weekends, anything the kitchen makes in limited quantity, and anything you stop selling after 3 p.m.
+
+Numbered menus deserve special attention. If your printed menu numbers items, some callers will order entirely by number and some will mix numbers and names in the same sentence. Both have to work, and the number-to-item mapping has to match whatever is currently printed rather than the version from two menu revisions ago. If you've reprinted recently and the numbers shifted, that's the first thing to check.
+
+One more thing worth writing down: which items come in a standard basket count. A caller who says "four har gow" might mean four baskets or four pieces, and your staff resolves that ambiguity by instinct. The agent needs an explicit rule, and a readback that states the unit out loud closes the gap.
+
+## What it won't fix
+
+If your kitchen 86s items by shouting across the pass instead of marking them in the POS, the agent will keep selling a dish that ran out at noon. The agent reads the same availability data your registers read. It cannot see the steamer. That failure mode and its fixes are laid out in [86ing and menu sync](/blog/real-time-86ing-menu-sync).
+
+It also won't help much if your phone rarely rings. A room doing eight calls a week doesn't have a phone problem worth spending on, and we'd rather say that than sell you something.
+
+And it won't replace the judgment call on a party of twenty-five asking about a private room. Those calls should reach a person. Route them deliberately rather than letting the agent improvise.
+
+## The cart floor is the second, quieter win
+
+Most of the attention goes to takeout orders, but for a cart-service room the bigger recovery is often the question volume. How long is the wait. Do you take reservations for six. Is there parking. Are you open on the holiday.
+
+Every one of those calls currently pulls someone off the floor mid-service, which is the dynamic described in [reducing host stand phone interruptions](/blog/reduce-host-stand-phone-interruptions). None of them require judgment. Answering them without a human touching the phone is unglamorous and it's where the hours come back.
+
+## A test to run this Sunday
+
+Put a phone on the host stand and have someone tally, for two hours, three things: calls that rang, calls that were answered, and what each answered call was about.
+
+If more than a fifth of your calls go unanswered during your peak window, and if more than half of the ones you do answer are questions rather than orders, you have a phone problem with a clear shape. Run the arithmetic on what a missed forty-piece order is worth against the [pricing page](/pricing), where plans start at $250 a month, and decide from there. If the tally comes back small, do nothing. That's a legitimate outcome and it costs you one Sunday to find out.

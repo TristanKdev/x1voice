@@ -1,0 +1,76 @@
+---
+title: "ConverseNow and independents: does drive-thru voice fit?"
+description: "Enterprise drive-thru voice vendors are built for chains with hundreds of units. What that assumption changes for a single-location or small-group restaurant."
+publishedAt: "2026-06-26"
+faqs:
+  - question: "Are enterprise drive-thru voice vendors a fit for independent restaurants?"
+    answer: "Often not, and the reason is structural rather than a knock on the product. Vendors selling to large QSR chains build around a fixed menu, corporate configuration, and a deployment process that assumes an IT department and a multi-unit rollout. A single location with a menu that changes weekly does not match those assumptions well."
+  - question: "What is different about drive-thru voice compared with phone voice?"
+    answer: "The audio environment and the ordering pattern. A drive-thru lane has engine noise, a speaker post, and a customer looking at a menu board, so the agent optimizes for speed and a constrained item set. A phone caller has no menu in front of them, asks questions, changes their mind, and expects a conversation. The systems are tuned for different failures."
+  - question: "Can a small restaurant group get an enterprise voice vendor to work with them?"
+    answer: "Sometimes, but check the economics before you invest time. Enterprise sales motions carry implementation fees, longer contracts, and configuration processes sized for hundreds of units. If the setup effort for one location is the same as for fifty, a single-location deal rarely gets prioritized, and you feel that in support response times."
+  - question: "Does my restaurant need drive-thru voice if I have a drive-thru?"
+    answer: "Not automatically. Look at where your unanswered demand actually is. Plenty of restaurants with a lane are losing more money on the phone during the same rush, because a car in the lane waits and a caller does not. Fix the channel where customers disappear silently before the one where they queue visibly."
+  - question: "How fast can a small restaurant get a phone agent running?"
+    answer: "Faster than most enterprise deployments by a wide margin, because there is no corporate configuration layer to pass through. With X1 Voice, setup is typically under 24 hours once your menu, hours, delivery rules, and escalation policy are confirmed. The slow part is verifying the menu, not the technical work."
+---
+
+One store versus four hundred. That ratio is the entire subject of this post, because nearly everything that makes an enterprise drive-thru voice product good at four hundred stores makes it awkward at one.
+
+This is not a complaint about the products. Vendors selling voice into large quick-service chains solve a genuinely hard problem: identical execution across hundreds of lanes, with a menu that changes by corporate decision on a schedule, integrated into POS estates that were specified years ago. Doing that well requires assumptions that do not describe an independent restaurant.
+
+## The menu assumption
+
+Enterprise drive-thru systems are built around a menu that is stable, centrally controlled, and changed on a release cycle. Corporate decides the LTO, it propagates, every store gets it on the same Tuesday.
+
+Your menu does not work like that. You change a special on Thursday because the fish came in. You 86 the short rib at 7:40. You have a regular who orders something that is not written down anywhere. A configuration process designed for a controlled release cycle handles that badly, and the friction is not in the technology, it is in who is allowed to change what and how long the change takes.
+
+The question to ask any vendor is simple. If I add an item at 3pm, when does the phone know about it, and do I do it myself or file a request? If the answer involves a ticket to a support queue, the product was designed for a different customer.
+
+## The noise assumption
+
+Drive-thru audio and phone audio are different engineering problems.
+
+A lane has predictable, constant noise: engines, road, a speaker post at a fixed distance, a customer looking directly at a menu board. Systems tuned for that environment optimize for fast recognition of a constrained item set spoken by someone who can read the options.
+
+A phone caller is in a car with the window down, or a bar, or a house with a dog. They do not have your menu in front of them. They ask what comes on it. They change their mind. They talk over the agent. Tuning for that means tolerating interruption, handling questions mid-order, and recovering from a correction three items in. Both problems are real and neither product is a drop-in for the other, which is the distinction covered in [drive-thru vs phone ordering voice AI](/blog/drive-thru-vs-phone-ordering-voice-ai).
+
+## The deployment assumption
+
+Enterprise implementations are projects. There is a scoping call, a technical discovery, an integration workstream, a pilot at a handful of stores, a rollout plan, and a change-management program for training crews.
+
+That is appropriate when the deployment covers hundreds of locations and a mistake is expensive across all of them. It is disproportionate when the deployment is one restaurant with a forwarded phone number. The cost shows up as implementation fees, contract length, and the calendar time between signing and answering a real call.
+
+For a single location the comparison is stark. A phone agent that routes your existing number through call forwarding can be live in under a day, because the only real work is verifying your menu, your hours, your delivery rules, and your escalation policy. X1 Voice setup is typically under 24 hours. Nothing about that is clever, it is just a smaller problem.
+
+## Where you sit in the support queue
+
+This is the part nobody puts in a comparison chart and it matters more than most features.
+
+A vendor whose revenue comes from a handful of large chains allocates support against that revenue. When something breaks on a Friday night at your one location, you are competing for attention with an account representing several hundred units. You may get good service anyway. You should find out before you need it, by asking who answers at 8pm on a Saturday and what the response commitment is in writing.
+
+Ask their references the same thing, specifically. The question to ask a reference is not whether they like the product, it is what happened the last time something broke during service and how long it took to reach a person.
+
+## The case for looking at them anyway
+
+There are real reasons an independent might still evaluate an enterprise vendor.
+
+If you are a growing group with a plan to reach twenty or thirty locations, buying a system built for scale can save a migration later. If your menu genuinely is fixed and simple, the enterprise assumption fits you fine. And if you have a drive-thru lane doing serious volume, a vendor with lane-specific engineering has solved problems that a phone-first product has not.
+
+Be honest about which of those describes you today rather than in three years. Buying for a scale you do not have is one of the more common and more expensive planning mistakes in restaurant technology, and it usually surfaces as a system nobody on the current staff can configure.
+
+## Check the lane against the phone before you spend
+
+If you have a drive-thru and you are considering voice for it, run one comparison first.
+
+During your busiest hour, count two things. Cars in the lane, and calls that rang out or went to voicemail. A car in your lane is a customer who is already committed and waiting. A caller who gets no answer is a customer who dialed the next restaurant and you will never know it happened. The lane loss is visible and bounded. The phone loss is invisible and open-ended.
+
+Most independents we talk to find the phone number is larger and they had never measured it. If that is true for you, the phone is the cheaper fix and the faster one, and you can do the lane later with better information.
+
+## What a small operator should actually shortlist
+
+Filter on three things and the list gets short fast.
+
+First, does the vendor write structured orders into your specific POS, by name, with a restaurant already running on it. Second, can you change your own menu and hours without filing a request. Third, is the pricing published, predictable at your volume, and free of an implementation fee that assumes a rollout program. The broader version of that filter is in [evaluating voice AI vendors](/blog/evaluating-voice-ai-vendors-restaurants), and the multi-location wrinkles are in [voice AI for multi-location and franchise groups](/blog/voice-ai-multi-location-franchise-groups).
+
+Then place real calls into whatever survives the filter, during your actual rush, and count the tickets that came out right. If a vendor cannot let you do that inside a week, they have told you what kind of customer they are built for, and it probably is not you. X1 Voice publishes [pricing](/pricing) starting at $250/month for the same reason.

@@ -1,0 +1,72 @@
+---
+title: "Voice AI for wineries and tasting rooms without losing the room"
+description: "Tasting room phones ring about reservations, group limits, and shipping. A voice agent handles two of those well and should never answer the third on its own."
+publishedAt: "2026-01-21"
+faqs:
+  - question: "Can a voice agent book tasting reservations?"
+    answer: "It can if it writes into the same system your staff uses, and that integration is the question to ask first. An agent that takes a request and leaves a message is worse than voicemail, because the caller hangs up believing they have a booking. Ask a vendor to show a live write into your reservation platform during the demo."
+  - question: "Should it answer questions about shipping wine to another state?"
+    answer: "No. Direct-to-consumer shipping rules vary by state and change, and a confident wrong answer creates a compliance problem and an unhappy customer at once. Configure the agent to say you ship to some states, take the caller's state and contact details, and route the question to whoever on your team actually tracks your permits."
+  - question: "How does it handle group size limits?"
+    answer: "It enforces whatever threshold you set, which is the point. Most tasting rooms cap walk-in groups at six or eight and require advance arrangements above that, and staff apply the rule inconsistently under pressure. An agent states the same limit on every call and hands larger parties to a person who can decide whether to make an exception."
+  - question: "Will callers be put off by an automated voice at a winery?"
+    answer: "Some will, which is why the transfer path has to be short and obvious. Hospitality-heavy formats have less tolerance for a phone system that loops, so route anyone who asks for a person immediately and keep the agent on logistics. Most complaints about voice AI trace to agents that refuse to hand off, not to automation itself."
+  - question: "What is the realistic value for a small tasting room?"
+    answer: "Mostly recovered reservations and staff attention during pours. If you run one or two people in the room on a Saturday, every call is a pour interrupted, and the calls that ring out are usually people booking somewhere else that afternoon. Count a weekend of rings before assuming the volume is too small to matter."
+---
+
+A tasting room phone is not an order line, and treating it like one is how these projects go wrong.
+
+Nobody is calling to place a takeout order. They're calling to book a tasting, to ask whether ten people can come at three, or to ask if you can ship a case to Ohio. Two of those three are exactly the kind of call a voice agent handles well. The third one should never be answered by software.
+
+## The room is the reason the phone goes unanswered
+
+On a Saturday you might have two people working the bar, pouring and talking, which is the entire product. Every ring pulls one of them out of a conversation with a guest who is standing there deciding whether to buy a case.
+
+That trade is bad and most operators make it dozens of times a weekend without noticing. The dynamic is the same one described in [reducing host stand phone interruptions](/blog/reduce-host-stand-phone-interruptions), and it's sharper here because the interrupted conversation is the sale.
+
+The alternative most tasting rooms use is voicemail, which is a slower way of losing the call. Somebody checks it Monday. By then the caller booked their Saturday somewhere else, and you have no record that they ever considered you. That invisibility is the argument in the real cost of a missed call.
+
+## Reservations only work if the agent writes into your book
+
+This is the first question to ask a vendor, and it's the one where a bad answer disqualifies them for a tasting room.
+
+If the agent can write directly into the reservation platform your staff already uses, a caller who hangs up is genuinely booked and your host sees it on the same screen as everything else. If the agent can only capture a request and leave a note, you have built a slower voicemail with a confidence problem. The caller believes they have a three o'clock. Nobody at the winery does.
+
+Ask for a live demo against your actual system, not a slide. The distinction between order flows and booking flows is covered in [reservations versus ordering](/blog/voice-ai-reservations-vs-ordering), and what integration with a table system involves is in table management integration.
+
+If the integration doesn't exist for your platform, the honest recommendation is to use the agent for questions and transfers and keep bookings with a person until it does. A half-wired reservation flow causes more damage than no reservation flow.
+
+## Group size is a rule your staff already breaks
+
+Almost every tasting room caps walk-in groups somewhere around six or eight and asks larger parties to arrange in advance. Almost every tasting room applies that rule unevenly, because the person answering the phone on a slow Tuesday says yes to nine and the person working Saturday says no to seven.
+
+An agent states the same limit on every call. That consistency is worth more than it sounds, because the inconsistency is what produces the argument at the door when a party of eleven arrives citing what someone told them last week.
+
+Set the threshold, and set what happens above it. A party of twelve wanting a Saturday afternoon slot is a real booking with real revenue and it should reach a person who can look at the calendar and decide. Treat that transfer as correct rather than as a containment failure, which is the trap explained in [call containment](/blog/what-is-call-containment). The routing setup is in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+Bachelorette parties, limo groups, and anything involving a bus deserve their own rule. You know which of those you want. Write it down before configuring anything, because the agent will apply whatever you give it with no discretion at all.
+
+## Shipping questions are a compliance surface
+
+Here's the part to be blunt about. Direct-to-consumer wine shipping is governed by a patchwork of state rules that determine where you can ship, in what volume, and under what permit. Those rules change, and your permits change with them.
+
+An agent that improvises an answer to "can you ship to Ohio" is guessing about your license. A confident wrong yes produces an order you can't fulfill and possibly a problem larger than that. A confident wrong no costs you a case sale.
+
+The configuration that works is narrow. The agent says you ship to a number of states, that it varies, and that someone will confirm. It takes the caller's state, name, and number. Then it routes the question to whoever on your team tracks your permit list. That's a fifteen-second call that ends with a lead in someone's hands rather than a compliance decision made by software at 4 p.m. on a Sunday.
+
+Same handling for club membership questions involving billing, and for anything where a caller wants to change an existing shipment.
+
+Club calls are worth a second thought generally. A member calling about their allocation is talking about a recurring charge, and getting that conversation slightly wrong costs you a membership rather than a tasting. Capture the member's name and the nature of the question, then get it to whoever runs the club. The agent's job on those calls is to make sure they reach someone the same day, which is already a step up from a Monday voicemail check.
+
+## The questions worth automating are the boring ones
+
+What are your hours. Is there a fee and is it waived with a purchase. Are you dog friendly. Can we bring food. Is there a picnic area. Where do we park a large vehicle. Are you open on the holiday Monday. Do you have anything for the person in our group who doesn't drink.
+
+None of that needs judgment and all of it currently interrupts a pour. Getting those answers said consistently is the unglamorous win, and it's the same case made for taprooms in [voice AI for breweries and taprooms](/blog/voice-ai-for-breweries-taprooms).
+
+Two of those deserve a written answer rather than an improvised one. The fee structure, because callers plan around it and getting it wrong creates an argument at the bar. And whether you accommodate someone who isn't drinking, because that answer often decides whether a group of four books at all.
+
+Keep hours current, including seasonal changes and harvest-period closures, or the agent will confidently send someone to a gate that's shut. Put the override process in one person's hands rather than trusting memory.
+
+Before you evaluate anything, spend one Saturday tallying rings, answered calls, and topics. If most of your volume is logistics questions and reservation requests, and a meaningful share rings out while your staff is pouring, the case is straightforward and plans start at $250 a month on the [pricing page](/pricing). If your phone rings six times a weekend and you catch most of them, put the money into your wine club instead and revisit when the room gets busier.

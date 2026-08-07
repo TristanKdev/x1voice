@@ -1,0 +1,70 @@
+---
+title: "Otter vs. Deliverect for getting phone orders into your POS"
+description: "Two middleware platforms get compared as if they are the same product. For phone-order ingestion the deciding question is narrower than the general matchup."
+publishedAt: "2026-05-30"
+faqs:
+  - question: "Are Otter and Deliverect the same kind of product?"
+    answer: "They overlap heavily but started from different problems. Otter grew out of consolidating delivery marketplace orders onto one screen for the operator, with its own reporting layer on top. Deliverect grew out of connecting channels to POS systems and distributing menus outward. Today both do order injection and menu management, and both are chosen mostly on which POS connections they hold."
+  - question: "Which one does X1 Voice use?"
+    answer: "Deliverect. X1 Voice connects directly to Square, Clover and OrderCounter, and reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect. If you already run Otter for marketplace orders, the two can coexist, but the phone channel does not travel through Otter."
+  - question: "Can I run both platforms at once?"
+    answer: "Technically yes, and operators do end up there, usually by accident after a POS switch or an acquisition. It works only if exactly one system is the source of truth for your menu. Two platforms independently maintaining item names, prices and modifiers will eventually disagree, and the disagreement always surfaces as an order you sold and cannot make."
+  - question: "How do I compare their cost honestly?"
+    answer: "Per-location subscription is the number you will be quoted, and it is rarely the number that decides. Add the hours someone spends maintaining menus in a second system, the cost of any hardware sitting on your counter, and what it takes to add the next ordering channel. A platform that makes channel number four free is worth a higher monthly line than one that doesn't."
+  - question: "Does the middleware choice affect how the phone agent sounds?"
+    answer: "Not at all. The conversation happens entirely on the voice side, and the middleware receives a finished order afterward. What middleware affects is whether the ticket reaches your kitchen correctly, how quickly it lands, and whether the agent knows an item is 86'd. Those are integration questions, not voice questions."
+---
+
+Otter and Deliverect get put on the same comparison page as though you're picking between two versions of one product. They ended up in similar territory, but they arrived from different directions, and the difference still shows in how each one behaves inside a restaurant.
+
+For the specific question of getting a phone order into your POS, the general comparison mostly doesn't apply. The deciding factor is narrower and duller than any feature matrix.
+
+## Different starting problems, converging products
+
+Otter's original problem was the counter. A restaurant running three or four delivery marketplaces had three or four tablets, three or four sets of numbers, and no single place to see the night. Otter consolidated that onto one screen, added reporting, and grew POS connections outward from there. The reporting layer is still where a lot of its pull comes from, and operators who like it tend to like it for that reason rather than for the plumbing.
+
+Deliverect's original problem was the connection itself. One integration per POS, one per channel, and a menu that gets published outward from a central place so every channel reads the same thing. That orientation is why it shows up as the path a lot of software vendors take to reach POS systems they'd otherwise have to build against one at a time.
+
+Both now do order injection, menu distribution and some reporting. The convergence is real. It just doesn't mean the two are interchangeable in your building.
+
+## For a phone order, one question decides it
+
+Strip away everything else and the question is whether your voice vendor has a working, supported path into your POS, and which middleware that path runs through.
+
+That's not something you negotiate. X1 Voice reaches Toast, Lightspeed, TouchBistro, SpotOn, Aloha, Revel, PAR Brink and Micros through Deliverect, and connects directly to Square, Clover and OrderCounter. So if you're an X1 customer on Toast, the middleware decision for the phone channel is already made. Pretending otherwise would be a more balanced-sounding article and a worse one.
+
+What that leaves you deciding is different and more useful: whether your other channels should move onto the same rail. If your marketplace orders are on Otter and your phone orders are arriving through Deliverect, you now have two menus. That's the actual decision in front of most operators who ask this question, and it has a clear answer.
+
+## The reporting difference is real and it isn't the deciding factor
+
+Operators who prefer Otter usually name reporting first. Having every channel's sales in one view, with item-level performance across marketplaces, is genuinely useful, and it's a legitimate reason to like a product.
+
+It's still not what should decide a phone-channel question, for a plain reason: your POS already holds the authoritative version of those numbers, and a middleware report is a convenience layered over data the POS has. If your POS reporting is weak enough that you rely on a middleware dashboard to know how the week went, the problem to fix is your POS reporting.
+
+The reporting that a phone channel needs is different anyway. Answered-call rate, escalation reasons, and order accuracy checked against real tickets are not things any ordering middleware measures, because the call never touches it. Those come from the voice side, and the set worth watching is in [voice AI metrics and KPIs for restaurants](/blog/voice-ai-metrics-kpis-restaurants).
+
+So treat middleware reporting as a tiebreaker rather than a criterion. It's pleasant to have and it doesn't change whether a ticket prints correctly at 7:40 on a Friday, which is the thing you're actually buying.
+
+## Two platforms means two menus, and menus drift
+
+A menu maintained in two systems stays correct for about as long as nobody touches it.
+
+The failure isn't dramatic. Someone raises the price of a large pie in the POS and in one middleware menu, not the other. Someone adds a seasonal item in one place. A modifier group gets restructured after a kitchen change and only one system hears about it. Weeks pass. Then a caller orders something the phone agent believes exists, the ticket prints, and a cook says the words no operator wants to hear on a Friday.
+
+If you're running two platforms, pick one as the source of truth and treat the other as a copy that gets refreshed on a schedule someone owns by name. That's more discipline than most restaurants can sustain, which is the honest argument for consolidating rather than optimizing each channel separately. The mechanics of keeping one menu correct are in the [menu sync deep dive](/blog/menu-sync-deep-dive-voice-ai), and the 86 side of it in [real-time 86ing](/blog/real-time-86ing-menu-sync).
+
+## The cost you can't read off a price page
+
+You'll be quoted a per-location monthly figure by either vendor. Compare it if you like, but it's usually not what makes one cheaper.
+
+The larger costs are the hours somebody spends maintaining a second menu, the hardware still occupying counter space, and what it takes to add your next ordering channel. That last one compounds. If a group is going to open two more locations and add a direct ordering site, the platform where channel number five costs nothing to add is worth a meaningfully higher subscription than the one where it costs a build.
+
+There's also a cost nobody quotes: how quickly you can get a human to look at a stuck order during service. Ask both vendors what support looks like at 8 p.m. on a Saturday, and ask an operator already on the platform whether the answer matched reality.
+
+## Deciding this in an afternoon
+
+Write down your POS. Write down every channel that currently produces an order, including the phone. Then mark which of those channels each platform can actually connect to your specific POS version, not to your POS brand in general. Version matters more than vendors like to admit, especially on legacy on-premise systems.
+
+If one platform covers every channel and the other covers most, you're done, and the coverage gap is worth more than any dashboard. If both cover everything, take the one your voice vendor and your POS reseller both already support, because when an order goes missing you want two parties who have seen your exact configuration before, not two parties pointing at each other.
+
+And if you're a single location on Square, Clover or OrderCounter with no marketplace presence, skip this comparison entirely. You don't need middleware, and the depth of the direct POS connection will matter far more to you than either platform's feature list. That case is made in [why POS integration depth matters more than voice quality](/blog/why-pos-integration-depth-matters-more-than-voice-quality). The setup details for the Deliverect path, if that's where you land, are in [the Deliverect setup guide](/blog/deliverect-setup-guide-restaurants).

@@ -1,0 +1,74 @@
+---
+title: "Voice AI for casino restaurants: routing calls across outlets"
+description: "Casino properties run several restaurants behind one phone tree, around the clock. What a voice agent should handle, and where comp questions have to stop."
+publishedAt: "2026-01-26"
+faqs:
+  - question: "Can a voice agent answer questions about a guest's comps?"
+    answer: "It should not. Comp eligibility depends on player account data, host relationships, and property policy that changes by tier and by night. A voice agent that guesses at it will either promise something the property won't honor or refuse something a host already approved. Route any mention of comps, offers, or a player card straight to a human, with no attempt to answer first."
+  - question: "How does a voice agent handle a property with six restaurants on one number?"
+    answer: "By asking what the caller wants rather than which outlet they want. Most callers describe a meal, a time, and a party size, not a restaurant name. The agent qualifies on those, names the outlets that fit, and then either takes the request or transfers. Outlet-name-first routing fails because callers rarely know the names."
+  - question: "Does this replace the property switchboard?"
+    answer: "No, and it shouldn't sit in front of it. The switchboard handles hotel, gaming, security, and everything else on the property. A restaurant voice agent belongs on the food and beverage lines behind it, or on the direct numbers your outlets publish. Putting an ordering agent in front of the main property number creates a worse experience for every caller who isn't calling about dinner."
+  - question: "What happens to calls at three in the morning?"
+    answer: "They get answered, which is the main argument at a property that never closes. The overnight caller is usually looking for whatever is still open, room service hours, or a late kitchen. An agent that knows which outlets are serving at that hour answers in a few seconds, where an unstaffed line sends the guest to a delivery app instead."
+  - question: "Do event nights break the setup?"
+    answer: "They stress it in a predictable way. A concert or fight night pushes call volume into a two-hour window and shifts every question toward pre-show seating times. A voice agent takes concurrent calls, so the spike doesn't produce a busy signal, but the answers have to be loaded ahead of the event. Treat event hours the same way you treat holiday hours."
+---
+
+A caller asks for the steakhouse. Two minutes into describing a party of six on Saturday, she mentions that her host told her dinner is taken care of. Now the call is not a reservation anymore. It's a question about her player account, her tier, and what a specific host promised her, and nobody working a podium at the steakhouse can answer it.
+
+That call is the shape of the problem at a casino property. The phone carries several different businesses at once, and the person answering rarely owns more than one of them.
+
+## The property is not one restaurant, and the phone knows it
+
+A mid-size property might run a steakhouse, a buffet, a noodle bar, a coffee shop, a sports bar, and a café that never closes. Some have direct lines. Some sit behind a switchboard. Most publish a number somewhere the guest can find it, and every one of those numbers rings into a room where somebody is also seating guests.
+
+The result is that the same inbound question gets handled six different ways depending on who picks up. A guest asking whether anything is open at 2 a.m. gets a confident answer from the café, a guess from the sports bar, and voicemail from the steakhouse. None of those are wrong exactly. They're just uncoordinated, and the guest experiences the property as a single place.
+
+A voice agent fixes the coordination problem before it fixes the labor problem. One set of hours, one set of answers, one place to update when the buffet changes its brunch service. That is a smaller claim than most vendors make and it's the one that actually holds at a property with multiple outlets.
+
+## Callers describe a meal, not an outlet
+
+The routing instinct is to ask which restaurant the caller wants. It fails constantly.
+
+Guests staying on property have seen a directory once. Locals coming in for dinner know there's "the steak place." Someone who booked a room for a show has no idea what any of the outlets are called. Asking them to pick from a list of six proper nouns turns a thirty-second call into a two-minute one and produces a lot of wrong transfers.
+
+Qualify on what the caller actually knows. Party size, time, and roughly what they feel like eating. From those three, the set of outlets that can seat them is usually one or two, and the agent can name them as a recommendation instead of a menu. This is the same logic that makes routing work in [food halls with many vendors behind one number](/blog/voice-ai-for-food-halls), and it's worth borrowing.
+
+Where the property already runs a central reservations desk, the agent's job is narrower: qualify, then hand off cleanly with the details already captured, so the desk isn't starting the conversation over. What that handoff can look like technically depends on your table management system, and it's a different question from order taking. We separate the two in [reservations versus ordering](/blog/voice-ai-reservations-vs-ordering).
+
+## Comps are a hard stop, and you should treat them as one
+
+This is the line that matters most, and it's the one a general-purpose voice agent will cross if you let it.
+
+Comp eligibility lives in the player system. It depends on tier, on recent play, on what a host verbally approved, and on property rules that shift by night and by promotion. A voice agent has no view into any of that, and it should not be given one. The failure modes both cost you: an agent that says yes creates a comp the property never authorized and a guest who is now correctly angry, and an agent that says no turns away a player whose host already cleared it.
+
+Write the rule as a hard transfer. Any mention of a comp, an offer, a player card, a tier, or a host name routes to a person immediately, without the agent attempting a partial answer first. Partial answers are worse than none here, because a guest will quote them back. The general pattern for drawing these lines is in [human handoff and failover](/blog/human-handoff-failover-voice-ai), and comps are the clearest case of a category that belongs entirely on the human side.
+
+The same goes for anything touching the hotel, the gaming floor, or a dispute. Those calls arrive on restaurant lines constantly because guests dial whatever number they can find. The agent's correct behavior is to recognize them fast and move them, not to try.
+
+## The overnight hours are where the math changes
+
+Most restaurants argue about voice AI on the basis of a dinner rush. A casino property argues about it on the basis of 3 a.m.
+
+Somewhere on the property something is open. Usually it's the café, sometimes a limited late menu at the sports bar. Calls at that hour come from hotel rooms, from the floor, from people leaving a show, and from delivery drivers. The volume is low, which is exactly why nobody is assigned to answer, which is why those calls ring out.
+
+Each one of those is small money. A late-night café ticket runs maybe $18 to $30. A dozen unanswered calls a night is a few hundred dollars a week walking to whatever app the guest opens next, and it never appears in a report because an unanswered call leaves no record. That invisibility is the whole argument in [the real cost of a missed phone call](/blog/the-real-cost-of-a-missed-restaurant-phone-call), and it compounds at a property where the phone is technically staffed twenty-four hours but functionally isn't. If your overnight volume is genuinely a handful of calls a week, say so and skip it. If it's a dozen a night, the arithmetic is not close.
+
+Late-night callers also skew toward a specific set of problems that are worth configuring for deliberately. We go through those in [late-night call handling](/blog/voice-ai-for-late-night-restaurants).
+
+## Event nights are a scheduling problem, not a capacity problem
+
+A concert, a fight, or a tournament compresses the property's call volume into a narrow window before doors. Everything becomes a variation of one question: can I eat before the show and still make it.
+
+A voice agent handles the concurrency without effort, since it takes calls in parallel rather than in a queue. What it can't do is know about the event unless someone told it. Pre-show seating cutoffs, an outlet closing early for a buyout, a limited event menu, a valet change: all of that has to be loaded before the night, the same way you'd load a holiday. Property marketing usually has the event calendar weeks out, so this is a calendar-entry habit rather than a technical problem. The mechanics are the same as [holiday hours overrides](/blog/holiday-hours-overrides-voice-ai).
+
+Skip this step and the agent will confidently quote normal hours to four hundred people on the one night it matters.
+
+## What to set up first if you run F&B for a property
+
+Start with the outlet that has the worst answer rate rather than the one with the highest revenue. It's almost always the café or the counter concept, because those rooms have nobody standing at a podium, and it's also where the pure-ordering calls live, which is the easiest work for an agent to do well.
+
+Get the hours right across every outlet in one place before anything else. Then write the transfer rules for comps, hotel, and disputes, and test them by calling in and trying to get the agent to answer a comp question. If you can get a number out of it, the rules aren't tight enough yet.
+
+Run that one outlet for a month, pull the transcripts of every transferred call, and sort them into calls that should have transferred and calls that shouldn't have. That list tells you whether to extend it across the property, and it's a better basis for the decision than any number a vendor puts in a deck. Do that before anyone builds a property-wide plan.

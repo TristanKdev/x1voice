@@ -1,0 +1,90 @@
+---
+title: "Voice AI for sports bars when the phone rings at kickoff"
+description: "Sports bar call volume spikes in a 90-minute window and collapses after. What a voice agent handles during a game, and the calls you should keep for a person."
+publishedAt: "2026-01-19"
+faqs:
+  - question: "What kinds of calls does a sports bar get during a game?"
+    answer: "Mostly four things: is there space for a party, are you showing a specific game, how long is the wait, and a wing order for pickup. Three of those four are questions with fixed answers, which is why so much game-day phone volume can be handled without pulling a bartender off the well during the busiest ninety minutes of the week."
+  - question: "Can it answer whether we're showing a specific game?"
+    answer: "Only if someone tells it what's on. TV lineups change week to week and no POS holds that data, so this has to be maintained by hand the same way you'd update a specials board. Most operators handle it with a weekly note listing which games are guaranteed and a fallback answer for everything else."
+  - question: "How does it handle a call-ahead for a party of twelve?"
+    answer: "Capture the party size, name, phone number, and arrival time, then route it to a person if you take real holds. Large parties on a game day are a capacity decision, not a data-entry task, and the manager needs to say yes or no based on what the floor looks like. Let the agent gather the details and hand off the judgment."
+  - question: "Does wing count accuracy actually matter?"
+    answer: "It matters more than it sounds, because a wrong count is invisible until the fryer is committed. Fifty wings versus thirty is roughly four minutes of fryer capacity during the exact window you have none to spare. A voice agent reads counts back with numbers every call, which is the step a bartender answering mid-rush usually skips."
+  - question: "Is this worth it for a bar that mostly does dine-in?"
+    answer: "It can be, though the value comes from question volume rather than takeout revenue. If your phone rings thirty times during a Sunday afternoon slate and every ring pulls someone off the bar for ninety seconds, that is roughly forty-five minutes of labor lost during your highest-margin hours. Count your calls for one game day before deciding."
+---
+
+Sunday, 12:50 p.m. Kickoff is in ten minutes, the bar is three deep, and the phone rings twenty-two times over the next hour. Your bartender picks up nine of them. The other thirteen go to a voicemail nobody will check until Tuesday.
+
+That's not an unusual afternoon for a sports bar. It's an ordinary one, and it's the shape of the problem: call volume that arrives in a narrow window, at the exact moment every person on payroll is already occupied.
+
+## The volume is spiky, and that's what makes it hard to staff
+
+A pizza counter's calls spread across a dinner service. A sports bar's calls stack into the ninety minutes around kickoff and then stop.
+
+You can't staff for a spike that lasts an hour and a half. Adding a host for the whole shift means paying for six hours to cover ninety minutes, which rarely pencils. So most bars do what you do: whoever is closest grabs it, badly, between pours.
+
+A voice agent has no marginal cost per call, which is the whole reason it fits this shape. Twenty-two calls in an hour and two calls in the following hour cost the same to answer. That's a different economic structure from any staffing answer, and it's laid out in [voice AI versus hiring another host](/blog/voice-ai-vs-hiring-another-host).
+
+## Most game-day calls have fixed answers
+
+Pull a week of your call log and sort it. The pattern is consistent across bars:
+
+- Do you have room for six of us right now, and how long is the wait
+- Are you showing the Michigan game, and will it have sound
+- What time do you open on Sunday, and is the kitchen open the whole time
+- Can I place a wing order for pickup at halftime
+- Do you have a minimum for a big group on a Saturday
+
+Four of those five are questions with answers that don't change during service. They need to be said accurately and fast, not thought about. That's the case made in [answering FAQs about hours and parking](/blog/voice-ai-answering-faqs-hours-parking).
+
+The TV question is the one that needs upkeep. No POS knows what's on your screens. Someone has to write down each week's guaranteed games and a fallback line for everything else, the same way you'd update a specials board. Ten minutes on a Thursday.
+
+## Wing counts fail quietly
+
+Fifty wings versus thirty is not a rounding error. It's roughly four minutes of fryer capacity in a window where you have none, and the mistake stays invisible until the order is already committed.
+
+Bartenders taking calls mid-rush skip the readback. Not because they're careless, but because there's a guest waving a card at them. A voice agent reads the count back with numbers on every call, including the twenty-second call of the hour. That consistency is worth more than any single conversation.
+
+There's a second reason counts matter here specifically. Wings are usually your highest-volume item and your tightest capacity constraint at the same time, so an error compounds. A miscounted order doesn't just come out wrong, it pushes every ticket behind it, and on a game day the tickets behind it are all timed to the same break.
+
+Sauce is the second failure point. Six different heat levels, split orders, sauce on the side, dry rub with sauce in a cup. Map every one of those to a real POS modifier before you go live, or the ticket will be technically correct and the guest will still be wrong.
+
+## Set a ceiling on halftime pickups
+
+Here's the failure operators find out about the hard way. The agent happily takes fourteen wing orders all scheduled for halftime, because nobody told it not to, and the kitchen gets a wall of tickets timed to the same six minutes.
+
+Decide your fryer ceiling per fifteen-minute slot and configure it. Orders beyond the ceiling get offered the next slot. This is ordinary capacity management, and it's covered in [order throttling and kitchen capacity](/blog/order-throttling-kitchen-capacity-phone).
+
+The number itself is yours. Most operators have never written it down, and writing it down is useful even if you never buy phone software.
+
+## Big parties should reach a manager
+
+A call-ahead for twelve on a Saturday during a rivalry game is a capacity decision. Somebody has to look at the floor and decide.
+
+Let the agent collect the details and then hand off:
+
+- Party size, name, callback number, and expected arrival time
+- Whether they need a specific game on a specific screen
+- Whether they're expecting food service or just drinks
+
+Then route to a person. Treat that transfer as correct behavior, not as a miss. An agent tuned to never hand off will produce a good-looking containment number and a booked room you can't seat. The routing mechanics are in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+Complaints go on the same list. So does anything involving a deposit.
+
+## Noise is the technical risk worth testing
+
+Your bar during a game is loud, and if you're routing transferred calls to a handset near the taps, the human half of the conversation may be the weak link rather than the agent.
+
+Test the transfer path under real conditions, not on a quiet Tuesday afternoon. Call your own number during a game, ask for a person, and listen to what the caller actually hears. If the answer is crowd noise and a shouted "what?", the fix is a quieter handset location or a headset, and it costs almost nothing compared with the software. The recognition side of the same problem is covered in voice AI in noisy environments.
+
+Callers are often in a loud room too, which is the other half of it. Somebody ordering wings from a tailgate is a harder input than someone calling from their kitchen. Include one call from a noisy background in whatever testing you do before signing.
+
+## What to do before the next big weekend
+
+Count first. Put a tally sheet by the register for one Sunday slate and mark every ring, every answered call, and one word for what it was about.
+
+If a quarter of your rings go unanswered and most of the answered ones are questions rather than orders, you have a phone problem that costs you both revenue and bartender minutes at your highest-margin hour. Plans start at $250 a month on the [pricing page](/pricing), and setup is typically under 24 hours if your menu is clean in the POS, which for a big weekend means you can decide on a Wednesday and be live by Friday. The seasonal version of the same planning sits in [game day phone orders](/blog/super-bowl-game-day-phone-orders).
+
+If the tally comes back small, don't buy anything. Some bars genuinely don't have a phone problem, and one afternoon of counting is a cheap way to find out which kind you are.

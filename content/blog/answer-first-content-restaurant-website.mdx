@@ -1,0 +1,82 @@
+---
+title: "Write your restaurant pages to answer in the first sentence"
+description: "Models and hurried customers both read the top of a page and stop. How to rewrite restaurant pages so the answer arrives first and the story comes after it."
+publishedAt: "2026-04-03"
+faqs:
+  - question: "What does answer-first writing mean for a restaurant website?"
+    answer: "It means the first sentence of a page or section states the fact somebody came for, and the context follows underneath. A delivery page opens with the radius and the fee, not with a paragraph about your commitment to the neighborhood. The pattern serves a hurried customer and a language model for the same reason: both stop reading early."
+  - question: "Does this actually help with AI search results?"
+    answer: "It helps a model find a quotable, correct sentence to attribute to you. Systems that compose answers pull short spans of text, and a span that states a complete fact survives extraction intact while a span that sets up a fact does not. It is not a ranking trick, and anyone selling it as one is overstating what is a writing habit."
+  - question: "Won't answering everything immediately make my site read as flat?"
+    answer: "Only if you stop after the answer. The structure is answer, then qualification, then whatever voice and detail you want. Restaurants with genuine personality lose nothing by putting the delivery radius in the first line and the story about the neighborhood in the third. Readers who wanted the fact leave satisfied and readers who wanted the story keep going."
+  - question: "How many FAQ blocks should a restaurant site have?"
+    answer: "Fewer than most sites end up with. Four or five real questions on a page that genuinely has that many distinct queries attached to it, written as full answers rather than one-line stubs. A page padded with fifteen invented questions to fill a schema block reads as filler to a human and gives a model fifteen weak spans instead of five strong ones."
+  - question: "Which page should I rewrite first?"
+    answer: "Whichever page answers the question your phone gets asked most. For most restaurants that is hours, delivery area, or whether a specific dietary need can be met. Pull a week of calls, count the question types, and rewrite the page matching the most common one. That ordering means your rewrite reduces call volume you can actually observe."
+---
+
+Most restaurant pages spend their first paragraph clearing their throat. "Welcome to our family-owned kitchen, where we have been serving the neighborhood since 2011." The customer wanted to know if you deliver to their street. They are gone before sentence three.
+
+The fix is a writing habit, not a plugin. State the fact, then explain it. That order serves a hurried human and a model composing an answer for exactly the same reason: both of them stop reading early, and both of them need the useful part to arrive before they do.
+
+## What the rewrite looks like
+
+Here is a delivery page opening as most restaurants write it:
+
+"At Rossi's, we believe great food should come to you. Our dedicated delivery team works hard every night to bring the flavors you love right to your door, no matter the weather."
+
+Here is the same page written answer-first:
+
+"We deliver within about three miles of the shop, roughly a fifteen-minute drive north to Halstead and south to the river. The fee is $4 under a $25 order and free above it, and the last delivery order goes in at 9:40 on weeknights."
+
+The second one is not less warm. It is less padded. Everything in the first version can live in paragraph three, where it will be read by the people who care about it rather than by everyone who doesn't.
+
+## Why the first sentence carries the weight
+
+Two audiences, one mechanism.
+
+A customer scanning on a phone reads roughly the top of the screen and decides whether the page is going to help them. If it hasn't in that window, they call you instead, which is fine except that your phone then absorbs a question your website was supposed to have handled.
+
+A system composing an answer pulls short spans of text and uses them. A span that reads "we deliver within about three miles of the shop" survives being lifted out of context and remains true. A span that reads "our dedicated delivery team works hard every night" survives too, and says nothing. Given a choice between quoting you and quoting a competitor whose page states a radius, the system quotes the radius. The broader mechanics of that surface sit in [how restaurants show up in AI search](/blog/how-restaurants-show-up-in-ai-search).
+
+That is the whole argument. It is less exciting than the way this gets sold, and it is real.
+
+The version of this that trips people up is thinking it applies only to the top of the page. It applies to the top of every section. A reader who jumps to your catering heading from a search result has not read the four paragraphs above it, so that section's first sentence has to stand on its own too. Write each heading's opening line as though it is the only line anybody will see, because for a meaningful share of your visitors it is.
+
+## The questions worth answering above the fold
+
+Most restaurant sites need to handle a short and predictable set. Count the calls you get for a week and you will find the same list.
+
+- Whether you are open right now, and what your hours are on the days that differ from the rest
+- Whether you deliver to a given area, what it costs, and when the last order goes in
+- Whether a specific dietary need can be met, stated concretely rather than as "we can accommodate most requests"
+- What the price range actually is, since "affordable" answers nothing
+- How large-party or catering ordering works, including lead time
+
+Each of those deserves a sentence that could be read aloud by a stranger and still be correct. Vague hedging is the enemy here. "We can usually accommodate gluten-free requests" tells a caller with celiac disease nothing they can act on, so they call, and now a staff member is having a careful conversation during service. The stakes of getting that one wrong are covered in [allergen and dietary questions on the phone](/blog/voice-ai-allergen-dietary-questions).
+
+## On a menu page specifically
+
+Menu pages fail differently. The usual failure is a PDF or a photograph of a printed menu, which is unreadable to every system that would otherwise quote your prices and your dish names.
+
+Put the menu in real text. Item name, one line of description containing the words a customer would actually search, and the price. Mark the items that are vegetarian, spicy, or gluten-free inline rather than in a legend at the bottom. Keep the online version and the in-house version in sync, because a model quoting a dish you stopped serving in November produces a caller asking for it.
+
+The search side of this is in [menu page search for restaurants](/blog/menu-page-seo-restaurants), and the machine-readable version in [restaurant menu schema](/blog/schema-markup-restaurant-menu).
+
+## Where answer-first writing goes wrong
+
+Three failure modes, all common.
+
+Padding a page with invented questions to fill an FAQ block. Fifteen questions nobody asked, each answered in one line, is worse than four real ones answered properly. It reads as filler to a person and gives an extraction system a pile of weak spans. [FAQ schema for restaurant pages](/blog/faq-schema-restaurant-pages) is worth implementing on pages that have genuine questions attached, and worth skipping on pages that don't.
+
+Repeating the same keyword phrase in every opening sentence. Answer-first is about information order, not about front-loading a search term. A page whose every section starts "Our Italian restaurant in Oak Park" reads as machine-written, which is precisely the impression you are trying to avoid.
+
+Stating facts you do not maintain. An answer-first page is only useful if the answer is current. Publishing a delivery radius and then quietly changing it creates a specific and irritating failure where the customer is more confident than your staff. Whatever you put in the first sentence goes on the list of things you check when something changes.
+
+## What to rewrite first, and how to know it worked
+
+Order the work by what your phone gets asked. Pull a week of calls, sort the questions into buckets, and rewrite the page corresponding to the biggest bucket. That way the rewrite has a measurable effect you can observe without any analytics tooling at all: the volume of that question on the phone should drop.
+
+It will not drop to zero, and it should not. Some callers will always prefer asking. The point of the rewrite is that the ones who would rather read can, and the ones who call are calling about something that genuinely needed a conversation. Whether those calls get answered is the separate problem sitting underneath all of this, and [counting your missed calls](/blog/how-many-calls-does-your-restaurant-miss) is how you find out whether it is worse than the writing.
+
+Take one page this week. Delete its first paragraph, promote the most useful sentence on the page to the top, and read what is left aloud. If a stranger could act on the first line without reading the second, it is done.

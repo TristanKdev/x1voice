@@ -1,0 +1,74 @@
+---
+title: "How to handle relay calls without hanging up on a deaf caller"
+description: "Relay calls sound wrong to anyone who hasn't taken one, so restaurants hang up. What the pauses mean, and how to set a voice agent up to stay on the line."
+publishedAt: "2026-03-11"
+faqs:
+  - question: "What is a relay call?"
+    answer: "A phone call where a communications assistant sits between a deaf, hard-of-hearing or speech-disabled caller and the business. The caller types or signs, the assistant speaks their words to you, and types or signs your reply back. The service is free to both sides and is reached by dialing 711. The customer is a customer; the assistant is a conduit, not a participant."
+  - question: "Why do relay calls have such long pauses?"
+    answer: "Because someone is typing. In text-based relay, every sentence you speak has to be typed to the caller, read, answered in text, and then read aloud to you. Thirty seconds of quiet in the middle of an order is normal rather than a dropped call, and phone systems that treat silence as an abandoned call will disconnect a customer who is mid-sentence."
+  - question: "What does \"go ahead\" mean on a relay call?"
+    answer: "It signals that you have finished speaking and the other side can respond. Text relay is one direction at a time, so the phrase, sometimes shortened to GA, replaces the natural turn-taking cues of a spoken call. Say it when you finish a thought, then wait. Talking over the assistant garbles the message being typed to your customer."
+  - question: "Can a voice AI agent take a relay call?"
+    answer: "It can, but only if it is configured to tolerate long silences, avoid interrupting, and hand off cleanly when the conversation stops matching its expectations. The safer default for most restaurants is to detect the relay preamble and transfer the call to a person immediately, since these calls are infrequent and the cost of mishandling one is high."
+---
+
+A relay call is not a robocall, a scam, or a bad connection, and it gets treated as all three because it opens with a scripted preamble and then goes quiet. That combination is exactly what a spam call sounds like to someone who has never taken one, so restaurants hang up.
+
+The caller is a deaf, hard-of-hearing, or speech-disabled customer with an order to place. They know what happened, because it happens to them constantly.
+
+## What is happening on the line
+
+Telecommunications relay services are federally mandated and free to both parties. A caller who can't use a standard voice call dials 711, gets a communications assistant, and the assistant bridges them to you.
+
+There are several flavors and they behave differently on your end. Text-based relay, including the old TTY equipment and the internet-based versions that replaced most of it, is the slow one: the customer types, the assistant reads it aloud to you, you speak, the assistant types your words back. Video relay serves ASL users and is much faster, because the assistant is watching the caller sign in real time and voicing it as it happens, so the call sounds nearly normal apart from a slight lag. Captioned telephone lets the caller speak for themselves while reading captions of your side, which means you hear the actual customer and just need to speak clearly and not rush. Speech-to-speech relay pairs a caller with a speech disability with an assistant trained to understand and repeat them.
+
+You don't have to identify which one you're on. You have to not hang up.
+
+## The conventions, in ninety seconds
+
+The assistant will open by identifying the service and often an operator number, and will explain that a call is coming through. On text relay, each turn ends with "go ahead," sometimes just "GA," meaning it's your turn. The end of the call is signaled with "SK."
+
+Speak to your customer, not to the assistant. Say "what would you like on that" rather than "ask him what he wants on that." The assistant is typing your words verbatim.
+
+Then wait. The gap between your sentence and the reply is typing time, and it can run half a minute on a long order. It is not a dead line.
+
+## Why voice agents disconnect these calls
+
+Five settings account for nearly all of it.
+
+- **Silence timeout.** Anything under fifteen seconds will cut off a text relay caller mid-turn. Most defaults are set between three and six seconds because that's right for a normal conversation.
+- **Barge-in.** An agent that stops speaking the moment it hears sound will fragment the assistant's speech, and one that never yields will talk over the assistant while they are typing your last sentence.
+- **Retry loops.** The agent doesn't understand the preamble, asks the caller to repeat, gets a confused assistant, asks again, and gives up. Three rounds of that and the call is gone.
+- **Turn-by-turn confirmation.** A design that confirms each item as it's added doubles the number of turns, and each turn on text relay costs twenty to thirty seconds. A five-item order becomes a ten-minute call.
+- **Answering-machine detection.** Some systems classify a call as voicemail based on speech patterns and hang up. The assistant's flat scripted opening is a plausible trigger.
+
+None of those are model problems. They are configuration, and they can be changed in an afternoon.
+
+## The two workable configurations
+
+The first is transfer on detection. The agent listens for relay markers in the opening seconds, phrases like "relay service," "operator number," "communications assistant," or "go ahead," and routes straight to a person with a note on the screen saying it's a relay call. This is the right default for most restaurants. Relay calls are a small share of volume, staff can be trained on them in one shift meeting, and a human handles the unexpected far better than a tuned script does. The routing rules for this live alongside your other escalation policy in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+The second is a patient mode. On detection, the agent widens its silence tolerance to twenty seconds or more, disables barge-in, stops confirming item by item, and reads back the complete order once at the end. This works, and it takes real tuning to get right. It's the better choice for a high-volume takeout operation where transferring every relay call to a busy counter means putting the customer on hold behind six people.
+
+Whichever you choose, the failure path matters more than the happy path. If the agent's confidence drops, it should reach a person rather than trying again.
+
+## What to tell your staff
+
+Say it plainly at a pre-shift: relay calls sound strange, they are real customers, and hanging up on one is a refusal of service. Then give the three mechanics — talk to the customer, say "go ahead" when you're done, expect long pauses — and let them take one.
+
+The first relay call a new server takes is awkward. The second is fine. What breaks the process is nobody having warned them, which is a training gap rather than a technology gap. If you're already running a handoff briefing for your voice agent, this belongs in it. [Training staff on voice AI handoffs](/blog/training-staff-voice-ai-handoffs) covers the format.
+
+## Ordering flow adjustments that help
+
+Long text-relay calls get shorter when you reduce turns. Take the whole order, then confirm once. Quote the total and the pickup time in one block rather than as three separate exchanges. Skip the optional upsell, which costs a full turn and rarely lands on these calls.
+
+For anything complicated — a modification, an allergy, a substitution — write it down and read the finished ticket back rather than negotiating in real time. That approach is generally good practice on the phone anyway, and it's covered in [handling special requests on phone orders](/blog/managing-special-requests-phone-orders).
+
+If the customer is a regular, ask once whether they'd rather order by text or through your online menu next time. Some will say yes and save themselves twenty minutes. Others prefer the call, and that's their choice to make, not yours.
+
+## The number nobody tracks
+
+Pull your call logs for the last month and look for calls under thirty seconds that ended without an order. Some are wrong numbers. Some are people who hung up on your hold music, which is its own problem and part of [the real cost of a missed call](/blog/the-real-cost-of-a-missed-restaurant-phone-call). And some are relay calls your system dropped.
+
+You won't be able to tell them apart from the log alone. Listen to a handful. If you find even one where an assistant was mid-preamble when the line cut, fix the silence timeout today, because that call has almost certainly happened more than once and the customer is now ordering from someone else. The broader accessibility picture that sits behind this is in [phone accessibility obligations](/blog/ada-phone-accessibility-restaurants).

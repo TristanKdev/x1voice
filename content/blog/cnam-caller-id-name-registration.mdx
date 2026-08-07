@@ -1,0 +1,85 @@
+---
+title: "Getting your restaurant's name onto outbound caller ID"
+description: "Your business name does not travel with your phone number. Here is what CNAM registration actually controls, why mobile phones ignore it, and what reaches them."
+publishedAt: "2026-02-22"
+faqs:
+  - question: "What is CNAM?"
+    answer: "CNAM is the caller ID name attached to a North American phone number, stored in a shared database rather than sent with the call. When you dial, the receiving carrier looks up your number in that database and displays whatever string it finds. The name is a separate record from the number itself, which is why it can be blank, stale, or wrong."
+  - question: "Why does my restaurant's name show on some phones but not others?"
+    answer: "Because landline and many VoIP carriers perform a CNAM lookup and most mobile carriers do not. A mobile handset usually shows a name only if the number is in the recipient's contacts, or if a carrier analytics service or branded calling program has identified it. Same call, same number, different display, entirely determined by the receiving side."
+  - question: "How long can a CNAM entry be?"
+    answer: "Fifteen characters, including spaces and punctuation. That limit is old and universal, so a longer name gets truncated somewhere unpredictable. Pick the shortest version of your name a customer would recognize, spell it out yourself, and test it rather than trusting the provider to abbreviate sensibly on your behalf."
+  - question: "How do I update my caller ID name?"
+    answer: "Ask the provider that owns the number to set the outbound CNAM record. It is a field on your account, not something you register with a government agency, and no third-party service needs to be paid to do it. Propagation across the various carrier databases usually takes a few business days, occasionally a couple of weeks."
+  - question: "Will setting CNAM stop my calls from being flagged as spam?"
+    answer: "No. Spam labeling comes from analytics engines that score calling patterns and from the authentication signature your carrier attaches, both of which are separate systems from CNAM. A correct name helps a person decide to answer once the call is displayed cleanly, but it does not remove a Spam Likely warning."
+---
+
+You bought the number, so the name follows it. That is the assumption, and it is wrong. The number and the name are two separate records living in two separate places, and nothing about owning one gives you the other.
+
+Which is why a restaurant can operate for years while its callbacks display as a bare string of digits, or worse, as the name of whoever held the number before them.
+
+## The name is a lookup, not something you send
+
+When your phone dials out, the call carries your number. It does not carry your name. The receiving carrier takes that number, queries a shared database, and displays whatever string comes back.
+
+That query is called a CNAM dip, and the important part is who performs it: the carrier on the receiving end, not you. You control what is stored. You do not control whether anyone looks.
+
+Two consequences fall out of that, and both surprise operators.
+
+The record can be stale or empty and you will never notice, because your own outbound calls look fine on your own phones. The only way to know what customers see is to call a phone you do not own and ask.
+
+And a number that changed hands carries its old record until someone updates it. Numbers get recycled. If yours previously belonged to a contractor or an insurance office, that is the name your customers may be seeing on a callback about their order.
+
+## Why mobile phones mostly ignore it
+
+Here is the part that changes the whole calculation. Most mobile carriers do not perform CNAM dips.
+
+Landline and many business VoIP systems do. Mobile handsets generally show a name for one of three reasons instead:
+
+- The number is already saved in the recipient's contacts, in which case their own label wins over anything you have registered.
+- A carrier analytics service has identified the number and attached a label, which is the same machinery that produces spam warnings.
+- The number is enrolled in a branded calling program that pushes your name and sometimes a logo directly to the handset.
+
+Since the overwhelming majority of your customers are answering on mobile phones, setting CNAM alone reaches a minority of them. That is not a reason to skip it. It is a reason to do it in about fifteen minutes, correctly, and then treat the mobile problem as a separate project. The mobile-facing version is covered in [branded calling for restaurants](/blog/restaurant-caller-id-branded-calling).
+
+## Setting it, and the fifteen-character wall
+
+The record lives with whichever provider owns your number. Call them or open the account settings and look for outbound caller ID name, sometimes labeled CNAM or just Caller ID. It is a field. It is usually free or close to it, and no third party needs to be involved.
+
+The constraint is that the field is fifteen characters, including spaces. That limit predates everything about how you think about branding, and it does not bend.
+
+So do the truncation yourself instead of letting a system do it badly:
+
+- "Marcello's Italian Kitchen" becomes "MARCELLOS KTCHN" or, better, "MARCELLOS" if that is what people call you.
+- Drop the legal suffix. Nobody dialing you back is looking for LLC.
+- Use the name on your sign, not the name on your business license, when the two differ.
+- Skip the location descriptor unless you have more than one and customers distinguish them by it.
+
+Then verify. Call a landline you have access to, a mobile on one carrier, and a mobile on another. Write down what each one displayed. Give it a week if the record is new, because the database propagation is not instant and support will tell you it is.
+
+If you run more than one number, for instance a separate catering line, set each one independently. They do not inherit anything from each other, and a second line is the one most likely to sit unregistered for years.
+
+There is a second CNAM setting that gets confused with this one, and it points the opposite direction. Some providers charge you a small fee each time your own phones look up the name of an incoming caller. That is the inbound dip, it costs you money rather than earning it, and it does nothing for how customers see you. If a bill line item mentions CNAM charges, check which direction you are paying for before you decide anything about it.
+
+## What CNAM will not fix
+
+A correct name does not stop a call from being flagged.
+
+Spam labeling is produced by a different set of systems entirely: analytics engines scoring your calling behavior, plus the authentication signature your carrier attaches when the call leaves its network. A number can display a perfectly good name and still arrive with a warning on top of it, and the warning is what determines whether anyone picks up.
+
+If your callbacks are getting flagged, the fix lives in that other stack, starting with what level of [attestation your carrier is signing your calls with](/blog/stir-shaken-attestation-restaurants) and running through the remediation steps in [fixing a Spam Likely label](/blog/fixing-spam-likely-caller-id-restaurant).
+
+The reverse is also true and worth knowing before you spend money: a call that arrives clean but nameless is a call a lot of people still answer, because a local area code they half-recognize does most of the work. That is one more argument for keeping your customer-facing number local rather than toll-free, which is the case laid out in [local versus toll-free numbers](/blog/local-vs-toll-free-number-restaurants).
+
+## Where this actually matters for a restaurant
+
+Inbound calls do not care about any of this. Your customers dial you; your name is irrelevant to that direction.
+
+It matters entirely on outbound, and a restaurant makes more outbound calls than it thinks. The item is 86'd and the order is already paid. The delivery address does not exist. The catering contact needs to confirm a headcount before the kitchen starts prepping for eighty people. The driver has been standing outside a locked lobby for eight minutes.
+
+Every one of those is a call where a missed connection turns into a refund, a remake, or a bad review. If the display shows a recognizable name, the answer rate goes up, and there is no ongoing cost to having done it.
+
+The blunter framing: a callback that is not answered is a decision made without the customer. You either guess at the substitution or you cancel, and both outcomes are worse than the thirty-second conversation you were trying to have. Restaurants that lean on text confirmations instead sidestep some of this, which is the argument in [order status texts](/blog/restaurant-order-status-text-updates), though texting has its own registration paperwork.
+
+Do this today. Call a phone that has never had your number saved and look at the screen. If it shows digits, a stranger's business, or a truncated mess, you found a fifteen-minute job that has been costing you callbacks for however long you have had the line.

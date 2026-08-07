@@ -1,0 +1,68 @@
+---
+title: "Kea AI: What Its Model Means for Independent Restaurants"
+description: "Kea was built around chain and franchise phone ordering. Here is what that architecture gets right, and where a single-location operator should push back."
+publishedAt: "2026-07-02"
+faqs:
+  - question: "Is Kea AI built for independent restaurants?"
+    answer: "Its public positioning has centered on chains and franchise groups, which shapes the product in specific ways: standardized menus, brand-level configuration, and rollout tooling. An independent restaurant can often still be served, but you are not the design center, and that shows up in how much per-store customization you get and how quickly a menu quirk gets handled."
+  - question: "What questions should an independent ask a chain-focused vendor?"
+    answer: "Ask who configures your menu and how long a change takes, whether pricing assumes a minimum number of locations, what the smallest account they support looks like, and who answers when something breaks on a Saturday. A chain-oriented vendor often routes support through an account manager, which is excellent at fifty stores and slow at one."
+  - question: "Does a human-in-the-loop model matter to me?"
+    answer: "It matters for accuracy and for cost transparency. Some vendors in this category have used human agents to catch or complete calls the system could not. That can produce better accuracy than a fully automated agent, and it changes the economics and the privacy picture. Ask directly whether a person can hear or complete your calls, and get the answer in writing."
+  - question: "How do I compare a chain-focused vendor with a smaller one?"
+    answer: "Compare on the same four axes rather than on feature lists: where orders land in your POS, who supports you and how fast, what the exit terms are, and what the total monthly cost is at your actual call volume. Feature comparisons favor whoever writes the longer page. The four axes favor whoever will actually work at your restaurant."
+  - question: "Is a chain vendor worth it if I plan to grow?"
+    answer: "Possibly, and it is one of the few good reasons to accept enterprise-shaped friction early. If you are opening a second and third location in the next eighteen months, tooling built for multi-unit rollout saves real work later. If growth is a maybe, buy for the restaurant you have and revisit the decision when the second lease is signed."
+---
+
+Vendors in restaurant voice AI split roughly into two design centers, and the split predicts more about your experience than any feature list. Some products were built for chains, where menus are standardized and a rollout means fifty stores at once. Others were built for the single restaurant with a hand-maintained menu and an owner who answers the phone.
+
+Kea AI has been positioned toward the chain and franchise side of that split. That is not a criticism — it is an architecture, and knowing which architecture you are buying tells you what will feel smooth and what will feel like friction.
+
+## What chain-first architecture gets right
+
+Products built for multi-unit groups tend to be strong in three places, and those strengths are real.
+
+Menu governance is the first. When one menu has to serve forty stores with local pricing and a few regional items, the system has to model "the brand menu" and "this store's version of it" as separate things. That is genuinely harder than modeling one menu, and vendors who have solved it have solved something.
+
+Rollout tooling is the second. Turning on one restaurant is a phone call and an afternoon. Turning on forty is a project with a schedule, an owner, and a rollback plan. Vendors who work with chains build for that, and it shows.
+
+Reporting that rolls up is the third. A group needs store comparisons that are fair — same definitions, same date boundaries, same treatment of transferred calls. Most single-store products never had to solve it.
+
+If you run more than a handful of locations, those three things are worth paying for, and the case is laid out in [voice AI for multi-location and franchise groups](/blog/voice-ai-multi-location-franchise-groups).
+
+## Where an independent should push back
+
+The same architecture creates predictable friction at one location.
+
+**Configuration lead times.** In a chain deployment, menu changes flow through a brand-level process, which is correct when forty stores share a menu and wrong when you added a special this morning. Ask the specific question: if I 86 an item at 6pm, what happens on the phone at 6:01? If the answer involves a support ticket, that is a real operational cost for a restaurant that changes its menu weekly. The mechanics of doing this well are in [real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync).
+
+**Support shape.** Enterprise support means an account manager and a business-hours queue. Restaurants have their emergencies on Friday at 7:15pm. Ask what happens then, and ask for the last incident as a story rather than as a policy.
+
+**Pricing assumptions.** Per-location pricing built for a fifty-store contract does not always scale down cleanly. Ask whether there is a minimum commitment, a setup fee, and an overage rate, and model it against your actual call volume rather than the vendor's example. [Pricing models for AI phone answering](/blog/ai-phone-answering-pricing-models) covers how to compare shapes that are not directly comparable.
+
+**Menu depth versus menu breadth.** Chain menus are wide and shallow: many items, few surprises, modifiers that were standardized years ago by a corporate food team. Independent menus are the opposite. A single restaurant will have four items that break every rule — the half-and-half order, the family platter priced by headcount, the thing the kitchen only makes on Sundays. A system tuned for the first shape does not always bend to the second, and the place it shows is the confirmation step, where a caller hears their order read back slightly wrong and has to correct it. Test that on your three weirdest items before anything else.
+
+## The human-in-the-loop question, asked plainly
+
+Some vendors in this category have used human agents alongside automation, either to complete calls the system could not handle or to review them. It is a legitimate design. It can produce higher accuracy than a purely automated agent, especially in the early months on an unfamiliar menu.
+
+It also changes two things you should decide about deliberately. Cost structure is one: humans in the loop have a floor that software does not, and it eventually shows up in your price. Privacy is the other: if a person can listen to your calls, that belongs in your recording disclosure and in your understanding of who has access to customer information. [Voice AI data ownership and privacy](/blog/voice-ai-data-ownership-privacy) covers what to ask for in writing.
+
+Neither is a reason to walk away. Both are reasons to know the answer before you sign rather than after a customer asks you who heard their phone number.
+
+## How to compare it against anything else
+
+Feature-by-feature comparison rewards whoever writes the most thorough marketing page. Compare on four axes instead, and make every vendor answer the same four:
+
+Where does the order land, exactly, in the POS you run today — direct, through middleware, or as a message someone keys in. Who supports you, how fast, at 7pm on a Friday. What does it cost at your real call volume, including overage and setup. What happens when you leave, including who holds your phone number.
+
+Those four are the ones that determine whether the product works at your restaurant. [What to ask before buying an AI phone system](/blog/what-to-ask-before-buying-an-ai-phone-system) expands each into the follow-up questions that stop a vendor from answering the easy version.
+
+## The growth question is the real decision
+
+There is one scenario where buying the chain-shaped product early is clearly right: you are opening more locations soon and you know it. Migrating a phone system across a growing group is more painful than starting on tooling that expects growth, and the rollout structure in [the franchise rollout playbook](/blog/voice-ai-franchise-rollout-playbook) assumes you have that tooling.
+
+If growth is aspirational rather than scheduled, buy for the restaurant you run now. The switching cost between voice vendors is mostly menu configuration and a number-forwarding change, which is a bad reason to accept eighteen months of enterprise-shaped friction on a single store. [Switching voice AI vendors](/blog/switching-voice-ai-vendors) is honest about what the move actually involves — it is smaller than vendors imply, as long as you kept your number.
+
+Run a thirty-day test either way, at your real volume, with criteria written before you start. The architecture question tells you what to watch for. The test tells you whether it matters at your restaurant.

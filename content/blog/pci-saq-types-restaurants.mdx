@@ -1,0 +1,73 @@
+---
+title: "Which PCI self-assessment applies once you take phone payments"
+description: "Taking a card number over the phone changes which PCI questionnaire you owe. Here is how the SAQ types map to a restaurant that answers its own line."
+publishedAt: "2026-03-17"
+faqs:
+  - question: "Which SAQ applies to a restaurant taking phone orders?"
+    answer: "Usually SAQ C-VT if you key cards into a hosted virtual terminal on an isolated computer, SAQ C if a connected payment application handles them, and SAQ D if neither description fits cleanly. SAQ A does not apply, because in the current standard it covers fully outsourced e-commerce only. Your acquirer makes the final determination."
+  - question: "Can I stay on SAQ A if I add phone ordering?"
+    answer: "No. SAQ A is scoped to e-commerce channels where all payment functions are outsourced to a validated third party and the merchant never touches card data. A staff member typing a card number read aloud over the phone is handling cardholder data directly, which places you in a different questionnaire regardless of what your website does."
+  - question: "Do call recordings put me out of PCI scope compliance?"
+    answer: "They can. Sensitive authentication data, including the three-digit code on the back of a card, may not be stored after authorization. A recording that captures a caller reading that code is storage. If you record payment calls, you need suppression during card entry or a documented process that makes those segments unrecoverable."
+  - question: "What is DTMF suppression and why does it matter?"
+    answer: "It routes the card entry portion of a call to a payment system through keypad tones that are masked from the recording and from the person on the line. The card number never enters your environment or your audio archive, which removes the largest part of your assessment scope. It is the standard way to take phone payments without expanding what you have to assess."
+  - question: "Who decides which SAQ I have to complete?"
+    answer: "Your acquiring bank or payment processor. The council publishes the questionnaires and the eligibility criteria, but validation requirements for smaller merchants are set contractually by the acquirer. Send them a written description of exactly how card data flows in your restaurant and ask them to confirm the SAQ in writing, then keep the reply."
+---
+
+Adding phone ordering to a restaurant that already takes cards online usually changes which PCI questionnaire you owe, and almost nobody notices.
+
+The reason is structural. Most restaurants got their PCI answer once, from a processor onboarding form, in the form of a letter and a number that meant nothing to them. Nothing about the phone triggers a re-ask. So an operator who spent two years on SAQ A quietly starts keying card numbers read aloud by callers and stays on a questionnaire that explicitly does not cover it.
+
+## The questionnaires exist to shrink the assessment, not to grade you
+
+PCI DSS has a few hundred requirements. The self-assessment questionnaires are subsets, each written for a payment environment specific enough that most requirements can be assumed inapplicable. Pick the one matching how card data moves through your business, answer its questions, and you have validated.
+
+The whole apparatus works only if you pick correctly. A restaurant on the wrong SAQ is not lightly non-compliant. It has attested, in a signed document, that it meets a standard scoped for a business it is not running. After a breach that document becomes the first exhibit, and an incorrect attestation is worse than a missing one.
+
+## What actually changes when a card number is spoken aloud
+
+Card-not-present is not one category. E-commerce and telephone orders are treated differently, and the difference is where the card number lands.
+
+In outsourced e-commerce, the customer types the number into a page hosted by your processor. It never enters your systems. That is what SAQ A is scoped for, and in the current version of the standard SAQ A is e-commerce only.
+
+On a phone order, the number leaves the customer's mouth and enters your restaurant. A person hears it. A device receives it. Something with a screen displays it. Whether that something is a browser on the back-office computer, your POS, or a piece of paper next to the register, you are now handling cardholder data, and the questionnaires that describe handling are the ones you are eligible for.
+
+That is the whole shift, and it is why "we're SAQ A because our website is outsourced" stops being true the day you start taking orders by phone.
+
+## The four that a restaurant realistically lands on
+
+- SAQ C-VT covers manual entry into a hosted virtual terminal, one transaction at a time, on a computer isolated from the rest of your network, with no electronic storage of card data. This is the intended fit for a back-office machine used to key phone orders.
+- SAQ C covers a payment application connected to the internet, with no electronic storage of cardholder data. If phone orders get keyed into your POS, this is usually the honest answer.
+- SAQ P2PE covers hardware terminals within a validated point-to-point encryption solution. It is the shortest questionnaire by a wide margin, and it is available only if your solution appears on the validated list, which many operators assume without checking.
+- SAQ D is everything else, and it is long. If you store card numbers anywhere, including a taped note on a catering deposit, D is where you belong.
+
+The one to notice is C-VT's isolation condition. A virtual terminal open in a browser tab on the same computer that runs your scheduling software, your email, and somebody's Spotify does not meet it. That single detail disqualifies a lot of restaurants that believe they are on C-VT, and it is the kind of thing a QSA finds in about four minutes.
+
+## Call recordings are the trap that catches restaurants specifically
+
+Sensitive authentication data may not be retained after authorization. That includes the verification code printed on the card, the thing your caller reads out as "the three numbers on the back."
+
+An audio file of a customer saying those numbers is retention. It does not matter that it is a recording rather than a database field, and it does not matter that nobody intends to listen to it. If your phone system records calls and your calls include card entry, you are storing prohibited data, probably in a cloud archive, probably indefinitely, probably with a retention setting nobody has looked at since installation.
+
+There are three defensible responses. Suppress the recording during card entry, so the segment never exists. Route card entry away from the conversation entirely, which is what DTMF masking does. Or do not take card payments by phone at all and collect on pickup, which is a legitimate choice more restaurants should consider than do.
+
+What is not defensible is recording everything and hoping. Retention settings and who can hear what deserve their own decisions, laid out in [call recording retention policy](/blog/call-recording-retention-policy), and the broader payment mechanics are in [PCI compliance for restaurant phone payments](/blog/pci-compliance-restaurant-phone-payments).
+
+## What to ask before a voice agent touches a card number
+
+A voice agent changes the picture in a useful direction, provided the vendor built it correctly. The card number can be routed to a payment gateway through masked keypad entry, never spoken, never present in a transcript, never stored in your environment. Done that way, phone payment scope shrinks rather than grows.
+
+Done carelessly, you have added a system that hears card numbers, transcribes them into text, and files the text somewhere with your call logs. That is a materially worse position than a person with a pen, because it is automatic and complete.
+
+Five questions to put to any vendor in writing:
+
+- Does the card number ever appear in a transcript, a log, or a stored audio file, and can you show me the retention setting that governs it?
+- Is card entry handled through masked keypad tones or a redirect to a validated payment provider, and which one?
+- Are you a PCI DSS validated service provider, and will you send the current attestation of compliance rather than a logo?
+- Which SAQ do you expect a restaurant using your product to complete, and on what reasoning?
+- What happens to stored call data if I leave, and how is it deleted?
+
+A vendor who answers the first three with marketing language rather than documents is telling you something. The contractual side of those answers, including the exit terms, is worth reading against [voice AI contract terms to avoid](/blog/voice-ai-contract-terms-to-avoid), and the underlying mechanism is explained in [phone payment tokenization](/blog/phone-payment-tokenization-explained).
+
+Write one paragraph describing exactly how a card number travels through your restaurant on a phone order, from the caller's mouth to the authorization. Name every device and every person it passes. Send that paragraph to your acquirer and ask them to confirm your SAQ in writing. If the paragraph is hard to write because you are not sure what happens after the number is spoken, you have found the actual problem, and no questionnaire is going to tell you about it. See also [collecting payment over the phone safely](/blog/collecting-payment-over-the-phone-safely) for the operational version of that walkthrough.

@@ -1,0 +1,80 @@
+---
+title: "Restaurant call forwarding on Verizon: what actually breaks"
+description: "Forwarding a Verizon business line takes under a minute. The failures happen around it, in hunt groups, voicemail, and the calls you never see arrive."
+publishedAt: "2026-02-13"
+faqs:
+  - question: "What is the code to forward a Verizon business line?"
+    answer: "On most Verizon copper business lines, dial *72, wait for the tone, then dial the full ten-digit destination number. Dial *73 to turn it off. Some lines require the destination to answer before the forward is confirmed, so have someone pick up. If you are on Verizon Business Digital Voice, the setting lives in the online portal instead."
+  - question: "Can I forward only the calls nobody answers?"
+    answer: "Yes, if your line carries the busy and no-answer forwarding features. These are separate from forward-all and use their own codes, commonly *90 and *92 to activate. Not every line has them provisioned. Call Verizon business support, ask specifically whether Call Forwarding Busy Line and Call Forwarding Don't Answer are on your account, and have them add the features if not."
+  - question: "Will forwarding stop my restaurant phone from ringing?"
+    answer: "With forward-all, yes. The physical handset in your restaurant will not ring at all, because the call never reaches it. That surprises operators who expected a shared arrangement. If you want the phone to keep ringing and only overflow when nobody picks up, you need no-answer forwarding rather than forward-all."
+  - question: "Does Verizon charge for forwarded calls?"
+    answer: "It can, and this catches seasonal operators out. On some traditional business lines, the forwarded leg is billed as an outbound call from your line to the destination, which is free within a local calling area and metered outside it. Forwarding to a local number in your own area code avoids the question entirely."
+  - question: "How do I change forwarding when I am not at the restaurant?"
+    answer: "You need Remote Access to Call Forwarding, which is an add-on feature rather than something every line has. It gives you a number to call and a PIN, after which you use the same star codes from any phone. Without it, changing the setting means physically standing at the forwarded line, which is a problem the first time you are closed unexpectedly."
+---
+
+Forwarding a Verizon business line takes about forty seconds. Everything that goes wrong goes wrong around it.
+
+I've watched restaurants forward the wrong line, forward a line that was already in a hunt group, and forward correctly to a system that then dumped every caller into a voicemail box nobody had checked since 2019. The mechanics are trivial. The configuration around the mechanics is where the money leaks.
+
+## The forty-second version
+
+Pick up the handset on the line you want to forward. Dial `*72`. Wait for the stutter dial tone. Dial the ten-digit destination number. On many Verizon lines the forward isn't confirmed until the destination answers, so have someone at the other end pick up, or the forward silently doesn't take. To turn it off, dial `*73` from the same line.
+
+That's forward-all. Every call to that number goes straight to the destination and your handset never rings.
+
+## Which Verizon service you have decides everything
+
+Verizon sells more than one thing that a restaurant calls "our phone line," and the instructions differ.
+
+### Traditional copper business lines
+
+These are the ones where star codes work. `*72` and `*73` for forward-all. Busy-line and no-answer forwarding are separate subscribed features, commonly `*90`/`*91` and `*92`/`*93`, and they only work if Verizon has provisioned them on your account. Codes vary by state and by the vintage of the line, so confirm yours with business support rather than trusting a printout taped inside the office door since the last owner.
+
+### Verizon Business Digital Voice
+
+This is the hosted product, managed through a web portal and a user-level settings page. Forwarding is a toggle with a destination field, and you get forward-always, forward-busy, forward-no-answer, and usually a selective rule based on time of day or calling number. Star codes may still work on the handset, but the portal is authoritative and the two can disagree in ways that are miserable to debug. Set it in one place and leave the other alone.
+
+If you don't know which one you have, look at the bill. A line item for a hosted seat or a bundled phone means the second. A per-line charge with feature add-ons listed separately means the first.
+
+## Forward-all versus overflow, at 6pm
+
+This is the decision that actually matters, and most operators make it by accident.
+
+Forward-all means every call goes to the voice agent, always. Your staff never touch the phone. That's the right setting if the agent is genuinely handling ordering and transferring the calls that need a person back to you, and it's what most restaurants land on once they trust the system.
+
+No-answer forwarding means the phone rings in your restaurant for a set number of rings, and only the calls nobody grabs roll to the agent. It sounds safer and it usually performs worse, because those four rings are dead air to a caller who is already deciding whether to try the next place. It also produces a confusing metric picture, since your busiest calls become the ones that look like overflow. If you're overflowing rather than forwarding, at least drop the ring count to two or three.
+
+A third option is forwarding only outside your open hours, which is the conservative way to start and is laid out in [after-hours phone answering](/blog/24-7-restaurant-phone-answering-after-hours).
+
+Whichever you choose, the agent still needs a transfer path back into the building. That path can't be the same number you forwarded, or you'll build a loop. Give it a second line, a cell, or a direct extension.
+
+## Five things that break
+
+- **The hunt group.** If your main number rolls to a second and third line when busy, forwarding only the main number does nothing for the calls that already rolled. Every line in the group needs to point at the agent, or the group's own overflow destination needs changing.
+- **Voicemail wins.** Verizon voicemail on the destination side, or a no-answer forward that fires before the agent picks up, will send callers to a mailbox instead. Test with a real inbound call and listen to what actually answers.
+- **The credit card terminal.** Older setups share a line with a card terminal or an alarm dialer. Forwarding that line breaks the device, usually quietly, and you find out at close.
+- **The wrong line.** Restaurants routinely have a number printed on the menu that isn't the number Verizon lists as the main. Forward the one customers dial, which you confirm by calling it from outside.
+- **The unattended handset.** With forward-all active, a staff member picking up the restaurant phone hears nothing unusual, so nobody notices the setting was reversed by a service visit until orders stop arriving.
+
+## Voicemail is the quiet failure
+
+Worth being blunt: forwarding into a system that ends at voicemail is not an improvement over a ringing phone. It's slightly worse, because the caller now believes they left a message with you.
+
+Before you finalize anything, call your restaurant number from a cell you've never called from, and let the whole thing play out. Then call it a second time and stay silent for thirty seconds to see what the system does when it hears nothing. Then call from a blocked number. Those three calls surface almost every misconfiguration people spend a week chasing.
+
+If you're replacing an answering service, the comparison and switching path is in [moving from an answering service to AI](/blog/switching-answering-service-to-ai-restaurant).
+
+## Forwarding is not porting
+
+Forwarding leaves your number with Verizon and sends the calls onward. Porting moves the number itself. Start with forwarding, because it's reversible in one dialed code and requires no paperwork. Consider porting later, once you've run for a month and know the system holds up.
+
+The tradeoff is real either way, and the details of moving a restaurant number without losing calls are in [porting your restaurant phone number](/blog/phone-number-porting-guide-restaurants). Setup on our side is typically under 24 hours from the point the forward is live, and plans start at $250 a month, listed on [pricing](/pricing).
+
+## Run this test before Friday
+
+Turn the forward on at 2pm on a slow Tuesday, not at 5pm on a Friday. Then place four calls from outside the building: a simple pickup order, a question about hours, a request for a person, and one where you hang up mid-sentence. Check the POS after each.
+
+If all four behave, leave it running through one dinner service and read the call log the next morning before you touch anything else. If the log shows calls you can't account for, the hunt group is the first place to look, not the agent.

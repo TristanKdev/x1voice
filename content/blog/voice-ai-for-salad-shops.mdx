@@ -1,0 +1,76 @@
+---
+title: "Voice AI for salad shops: build-your-own and office orders"
+description: "Salad shops earn most of their money in a ninety-minute window. How a voice agent handles build-your-own trees, nine-salad office orders, and dressing rules."
+publishedAt: "2026-02-02"
+faqs:
+  - question: "Can a voice agent handle a build-your-own salad?"
+    answer: "Yes, if your modifier structure is built as a sequence of choices rather than one long list of toppings. The agent walks the caller through base, greens, toppings up to your included count, protein, and dressing, tracking what has been chosen and what is left. A flat list of forty ingredients with no ordering is where these configurations fall apart."
+  - question: "What happens when someone orders nine salads for an office?"
+    answer: "The agent takes them one at a time and writes each as its own item with its own modifiers, which is the part that goes wrong on paper tickets. The practical benefit is not speed. A nine-salad call takes about as long either way, but it no longer holds your counter hostage during the lunch rush."
+  - question: "Will it get dressing-on-the-side right?"
+    answer: "It will if side dressing exists as a modifier in your POS rather than as a note your staff read off a ticket. This is worth checking directly, because free-text notes often do not travel cleanly into a kitchen display. Confirm in a demo that a side-dressing order shows up on the make line the same way a counter order does."
+  - question: "Does the agent know when we run out of an ingredient?"
+    answer: "Only if your 86 list lives in the POS and the agent reads live availability. Salad shops run out of specific toppings mid-rush more often than most formats, and an agent still offering an ingredient you ran out of at noon creates a refund at pickup. Make live availability a requirement, not a nice-to-have."
+  - question: "Do salad shop tickets justify the monthly cost?"
+    answer: "Do the arithmetic before assuming either way. Plans start at $250 a month, so at a $14 average single salad you need roughly eighteen extra recovered orders a month to break even. Office orders change the picture quickly, since one recovered nine-salad order can cover a meaningful share of the month on its own."
+---
+
+At 11:52 on a Tuesday there are fourteen people in line, two of your three make-line spots are working, and the phone starts ringing. It is an office order. Somebody wants nine salads, and they are going to read them off a Slack thread while the line grows behind them.
+
+Whoever picks up that phone is gone for seven minutes. That is the whole problem at a salad shop, and it is worth being precise about it, because the fix is not what most operators assume.
+
+## Almost all of it happens in ninety minutes
+
+A salad shop is not a restaurant with a lunch rush. It is a lunch rush with some hours attached on either side. Most of the day's revenue lands between roughly 11:30 and 1:15, which means every operational decision is really a decision about what happens during those ninety minutes.
+
+The phone during that window is a direct trade against the line. Answer it, and the make line drops a station. Do not answer it, and you lose an order you never see. Neither choice is good, and most shops default to the second because the cost is invisible while the line in front of you is not.
+
+What a voice agent changes is that the trade stops existing. Calls get answered without anyone leaving the make line. The [general case for that math](/blog/the-real-cost-of-a-missed-restaurant-phone-call) is stronger at a salad shop than at most formats, because the loss is so tightly concentrated in time. A missed call at 2:30 is worth much less than a missed call at 12:05, and nearly all of yours are the second kind.
+
+## Build-your-own is a modifier problem
+
+This is where salad shop configurations succeed or fail, and it has nothing to do with speech recognition.
+
+A build-your-own salad is a sequence of decisions with rules attached: a base or greens, then some number of included toppings out of a long list, then a protein at an upcharge, then a dressing, then extras. Your POS already encodes this, more or less. Whether it encodes it in a way an agent can walk a caller through is a separate question.
+
+### Where the tree usually breaks
+
+Three specific failures show up repeatedly.
+
+The first is a flat topping list with no included count. If the configuration says forty toppings and does not say the caller gets six, the agent has no way to know when to stop offering or when to start charging. The caller ends up with a price they did not expect at pickup.
+
+The second is inconsistent naming. Your POS says "GRLD CHKN" and callers say "grilled chicken," and if nobody has mapped the spoken phrase to the item, the agent will not find it. That mapping work is ordinary and covered in [how voice agents handle modifiers](/blog/how-voice-ai-handles-menu-modifiers), but it does not do itself.
+
+The third is depth. Some shops have modifier trees five levels deep with conditional options, and a caller cannot hold that in their head any more than an agent can present it gracefully. If your tree is unmanageable on the phone it is probably also slowing your counter, and [simplifying the modifier tree](/blog/simplifying-modifier-trees) helps both. Fix the structure first, then automate it.
+
+## The nine-salad office order
+
+Group orders are the most valuable calls a salad shop takes and the ones handled worst under pressure.
+
+Here is what makes them hard. Every salad is a separate build. The caller is reading from a message thread they did not write, which means half the entries are underspecified and they have to guess or ask. Somebody wants no onions, somebody wants extra dressing, somebody wants the vegan option and does not know what that means at your shop. It is a long, ragged conversation.
+
+An agent does not make that call shorter. It takes roughly as long. What it does is take that seven minutes off your counter entirely, and it writes each salad into the POS as its own item with its own modifiers rather than as nine lines of handwriting your make line has to interpret. Ticket accuracy on group orders is where most of the pain lives, and structured entry is most of the fix. If office catering is a real channel for you, the [catering intake side of it](/blog/ai-phone-answering-catering-orders) is worth setting up deliberately rather than treating every group order as a walk-up.
+
+One caution. If you take a large group order at 12:10 and your make line is already three tickets deep, you need a way to quote a realistic pickup time or hold the order. Systems that accept unlimited volume during a rush create a different problem, which is why [capacity throttling on phone orders](/blog/order-throttling-kitchen-capacity-phone) matters more here than at a format with a longer service window.
+
+## The rules nobody wrote down
+
+Every salad shop has a set of conventions that live in staff heads and never made it into the POS. These are the things to write down before configuring anything:
+
+- What dressing on the side actually means at your shop, including how it is packaged and whether it changes the price
+- Which items are included in the base price and which are upcharges, stated the way a caller would ask about them
+- What happens when a topping runs out mid-rush, and whether that gets marked in the POS or shouted down the line
+- Your substitution policy, specifically whether a caller can swap a protein or a base without an upcharge
+- Which combinations you refuse to make, if any, and how you want that said politely
+
+That list takes twenty minutes to write and prevents most of the go-live problems. The 86 item is the one to take seriously. Salad shops run out of specific toppings mid-rush more than almost any format, and an agent that keeps offering an ingredient you ran out of at noon is generating refunds. Live availability from the POS is the only reliable answer, and [how 86ing syncs](/blog/real-time-86ing-menu-sync) is worth understanding before you sign.
+
+## Whether the numbers work at salad ticket sizes
+
+Salad shop tickets are smaller than pizza or catering tickets, so run the arithmetic rather than assuming.
+
+Plans start at $250 a month. At a $14 average single-salad ticket, you need roughly eighteen additional recovered orders a month to break even, which is under one a day. If you are missing three or four calls during every lunch rush, that threshold is not close. If your phone genuinely rings twice a week, it is not worth it and you should skip it.
+
+The variable that moves the answer most is office orders. One recovered nine-salad order at $120 covers about half a month. If you get those calls and you know some of them go unanswered at noon, the case is made on that channel alone. Current plan detail is on [pricing](/pricing), and the single-location version of the math is in [the economics for one shop](/blog/economics-ai-phone-answering-single-location).
+
+For a week, have whoever is on register mark a tally every time the phone rings between 11:30 and 1:15 and nobody gets it. Multiply by your average ticket at the end of the week. That number, not a vendor projection, is what you are actually deciding about.

@@ -1,0 +1,81 @@
+---
+title: "Building a pickup time quote that survives a Friday rush"
+description: "A flat twenty-minute quote is right at 3pm and wrong at 7pm. How to build a pickup quote from real kitchen load, and what to do when it starts slipping."
+publishedAt: "2026-04-12"
+faqs:
+  - question: "What should a pickup time quote be based on?"
+    answer: "Current open tickets against how many your line can finish per minute, plus the longest cook time in the order, plus a small buffer. A flat number ignores load and will be wrong in both directions across a day. The arithmetic is simple enough to do on paper once, and once you have done it you can encode it."
+  - question: "Is it better to quote long and be early, or quote tight and risk being late?"
+    answer: "Quote slightly long. A customer who arrives to find the food ready is mildly pleased; a customer who waits eight minutes past a promise is actively annoyed and tells people. The cost is asymmetric, so the buffer should be too. Two to four minutes of padding at peak is usually the right amount."
+  - question: "How do I know if my quotes are actually accurate?"
+    answer: "Log promised time against actual handoff time for one peak hour a week. Look at the spread, not the average, because an average of zero can hide half your orders being ten minutes early and half being ten minutes late. If more than one in five orders misses the promise by five minutes or more, the rule needs work."
+  - question: "Should quotes change automatically during a rush?"
+    answer: "Yes, and if they don't, the quote is decorative during exactly the hours it matters. The quote should read current open tickets and extend as the queue grows. A rule that never moves means the kitchen absorbs every extra order silently until it can't, and then everyone's order is late at once."
+  - question: "What do I do when the kitchen falls behind after the order was already quoted?"
+    answer: "Contact the customer before their quoted time, not after. A text at fifteen minutes saying the order will run ten minutes late is a minor inconvenience; the same information delivered when they're standing at the counter is a complaint. The recovery window closes at the moment they arrive expecting food."
+---
+
+It's 6:40 on a Friday. The line is nine tickets deep, two of them are large, and a caller wants to know when they can pick up. Your system says twenty minutes because it says twenty minutes to everyone. The customer arrives at 7:00, the order goes in the bag at 7:19, and the last four minutes of that are spent with them standing at the counter watching your staff not make eye contact.
+
+Nothing malfunctioned. The kitchen worked at normal speed and the order was made correctly. The quote was just a number somebody typed into a settings field once and never revisited.
+
+## A flat quote is wrong twice a day
+
+Fixed quotes fail in both directions and the two failures cost different amounts.
+
+At 2:45 on a Tuesday, a twenty-minute quote on an eight-minute kitchen means the customer waits twelve minutes for nothing, or the food sits twelve minutes going cold. You lose a little quality and a little goodwill and almost nobody complains.
+
+At 7:10 on a Friday, that same quote on a kitchen running thirty minutes deep means you have promised something you cannot deliver, to every caller, for ninety minutes straight. Those are the ones who write reviews, call back to ask where their food is, and consume more staff attention after the order than during it.
+
+So the flat quote is not a small imprecision. It is precisely calibrated to be most wrong when the stakes are highest.
+
+## The arithmetic behind a real quote
+
+You can work this out on paper in ten minutes for your own kitchen, and you should, because the number you get will tell you whether your current setting is even close.
+
+Start with throughput. Time your line during a genuine rush and count how many pickup tickets it finishes per ten minutes. Not what it could do, what it does, with the staffing you actually run. Call that your rate.
+
+Then the quote for a new order is roughly: open tickets divided by rate, plus the longest cook time in that specific order, plus a buffer.
+
+An example with round numbers. Your line finishes five pickup tickets per ten minutes, so two minutes a ticket. There are nine tickets open. The new order includes a dish that takes twelve minutes on its own. Nine times two is eighteen, and the twelve-minute item overlaps that queue rather than adding to it, so the finish estimate is around eighteen to twenty minutes, plus three for bagging and buffer. Twenty-two, not twenty. That happens to be close, which is the trap: at 3pm the same rule returns eight minutes and the flat quote is nearly three times too long.
+
+The longest cook time matters as a floor. If someone orders one item that takes fifteen minutes and the queue is empty, the answer is fifteen plus buffer, not eight.
+
+## What has to feed the quote automatically
+
+Doing the arithmetic once tells you the shape of the rule. Making it useful means the rule reads live numbers rather than your memory of last Friday. Four inputs matter:
+
+- Open ticket count at the moment of the call, which is the single biggest driver and the one flat quotes ignore entirely.
+- The cook times attached to items in the order, so a twelve-minute dish and a two-minute dish do not get the same treatment.
+- A ceiling on how many orders can be accepted for any given ten-minute window, which is a throttling decision rather than a quoting one and is covered in [order throttling against kitchen capacity](/blog/order-throttling-kitchen-capacity-phone).
+- Whatever manual override a manager can hit when something has gone sideways in a way no rule anticipated, such as a fryer down or two cooks short.
+
+That last one is not a fallback for a badly built rule. Every kitchen has nights that the arithmetic cannot see, and a manager who can add ten minutes to every quote for the next hour will save more customer relationships than any amount of tuning.
+
+## Quote slightly long, on purpose
+
+The cost of being early and the cost of being late are not symmetric, so the buffer should not be centered.
+
+A customer who arrives at their quoted time and waits ninety seconds is fine. A customer who arrives and finds it ready is pleased. A customer who waits eight minutes past a promise has been told something untrue by your restaurant, and that is how they will describe it, regardless of how good the food is when it finally comes out.
+
+Two to four minutes of padding at peak is usually right. More than that and you start pushing customers to competitors on the quote alone, and you get bags sitting on the shelf going cold, which trades one failure for another. The shelf side of this is worth reading alongside, since a perfect quote does nothing if the finished bag waits eleven minutes for someone to hand it over.
+
+## When it slips, tell them before they arrive
+
+Every operation has nights where the quote was honest at the time and stopped being true fifteen minutes later. The rule for those is simple and almost nobody follows it: contact the customer before their quoted time.
+
+A text at the fifteen-minute mark saying the order will run about ten minutes behind is a minor inconvenience. The identical information delivered at the counter, after they have driven over and parked, is a complaint and sometimes a refund. The recovery window closes the moment they show up expecting food.
+
+This needs somebody to own it during service, which is the same ownership problem that shows up on the pickup shelf. If nobody is watching the queue against the promises, the notification never goes out, because the person who would send it is plating. Set it up so the alert reaches a specific role, and see [order status text updates](/blog/restaurant-order-status-text-updates) for how that loop should close.
+
+Curbside makes this sharper, because the customer is invisible until they text or call. The handoff sequence there has its own requirements, laid out in [the curbside pickup phone flow](/blog/curbside-pickup-phone-flow). Delivery is a different calculation again, since you are quoting a driver leg on top of a kitchen leg, and [quoting a delivery ETA](/blog/quoting-delivery-eta) treats it separately for that reason.
+
+## Measure the spread, not the average
+
+Once a week, take one peak hour and write down promised time and actual handoff time for every pickup order. Then resist the urge to average them.
+
+An average of zero looks perfect and can mean half your orders went out ten minutes early and half went out ten minutes late, which is a worse operation than a consistent four minutes late. What you want is the spread and the tail. How many missed the promise by five minutes or more? If it is more than one in five, the rule is not tracking load, and no amount of asking the kitchen to hurry will change that.
+
+This pairs directly with your ticket time reporting, and the two are easy to confuse. A long ticket time against an honest quote is a capacity issue. A normal ticket time against a broken quote is a promise issue, and only one of those costs money to fix. [Why phone tickets run long](/blog/ticket-times-phone-vs-walkin) separates the two.
+
+Do this for three Fridays. If the spread tightens after you switch from a flat number to a load-based one, you have your answer, and you will also have discovered your real kitchen rate, which is useful for about six other decisions you are currently making by feel.

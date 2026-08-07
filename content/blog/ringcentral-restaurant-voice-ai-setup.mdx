@@ -1,0 +1,74 @@
+---
+title: "Adding a voice agent to RingCentral without losing your menu"
+description: "You can put an AI agent inside a RingCentral call flow and keep the auto-attendant. Where the agent belongs, what to change, and what quietly breaks."
+publishedAt: "2026-02-17"
+faqs:
+  - question: "Do I have to remove my RingCentral auto-attendant to use a voice agent?"
+    answer: "No, and in most restaurants you shouldn't. Keep the auto-attendant as the front door for anything that isn't ordering, and route the ordering option to the agent. A two-option menu that sends press-one to the agent and press-two to the office is a reasonable structure, and it keeps your existing extensions intact."
+  - question: "How does a RingCentral extension reach an external AI agent?"
+    answer: "Through an answering rule that forwards the extension to an external number, which is the number your voice provider assigns you. RingCentral treats it like any other forwarding destination. The agent answers, handles the call, and writes the order into your POS without the call ever coming back to your system."
+  - question: "Will the agent still work if RingCentral goes down?"
+    answer: "No. Anything routed through your PBX depends on the PBX being up. If uptime on the ordering line matters more than keeping it inside RingCentral, point your published ordering number straight at the agent and leave RingCentral handling your back-office extensions. That removes a dependency rather than adding a workaround."
+  - question: "Do I keep two sets of business hours after this?"
+    answer: "Yes, and that's the most common source of confusion. RingCentral has its own business-hours schedule and the voice agent has its own. If they disagree, callers hit an after-hours message at one layer while the other layer thinks you're open. Set both from the same written hours and re-check them whenever the restaurant changes a closing time."
+  - question: "Does a forwarded call show the customer's caller ID?"
+    answer: "It depends on how the forwarding is configured. Some setups pass the original caller's number through, others present the RingCentral number instead. Test it before you rely on it, because callback on a dropped order and any call-tracking reporting you run both depend on the real number arriving at the agent."
+---
+
+An AI agent and a PBX auto-attendant are not competing for the same job, and treating them as if they were is how restaurants end up with a worse phone system than they started with. The auto-attendant routes. The agent has a conversation and produces an order. You want both, arranged so the caller passes through as little of the first as possible.
+
+RingCentral makes this straightforward once you know which object to edit. The trouble is that the same result can be built four ways in the admin console, and three of them create problems you won't see for a month.
+
+## Where the agent belongs in the flow
+
+Put the agent as far forward as your operation tolerates.
+
+The best arrangement for a takeout-heavy restaurant is no menu at all on the published ordering number. The customer dials, the agent answers, and the agent decides whether this is an order, a question about hours, or a call that needs a person. That handoff decision made in conversation is nearly always better than a keypress menu, because the caller doesn't have to know in advance which category they fall into. The reasoning is laid out in [voice AI versus phone trees](/blog/voice-ai-vs-ivr-phone-trees-restaurants).
+
+The next best arrangement, and the right one if you genuinely have office traffic on the same number, is a two-option attendant. Press one for orders and hours, which goes to the agent. Press two for everything else, which goes to your existing extension or ring group. Two options, said in under eight seconds, no submenus. Most restaurants that "need" the attendant need exactly this and nothing more.
+
+What you should not do is bury the agent three levels deep behind a menu that already asks the caller to choose between takeout, delivery, catering, and reservations. Those distinctions are things the agent can sort out itself in one sentence of conversation, and every keypress you make a hungry caller perform is a chance for them to hang up.
+
+## The change you're actually making
+
+The mechanic is an answering rule on the extension or call queue that forwards to an external number. Your voice provider gives you a number; RingCentral treats it the way it treats a forward to a cell phone.
+
+### The settings that matter more than they look
+
+Ring duration comes first. If the extension rings its own devices before forwarding, every caller waits through that cycle. Set it so the forward happens immediately, or route the attendant option directly at the external number instead of at an extension that then forwards.
+
+Voicemail comes second. Disable it on that extension. If RingCentral's voicemail can grab the call when the forward hasn't answered within its window, some percentage of your orders end up as unheard voicemails in a box nobody opens. The agent should be the only thing that ever answers on that path.
+
+Third, decide whether the extension should still ring desk phones at all. Usually it shouldn't. Parallel ringing between an agent and a human means both pick up, and your order log develops gaps that are miserable to reconstruct when a customer calls back about a missing item.
+
+Fourth, check caller ID passthrough by placing a test call from an outside phone and asking your provider what number arrived. Some forwarding configurations replace the customer's number with your own.
+
+## What to have ready before you touch the console
+
+Setup stalls on missing information far more often than on a routing problem. Three things are worth collecting first.
+
+Your menu, exported from the POS rather than retyped, with the modifier groups and the item names as they actually appear on a ticket. If your kitchen calls something "Sm Chz" and your printed menu calls it a small cheese, the agent needs to know both, and so does whoever is configuring it.
+
+Your rules, written as sentences. How far ahead you take pickup orders, whether you quote a time or a window, what your delivery radius is, what you do about large orders placed twenty minutes before close, and which calls should always reach a person. Most operators have these rules in their heads and have never written them down, and the writing-down is where the disagreements between a GM and an owner surface.
+
+Your RingCentral admin credentials, or a scheduled window with whoever holds them. This is the one that adds days. The person who set up your PBX four years ago may not work there anymore, and recovering an account takes longer than any other step in the process.
+
+With those three in hand, the configuration itself is short.
+
+## Two schedules, one restaurant
+
+This is the failure that shows up weeks later, usually the first time you change a closing time.
+
+RingCentral holds business hours for the account and for individual extensions, and those hours drive which answering rule applies. Your voice agent also has hours, because it needs to know whether it can take an order for tonight. When those two schedules disagree, callers get strange results: an after-hours message from the PBX at 9:15 while the agent believes the kitchen is open, or an agent cheerfully taking a pickup order for a dining room that closed forty-five minutes ago.
+
+Write your hours down once, per day, including the difference between when the phone should be answered and when the kitchen actually stops making food. Those are two different times in most restaurants and conflating them causes real order problems. Then set both systems from that one document, and add "update phone hours" to whatever checklist you already use when hours change for a holiday. [Setting up after-hours call routing](/blog/after-hours-call-routing-setup) goes through the daypart edge cases, and [24/7 answering after hours](/blog/24-7-restaurant-phone-answering-after-hours) covers what the agent should say once you're closed.
+
+## Queues, overflow, and the case for skipping RingCentral entirely
+
+If your ordering line currently sits behind a call queue with three agents and an overflow rule, replacing that with a voice agent removes most of the reason the queue existed. The agent answers every concurrent call at once. There's no hold music, no position-in-queue announcement, and no overflow.
+
+Keep the queue only for the escalation path. When the agent hands a caller to a person, it can hand them to your existing queue so the call still rings the host stand and the manager's extension in whatever order you've already tuned. That's the one place RingCentral's routing logic earns its keep, and how to structure it is covered in [human handoff and failover](/blog/human-handoff-failover-voice-ai).
+
+The larger question is whether the ordering number should live in RingCentral at all. Every layer between the customer and the agent is a layer that can fail independently. If your PBX has an outage, a forwarded ordering line goes down with it, and you find out from a customer rather than from a dashboard. Porting the ordering number directly onto the answering platform and leaving RingCentral to run your extensions is fewer moving parts, not more.
+
+Run this test after any change: call the published number from an outside phone, count the rings before the agent speaks, and place a real order. If it's more than three rings, something in the chain is waiting on a timer that doesn't need to exist. Fix the timer, not the agent. Then check that the ticket landed in your POS with the modifiers intact, which is the only proof that matters.

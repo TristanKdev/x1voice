@@ -1,0 +1,68 @@
+---
+title: "Voice AI for soul food restaurants and the Sunday rush"
+description: "Sunday is half the week's business and the day nobody can answer the phone. How voice ordering handles sides-heavy menus, sellouts, and after-church volume."
+publishedAt: "2026-02-09"
+faqs:
+  - question: "How does a voice agent handle a menu built on sides?"
+    answer: "The same way your counter does, by asking which sides and how many, then confirming. The configuration work is making sure every side exists as a real POS option with the names your customers use, including the ones that differ from your menu board. Callers ask for candied yams and your POS may say sweet potatoes. Map both and the calls stop breaking."
+  - question: "What happens when we sell out of oxtails at 2pm on a Sunday?"
+    answer: "If your team marks the item unavailable in the POS and your integration reads that, the agent stops offering it within a couple of minutes and tells callers plainly. If sellouts live only in your staff's heads, the agent will keep taking orders you cannot fill. Getting sellout signaling into the POS is the single highest-value setup step for this format."
+  - question: "Will callers accept talking to a system on a Sunday?"
+    answer: "Most do when the alternative is a busy signal, and the tone matters more than the technology. A greeting in your own words, an agent that answers on the first ring, and a fast handoff to a person when someone asks for one covers most of the objection. Regulars who want a specific person should get one, which is a routing rule you set."
+  - question: "Is the Sunday spike big enough to justify a monthly cost?"
+    answer: "Count it before you decide. If your phone offers sixty calls between noon and 3pm and you answer twenty-five, the thirty-five you missed at your average takeout ticket is the number that matters. Many soul food kitchens find one Sunday covers the monthly cost, but the point is to run your own arithmetic rather than take that on faith."
+  - question: "Can it take a large family or church order?"
+    answer: "It can capture one, and for anything above a threshold you set it should hand off to a person instead of committing. Pans of food have prep implications your agent cannot see. The useful pattern is letting it take the name, callback number, headcount, date, and rough list, then having someone confirm quantities and lead time within the hour."
+---
+
+Run the arithmetic on a single Sunday. If your phone offers sixty calls between noon and three and your team answers twenty-five, that's thirty-five callers who heard ringing. At a $22 takeout ticket, the missed half of one afternoon is around $770. Do that fifty-two times a year and you're looking at a number most owners would fire someone over if it showed up as theft.
+
+Nobody is stealing anything. The phone is ringing during the exact ninety minutes when every person in the building is plating, and there is no version of that shift where somebody has a free hand.
+
+## Sunday is a different business than the rest of your week
+
+Most restaurant formats have a phone problem spread evenly across dinner service. Soul food kitchens have a phone problem shaped like a spike, and the spike lands right after church lets out.
+
+That shape changes the answer. Hiring someone to answer phones means paying for a shift you only need for three hours on one day. Letting it ring means losing the highest-margin, highest-frequency calls you get all week. Voicemail is worse than either, because a caller who wants smothered pork chops in twenty minutes is not leaving a message, they are calling the place on the next block.
+
+The invisibility is what makes it persist. You can see a lobby full of people. You cannot see the forty callers who didn't get through, and unless you pull the log you will never know the number. [The real cost of a missed restaurant phone call](/blog/the-real-cost-of-a-missed-restaurant-phone-call) covers how to find yours.
+
+### The specific shape of a Sunday call
+
+They're short and they repeat. What time do you close, do you still have oxtails, can I get three meats and four sides, is the mac fresh, how long for pickup. The same eight questions in different orders, sixty times.
+
+That repetition is precisely what a voice agent is good at. It also means the configuration work is finite. Get those eight answers right and you have covered most of the day's volume. The remaining calls, the church order and the complaint and the woman who wants to talk to Miss Denise, are the ones that should reach a person anyway.
+
+## A sides-heavy menu needs its aliases written down
+
+This format has the deepest side list in casual dining and the loosest naming conventions. Your POS might say "Sweet Potatoes," your menu board says "Candied Yams," and your customers say yams. Your POS says "Macaroni & Cheese," everyone on the phone says mac. Collards, collard greens, and greens are one item. Cornbread and a cornbread muffin might be two.
+
+A voice agent that only knows the POS spelling will stumble on a third of your calls. One with a proper alias list handles them without the caller noticing anything happened. This is unexciting setup work, an hour with your menu and someone who has worked your counter, and it does more for accuracy than any other single thing.
+
+Portion vocabulary needs the same treatment. A caller asking for "a small mac" and one asking for "a side of mac" may or may not mean the same thing at your place, and a pint versus a quart versus a pan is a three-step ladder your regulars use fluently and newcomers don't. Whatever the ladder is, each rung should be a real POS size with its own price, and the agent should confirm which one it heard. Guessing on portion size is how a $9 side becomes a $28 complaint.
+
+The other side-specific detail is the combination rules. Three meats and two sides, or one meat and three sides, or a side that becomes an entrée if you order it large. Those rules exist in your POS as item structures, and the agent needs to follow them exactly or you'll get tickets your kitchen has to interpret. The same structural problem shows up in [BBQ restaurants](/blog/voice-ai-for-bbq-restaurants), where plates and combos work similarly.
+
+## Sellouts are the make-or-break configuration
+
+Running out is normal in this format. You cook a set amount, and when the oxtails are gone at 2:15 they're gone. An ordinary Sunday might sell out of three items before close.
+
+An agent that keeps selling a sold-out item is worse than no agent at all, because now you have to call people back. So this is the setup decision that determines whether the whole thing works:
+
+- Every item that can sell out needs to exist as a POS item your team can mark unavailable, not as a verbal understanding among the staff
+- Someone on the line has to own marking it, the same way someone owns flipping the sign, and it has to happen at the moment it runs out rather than at the end of the shift
+- The agent's response to a sold-out item should offer the nearest alternative, since a caller who wanted oxtails will often take short ribs if asked
+- Items that sell out early should have a stated cutoff in the greeting when you know the pattern, because telling a caller at noon that oxtails usually go by two saves both of you a phone call
+- Anything that comes back when a new batch drops has to be marked available again, which is the step teams forget
+
+[Real-time 86ing and menu sync](/blog/real-time-86ing-menu-sync) covers the integration mechanics, and [POS 86 sync failure modes](/blog/voice-ai-pos-86-sync-failure-modes) is worth reading before you go live, because the ways this breaks are predictable.
+
+## Where a person still has to pick up
+
+Two categories, and they're both worth money.
+
+Family and church orders. Someone calling about food for thirty after a service is asking a question about your prep capacity, not placing an order. The agent should take the details and the callback number and stop there, with a person confirming quantities and timing. Committing to pans of food without checking what else is on the books is how a Sunday goes sideways. The general pattern is in [catering order handling](/blog/ai-phone-answering-catering-orders).
+
+Regulars who want a specific person. A soul food room usually has one or two people the regulars ask for by name. Route those calls, don't fight them. The value of the agent is absorbing the sixty routine calls so that the person who knows Mr. Thomas can actually take his.
+
+The test worth running is smaller than a pilot. Next Sunday, have someone tally calls offered and calls answered between noon and three, and write down what each answered call was about. Two hours of tally marks will tell you the miss rate, the ticket value behind it, and how many of those calls were the same eight questions. If the missed revenue clears the monthly cost at [$250/month](/pricing), you have your answer without needing anyone's projection.
