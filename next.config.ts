@@ -45,7 +45,74 @@ const CSP = [
   "form-action 'self'",
 ].join("; ")
 
+const PRODUCTION_HOST = "x1voice.com"
+
 const nextConfig: NextConfig = {
+  /**
+   * One URL per page, no trailing-slash twin. This is Next's default; it is
+   * stated explicitly because changing it later silently doubles every URL on
+   * the site and invalidates every canonical tag at once.
+   */
+  trailingSlash: false,
+
+  /**
+   * Canonical-form redirects. The <link rel="canonical"> tag is a hint; a 301
+   * is an instruction. Without these, www.x1voice.com/pricing and
+   * x1voice.com/pricing are two crawlable URLs serving identical content, and
+   * link equity splits between them.
+   */
+  async redirects() {
+    return [
+      // www → apex, preserving the path. Everything else on the site — the
+      // canonical tags, the sitemap, the JSON-LD @ids — is written with the
+      // apex host, so www must not be independently crawlable.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: `www.${PRODUCTION_HOST}` }],
+        destination: `https://${PRODUCTION_HOST}/:path*`,
+        permanent: true,
+      },
+      // Directory-index and homepage aliases people and old links still use.
+      { source: "/index", destination: "/", permanent: true },
+      { source: "/index.html", destination: "/", permanent: true },
+      { source: "/home", destination: "/", permanent: true },
+      // Blog path variants. The posts live at /blog/<slug>; these are the
+      // shapes other CMSes use, and the ones inbound links tend to be written
+      // against.
+      { source: "/blogs/:slug", destination: "/blog/:slug", permanent: true },
+      { source: "/blogs", destination: "/blog", permanent: true },
+      { source: "/post/:slug", destination: "/blog/:slug", permanent: true },
+      { source: "/posts/:slug", destination: "/blog/:slug", permanent: true },
+      { source: "/posts", destination: "/blog", permanent: true },
+      { source: "/article/:slug", destination: "/blog/:slug", permanent: true },
+      { source: "/articles/:slug", destination: "/blog/:slug", permanent: true },
+      { source: "/articles", destination: "/blog", permanent: true },
+      { source: "/news/:slug", destination: "/blog/:slug", permanent: true },
+      // Section aliases.
+      { source: "/integrations/pos", destination: "/integrations", permanent: true },
+      { source: "/pos", destination: "/integrations", permanent: true },
+      { source: "/pos-integrations", destination: "/integrations", permanent: true },
+      { source: "/plans", destination: "/pricing", permanent: true },
+      { source: "/price", destination: "/pricing", permanent: true },
+      { source: "/demo", destination: "/#see-it", permanent: true },
+      { source: "/book-a-demo", destination: "/contact", permanent: true },
+      { source: "/contact-us", destination: "/contact", permanent: true },
+      { source: "/about-us", destination: "/about", permanent: true },
+      { source: "/help", destination: "/support", permanent: true },
+      { source: "/faq", destination: "/support", permanent: true },
+      { source: "/partner", destination: "/partners", permanent: true },
+      { source: "/reseller", destination: "/resellers", permanent: true },
+      { source: "/careers", destination: "/about", permanent: true },
+      // Feed aliases — readers guess these.
+      { source: "/rss", destination: "/feed.xml", permanent: true },
+      { source: "/rss.xml", destination: "/feed.xml", permanent: true },
+      { source: "/feed", destination: "/feed.xml", permanent: true },
+      // Sitemap aliases, including the shape Next used to serve.
+      { source: "/sitemap_index.xml", destination: "/sitemap.xml", permanent: true },
+      { source: "/sitemaps.xml", destination: "/sitemap.xml", permanent: true },
+      { source: "/sitemap/:section.xml", destination: "/sitemaps/:section.xml", permanent: true },
+    ]
+  },
   // Silences Turbopack's workspace-root inference — an unrelated
   // package-lock.json in the user's home directory (outside this project)
   // would otherwise be misdetected as the workspace root.
